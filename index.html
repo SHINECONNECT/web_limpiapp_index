@@ -27,6 +27,34 @@
       --border-color: #e2e8f0;
     }
 
+    /* Reglas directas para asegurar fondos claros en toda la web */
+    body {
+      background-color: var(--brand-bg) !important;
+      color: var(--brand-dark, #1e293b) !important;
+    }
+
+    header, nav, section, footer {
+      background-color: transparent !important;
+      color: var(--brand-dark, #1e293b) !important;
+    }
+
+    /* Fondo para tarjetas, cajas y contenedores */
+    .card, .box, .container, .hero {
+      background-color: var(--surface-white) !important;
+      border-color: var(--border-color) !important;
+      color: var(--brand-dark, #1e293b) !important;
+    }
+
+    /* Botones principales en azul corporativo */
+    button, .btn, .btn-primary, a.button {
+      background-color: var(--brand-blue) !important;
+      color: #ffffff !important;
+    }
+
+    button:hover, .btn:hover, .btn-primary:hover, a.button:hover {
+      background-color: var(--brand-blue-hover) !important;
+    }
+
     * {
       margin: 0;
       padding: 0;
