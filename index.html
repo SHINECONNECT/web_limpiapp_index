@@ -24,12 +24,13 @@
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
           colors: {
+            // Paleta oficial extraída directamente del logo de LIMPIAPP
             limpi: {
               50: '#f4f8fb',
               100: '#e8f1f6',
               200: '#d1e3ee',
               300: '#b0d0e3',
-              400: '#8fb7d1', // Azul Acero del logotipo oficial
+              400: '#8fb7d1', // Azul Acero Claro del logo
               500: '#729fbe',
               600: '#5a87a7',
               700: '#466d89',
@@ -79,44 +80,19 @@
     </span>
   </div>
 
-  <!-- Header / Navbar Principal con LOGO EXACTO (SVG vectorial integrado 100% fiel) -->
+  <!-- Header / Navbar Principal -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- LOGO VECTORIAL EXACTO LIMPIAPP by SHINECONNECT -->
-      <a href="#" class="flex items-center group py-2">
-        <svg class="h-10 sm:h-12 w-auto" viewBox="0 0 1024 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Marco L corporativo en azul acero #8fb7d1 -->
-          <path d="M15 72V286H722" stroke="#8fb7d1" stroke-width="15" stroke-linecap="square"/>
-          
-          <!-- IMPIA en azul acero #8fb7d1 con tipografía exacta estilizada -->
-          <!-- I -->
-          <path d="M48 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square"/>
-          <!-- M -->
-          <path d="M92 254V108L148 254L204 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-          <!-- P -->
-          <path d="M256 254V108H304C330 108 348 122 348 148C348 174 330 188 304 188H256" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-          <!-- I -->
-          <path d="M394 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square"/>
-          <!-- A estilizada inicial -->
-          <path d="M440 254L486 108L532 254M454 212H518" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-
-          <!-- Doble 'A' entrelazada central: elemento clave del isotipo oficial -->
-          <!-- A Azul superior -->
-          <path d="M575 30L510 185H645L610 254" stroke="#8fb7d1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-          <!-- A Gris grafito inferior -->
-          <path d="M578 3L660 188H542L472 254" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-          <path d="M508 194H660" stroke="#676767" stroke-width="14"/>
-
-          <!-- Letras 'PP' en Gris Grafito #676767 -->
-          <!-- Primera P -->
-          <path d="M738 254V108H816C852 108 876 126 876 154C876 182 852 200 816 200H738" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-          <!-- Segunda P -->
-          <path d="M888 254V108H966C1002 108 1024 126 1024 154C1024 182 1002 200 966 200H888" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-
-          <!-- BY SHINECONNECT alineado a la derecha debajo de PP -->
-          <text x="736" y="294" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="4" fill="#676767">BY SHINECONNECT</text>
-        </svg>
+      <!-- LOGO LIMPIAPP by Shineconnect -->
+      <a href="#" class="flex items-center py-2">
+        <img 
+          src="logo.png" 
+          onerror="this.onerror=null; this.src='LimpiAPP Final.jpg';" 
+          alt="LIMPIAPP by Shineconnect" 
+          class="h-11 sm:h-12 w-auto object-contain hover:opacity-95 transition"
+          loading="eager"
+        />
       </a>
 
       <!-- Menú de Navegación -->
@@ -199,7 +175,7 @@
     </div>
   </section>
 
-  <!-- Tabla de Ventajas (Sin rótulo superior, con perfiles verificados y solo 'Otras apps') -->
+  <!-- Tabla de Ventajas -->
   <section id="ventajas" class="py-20 bg-limpi-50/50 border-y border-limpi-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-14">
@@ -526,85 +502,4 @@
 
       <div class="mb-6">
         <span class="text-xs font-bold uppercase tracking-wider text-limpi-500">LIMPIAPP by Shineconnect</span>
-        <h3 class="text-2xl font-bold text-grafito-900 mt-1" x-text="modalTitle"></h3>
-        <p class="text-sm text-grafito-500 mt-1">Completa tus datos para activar tu acceso directo.</p>
-      </div>
-
-      <form @submit.prevent="alert('¡Gracias por unirte a LIMPIAPP! Te redirigiremos a la pasarela segura.'); modalOpen = false;" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-grafito-700 uppercase mb-1">Nombre y Apellidos</label>
-          <input type="text" required placeholder="Ej. Carlos Martínez" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-limpi-400 text-sm">
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-grafito-700 uppercase mb-1">Correo Electrónico</label>
-          <input type="email" required placeholder="tuemail@ejemplo.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-limpi-400 text-sm">
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-xs font-bold text-grafito-700 uppercase mb-1">Teléfono Móvil</label>
-            <input type="tel" required placeholder="600 000 000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-limpi-400 text-sm">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-grafito-700 uppercase mb-1">Código Postal</label>
-            <input type="text" required placeholder="46001 (Valencia)" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-limpi-400 text-sm">
-          </div>
-        </div>
-
-        <div class="text-xs text-gray-500 pt-2 leading-relaxed">
-          Al registrarte aceptas las Condiciones de Servicio y la Política de Privacidad de SHINECONNECT S.L. Pago seguro sin permanencia.
-        </div>
-
-        <button 
-          type="submit" 
-          class="w-full py-4 rounded-xl font-bold text-white bg-limpi-400 hover:bg-limpi-500 transition shadow-sm mt-4 text-sm">
-          Continuar y Confirmar
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Footer Limpio e Institucional con LOGO VECTORIAL EXACTO -->
-  <footer id="garantia" class="bg-gray-50 border-t border-gray-200 text-grafito-600 py-16 text-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8 pb-10 border-b border-gray-200">
-        
-        <!-- Logo en Footer -->
-        <div class="flex items-center">
-          <svg class="h-9 w-auto opacity-90" viewBox="0 0 1024 301" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 72V286H722" stroke="#8fb7d1" stroke-width="15" stroke-linecap="square"/>
-            <path d="M48 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square"/>
-            <path d="M92 254V108L148 254L204 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M256 254V108H304C330 108 348 122 348 148C348 174 330 188 304 188H256" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M394 108V254" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square"/>
-            <path d="M440 254L486 108L532 254M454 212H518" stroke="#8fb7d1" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M575 30L510 185H645L610 254" stroke="#8fb7d1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M578 3L660 188H542L472 254" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M508 194H660" stroke="#676767" stroke-width="14"/>
-            <path d="M738 254V108H816C852 108 876 126 876 154C876 182 852 200 816 200H738" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-            <path d="M888 254V108H966C1002 108 1024 126 1024 154C1024 182 1002 200 966 200H888" stroke="#676767" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"/>
-            <text x="736" y="294" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="28" font-weight="600" letter-spacing="4" fill="#676767">BY SHINECONNECT</text>
-          </svg>
-        </div>
-
-        <!-- Enlaces Legales -->
-        <div class="flex flex-wrap justify-center gap-6 text-xs text-grafito-500">
-          <a href="#" class="hover:text-grafito-900 transition">Aviso Legal</a>
-          <a href="#" class="hover:text-grafito-900 transition">Términos y Condiciones</a>
-          <a href="#" class="hover:text-grafito-900 transition">Política de Privacidad</a>
-          <a href="#" class="hover:text-grafito-900 transition">Gestión de Cookies</a>
-          <a href="mailto:soporte@shineconnect.app" class="hover:text-grafito-900 transition">Contacto y Soporte</a>
-        </div>
-
-      </div>
-
-      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-grafito-400 gap-4">
-        <p>© 2026 LIMPIAPP. Marca registrada y operada por SHINECONNECT S.L. Todos los derechos reservados.</p>
-        <p>Valencia • Conexión directa y transparente para el hogar.</p>
-      </div>
-    </div>
-  </footer>
-
-</body>
-</html>
+        <h3 class="text-2xl font
