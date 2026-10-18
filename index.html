@@ -24,13 +24,13 @@
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
           colors: {
-            // Paleta oficial extraída directamente del manual y logo de LIMPIAPP
+            // Paleta extraída fielmente del logotipo de LIMPIAPP
             limpi: {
               50: '#f4f8fb',
               100: '#e8f1f6',
               200: '#d1e3ee',
               300: '#b0d0e3',
-              400: '#8fb7d1', // Azul Acero Claro (Color corporativo del logo)
+              400: '#8fb7d1', // Azul Acero Claro Corporativo
               500: '#729fbe',
               600: '#5a87a7',
               700: '#466d89',
@@ -43,7 +43,7 @@
               200: '#dee2e6',
               300: '#ced4da',
               400: '#868e96',
-              500: '#676767', // Gris corporativo del isotipo 'PP'
+              500: '#676767', // Gris corporativo
               600: '#495057',
               700: '#343a40',
               800: '#212529',
@@ -54,14 +54,6 @@
       }
     }
   </script>
-
-  <style>
-    /* Efectos de pulcritud y claridad */
-    .border-brand-box {
-      border-left: 3px solid #8fb7d1;
-      border-bottom: 3px solid #8fb7d1;
-    }
-  </style>
 </head>
 <body class="bg-white text-grafito-700 antialiased font-sans selection:bg-limpi-400 selection:text-white" 
       x-data="{ 
@@ -88,29 +80,18 @@
     </span>
   </div>
 
-  <!-- Header / Navbar Principal -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
+  <!-- Header / Navbar Principal con el Logo Exacto -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- LOGO LIMPIAPP con su isotipo tipográfico corporativo -->
-      <a href="#" class="flex items-center group">
-        <div class="flex flex-col">
-          <div class="flex items-baseline tracking-tight">
-            <!-- Representación vectorial estilizada fiel al diseño del logotipo corporativo -->
-            <div class="relative pl-3 pb-1 border-l-4 border-b-4 border-limpi-400 flex items-baseline">
-              <span class="text-3xl font-extralight tracking-widest text-limpi-400">IMPIA</span>
-              <!-- Isotipo entrelazado A -->
-              <span class="relative mx-1 text-3xl font-black text-limpi-500">
-                <span class="text-limpi-400">A</span><span class="text-grafito-600 -ml-2.5">A</span>
-              </span>
-              <!-- Terminación PP -->
-              <span class="text-3xl font-semibold tracking-wider text-grafito-500">PP</span>
-            </div>
-          </div>
-          <span class="text-[9px] font-bold tracking-[0.25em] text-grafito-500 uppercase mt-0.5 text-right">
-            BY SHINECONNECT
-          </span>
-        </div>
+      <!-- LOGO LIMPIAPP by Shineconnect (Exacto) -->
+      <a href="#" class="flex items-center group py-2">
+        <img 
+          src="LimpiAPP Final_2.jpg" 
+          alt="LIMPIAPP by Shineconnect" 
+          class="h-11 md:h-12 w-auto object-contain transition-transform duration-200 group-hover:opacity-90"
+          onerror="this.onerror=null; this.src='LimpiAPP Final.jpg';"
+        />
       </a>
 
       <!-- Menú de Navegación -->
@@ -288,7 +269,7 @@
     </div>
   </section>
 
-  <!-- Sección de Tarifas y Precios (Exactamente según tus especificaciones) -->
+  <!-- Sección de Tarifas y Precios -->
   <section id="precios" class="py-24 bg-white border-t border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -356,7 +337,7 @@
           </button>
         </div>
 
-        <!-- Cliente Premium: Ilimitado + Alertas -->
+        <!-- Cliente Premium: 9,99 €/mes con Ilimitado + Alertas -->
         <div class="flex flex-col bg-white border-2 border-limpi-400 rounded-3xl p-8 relative shadow-lg">
           <div class="absolute -top-3.5 right-6 bg-limpi-400 text-white text-[11px] font-extrabold py-1 px-3.5 rounded-full uppercase tracking-wider">
             Recomendado Familias
@@ -555,25 +536,19 @@
     </div>
   </div>
 
-  <!-- Footer Limpio e Institucional -->
+  <!-- Footer Limpio e Institucional con el Logo Exacto -->
   <footer id="garantia" class="bg-gray-50 border-t border-gray-200 text-grafito-600 py-16 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-8 pb-10 border-b border-gray-200">
         
-        <!-- Logo en Footer con estética oficial -->
-        <div class="flex flex-col">
-          <div class="flex items-baseline tracking-tight">
-            <div class="relative pl-3 pb-1 border-l-4 border-b-4 border-limpi-400 flex items-baseline">
-              <span class="text-2xl font-light tracking-widest text-limpi-400">IMPIA</span>
-              <span class="relative mx-1 text-2xl font-black text-limpi-500">
-                <span class="text-limpi-400">A</span><span class="text-grafito-600 -ml-2">A</span>
-              </span>
-              <span class="text-2xl font-semibold tracking-wider text-grafito-500">PP</span>
-            </div>
-          </div>
-          <span class="text-[8px] font-bold tracking-[0.25em] text-grafito-400 uppercase mt-0.5 text-right">
-            BY SHINECONNECT
-          </span>
+        <!-- Logo en Footer (Exacto) -->
+        <div class="flex items-center">
+          <img 
+            src="LimpiAPP Final_2.jpg" 
+            alt="LIMPIAPP by Shineconnect" 
+            class="h-10 w-auto object-contain opacity-90"
+            onerror="this.onerror=null; this.src='LimpiAPP Final.jpg';"
+          />
         </div>
 
         <!-- Enlaces Legales -->
