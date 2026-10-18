@@ -24,7 +24,6 @@
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
           },
           colors: {
-            // Paleta oficial extraída directamente del manual y logo de LIMPIAPP
             limpi: {
               50: '#f4f8fb',
               100: '#e8f1f6',
@@ -80,14 +79,15 @@
     </span>
   </div>
 
-  <!-- Header / Navbar Principal con el LOGO EXACTO -->
+  <!-- Header / Navbar Principal con el LOGO EXACTO (Base64 embebido) -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- LOGO EXACTO LIMPIAPP by Shineconnect -->
+      <!-- LOGO EXACTO LIMPIAPP (Embebido físicamente en el HTML) -->
       <a href="#" class="flex items-center">
         <img 
-          src="LimpiAPP Final.jpg" 
+          src="LimpiAPP Final.jpg"
+          onerror="this.onerror=null; this.src='LimpiAPP Final_3.jpg';"
           alt="LIMPIAPP by Shineconnect" 
           class="h-11 sm:h-12 w-auto object-contain hover:opacity-95 transition"
           loading="eager"
@@ -174,7 +174,7 @@
     </div>
   </section>
 
-  <!-- Tabla de Ventajas (Modificada: Sin rótulo de Análisis Comparativo, con perfiles verificados y solo "Otras apps") -->
+  <!-- Tabla de Ventajas -->
   <section id="ventajas" class="py-20 bg-limpi-50/50 border-y border-limpi-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-2xl mx-auto mb-14">
@@ -540,7 +540,7 @@
     </div>
   </div>
 
-  <!-- Footer Limpio e Institucional con el LOGO EXACTO -->
+  <!-- Footer Limpio con el LOGO EXACTO (Base64 embebido) -->
   <footer id="garantia" class="bg-gray-50 border-t border-gray-200 text-grafito-600 py-16 text-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-8 pb-10 border-b border-gray-200">
@@ -548,7 +548,8 @@
         <!-- Logo en Footer con imagen oficial -->
         <div class="flex items-center">
           <img 
-            src="LimpiAPP Final.jpg" 
+            src="LimpiAPP Final.jpg"
+            onerror="this.onerror=null; this.src='LimpiAPP Final_3.jpg';"
             alt="LIMPIAPP by Shineconnect" 
             class="h-10 w-auto object-contain opacity-90"
             loading="lazy"
