@@ -3,29 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Términos y Condiciones — LIMPIAPP</title>
+  <title>Términos y Condiciones de Uso | LIMPIAPP - ShineConnect S.L.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1e293b; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; background: #f8fafc; }
-    .card { background: #ffffff; padding: 2.5rem; border-radius: 1rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-    h1 { color: #0f172a; font-size: 1.75rem; margin-bottom: 0.5rem; }
-    h2 { color: #047857; font-size: 1.2rem; margin-top: 1.8rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
-    p, li { font-size: 0.95rem; color: #475569; }
-    .meta { font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.5rem; }
+    :root {
+      --primary: #006972;
+      --primary-dark: #004f56;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .version-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .company-box {
+      background: #f1f5f9;
+      padding: 20px 24px;
+      border-radius: 10px;
+      margin: 24px 0 32px;
+      font-size: 0.95rem;
+      border-left: 4px solid var(--primary);
+    }
+    .company-box p {
+      margin-bottom: 6px;
+    }
+    .company-box p:last-child {
+      margin-bottom: 0;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    p {
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 18px;
+    }
+    li {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+    strong {
+      color: #0f172a;
+    }
+    .highlight-box {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 18px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    .footer-note {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px;
+      }
+      .container {
+        padding: 28px 20px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Condiciones de Uso y Suscripción</h1>
-    <div class="meta">LIMPIAPP by Shineconnect S.L. · Última actualización: Noviembre 2026</div>
+  <div class="container">
+    <a href="/" class="back-link">← Volver a LIMPIAPP</a>
     
-    <h2>1. Objeto y Titularidad</h2>
-    <p>La plataforma LIMPIAPP es un desarrollo tecnológico titularidad de <strong>Shineconnect S.L.</strong> (NIF: B26917807), con domicilio en la Comunidad Valenciana. LIMPIAPP opera como un directorio digital de contacto libre y directo entre particulares y profesionales independientes del sector de la limpieza.</p>
+    <div class="header">
+      <h1>Términos y Condiciones de Uso</h1>
+      <p class="version-date">Condiciones Generales del Servicio — Versión 2.0 (Última actualización: Noviembre 2026)</p>
+    </div>
 
-    <h2>2. Ausencia de Comisiones sobre Servicios (0%)</h2>
-    <p>Shineconnect S.L. no intermedia, no retiene comisiones por hora y no percibe porcentaje alguno sobre las tarifas acordadas entre el cliente y el profesional. El cobro por los servicios se realiza libremente y de forma íntegra entre las partes.</p>
+    <div class="company-box">
+      <p><strong>Titular del Servicio y Plataforma:</strong> SHINECONNECT S.L.</p>
+      <p><strong>NIF:</strong> B26917807</p>
+      <p><strong>Domicilio Social:</strong> Calle Cronista Josep Pastrana, 8, 46115 Fortaleny (Valencia), España</p>
+      <p><strong>Contacto Legal y Soporte:</strong> gerencia@shineconnect.app | soporte@limpiapp.app</p>
+      <p><strong>Nombre Comercial de la Solución:</strong> LIMPIAPP / ShineConnect</p>
+    </div>
 
-    <h2>3. Régimen de Suscripción Profesional</h2>
-    <p>El acceso al directorio por parte de los profesionales se estructura en planes de suscripción de tarifa plana (Plan Básico Gratuito y Plan Profesional Pro). Las promociones de lanzamiento otorgadas a profesionales fundadoras mantendrán las condiciones promocionales comunicadas expresamente en el alta.</p>
+    <h2>1. Objeto y Naturaleza del Servicio</h2>
+    <p>Las presentes Condiciones Generales regulan el acceso, navegación y uso del software, sitio web y aplicación móvil operados por <strong>SHINECONNECT S.L.</strong> bajo la marca <strong>LIMPIAPP</strong>.</p>
+    <p>LIMPIAPP es una plataforma tecnológica de directorio y punto de encuentro (Marketplace digital) diseñada exclusivamente para conectar a usuarios demandantes de servicios de limpieza y tareas domésticas ("Clientes") con profesionales autónomos independientes o empresas legalmente constituidas dedicadas al sector de la limpieza ("Profesionales").</p>
+    
+    <div class="highlight-box">
+      <strong>Cláusula de Naturaleza Jurídica y Ausencia de Relación Laboral:</strong><br>
+      SHINECONNECT S.L. es una entidad puramente tecnológica y en ningún caso tiene la condición de empresa de trabajo temporal, agencia de colocación ni empresa prestadora de servicios de limpieza. Entre SHINECONNECT S.L. y los Profesionales no existe relación laboral, de subordinación, dependencia societaria ni de agencia mercantil. Cada Profesional actúa con total autonomía técnica, económica y organizativa.
+    </div>
+
+    <h2>2. Aceptación de las Condiciones</h2>
+    <p>El registro, acceso o utilización de LIMPIAPP confiere la condición de Usuario (sea Cliente o Profesional) e implica la adhesión plena, informada y sin reservas a la totalidad de las cláusulas aquí publicadas. Si el Usuario no estuviere conforme con alguna de ellas, deberá abstenerse de utilizar el portal.</p>
+
+    <h2>3. Requisitos y Registro de Profesionales</h2>
+    <p>Para crear un perfil profesional en LIMPIAPP, el Usuario declara bajo su exclusiva responsabilidad:</p>
+    <ul>
+      <li>Ser mayor de 18 años y contar con plena capacidad de obrar para contratar.</li>
+      <li>Estar legalmente autorizado para trabajar en territorio español y cumplir íntegramente con sus obligaciones fiscales (alta censal en la AEAT) y de Seguridad Social (RETA o régimen correspondiente).</li>
+      <li>Facilitar datos veraces, exactos y actualizados durante el proceso de registro.</li>
+      <li>Contar, en su caso, con las coberturas y pólizas de Seguro de Responsabilidad Civil General necesarias para el ejercicio de su actividad económica independiente.</li>
+    </ul>
+
+    <h2>4. Modelo de Negocio, Tarifas y Cobro Directo</h2>
+    <p>LIMPIAPP implementa un modelo de plataforma transparente:</p>
+    <ul>
+      <li><strong>Fijación de Precios:</strong> Cada Profesional establece libremente su tarifa orientativa (€/hora) y acuerda con el Cliente las condiciones particulares de la prestación.</li>
+      <li><strong>0% de Comisiones por Servicio:</strong> SHINECONNECT S.L. no retiene comisiones sobre las horas de servicio ejecutadas entre Cliente y Profesional. El importe devengado por el trabajo es abonado directamente por el Cliente al Profesional según los medios de pago que ellos mismos pacten.</li>
+      <li><strong>Modelo de Suscripción para Profesionales:</strong> El acceso al directorio se rige por planes de suscripción (Plan Gratuito / Plan Pro). Durante los periodos promocionales de lanzamiento, el Profesional podrá beneficiarse de periodos de prueba gratuita sin permanencia ni cobros automáticos imprevistos.</li>
+    </ul>
+
+    <h2>5. Exoneración Total de Responsabilidad por la Ejecución del Servicio</h2>
+    <p>Habida cuenta de que SHINECONNECT S.L. no interviene en la selección material, dirección, control, instrucción ni ejecución de las tareas concertadas entre Usuarios:</p>
+    <ul>
+      <li>SHINECONNECT S.L. no asume responsabilidad alguna por daños materiales, personales, sustracciones, roturas, pérdidas, retrasos o incumplimientos derivados de la prestación de servicios entre Cliente y Profesional.</li>
+      <li>La comprobación in situ de la idoneidad, llaves de accesos, puntualidad, calidad técnica y diligencia recae con carácter privativo en las partes intervinientes en el acuerdo.</li>
+      <li>Cualquier reclamación, discrepancia o conflicto económico o contractual que surja con motivo de un servicio deberá dilucidarse exclusivamente entre el Cliente y el Profesional correspondiente.</li>
+    </ul>
+
+    <h2>6. Obligaciones Fiscales e Información Tributaria (DAC7)</h2>
+    <p>En estricto cumplimiento de la normativa fiscal europea y española (Directiva UE 2021/514 - DAC7 y Real Decreto 117/2024), SHINECONNECT S.L., en calidad de operador de plataforma digital, está legalmente obligada a recopilar, verificar y declarar periódicamente ante la Agencia Estatal de Administración Tributaria (AEAT) la información de los operadores y profesionales que realicen actividades económicas o perciban contraprestaciones sujetas a comunicación en la plataforma.</p>
+
+    <h2>7. Uso Aceptable de la Plataforma y Prohibiciones</h2>
+    <p>Queda expresamente prohibido:</p>
+    <ul>
+      <li>Utilizar la plataforma para fines ilícitos, fraudulentos, engañosos o contrarios al orden público.</li>
+      <li>Publicar perfiles falsos, duplicados o con identidades ajenas.</li>
+      <li>Acosar, amenazar o enviar comunicaciones comerciales no consentidas (SPAM) a otros usuarios.</li>
+      <li>Realizar técnicas de ingeniería inversa, scraping o extracción masiva de datos del directorio sin consentimiento por escrito de SHINECONNECT S.L.</li>
+    </ul>
+
+    <h2>8. Rescisión, Bajas y Suspensión de Cuentas</h2>
+    <p>SHINECONNECT S.L. se reserva el derecho de retirar, suspender o cancelar de forma inmediata y sin necesidad de preaviso el perfil de cualquier Profesional o Cliente que incumpla las presentes Condiciones, infrinja la legalidad vigente o acumule valoraciones gravemente desfavorables que menoscaben la seguridad del ecosistema.</p>
+    <p>Asimismo, cualquier Profesional podrá solicitar la baja voluntaria de su perfil en cualquier momento remitiendo un correo electrónico a <strong>gerencia@shineconnect.app</strong>.</p>
+
+    <h2>9. Propiedad Intelectual e Industrial</h2>
+    <p>Todos los derechos sobre el software, código fuente, logotipos, nombres comerciales, marcas registradas (incluidas las marcas LIMPIAPP y SYNTEIA), bases de datos y diseños de interfaz pertenecen de forma privativa a SHINECONNECT S.L. o a sus licenciantes. Queda prohibida su reproducción o explotación no autorizada.</p>
+
+    <h2>10. Legislación Aplicable y Jurisdicción</h2>
+    <p>Las presentes Condiciones Generales se rigen en todos sus extremos por la legislación española. Para la resolución de cualesquiera controversias o litigios derivados del uso de la plataforma, las partes se someten expresamente a los Juzgados y Tribunales de la ciudad de Valencia (España), con renuncia a cualquier otro fuero que pudiera corresponderles, sin perjuicio de la normativa imperativa en materia de protección a consumidores y usuarios.</p>
+
+    <div class="footer-note">
+      &copy; 2026 SHINECONNECT S.L. — Todos los derechos reservados. LIMPIAPP es una marca operada por ShineConnect S.L.
+    </div>
   </div>
 </body>
 </html>
