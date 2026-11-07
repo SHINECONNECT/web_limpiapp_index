@@ -108,35 +108,44 @@ f<!DOCTYPE html>
   </div>
 
   <script>
-   <script>
-    const form = document.getElementById('proForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('btnSubmit');
-      btn.disabled = true;
-      btn.innerText = 'Enviando...';
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('proForm');
+      if (!form) return;
 
-      const formData = new FormData(form);
-      const params = new URLSearchParams(formData);
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-      fetch(form.action, {
-        method: 'POST',
-        body: params,
-        mode: 'no-cors'
-      })
-      .then(() => {
-        document.getElementById('modal').style.display = 'flex';
-        form.reset();
-      })
-      .catch(() => {
-        alert('Hubo un problema de conexión. Por favor, inténtalo de nuevo.');
-      })
-      .finally(() => {
-        btn.disabled = false;
-        btn.innerText = 'Activar mi Perfil Gratis (2 Meses Pro)';
+        var btn = document.getElementById('btnSubmit');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerText = 'Enviando...';
+        }
+
+        var formData = new FormData(form);
+        var params = new URLSearchParams(formData);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: params,
+          mode: 'no-cors'
+        })
+        .then(function() {
+          var modal = document.getElementById('modal');
+          if (modal) modal.style.display = 'flex';
+          form.reset();
+        })
+        .catch(function() {
+          alert('Hubo un problema de conexión. Por favor, inténtalo de nuevo.');
+        })
+        .finally(function() {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerText = 'Activar mi Perfil Gratis (2 Meses Pro)';
+          }
+        });
       });
     });
-  </script>
   </script>
 </body>
 </html>
