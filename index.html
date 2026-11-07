@@ -528,6 +528,140 @@
         Plataforma tecnológica de intermediación de servicios de limpieza. Valencia (España). Contacto: gerencia@shineconnect.app
       </p>
     </div>
+
+<!-- SECCIÓN DE REGISTRO PARA POTENCIALES CLIENTES -->
+<section id="registro-clientes" style="background: #ffffff; padding: 60px 20px; border-top: 1px solid #e2e8f0;">
+  <div style="max-width: 680px; margin: 0 auto; background: #f8fafc; padding: 40px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+    
+    <div style="text-align: center; margin-bottom: 28px;">
+      <span style="background: #e0f2fe; color: #0284c7; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">PARTICULARES EN VALENCIA</span>
+      <h2 style="color: #006972; font-size: 1.8rem; margin-top: 10px; margin-bottom: 8px;">¿Buscas profesional de confianza para tu hogar?</h2>
+      <p style="color: #64748b; font-size: 0.95rem;">
+        Conéctate directamente con profesionales independientes en tu barrio. <strong>0% comisiones</strong> sobre las horas trabajadas.
+      </p>
+    </div>
+
+    <form id="clienteForm" action="TU_URL_DE_APPS_SCRIPT_AQUI" method="POST">
+      <!-- Campo oculto para enrutar a la pestaña Clientes -->
+      <input type="hidden" name="tipo_registro" value="cliente">
+
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: #1e293b;">Nombre y Apellidos *</label>
+        <input type="text" name="nombre" required placeholder="Tu nombre completo" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; box-sizing: border-box;">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div>
+          <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: #1e293b;">Teléfono / WhatsApp *</label>
+          <input type="tel" name="telefono" required placeholder="Ej: 612345678" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; box-sizing: border-box;">
+        </div>
+        <div>
+          <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: #1e293b;">Código Postal o Barrio en Valencia *</label>
+          <input type="text" name="zona" required placeholder="Ej: 46005 o Ruzafa" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; box-sizing: border-box;">
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: #1e293b;">Tipo de Servicio que necesitas *</label>
+        <select name="servicio" required style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.95rem; box-sizing: border-box; background: #fff;">
+          <option value="Mantenimiento periódico semanal">Mantenimiento periódico regular (semanal / quincenal)</option>
+          <option value="Limpieza a fondo puntual">Limpieza a fondo puntual</option>
+          <option value="Mudanza o fin de obra">Mudanza o fin de obra</option>
+          <option value="Planchado y tareas del hogar">Planchado y tareas domésticas</option>
+        </select>
+      </div>
+
+      <!-- SELECCIÓN DE FÓRMULA DE SUSCRIPCIÓN PARA CLIENTES -->
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; color: #1e293b;">Modalidad de Acceso preferida *</label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <label style="border: 2px solid #cbd5e1; background: #fff; padding: 14px; border-radius: 10px; cursor: pointer; display: block;">
+            <input type="radio" name="formula" value="Fórmula Básica de Cliente" checked style="margin-right: 6px;">
+            <strong style="color: #0f172a; font-size: 0.95rem;">Fórmula Básica</strong>
+            <p style="margin: 6px 0 0; font-size: 0.8rem; color: #64748b;">Acceso al directorio local y contacto directo con profesionales según disponibilidad.</p>
+          </label>
+          <label style="border: 2px solid #006972; background: #f0fdfa; padding: 14px; border-radius: 10px; cursor: pointer; display: block;">
+            <input type="radio" name="formula" value="Fórmula Premium de Cliente" style="margin-right: 6px;">
+            <strong style="color: #006972; font-size: 0.95rem;">Fórmula Premium ★</strong>
+            <p style="margin: 6px 0 0; font-size: 0.8rem; color: #004f56;">Acceso preferente a perfiles mejor valorados, filtros de urgencia y soporte prioritario.</p>
+          </label>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 18px;">
+        <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: #1e293b;">Detalles del inmueble o necesidades (opcional)</label>
+        <textarea name="detalles" rows="2" placeholder="Ej: Piso de 80 m2, 3 horas los martes..." style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.92rem; box-sizing: border-box;"></textarea>
+      </div>
+
+      <div style="margin-bottom: 24px;">
+        <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.86rem; color: #475569; cursor: pointer;">
+          <input type="checkbox" name="rgpd" required style="margin-top: 3px;">
+          <span>He leído y acepto los <a href="terminos.html" target="_blank" style="color: #006972; font-weight: 600;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: #006972; font-weight: 600;">Política de Privacidad</a> de ShineConnect S.L.</span>
+        </label>
+      </div>
+
+      <button type="submit" id="btnSubmitCliente" style="width: 100%; background: #006972; color: #ffffff; padding: 15px; border: none; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: background 0.2s;">
+        Solicitar Acceso a Profesionales en Valencia
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- MODAL DE ÉXITO PARA CLIENTES -->
+<div id="modalCliente" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 9999; padding: 20px; box-sizing: border-box;">
+  <div style="background: #ffffff; padding: 36px 30px; border-radius: 16px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
+    <h3 style="color: #0f172a; font-size: 1.4rem; margin-bottom: 10px;">¡Solicitud Recibida!</h3>
+    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;">
+      Hemos guardado tus datos correctamente. En cuanto activemos los perfiles verificados disponibles en tu zona te avisaremos por WhatsApp.
+    </p>
+    <button onclick="document.getElementById('modalCliente').style.display='none'" style="background: #006972; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+      Entendido
+    </button>
+  </div>
+</div>
+
+<!-- SCRIPT DE ENVÍO ASÍNCRONO SIN PANTALLA BLANCA -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var formCliente = document.getElementById('clienteForm');
+    if (!formCliente) return;
+
+    formCliente.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      var btn = document.getElementById('btnSubmitCliente');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerText = 'Enviando solicitud...';
+      }
+
+      var formData = new FormData(formCliente);
+      var params = new URLSearchParams(formData);
+
+      fetch(formCliente.action, {
+        method: 'POST',
+        body: params,
+        mode: 'no-cors'
+      })
+      .then(function() {
+        var modal = document.getElementById('modalCliente');
+        if (modal) modal.style.display = 'flex';
+        formCliente.reset();
+      })
+      .catch(function() {
+        alert('Hubo un error de conexión al enviar. Por favor, inténtalo de nuevo.');
+      })
+      .finally(function() {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = 'Solicitar Acceso a Profesionales en Valencia';
+        }
+      });
+    });
+  });
+</script>
+      
   </footer>
   </body>
 </html>
