@@ -3,36 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Política de Privacidad — LIMPIAPP</title>
+  <title>Política de Privacidad y Gestión de Datos | LIMPIAPP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1e293b; max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; background: #f8fafc; }
-    .card { background: #ffffff; padding: 2.5rem; border-radius: 1rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-    h1 { color: #0f172a; font-size: 1.75rem; margin-bottom: 0.5rem; }
-    h2 { color: #047857; font-size: 1.2rem; margin-top: 1.8rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.3rem; }
-    p, li { font-size: 0.95rem; color: #475569; }
-    .meta { font-size: 0.85rem; color: #94a3b8; margin-bottom: 1.5rem; }
+    :root {
+      --primary: #006972;
+      --primary-dark: #004f56;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .version-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .company-box {
+      background: #f1f5f9;
+      padding: 20px 24px;
+      border-radius: 10px;
+      margin: 24px 0 32px;
+      font-size: 0.95rem;
+      border-left: 4px solid var(--primary);
+    }
+    .company-box p {
+      margin-bottom: 6px;
+    }
+    .company-box p:last-child {
+      margin-bottom: 0;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    p {
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 18px;
+    }
+    li {
+      margin-bottom: 8px;
+      font-size: 0.98rem;
+    }
+    strong {
+      color: #0f172a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .footer-note {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px;
+      }
+      .container {
+        padding: 28px 20px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Política de Privacidad y Protección de Datos</h1>
-    <div class="meta">Responsable: Shineconnect S.L. · Conforme al RGPD (UE) 2016/679</div>
+  <div class="container">
+    <a href="/" class="back-link">← Volver a LIMPIAPP</a>
     
-    <h2>1. Responsable del Tratamiento</h2>
-    <p><strong>Identidad:</strong> Shineconnect S.L. (NIF: B26917807)<br>
-    <strong>Contacto de Privacidad:</strong> gerencia@shineconnect.app</p>
+    <div class="header">
+      <h1>Política de Privacidad y Gestión de Datos</h1>
+      <p class="version-date">Conforme al Reglamento (UE) 2016/679 (RGPD) y Ley Orgánica 3/2018 (LOPDGDD) — Versión 1.0 (Noviembre 2026)</p>
+    </div>
 
-    <h2>2. Datos Recopilados y Finalidad</h2>
-    <p>Los datos identificativos, de contacto y disponibilidad facilitados voluntariamente por las profesionales se tratarán exclusivamente para tramitar el alta en el directorio profesional de LIMPIAPP, permitir el contacto directo por parte de usuarios y enviar avisos operativos de servicio.</p>
+    <div class="company-box">
+      <p><strong>Responsable del Tratamiento:</strong> SHINECONNECT S.L.</p>
+      <p><strong>NIF:</strong> B26917807</p>
+      <p><strong>Domicilio Social:</strong> Calle Cronista Josep Pastrana, 8, 46115 Fortaleny (Valencia), España</p>
+      <p><strong>Delegado de Protección de Datos (DPO) / Contacto Privacidad:</strong> gerencia@shineconnect.app</p>
+      <p><strong>Plataforma / App:</strong> LIMPIAPP (limpiapp.app / shineconnect.app)</p>
+    </div>
 
-    <h2>3. Legitimación</h2>
-    <p>La base jurídica es la ejecución de medidas precontractuales y contractuales de adhesión al directorio (Art. 6.1.b RGPD) y el consentimiento expreso otorgado al enviar el formulario.</p>
+    <h2>1. Principios Aplicados al Tratamiento</h2>
+    <p>En el tratamiento de sus datos personales, SHINECONNECT S.L. aplica los principios consagrados en el artículo 5 del RGPD: licitud, lealtad y transparencia; limitación de la finalidad; minimización de datos; exactitud; limitación del plazo de conservación; e integridad y confidencialidad.</p>
 
-    <h2>4. Visibilidad de Datos</h2>
-    <p>Al inscribirse, la profesional autoriza expresamente que su nombre, zonas de trabajo y teléfono sean visibles para los usuarios que busquen servicios de limpieza en su zona. No se ceden datos a terceros ajenos a la plataforma salvo obligación legal.</p>
+    <h2>2. Datos Recopilados y Procedencia</h2>
+    <p>Los datos personales tratados por SHINECONNECT S.L. proceden de la información facilitada directamente por el interesado al cumplimentar los formularios de la plataforma o al comunicarse con la empresa:</p>
+    <ul>
+      <li><strong>Profesionales:</strong> Nombre y apellidos, número de teléfono (WhatsApp), zonas o distritos geográficos de cobertura, tarifa orientativa por hora, nivel de experiencia y, en fases posteriores, documentación identificativa para verificación fiscal (NIF/NIE) y altas en RETA.</li>
+      <li><strong>Clientes:</strong> Nombre, teléfono, dirección del inmueble objeto de la solicitud de servicio y detalle de las tareas solicitadas.</li>
+      <li><strong>Metadatos y Pruebas Técnicas:</strong> Marcas temporales de consentimiento (*timestamp* UTC), dirección IP de envío y registros técnicos de aceptación de casillas.</li>
+    </ul>
 
-    <h2>5. Ejercicio de Derechos</h2>
-    <p>Puede ejercitar sus derechos de acceso, rectificación, supresión y oposición escribiendo a <code>gerencia@shineconnect.app</code> con el asunto "Protección de Datos".</p>
+    <h2>3. Finalidades, Base Jurídica y Plazos de Conservación</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Finalidad del Tratamiento</th>
+          <th>Base Jurídica (Art. 6 RGPD)</th>
+          <th>Plazo de Conservación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gestión del alta y publicación del perfil profesional en LIMPIAPP</strong></td>
+          <td>Ejecución de la relación precontractual o contractual (Art. 6.1.b RGPD).</td>
+          <td>Durante el tiempo en que la cuenta permanezca activa y, tras la baja, durante los plazos de prescripción de responsabilidades legales.</td>
+        </tr>
+        <tr>
+          <td><strong>Envío de avisos operativos, altas de clientes y alertas por WhatsApp</strong></td>
+          <td>Consentimiento expreso del interesado (Art. 6.1.a RGPD) y ejecución contractual.</td>
+          <td>Hasta la revocación expresa del consentimiento o baja del servicio.</td>
+        </tr>
+        <tr>
+          <td><strong>Acreditación del consentimiento legal y defensa jurídica</strong></td>
+          <td>Cumplimiento de obligaciones legales y principio de responsabilidad proactiva (*Accountability*) (Art. 6.1.c RGPD).</td>
+          <td>Hasta 5 años conforme a las acciones civiles derivadas de la relación contractual.</td>
+        </tr>
+        <tr>
+          <td><strong>Declaración tributaria obligatoria (DAC7 / Directiva UE 2021/514)</strong></td>
+          <td>Cumplimiento de obligación legal de información tributaria ante la AEAT (Art. 6.1.c RGPD).</td>
+          <td>Durante los plazos tributarios legalmente exigibles (mínimo 4 a 10 años).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Destinatarios y Encargados del Tratamiento</h2>
+    <p>Sus datos personales no serán vendidos, cedidos ni transferidos a terceras empresas con fines comerciales o publicitarios ajenos a la plataforma.</p>
+    <p>Para la adecuada prestación del servicio, SHINECONNECT S.L. utiliza proveedores tecnológicos en calidad de <strong>Encargados del Tratamiento</strong> debidamente auditados:</p>
+    <ul>
+      <li><strong>Infraestructura Web y Hosting:</strong> Vercel Inc. y GitHub Inc.</li>
+      <li><strong>Almacenamiento Seguro de Registros:</strong> Google Ireland Limited / Google LLC (bajo las Cláusulas Contractuales Tipo de la Comisión Europea y el marco UE-EE.UU. Data Privacy Framework).</li>
+      <li><strong>Comunicaciones Operativas:</strong> Meta Platforms Ireland Ltd. (WhatsApp Business API) para el envío de alertas concertadas de servicio.</li>
+      <li><strong>Administración Pública:</strong> Agencia Estatal de Administración Tributaria (AEAT) y organismos judiciales en caso de requerimiento legal imperativo.</li>
+    </ul>
+
+    <h2>5. Derechos del Usuario (ARSULIPO)</h2>
+    <p>Usted tiene derecho a ejercer en cualquier momento los siguientes derechos reconocidos por la normativa de protección de datos:</p>
+    <ul>
+      <li><strong>Acceso:</strong> Conocer qué datos personales suyos estamos tratando.</li>
+      <li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos o incompletos.</li>
+      <li><strong>Supresión ("Derecho al olvido"):</strong> Solicitar el borrado de sus datos cuando ya no sean necesarios para los fines que fueron recabados.</li>
+      <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos en supuestos concretos.</li>
+      <li><strong>Limitación del tratamiento:</strong> Solicitar la suspensión cautelar del tratamiento mientras se resuelven reclamaciones.</li>
+      <li><strong>Portabilidad:</strong> Recibir sus datos en un formato estructurado, de uso común y lectura mecánica.</li>
+      <li><strong>Revocación del consentimiento:</strong> Retirar el consentimiento otorgado en cualquier momento, sin efectos retroactivos.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, basta con enviar un escrito acompañado de una copia de su documento de identidad a <strong>gerencia@shineconnect.app</strong> con el asunto <em>"Protección de Datos - Ejercicio de Derechos"</em>.</p>
+    <p>Si considera que sus derechos no han sido debidamente atendidos, tiene derecho a interponer una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> a través de su sede electrónica en <em>www.aepd.es</em>.</p>
+
+    <h2>6. Medidas de Seguridad</h2>
+    <p>SHINECONNECT S.L. ha adoptado las medidas técnicas y organizativas necesarias (cifrado SSL/TLS, autenticación de doble factor, segregación de bases de datos y copias de seguridad redundantes) para garantizar la seguridad, integridad y confidencialidad de los datos personales y evitar su alteración, pérdida o acceso no autorizado.</p>
+
+    <div class="footer-note">
+      &copy; 2026 SHINECONNECT S.L. — Todos los derechos reservados. LIMPIAPP es una marca operada por ShineConnect S.L.
+    </div>
   </div>
 </body>
 </html>
