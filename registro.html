@@ -51,40 +51,41 @@
       <div>📲 Trato Directo</div>
       <div>⭐ Cobro 100% Tuyo</div>
     </div>
-    <form id="proForm">
+ <form id="proForm" action="https://formspree.io/f/mwlljnvy" method="POST">
       <div class="form-group">
         <label>Nombre y Apellidos *</label>
-        <input type="text" id="nombre" placeholder="Ej. Carmen Navarro" required>
+        <input type="text" name="nombre" id="nombre" placeholder="Ej. Carmen Navarro" required>
       </div>
       <div class="form-group">
         <label>Teléfono / WhatsApp *</label>
-        <input type="tel" id="telefono" placeholder="600 000 000" pattern="[0-9]{9}" required>
+        <input type="tel" name="telefono" id="telefono" placeholder="600 000 000" pattern="[0-9]{9}" required>
       </div>
       <div class="form-group">
         <label>Zonas o Barrios en Valencia *</label>
-        <input type="text" id="zonas" placeholder="Ej. Ruzafa, Benimaclet, Campanar..." required>
+        <input type="text" name="zonas" id="zonas" placeholder="Ej. Ruzafa, Benimaclet, Campanar..." required>
       </div>
       <div class="row">
         <div class="form-group">
           <label>Tarifa orientativa (€/h) *</label>
-          <input type="number" id="tarifa" min="10" max="40" step="0.5" placeholder="Ej. 12" required>
+          <input type="number" name="tarifa" id="tarifa" min="10" max="40" step="0.5" placeholder="Ej. 12" required>
         </div>
         <div class="form-group">
           <label>Experiencia</label>
-          <select id="experiencia">
+          <select name="experiencia" id="experiencia">
             <option value="1-2">1 a 2 años</option>
             <option value="3-5" selected>3 a 5 años</option>
             <option value="5+">Más de 5 años</option>
           </select>
         </div>
       </div>
+      
       <div class="legal-box">
         <label class="checkbox-item">
-          <input type="checkbox" id="terms" required>
+          <input type="checkbox" name="terminos_aceptados" id="terms" value="Aceptado" required>
           <span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> de Shineconnect S.L., autorizando la creación de mi perfil y visualización de contacto por clientes en LIMPIAPP.</span>
         </label>
         <label class="checkbox-item">
-          <input type="checkbox" id="comms">
+          <input type="checkbox" name="alertas_whatsapp" id="comms" value="Si">
           <span>Deseo recibir alertas de WhatsApp con familias interesadas en servicios en mi zona.</span>
         </label>
         <div>
@@ -93,23 +94,47 @@
           <strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.
         </div>
       </div>
-      <button type="submit" class="btn">Activar mi Perfil Gratis (2 Meses Pro)</button>
+
+      <button type="submit" id="btnSubmit" class="btn">Activar mi Perfil Gratis (2 Meses Pro)</button>
     </form>
   </div>
 
   <div class="modal" id="modal">
     <div class="modal-content">
       <h3 style="margin-bottom: 0.5rem; color: #065f46;">¡Registro Completado!</h3>
-      <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Tus 2 meses de Plan Pro han sido reservados. En menos de 24 horas te contactaremos por WhatsApp para revisar tu perfil.</p>
+      <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Tus datos y tus 2 meses de Plan Pro han sido reservados. Te contactaremos por WhatsApp en menos de 24 horas.</p>
       <button type="button" class="btn" onclick="document.getElementById('modal').style.display='none'">Entendido</button>
     </div>
   </div>
 
   <script>
-    document.getElementById('proForm').addEventListener('submit', function(e) {
+    const form = document.getElementById('proForm');
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('modal').style.display = 'flex';
-      this.reset();
+      const btn = document.getElementById('btnSubmit');
+      btn.disabled = true;
+      btn.innerText = 'Enviando...';
+
+      const data = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          document.getElementById('modal').style.display = 'flex';
+          form.reset();
+        } else {
+          alert('Hubo un error al procesar el alta. Por favor, inténtalo de nuevo.');
+        }
+      } catch (err) {
+        alert('Error de conexión. Inténtalo de nuevo.');
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Activar mi Perfil Gratis (2 Meses Pro)';
+      }
     });
   </script>
 </body>
