@@ -117,20 +117,16 @@
 
       const data = new FormData(form);
       try {
-        const response = await fetch(form.action, {
+        await fetch(form.action, {
           method: 'POST',
           body: data,
-          headers: { 'Accept': 'application/json' }
+          mode: 'no-cors'
         });
 
-        if (response.ok) {
-          document.getElementById('modal').style.display = 'flex';
-          form.reset();
-        } else {
-          alert('Hubo un error al procesar el alta. Por favor, inténtalo de nuevo.');
-        }
+        document.getElementById('modal').style.display = 'flex';
+        form.reset();
       } catch (err) {
-        alert('Error de conexión. Inténtalo de nuevo.');
+        alert('Hubo un error de conexión. Por favor, inténtalo de nuevo.');
       } finally {
         btn.disabled = false;
         btn.innerText = 'Activar mi Perfil Gratis (2 Meses Pro)';
