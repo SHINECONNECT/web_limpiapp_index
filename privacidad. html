@@ -16,32 +16,23 @@
 <body>
   <div class="card">
     <h1>Política de Privacidad y Protección de Datos</h1>
-    <div class="meta">Responsable: Shineconnect S.L. · Conforme al RGPD (UE) 2016/679 y LOPDGDD 3/2018</div>
+    <div class="meta">Responsable: Shineconnect S.L. · RGPD (UE) 2016/679</div>
     
     <h2>1. Responsable del Tratamiento</h2>
     <p><strong>Identidad:</strong> Shineconnect S.L. (NIF: B26917807)<br>
-    <strong>Domicilio:</strong> Comunidad Valenciana, España<br>
     <strong>Contacto de Privacidad:</strong> gerencia@shineconnect.app</p>
 
     <h2>2. Datos Recopilados y Finalidad</h2>
-    <p>Tratamos los datos identificativos y de contacto (nombre, teléfono, área de cobertura, tarifa y experiencia) facilitados en el registro con las siguientes finalidades:</p>
-    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-      <li>Gestionar el alta en el directorio profesional de LIMPIAPP.</li>
-      <li>Permitir que las familias y usuarios interesados en servicios de limpieza en su zona geográfica puedan contactar directamente con usted.</li>
-      <li>Enviar alertas de servicio y comunicaciones operativas de la plataforma vía WhatsApp o correo electrónico.</li>
-    </ul>
+    <p>Los datos identificativos, de contacto y disponibilidad facilitados voluntariamente por las profesionales se tratarán exclusivamente para tramitar el alta en el directorio profesional de LIMPIAPP, permitir el contacto directo por parte de usuarios y enviar avisos operativos de servicio.</p>
 
-    <h2>3. Base Jurídica</h2>
-    <p>La base legal para el tratamiento de sus datos es la ejecución de la relación precontractual y contractual de adhesión al directorio (Art. 6.1.b del RGPD), así como su consentimiento inequívoco otorgado al marcar la casilla de aceptación.</p>
+    <h2>3. Legitimación</h2>
+    <p>La base jurídica es la ejecución de medidas precontractuales/contractuales de adhesión al directorio (Art. 6.1.b RGPD) y el consentimiento expreso otorgado al enviar el formulario.</p>
 
-    <h2>4. Cesión y Visibilidad de Datos</h2>
-    <p>Al registrarse como profesional, usted autoriza expresamente que su nombre, zona de servicio y teléfono de contacto sean visibles para usuarios registrados que busquen servicios de limpieza en su área. No se cederán datos a terceros ajenos a la operativa salvo obligación legal.</p>
+    <h2>4. Visibilidad de Datos</h2>
+    <p>Al inscribirse, autoriza expresamente que su nombre, zonas de trabajo y teléfono sean visibles para los usuarios que requieran servicios de limpieza en su zona. No se ceden datos a terceros ajenos a la plataforma salvo obligación legal.</p>
 
-    <h2>5. Conservación de los Datos</h2>
-    <p>Sus datos se conservarán mientras mantenga su perfil activo en la plataforma o hasta que solicite su supresión.</p>
-
-    <h2>6. Derechos del Usuario</h2>
-    <p>Puede ejercitar sus derechos de acceso, rectificación, supresión, limitación y oposición enviando un correo electrónico a <code>gerencia@shineconnect.app</code> indicando "Protección de Datos" en el asunto.</p>
+    <h2>5. Ejercicio de Derechos</h2>
+    <p>Puede ejercitar sus derechos de acceso, rectificación, supresión y oposición escribiendo a <code>gerencia@shineconnect.app</code> con el asunto "Protección de Datos".</p>
   </div>
 </body>
 </html>
