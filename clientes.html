@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Clientes | LIMPIAPP Valencia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006972;
+      --primary-dark: #004f56;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 16px;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0284c7;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 28px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #1e293b;
+    }
+    input[type="text"], input[type="tel"], select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 105, 114, 0.15);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 6px;
+    }
+    .plan-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.2s;
+    }
+    .plan-card:hover {
+      border-color: var(--primary);
+    }
+    .plan-card.premium {
+      border-color: var(--primary);
+      background: #f0fdfa;
+    }
+    .plan-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+    .plan-card.premium .plan-title {
+      color: var(--primary);
+    }
+    .plan-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #475569;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-bottom: 24px;
+    }
+    .checkbox-label input {
+      margin-top: 3px;
+    }
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover {
+      background: var(--primary-dark);
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #ffffff;
+      padding: 36px 30px;
+      border-radius: 16px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    @media (max-width: 600px) {
+      .grid-2, .plans-grid { grid-template-columns: 1fr; }
+      .container { padding: 24px 18px; }
+      h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+    
+    <div>
+      <span class="badge">PARTICULARES EN VALENCIA</span>
+      <h1>Encuentra limpiadora de confianza en tu barrio</h1>
+      <p class="subtitle">
+        Accede a la red de profesionales independientes verificadas. Trato directo, sin comisiones sobre el servicio y con la tarifa fijada libremente por la profesional.
+      </p>
+    </div>
+
+    <form id="clienteForm" action="https://script.google.com/macros/s/AKfycbxLL7oZs9nlCo_QZ5H8c2eLMFBHWvwqOuRmCz67ZwpOXugpcwOdG1tgP5E1478xkB7xtQ/exec" method="POST">
+      <input type="hidden" name="tipo_registro" value="cliente">
+
+      <div class="form-group">
+        <label>Nombre y Apellidos *</label>
+        <input type="text" name="nombre" required placeholder="Tu nombre completo">
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Teléfono / WhatsApp *</label>
+          <input type="tel" name="telefono" required placeholder="Ej: 612345678">
+        </div>
+        <div class="form-group">
+          <label>Código Postal o Barrio en Valencia *</label>
+          <input type="text" name="zona" required placeholder="Ej: 46005 o Ruzafa">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tipo de Servicio que necesitas *</label>
+        <select name="servicio" required>
+          <option value="Mantenimiento periódico regular">Mantenimiento regular (semanal / quincenal)</option>
+          <option value="Limpieza a fondo puntual">Limpieza a fondo puntual</option>
+          <option value="Mudanza o fin de obra">Mudanza o fin de obra</option>
+          <option value="Planchado y tareas domésticas">Planchado y tareas domésticas</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Modalidad de Acceso preferida *</label>
+        <div class="plans-grid">
+          <label class="plan-card">
+            <input type="radio" name="formula" value="Fórmula Básica de Cliente" checked style="margin-right: 6px;">
+            <span class="plan-title">Fórmula Básica</span>
+            <p class="plan-desc">Acceso al directorio local y contacto directo con profesionales según disponibilidad ordinaria.</p>
+          </label>
+          <label class="plan-card premium">
+            <input type="radio" name="formula" value="Fórmula Premium de Cliente" style="margin-right: 6px;">
+            <span class="plan-title">Fórmula Premium ★</span>
+            <p class="plan-desc">Acceso preferente a perfiles mejor valorados, filtros de urgencia y soporte prioritario.</p>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Detalles del inmueble o necesidades (opcional)</label>
+        <textarea name="detalles" rows="2" placeholder="Ej: Piso de 90 m2, 3 horas los miércoles por la mañana..."></textarea>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="rgpd" required>
+        <span>He leído y acepto los <a href="terminos.html" target="_blank" style="color: #006972; font-weight: 600;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: #006972; font-weight: 600;">Política de Privacidad</a> de ShineConnect S.L.</span>
+      </label>
+
+      <button type="submit" id="btnSubmitCliente" class="btn-submit">
+        Solicitar Acceso a Profesionales en Valencia
+      </button>
+    </form>
+  </div>
+
+  <div id="modalCliente" class="modal-overlay">
+    <div class="modal-box">
+      <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
+      <h3 style="color: #0f172a; font-size: 1.4rem; margin-bottom: 10px;">¡Solicitud Recibida!</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;">
+        Hemos registrado tus datos correctamente. En cuanto activemos los perfiles verificados disponibles en tu zona te avisaremos por WhatsApp.
+      </p>
+      <button onclick="document.getElementById('modalCliente').style.display='none'; window.location.href='index.html';" style="background: #006972; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">
+        Volver a la Portada
+      </button>
+    </div>
+  </div>
+
+  <footer style="margin-top: 40px; text-align: center; color: #94a3b8; font-size: 0.85rem;">
+    &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Valencia (España).
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var formCliente = document.getElementById('clienteForm');
+      if (!formCliente) return;
+
+      formCliente.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var btn = document.getElementById('btnSubmitCliente');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerText = 'Enviando solicitud...';
+        }
+
+        var formData = new FormData(formCliente);
+        var params = new URLSearchParams(formData);
+
+        fetch(formCliente.action, {
+          method: 'POST',
+          body: params,
+          mode: 'no-cors'
+        })
+        .then(function() {
+          var modal = document.getElementById('modalCliente');
+          if (modal) modal.style.display = 'flex';
+          formCliente.reset();
+        })
+        .catch(function() {
+          alert('Hubo un error de conexión al enviar. Por favor, inténtalo de nuevo.');
+        })
+        .finally(function() {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerText = 'Solicitar Acceso a Profesionales en Valencia';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
