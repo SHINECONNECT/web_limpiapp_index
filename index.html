@@ -148,11 +148,9 @@
             <span>Busco personal de limpieza</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
-          <button 
-            @click="tabPrecios = 'profesionales'; document.getElementById('precios').scrollIntoView({ behavior: 'smooth' })"
-            class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-grafito-700 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200 transition">
-            Soy profesional de la limpieza
-          </button>
+         <a href="registro.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-grafito-700 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200">
+    Soy profesional de la limpieza
+</a>
         </div>
 
         <!-- Garantías Clave -->
@@ -422,11 +420,9 @@
             </li>
           </ul>
 
-          <button 
-            @click="openModal('profesional', 'gratis', 'Alta Gratuita de Profesional (0 €)')"
-            class="w-full text-center py-3.5 px-4 rounded-xl font-bold bg-gray-50 border border-gray-300 text-grafito-800 hover:bg-gray-100 transition">
-            Crear Perfil Gratis
-          </button>
+         <a href="registro.html" class="block w-full text-center py-3.5 px-4 rounded-xl font-bold bg-limpi-500 hover:bg-limpi-600 text-white transition shadow-sm">
+    Crear Perfil Gratis
+</a>
         </div>
 
         <!-- Profesional Destacado: 4,99 €/mes ilimitado + posicionamiento -->
@@ -502,4 +498,20 @@
 
       <div class="mb-6">
         <span class="text-xs font-bold uppercase tracking-wider text-limpi-500">LIMPIAPP by Shineconnect</span>
-        <h3 class="text-2xl font
+       <h3 class="text-2xl font-bold text-grafito-900 mb-2">Contactar con LIMPIAPP</h3>
+          <p class="text-sm text-grafito-600 mb-6">Escríbenos directamente o consulta nuestras condiciones de servicio.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de página: Enlaces Legales -->
+    <footer class="w-full py-8 mt-16 bg-white border-t border-gray-100 text-center text-xs text-gray-500">
+      <p class="mb-3 font-medium">© 2026 LIMPIAPP by Shineconnect S.L. Todos los derechos reservados.</p>
+      <div class="flex justify-center items-center gap-6">
+        <a href="terminos.html" target="_blank" rel="noopener noreferrer" class="text-limpi-600 hover:text-limpi-700 font-semibold underline">Términos y Condiciones</a>
+        <span class="text-gray-300">•</span>
+        <a href="privacidad.html" target="_blank" rel="noopener noreferrer" class="text-limpi-600 hover:text-limpi-700 font-semibold underline">Política de Privacidad</a>
+      </div>
+    </footer>
+  </body>
+</html>
