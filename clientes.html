@@ -1117,6 +1117,7 @@
     };
 
     function cambiarIdioma(lang) {
+      localStorage.setItem('limpiapp_lang', lang);
       var t = dicc[lang] || dicc['es'];
 
       // Elementos de texto plano
