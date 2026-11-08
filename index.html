@@ -1,539 +1,191 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LIMPIAPP by Shineconnect | Conexión Directa de Limpieza del Hogar</title>
-  <meta name="description" content="Encuentra profesionales de confianza para el hogar sin intermediarios ni comisiones por hora. LIMPIAPP by SHINECONNECT S.L.">
+  <title>LIMPIAPP | Directorio Internacional de Servicios de Limpieza</title>
+  
+  <!-- Enlace e integración técnica para la App Móvil (Figma / Serxus) -->
+  <meta name="apple-itunes-app" content="app-id=limpiapp">
+  <link rel="alternate" href="limpiapp://home">
 
-  <!-- Fuente Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Alpine.js -->
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            // Paleta oficial extraída directamente del logo de LIMPIAPP
-            limpi: {
-              50: '#f4f8fb',
-              100: '#e8f1f6',
-              200: '#d1e3ee',
-              300: '#b0d0e3',
-              400: '#8fb7d1', // Azul Acero Claro del logo
-              500: '#729fbe',
-              600: '#5a87a7',
-              700: '#466d89',
-              800: '#38576e',
-              900: '#273c4d',
-            },
-            grafito: {
-              50: '#f8f9fa',
-              100: '#e9ecef',
-              200: '#dee2e6',
-              300: '#ced4da',
-              400: '#868e96',
-              500: '#676767', // Gris corporativo
-              600: '#495057',
-              700: '#343a40',
-              800: '#212529',
-              900: '#15181b',
-            }
-          }
-        }
-      }
-    }
-  </script>
-</head>
-<body class="bg-white text-grafito-700 antialiased font-sans selection:bg-limpi-400 selection:text-white" 
-      x-data="{ 
-        tabPrecios: 'clientes',
-        modalOpen: false,
-        modalTitle: '',
-        modalPlan: '',
-        modalRole: '',
-        openModal(role, plan, title) {
-          this.modalRole = role;
-          this.modalPlan = plan;
-          this.modalTitle = title;
-          this.modalOpen = true;
-        }
-      }">
-
-  <!-- Trust Bar Superior -->
-  <div class="bg-limpi-50 border-b border-limpi-200 text-grafito-700 text-xs font-semibold py-2 px-4 text-center">
-    <span class="inline-flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-limpi-400 animate-pulse"></span>
-      <span>Directorio directo de confianza en Valencia y toda España.</span>
-      <span class="text-limpi-400">•</span>
-      <strong class="text-grafito-900 font-bold">0% de comisiones por hora trabajada</strong>
-    </span>
-  </div>
-
-  <!-- Header / Navbar Principal -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- LOGO LIMPIAPP by Shineconnect -->
-     <a href="index.html" class="flex items-center py-2">
-            <img 
-                src="logo.png.png" 
-                alt="LIMPIAPP by Shineconnect" 
-                class="h-11 sm:h-12 w-auto object-contain hover:opacity-95 transition" 
-                loading="eager" 
-            />
-        </a>
-      <!-- Menú de Navegación -->
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-grafito-600">
-        <a href="#ventajas" class="hover:text-limpi-600 transition">Ventajas vs Apps</a>
-        <a href="#como-funciona" class="hover:text-limpi-600 transition">Cómo Funciona</a>
-        <a href="#precios" class="hover:text-limpi-600 transition">Planes y Precios</a>
-        <a href="#garantia" class="hover:text-limpi-600 transition">Seguridad</a>
-      </nav>
-
-      <!-- Botones de Acción / Acceso -->
-      <div class="flex items-center space-x-3">
-        <button 
-          @click="openModal('cliente', 'login', 'Acceso al Área de Usuario')" 
-          class="text-sm font-semibold text-grafito-700 hover:text-limpi-600 px-3 py-2 transition hidden sm:inline-block">
-          Iniciar Sesión
-        </button>
-        <a 
-          href="#precios" 
-          class="inline-flex items-center gap-1.5 text-sm font-bold bg-limpi-400 hover:bg-limpi-500 text-white px-5 py-2.5 rounded-xl shadow-sm transition">
-          <span>Ver Tarifas</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-limpi-50 border border-limpi-200 text-grafito-800 text-xs font-bold uppercase tracking-wider mb-8">
-          <span class="w-2 h-2 rounded-full bg-limpi-400"></span>
-          <span>Modelo de Conexión Directa</span>
-          <span class="text-gray-300">•</span>
-          <span class="text-limpi-600 font-extrabold">Sin comisiones por hora</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-grafito-900 tracking-tight leading-[1.15]">
-          Encuentra profesionales de limpieza, <span class="text-limpi-400">con trato 100% directo.</span>
-        </h1>
-
-        <p class="mt-6 text-lg sm:text-xl text-grafito-600 leading-relaxed font-normal">
-          Conectamos familias y hogares con profesionales de confianza verificados. Sin comisiones abusivas por cada hora trabajada: tú acuerdas el precio y pagas directamente a quien realiza el trabajo.
-        </p>
-
-        <!-- Botones Principales -->
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <button 
-            @click="tabPrecios = 'clientes'; document.getElementById('precios').scrollIntoView({ behavior: 'smooth' })"
-            class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold text-white bg-limpi-400 hover:bg-limpi-500 rounded-xl shadow-sm hover:shadow-md transition">
-            <span>Busco personal de limpieza</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
-         <a href="registro.html" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-grafito-700 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200">
-    Soy profesional de la limpieza
-</a>
-        </div>
-
-        <!-- Garantías Clave -->
-        <div class="mt-12 pt-8 border-t border-gray-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-semibold text-grafito-600">
-          <div class="flex items-center justify-center gap-2">
-            <svg class="w-4 h-4 text-limpi-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            <span>DNI y perfiles contrastados</span>
-          </div>
-          <div class="flex items-center justify-center gap-2">
-            <svg class="w-4 h-4 text-limpi-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            <span>Pago acordado sin retenciones</span>
-          </div>
-          <div class="flex items-center justify-center gap-2">
-            <svg class="w-4 h-4 text-limpi-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-            <span>Suscripción mensual sin ataduras</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Tabla de Ventajas -->
-  <section id="ventajas" class="py-20 bg-limpi-50/50 border-y border-limpi-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <h2 class="text-3xl font-extrabold text-grafito-900 mt-2">¿Por qué LIMPIAPP es diferente y más rentable?</h2>
-        <p class="mt-3 text-grafito-600 text-sm sm:text-base">Las plataformas tradicionales cobran intermediaciones abusivas en cada hora contratada. En LIMPIAPP eliminamos los recargos con un modelo limpio por suscripción.</p>
-      </div>
-
-      <!-- Tabla Comparativa -->
-      <div class="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden max-w-4xl mx-auto">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-gray-100 bg-gray-50/60 text-xs font-bold uppercase text-grafito-500">
-                <th class="p-5 sm:p-6">Características del Modelo</th>
-                <th class="p-5 sm:p-6 text-center text-limpi-700 bg-limpi-50/80 font-extrabold text-sm border-x border-limpi-100">LIMPIAPP</th>
-                <th class="p-5 sm:p-6 text-center text-gray-500">Otras apps</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100 text-sm">
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Verificación de identidad</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">Perfiles de profesionales y clientes verificados</td>
-                <td class="p-5 text-center text-gray-500 font-medium">Verificación básica o solo de profesionales</td>
-              </tr>
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Comisión por cada hora trabajada</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">0% (Cero)</td>
-                <td class="p-5 text-center text-red-500 font-medium">Hasta el 15% - 25% por hora</td>
-              </tr>
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Remuneración para el limpiador</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">100% íntegro acordado</td>
-                <td class="p-5 text-center text-gray-500">Sueldo recortado por la app</td>
-              </tr>
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Canal de comunicación</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">Directo (WhatsApp, llamada, etc.)</td>
-                <td class="p-5 text-center text-gray-500">Chat cerrado y vigilado</td>
-              </tr>
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Fijación de condiciones y tarifas</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">Libre acuerdo entre las partes</td>
-                <td class="p-5 text-center text-gray-500">Precios forzados por algoritmo</td>
-              </tr>
-              <tr>
-                <td class="p-5 font-semibold text-grafito-800">Coste de acceso</td>
-                <td class="p-5 text-center bg-limpi-50/30 border-x border-limpi-100 font-bold text-limpi-700">Suscripción fija transparente</td>
-                <td class="p-5 text-center text-gray-500">Coste acumulativo infinito</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cómo Funciona -->
-  <section id="como-funciona" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-bold uppercase tracking-widest text-limpi-600 bg-limpi-50 border border-limpi-200 px-3 py-1 rounded-full">Proceso Simple</span>
-        <h2 class="text-3xl font-extrabold text-grafito-900 mt-3">Fácil, transparente y sin letra pequeña</h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-          <div class="w-12 h-12 rounded-2xl bg-white border border-limpi-300 text-limpi-400 flex items-center justify-center font-bold text-lg mb-6 shadow-xs">
-            1
-          </div>
-          <h3 class="text-lg font-bold text-grafito-900 mb-2">Explora o publica tu perfil</h3>
-          <p class="text-sm text-grafito-600 leading-relaxed">
-            Las familias seleccionan limpiadores en su zona y los profesionales muestran su experiencia, disponibilidad y tarifas deseadas.
-          </p>
-        </div>
-
-        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-          <div class="w-12 h-12 rounded-2xl bg-white border border-limpi-300 text-limpi-400 flex items-center justify-center font-bold text-lg mb-6 shadow-xs">
-            2
-          </div>
-          <h3 class="text-lg font-bold text-grafito-900 mb-2">Conexión inmediata</h3>
-          <p class="text-sm text-grafito-600 leading-relaxed">
-            Desbloquea los datos de contacto y habla directamente por teléfono o mensajería sin filtros ni robots intermedios.
-          </p>
-        </div>
-
-        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-          <div class="w-12 h-12 rounded-2xl bg-white border border-limpi-300 text-limpi-400 flex items-center justify-center font-bold text-lg mb-6 shadow-xs">
-            3
-          </div>
-          <h3 class="text-lg font-bold text-grafito-900 mb-2">Acuerdo y pago directo</h3>
-          <p class="text-sm text-grafito-600 leading-relaxed">
-            Fijáis el horario y las horas de trabajo. El pago se realiza directamente de la familia al profesional, garantizando el 100% de ingreso.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección de Tarifas y Precios -->
-  <section id="precios" class="py-24 bg-white border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="text-xs font-bold uppercase tracking-widest text-limpi-600 bg-limpi-50 border border-limpi-200 px-3.5 py-1 rounded-full">Planes de Suscripción</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-grafito-900 mt-3">Tarifas claras, sin comisiones sorpresa</h2>
-        <p class="mt-3 text-grafito-600 text-base">Selecciona si buscas contratar servicio de limpieza o si eres profesional del sector.</p>
-
-        <!-- Toggle Selector de Perfil -->
-        <div class="mt-8 inline-flex p-1.5 bg-gray-100 rounded-2xl border border-gray-200">
-          <button 
-            @click="tabPrecios = 'clientes'" 
-            :class="tabPrecios === 'clientes' ? 'bg-white text-grafito-900 shadow-sm' : 'text-grafito-500 hover:text-grafito-800'"
-            class="px-6 py-3 rounded-xl text-sm font-bold transition duration-150 flex items-center gap-2">
-            <span>🏠 Para Familias / Hogares</span>
-          </button>
-          <button 
-            @click="tabPrecios = 'profesionales'" 
-            :class="tabPrecios === 'profesionales' ? 'bg-white text-grafito-900 shadow-sm' : 'text-grafito-500 hover:text-grafito-800'"
-            class="px-6 py-3 rounded-xl text-sm font-bold transition duration-150 flex items-center gap-2">
-            <span>🧹 Para Profesionales de Limpieza</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- PLANES PARA CLIENTES / HOGARES -->
-      <div x-show="tabPrecios === 'clientes'" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
-        
-        <!-- Cliente Básico: 5,99 €/mes -->
-        <div class="flex flex-col bg-white border border-gray-200 rounded-3xl p-8 hover:border-limpi-300 transition shadow-xs">
-          <div class="mb-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-grafito-400">Plan Ocasional</span>
-            <h3 class="text-2xl font-bold text-grafito-900 mt-1">Acceso Estándar</h3>
-            <p class="text-sm text-grafito-500 mt-1">Ideal para encontrar a tu profesional fijo de confianza.</p>
-          </div>
-
-          <div class="my-6">
-            <span class="text-4xl font-extrabold text-grafito-900">5,99 €</span>
-            <span class="text-sm font-medium text-grafito-500">/ mes</span>
-          </div>
-
-          <ul class="space-y-4 text-sm text-grafito-600 mb-8 flex-1">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Acceso a 5 perfiles de profesionales</strong> al mes</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Desbloqueo de teléfono y chat directo</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Sin comisiones sobre las horas que contrates</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Cancela cuando quieras sin permanencia</span>
-            </li>
-          </ul>
-
-          <button 
-            @click="openModal('cliente', 'estandar', 'Suscripción Cliente Estándar (5,99 €/mes)')"
-            class="w-full text-center py-3.5 px-4 rounded-xl font-bold bg-gray-50 border border-gray-300 text-grafito-800 hover:bg-gray-100 transition">
-            Elegir Estándar (5,99 €)
-          </button>
-        </div>
-
-        <!-- Cliente Premium: Ilimitado + Alertas -->
-        <div class="flex flex-col bg-white border-2 border-limpi-400 rounded-3xl p-8 relative shadow-lg">
-          <div class="absolute -top-3.5 right-6 bg-limpi-400 text-white text-[11px] font-extrabold py-1 px-3.5 rounded-full uppercase tracking-wider">
-            Recomendado Familias
-          </div>
-          
-          <div class="mb-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-limpi-600">Plan Completo</span>
-            <h3 class="text-2xl font-bold text-grafito-900 mt-1">Acceso Premium</h3>
-            <p class="text-sm text-grafito-500 mt-1">Para máxima tranquilidad, suplencias y reemplazos inmediatos.</p>
-          </div>
-
-          <div class="my-6">
-            <span class="text-4xl font-extrabold text-limpi-500">9,99 €</span>
-            <span class="text-sm font-medium text-grafito-500">/ mes</span>
-          </div>
-
-          <ul class="space-y-4 text-sm text-grafito-600 mb-8 flex-1">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Acceso ilimitado a todos los profesionales</strong></span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Avisos y alertas prioritarias</strong> cuando un nuevo limpiador esté disponible en tu zona o código postal</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Contacto directo vía WhatsApp y llamada telefónica</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Cero comisiones en todas las horas acordadas</span>
-            </li>
-          </ul>
-
-          <button 
-            @click="openModal('cliente', 'premium', 'Suscripción Cliente Premium (9,99 €/mes)')"
-            class="w-full text-center py-3.5 px-4 rounded-xl font-bold bg-limpi-400 hover:bg-limpi-500 text-white transition shadow-sm">
-            Elegir Premium (9,99 €)
-          </button>
-        </div>
-
-      </div>
-
-      <!-- PLANES PARA PROFESIONALES -->
-      <div x-show="tabPrecios === 'profesionales'" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch" style="display: none;">
-        
-        <!-- Profesional Gratuito: 0 €/mes con 2 contactos -->
-        <div class="flex flex-col bg-white border border-gray-200 rounded-3xl p-8 hover:border-limpi-300 transition shadow-xs">
-          <div class="mb-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-grafito-400">Comienza sin coste</span>
-            <h3 class="text-2xl font-bold text-grafito-900 mt-1">Básico Profesional</h3>
-            <p class="text-sm text-grafito-500 mt-1">Para probar la plataforma y recibir tus primeras ofertas.</p>
-          </div>
-
-          <div class="my-6">
-            <span class="text-4xl font-extrabold text-grafito-900">0 €</span>
-            <span class="text-sm font-medium text-grafito-500">/ para siempre</span>
-          </div>
-
-          <ul class="space-y-4 text-sm text-grafito-600 mb-8 flex-1">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Acceso limitado a 2 contactos</strong> de potenciales clientes al mes</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Perfil activo en el directorio de tu zona</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Cobras el 100% de lo que pactas, directamente de la familia</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Sin comisiones ni retenciones</span>
-            </li>
-          </ul>
-
-         <a href="registro.html" class="block w-full text-center py-3.5 px-4 rounded-xl font-bold bg-limpi-500 hover:bg-limpi-600 text-white transition shadow-sm">
-    Crear Perfil Gratis
-</a>
-        </div>
-
-        <!-- Profesional Destacado: 4,99 €/mes ilimitado + posicionamiento -->
-        <div class="flex flex-col bg-white border-2 border-limpi-400 rounded-3xl p-8 relative shadow-lg">
-          <div class="absolute -top-3.5 right-6 bg-grafito-800 text-white text-[11px] font-extrabold py-1 px-3.5 rounded-full uppercase tracking-wider">
-            Más Elegido por Profesionales
-          </div>
-          
-          <div class="mb-4">
-            <span class="text-xs font-bold uppercase tracking-wider text-limpi-600">Agenda Completa</span>
-            <h3 class="text-2xl font-bold text-grafito-900 mt-1">Profesional Pro</h3>
-            <p class="text-sm text-grafito-500 mt-1">Llena tu disponibilidad semanal y multiplica tus ingresos directos.</p>
-          </div>
-
-          <div class="my-6">
-            <span class="text-4xl font-extrabold text-limpi-500">4,99 €</span>
-            <span class="text-sm font-medium text-grafito-500">/ mes</span>
-          </div>
-
-          <ul class="space-y-4 text-sm text-grafito-600 mb-8 flex-1">
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Acceso ilimitado a contactos con clientes</strong></span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span><strong>Posicionamiento destacado</strong> en los listados de profesionales de tu ciudad</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Distintivo de "Profesional Verificado Recomendado"</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-5 h-5 rounded-full bg-limpi-100 text-limpi-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">✓</span>
-              <span>Cobras el 100% íntegro de tus horas, sin intermediación de cobros</span>
-            </li>
-          </ul>
-
-          <button 
-            @click="openModal('profesional', 'pro', 'Alta Profesional Pro (4,99 €/mes)')"
-            class="w-full text-center py-3.5 px-4 rounded-xl font-bold bg-limpi-400 hover:bg-limpi-500 text-white transition shadow-sm">
-            Activar Profesional Pro (4,99 €)
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Modal Interactivo de Registro / Alta de Plan -->
-  <div 
-    x-show="modalOpen" 
-    class="fixed inset-0 z-50 overflow-y-auto bg-black/40 backdrop-blur-xs flex items-center justify-center p-4"
-    style="display: none;"
-    x-transition:enter="transition ease-out duration-200"
-    x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100"
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0">
-    
-    <div 
-      @click.away="modalOpen = false" 
-      class="bg-white rounded-3xl max-w-lg w-full p-8 border border-gray-100 shadow-2xl relative">
-      
-      <!-- Cerrar -->
-      <button 
-        @click="modalOpen = false" 
-        class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-xl font-bold p-1">
-        ✕
-      </button>
-
-      <div class="mb-6">
-        <span class="text-xs font-bold uppercase tracking-wider text-limpi-500">LIMPIAPP by Shineconnect</span>
-       <h3 class="text-2xl font-bold text-grafito-900 mb-2">Contactar con LIMPIAPP</h3>
-          <p class="text-sm text-grafito-600 mb-6">Escríbenos directamente o consulta nuestras condiciones de servicio.</p>
-        </div>
-      </div>
-    </div>
-<!-- LLAMADA A LA ACCIÓN PARA CLIENTES -->
-<section style="background: #ffffff; padding: 50px 20px; text-align: center; border-top: 1px solid #e2e8f0;">
-  <div style="max-width: 700px; margin: 0 auto;">
-    <span style="background: #e0f2fe; color: #0284c7; padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">¿BUSCAS AYUDA PARA TU HOGAR?</span>
-    <h2 style="color: #006972; font-size: 1.8rem; margin: 12px 0 8px;">Encuentra profesionales de confianza en Valencia</h2>
-    <p style="color: #64748b; font-size: 1rem; margin-bottom: 24px;">
-      Conéctate con limpiadoras independientes en tu barrio. Sin intermediarios y 0% comisiones sobre el servicio.
-    </p>
-    <a href="clientes.html" style="display: inline-block; background: #006972; color: #ffffff; padding: 14px 28px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 1.05rem; box-shadow: 0 4px 14px rgba(0,105,114,0.3);">
-      Solicitar Servicio / Registro de Clientes →
-    </a>
-  </div>
-</section>
-   
- <footer style="background-color: #0f172a; color: #94a3b8; padding: 40px 20px; font-size: 0.9rem; text-align: center; border-top: 1px solid #1e293b;">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <p style="margin-bottom: 12px; font-weight: 500; color: #cbd5e1;">
-      &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
-    </p>
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;">
-      <a href="aviso-legal.html" style="color: #94a3b8; text-decoration: none;">Aviso Legal</a>
-      <span style="color: #475569;">|</span>
-      <a href="terminos.html" style="color: #94a3b8; text-decoration: none;">Términos y Condiciones</a>
-      <span style="color: #475569;">|</span>
-      <a href="privacidad.html" style="color: #94a3b8; text-decoration: none;">Política de Privacidad</a>
-      <span style="color: #475569;">|</span>
-      <a href="cookies.html" style="color: #94a3b8; text-decoration: none;">Política de Cookies</a>
-    </div>
-    <p style="font-size: 0.8rem; color: #64748b;">
-      Plataforma tecnológica de intermediación de servicios de limpieza. Valencia (España). Contacto: gerencia@shineconnect.app
-    </p>
-  </div>
-</footer> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  </body>
-</html>
+  <style>
+    :root {
+      --primary: #006972;
+      --primary-dark: #004f56;
+      --secondary: #059669;
+      --secondary-dark: #047857;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; }
+
+    /* Barra Superior Multilingüe */
+    .top-bar {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+    #google_translate_element { display: inline-block; }
+    .goog-te-gadget { font-size: 0 !important; }
+    .goog-te-gadget .goog-te-combo {
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.82rem;
+      background: #f8fafc;
+      cursor: pointer;
+    }
+
+    /* Navegación Principal */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .logo-container img {
+      max-width: 220px;
+      height: auto;
+      display: block;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-nav-client {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 16px;
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .btn-nav-client:hover { background: #e0f2fe; }
+    .btn-nav-pro {
+      background: var(--secondary);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-nav-pro:hover { background: var(--secondary-dark); }
+
+    /* Sección Hero Principal */
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+    .badge-hero {
+      display: inline-block;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 36px;
+    }
+
+    /* Tarjetas de Selección B2B / B2C */
+    .dual-cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 50px;
+      text-align: left;
+    }
+    .cta-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+    .cta-card.client { border-top: 5px solid var(--primary); }
+    .cta-card.pro { border-top: 5px solid var(--secondary); }
+    .card-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .cta-card.client .card-tag { color: var(--primary); }
+    .cta-card.pro .card-tag { color: var(--secondary); }
+    .cta-card h2 { font-size: 1.5rem; margin-bottom: 12px; color: #0f172a; }
+    .cta-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
+    .btn-action {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .btn-action.client { background: var(--primary); color: #ffffff; }
+    .btn-action.client:hover { background: var(--primary-dark); }
+    .btn-action.pro { background: var(--secondary); color: #ffffff; }
+    .btn-action.pro:hover { background: var(--secondary-dark); }
+
+    /* Sección de Ventajas Globales */
+    .features-section {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 20px;
+    }
+    .features-inner {
+      max-width: 1000px;
