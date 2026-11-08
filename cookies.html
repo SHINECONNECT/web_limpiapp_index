@@ -7,13 +7,14 @@
   <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-logo-blue: #7faecb;
       --color-logo-blue-dark: #6294b4;
       --color-logo-charcoal: #4f585d;
       --color-slate-dark: #24292d;
+      --color-slate-medium: #475259;
       --color-slate-muted: #6a767e;
       --color-slate-border: #d4dfe6;
       --color-bg-page: #f8fafc;
@@ -22,17 +23,21 @@
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
-    .container { max-width: 860px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-    .back-btn { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; margin-bottom: 24px; }
-    h1 { font-size: 2rem; color: var(--color-slate-dark); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 12px; }
-    h2 { font-size: 1.25rem; color: var(--color-logo-charcoal); margin: 24px 0 10px; font-weight: 700; }
-    p { color: #475259; font-size: 0.95rem; margin-bottom: 14px; }
+    .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .back-btn { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; margin-bottom: 24px; font-size: 0.95rem; }
+    h1 { font-size: 2.1rem; color: var(--color-slate-dark); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 14px; }
+    h2 { font-size: 1.25rem; color: var(--color-logo-charcoal); margin: 30px 0 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+    h3 { font-size: 1.05rem; color: var(--color-slate-dark); margin: 18px 0 8px; font-weight: 700; }
+    p, li { color: var(--color-slate-medium); font-size: 0.96rem; margin-bottom: 14px; text-align: justify; }
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; }
+    .meta-date { font-weight: 700; color: var(--color-slate-muted); font-size: 0.88rem; margin-top: 30px; border-top: 1px solid var(--color-slate-border); padding-top: 15px; }
   </style>
 </head>
 <body>
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelectCookie" onchange="cambiarIdiomaCookie(this.value)">
+    <select class="lang-select" id="langSelect" onchange="cambiarIdiomaDoc(this.value)">
       <optgroup label="Lenguas de España">
         <option value="es">Español</option>
         <option value="ca">Valencià / Català</option>
@@ -50,144 +55,108 @@
   </div>
 
   <div class="container">
-    <a href="javascript:history.back()" class="back-btn" id="btnBack">← Volver</a>
-    <h1 id="cTitle">Política de Cookies</h1>
-    <p id="cIntro">LIMPIAPP utiliza únicamente cookies técnicas y de preferencias estrictamente necesarias para el funcionamiento del portal y el mantenimiento de su idioma seleccionado.</p>
+    <a href="javascript:history.back()" class="back-btn">← Volver</a>
+    <h1>POLÍTICA DE COOKIES - SHINECONNECT S.L.</h1>
     
-    <h2 id="cSec1Title">1. ¿Qué son las Cookies?</h2>
-    <p id="cSec1Desc">Una cookie es un fichero técnico que se descarga en su dispositivo para permitir una navegación fluida y guardar sus preferencias funcionales.</p>
+    <h2>1. DISPOSICIÓN GENERAL Y TITULARIDAD</h2>
+    <p>La presente Política de Cookies regula el uso de cookies y tecnologías similares por parte de ShineConnect S.L., con NIF B26917807 y domicilio social en c/Mayor, 5, Fortaleny, España (en adelante, "ShineConnect"), en su sitio web y aplicaciones móviles. El acceso y la navegación por la Plataforma ShineConnect implica que, si usted lo consiente, se descargarán en su dispositivo dispositivos de almacenamiento y recuperación de datos conforme a lo aquí dispuesto.</p>
 
-    <h2 id="cSec2Title">2. Tipos de Cookies Empleadas</h2>
-    <p id="cSec2Desc">No utilizamos cookies invasivas de publicidad de terceros ni de rastreo invasivo. Solo empleamos almacenamiento local técnico para recordar el idioma de navegación y el envío seguro de formularios.</p>
+    <h2>2. DEFINICIÓN Y FUNCIÓN DE LAS COOKIES</h2>
+    <p>Las cookies son pequeños archivos de texto o identificadores lógicos que se descargan en el equipo terminal del Usuario (ordenador, smartphone o tablet) al acceder a determinadas aplicaciones o páginas web. Su función es almacenar y recuperar información sobre los hábitos de navegación del Usuario o de su equipo para mejorar el servicio, garantizar la seguridad técnica y, en su caso, mostrar publicidad personalizada.</p>
 
-    <h2 id="cSec3Title">3. Control y Desactivación</h2>
-    <p id="cSec3Desc">Puede permitir, bloquear o eliminar estas cookies a través de las opciones de configuración de su navegador web en cualquier momento.</p>
+    <h2>3. TIPOLOGÍA DE COOKIES UTILIZADAS EN SHINECONNECT</h2>
+    <p>De acuerdo con las directrices de la AEPD y la normativa europea, ShineConnect utiliza las siguientes categorías de cookies:</p>
+
+    <h3>3.1. Según la entidad que las gestiona:</h3>
+    <ul>
+      <li><strong>Cookies Propias:</strong> Aquellas que se envían al equipo terminal del Usuario desde un equipo o dominio gestionado directamente por ShineConnect S.L.</li>
+      <li><strong>Cookies de Terceros:</strong> Aquellas que se envían al equipo terminal del Usuario desde un equipo o dominio que no es gestionado por ShineConnect, sino por otra entidad que trata los datos obtenidos a través de las cookies (como Google o Stripe).</li>
+    </ul>
+
+    <h3>3.2. Según su finalidad (Clasificación técnica):</h3>
+    <ul>
+      <li><strong>Cookies Técnicas (Estrictamente Necesarias):</strong> Son aquellas que permiten al Usuario la navegación a través de la App o Web y la utilización de las diferentes opciones o servicios que en ella existen, incluyendo la gestión y operativa de la Plataforma, el control del tráfico, la identificación de la sesión, el acceso a perfiles de usuario y el procesamiento de pagos a través de Stripe. Estas cookies no requieren el consentimiento del Usuario por ser esenciales para el funcionamiento del servicio solicitado.</li>
+      <li><strong>Cookies de Preferencias o Personalización:</strong> Permiten recordar información para que el Usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia de la de otros usuarios, como el idioma o la configuración del buscador de Profesionales.</li>
+      <li><strong>Cookies de Análisis o Medición:</strong> Son aquellas que, tratadas por nosotros o por terceros (especialmente Google Maps y Google Analytics), nos permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico de la utilización que hacen los Usuarios de la Plataforma con el fin de introducir mejoras técnicas.</li>
+      <li><strong>Cookies de Publicidad Comportamental:</strong> Almacenan información del comportamiento de los Usuarios obtenida a través de la observación continuada de sus hábitos de navegación, lo que permite desarrollar un perfil específico para mostrar publicidad en función del mismo.</li>
+    </ul>
+
+    <h3>3.3. Según el plazo de tiempo que permanecen activas:</h3>
+    <ul>
+      <li><strong>Cookies de Sesión:</strong> Diseñadas para recabar y almacenar datos mientras el Usuario accede a la Plataforma. Suelen emplearse para almacenar información que solo interesa conservar para la prestación del servicio solicitado en una sola ocasión.</li>
+      <li><strong>Cookies Persistentes:</strong> Datos que siguen almacenados en el terminal y pueden ser accedidos y tratados durante un periodo definido por el responsable de la cookie, que puede ir de unos minutos a varios años.</li>
+    </ul>
+
+    <h2>4. COOKIES DE TERCEROS E INTEGRACIONES</h2>
+    <p>Dada la naturaleza técnica de ShineConnect, la Plataforma integra servicios de terceros que instalan sus propias cookies:</p>
+    <ul>
+      <li><strong>Stripe:</strong> Para la gestión de pagos y prevención de fraudes en transacciones financieras.</li>
+      <li><strong>Google Maps / Google Earth:</strong> Para las funcionalidades de geolocalización de Clientes y Profesionales.</li>
+      <li><strong>Entidades Aseguradoras:</strong> En el marco del Programa de Seguros de Responsabilidad Civil, para la gestión de la navegación y validación de perfiles profesionales.</li>
+    </ul>
+
+    <h2>5. BASE LEGAL Y CONSENTIMIENTO</h2>
+    <p>La base legal para la instalación de cookies, a excepción de las técnicas que son necesarias para el funcionamiento de la App, es el consentimiento del Usuario. El Usuario manifiesta su voluntad al aceptar expresamente el uso de cookies en el banner informativo de la Plataforma o al configurar sus preferencias a través del panel de gestión.</p>
+
+    <h2>6. GESTIÓN, REVOCACIÓN Y ELIMINACIÓN DE COOKIES</h2>
+    <p>El Usuario tiene la facultad de configurar, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador o dispositivo móvil:</p>
+    <ul>
+      <li><strong>Chrome:</strong> Configuración -&gt; Mostrar opciones avanzadas -&gt; Privacidad -&gt; Configuración de contenido.</li>
+      <li><strong>Firefox:</strong> Herramientas -&gt; Opciones -&gt; Privacidad -&gt; Historial -&gt; Configuración Personalizada.</li>
+      <li><strong>Internet Explorer:</strong> Herramientas -&gt; Opciones de Internet -&gt; Privacidad -&gt; Configuración.</li>
+      <li><strong>Safari:</strong> Preferencias -&gt; Seguridad.</li>
+      <li><strong>Dispositivos Móviles (iOS/Android):</strong> El Usuario puede restringir el uso de identificadores de publicidad en los ajustes de privacidad del sistema operativo.</li>
+    </ul>
+    <p><em>Nota: La desactivación de todas las cookies, incluyendo las técnicas, puede impedir el correcto funcionamiento de funcionalidades críticas de ShineConnect, como la realización de reservas o el acceso al área privada.</em></p>
+
+    <h2>7. TRANSFERENCIAS INTERNACIONALES DE DATOS</h2>
+    <p>Usted acepta que algunas de las cookies de terceros mencionadas (como Google o Stripe) puedan realizar transferencias de datos fuera del Espacio Económico Europeo. ShineConnect garantiza que dichas entidades ofrecen garantías adecuadas conforme al RGPD mediante la suscripción de Cláusulas Contractuales Tipo.</p>
+
+    <h2>8. PLAZO DE CONSERVACIÓN</h2>
+    <p>Los datos obtenidos a través de las cookies se conservarán por el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados, o hasta que el Usuario revoque su consentimiento.</p>
+
+    <h2>9. ACTUALIZACIÓN DE LA POLÍTICA</h2>
+    <p>ShineConnect S.L. se reserva el derecho de modificar la presente Política de Cookies para adaptarla a futuras novedades legislativas o jurisprudenciales. Las actualizaciones serán comunicadas a través de la Plataforma.</p>
+
+    <h2>10. CONTACTO</h2>
+    <p>Para cualquier duda sobre el tratamiento de sus datos a través de cookies, puede contactar con nuestro Delegado de Protección de Datos en: <strong>dpo@shineconnect.app</strong>.</p>
+
+    <p class="meta-date">Última actualización: Mayo de 2026.</p>
   </div>
 
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>
-    var textosCookie = {
-      es: {
-        btnBack: "← Volver",
-        cTitle: "Política de Cookies",
-        cIntro: "LIMPIAPP utiliza únicamente cookies técnicas y de preferencias estrictamente necesarias para el funcionamiento del portal y el mantenimiento de su idioma seleccionado.",
-        cSec1Title: "1. ¿Qué son las Cookies?",
-        cSec1Desc: "Una cookie es un fichero técnico que se descarga en su dispositivo para permitir una navegación fluida y guardar sus preferencias funcionales.",
-        cSec2Title: "2. Tipos de Cookies Empleadas",
-        cSec2Desc: "No utilizamos cookies invasivas de publicidad de terceros ni de rastreo invasivo. Solo empleamos almacenamiento local técnico para recordar el idioma de navegación y el envío seguro de formularios.",
-        cSec3Title: "3. Control y Desactivación",
-        cSec3Desc: "Puede permitir, bloquear o eliminar estas cookies a través de las opciones de configuración de su navegador web en cualquier momento."
-      },
-      ca: {
-        btnBack: "← Tornar",
-        cTitle: "Política de Cookies",
-        cIntro: "LIMPIAPP utilitza únicament galetes tècniques i de preferència necessàries per al funcionament del web i el manteniment de l'idioma seleccionat.",
-        cSec1Title: "1. Què són les Cookies?",
-        cSec1Desc: "Fitxers tècnics que permeten una navegació fluida i recordar les opcions de l'usuari.",
-        cSec2Title: "2. Galetes Utilitzades",
-        cSec2Desc: "No fem servir galetes publicitàries invasives de tercers. Només mantenim l'idioma i la seguretat en formularis.",
-        cSec3Title: "3. Configuració",
-        cSec3Desc: "Podeu gestionar o eliminar les galetes des del vostre navegador en qualsevol moment."
-      },
-      gl: {
-        btnBack: "← Volver",
-        cTitle: "Política de Cookies",
-        cIntro: "LIMPIAPP emprega cookies técnicas e de personalización lingüística necesarias para a navegación.",
-        cSec1Title: "1. Que son as Cookies?",
-        cSec1Desc: "Ficheiros que axudan a lembrar as preferencias de navegación.",
-        cSec2Title: "2. Cookies Empregadas",
-        cSec2Desc: "Non usamos publicidade invasiva nin rastrexo comercial. Só gardamos o idioma escollido.",
-        cSec3Title: "3. Xestión",
-        cSec3Desc: "Pode xestionar ou desactivar as cookies no menú do seu navegador."
-      },
-      eu: {
-        btnBack: "← Itzuli",
-        cTitle: "Cookie Politika",
-        cIntro: "LIMPIAPPek webgunearen funtzionamendurako eta aukeratutako hizkuntza gordetzeko beharrezkoak diren cookie teknikoak baino ez ditu erabiltzen.",
-        cSec1Title: "1. Zer dira Cookieak?",
-        cSec1Desc: "Erabiltzailearen nabigazioa errazteko gailuan deskargatzen diren fitxategi teknikoak dira.",
-        cSec2Title: "2. Erabilitako Cookieak",
-        cSec2Desc: "Ez dugu publizitate intrusiborik erabiltzen. Hizkuntza eta segurtasuna gordetzeko soilik balio dute.",
-        cSec3Title: "3. Konfigurazioa",
-        cSec3Desc: "Edozein unetan ezaba ditzakezu cookieak zure nabigatzailearen ezarpenetatik."
-      },
-      en: {
-        btnBack: "← Back",
-        cTitle: "Cookie Policy",
-        cIntro: "LIMPIAPP only uses technical and preference cookies strictly necessary for portal functionality and language persistence.",
-        cSec1Title: "1. What are Cookies?",
-        cSec1Desc: "Small data files used to remember user preferences and ensure smooth site navigation.",
-        cSec2Title: "2. Cookies We Use",
-        cSec2Desc: "We do not deploy invasive third-party tracking or ad cookies. We only store language choices and session form security.",
-        cSec3Title: "3. Managing Cookies",
-        cSec3Desc: "You can block or delete cookies at any time via your browser settings."
-      },
-      fr: {
-        btnBack: "← Retour",
-        cTitle: "Politique de Cookies",
-        cIntro: "LIMPIAPP utilise uniquement des cookies techniques nécessaires au maintien de la langue choisie et à la navigation.",
-        cSec1Title: "1. Qu'est-ce qu'un cookie ?",
-        cSec1Desc: "Un fichier permettant d'enregistrer vos préférences de confort de navigation.",
-        cSec2Title: "2. Cookies Utilisés",
-        cSec2Desc: "Aucun traceur publicitaire tiers n'est utilisé. Seules vos préférences de langue sont mémorisées.",
-        cSec3Title: "3. Paramétrage",
-        cSec3Desc: "Vous pouvez désactiver les cookies dans les paramètres de votre navigateur."
-      },
-      de: {
-        btnBack: "← Zurück",
-        cTitle: "Cookie-Richtlinie",
-        cIntro: "LIMPIAPP nutzt ausschließlich technisch notwendige Cookies zur Sprachspeicherung und Formularübermittlung.",
-        cSec1Title: "1. Was sind Cookies?",
-        cSec1Desc: "Dateien, die Ihre gewählten Browsereinstellungen für die aktuelle Sitzung speichern.",
-        cSec2Title: "2. Verwendete Cookies",
-        cSec2Desc: "Keine Werbetracker von Drittanbietern. Lediglich funktionale Speicherung der Sprache.",
-        cSec3Title: "3. Verwaltung",
-        cSec3Desc: "Sie können Cookies in Ihrem Webbrowser jederzeit löschen oder deaktivieren."
-      },
-      it: {
-        btnBack: "← Torna indietro",
-        cTitle: "Informativa sui Cookie",
-        cIntro: "LIMPIAPP impiega esclusivamente cookie tecnici per garantire la corretta visualizzazione nella lingua selezionata.",
-        cSec1Title: "1. Cosa sono i Cookie?",
-        cSec1Desc: "File tecnici che memorizzano le impostazioni dell'utente per una navigazione ottimale.",
-        cSec2Title: "2. Tipologie di Cookie",
-        cSec2Desc: "Nessun cookie pubblicitario o di tracciamento invasivo. Solo memoria tecnica della lingua e dei moduli.",
-        cSec3Title: "3. Gestione",
-        cSec3Desc: "È possibile disabilitare i cookie in qualsiasi momento dalle impostazioni del browser."
-      },
-      pt: {
-        btnBack: "← Voltar",
-        cTitle: "Política de Cookies",
-        cIntro: "A LIMPIAPP utiliza apenas cookies técnicos necessários para manter o idioma escolhido e garantir o funcionamento seguro.",
-        cSec1Title: "1. O que são Cookies?",
-        cSec1Desc: "Ficheiros que guardam as preferências de navegação no dispositivo do utilizador.",
-        cSec2Title: "2. Cookies Utilizados",
-        cSec2Desc: "Não utilizamos cookies publicitários invasivos de terceiros. Apenas guardamos o idioma e a segurança das inscrições.",
-        cSec3Title: "3. Gestão e Desativação",
-        cSec3Desc: "Pode bloquear ou eliminar os cookies através das definições do seu navegador."
-      }
-    };
-
-    function cambiarIdiomaCookie(lang) {
-      localStorage.setItem('limpiapp_lang', lang);
-      var t = textosCookie[lang] || textosCookie['es'];
-      
-      document.getElementById('btnBack').innerText = t.btnBack;
-      document.getElementById('cTitle').innerText = t.cTitle;
-      document.getElementById('cIntro').innerText = t.cIntro;
-      document.getElementById('cSec1Title').innerText = t.cSec1Title;
-      document.getElementById('cSec1Desc').innerText = t.cSec1Desc;
-      document.getElementById('cSec2Title').innerText = t.cSec2Title;
-      document.getElementById('cSec2Desc').innerText = t.cSec2Desc;
-      document.getElementById('cSec3Title').innerText = t.cSec3Title;
-      document.getElementById('cSec3Desc').innerText = t.cSec3Desc;
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
     }
-
+    function cambiarIdiomaDoc(lang) {
+      localStorage.setItem('limpiapp_lang', lang);
+      if (lang === 'es') {
+        var iframe = document.querySelector('iframe.goog-te-banner-frame');
+        if (iframe) {
+          var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          var b = innerDoc.querySelector('.goog-close-link');
+          if (b) b.click();
+        }
+        var combo = document.querySelector('.goog-te-combo');
+        if (combo) { combo.value = 'es'; combo.dispatchEvent(new Event('change')); }
+        return;
+      }
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+      }
+    }
     document.addEventListener('DOMContentLoaded', function() {
       var savedLang = localStorage.getItem('limpiapp_lang') || 'es';
-      var select = document.getElementById('langSelectCookie');
+      var select = document.getElementById('langSelect');
       if (select) select.value = savedLang;
-      cambiarIdiomaCookie(savedLang);
+      if (savedLang !== 'es') {
+        setTimeout(function() { cambiarIdiomaDoc(savedLang); }, 500);
+      }
     });
   </script>
+  <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
