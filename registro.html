@@ -228,6 +228,7 @@
     }
     .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
+    /* Modal de Éxito */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -245,6 +246,7 @@
       max-width: 440px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
     }
 
     footer {
@@ -366,16 +368,18 @@
             </div>
           </div>
 
-          <!-- CHECKBOX CON CONDICIONES B2B Y RGPD -->
           <div class="legal-box">
             <label class="checkbox-label">
               <input type="checkbox" name="rgpd" required>
               <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a>, las <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condiciones de Suscripción y Calidad B2B</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
             </label>
+            
+            <!-- CASILLA DESMARCADA POR DEFECTO (RGPD OPT-IN) -->
             <label class="checkbox-label">
-              <input type="checkbox" name="alertas" value="Si" checked>
+              <input type="checkbox" name="alertas" value="Si">
               <span id="txtAlertas">Deseo recibir alertas inmediatas por WhatsApp con nuevas ofertas de clientes en mi demarcación.</span>
             </label>
+
             <div id="txtLegalFooter">
               <strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br>
               <strong>Finalidad:</strong> Publicación en directorio e intermediación de contactos profesionales en LIMPIAPP.<br>
@@ -391,6 +395,7 @@
     </div>
   </div>
 
+  <!-- Modal de Éxito con IDs dinámicos -->
   <div id="modalPro" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
@@ -425,44 +430,6 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var form = document.getElementById('proForm');
-      if (!form) return;
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        var btn = document.getElementById('btnSubmitPro');
-        if (btn) {
-          btn.disabled = true;
-          btn.innerText = 'Guardando registro...';
-        }
-
-        var formData = new FormData(form);
-        var params = new URLSearchParams(formData);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: params,
-          mode: 'no-cors'
-        })
-        .then(function() {
-          var modal = document.getElementById('modalPro');
-          if (modal) modal.style.display = 'flex';
-          form.reset();
-        })
-        .catch(function() {
-          alert('Hubo un error de conexión al enviar el formulario. Por favor, inténtalo de nuevo.');
-        })
-        .finally(function() {
-          if (btn) {
-            btn.disabled = false;
-            btn.innerText = 'Registrarme como Profesional';
-          }
-        });
-      });
-    });
-
     var dicc = {
       es: {
         badgeSub: "REGISTRO DE PROFESIONALES DE LIMPIEZA",
@@ -491,6 +458,9 @@
         txtAlertas: "Deseo recibir alertas inmediatas por WhatsApp con nuevas ofertas de clientes en mi demarcación.",
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidad:</strong> Publicación en directorio e intermediación de contactos profesionales en LIMPIAPP.<br><strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Registrarme como Profesional",
+        modalTitle: "¡Registro Completado!",
+        modalDesc: "Tu perfil ha sido registrado correctamente con la promoción de lanzamiento. Comenzarás a recibir avisos de clientes verificados en tu WhatsApp.",
+        modalBtn: "Volver a la Portada",
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
@@ -523,6 +493,9 @@
         txtAlertas: "Desitjo rebre alertes immediates per WhatsApp amb noves sol·licituds de clients a la meva zona.",
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalitat:</strong> Publicació en directori i intermediació a LIMPIAPP.<br><strong>Drets:</strong> Accés, rectificació i supressió via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Registrar-me com a Professional",
+        modalTitle: "Registre Completat!",
+        modalDesc: "El teu perfil s'ha registrat correctament amb la promoció de llançament. Començaràs a rebre avisos de clients verificats al teu WhatsApp.",
+        modalBtn: "Tornar a la Portada",
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
@@ -555,6 +528,9 @@
         txtAlertas: "Desexo recibir alertas inmediatas por WhatsApp con novas ofertas de clientes na miña demarcación.",
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Publicación no directorio e contacto en LIMPIAPP.<br><strong>Dereitos:</strong> Acceso, rectificación e supresión vía <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Rexistrarme como Profesional",
+        modalTitle: "Rexistro Completado!",
+        modalDesc: "O teu perfil foi rexistrado correctamente coa promoción de lanzamento. Comezarás a recibir avisos de clientes verificados no teu WhatsApp.",
+        modalBtn: "Volver á Portada",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condicións",
         footPrivacidad: "Política de Privacidade",
@@ -587,6 +563,9 @@
         txtAlertas: "WhatsApp bidez berehalako alertak jaso nahi ditut nire eremuko bezero berrien eskaerekin.",
         txtLegalFooter: '<strong>Arduraduna:</strong> Shineconnect S.L. (B26917807)<br><strong>Helburua:</strong> Direktorioan argitaratzea eta LIMPIAPPeko kontaktuen kudeaketa.<br><strong>Eskubideak:</strong> Atzitzea, zuzentzea eta ezabatzea <code>gerencia@shineconnect.app</code> bidez.',
         btnSubmitPro: "Profesional gisa Erregistratu",
+        modalTitle: "Erregistroa Osatuta!",
+        modalDesc: "Zure profila behar bezala erregistratu da sustapenarekin. WhatsApp bidez bezero egiaztatuen jakinarazpenak jasotzen hasiko zara.",
+        modalBtn: "Hasierara Itzuli",
         footAviso: "Legezko Oharra",
         footTerminos: "Baldintzak eta Xedapenak",
         footPrivacidad: "Pribatutasun Politika",
@@ -619,6 +598,9 @@
         txtAlertas: "I want to receive instant WhatsApp notifications with new client leads in my area.",
         txtLegalFooter: '<strong>Controller:</strong> Shineconnect S.L. (B26917807)<br><strong>Purpose:</strong> Directory listing and matchmaking on LIMPIAPP.<br><strong>Rights:</strong> Access, rectification, and erasure via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Register as a Professional",
+        modalTitle: "Registration Completed!",
+        modalDesc: "Your profile has been successfully registered with the launch promotion. You will start receiving leads from verified clients via WhatsApp.",
+        modalBtn: "Back to Home",
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
@@ -651,6 +633,9 @@
         txtAlertas: "Je souhaite recevoir des alertes WhatsApp avec de nouvelles demandes de clients dans ma zone.",
         txtLegalFooter: '<strong>Responsable :</strong> Shineconnect S.L. (B26917807)<br><strong>Finalité :</strong> Publication dans l\'annuaire et mise en relation sur LIMPIAPP.<br><strong>Droits :</strong> Accès, rectification et suppression via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "S'inscrire comme Professionnel",
+        modalTitle: "Inscription Terminée !",
+        modalDesc: "Votre profil a été enregistré avec succès avec l'offre de lancement. Vous recevrez des alertes de clients vérifiés sur WhatsApp.",
+        modalBtn: "Retour à l'accueil",
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
         footPrivacidad: "Politique de Confidentialité",
@@ -683,6 +668,9 @@
         txtAlertas: "Ich möchte sofortige WhatsApp-Benachrichtigungen über neue Kundenanfragen in meiner Nähe erhalten.",
         txtLegalFooter: '<strong>Verantwortlicher:</strong> Shineconnect S.L. (B26917807)<br><strong>Zweck:</strong> Verzeichnis-Eintrag und Vermittlung auf LIMPIAPP.<br><strong>Rechte:</strong> Auskunft, Berichtigung und Löschung via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Als Dienstleister registrieren",
+        modalTitle: "Registrierung Erfolgreich!",
+        modalDesc: "Ihr Profil wurde erfolgreich mit der Start-Aktion registriert. Sie erhalten ab sofort Anfragen geprüfter Kunden per WhatsApp.",
+        modalBtn: "Zurück zur Startseite",
         footAviso: "Impressum",
         footTerminos: "Allgemeine Geschäftsbedingungen",
         footPrivacidad: "Datenschutzerklärung",
@@ -715,6 +703,9 @@
         txtAlertas: "Desidero ricevere avvisi immediati su WhatsApp con nuove richieste di clienti nella mia zona.",
         txtLegalFooter: '<strong>Titolare:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalità:</strong> Pubblicazione nella directory e contatti su LIMPIAPP.<br><strong>Diritti:</strong> Accesso, rettifica e cancellazione via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Registrati come Professionista",
+        modalTitle: "Registrazione Completata!",
+        modalDesc: "Il tuo profilo è stato registrato con successo con la promozione di lancio. Inizierai a ricevere richieste da clienti verificati su WhatsApp.",
+        modalBtn: "Torna alla Home",
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
@@ -747,6 +738,9 @@
         txtAlertas: "Desejo receber alertas imediatos por WhatsApp com novas solicitações de clientes na minha zona.",
         txtLegalFooter: '<strong>Responsável:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Publicação no diretório e intermediação na LIMPIAPP.<br><strong>Direitos:</strong> Acesso, retificação e eliminação via <code>gerencia@shineconnect.app</code>.',
         btnSubmitPro: "Registar como Profissional",
+        modalTitle: "Registo Concluído!",
+        modalDesc: "O seu perfil foi registado com sucesso com a promoção de lançamento. Começará a receber pedidos de clientes verificados no seu WhatsApp.",
+        modalBtn: "Voltar à Página Inicial",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
@@ -763,8 +757,8 @@
         'badgeSub', 'backLink', 'titleForm', 'subForm', 'lblNombre',
         'lblTel', 'lblPais', 'lblCiudad', 'lblCP', 'lblTarifa',
         'lblExp', 'optExp1', 'optExp2', 'optExp3', 'optExp4',
-        'txtAlertas', 'btnSubmitPro', 'footAviso', 'footTerminos',
-        'footPrivacidad', 'footCookies'
+        'txtAlertas', 'btnSubmitPro', 'modalTitle', 'modalDesc', 'modalBtn',
+        'footAviso', 'footTerminos', 'footPrivacidad', 'footCookies'
       ];
 
       for (var i = 0; i < textKeys.length; i++) {
@@ -809,6 +803,46 @@
         if (select) select.value = guardado;
         cambiarIdioma(guardado);
       }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('proForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var btn = document.getElementById('btnSubmitPro');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerText = '...';
+        }
+
+        var formData = new FormData(form);
+        var params = new URLSearchParams(formData);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: params,
+          mode: 'no-cors'
+        })
+        .then(function() {
+          var modal = document.getElementById('modalPro');
+          if (modal) modal.style.display = 'flex';
+          form.reset();
+        })
+        .catch(function() {
+          alert('Error de conexión.');
+        })
+        .finally(function() {
+          if (btn) {
+            btn.disabled = false;
+            var currentLang = localStorage.getItem('limpiapp_lang') || 'es';
+            var t = dicc[currentLang] || dicc['es'];
+            btn.innerText = t.btnSubmitPro;
+          }
+        });
+      });
     });
   </script>
 </body>
