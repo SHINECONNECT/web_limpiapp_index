@@ -394,6 +394,7 @@
             <textarea name="detalles" id="inputDetalles" rows="2" placeholder="Ej: Vivienda de 90 m2, 3 horas semanales por las mañanas..."></textarea>
           </div>
 
+          <!-- BLOQUE LEGAL CON TRADUCCIÓN COMPLETA -->
           <div class="legal-box">
             <label class="checkbox-label">
               <input type="checkbox" name="rgpd" required>
@@ -431,19 +432,19 @@
   <!-- Pie de página Oficial Completo -->
   <footer>
     <div class="footer-container">
-      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;">
+      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
         &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
       </p>
       <div class="footer-links">
-        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
         <span style="color: #475569;">|</span>
-        <a href="terminos.html">Términos y Condiciones</a>
+        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
         <span style="color: #475569;">|</span>
-        <a href="privacidad.html">Política de Privacidad</a>
+        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
         <span style="color: #475569;">|</span>
-        <a href="cookies.html">Política de Cookies</a>
+        <a href="cookies.html" id="footCookies">Política de Cookies</a>
       </div>
-      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">
+      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
         Plataforma tecnológica de intermediación publicitaria e información de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
       </p>
     </div>
@@ -499,7 +500,7 @@
       });
     });
 
-    // DICCIONARIO COMPLETO: Traduce TODOS los campos, etiquetas y desplegables
+    // DICCIONARIO COMPLETO (INCLUYE TEXTOS LEGALES Y POLÍTICAS RGPD)
     var dicc = {
       es: {
         badgeSub: "SOLICITUD DE ACCESO A PROFESIONALES",
@@ -529,7 +530,13 @@
         planPremDesc: "Contactos ilimitados, alertas inmediatas por código postal y soporte prioritario.",
         lblDetalles: "Detalles o necesidades del inmueble (opcional)",
         placeholderDetalles: "Ej: Vivienda de 90 m2, 3 horas semanales por las mañanas...",
-        btnSubmitCliente: "Solicitar Acceso a Profesionales"
+        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidad:</strong> Gestión y canalización de solicitudes con profesionales en LIMPIAPP.<br><strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Solicitar Acceso a Profesionales",
+        footAviso: "Aviso Legal",
+        footTerminos: "Términos y Condiciones",
+        footPrivacidad: "Política de Privacidad",
+        footCookies: "Política de Cookies"
       },
       ca: {
         badgeSub: "SOL·LICITUD D'ACCÉS A PROFESSIONALS",
@@ -559,7 +566,13 @@
         planPremDesc: "Contactes il·limitats, alertes immediates per codi postal i suport prioritari.",
         lblDetalles: "Detalls o necessitats de l'immoble (opcional)",
         placeholderDetalles: "Ex: Vivenda de 90 m2, 3 hores setmanals als matins...",
-        btnSubmitCliente: "Demanar Accés a Professionals"
+        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalitat:</strong> Gestió i canalització de sol·licituds amb professionals a LIMPIAPP.<br><strong>Drets:</strong> Accés, rectificació i supressió via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Demanar Accés a Professionals",
+        footAviso: "Avís Legal",
+        footTerminos: "Termes i Condicions",
+        footPrivacidad: "Política de Privacitat",
+        footCookies: "Política de Cookies"
       },
       gl: {
         badgeSub: "SOLICITUDE DE ACCESO A PROFESIONAIS",
@@ -589,7 +602,13 @@
         planPremDesc: "Contactos ilimitados, alertas inmediatas por código postal e soporte prioritario.",
         lblDetalles: "Detalles ou necesidades do inmoble (opcional)",
         placeholderDetalles: "Ex: Vivenda de 90 m2, 3 horas semanais polas mañás...",
-        btnSubmitCliente: "Solicitar Acceso a Profesionais"
+        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Xestión e canalización de solicitudes con profesionais en LIMPIAPP.<br><strong>Dereitos:</strong> Acceso, rectificación e supresión vía <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Solicitar Acceso a Profesionais",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condicións",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
       },
       eu: {
         badgeSub: "PROFESIONALETARA SARBIDE ESKAERA",
@@ -619,7 +638,13 @@
         planPremDesc: "Mugagabeko kontaktuak, berehalako alertak eta lehentasunezko laguntza.",
         lblDetalles: "Higiezinaren xehetasunak (aukerakoa)",
         placeholderDetalles: "Adib: 90 m2-ko etxebizitza, astero 3 ordu goizetan...",
-        btnSubmitCliente: "Profesionaletara Sarbidea Eskatu"
+        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
+        txtLegalFooter: '<strong>Arduraduna:</strong> Shineconnect S.L. (B26917807)<br><strong>Helburua:</strong> LIMPIAPPeko profesionalekin eskaerak kudeatzea.<br><strong>Eskubideak:</strong> Atzitzea, zuzentzea eta ezabatzea <code>gerencia@shineconnect.app</code> bidez.',
+        btnSubmitCliente: "Profesionaletara Sarbidea Eskatu",
+        footAviso: "Legezko Oharra",
+        footTerminos: "Baldintzak eta Xedapenak",
+        footPrivacidad: "Pribatutasun Politika",
+        footCookies: "Cookie Politika"
       },
       en: {
         badgeSub: "REQUEST ACCESS TO PROFESSIONALS",
@@ -649,7 +674,13 @@
         planPremDesc: "Unlimited contacts, instant zip code alert notifications, and priority support.",
         lblDetalles: "Property details or requirements (optional)",
         placeholderDetalles: "e.g., 90 sqm apartment, 3 hours weekly in the mornings...",
-        btnSubmitCliente: "Request Access to Cleaners"
+        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
+        txtLegalFooter: '<strong>Controller:</strong> Shineconnect S.L. (B26917807)<br><strong>Purpose:</strong> Managing and routing service requests with professionals on LIMPIAPP.<br><strong>Rights:</strong> Access, rectification, and erasure via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Request Access to Cleaners",
+        footAviso: "Legal Notice",
+        footTerminos: "Terms & Conditions",
+        footPrivacidad: "Privacy Policy",
+        footCookies: "Cookie Policy"
       },
       fr: {
         badgeSub: "DEMANDE D'ACCÈS AUX PROFESSIONNELS",
@@ -679,7 +710,13 @@
         planPremDesc: "Contacts illimités, alertes géographiques instantanées et support prioritaire.",
         lblDetalles: "Détails ou besoins spécifiques (facultatif)",
         placeholderDetalles: "ex : Logement de 90 m2, 3h par semaine le matin...",
-        btnSubmitCliente: "Demander l'Accès aux Professionnels"
+        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsable :</strong> Shineconnect S.L. (B26917807)<br><strong>Finalité :</strong> Gestion des demandes avec les professionnels sur LIMPIAPP.<br><strong>Droits :</strong> Accès, rectification et suppression via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Demander l'Accès aux Professionnels",
+        footAviso: "Mentions Légales",
+        footTerminos: "Conditions Générales",
+        footPrivacidad: "Politique de Confidentialité",
+        footCookies: "Gestion des Cookies"
       },
       de: {
         badgeSub: "ZUGANG ZU REINIGUNGSKRÄFTEN ANFRAGEN",
@@ -709,7 +746,13 @@
         planPremDesc: "Unbegrenzte Kontakte, Sofort-Benachrichtigungen und Prioritäts-Support.",
         lblDetalles: "Details zur Immobilie (optional)",
         placeholderDetalles: "z.B.: 90 qm Wohnung, 3 Stunden pro Woche morgens...",
-        btnSubmitCliente: "Zugang anfordern"
+        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
+        txtLegalFooter: '<strong>Verantwortlicher:</strong> Shineconnect S.L. (B26917807)<br><strong>Zweck:</strong> Vermittlung von Kundenanfragen an Reinigungskräfte in LIMPIAPP.<br><strong>Rechte:</strong> Auskunft, Berichtigung und Löschung via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Zugang anfordern",
+        footAviso: "Impressum",
+        footTerminos: "Allgemeine Geschäftsbedingungen",
+        footPrivacidad: "Datenschutzerklärung",
+        footCookies: "Cookie-Richtlinie"
       },
       it: {
         badgeSub: "RICHIESTA DI ACCESSO AI PROFESSIONISTI",
@@ -739,7 +782,13 @@
         planPremDesc: "Contatti illimitati, notifiche immediate via CAP e supporto prioritario.",
         lblDetalles: "Dettagli dell'immobile (opzionale)",
         placeholderDetalles: "Es: Appartamento di 90 mq, 3 ore settimanali di mattina...",
-        btnSubmitCliente: "Richiedi Accesso ai Professionisti"
+        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
+        txtLegalFooter: '<strong>Titolare:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalità:</strong> Gestione delle richieste con i professionisti su LIMPIAPP.<br><strong>Diritti:</strong> Accesso, rettifica e cancellazione tramite <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Richiedi Accesso ai Professionisti",
+        footAviso: "Note Legali",
+        footTerminos: "Termini e Condizioni",
+        footPrivacidad: "Informativa sulla Privacy",
+        footCookies: "Cookie Policy"
       },
       pt: {
         badgeSub: "PEDIDO DE ACESSO A PROFISSIONAIS",
@@ -769,7 +818,13 @@
         planPremDesc: "Contactos ilimitados, alertas imediatos por código postal e suporte prioritário.",
         lblDetalles: "Detalhes do imóvel (opcional)",
         placeholderDetalles: "Ex: Casa com 90 m2, 3 horas semanais de manhã...",
-        btnSubmitCliente: "Pedir Acesso a Profissionais"
+        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsável:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Gestão de pedidos com profissionais na LIMPIAPP.<br><strong>Direitos:</strong> Acesso, retificação e eliminação via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Pedir Acesso a Profissionais",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condições",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
       },
       nl: {
         badgeSub: "TOEGANG TOT PROFESSIONALS AANVRAGEN",
@@ -799,7 +854,13 @@
         planPremDesc: "Onbeperkt contact, directe meldingen en voorrangsservice.",
         lblDetalles: "Bijzonderheden van het pand (optioneel)",
         placeholderDetalles: "bijv.: Woning van 90 m2, 3 uur per week in de ochtend...",
-        btnSubmitCliente: "Toegang aanvragen"
+        txtRgpd: 'Ik heb de <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Algemene Voorwaarden</a> en het <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacybeleid</a> van Shineconnect S.L. gelezen en ga akkoord.',
+        txtLegalFooter: '<strong>Verantwoordelijke:</strong> Shineconnect S.L. (B26917807)<br><strong>Doel:</strong> Beheer van aanvragen met professionals op LIMPIAPP.<br><strong>Rechten:</strong> Inzage, rectificatie en verwijdering via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Toegang aanvragen",
+        footAviso: "Colofon",
+        footTerminos: "Algemene Voorwaarden",
+        footPrivacidad: "Privacybeleid",
+        footCookies: "Cookiebeleid"
       },
       pl: {
         badgeSub: "WNIOSEK O DOSTĘP DO SPECJALISTÓW",
@@ -829,7 +890,13 @@
         planPremDesc: "Nielimitowane kontakty, natychmiastowe alerty i priorytetowa pomoc.",
         lblDetalles: "Szczegóły nieruchomości (opcjonalnie)",
         placeholderDetalles: "np.: Mieszkanie 90 m2, 3 godziny tygodniowo rano...",
-        btnSubmitCliente: "Poproś o Dostęp"
+        txtRgpd: 'Przeczytałem(-am) i akceptuję <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Regulamin</a> oraz <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politykę Prywatności</a> Shineconnect S.L.',
+        txtLegalFooter: '<strong>Administrator:</strong> Shineconnect S.L. (B26917807)<br><strong>Cel:</strong> Obsługa zapytań i kontakt ze specjalistami w LIMPIAPP.<br><strong>Prawa:</strong> Dostęp, sprostowanie i usunięcie danych przez <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Poproś o Dostęp",
+        footAviso: "Nota Prawna",
+        footTerminos: "Regulamin",
+        footPrivacidad: "Polityka Prywatności",
+        footCookies: "Polityka Cookies"
       },
       ro: {
         badgeSub: "SOLICITARE ACCES LA PROFESIONIȘTI",
@@ -859,7 +926,13 @@
         planPremDesc: "Contacte nelimitate, alerte rapide în zonă și suport prioritar.",
         lblDetalles: "Detalii sau cerințe speciale (opțional)",
         placeholderDetalles: "ex: Locuință de 90 mp, 3 ore pe săptămână dimineața...",
-        btnSubmitCliente: "Solicită Acces la Profesioniști"
+        txtRgpd: 'Am citit și accept <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termenii și Condițiile</a> și <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politica de Confidențialitate</a> Shineconnect S.L.',
+        txtLegalFooter: '<strong>Responsabil:</strong> Shineconnect S.L. (B26917807)<br><strong>Scop:</strong> Gestionarea cererilor cu profesioniștii pe LIMPIAPP.<br><strong>Drepturi:</strong> Acces, rectificare și ștergere prin <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Solicită Acces la Profesioniști",
+        footAviso: "Mențiuni Legale",
+        footTerminos: "Termeni și Condiții",
+        footPrivacidad: "Politica de Confidențialitate",
+        footCookies: "Politica de Cookie-uri"
       },
       sv: {
         badgeSub: "BE OM TILLGÅNG TILL STÄDPERSONAL",
@@ -889,7 +962,13 @@
         planPremDesc: "Obegränsade kontakter, snabba aviseringar och prioriterad support.",
         lblDetalles: "Information om bostaden (valfritt)",
         placeholderDetalles: "t.ex.: Lägenhet på 90 kvm, 3 timmar per vecka på morgonen...",
-        btnSubmitCliente: "Ansök om Tillgång"
+        txtRgpd: 'Jag har läst och godkänner Shineconnect S.L.:s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Villkor</a> och <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Integritetspolicy</a>.',
+        txtLegalFooter: '<strong>Personuppgiftsansvarig:</strong> Shineconnect S.L. (B26917807)<br><strong>Ändamål:</strong> Förmedla kontakt mellan kunder och städare i LIMPIAPP.<br><strong>Rättigheter:</strong> Registerutdrag, rättelse och radering via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Ansök om Tillgång",
+        footAviso: "Juridiskt Meddelande",
+        footTerminos: "Allmänna Villkor",
+        footPrivacidad: "Integritetspolicy",
+        footCookies: "Cookiepolicy"
       },
       da: {
         badgeSub: "ANMOD OM ADGANG TIL RENGØRINGSFOLK",
@@ -919,7 +998,13 @@
         planPremDesc: "Ubegrænsede kontakter, øjeblikkelige notifikationer og prioriteret support.",
         lblDetalles: "Oplysninger om boligen (valgfrit)",
         placeholderDetalles: "f.eks.: Bolig på 90 m2, 3 timer ugentligt om morgenen...",
-        btnSubmitCliente: "Anmod om Adgang"
+        txtRgpd: 'Jeg har læst og accepterer Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Vilkår og Betingelser</a> samt <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privatlivspolitik</a>.',
+        txtLegalFooter: '<strong>Ansvarlig:</strong> Shineconnect S.L. (B26917807)<br><strong>Formål:</strong> Håndtering af henvendelser med rengøringspersonale på LIMPIAPP.<br><strong>Rettigheder:</strong> Indsigt, berigtigelse og sletning via <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Anmod om Adgang",
+        footAviso: "Juridisk Meddelelse",
+        footTerminos: "Vilkår og Betingelser",
+        footPrivacidad: "Privatlivspolitik",
+        footCookies: "Cookiepolitik"
       },
       cs: {
         badgeSub: "ŽÁDOST O PŘÍSTUP K PROFESIONÁLŮM",
@@ -949,7 +1034,13 @@
         planPremDesc: "Neomezené kontakty, okamžitá upozornění a přednostní podpora.",
         lblDetalles: "Podrobnosti o nemovitosti (volitelné)",
         placeholderDetalles: "např.: Byt 90 m2, 3 hodiny týdně dopoledne...",
-        btnSubmitCliente: "Požádat o Přístup"
+        txtRgpd: 'Přečetl(a) jsem si a souhlasím s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Obchodními podmínkami</a> a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Zásadami ochrany osobních údajů</a> společnosti Shineconnect S.L.',
+        txtLegalFooter: '<strong>Správce:</strong> Shineconnect S.L. (B26917807)<br><strong>Účel:</strong> Správa a předávání požadavků profesionálům v aplikaci LIMPIAPP.<br><strong>Práva:</strong> Přístup, oprava a výmaz na <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Požádat o Přístup",
+        footAviso: "Právní Upozornění",
+        footTerminos: "Obchodní Podmínky",
+        footPrivacidad: "Zásady Ochrany Osobních Údajů",
+        footCookies: "Zásady Používání Cookies"
       },
       hu: {
         badgeSub: "HOZZÁFÉRÉS KÉRÉSE SZAKEMBEREKHEZ",
@@ -979,7 +1070,13 @@
         planPremDesc: "Korlátlan kapcsolatfelvétel, azonnali értesítések és kiemelt ügyfélszolgálat.",
         lblDetalles: "Ingatlan részletei (opcionális)",
         placeholderDetalles: "pl.: 90 m2-es lakás, heti 3 óra délelőtt...",
-        btnSubmitCliente: "Hozzáférés Kérése"
+        txtRgpd: 'Elolvastam és elfogadom a Shineconnect S.L. <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Általános Szerződési Feltételeit</a> és <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Adatvédelmi Tájékoztatóját</a>.',
+        txtLegalFooter: '<strong>Adatkezelő:</strong> Shineconnect S.L. (B26917807)<br><strong>Cél:</strong> Kapcsolatfelvétel és takarítási igények közvetítése a LIMPIAPP felületén.<br><strong>Jogok:</strong> Hozzáférés, helyesbítés és törlés a <code>gerencia@shineconnect.app</code> címen.',
+        btnSubmitCliente: "Hozzáférés Kérése",
+        footAviso: "Jogi Nyilatkozat",
+        footTerminos: "Általános Szerződési Feltételek",
+        footPrivacidad: "Adatvédelmi Tájékoztató",
+        footCookies: "Süti Szabályzat"
       },
       el: {
         badgeSub: "ΑΙΤΗΣΗ ΠΡΟΣΒΑΣΗΣ ΣΕ ΕΠΑΓΓΕΛΜΑΤΙΕΣ",
@@ -1009,20 +1106,27 @@
         planPremDesc: "Απεριόριστες επαφές, άμεσες ειδοποιήσεις και προτεραιότητα υποστήριξης.",
         lblDetalles: "Λεπτομέρειες ακινήτου (προαιρετικό)",
         placeholderDetalles: "π.χ.: Διαμέρισμα 90 τ.μ., 3 ώρες εβδομαδιαίως τα πρωινά...",
-        btnSubmitCliente: "Αίτηση Πρόσβασης"
+        txtRgpd: 'Έχω διαβάσει και αποδέχομαι τους <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Όρους & Προϋποθέσεις</a> και την <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Πολιτική Απορρήτου</a> της Shineconnect S.L.',
+        txtLegalFooter: '<strong>Υπεύθυνος Επεξεργασίας:</strong> Shineconnect S.L. (B26917807)<br><strong>Σκοπός:</strong> Διαχείριση αιτημάτων με επαγγελματίες στο LIMPIAPP.<br><strong>Δικαιώματα:</strong> Πρόσβαση, διόρθωση και διαγραφή μέσω <code>gerencia@shineconnect.app</code>.',
+        btnSubmitCliente: "Αίτηση Πρόσβασης",
+        footAviso: "Νομική Σημείωση",
+        footTerminos: "Όροι και Προϋποθέσεις",
+        footPrivacidad: "Πολιτική Απορρήτου",
+        footCookies: "Πολιτική Cookies"
       }
     };
 
     function cambiarIdioma(lang) {
       var t = dicc[lang] || dicc['es'];
 
-      // Textos generales
+      // Elementos de texto plano
       var textKeys = [
         'badgeSub', 'backLink', 'titleForm', 'subForm', 'lblNombre',
         'lblTel', 'lblPais', 'lblCiudad', 'lblCP', 'lblServicio',
         'optServ1', 'optServ2', 'optServ3', 'optServ4', 'optServ5',
         'lblFormula', 'planBasicoTitle', 'planBasicoDesc', 'planPremTitle',
-        'planPremDesc', 'lblDetalles', 'btnSubmitCliente'
+        'planPremDesc', 'lblDetalles', 'btnSubmitCliente',
+        'footAviso', 'footTerminos', 'footPrivacidad', 'footCookies'
       ];
 
       for (var i = 0; i < textKeys.length; i++) {
@@ -1033,7 +1137,17 @@
         }
       }
 
-      // Placeholders dinámicos de los inputs
+      // Elementos con enlaces HTML (Textos legales y RGPD)
+      var htmlKeys = ['txtRgpd', 'txtLegalFooter'];
+      for (var j = 0; j < htmlKeys.length; j++) {
+        var hk = htmlKeys[j];
+        var hel = document.getElementById(hk);
+        if (hel && t[hk]) {
+          hel.innerHTML = t[hk];
+        }
+      }
+
+      // Placeholders dinámicos de las casillas de texto
       var pMap = {
         'inputNombre': 'placeholderNombre',
         'inputTel': 'placeholderTel',
