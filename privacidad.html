@@ -205,11 +205,21 @@
 
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>
+    function setTranslateCookie(lang) {
+      var cookieVal = (lang === 'es') ? '/es/es' : '/es/' + lang;
+      document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + window.location.hostname;
+      document.cookie = "googtrans=" + cookieVal + "; path=/;";
+    }
+
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
     }
+
     function cambiarIdiomaDoc(lang) {
+      if (!lang) return;
       localStorage.setItem('limpiapp_lang', lang);
+      setTranslateCookie(lang);
+
       if (lang === 'es') {
         var iframe = document.querySelector('iframe.goog-te-banner-frame');
         if (iframe) {
@@ -218,21 +228,47 @@
           if (b) b.click();
         }
         var combo = document.querySelector('.goog-te-combo');
-        if (combo) { combo.value = 'es'; combo.dispatchEvent(new Event('change')); }
+        if (combo) {
+          combo.value = 'es';
+          combo.dispatchEvent(new Event('change'));
+        }
         return;
       }
+
       var combo = document.querySelector('.goog-te-combo');
       if (combo) {
         combo.value = lang;
         combo.dispatchEvent(new Event('change'));
+      } else {
+        setTimeout(function() {
+          var retryCombo = document.querySelector('.goog-te-combo');
+          if (retryCombo) {
+            retryCombo.value = lang;
+            retryCombo.dispatchEvent(new Event('change'));
+          }
+        }, 200);
       }
     }
+
     document.addEventListener('DOMContentLoaded', function() {
-      var savedLang = localStorage.getItem('limpiapp_lang') || 'es';
+      var urlParams = new URLSearchParams(window.location.search);
+      var langUrl = urlParams.get('lang');
+      var savedLang = langUrl || localStorage.getItem('limpiapp_lang') || 'es';
+
+      setTranslateCookie(savedLang);
+
       var select = document.getElementById('langSelect');
       if (select) select.value = savedLang;
+
       if (savedLang !== 'es') {
-        setTimeout(function() { cambiarIdiomaDoc(savedLang); }, 500);
+        var checkInterval = setInterval(function() {
+          var combo = document.querySelector('.goog-te-combo');
+          if (combo) {
+            clearInterval(checkInterval);
+            cambiarIdiomaDoc(savedLang);
+          }
+        }, 100);
+        setTimeout(function() { clearInterval(checkInterval); }, 3000);
       }
     });
   </script>
