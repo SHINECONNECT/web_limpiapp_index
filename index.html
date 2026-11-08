@@ -5,211 +5,383 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIMPIAPP | Conectamos Servicios de Limpieza por Código Postal</title>
   
-  <!-- Integración Técnica App Móvil (Figma / Serxus) -->
   <meta name="apple-itunes-app" content="app-id=limpiapp">
   <link rel="alternate" href="limpiapp://home">
   <meta name="theme-color" content="#006972">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* DESIGN TOKENS CORPORATIVOS LIMPIAPP */
     :root {
-      --color-primary: #006972;
-      --color-primary-hover: #004f56;
-      --color-primary-light: #e0f2fe;
-      
-      --color-secondary: #059669;
-      --color-secondary-hover: #047857;
-      --color-secondary-light: #ecfdf5;
-      
-      --color-slate-dark: #0f172a;
-      --color-slate-medium: #334155;
-      --color-slate-muted: #64748b;
-      --color-slate-border: #cbd5e1;
-      
-      --color-bg-page: #f8fafc;
-      --color-bg-card: #ffffff;
-      
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+      --primary: #006972;
+      --primary-dark: #004f56;
+      --primary-light: #e0f2fe;
+      --secondary: #059669;
+      --secondary-dark: #047857;
+      --secondary-light: #ecfdf5;
+      --dark: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.6; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    body { background-color: var(--bg); color: var(--dark); line-height: 1.6; }
 
-    /* Barra Superior Multilingüe */
-    .top-bar {
-      background-color: var(--color-bg-card);
-      border-bottom: 1px solid #e2e8f0;
-      padding: 8px 24px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.85rem;
+    /* Topbar */
+    .top-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 10px; font-size: 0.85rem; }
+    .lang-select { padding: 4px 10px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 0.82rem; background: var(--bg); font-weight: 600; cursor: pointer; }
+
+    /* Header */
+    header { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 24px; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo-container img { max-width: 220px; height: auto; display: block; }
+    .nav-actions { display: flex; gap: 10px; }
+    .btn-nav-client { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.9rem; padding: 8px 16px; border: 1.5px solid var(--primary); border-radius: 8px; }
+    .btn-nav-pro { background: var(--secondary); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; padding: 8px 18px; border-radius: 8px; }
+
+    /* Hero */
+    .hero { max-width: 900px; margin: 0 auto; padding: 50px 20px 30px; text-align: center; }
+    .badge-hero { display: inline-block; background: var(--secondary-light); color: var(--secondary-dark); border: 1px solid #a7f3d0; padding: 5px 14px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; margin-bottom: 16px; }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.25; margin-bottom: 16px; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { font-size: 1.1rem; color: var(--muted); max-width: 700px; margin: 0 auto 26px; }
+
+    /* Buscador CP */
+    .search-box-cp { background: #fff; max-width: 500px; margin: 0 auto 40px; padding: 6px; border-radius: 12px; border: 2px solid var(--primary); box-shadow: 0 10px 20px -5px rgba(0,105,114,0.15); display: flex; gap: 8px; }
+    .search-box-cp input { flex: 1; border: none; padding: 10px 14px; font-size: 0.95rem; outline: none; }
+    .search-box-cp button { background: var(--primary); color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+
+    /* CTAs */
+    .dual-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 860px; margin: 0 auto 60px; text-align: left; }
+    .cta-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .cta-card.client { border-top: 5px solid var(--primary); }
+    .cta-card.pro { border-top: 5px solid var(--secondary); }
+    .card-tag { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; }
+    .cta-card.client .card-tag { color: var(--primary); }
+    .cta-card.pro .card-tag { color: var(--secondary); }
+    .cta-card h2 { font-size: 1.35rem; margin-bottom: 8px; font-weight: 800; }
+    .cta-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 20px; }
+    .btn-action { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; }
+    .btn-action.client { background: var(--primary); color: #fff; }
+    .btn-action.pro { background: var(--secondary); color: #fff; }
+
+    /* Comparativa */
+    .section-wrap { background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 50px 20px; }
+    .inner { max-width: 900px; margin: 0 auto; }
+    .sec-title { text-align: center; margin-bottom: 30px; }
+    .sec-title h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+    .sec-title p { color: var(--muted); font-size: 0.95rem; }
+    .table-box { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
+    th, td { padding: 14px 18px; border-bottom: 1px solid var(--border); }
+    th { background: #f8fafc; font-weight: 700; }
+    th.limpiapp-col { background: #ecfdf5; color: var(--secondary-dark); border-bottom: 2px solid var(--secondary); }
+    td.limpiapp-col { background: #f0fdf4; font-weight: 600; color: #065f46; }
+
+    /* Precios */
+    .pricing-wrap { padding: 60px 20px; background: var(--bg); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 25px; }
+    .price-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+    .price-card.featured { border: 2px solid var(--secondary); box-shadow: 0 12px 25px rgba(5,150,105,0.12); }
+    .badge-f { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: #fff; padding: 3px 12px; border-radius: 9999px; font-size: 0.7rem; font-weight: 800; }
+    .p-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+    .p-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 16px; }
+    .p-amount { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
+    .p-amount span { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+    .p-list { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; }
+    .p-list li span { color: var(--secondary); font-weight: 800; margin-right: 6px; }
+
+    /* Footer */
+    footer { background: var(--dark); color: #94a3b8; padding: 40px 20px 30px; font-size: 0.85rem; text-align: center; }
+    .foot-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 14px 0; }
+    .foot-links a { color: #94a3b8; text-decoration: none; }
+
+    @media (max-width: 800px) {
+      .pricing-grid, .dual-cta-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 12px; }
+      .hero h1 { font-size: 1.9rem; }
+      .top-bar { justify-content: center; }
+      .search-box-cp { flex-direction: column; }
     }
-    .lang-select {
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--color-slate-border);
-      font-size: 0.82rem;
-      background: var(--color-bg-page);
-      color: var(--color-slate-medium);
-      font-weight: 600;
-      cursor: pointer;
+  </style>
+</head>
+<body>
+
+  <!-- Selector Idioma -->
+  <div class="top-bar">
+    <span style="color: var(--muted); font-weight: 600;">🌐 Idioma / Language:</span>
+    <select class="lang-select" onchange="cambiarIdioma(this.value)">
+      <option value="es" selected>Español</option>
+      <option value="ca">Valencià / Català</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+      <option value="pt">Português</option>
+      <option value="de">Deutsch</option>
+      <option value="gl">Galego</option>
+      <option value="eu">Euskara</option>
+    </select>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
+        </a>
+      </div>
+      <div class="nav-actions">
+        <a href="clientes.html" class="btn-nav-client" id="btnNavClient">Buscar Servicio</a>
+        <a href="registro.html" class="btn-nav-pro" id="btnNavPro">Soy Profesional</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero y Buscador -->
+  <main>
+    <section class="hero">
+      <span class="badge-hero" id="badgeHero">🌍 Plataforma Tecnológica Internacional</span>
+      <h1 id="heroTitle">Servicios de limpieza profesional verificados <span>en tu código postal</span></h1>
+      <p id="heroSub">Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.</p>
+
+      <form class="search-box-cp" onsubmit="buscarCP(event)">
+        <input type="text" id="inputCP" placeholder="Introduce tu código postal (ej. 46006)" required>
+        <button type="submit" id="btnBuscarCP">Ver Disponibilidad</button>
+      </form>
+
+      <div class="dual-cta-grid">
+        <div class="cta-card client">
+          <div>
+            <div class="card-tag" id="tagClient">Para Hogares y Empresas</div>
+            <h2 id="titleClient">¿Buscas personal de confianza?</h2>
+            <p id="descClient">Encuentra profesionales de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.</p>
+          </div>
+          <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
+        </div>
+
+        <div class="cta-card pro">
+          <div>
+            <div class="card-tag" id="tagPro">Para Profesionales Independientes</div>
+            <h2 id="titlePro">¿Ofreces tus servicios?</h2>
+            <p id="descPro">Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.</p>
+          </div>
+          <a href="registro.html" class="btn-action pro" id="btnActionPro">Registrarme como Profesional →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla Comparativa -->
+    <section class="section-wrap">
+      <div class="inner">
+        <div class="sec-title">
+          <h2 id="compTitle">¿Por qué LIMPIAPP frente a las alternativas?</h2>
+          <p id="compSub">Compara nuestro modelo de trato directo frente a agencias y apps intermediarias tradicionales.</p>
+        </div>
+
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <th>Características del Servicio</th>
+                <th class="limpiapp-col">✨ LIMPIAPP</th>
+                <th>Otras Apps (Webel, Doméstico24)</th>
+                <th>Agencias Tradicionales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Comisión por servicio realizado</strong></td>
+                <td class="limpiapp-col"><strong>0%</strong> (Cobro 100% tuyo)</td>
+                <td>15% - 25% de recargo</td>
+                <td>Hasta 35% sobre la hora</td>
+              </tr>
+              <tr>
+                <td><strong>Contacto directo cliente y limpiadora</strong></td>
+                <td class="limpiapp-col">✓ WhatsApp y llamada directa</td>
+                <td>✗ Chat cerrado o bloqueado</td>
+                <td>✗ Intermediado por agencia</td>
+              </tr>
+              <tr>
+                <td><strong>Libertad de tarifas por hora</strong></td>
+                <td class="limpiapp-col">✓ Fijada libremente por la profesional</td>
+                <td>✗ Algoritmo impone el precio</td>
+                <td>✗ Tarifa fija de empresa</td>
+              </tr>
+              <tr>
+                <td><strong>Cobertura hiperlocal por Código Postal</strong></td>
+                <td class="limpiapp-col">✓ Demarcación exacta</td>
+                <td>Grandes áreas genéricas</td>
+                <td>Sujeto a personal propio</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes y Tarifas -->
+    <section class="pricing-wrap">
+      <div class="inner">
+        <div class="sec-title">
+          <h2 id="priceTitle">Planes y Tarifas Claros. Sin Letra Pequeña.</h2>
+          <p id="priceSub">Modelo de directorio SaaS: cuota plana para profesionales y acceso flexible para clientes.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div>
+              <div class="p-title">Clientes / Hogares</div>
+              <div class="p-sub">Para familias y empresas que buscan personal</div>
+              <div class="p-amount">0 € <span>/ sin comisiones</span></div>
+              <ul class="p-list">
+                <li><span>✓</span> Acceso al directorio de personal verificado</li>
+                <li><span>✓</span> Filtro de cercanía por código postal</li>
+                <li><span>✓</span> Trato directo y precio libre</li>
+              </ul>
+            </div>
+            <a href="clientes.html" class="btn-action client">Buscar Profesionales →</a>
+          </div>
+
+          <div class="price-card">
+            <div>
+              <div class="p-title">Pro Básico</div>
+              <div class="p-sub">Para limpiadoras que inician su actividad</div>
+              <div class="p-amount">0 € <span>/ para siempre</span></div>
+              <ul class="p-list">
+                <li><span>✓</span> Publicación de perfil en tu código postal</li>
+                <li><span>✓</span> Cobro del 100% de tus horas trabajadas</li>
+                <li><span>✓</span> Contacto telefónico estándar</li>
+              </ul>
+            </div>
+            <a href="registro.html" class="btn-action pro" style="background: var(--muted);">Empezar Gratis</a>
+          </div>
+
+          <div class="price-card featured">
+            <div class="badge-f">🔥 2 Meses Gratis de Lanzamiento</div>
+            <div>
+              <div class="p-title">Plan Pro Destacado</div>
+              <div class="p-sub">Máxima visibilidad y alertas instantáneas</div>
+              <div class="p-amount">0 € <span>primeros 60 días</span></div>
+              <ul class="p-list">
+                <li><span>✓</span> <strong>Posición prioritaria</strong> en los resultados</li>
+                <li><span>✓</span> <strong>Alertas por WhatsApp</strong> con nuevas familias</li>
+                <li><span>✓</span> Cobro 100% íntegro (0% comisiones)</li>
+                <li><span>✓</span> Sin permanencia ni cobros automáticos</li>
+              </ul>
+            </div>
+            <a href="registro.html" class="btn-action pro">Activar 2 Meses Gratis →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Legal Oficial -->
+  <footer>
+    <div class="inner">
+      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 8px;">
+        &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
+      </p>
+      <div class="foot-links">
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <span>|</span>
+        <a href="terminos.html">Términos y Condiciones</a>
+        <span>|</span>
+        <a href="privacidad.html">Política de Privacidad</a>
+        <span>|</span>
+        <a href="cookies.html">Política de Cookies</a>
+      </div>
+      <p style="font-size: 0.78rem; color: #64748b;">
+        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function buscarCP(e) {
+      e.preventDefault();
+      var cp = document.getElementById('inputCP').value.trim();
+      if (cp) window.location.href = 'clientes.html?cp=' + encodeURIComponent(cp);
     }
 
-    /* Cabecera Principal */
-    header {
-      background: var(--color-bg-card);
-      border-bottom: 1px solid #e2e8f0;
-      padding: 16px 24px;
-      width: 100%;
-    }
-    .header-inner {
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo-container img {
-      max-width: 230px;
-      height: auto;
-      display: block;
-    }
-    .nav-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .btn-nav-client {
-      color: var(--color-primary);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 9px 18px;
-      border: 1.5px solid var(--color-primary);
-      border-radius: var(--radius-sm);
-      transition: all 0.2s;
-    }
-    .btn-nav-client:hover { background: var(--color-primary-light); }
-    .btn-nav-pro {
-      background: var(--color-secondary);
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 10px 20px;
-      border-radius: var(--radius-sm);
-      transition: background 0.2s;
-    }
-    .btn-nav-pro:hover { background: var(--color-secondary-hover); }
+    var dicc = {
+      es: {
+        badgeHero: "🌍 Plataforma Tecnológica Internacional",
+        heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
+        heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
+        btnBuscarCP: "Ver Disponibilidad",
+        btnNavClient: "Buscar Servicio",
+        btnNavPro: "Soy Profesional",
+        tagClient: "Para Hogares y Empresas",
+        titleClient: "¿Buscas personal de confianza?",
+        descClient: "Encuentra profesionales de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.",
+        btnActionClient: "Solicitar Servicio / Alta Clientes →",
+        tagPro: "Para Profesionales Independientes",
+        titlePro: "¿Ofreces tus servicios?",
+        descPro: "Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.",
+        btnActionPro: "Registrarme como Profesional →",
+        compTitle: "¿Por qué LIMPIAPP frente a las alternativas?",
+        compSub: "Compara nuestro modelo de trato directo frente a agencias y apps intermediarias tradicionales.",
+        priceTitle: "Planes y Tarifas Claros. Sin Letra Pequeña.",
+        priceSub: "Modelo de directorio SaaS: cuota plana para profesionales y acceso flexible para clientes."
+      },
+      ca: {
+        badgeHero: "🌍 Plataforma Tecnològica Internacional",
+        heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
+        heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions i amb total transparència.",
+        btnBuscarCP: "Veure Disponibilitat",
+        btnNavClient: "Cercar Servei",
+        btnNavPro: "Sóc Professional",
+        tagClient: "Per a Llars i Empreses",
+        titleClient: "Busques personal de confiança?",
+        descClient: "Troba professionals de neteja a prop teu. Negocia directament i sense sobrecostos d'intermediació.",
+        btnActionClient: "Demanar Servei / Alta Clients →",
+        tagPro: "Per a Professionals Independents",
+        titlePro: "Ofereixes els teus serveis?",
+        descPro: "Publica el teu perfil a la teva zona, fixa les teves tarifes i rep contactes directes per WhatsApp. 2 mesos de franc.",
+        btnActionPro: "Registrar-me com a Professional →",
+        compTitle: "Per què LIMPIAPP enfront de les alternatives?",
+        compSub: "Compara el nostre model de tracte directe davant agències i apps tradicionals.",
+        priceTitle: "Plans i Tarifes Clars. Sense Lletra Petita.",
+        priceSub: "Model de directori SaaS: quota plana per a professionals i accés lliure per a clients."
+      },
+      en: {
+        badgeHero: "🌍 International Technology Platform",
+        heroTitle: "Verified professional cleaning services <span>in your postal code</span>",
+        heroSub: "Connecting independent cleaners with homes and companies in any city. Direct contact, 0% service fees, and full transparency.",
+        btnBuscarCP: "Check Availability",
+        btnNavClient: "Find Service",
+        btnNavPro: "I am a Professional",
+        tagClient: "For Homes & Businesses",
+        titleClient: "Looking for trusted cleaning staff?",
+        descClient: "Find local cleaning professionals near you. Direct deal, verified profiles, and zero commission markups.",
+        btnActionClient: "Request Service / Client Signup →",
+        tagPro: "For Independent Cleaners",
+        titlePro: "Do you offer cleaning services?",
+        descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
+        btnActionPro: "Register as a Professional →",
+        compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
+        compSub: "Compare our direct contact model against agencies and traditional apps.",
+        priceTitle: "Transparent Plans & Pricing. No Hidden Fees.",
+        priceSub: "SaaS directory model: flat fee for cleaners and flexible access for clients."
+      }
+    };
 
-    /* Hero Principal con Buscador de CP */
-    .hero {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 50px 20px 30px;
-      text-align: center;
+    function cambiarIdioma(lang) {
+      var t = dicc[lang] || dicc['es'];
+      for (var id in t) {
+        var el = document.getElementById(id);
+        if (el) {
+          if (id === 'heroTitle') el.innerHTML = t[id];
+          else el.innerText = t[id];
+        }
+      }
     }
-    .badge-hero {
-      display: inline-block;
-      background: var(--color-secondary-light);
-      color: var(--color-secondary-hover);
-      border: 1px solid #a7f3d0;
-      padding: 6px 16px;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: 2.7rem;
-      font-weight: 800;
-      line-height: 1.25;
-      color: var(--color-slate-dark);
-      margin-bottom: 18px;
-    }
-    .hero h1 span { color: var(--color-primary); }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--color-slate-muted);
-      max-width: 760px;
-      margin: 0 auto 30px;
-    }
-
-    /* Buscador por Código Postal */
-    .search-box-cp {
-      background: #ffffff;
-      max-width: 540px;
-      margin: 0 auto 40px;
-      padding: 8px;
-      border-radius: var(--radius-md);
-      border: 2px solid var(--color-primary);
-      box-shadow: 0 10px 20px -5px rgba(0, 105, 114, 0.15);
-      display: flex;
-      gap: 8px;
-    }
-    .search-box-cp input {
-      flex: 1;
-      border: none;
-      padding: 12px 16px;
-      font-size: 1rem;
-      outline: none;
-      color: var(--color-slate-dark);
-    }
-    .search-box-cp button {
-      background: var(--color-primary);
-      color: #ffffff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: var(--radius-sm);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .search-box-cp button:hover { background: var(--color-primary-hover); }
-
-    /* Tarjetas de Selección B2B y B2C */
-    .dual-cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto 60px;
-      text-align: left;
-    }
-    .cta-card {
-      background: var(--color-bg-card);
-      border: 1.5px solid #e2e8f0;
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-card);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .cta-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
-    }
-    .cta-card.client { border-top: 5px solid var(--color-primary); }
-    .cta-card.pro { border-top: 5px solid var(--color-secondary); }
-    .card-tag {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 10px;
-    }
-    .cta-card.client .card-tag { color: var(--color-primary); }
-    .cta-card.pro .card-tag { color: var(--
+  </script>
+</body>
+</html>
