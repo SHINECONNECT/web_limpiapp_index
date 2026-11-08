@@ -82,18 +82,89 @@
     th.limpiapp-col { background: #ecfdf5; color: var(--secondary-dark); border-bottom: 2px solid var(--secondary); }
     td.limpiapp-col { background: #f0fdf4; font-weight: 600; color: #065f46; }
 
-    /* Precios */
-    .pricing-wrap { padding: 60px 20px; background: var(--bg); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 25px; }
-    .price-card { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-    .price-card.featured { border: 2px solid var(--secondary); box-shadow: 0 12px 25px rgba(5,150,105,0.12); }
-    .badge-f { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: #fff; padding: 3px 12px; border-radius: 9999px; font-size: 0.7rem; font-weight: 800; }
-    .p-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
-    .p-sub { font-size: 0.8rem; color: var(--muted); margin-bottom: 16px; }
-    .p-amount { font-size: 2rem; font-weight: 800; margin-bottom: 16px; }
-    .p-amount span { font-size: 0.85rem; font-weight: 500; color: var(--muted); }
-    .p-list { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; }
-    .p-list li span { color: var(--secondary); font-weight: 800; margin-right: 6px; }
+  <!-- PLANES Y TARIFAS OFICIALES -->
+    <section class="pricing-wrap" style="padding: 60px 20px; background: var(--bg);">
+      <div class="inner" style="max-width: 1200px; margin: 0 auto;">
+        <div class="sec-title" style="text-align: center; margin-bottom: 35px;">
+          <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px;">Planes y Tarifas Claros. Sin Letra Pequeña.</h2>
+          <p style="color: var(--muted); font-size: 0.95rem;">Modelo SaaS de directorio: cuotas de suscripción transparentes, sin retenciones ni comisiones sobre el servicio.</p>
+        </div>
+
+        <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 25px;">
+          
+          <!-- 1. Cliente Fórmula Básica -->
+          <div class="price-card" style="background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">Clientes / Hogares</div>
+              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Fórmula Básica</div>
+              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Para necesidades estándar de limpieza</div>
+              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--dark);">5,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes</span></div>
+              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Contacto con hasta <strong>5 profesionales</strong></li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Filtro de cercanía por código postal</li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Trato directo por WhatsApp / llamada</li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> 0% de comisiones sobre las horas</li>
+              </ul>
+            </div>
+            <a href="clientes.html" class="btn-action client" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--primary); color: #fff;">Elegir Básica</a>
+          </div>
+
+          <!-- 2. Cliente Fórmula Premium -->
+          <div class="price-card" style="background: #fff; border: 2px solid var(--primary); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 20px rgba(0,105,114,0.1);">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">Clientes / Hogares ★</div>
+              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Fórmula Premium</div>
+              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Máxima cobertura y avisos urgentes</div>
+              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--primary);">9,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes</span></div>
+              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Contacto con <strong>perfiles ilimitados</strong></li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Alertas inmediatas en tu zona y C.P.</li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Acceso preferente a perfiles valorados</li>
+                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Soporte prioritario de gestión</li>
+              </ul>
+            </div>
+            <a href="clientes.html" class="btn-action client" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--primary); color: #fff;">Elegir Premium</a>
+          </div>
+
+          <!-- 3. Profesional: Plan Básico Gratuito -->
+          <div class="price-card" style="background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 4px;">Profesionales</div>
+              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Plan Básico</div>
+              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Para arrancar tu presencia sin coste</div>
+              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--dark);">0 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ para siempre</span></div>
+              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Perfil publicado en tu código postal</li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Acceso limitado a 2 contactos/mes</strong></li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Cobro 100% íntegro (0% comisiones)</li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Sin cuotas ni compromisos</li>
+              </ul>
+            </div>
+            <a href="registro.html" class="btn-action pro" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--muted); color: #fff;">Alta Básica Gratis</a>
+          </div>
+
+          <!-- 4. Profesional: Plan Pro Destacado -->
+          <div class="price-card featured" style="background: #fff; border: 2px solid var(--secondary); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 12px 25px rgba(5,150,105,0.15);">
+            <div class="badge-f" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: #fff; padding: 4px 14px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; white-space: nowrap;">🔥 Primeras 30 inscritas: 2 Meses Gratis</div>
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 4px;">Profesionales Destacadas</div>
+              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Plan Pro Destacado</div>
+              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Máxima visibilidad y clientes ilimitados</div>
+              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--secondary);">4,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes (0 € primeros 60 días)</span></div>
+              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Contactos directos ilimitados</strong></li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Posición prioritaria</strong> en búsquedas por C.P.</li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Alertas inmediatas por WhatsApp</strong> con solicitudes</li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Insignia de perfil verificado de confianza</li>
+                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Cobro 100% íntegro (0% comisiones)</li>
+              </ul>
+            </div>
+            <a href="registro.html" class="btn-action pro" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--secondary); color: #fff;">Activar Promoción (2 Meses Gratis) →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     /* Footer */
     footer { background: var(--dark); color: #94a3b8; padding: 40px 20px 30px; font-size: 0.85rem; text-align: center; }
