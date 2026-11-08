@@ -8,27 +8,31 @@
   <!-- Configuración de Deep Linking y tokens de diseño para Serxus (Figma / App) -->
   <meta name="apple-itunes-app" content="app-id=limpiapp">
   <link rel="alternate" href="limpiapp://home">
-  <meta name="theme-color" content="#006972">
+  <meta name="theme-color" content="#4f585d">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* DESIGN TOKENS OFICIALES LIMPIAPP — Compatibles con Figma Variables */
+    /* DESIGN TOKENS CORPORATIVOS EXTRAÍDOS DEL LOGO OFICIAL LIMPIAPP */
     :root {
-      --color-primary: #006972;
-      --color-primary-hover: #004f56;
-      --color-primary-light: #e0f2fe;
+      /* Azul Glaciar / Acero Pulido (Trazo de la 'L', 'IMPI' y tejado) */
+      --color-logo-blue: #7faecb;
+      --color-logo-blue-dark: #6294b4;
+      --color-logo-blue-light: #eef5f9;
+      --color-logo-blue-soft: #d2e4f0;
       
-      --color-secondary: #059669;
-      --color-secondary-hover: #047857;
-      --color-secondary-light: #ecfdf5;
+      /* Gris Grafito / Pizarra Carbón ('PP' y 'BY SHINECONNECT') */
+      --color-logo-charcoal: #4f585d;
+      --color-logo-charcoal-dark: #373e42;
+      --color-logo-charcoal-light: #676e71;
       
-      --color-slate-dark: #0f172a;
-      --color-slate-medium: #334155;
-      --color-slate-muted: #64748b;
-      --color-slate-border: #cbd5e1;
+      /* Escala de Pizarra y Superficies */
+      --color-slate-dark: #24292d;
+      --color-slate-medium: #475259;
+      --color-slate-muted: #6a767e;
+      --color-slate-border: #d4dfe6;
       
       --color-bg-page: #f8fafc;
       --color-bg-card: #ffffff;
@@ -36,7 +40,7 @@
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
-      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+      --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
@@ -45,7 +49,7 @@
     /* Barra Superior Multilingüe */
     .top-bar {
       background-color: var(--color-bg-card);
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
       padding: 8px 24px;
       display: flex;
       justify-content: flex-end;
@@ -67,7 +71,7 @@
     /* Cabecera Principal */
     header {
       background: var(--color-bg-card);
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
       padding: 16px 24px;
       width: 100%;
     }
@@ -90,18 +94,18 @@
       align-items: center;
     }
     .btn-nav-client {
-      color: var(--color-primary);
+      color: var(--color-logo-blue-dark);
       text-decoration: none;
       font-weight: 700;
       font-size: 0.95rem;
       padding: 9px 18px;
-      border: 1.5px solid var(--color-primary);
+      border: 1.5px solid var(--color-logo-blue);
       border-radius: var(--radius-sm);
       transition: all 0.2s;
     }
-    .btn-nav-client:hover { background: var(--color-primary-light); }
+    .btn-nav-client:hover { background: var(--color-logo-blue-light); }
     .btn-nav-pro {
-      background: var(--color-secondary);
+      background: var(--color-logo-charcoal);
       color: #ffffff;
       text-decoration: none;
       font-weight: 700;
@@ -110,7 +114,7 @@
       border-radius: var(--radius-sm);
       transition: background 0.2s;
     }
-    .btn-nav-pro:hover { background: var(--color-secondary-hover); }
+    .btn-nav-pro:hover { background: var(--color-logo-charcoal-dark); }
 
     /* Hero Principal con Buscador de CP */
     .hero {
@@ -121,9 +125,9 @@
     }
     .badge-hero {
       display: inline-block;
-      background: var(--color-secondary-light);
-      color: var(--color-secondary-hover);
-      border: 1px solid #a7f3d0;
+      background: var(--color-logo-blue-light);
+      color: var(--color-logo-blue-dark);
+      border: 1px solid var(--color-logo-blue-soft);
       padding: 6px 16px;
       border-radius: 9999px;
       font-size: 0.85rem;
@@ -137,7 +141,7 @@
       color: var(--color-slate-dark);
       margin-bottom: 18px;
     }
-    .hero h1 span { color: var(--color-primary); }
+    .hero h1 span { color: var(--color-logo-blue-dark); }
     .hero p {
       font-size: 1.15rem;
       color: var(--color-slate-muted);
@@ -145,15 +149,15 @@
       margin: 0 auto 30px;
     }
 
-    /* Buscador por Código Postal para SEO Programático */
+    /* Buscador por Código Postal */
     .search-box-cp {
       background: #ffffff;
       max-width: 540px;
       margin: 0 auto 45px;
       padding: 8px;
       border-radius: var(--radius-md);
-      border: 2px solid var(--color-primary);
-      box-shadow: 0 10px 20px -5px rgba(0, 105, 114, 0.15);
+      border: 2px solid var(--color-logo-blue);
+      box-shadow: 0 10px 20px -5px rgba(127, 174, 203, 0.25);
       display: flex;
       gap: 8px;
     }
@@ -166,7 +170,7 @@
       color: var(--color-slate-dark);
     }
     .search-box-cp button {
-      background: var(--color-primary);
+      background: var(--color-logo-charcoal);
       color: #ffffff;
       border: none;
       padding: 12px 24px;
@@ -176,7 +180,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .search-box-cp button:hover { background: var(--color-primary-hover); }
+    .search-box-cp button:hover { background: var(--color-logo-charcoal-dark); }
 
     /* Tarjetas de Selección B2B y B2C */
     .dual-cta-grid {
@@ -189,7 +193,7 @@
     }
     .cta-card {
       background: var(--color-bg-card);
-      border: 1.5px solid #e2e8f0;
+      border: 1.5px solid var(--color-slate-border);
       border-radius: var(--radius-lg);
       padding: 32px 28px;
       display: flex;
@@ -200,10 +204,10 @@
     }
     .cta-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 15px 30px rgba(36, 41, 45, 0.08);
     }
-    .cta-card.client { border-top: 5px solid var(--color-primary); }
-    .cta-card.pro { border-top: 5px solid var(--color-secondary); }
+    .cta-card.client { border-top: 5px solid var(--color-logo-blue); }
+    .cta-card.pro { border-top: 5px solid var(--color-logo-charcoal); }
     
     .card-tag {
       font-size: 0.8rem;
@@ -212,8 +216,8 @@
       letter-spacing: 0.05em;
       margin-bottom: 10px;
     }
-    .cta-card.client .card-tag { color: var(--color-primary); }
-    .cta-card.pro .card-tag { color: var(--color-secondary); }
+    .cta-card.client .card-tag { color: var(--color-logo-blue-dark); }
+    .cta-card.pro .card-tag { color: var(--color-logo-charcoal); }
     .cta-card h2 { font-size: 1.45rem; margin-bottom: 10px; color: var(--color-slate-dark); font-weight: 800; }
     .cta-card p { font-size: 0.95rem; color: var(--color-slate-muted); margin-bottom: 24px; line-height: 1.5; }
     
@@ -227,16 +231,16 @@
       font-size: 1rem;
       transition: background 0.2s;
     }
-    .btn-action.client { background: var(--color-primary); color: #ffffff; }
-    .btn-action.client:hover { background: var(--color-primary-hover); }
-    .btn-action.pro { background: var(--color-secondary); color: #ffffff; }
-    .btn-action.pro:hover { background: var(--color-secondary-hover); }
+    .btn-action.client { background: var(--color-logo-blue-dark); color: #ffffff; }
+    .btn-action.client:hover { background: var(--color-logo-charcoal); }
+    .btn-action.pro { background: var(--color-logo-charcoal); color: #ffffff; }
+    .btn-action.pro:hover { background: var(--color-logo-charcoal-dark); }
 
     /* SECCIÓN COMPARATIVA CON LA COMPETENCIA */
     .comparison-section {
       background: var(--color-bg-card);
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
+      border-top: 1px solid var(--color-slate-border);
+      border-bottom: 1px solid var(--color-slate-border);
       padding: 60px 20px;
       width: 100%;
     }
@@ -260,7 +264,7 @@
     }
     .table-responsive {
       overflow-x: auto;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--color-slate-border);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-card);
     }
@@ -273,7 +277,7 @@
     }
     table.comp-table th, table.comp-table td {
       padding: 16px 20px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
     }
     table.comp-table th {
       background: #f8fafc;
@@ -281,15 +285,15 @@
       color: var(--color-slate-dark);
     }
     table.comp-table th.col-limpiapp {
-      background: var(--color-secondary-light);
-      color: var(--color-secondary-hover);
-      border-bottom: 2px solid var(--color-secondary);
+      background: var(--color-logo-blue-light);
+      color: var(--color-logo-charcoal);
+      border-bottom: 2px solid var(--color-logo-blue);
       font-size: 1.05rem;
     }
     table.comp-table td.col-limpiapp {
-      background: #f0fdf4;
+      background: #f4f8fb;
       font-weight: 600;
-      color: #065f46;
+      color: var(--color-logo-charcoal-dark);
     }
 
     /* SECCIÓN PLANES Y TARIFAS (DOS BLOQUES SEPARADOS) */
@@ -320,21 +324,21 @@
     /* Bloque Contenedor Específico */
     .pricing-group {
       background: #ffffff;
-      border: 1.5px solid #e2e8f0;
+      border: 1.5px solid var(--color-slate-border);
       border-radius: 20px;
       padding: 36px 30px;
       margin-bottom: 40px;
-      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 4px 20px rgba(36, 41, 45, 0.04);
     }
-    .pricing-group.client-group { border-top: 6px solid var(--color-primary); }
-    .pricing-group.pro-group { border-top: 6px solid var(--color-secondary); }
+    .pricing-group.client-group { border-top: 6px solid var(--color-logo-blue); }
+    .pricing-group.pro-group { border-top: 6px solid var(--color-logo-charcoal); }
 
     .group-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 24px;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
       padding-bottom: 16px;
     }
     .group-header-text h3 {
@@ -355,8 +359,8 @@
       border-radius: 9999px;
       letter-spacing: 0.04em;
     }
-    .group-badge.client-badge { background: var(--color-primary-light); color: var(--color-primary); }
-    .group-badge.pro-badge { background: var(--color-secondary-light); color: var(--color-secondary-hover); }
+    .group-badge.client-badge { background: var(--color-logo-blue-light); color: var(--color-logo-blue-dark); border: 1px solid var(--color-logo-blue-soft); }
+    .group-badge.pro-badge { background: #eef1f3; color: var(--color-logo-charcoal); border: 1px solid #d8e0e5; }
 
     .group-cards-grid {
       display: grid;
@@ -366,7 +370,7 @@
 
     .plan-card-item {
       background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
+      border: 1.5px solid var(--color-slate-border);
       border-radius: 14px;
       padding: 28px 24px;
       display: flex;
@@ -377,23 +381,23 @@
     }
     .plan-card-item:hover {
       background: #ffffff;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 10px 25px rgba(36, 41, 45, 0.06);
     }
     .plan-card-item.featured-border-client {
-      border: 2px solid var(--color-primary);
+      border: 2px solid var(--color-logo-blue);
       background: #ffffff;
-      box-shadow: 0 8px 20px rgba(0, 105, 114, 0.08);
+      box-shadow: 0 8px 20px rgba(127, 174, 203, 0.15);
     }
     .plan-card-item.featured-border-pro {
-      border: 2px solid var(--color-secondary);
+      border: 2px solid var(--color-logo-charcoal);
       background: #ffffff;
-      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.1);
+      box-shadow: 0 8px 20px rgba(79, 88, 93, 0.15);
     }
     .card-top-tag {
       position: absolute;
       top: -12px;
       right: 20px;
-      background: var(--color-secondary);
+      background: var(--color-logo-charcoal);
       color: #ffffff;
       padding: 3px 12px;
       border-radius: 9999px;
@@ -422,8 +426,8 @@
     /* Sección de Ventajas Resumidas */
     .features-section {
       background: var(--color-bg-card);
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
+      border-top: 1px solid var(--color-slate-border);
+      border-bottom: 1px solid var(--color-slate-border);
       padding: 55px 20px;
       width: 100%;
     }
@@ -456,7 +460,7 @@
       flex-wrap: wrap;
       margin: 16px 0 20px;
     }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
+    .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
     @media (max-width: 840px) {
@@ -627,10 +631,10 @@
                 <div class="plan-desc">Para necesidades puntuales o periódicas estándar en el hogar o la oficina.</div>
                 <div class="plan-price">5,99 € <span>/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales por mes</strong></li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada telefónica</li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Sin comisiones sobre el precio de la hora pactada</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales por mes</strong></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada telefónica</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Sin comisiones sobre el precio de la hora pactada</li>
                 </ul>
               </div>
               <a href="clientes.html" class="btn-action client">Elegir Fórmula Básica</a>
@@ -639,14 +643,14 @@
             <!-- Fórmula Premium -->
             <div class="plan-card-item featured-border-client">
               <div>
-                <div class="plan-name" style="color: var(--color-primary);">Fórmula Premium ★</div>
+                <div class="plan-name" style="color: var(--color-logo-blue-dark);">Fórmula Premium ★</div>
                 <div class="plan-desc">Para familias y empresas que requieren máxima agilidad y sustituciones urgentes.</div>
-                <div class="plan-price" style="color: var(--color-primary);">9,99 € <span>/ mes</span></div>
+                <div class="plan-price" style="color: var(--color-logo-blue-dark);">9,99 € <span>/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con <strong>profesionales ilimitados</strong></li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Acceso preferente a perfiles con mejores valoraciones</li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Alertas inmediatas de disponibilidad en tu código postal</li>
-                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Soporte prioritario de gestión de plataforma</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Contacto con <strong>profesionales ilimitados</strong></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Acceso preferente a perfiles con mejores valoraciones</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Alertas inmediatas de disponibilidad en tu código postal</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Soporte prioritario de gestión de plataforma</li>
                 </ul>
               </div>
               <a href="clientes.html" class="btn-action client">Elegir Fórmula Premium</a>
@@ -672,10 +676,10 @@
                 <div class="plan-desc">Para publicar tu perfil y comenzar a recibir solicitudes sin costes fijos.</div>
                 <div class="plan-price">0 € <span>/ para siempre</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Perfil activo en tu ciudad y código postal</li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Acceso limitado a 2 contactos de clientes/mes</strong></li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Tarifa horaria fijada libremente por el profesional</li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> 0% comisiones (cobras el 100% de tu servicio)</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Perfil activo en tu ciudad y código postal</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Acceso limitado a 2 contactos de clientes/mes</strong></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Tarifa horaria fijada libremente por el profesional</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> 0% comisiones (cobras el 100% de tu servicio)</li>
                 </ul>
               </div>
               <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);">Alta Gratuita</a>
@@ -685,17 +689,17 @@
             <div class="plan-card-item featured-border-pro">
               <div class="card-top-tag">🔥 Primeras 30 inscripciones: 2 Meses Gratis</div>
               <div>
-                <div class="plan-name" style="color: var(--color-secondary-hover);">Plan Pro Destacado</div>
+                <div class="plan-name" style="color: var(--color-logo-charcoal);">Plan Pro Destacado</div>
                 <div class="plan-desc">Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.</div>
-                <div class="plan-price" style="color: var(--color-secondary);">4,99 € <span>/ mes</span></div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-secondary); margin-top: -12px; margin-bottom: 16px;">
+                <div class="plan-price" style="color: var(--color-logo-charcoal);">4,99 € <span>/ mes</span></div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-logo-charcoal); margin-top: -12px; margin-bottom: 16px;">
                   🌟 0 € durante los primeros 60 días
                 </div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Contactos directos ilimitados</strong> con familias y empresas</li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Posicionamiento preferente en tu código postal</li>
-                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Insignia oficial de Profesional de Confianza</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Contactos directos ilimitados</strong> con familias y empresas</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Posicionamiento preferente en tu código postal</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Insignia oficial de Profesional de Confianza</li>
                 </ul>
               </div>
               <a href="registro.html" class="btn-action pro">Activar 2 Meses Gratis →</a>
@@ -903,7 +907,7 @@
         descClient: "Encontre profissionais de limpeza na sua área. Contacto direto sem custos de intermediação.",
         btnActionClient: "Pedir Serviço / Registo de Clientes →",
         tagPro: "Para Profissionais de Limpeza",
-        titlePro: "Oferece os seus serviços?",
+        titlePro: "Oferece os seus servicios?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
         compTitle: "Porquê a LIMPIAPP frente às alternativas?",
