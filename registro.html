@@ -228,7 +228,6 @@
     }
     .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
-    /* Modal de Éxito */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -277,7 +276,6 @@
 </head>
 <body>
 
-  <!-- Selector Multilingüe Universal -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
     <select class="lang-select" id="langSelectPro" onchange="cambiarIdioma(this.value)">
@@ -374,7 +372,7 @@
               <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a>, las <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condiciones de Suscripción y Calidad B2B</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
             </label>
             
-            <!-- CASILLA DESMARCADA POR DEFECTO (RGPD OPT-IN) -->
+            <!-- CASILLA DESMARCADA POR DEFECTO -->
             <label class="checkbox-label">
               <input type="checkbox" name="alertas" value="Si">
               <span id="txtAlertas">Deseo recibir alertas inmediatas por WhatsApp con nuevas ofertas de clientes en mi demarcación.</span>
@@ -395,7 +393,6 @@
     </div>
   </div>
 
-  <!-- Modal de Éxito con IDs dinámicos -->
   <div id="modalPro" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
@@ -794,6 +791,16 @@
           inputEl.placeholder = t[pKey];
         }
       }
+
+      // Propagar dinámicamente el idioma en todos los enlaces legales
+      var links = document.querySelectorAll('footer a, .legal-box a');
+      links.forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.includes('.html')) {
+          var base = href.split('?')[0];
+          a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang));
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function() {
