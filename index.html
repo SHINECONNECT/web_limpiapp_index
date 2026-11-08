@@ -14,7 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    /* DESIGN TOKENS CORPORATIVOS EXTRAÍDOS DEL LOGO OFICIAL LIMPIAPP */
     :root {
       --color-logo-blue: #7faecb;
       --color-logo-blue-dark: #6294b4;
@@ -42,7 +41,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
-    /* Barra Superior Multilingüe */
     .top-bar {
       background-color: var(--color-bg-card);
       border-bottom: 1px solid var(--color-slate-border);
@@ -64,7 +62,6 @@
       cursor: pointer;
     }
 
-    /* Cabecera Principal */
     header {
       background: var(--color-bg-card);
       border-bottom: 1px solid var(--color-slate-border);
@@ -112,7 +109,6 @@
     }
     .btn-nav-pro:hover { background: var(--color-logo-charcoal-dark); }
 
-    /* Hero Principal con Buscador de CP */
     .hero {
       max-width: 960px;
       margin: 0 auto;
@@ -145,7 +141,6 @@
       margin: 0 auto 30px;
     }
 
-    /* Buscador por Código Postal */
     .search-box-cp {
       background: #ffffff;
       max-width: 540px;
@@ -178,7 +173,6 @@
     }
     .search-box-cp button:hover { background: var(--color-logo-charcoal-dark); }
 
-    /* Tarjetas de Selección B2B y B2C */
     .dual-cta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -232,7 +226,6 @@
     .btn-action.pro { background: var(--color-logo-charcoal); color: #ffffff; }
     .btn-action.pro:hover { background: var(--color-logo-charcoal-dark); }
 
-    /* SECCIÓN COMPARATIVA CON LA COMPETENCIA */
     .comparison-section {
       background: var(--color-bg-card);
       border-top: 1px solid var(--color-slate-border);
@@ -292,7 +285,6 @@
       color: var(--color-logo-charcoal-dark);
     }
 
-    /* SECCIÓN PLANES Y TARIFAS (DOS BLOQUES SEPARADOS) */
     .pricing-section {
       background-color: var(--color-bg-page);
       padding: 70px 20px;
@@ -418,7 +410,6 @@
     }
     .plan-features li { display: flex; align-items: flex-start; gap: 10px; }
 
-    /* Sección de Ventajas Resumidas */
     .features-section {
       background: var(--color-bg-card);
       border-top: 1px solid var(--color-slate-border);
@@ -438,7 +429,6 @@
     .feature-item h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--color-slate-dark); font-weight: 700; }
     .feature-item p { font-size: 0.9rem; color: var(--color-slate-muted); line-height: 1.5; }
 
-    /* Pie de página Legal */
     footer {
       background-color: var(--color-slate-dark);
       color: #94a3b8;
@@ -470,7 +460,7 @@
 </head>
 <body>
 
-  <!-- Selector de Idiomas Instantáneo -->
+  <!-- Selector de Idiomas -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
     <select class="lang-select" onchange="cambiarIdioma(this.value)">
@@ -490,7 +480,6 @@
     </select>
   </div>
 
-  <!-- Cabecera -->
   <header>
     <div class="header-inner">
       <div class="logo-container">
@@ -505,7 +494,6 @@
     </div>
   </header>
 
-  <!-- Hero Principal -->
   <main>
     <section class="hero">
       <span class="badge-hero" id="badgeHero">🌍 Plataforma Tecnológica Internacional</span>
@@ -614,7 +602,7 @@
           <p id="priceSub">Modelo de directorio SaaS: tarifas transparentes de suscripción y 0% de comisiones sobre los servicios acordados.</p>
         </div>
 
-        <!-- BLOQUE 1: CLIENTES / HOGARES Y EMPRESAS -->
+        <!-- BLOQUE 1: CLIENTES -->
         <div class="pricing-group client-group">
           <div class="group-header">
             <div class="group-header-text">
@@ -625,7 +613,6 @@
           </div>
 
           <div class="group-cards-grid">
-            <!-- Fórmula Básica -->
             <div class="plan-card-item">
               <div>
                 <div class="plan-name" id="planClientBasicoName">Fórmula Básica</div>
@@ -642,7 +629,6 @@
               <a href="clientes.html" class="btn-action client" id="btnClientBasico">Elegir Fórmula Básica</a>
             </div>
 
-            <!-- Fórmula Premium -->
             <div class="plan-card-item featured-border-client">
               <div>
                 <div class="plan-name" style="color: var(--color-logo-blue-dark);" id="planClientPremName">Fórmula Premium ★</div>
@@ -660,7 +646,7 @@
           </div>
         </div>
 
-        <!-- BLOQUE 2: PROFESIONALES DE LIMPIEZA -->
+        <!-- BLOQUE 2: PROFESIONALES -->
         <div class="pricing-group pro-group">
           <div class="group-header">
             <div class="group-header-text">
@@ -671,7 +657,6 @@
           </div>
 
           <div class="group-cards-grid">
-            <!-- Plan Básico -->
             <div class="plan-card-item">
               <div>
                 <div class="plan-name" id="planProBasicoName">Plan Básico</div>
@@ -688,7 +673,6 @@
               <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
             </div>
 
-            <!-- Plan Pro Destacado -->
             <div class="plan-card-item featured-border-pro">
               <div class="card-top-tag" id="badgeProPromo">🔥 Primeras 30 inscripciones: 2 Meses Gratis</div>
               <div>
@@ -735,7 +719,6 @@
     </section>
   </main>
 
-  <!-- Pie de página Legal -->
   <footer>
     <div class="footer-container">
       <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
@@ -760,8 +743,9 @@
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
+      var langActual = localStorage.getItem('limpiapp_lang') || 'es';
       if (cp) {
-        window.location.href = 'clientes.html?cp=' + encodeURIComponent(cp);
+        window.location.href = 'clientes.html?cp=' + encodeURIComponent(cp) + '&lang=' + encodeURIComponent(langActual);
       }
     }
 
@@ -770,6 +754,7 @@
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
         heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
+        placeholderCP: "Introduce tu código postal (ej. 46006)",
         btnBuscarCP: "Ver Disponibilidad",
         btnNavClient: "Buscar Servicio",
         btnNavPro: "Soy Profesional",
@@ -877,6 +862,7 @@
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
         heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
         heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions i amb total transparència.",
+        placeholderCP: "Introdueix el teu codi postal (ex. 46006)",
         btnBuscarCP: "Veure Disponibilitat",
         btnNavClient: "Cercar Servei",
         btnNavPro: "Sóc Professional",
@@ -984,6 +970,7 @@
         badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
         heroTitle: "Servizos de limpeza profesional verificados <span>no teu código postal</span>",
         heroSub: "Conectamos a oferta independente con fogares e empresas en calquera cidade. Trato directo e sen comisións.",
+        placeholderCP: "Introduce o teu código postal (ex. 46006)",
         btnBuscarCP: "Ver Dispoñibilidade",
         btnNavClient: "Buscar Servizo",
         btnNavPro: "Son Profesional",
@@ -1091,6 +1078,7 @@
         badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
         heroTitle: "Garbiketa profesional egiaztatua <span>zure posta-kodean</span>",
         heroSub: "Etxebizitzak eta enpresak garbitzaile profesionalekin konektatzen ditugu. Zuzeneko harremana, komisiorik gabe.",
+        placeholderCP: "Sartu zure posta-kodea (adib. 46006)",
         btnBuscarCP: "Eskuragarritasuna Ikusi",
         btnNavClient: "Zerbitzua Bilatu",
         btnNavPro: "Profesionala Naiz",
@@ -1165,7 +1153,7 @@
         planProBasicoName: "Oinarrizko Plana",
         planProBasicoDesc: "Profila argitaratzeko eta kostu finkorik gabe hasteko.",
         spanSiempre: "/ betirako",
-        featP1: "Profil aktiboa zure hirian eta posta-kodean",
+        featP1: "Perfil aktiboa zure hirian eta posta-kodean",
         featP2: "Bezeroen kontaktuak <strong>%100 egiaztatuta</strong>",
         featP3: "<strong>Gehienez 2 bezero-kontaktu hilean</strong>",
         featP4: "Orduko tarifa libreki ezarria",
@@ -1198,6 +1186,7 @@
         badgeHero: "🌍 International Technology Platform",
         heroTitle: "Verified professional cleaning services <span>in your postal code</span>",
         heroSub: "Connecting independent cleaners with homes and companies in any city. Direct contact, 0% service fees, and full transparency.",
+        placeholderCP: "Enter your postal code (e.g. 46006)",
         btnBuscarCP: "Check Availability",
         btnNavClient: "Find Service",
         btnNavPro: "I am a Professional",
@@ -1305,6 +1294,7 @@
         badgeHero: "🌍 Plateforme Technologique Internationale",
         heroTitle: "Services de nettoyage professionnel vérifiés <span>dans votre code postal</span>",
         heroSub: "Mise en relation directe entre professionnels indépendants, foyers et entreprises. Sans commission sur les prestations.",
+        placeholderCP: "Entrez votre code postal (ex. 75001)",
         btnBuscarCP: "Vérifier la Disponibilité",
         btnNavClient: "Trouver un Service",
         btnNavPro: "Je suis Professionnel",
@@ -1412,6 +1402,7 @@
         badgeHero: "🌍 Internationale Technologieplattform",
         heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
         heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr.",
+        placeholderCP: "Postleitzahl eingeben (z. B. 10115)",
         btnBuscarCP: "Verfügbarkeit prüfen",
         btnNavClient: "Service finden",
         btnNavPro: "Ich bin Dienstleister",
@@ -1519,6 +1510,7 @@
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Servizi di pulizia professionale verificati <span>nel tuo CAP</span>",
         heroSub: "Colleghiamo l'offerta indipendente con case e aziende. Trattativa diretta e senza commissioni sul servizio.",
+        placeholderCP: "Inserisci il tuo CAP (es. 00185)",
         btnBuscarCP: "Verifica Disponibilità",
         btnNavClient: "Cerca Servizio",
         btnNavPro: "Sono un Professionista",
@@ -1626,6 +1618,7 @@
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Serviços de limpeza profissional verificados <span>no seu código postal</span>",
         heroSub: "Ligamos profissionais independentes a lares e empresas. Negociação direta, sem comissões.",
+        placeholderCP: "Introduza o seu código postal (ex. 1000-001)",
         btnBuscarCP: "Ver Disponibilidade",
         btnNavClient: "Procurar Serviço",
         btnNavPro: "Sou Profissional",
@@ -1745,6 +1738,17 @@
           }
         }
       }
+
+      var inputCP = document.getElementById('inputCP');
+      if (inputCP && t.placeholderCP) {
+        inputCP.placeholder = t.placeholderCP;
+      }
+
+      var btnNav = document.getElementById('btnNavClient');
+      if (btnNav) btnNav.setAttribute('href', 'clientes.html?lang=' + lang);
+      
+      var btnAct = document.getElementById('btnActionClient');
+      if (btnAct) btnAct.setAttribute('href', 'clientes.html?lang=' + lang);
     }
 
     document.addEventListener('DOMContentLoaded', function() {
