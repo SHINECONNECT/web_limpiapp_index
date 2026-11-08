@@ -14,6 +14,7 @@
       --color-logo-blue-dark: #6294b4;
       --color-logo-charcoal: #4f585d;
       --color-slate-dark: #24292d;
+      --color-slate-medium: #475259;
       --color-slate-muted: #6a767e;
       --color-slate-border: #d4dfe6;
       --color-bg-page: #f8fafc;
@@ -22,23 +23,23 @@
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
-    .container { max-width: 920px; margin: 40px auto; background: #fff; padding: 48px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
     .back-btn { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; margin-bottom: 24px; font-size: 0.95rem; }
-    .back-btn:hover { text-decoration: underline; }
-    h1 { font-size: 2.1rem; color: var(--color-slate-dark); margin-bottom: 24px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 14px; }
-    h2 { font-size: 1.3rem; color: var(--color-logo-charcoal); margin: 32px 0 12px; font-weight: 700; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px; }
-    p { color: #334155; font-size: 0.95rem; margin-bottom: 14px; text-align: justify; }
-    ul { padding-left: 24px; margin-bottom: 16px; color: #334155; font-size: 0.95rem; }
-    li { margin-bottom: 8px; text-align: justify; }
-    strong { color: var(--color-slate-dark); }
+    h1 { font-size: 2.1rem; color: var(--color-slate-dark); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 14px; }
+    h2 { font-size: 1.25rem; color: var(--color-logo-charcoal); margin: 30px 0 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+    p, li { color: var(--color-slate-medium); font-size: 0.96rem; margin-bottom: 14px; text-align: justify; }
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; }
+    .meta-date { font-weight: 700; color: var(--color-slate-muted); font-size: 0.88rem; margin-top: 30px; border-top: 1px solid var(--color-slate-border); padding-top: 15px; }
+    .legal-id-box { background: #f8fafc; border-left: 4px solid var(--color-logo-blue); padding: 16px 20px; margin: 16px 0; border-radius: 0 8px 8px 0; }
   </style>
 </head>
 <body>
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelector" onchange="aplicarTraduccion(this.value)">
+    <select class="lang-select" id="langSelect" onchange="cambiarIdiomaDoc(this.value)">
       <optgroup label="Lenguas de España">
-        <option value="es" selected>Español</option>
+        <option value="es">Español</option>
         <option value="ca">Valencià / Català</option>
         <option value="gl">Galego</option>
         <option value="eu">Euskara</option>
@@ -49,14 +50,6 @@
         <option value="de">Deutsch</option>
         <option value="it">Italiano</option>
         <option value="pt">Português</option>
-        <option value="nl">Nederlands</option>
-        <option value="pl">Polski</option>
-        <option value="ro">Română</option>
-        <option value="sv">Svenska</option>
-        <option value="da">Dansk</option>
-        <option value="cs">Čeština</option>
-        <option value="hu">Magyar</option>
-        <option value="el">Ελληνικά</option>
       </optgroup>
     </select>
   </div>
@@ -64,16 +57,16 @@
   <div class="container">
     <a href="javascript:history.back()" class="back-btn">← Volver</a>
     <h1>AVISO LEGAL Y CONDICIONES DE USO - SHINECONNECT S.L.</h1>
-
+    
     <h2>1. INFORMACIÓN GENERAL (ART. 10 LSSI-CE)</h2>
     <p>En cumplimiento del deber de información general contenido en el Artículo 10 de la LSSI-CE, se hace constar que el titular de este sitio web y prestador del servicio es:</p>
-    <ul>
-      <li><strong>Denominación Social:</strong> Shine Connect S.L.</li>
-      <li><strong>NIF:</strong> B26917807.</li>
-      <li><strong>Domicilio Social:</strong> c/Mayor, 5, Fortaleny, España.</li>
-      <li><strong>Correo Electrónico de Contacto:</strong> legal@shineconnect.app.</li>
-      <li><strong>Naturaleza de la Entidad:</strong> Sociedad mercantil constituida de conformidad con las leyes de España.</li>
-    </ul>
+    <div class="legal-id-box">
+      <p><strong>Denominación Social:</strong> Shine Connect S.L.</p>
+      <p><strong>NIF:</strong> B26917807.</p>
+      <p><strong>Domicilio Social:</strong> c/Mayor, 5, Fortaleny, España.</p>
+      <p><strong>Correo Electrónico de Contacto:</strong> legal@shineconnect.app.</p>
+      <p><strong>Naturaleza de la Entidad:</strong> Sociedad mercantil constituida de conformidad con las leyes de España.</p>
+    </div>
 
     <h2>2. REGISTRO MERCANTIL</h2>
     <p>ShineConnect S.L. se encuentra debidamente inscrita en el Registro Mercantil de su provincia (Valencia). Los datos registrales (Tomo, Libro, Folio, Sección y Hoja) están a disposición de cualquier autoridad o interesado que los solicite a través del canal de notificaciones oficiales arriba indicado.</p>
@@ -128,35 +121,81 @@
       <li><strong>Legislación:</strong> Este Aviso Legal se rige por la ley española.</li>
       <li><strong>Jurisdicción B2B:</strong> Para disputas con Usuarios Profesionales, las partes se someten a la competencia exclusiva de los Juzgados y Tribunales de la ciudad de Valencia, España.</li>
       <li><strong>Jurisdicción B2C:</strong> En caso de litigios con consumidores, será competente el tribunal del domicilio del consumidor de acuerdo con la normativa de consumo.</li>
-      <li><strong>Resolución en Línea:</strong> Se informa de la existencia de la plataforma de resolución de litigios en línea de la Unión Europea accesible en <a href="http://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">http://ec.europa.eu/consumers/odr</a>.</li>
+      <li><strong>Resolución en Línea:</strong> Se informa de la existencia de la plataforma de resolución de litigios en línea de la Unión Europea accesible en http://ec.europa.eu/consumers/odr.</li>
     </ul>
 
-    <p style="margin-top: 30px; font-weight: 600; color: var(--color-slate-muted);">Última revisión: Mayo de 2026.</p>
+    <p class="meta-date">Última revisión: Mayo de 2026.</p>
   </div>
 
-  <div id="google_translate_element" style="display:none;"></div>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>
+    function setTranslateCookie(lang) {
+      var cookieVal = (lang === 'es') ? '/es/es' : '/es/' + lang;
+      document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + window.location.hostname;
+      document.cookie = "googtrans=" + cookieVal + "; path=/;";
+    }
+
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
     }
-    function aplicarTraduccion(lang) {
+
+    function cambiarIdiomaDoc(lang) {
       if (!lang) return;
       localStorage.setItem('limpiapp_lang', lang);
+      setTranslateCookie(lang);
+
+      if (lang === 'es') {
+        var iframe = document.querySelector('iframe.goog-te-banner-frame');
+        if (iframe) {
+          var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+          var b = innerDoc.querySelector('.goog-close-link');
+          if (b) b.click();
+        }
+        var combo = document.querySelector('.goog-te-combo');
+        if (combo) {
+          combo.value = 'es';
+          combo.dispatchEvent(new Event('change'));
+        }
+        return;
+      }
+
       var combo = document.querySelector('.goog-te-combo');
       if (combo) {
         combo.value = lang;
         combo.dispatchEvent(new Event('change'));
+      } else {
+        setTimeout(function() {
+          var retryCombo = document.querySelector('.goog-te-combo');
+          if (retryCombo) {
+            retryCombo.value = lang;
+            retryCombo.dispatchEvent(new Event('change'));
+          }
+        }, 200);
       }
     }
+
     document.addEventListener('DOMContentLoaded', function() {
-      var guardado = localStorage.getItem('limpiapp_lang') || 'es';
-      var select = document.getElementById('langSelector');
-      if (select) select.value = guardado;
-      if (guardado !== 'es') {
-        setTimeout(function() { aplicarTraduccion(guardado); }, 500);
+      var urlParams = new URLSearchParams(window.location.search);
+      var langUrl = urlParams.get('lang');
+      var savedLang = langUrl || localStorage.getItem('limpiapp_lang') || 'es';
+
+      setTranslateCookie(savedLang);
+
+      var select = document.getElementById('langSelect');
+      if (select) select.value = savedLang;
+
+      if (savedLang !== 'es') {
+        var checkInterval = setInterval(function() {
+          var combo = document.querySelector('.goog-te-combo');
+          if (combo) {
+            clearInterval(checkInterval);
+            cambiarIdiomaDoc(savedLang);
+          }
+        }, 100);
+        setTimeout(function() { clearInterval(checkInterval); }, 3000);
       }
     });
   </script>
+  <div id="google_translate_element" style="display:none;"></div>
 </body>
 </html>
