@@ -7,26 +7,35 @@
   
   <meta name="apple-itunes-app" content="app-id=limpiapp">
   <link rel="alternate" href="limpiapp://client-register">
-  <meta name="theme-color" content="#006972">
+  <meta name="theme-color" content="#4f585d">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
+    /* DESIGN TOKENS CORPORATIVOS LIMPIAPP */
     :root {
-      --color-primary: #006972;
-      --color-primary-hover: #004f56;
-      --color-primary-light: #e0f2fe;
-      --color-slate-dark: #0f172a;
-      --color-slate-medium: #334155;
-      --color-slate-muted: #64748b;
-      --color-slate-border: #cbd5e1;
+      --color-logo-blue: #7faecb;
+      --color-logo-blue-dark: #6294b4;
+      --color-logo-blue-light: #eef5f9;
+      --color-logo-blue-soft: #d2e4f0;
+      
+      --color-logo-charcoal: #4f585d;
+      --color-logo-charcoal-dark: #373e42;
+      
+      --color-slate-dark: #24292d;
+      --color-slate-medium: #475259;
+      --color-slate-muted: #6a767e;
+      --color-slate-border: #d4dfe6;
+      
       --color-bg-page: #f8fafc;
       --color-bg-card: #ffffff;
+      
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 16px;
+      --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
@@ -40,13 +49,12 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 0;
     }
 
-    /* Barra Superior Multilingüe */
+    /* Barra Superior Multilingüe Completa */
     .top-bar {
       background-color: var(--color-bg-card);
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
       padding: 8px 24px;
       width: 100%;
       display: flex;
@@ -66,7 +74,6 @@
       cursor: pointer;
     }
 
-    /* Envoltorio Principal */
     .main-wrapper {
       width: 100%;
       display: flex;
@@ -75,25 +82,23 @@
     }
 
     .container {
-      max-width: 640px;
+      max-width: 660px;
       width: 100%;
       background: var(--color-bg-card);
       border-radius: var(--radius-lg);
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
-      border: 1px solid #e2e8f0;
+      box-shadow: var(--shadow-card);
+      border: 1.5px solid var(--color-slate-border);
       overflow: hidden;
     }
 
-    /* Cabecera de la tarjeta con Logo Oficial */
     .card-header {
       background-color: #ffffff;
       padding: 24px 20px 16px;
       text-align: center;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid var(--color-slate-border);
     }
-    .card-header a { display: inline-block; }
     .card-header img {
-      max-width: 250px;
+      max-width: 240px;
       width: 100%;
       height: auto;
       display: block;
@@ -103,26 +108,24 @@
     .badge-sub {
       margin-top: 12px;
       display: inline-block;
-      background: var(--color-primary-light);
-      color: var(--color-primary);
+      background: var(--color-logo-blue-light);
+      color: var(--color-logo-blue-dark);
       padding: 4px 14px;
       border-radius: 9999px;
       font-size: 0.82rem;
       font-weight: 700;
-      border: 1px solid #bae6fd;
+      border: 1px solid var(--color-logo-blue-soft);
     }
 
-    .content-area {
-      padding: 24px 28px;
-    }
+    .content-area { padding: 26px 28px; }
 
     .back-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--color-primary);
+      color: var(--color-logo-blue-dark);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
       margin-bottom: 16px;
     }
@@ -131,7 +134,7 @@
     h1 {
       font-size: 1.65rem;
       font-weight: 800;
-      color: var(--color-primary);
+      color: var(--color-slate-dark);
       margin-bottom: 8px;
       line-height: 1.3;
     }
@@ -142,7 +145,7 @@
     }
 
     .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
-    label { font-weight: 600; font-size: 0.88rem; color: var(--color-slate-medium); }
+    label { font-weight: 700; font-size: 0.88rem; color: var(--color-slate-dark); }
     
     input[type="text"], input[type="tel"], select, textarea {
       width: 100%;
@@ -152,11 +155,12 @@
       font-size: 0.95rem;
       font-family: inherit;
       background-color: #ffffff;
+      color: var(--color-slate-dark);
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(0, 105, 114, 0.15);
+      border-color: var(--color-logo-blue-dark);
+      box-shadow: 0 0 0 3px rgba(127, 174, 203, 0.25);
     }
 
     .row-3 {
@@ -172,23 +176,24 @@
       margin-top: 4px;
     }
     .plan-card {
-      border: 2px solid #e2e8f0;
+      border: 1.5px solid var(--color-slate-border);
       border-radius: var(--radius-sm);
-      padding: 12px;
+      padding: 14px;
       cursor: pointer;
-      background: #ffffff;
+      background: #f8fafc;
       transition: all 0.2s;
     }
     .plan-card.premium {
-      border-color: var(--color-primary);
-      background: #f0fdfa;
+      border-color: var(--color-logo-blue);
+      background: #ffffff;
+      box-shadow: 0 4px 14px rgba(127, 174, 203, 0.15);
     }
-    .plan-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; display: block; color: var(--color-slate-dark); }
-    .plan-card.premium .plan-title { color: var(--color-primary); }
-    .plan-desc { font-size: 0.78rem; color: var(--color-slate-muted); line-height: 1.35; }
+    .plan-title { font-weight: 800; font-size: 0.92rem; margin-bottom: 4px; display: block; color: var(--color-slate-dark); }
+    .plan-card.premium .plan-title { color: var(--color-logo-blue-dark); }
+    .plan-desc { font-size: 0.8rem; color: var(--color-slate-muted); line-height: 1.35; }
 
     .legal-box {
-      background: #f1f5f9;
+      background: #f1f6f9;
       padding: 14px;
       border-radius: var(--radius-sm);
       font-size: 0.75rem;
@@ -197,6 +202,7 @@
       flex-direction: column;
       gap: 10px;
       margin: 20px 0;
+      border: 1px solid var(--color-slate-border);
     }
     .checkbox-label {
       display: flex;
@@ -211,12 +217,12 @@
       height: 18px;
       min-width: 18px;
       margin-top: 2px;
-      accent-color: var(--color-primary);
+      accent-color: var(--color-logo-charcoal);
     }
 
     .btn-submit {
       width: 100%;
-      background: var(--color-primary);
+      background: var(--color-logo-charcoal);
       color: #ffffff;
       padding: 14px;
       border: none;
@@ -226,14 +232,14 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .btn-submit:hover { background: var(--color-primary-hover); }
+    .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
     /* Modal */
     .modal-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(36, 41, 45, 0.6);
       align-items: center;
       justify-content: center;
       z-index: 9999;
@@ -248,7 +254,7 @@
       text-align: center;
     }
 
-    /* Pie de página Oficial */
+    /* Footer Legal Oficial */
     footer {
       background-color: var(--color-slate-dark);
       color: #94a3b8;
@@ -265,7 +271,7 @@
       flex-wrap: wrap;
       margin: 16px 0 20px;
     }
-    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
+    .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
     @media (max-width: 600px) {
@@ -277,26 +283,38 @@
 </head>
 <body>
 
-  <!-- Selector de Idiomas -->
+  <!-- Selector Multilingüe Universal (UE y Autonómicas) -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
     <select class="lang-select" onchange="cambiarIdioma(this.value)">
-      <option value="es" selected>Español</option>
-      <option value="ca">Valencià / Català</option>
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="it">Italiano</option>
-      <option value="pt">Português</option>
-      <option value="de">Deutsch</option>
-      <option value="gl">Galego</option>
-      <option value="eu">Euskara</option>
+      <optgroup label="Lenguas de España">
+        <option value="es" selected>Español</option>
+        <option value="ca">Valencià / Català</option>
+        <option value="gl">Galego</option>
+        <option value="eu">Euskara</option>
+      </optgroup>
+      <optgroup label="Unión Europea">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="ro">Română</option>
+        <option value="sv">Svenska</option>
+        <option value="da">Dansk</option>
+        <option value="cs">Čeština</option>
+        <option value="hu">Magyar</option>
+        <option value="el">Ελληνικά</option>
+      </optgroup>
     </select>
   </div>
 
   <div class="main-wrapper">
     <div class="container">
       
-      <!-- Cabecera con Logo Corporativo Oficial -->
+      <!-- Cabecera con Logo Oficial -->
       <div class="card-header">
         <a href="index.html">
           <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
@@ -321,22 +339,22 @@
 
           <div class="form-group">
             <label id="lblNombre">Nombre y Apellidos *</label>
-            <input type="text" name="nombre" required placeholder="Tu nombre completo">
+            <input type="text" name="nombre" id="inputNombre" required placeholder="Tu nombre completo">
           </div>
 
           <div class="form-group">
             <label id="lblTel">Teléfono / WhatsApp (con prefijo internacional) *</label>
-            <input type="tel" name="telefono" required placeholder="+34 612 345 678">
+            <input type="tel" name="telefono" id="inputTel" required placeholder="+34 612 345 678">
           </div>
 
           <div class="row-3">
             <div class="form-group">
               <label id="lblPais">País *</label>
-              <input type="text" name="pais" required placeholder="Ej. España, Portugal, France...">
+              <input type="text" name="pais" id="inputPais" required placeholder="Ej. España">
             </div>
             <div class="form-group">
               <label id="lblCiudad">Ciudad *</label>
-              <input type="text" name="ciudad" required placeholder="Tu ciudad">
+              <input type="text" name="ciudad" id="inputCiudad" required placeholder="Tu ciudad">
             </div>
             <div class="form-group">
               <label id="lblCP">Código Postal *</label>
@@ -346,12 +364,12 @@
 
           <div class="form-group">
             <label id="lblServicio">Tipo de Servicio que necesitas *</label>
-            <select name="servicio" required>
-              <option value="Mantenimiento periódico regular">Mantenimiento periódico (semanal / quincenal)</option>
-              <option value="Limpieza a fondo puntual">Limpieza a fondo puntual</option>
-              <option value="Mudanza o fin de obra">Mudanza o fin de obra</option>
-              <option value="Planchado y tareas del hogar">Planchado y tareas domésticas</option>
-              <option value="Oficinas o locales comerciales">Limpieza de oficinas y empresas</option>
+            <select name="servicio" id="selectServicio" required>
+              <option value="Mantenimiento periódico regular" id="optServ1">Mantenimiento periódico (semanal / quincenal)</option>
+              <option value="Limpieza a fondo puntual" id="optServ2">Limpieza a fondo puntual</option>
+              <option value="Mudanza o fin de obra" id="optServ3">Mudanza o fin de obra</option>
+              <option value="Planchado y tareas del hogar" id="optServ4">Planchado y tareas domésticas</option>
+              <option value="Oficinas o locales comerciales" id="optServ5">Limpieza de oficinas y empresas</option>
             </select>
           </div>
 
@@ -360,28 +378,28 @@
             <div class="plans-grid">
               <label class="plan-card">
                 <input type="radio" name="formula" value="Fórmula Básica de Cliente" checked style="margin-right: 6px;">
-                <span class="plan-title">Fórmula Básica</span>
-                <p class="plan-desc">Acceso al directorio local y contacto directo según disponibilidad ordinaria.</p>
+                <span class="plan-title" id="planBasicoTitle">Fórmula Básica (5,99 €/mes)</span>
+                <p class="plan-desc" id="planBasicoDesc">Hasta 5 contactos directos de profesionales por mes y filtro por código postal.</p>
               </label>
               <label class="plan-card premium">
                 <input type="radio" name="formula" value="Fórmula Premium de Cliente" style="margin-right: 6px;">
-                <span class="plan-title">Fórmula Premium ★</span>
-                <p class="plan-desc">Acceso preferente a perfiles destacados, filtros urgentes y avisos prioritarios.</p>
+                <span class="plan-title" id="planPremTitle">Fórmula Premium ★ (9,99 €/mes)</span>
+                <p class="plan-desc" id="planPremDesc">Contactos ilimitados, alertas inmediatas por código postal y soporte prioritario.</p>
               </label>
             </div>
           </div>
 
           <div class="form-group">
             <label id="lblDetalles">Detalles o necesidades del inmueble (opcional)</label>
-            <textarea name="detalles" rows="2" placeholder="Ej: Vivienda de 90 m2, 3 horas semanales por las mañanas..."></textarea>
+            <textarea name="detalles" id="inputDetalles" rows="2" placeholder="Ej: Vivienda de 90 m2, 3 horas semanales por las mañanas..."></textarea>
           </div>
 
           <div class="legal-box">
             <label class="checkbox-label">
               <input type="checkbox" name="rgpd" required>
-              <span>He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-primary); font-weight: 600;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-primary); font-weight: 600;">Política de Privacidad</a> de Shineconnect S.L.</span>
+              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
             </label>
-            <div>
+            <div id="txtLegalFooter">
               <strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br>
               <strong>Finalidad:</strong> Gestión y canalización de solicitudes con profesionales en LIMPIAPP.<br>
               <strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.
@@ -400,11 +418,11 @@
   <div id="modalCliente" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
-      <h3 style="color: var(--color-slate-dark); font-size: 1.4rem; margin-bottom: 10px;">¡Solicitud Registrada!</h3>
-      <p style="color: var(--color-slate-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;">
-        Hemos guardado tu solicitud en el sistema. En cuanto activemos las profesionales de tu zona te avisaremos por WhatsApp o llamada.
+      <h3 style="color: var(--color-slate-dark); font-size: 1.4rem; margin-bottom: 10px;" id="modalTitle">¡Solicitud Registrada!</h3>
+      <p style="color: var(--color-slate-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;" id="modalDesc">
+        Hemos guardado tu solicitud en el sistema. En cuanto activemos los profesionales de tu zona te avisaremos por WhatsApp o llamada.
       </p>
-      <button onclick="document.getElementById('modalCliente').style.display='none'; window.location.href='index.html';" style="background: var(--color-primary); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">
+      <button onclick="document.getElementById('modalCliente').style.display='none'; window.location.href='index.html';" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;" id="modalBtn">
         Volver a la Portada
       </button>
     </div>
@@ -481,13 +499,36 @@
       });
     });
 
-    // Traducción
+    // DICCIONARIO COMPLETO: Traduce TODOS los campos, etiquetas y desplegables
     var dicc = {
       es: {
         badgeSub: "SOLICITUD DE ACCESO A PROFESIONALES",
         backLink: "← Volver al inicio",
         titleForm: "Encuentra personal de limpieza verificado",
         subForm: "Accede a profesionales independientes en tu ciudad o código postal. Contacto directo, tarifas libres y sin comisiones intermedias.",
+        lblNombre: "Nombre y Apellidos *",
+        placeholderNombre: "Tu nombre completo",
+        lblTel: "Teléfono / WhatsApp (con prefijo internacional) *",
+        placeholderTel: "+34 612 345 678",
+        lblPais: "País *",
+        placeholderPais: "Ej. España",
+        lblCiudad: "Ciudad *",
+        placeholderCiudad: "Tu ciudad",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ej. 46006",
+        lblServicio: "Tipo de Servicio que necesitas *",
+        optServ1: "Mantenimiento periódico (semanal / quincenal)",
+        optServ2: "Limpieza a fondo puntual",
+        optServ3: "Mudanza o fin de obra",
+        optServ4: "Planchado y tareas domésticas",
+        optServ5: "Limpieza de oficinas y empresas",
+        lblFormula: "Modalidad de Acceso preferida *",
+        planBasicoTitle: "Fórmula Básica (5,99 €/mes)",
+        planBasicoDesc: "Hasta 5 contactos directos de profesionales por mes y filtro por código postal.",
+        planPremTitle: "Fórmula Premium ★ (9,99 €/mes)",
+        planPremDesc: "Contactos ilimitados, alertas inmediatas por código postal y soporte prioritario.",
+        lblDetalles: "Detalles o necesidades del inmueble (opcional)",
+        placeholderDetalles: "Ej: Vivienda de 90 m2, 3 horas semanales por las mañanas...",
         btnSubmitCliente: "Solicitar Acceso a Profesionales"
       },
       ca: {
@@ -495,13 +536,119 @@
         backLink: "← Tornar a l'inici",
         titleForm: "Troba personal de neteja verificat",
         subForm: "Accedeix a professionals independents a la teva ciutat o codi postal. Contacte directe, tarifes lliures i sense comissions.",
+        lblNombre: "Nom i Cognoms *",
+        placeholderNombre: "El teu nom complet",
+        lblTel: "Telèfon / WhatsApp (amb prefix internacional) *",
+        placeholderTel: "+34 612 345 678",
+        lblPais: "País *",
+        placeholderPais: "Ex. Espanya",
+        lblCiudad: "Ciutat *",
+        placeholderCiudad: "La teva ciutat",
+        lblCP: "Codi Postal *",
+        placeholderCP: "Ex. 46006",
+        lblServicio: "Tipus de Servei que necessites *",
+        optServ1: "Manteniment periòdic (setmanal / quinzenal)",
+        optServ2: "Neteja a fons puntual",
+        optServ3: "Mudança o final d'obra",
+        optServ4: "Planxat i tasques domèstiques",
+        optServ5: "Neteja d'oficines i empreses",
+        lblFormula: "Modalitat d'Accés preferida *",
+        planBasicoTitle: "Fórmula Bàsica (5,99 €/mes)",
+        planBasicoDesc: "Fins a 5 contactes directes de professionals al mes i filtre per codi postal.",
+        planPremTitle: "Fórmula Premium ★ (9,99 €/mes)",
+        planPremDesc: "Contactes il·limitats, alertes immediates per codi postal i suport prioritari.",
+        lblDetalles: "Detalls o necessitats de l'immoble (opcional)",
+        placeholderDetalles: "Ex: Vivenda de 90 m2, 3 hores setmanals als matins...",
         btnSubmitCliente: "Demanar Accés a Professionals"
+      },
+      gl: {
+        badgeSub: "SOLICITUDE DE ACCESO A PROFESIONAIS",
+        backLink: "← Volver ao inicio",
+        titleForm: "Atopa persoal de limpeza verificado",
+        subForm: "Accede a profesionais independentes no teu código postal. Trato directo, tarifas libres e sen comisións.",
+        lblNombre: "Nome e Apelidos *",
+        placeholderNombre: "O teu nome completo",
+        lblTel: "Teléfono / WhatsApp (con prefixo internacional) *",
+        placeholderTel: "+34 612 345 678",
+        lblPais: "País *",
+        placeholderPais: "Ex. España",
+        lblCiudad: "Cidade *",
+        placeholderCiudad: "A túa cidade",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ex. 46006",
+        lblServicio: "Tipo de Servizo que precisas *",
+        optServ1: "Mantemento periódico (semanal / quincenal)",
+        optServ2: "Limpeza a fondo puntual",
+        optServ3: "Mudanza ou fin de obra",
+        optServ4: "Pasado de ferro e tarefas do fogar",
+        optServ5: "Limpeza de oficinas e empresas",
+        lblFormula: "Modalidade de Acceso preferida *",
+        planBasicoTitle: "Fórmula Básica (5,99 €/mes)",
+        planBasicoDesc: "Ata 5 contactos directos de profesionais ao mes e filtro por código postal.",
+        planPremTitle: "Fórmula Premium ★ (9,99 €/mes)",
+        planPremDesc: "Contactos ilimitados, alertas inmediatas por código postal e soporte prioritario.",
+        lblDetalles: "Detalles ou necesidades do inmoble (opcional)",
+        placeholderDetalles: "Ex: Vivenda de 90 m2, 3 horas semanais polas mañás...",
+        btnSubmitCliente: "Solicitar Acceso a Profesionais"
+      },
+      eu: {
+        badgeSub: "PROFESIONALETARA SARBIDE ESKAERA",
+        backLink: "← Hasierara itzuli",
+        titleForm: "Aurkitu egiaztatutako garbitzaileak",
+        subForm: "Jarri harremanetan profesional independenteekin zure posta-kodean. Zuzeneko kontaktua eta komisiorik gabe.",
+        lblNombre: "Izen-abizenak *",
+        placeholderNombre: "Zure izen osoa",
+        lblTel: "Telefonoa / WhatsApp (nazioarteko aurrizkiarekin) *",
+        placeholderTel: "+34 612 345 678",
+        lblPais: "Herrialdea *",
+        placeholderPais: "Adib. Espainia",
+        lblCiudad: "Hiria *",
+        placeholderCiudad: "Zure hiria",
+        lblCP: "Posta-kodea *",
+        placeholderCP: "Adib. 46006",
+        lblServicio: "Behar duzun Zerbitzu Mota *",
+        optServ1: "Aldizkako mantentzea (astero / hamabostero)",
+        optServ2: "Garbiketa sakona puntuala",
+        optServ3: "Etxez aldatzea edo obra amaiera",
+        optServ4: "Lisatzea eta etxeko lanak",
+        optServ5: "Bulego eta enpresen garbiketa",
+        lblFormula: "Aukeratutako Sarbide Modalitatea *",
+        planBasicoTitle: "Oinarrizko Formula (5,99 €/hilean)",
+        planBasicoDesc: "Hilean 5 profesionalekin harreman zuzena eta posta-kodearen araberako bilaketa.",
+        planPremTitle: "Premium Formula ★ (9,99 €/hilean)",
+        planPremDesc: "Mugagabeko kontaktuak, berehalako alertak eta lehentasunezko laguntza.",
+        lblDetalles: "Higiezinaren xehetasunak (aukerakoa)",
+        placeholderDetalles: "Adib: 90 m2-ko etxebizitza, astero 3 ordu goizetan...",
+        btnSubmitCliente: "Profesionaletara Sarbidea Eskatu"
       },
       en: {
         badgeSub: "REQUEST ACCESS TO PROFESSIONALS",
         backLink: "← Back to home",
-        titleForm: "Find verified cleaning staff",
-        subForm: "Access independent cleaners in your city or zip code. Direct contact, free rates, and zero middleman markups.",
+        titleForm: "Find verified cleaning professionals",
+        subForm: "Access independent professionals in your city or postal code. Direct contact, free rates, and zero commission markups.",
+        lblNombre: "Full Name *",
+        placeholderNombre: "Your full name",
+        lblTel: "Phone / WhatsApp (with country code) *",
+        placeholderTel: "+34 612 345 678",
+        lblPais: "Country *",
+        placeholderPais: "e.g. Spain, UK",
+        lblCiudad: "City *",
+        placeholderCiudad: "Your city",
+        lblCP: "Postal Code *",
+        placeholderCP: "e.g. 46006",
+        lblServicio: "Type of Service needed *",
+        optServ1: "Regular maintenance (weekly / bi-weekly)",
+        optServ2: "Deep one-off cleaning",
+        optServ3: "Move-in / Post-renovation cleaning",
+        optServ4: "Ironing and domestic chores",
+        optServ5: "Office and commercial cleaning",
+        lblFormula: "Preferred Access Plan *",
+        planBasicoTitle: "Basic Plan (€5.99/mo)",
+        planBasicoDesc: "Up to 5 direct cleaner contacts per month and zip code matching.",
+        planPremTitle: "Premium Plan ★ (€9.99/mo)",
+        planPremDesc: "Unlimited contacts, instant zip code alert notifications, and priority support.",
+        lblDetalles: "Property details or requirements (optional)",
+        placeholderDetalles: "e.g., 90 sqm apartment, 3 hours weekly in the mornings...",
         btnSubmitCliente: "Request Access to Cleaners"
       },
       fr: {
@@ -509,13 +656,89 @@
         backLink: "← Retour à l'accueil",
         titleForm: "Trouvez du personnel de nettoyage vérifié",
         subForm: "Accédez à des professionnels indépendants dans votre code postal. Contact direct, tarifs libres et sans commission.",
+        lblNombre: "Nom et Prénom *",
+        placeholderNombre: "Votre nom complet",
+        lblTel: "Téléphone / WhatsApp (indicatif inclus) *",
+        placeholderTel: "+33 612 345 678",
+        lblPais: "Pays *",
+        placeholderPais: "ex. France, Espagne",
+        lblCiudad: "Ville *",
+        placeholderCiudad: "Votre ville",
+        lblCP: "Code Postal *",
+        placeholderCP: "ex. 75001",
+        lblServicio: "Type de Prestation souhaitée *",
+        optServ1: "Entretien régulier (hebdomadaire / bimensuel)",
+        optServ2: "Nettoyage ponctuel approfondi",
+        optServ3: "Déménagement ou fin de chantier",
+        optServ4: "Repassage et tâches ménagères",
+        optServ5: "Nettoyage de bureaux et commerces",
+        lblFormula: "Formule d'Accès préférée *",
+        planBasicoTitle: "Formule Basique (5,99 €/mois)",
+        planBasicoDesc: "Jusqu'à 5 contacts directs par mois et recherche par code postal.",
+        planPremTitle: "Formule Premium ★ (9,99 €/mois)",
+        planPremDesc: "Contacts illimités, alertes géographiques instantanées et support prioritaire.",
+        lblDetalles: "Détails ou besoins spécifiques (facultatif)",
+        placeholderDetalles: "ex : Logement de 90 m2, 3h par semaine le matin...",
         btnSubmitCliente: "Demander l'Accès aux Professionnels"
+      },
+      de: {
+        badgeSub: "ZUGANG ZU REINIGUNGSKRÄFTEN ANFRAGEN",
+        backLink: "← Zurück zur Startseite",
+        titleForm: "Geprüftes Reinigungspersonal finden",
+        subForm: "Selbstständige Reinigungskräfte in Ihrer PLZ finden. Direkter Kontakt ohne Vermittlungsgebühren.",
+        lblNombre: "Vor- und Nachname *",
+        placeholderNombre: "Ihr vollständiger Name",
+        lblTel: "Telefon / WhatsApp (mit Ländervorwahl) *",
+        placeholderTel: "+49 170 1234567",
+        lblPais: "Land *",
+        placeholderPais: "z.B. Deutschland",
+        lblCiudad: "Stadt *",
+        placeholderCiudad: "Ihre Stadt",
+        lblCP: "Postleitzahl *",
+        placeholderCP: "z.B. 10115",
+        lblServicio: "Gewünschte Reinigungsart *",
+        optServ1: "Regelmäßige Pflege (wöchentlich / zweiwöchentlich)",
+        optServ2: "Einmalige Grundreinigung",
+        optServ3: "Umzug oder Endreinigung nach Renovierung",
+        optServ4: "Bügeln und Haushaltsarbeiten",
+        optServ5: "Büro- und Gewerbereinigung",
+        lblFormula: "Bevorzugter Zugang *",
+        planBasicoTitle: "Basis-Paket (5,99 €/Monat)",
+        planBasicoDesc: "Bis zu 5 Direktkontakte pro Monat und PLZ-Filter.",
+        planPremTitle: "Premium-Paket ★ (9,99 €/Monat)",
+        planPremDesc: "Unbegrenzte Kontakte, Sofort-Benachrichtigungen und Prioritäts-Support.",
+        lblDetalles: "Details zur Immobilie (optional)",
+        placeholderDetalles: "z.B.: 90 qm Wohnung, 3 Stunden pro Woche morgens...",
+        btnSubmitCliente: "Zugang anfordern"
       },
       it: {
         badgeSub: "RICHIESTA DI ACCESSO AI PROFESSIONISTI",
         backLink: "← Torna alla home",
         titleForm: "Trova personale di pulizia verificato",
         subForm: "Accedi a professionisti indipendenti nel tuo CAP. Contatto diretto, tariffe trasparenti e zero commissioni.",
+        lblNombre: "Nome e Cognome *",
+        placeholderNombre: "Il tuo nome completo",
+        lblTel: "Telefono / WhatsApp (con prefisso internazionale) *",
+        placeholderTel: "+39 340 1234567",
+        lblPais: "Paese *",
+        placeholderPais: "Es. Italia",
+        lblCiudad: "Città *",
+        placeholderCiudad: "La tua città",
+        lblCP: "CAP *",
+        placeholderCP: "Es. 00185",
+        lblServicio: "Tipo di Servizio richiesto *",
+        optServ1: "Manutenzione periodica (settimanale / quindicinale)",
+        optServ2: "Pulizia profonda occasionale",
+        optServ3: "Trasloco o fine lavori",
+        optServ4: "Stiro e faccende domestiche",
+        optServ5: "Pulizia uffici e negozi",
+        lblFormula: "Modalità di Accesso preferita *",
+        planBasicoTitle: "Formula Base (5,99 €/mese)",
+        planBasicoDesc: "Fino a 5 contatti diretti al mese e ricerca per CAP.",
+        planPremTitle: "Formula Premium ★ (9,99 €/mese)",
+        planPremDesc: "Contatti illimitati, notifiche immediate via CAP e supporto prioritario.",
+        lblDetalles: "Dettagli dell'immobile (opzionale)",
+        placeholderDetalles: "Es: Appartamento di 90 mq, 3 ore settimanali di mattina...",
         btnSubmitCliente: "Richiedi Accesso ai Professionisti"
       },
       pt: {
@@ -523,36 +746,309 @@
         backLink: "← Voltar ao início",
         titleForm: "Encontre profissionais de limpeza verificados",
         subForm: "Aceda a profissionais independentes na sua cidade ou código postal. Contacto direto e sem comissões.",
+        lblNombre: "Nome e Apelidos *",
+        placeholderNombre: "O seu nome completo",
+        lblTel: "Telefone / WhatsApp (com indicativo internacional) *",
+        placeholderTel: "+351 912 345 678",
+        lblPais: "País *",
+        placeholderPais: "Ex. Portugal",
+        lblCiudad: "Cidade *",
+        placeholderCiudad: "A sua cidade",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ex. 1000-001",
+        lblServicio: "Tipo de Serviço pretendido *",
+        optServ1: "Manutenção periódica (semanal / quinzenal)",
+        optServ2: "Limpeza profunda pontual",
+        optServ3: "Mudança ou fim de obra",
+        optServ4: "Engomadoria e tarefas domésticas",
+        optServ5: "Limpeza de escritórios e empresas",
+        lblFormula: "Modalidade de Acesso preferida *",
+        planBasicoTitle: "Fórmula Básica (5,99 €/mês)",
+        planBasicoDesc: "Até 5 contactos diretos por mês e pesquisa por código postal.",
+        planPremTitle: "Fórmula Premium ★ (9,99 €/mês)",
+        planPremDesc: "Contactos ilimitados, alertas imediatos por código postal e suporte prioritário.",
+        lblDetalles: "Detalhes do imóvel (opcional)",
+        placeholderDetalles: "Ex: Casa com 90 m2, 3 horas semanais de manhã...",
         btnSubmitCliente: "Pedir Acesso a Profissionais"
       },
-      de: {
-        badgeSub: "ZUGANG ZU REINIGUNGSKRÄFTEN ANFRAGEN",
-        backLink: "← Zurück zur Startseite",
-        titleForm: "Geprüftes Reinigungspersonal finden",
-        subForm: "Selbstständige Reinigungskräfte in Ihrer PLZ finden. Direkter Kontakt ohne Vermittlungsgebühren.",
-        btnSubmitCliente: "Zugang anfordern"
+      nl: {
+        badgeSub: "TOEGANG TOT PROFESSIONALS AANVRAGEN",
+        backLink: "← Terug naar startpagina",
+        titleForm: "Vind geverifieerde schoonmakers",
+        subForm: "Direct contact met zelfstandige schoonmaakprofessionals in uw postcode. Zonder provisiekosten.",
+        lblNombre: "Volledige naam *",
+        placeholderNombre: "Uw volledige naam",
+        lblTel: "Telefoon / WhatsApp *",
+        placeholderTel: "+31 6 12345678",
+        lblPais: "Land *",
+        placeholderPais: "bijv. Nederland",
+        lblCiudad: "Stad *",
+        placeholderCiudad: "Uw stad",
+        lblCP: "Postcode *",
+        placeholderCP: "bijv. 1012 AB",
+        lblServicio: "Gewenste dienstverlening *",
+        optServ1: "Periodiek onderhoud (wekelijks / tweewekelijks)",
+        optServ2: "Eenmalige grondige reiniging",
+        optServ3: "Verhuizing of opleveringsschoonmaak",
+        optServ4: "Strijken en huishoudelijke taken",
+        optServ5: "Kantoor- en bedrijfsschoonmaak",
+        lblFormula: "Toegangsformule *",
+        planBasicoTitle: "Basisformule (€ 5,99/mnd)",
+        planBasicoDesc: "Tot 5 directe contacten per maand en postcodefilter.",
+        planPremTitle: "Premiumformule ★ (€ 9,99/mnd)",
+        planPremDesc: "Onbeperkt contact, directe meldingen en voorrangsservice.",
+        lblDetalles: "Bijzonderheden van het pand (optioneel)",
+        placeholderDetalles: "bijv.: Woning van 90 m2, 3 uur per week in de ochtend...",
+        btnSubmitCliente: "Toegang aanvragen"
       },
-      gl: {
-        badgeSub: "SOLICITUDE DE ACCESO A PROFESIONAIS",
-        backLink: "← Volver ao inicio",
-        titleForm: "Atopa persoal de limpeza verificado",
-        subForm: "Accede a profesionais independentes no teu código postal. Trato directo e sen comisións.",
-        btnSubmitCliente: "Solicitar Acceso a Profesionais"
+      pl: {
+        badgeSub: "WNIOSEK O DOSTĘP DO SPECJALISTÓW",
+        backLink: "← Wróć do strony głównej",
+        titleForm: "Znajdź sprawdzonych specjalistów sprzątania",
+        subForm: "Bezpośredni kontakt ze specjalistami w Twoim kodzie pocztowym. Zero prowizji pośredników.",
+        lblNombre: "Imię i Nazwisko *",
+        placeholderNombre: "Twoje imię i nazwisko",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+48 500 000 000",
+        lblPais: "Kraj *",
+        placeholderPais: "np. Polska",
+        lblCiudad: "Miasto *",
+        placeholderCiudad: "Twoje miasto",
+        lblCP: "Kod pocztowy *",
+        placeholderCP: "np. 00-001",
+        lblServicio: "Rodzaj potrzebnej usługi *",
+        optServ1: "Sprzątanie regularne (co tydzień / 2 tygodnie)",
+        optServ2: "Jednorazowe gruntowne sprzątanie",
+        optServ3: "Sprzątanie po remoncie lub przeprowadzce",
+        optServ4: "Prasowanie i prace domowe",
+        optServ5: "Sprzątanie biur i firm",
+        lblFormula: "Wybrany pakiet dostępu *",
+        planBasicoTitle: "Pakiet Podstawowy (5,99 €/mies.)",
+        planBasicoDesc: "Do 5 bezpośrednich kontaktów w miesiącu i filtr kodu pocztowego.",
+        planPremTitle: "Pakiet Premium ★ (9,99 €/mies.)",
+        planPremDesc: "Nielimitowane kontakty, natychmiastowe alerty i priorytetowa pomoc.",
+        lblDetalles: "Szczegóły nieruchomości (opcjonalnie)",
+        placeholderDetalles: "np.: Mieszkanie 90 m2, 3 godziny tygodniowo rano...",
+        btnSubmitCliente: "Poproś o Dostęp"
       },
-      eu: {
-        badgeSub: "PROFESIONALETARA SARBIDE ESKAERA",
-        backLink: "← Hasierara itzuli",
-        titleForm: "Aurkitu egiaztatutako garbitzaileak",
-        subForm: "Jarri harremanetan profesional independenteekin zure posta-kodean bitartekaririk gabe.",
-        btnSubmitCliente: "Profesionaletara Sarbidea Eskatu"
+      ro: {
+        badgeSub: "SOLICITARE ACCES LA PROFESIONIȘTI",
+        backLink: "← Înapoi la pagina principală",
+        titleForm: "Găsește personal verificat de curățenie",
+        subForm: "Acces direct la profesioniști independenți în codul tău poștal. Fără comisioane de intermediere.",
+        lblNombre: "Nume și Prenume *",
+        placeholderNombre: "Numele tău complet",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+40 700 000 000",
+        lblPais: "Țară *",
+        placeholderPais: "ex. România",
+        lblCiudad: "Oraș *",
+        placeholderCiudad: "Orașul tău",
+        lblCP: "Cod poștal *",
+        placeholderCP: "ex. 010011",
+        lblServicio: "Tipul de serviciu dorit *",
+        optServ1: "Întreținere periodică (săptămânal / bilunar)",
+        optServ2: "Curățenie generală punctuală",
+        optServ3: "Mutare sau curățenie după constructor",
+        optServ4: "Călcat și sarcini casnice",
+        optServ5: "Curățenie birouri și spații comerciale",
+        lblFormula: "Plan de acces preferat *",
+        planBasicoTitle: "Formula de Bază (5,99 €/lună)",
+        planBasicoDesc: "Până la 5 contacte directe pe lună și căutare după cod poștal.",
+        planPremTitle: "Formula Premium ★ (9,99 €/lună)",
+        planPremDesc: "Contacte nelimitate, alerte rapide în zonă și suport prioritar.",
+        lblDetalles: "Detalii sau cerințe speciale (opțional)",
+        placeholderDetalles: "ex: Locuință de 90 mp, 3 ore pe săptămână dimineața...",
+        btnSubmitCliente: "Solicită Acces la Profesioniști"
+      },
+      sv: {
+        badgeSub: "BE OM TILLGÅNG TILL STÄDPERSONAL",
+        backLink: "← Tillbaka till start",
+        titleForm: "Hitta verifierad städpersonal",
+        subForm: "Direktkontakt med städare i ditt postnummerområde. Inga dolda förmedlingsavgifter.",
+        lblNombre: "För- och efternamn *",
+        placeholderNombre: "Ditt fullständiga namn",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+46 70 123 45 67",
+        lblPais: "Land *",
+        placeholderPais: "t.ex. Sverige",
+        lblCiudad: "Stad *",
+        placeholderCiudad: "Din stad",
+        lblCP: "Postnummer *",
+        placeholderCP: "t.ex. 111 22",
+        lblServicio: "Typ av städtjänst *",
+        optServ1: "Regelbunden städning (varje eller varannan vecka)",
+        optServ2: "Grundlig engångsstädning",
+        optServ3: "Flyttstädning eller byggstädning",
+        optServ4: "Strykning och hushållsarbete",
+        optServ5: "Kontors- och företagsstädning",
+        lblFormula: "Önskat medlemskap *",
+        planBasicoTitle: "Basplan (5,99 €/mån)",
+        planBasicoDesc: "Upp till 5 direktkontakter per månad och postnummerfilter.",
+        planPremTitle: "Premiumplan ★ (9,99 €/mån)",
+        planPremDesc: "Obegränsade kontakter, snabba aviseringar och prioriterad support.",
+        lblDetalles: "Information om bostaden (valfritt)",
+        placeholderDetalles: "t.ex.: Lägenhet på 90 kvm, 3 timmar per vecka på morgonen...",
+        btnSubmitCliente: "Ansök om Tillgång"
+      },
+      da: {
+        badgeSub: "ANMOD OM ADGANG TIL RENGØRINGSFOLK",
+        backLink: "← Tilbage til forsiden",
+        titleForm: "Find verificeret rengøringspersonale",
+        subForm: "Få adgang til uafhængige rengøringsfolk i dit postnummer. Direkte kontakt uden provision.",
+        lblNombre: "Fornavn og efternavn *",
+        placeholderNombre: "Dit fulde navn",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+45 20 12 34 56",
+        lblPais: "Land *",
+        placeholderPais: "f.eks. Danmark",
+        lblCiudad: "By *",
+        placeholderCiudad: "Din by",
+        lblCP: "Postnummer *",
+        placeholderCP: "f.eks. 1050",
+        lblServicio: "Ønsket rengøringstype *",
+        optServ1: "Regelmæssig rengøring (ugentlig / hver anden uge)",
+        optServ2: "Hovedrengøring",
+        optServ3: "Flytterengøring eller efter renovering",
+        optServ4: "Strygning og husholdningsopgaver",
+        optServ5: "Kontor- og erhvervsrengøring",
+        lblFormula: "Foretrukken adgangsformel *",
+        planBasicoTitle: "Basisformel (5,99 €/md)",
+        planBasicoDesc: "Op til 5 direkte kontakter om måneden og postnummerfiltrering.",
+        planPremTitle: "Premiumformel ★ (9,99 €/md)",
+        planPremDesc: "Ubegrænsede kontakter, øjeblikkelige notifikationer og prioriteret support.",
+        lblDetalles: "Oplysninger om boligen (valgfrit)",
+        placeholderDetalles: "f.eks.: Bolig på 90 m2, 3 timer ugentligt om morgenen...",
+        btnSubmitCliente: "Anmod om Adgang"
+      },
+      cs: {
+        badgeSub: "ŽÁDOST O PŘÍSTUP K PROFESIONÁLŮM",
+        backLink: "← Zpět na úvod",
+        titleForm: "Najděte ověřené úklidové pracovníky",
+        subForm: "Přímý kontakt s nezávislými úklidovými pracovníky ve vašem PSČ. Zcela bez provizí.",
+        lblNombre: "Jméno a Příjmení *",
+        placeholderNombre: "Vaše celé jméno",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+420 600 000 000",
+        lblPais: "Země *",
+        placeholderPais: "např. Česko",
+        lblCiudad: "Město *",
+        placeholderCiudad: "Vaše město",
+        lblCP: "PSČ *",
+        placeholderCP: "např. 110 00",
+        lblServicio: "Typ požadované služby *",
+        optServ1: "Pravidelný úklid (týdně / jednou za 14 dní)",
+        optServ2: "Jednorázový generální úklid",
+        optServ3: "Úklid po stěhování nebo malování",
+        optServ4: "Žehlení a domácí práce",
+        optServ5: "Úklid kanceláří a firem",
+        lblFormula: "Preferovaný tarif přístupu *",
+        planBasicoTitle: "Základní Tarif (5,99 €/měs)",
+        planBasicoDesc: "Až 5 přímých kontaktů měsíčně a vyhledávání podle PSČ.",
+        planPremTitle: "Premium Tarif ★ (9,99 €/měs)",
+        planPremDesc: "Neomezené kontakty, okamžitá upozornění a přednostní podpora.",
+        lblDetalles: "Podrobnosti o nemovitosti (volitelné)",
+        placeholderDetalles: "např.: Byt 90 m2, 3 hodiny týdně dopoledne...",
+        btnSubmitCliente: "Požádat o Přístup"
+      },
+      hu: {
+        badgeSub: "HOZZÁFÉRÉS KÉRÉSE SZAKEMBEREKHEZ",
+        backLink: "← Vissza a főoldalra",
+        titleForm: "Találjon ellenőrzött takarítókat",
+        subForm: "Közvetlen kapcsolat független szakemberekkel az Ön irányítószámán. Közvetítői díjak nélkül.",
+        lblNombre: "Teljes Név *",
+        placeholderNombre: "Az Ön teljes neve",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+36 30 123 4567",
+        lblPais: "Ország *",
+        placeholderPais: "pl. Magyarország",
+        lblCiudad: "Város *",
+        placeholderCiudad: "Az Ön városa",
+        lblCP: "Irányítószám *",
+        placeholderCP: "pl. 1051",
+        lblServicio: "Szükséges szolgáltatás típusa *",
+        optServ1: "Rendszeres takarítás (heti / kétheti)",
+        optServ2: "Egyszeri nagytakarítás",
+        optServ3: "Költözés vagy felújítás utáni takarítás",
+        optServ4: "Vasalás és házimunka",
+        optServ5: "Iroda- és üzlethelyiség takarítás",
+        lblFormula: "Választott hozzáférési csomag *",
+        planBasicoTitle: "Alap Csomag (5,99 €/hó)",
+        planBasicoDesc: "Havi legfeljebb 5 közvetlen kapcsolat és irányítószámos szűrés.",
+        planPremTitle: "Prémium Csomag ★ (9,99 €/hó)",
+        planPremDesc: "Korlátlan kapcsolatfelvétel, azonnali értesítések és kiemelt ügyfélszolgálat.",
+        lblDetalles: "Ingatlan részletei (opcionális)",
+        placeholderDetalles: "pl.: 90 m2-es lakás, heti 3 óra délelőtt...",
+        btnSubmitCliente: "Hozzáférés Kérése"
+      },
+      el: {
+        badgeSub: "ΑΙΤΗΣΗ ΠΡΟΣΒΑΣΗΣ ΣΕ ΕΠΑΓΓΕΛΜΑΤΙΕΣ",
+        backLink: "← Επιστροφή στην αρχική",
+        titleForm: "Βρείτε πιστοποιημένο προσωπικό καθαρισμού",
+        subForm: "Άμεση πρόσβαση σε ανεξάρτητους επαγγελματίες στον ταχυδρομικό σας κώδικα χωρίς προμήθειες.",
+        lblNombre: "Ονοματεπώνυμο *",
+        placeholderNombre: "Το πλήρες όνομά σας",
+        lblTel: "Τηλέφωνο / WhatsApp *",
+        placeholderTel: "+30 690 000 0000",
+        lblPais: "Χώρα *",
+        placeholderPais: "π.χ. Ελλάδα",
+        lblCiudad: "Πόλη *",
+        placeholderCiudad: "Η πόλη σας",
+        lblCP: "Ταχυδρομικός Κώδικας *",
+        placeholderCP: "π.χ. 10431",
+        lblServicio: "Είδος Υπηρεσίας *",
+        optServ1: "Τακτικός καθαρισμός (εβδομαδιαίος / ανά δεκαπενθήμερο)",
+        optServ2: "Γενικός έκτακτος καθαρισμός",
+        optServ3: "Καθαρισμός μετά από μετακόμιση ή ανακαίνιση",
+        optServ4: "Σιδέρωμα και οικιακές εργασίες",
+        optServ5: "Καθαρισμός γραφείων και καταστημάτων",
+        lblFormula: "Επιλογή Πλάνου Πρόσβασης *",
+        planBasicoTitle: "Βασικό Πλάνο (5,99 €/μήνα)",
+        planBasicoDesc: "Έως 5 άμεσες επαφές ανά μήνα και φιλτράρισμα με Τ.Κ.",
+        planPremTitle: "Premium Πλάνο ★ (9,99 €/μήνα)",
+        planPremDesc: "Απεριόριστες επαφές, άμεσες ειδοποιήσεις και προτεραιότητα υποστήριξης.",
+        lblDetalles: "Λεπτομέρειες ακινήτου (προαιρετικό)",
+        placeholderDetalles: "π.χ.: Διαμέρισμα 90 τ.μ., 3 ώρες εβδομαδιαίως τα πρωινά...",
+        btnSubmitCliente: "Αίτηση Πρόσβασης"
       }
     };
 
     function cambiarIdioma(lang) {
       var t = dicc[lang] || dicc['es'];
-      for (var id in t) {
-        var el = document.getElementById(id);
-        if (el) el.innerText = t[id];
+
+      // Textos generales
+      var textKeys = [
+        'badgeSub', 'backLink', 'titleForm', 'subForm', 'lblNombre',
+        'lblTel', 'lblPais', 'lblCiudad', 'lblCP', 'lblServicio',
+        'optServ1', 'optServ2', 'optServ3', 'optServ4', 'optServ5',
+        'lblFormula', 'planBasicoTitle', 'planBasicoDesc', 'planPremTitle',
+        'planPremDesc', 'lblDetalles', 'btnSubmitCliente'
+      ];
+
+      for (var i = 0; i < textKeys.length; i++) {
+        var k = textKeys[i];
+        var el = document.getElementById(k);
+        if (el && t[k]) {
+          el.innerText = t[k];
+        }
+      }
+
+      // Placeholders dinámicos de los inputs
+      var pMap = {
+        'inputNombre': 'placeholderNombre',
+        'inputTel': 'placeholderTel',
+        'inputPais': 'placeholderPais',
+        'inputCiudad': 'placeholderCiudad',
+        'inputCP': 'placeholderCP',
+        'inputDetalles': 'placeholderDetalles'
+      };
+
+      for (var inputId in pMap) {
+        var inputEl = document.getElementById(inputId);
+        var pKey = pMap[inputId];
+        if (inputEl && t[pKey]) {
+          inputEl.placeholder = t[pKey];
+        }
       }
     }
   </script>
