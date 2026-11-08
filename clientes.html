@@ -37,7 +37,7 @@
       --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
     
     body {
       background-color: var(--color-bg-page);
@@ -232,6 +232,7 @@
     }
     .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
+    /* Modal de Éxito */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -249,6 +250,7 @@
       max-width: 440px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
     }
 
     footer {
@@ -401,6 +403,7 @@
     </div>
   </div>
 
+  <!-- Modal de Éxito con IDs dinámicos -->
   <div id="modalCliente" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
@@ -467,6 +470,9 @@
         txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidad:</strong> Gestión y canalización de solicitudes con profesionales en LIMPIAPP.<br><strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Solicitar Acceso a Profesionales",
+        modalTitle: "¡Solicitud Registrada!",
+        modalDesc: "Hemos guardado tu solicitud en el sistema. En cuanto activemos los profesionales de tu zona te avisaremos por WhatsApp o llamada.",
+        modalBtn: "Volver a la Portada",
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
@@ -503,6 +509,9 @@
         txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalitat:</strong> Gestió i canalització de sol·licituds amb professionals a LIMPIAPP.<br><strong>Drets:</strong> Accés, rectificació i supressió via <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Demanar Accés a Professionals",
+        modalTitle: "Sol·licitud Registrada!",
+        modalDesc: "Hem desat la teva sol·licitud al sistema. Tan bon punt activem els professionals de la teva zona t'avisarem per WhatsApp o trucada.",
+        modalBtn: "Tornar a la Portada",
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
@@ -539,6 +548,9 @@
         txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
         txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Xestión e canalización de solicitudes con profesionais en LIMPIAPP.<br><strong>Dereitos:</strong> Acceso, rectificación e supresión vía <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Solicitar Acceso a Profesionais",
+        modalTitle: "Solicitude Rexistrada!",
+        modalDesc: "Gardamos a túa solicitude no sistema. En canto activemos os profesionais da túa zona avisarémoste por WhatsApp ou chamada.",
+        modalBtn: "Volver á Portada",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condicións",
         footPrivacidad: "Política de Privacidade",
@@ -575,6 +587,9 @@
         txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
         txtLegalFooter: '<strong>Arduraduna:</strong> Shineconnect S.L. (B26917807)<br><strong>Helburua:</strong> LIMPIAPPeko profesionalekin eskaerak kudeatzea.<br><strong>Eskubideak:</strong> Atzitzea, zuzentzea eta ezabatzea <code>gerencia@shineconnect.app</code> bidez.',
         btnSubmitCliente: "Profesionaletara Sarbidea Eskatu",
+        modalTitle: "Eskaera Erregistratuta!",
+        modalDesc: "Zure eskaera sisteman gorde dugu. Zure inguruko profesionalak aktibatu bezain laster jakinaraziko dizugu WhatsApp edo telefonoz.",
+        modalBtn: "Hasierara Itzuli",
         footAviso: "Legezko Oharra",
         footTerminos: "Baldintzak eta Xedapenak",
         footPrivacidad: "Pribatutasun Politika",
@@ -611,6 +626,9 @@
         txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
         txtLegalFooter: '<strong>Controller:</strong> Shineconnect S.L. (B26917807)<br><strong>Purpose:</strong> Managing and routing service requests with professionals on LIMPIAPP.<br><strong>Rights:</strong> Access, rectification, and erasure via <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Request Access to Cleaners",
+        modalTitle: "Request Registered!",
+        modalDesc: "We have saved your request in our system. As soon as verified professionals in your postal code are available, we will notify you via WhatsApp or phone call.",
+        modalBtn: "Back to Home",
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
@@ -647,6 +665,9 @@
         txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
         txtLegalFooter: '<strong>Responsable :</strong> Shineconnect S.L. (B26917807)<br><strong>Finalité :</strong> Gestion des demandes avec les professionnels sur LIMPIAPP.<br><strong>Droits :</strong> Accès, rectification et suppression via <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Demander l'Accès aux Professionnels",
+        modalTitle: "Demande Enregistrée !",
+        modalDesc: "Votre demande a été enregistrée. Dès que des intervenants vérifiés seront disponibles dans votre secteur, nous vous avertirons par WhatsApp ou téléphone.",
+        modalBtn: "Retour à l'accueil",
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
         footPrivacidad: "Politique de Confidentialité",
@@ -683,6 +704,9 @@
         txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
         txtLegalFooter: '<strong>Verantwortlicher:</strong> Shineconnect S.L. (B26917807)<br><strong>Zweck:</strong> Vermittlung von Kundenanfragen an Reinigungskräfte in LIMPIAPP.<br><strong>Rechte:</strong> Auskunft, Berichtigung und Löschung via <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Zugang anfordern",
+        modalTitle: "Anfrage Erfolgreich Erfasst!",
+        modalDesc: "Ihre Anfrage wurde im System hinterlegt. Sobald verifizierte Reinigungskräfte in Ihrer PLZ verfügbar sind, benachrichtigen wir Sie per WhatsApp oder Anruf.",
+        modalBtn: "Zurück zur Startseite",
         footAviso: "Impressum",
         footTerminos: "Allgemeine Geschäftsbedingungen",
         footPrivacidad: "Datenschutzerklärung",
@@ -719,6 +743,9 @@
         txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
         txtLegalFooter: '<strong>Titolare:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalità:</strong> Gestione delle richieste con i professionisti su LIMPIAPP.<br><strong>Diritti:</strong> Accesso, rettifica e cancellazione tramite <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Richiedi Accesso ai Professionisti",
+        modalTitle: "Richiesta Registrata!",
+        modalDesc: "Abbiamo registrato la tua richiesta. Non appena saranno disponibili professionisti verificati nella tua zona, ti avviseremo via WhatsApp o telefonicamente.",
+        modalBtn: "Torna alla Home",
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
@@ -755,6 +782,9 @@
         txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
         txtLegalFooter: '<strong>Responsável:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Gestão de pedidos com profissionais na LIMPIAPP.<br><strong>Direitos:</strong> Acesso, retificação e eliminação via <code>gerencia@shineconnect.app</code>.',
         btnSubmitCliente: "Pedir Acesso a Profissionais",
+        modalTitle: "Pedido Registado!",
+        modalDesc: "Guardámos o seu pedido no sistema. Assim que tivermos profissionais verificados na sua área, entraremos em contacto via WhatsApp ou chamada.",
+        modalBtn: "Voltar à Página Inicial",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
@@ -771,7 +801,7 @@
         'lblTel', 'lblPais', 'lblCiudad', 'lblCP', 'lblServicio',
         'optServ1', 'optServ2', 'optServ3', 'optServ4', 'optServ5',
         'lblFormula', 'planBasicoTitle', 'planBasicoDesc', 'planPremTitle',
-        'planPremDesc', 'lblDetalles', 'btnSubmitCliente',
+        'planPremDesc', 'lblDetalles', 'btnSubmitCliente', 'modalTitle', 'modalDesc', 'modalBtn',
         'footAviso', 'footTerminos', 'footPrivacidad', 'footCookies'
       ];
 
@@ -810,7 +840,6 @@
       }
     }
 
-    // Comprobación prioritaria de idioma y código postal al abrir la página
     document.addEventListener('DOMContentLoaded', function() {
       var urlParams = new URLSearchParams(window.location.search);
       
@@ -831,7 +860,6 @@
       }
     });
 
-    // Envío del formulario
     document.addEventListener('DOMContentLoaded', function() {
       var formCliente = document.getElementById('clienteForm');
       if (!formCliente) return;
@@ -842,7 +870,7 @@
         var btn = document.getElementById('btnSubmitCliente');
         if (btn) {
           btn.disabled = true;
-          btn.innerText = 'Enviando solicitud...';
+          btn.innerText = '...';
         }
 
         var formData = new FormData(formCliente);
@@ -859,12 +887,14 @@
           formCliente.reset();
         })
         .catch(function() {
-          alert('Hubo un error de conexión al enviar. Por favor, inténtalo de nuevo.');
+          alert('Error de conexión.');
         })
         .finally(function() {
           if (btn) {
             btn.disabled = false;
-            btn.innerText = 'Solicitar Acceso a Profesionales';
+            var currentLang = localStorage.getItem('limpiapp_lang') || 'es';
+            var t = dicc[currentLang] || dicc['es'];
+            btn.innerText = t.btnSubmitCliente;
           }
         });
       });
