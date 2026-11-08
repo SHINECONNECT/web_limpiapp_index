@@ -82,89 +82,163 @@
     th.limpiapp-col { background: #ecfdf5; color: var(--secondary-dark); border-bottom: 2px solid var(--secondary); }
     td.limpiapp-col { background: #f0fdf4; font-weight: 600; color: #065f46; }
 
-  <!-- PLANES Y TARIFAS OFICIALES -->
-    <section class="pricing-wrap" style="padding: 60px 20px; background: var(--bg);">
-      <div class="inner" style="max-width: 1200px; margin: 0 auto;">
-        <div class="sec-title" style="text-align: center; margin-bottom: 35px;">
-          <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px;">Planes y Tarifas Claros. Sin Letra Pequeña.</h2>
-          <p style="color: var(--muted); font-size: 0.95rem;">Modelo SaaS de directorio: cuotas de suscripción transparentes, sin retenciones ni comisiones sobre el servicio.</p>
+ <!-- SECCIÓN PLANES Y PRECIOS EN CÁPSULA -->
+    <section class="pricing-wrap" style="padding: 70px 20px; background-color: var(--bg);">
+      <div style="max-width: 940px; margin: 0 auto; text-align: center;">
+        
+        <h2 style="font-size: 2.2rem; font-weight: 800; color: var(--dark); margin-bottom: 10px;">
+          Planes y Tarifas Claros
+        </h2>
+        <p style="color: var(--muted); font-size: 1.05rem; margin-bottom: 30px;">
+          Directorio transparente sin comisiones sobre tus servicios. Elige tu perfil:
+        </p>
+
+        <!-- Selector en Cápsula (Segmented Control) -->
+        <div style="display: inline-flex; background: #e2e8f0; padding: 4px; border-radius: 9999px; margin-bottom: 40px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);">
+          <button type="button" id="tabBtnClientes" onclick="mostrarTarifas('clientes')" style="border: none; outline: none; padding: 10px 26px; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.25s; background: var(--primary); color: #ffffff; box-shadow: 0 4px 12px rgba(0,105,114,0.25);">
+            🏢 Para Hogares y Empresas
+          </button>
+          <button type="button" id="tabBtnPros" onclick="mostrarTarifas('pros')" style="border: none; outline: none; padding: 10px 26px; border-radius: 9999px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.25s; background: transparent; color: var(--muted);">
+            ✨ Para Profesionales
+          </button>
         </div>
 
-        <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 25px;">
+        <!-- 1. BLOQUE CLIENTES (2 Tarjetas Claras) -->
+        <div id="panelClientes" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; text-align: left;">
           
-          <!-- 1. Cliente Fórmula Básica -->
-          <div class="price-card" style="background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between;">
+          <!-- Cliente Básica -->
+          <div style="background: #ffffff; border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">Clientes / Hogares</div>
-              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Fórmula Básica</div>
-              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Para necesidades estándar de limpieza</div>
-              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--dark);">5,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes</span></div>
-              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Contacto con hasta <strong>5 profesionales</strong></li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Filtro de cercanía por código postal</li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Trato directo por WhatsApp / llamada</li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> 0% de comisiones sobre las horas</li>
+              <div style="display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 12px;">Acceso Estándar</div>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 6px;">Fórmula Básica</h3>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 20px;">Para contrataciones habituales o puntuales en tu vivienda.</p>
+              
+              <div style="font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 24px;">
+                5,99 € <span style="font-size: 0.95rem; font-weight: 500; color: var(--muted);">/ mes</span>
+              </div>
+              
+              <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem;">
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales/mes</strong></li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Sin comisiones sobre el servicio acordado</li>
               </ul>
             </div>
-            <a href="clientes.html" class="btn-action client" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--primary); color: #fff;">Elegir Básica</a>
+            <a href="clientes.html" style="display: block; text-align: center; background: #ffffff; color: var(--primary); border: 2px solid var(--primary); padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;">Contratar Fórmula Básica</a>
           </div>
 
-          <!-- 2. Cliente Fórmula Premium -->
-          <div class="price-card" style="background: #fff; border: 2px solid var(--primary); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 20px rgba(0,105,114,0.1);">
+          <!-- Cliente Premium -->
+          <div style="background: #ffffff; border: 2.5px solid var(--primary); border-radius: 20px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 15px 35px -5px rgba(0,105,114,0.15); position: relative;">
+            <div style="position: absolute; top: -14px; right: 24px; background: var(--primary); color: #ffffff; padding: 4px 14px; border-radius: 9999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Recomendado</div>
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">Clientes / Hogares ★</div>
-              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Fórmula Premium</div>
-              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Máxima cobertura y avisos urgentes</div>
-              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--primary);">9,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes</span></div>
-              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Contacto con <strong>perfiles ilimitados</strong></li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Alertas inmediatas en tu zona y C.P.</li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Acceso preferente a perfiles valorados</li>
-                <li><span style="color: var(--primary); font-weight: 800; margin-right: 6px;">✓</span> Soporte prioritario de gestión</li>
+              <div style="display: inline-block; background: #ccfbf1; color: var(--primary-dark); font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 12px;">Acceso Ilimitado ★</div>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Fórmula Premium</h3>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 20px;">Máxima agilidad para familias, fincas y oficinas con urgencias.</p>
+              
+              <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 24px;">
+                9,99 € <span style="font-size: 0.95rem; font-weight: 500; color: var(--muted);">/ mes</span>
+              </div>
+              
+              <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem;">
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Contacto con <strong>profesionales ilimitadas</strong></li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Filtro preferente de perfiles mejor valorados</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Alertas inmediatas por código postal</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--primary); font-weight: 800;">✓</span> Soporte prioritario desde plataforma</li>
               </ul>
             </div>
-            <a href="clientes.html" class="btn-action client" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--primary); color: #fff;">Elegir Premium</a>
-          </div>
-
-          <!-- 3. Profesional: Plan Básico Gratuito -->
-          <div class="price-card" style="background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 4px;">Profesionales</div>
-              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Plan Básico</div>
-              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Para arrancar tu presencia sin coste</div>
-              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--dark);">0 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ para siempre</span></div>
-              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Perfil publicado en tu código postal</li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Acceso limitado a 2 contactos/mes</strong></li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Cobro 100% íntegro (0% comisiones)</li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Sin cuotas ni compromisos</li>
-              </ul>
-            </div>
-            <a href="registro.html" class="btn-action pro" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--muted); color: #fff;">Alta Básica Gratis</a>
-          </div>
-
-          <!-- 4. Profesional: Plan Pro Destacado -->
-          <div class="price-card featured" style="background: #fff; border: 2px solid var(--secondary); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 12px 25px rgba(5,150,105,0.15);">
-            <div class="badge-f" style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: #fff; padding: 4px 14px; border-radius: 9999px; font-size: 0.72rem; font-weight: 800; white-space: nowrap;">🔥 Primeras 30 inscritas: 2 Meses Gratis</div>
-            <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--secondary); text-transform: uppercase; margin-bottom: 4px;">Profesionales Destacadas</div>
-              <div class="p-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">Plan Pro Destacado</div>
-              <div class="p-sub" style="font-size: 0.8rem; color: var(--muted); margin-bottom: 16px;">Máxima visibilidad y clientes ilimitados</div>
-              <div class="p-amount" style="font-size: 2rem; font-weight: 800; margin-bottom: 16px; color: var(--secondary);">4,99 € <span style="font-size: 0.85rem; font-weight: 500; color: var(--muted);">/ mes (0 € primeros 60 días)</span></div>
-              <ul class="p-list" style="list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; padding: 0;">
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Contactos directos ilimitados</strong></li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Posición prioritaria</strong> en búsquedas por C.P.</li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> <strong>Alertas inmediatas por WhatsApp</strong> con solicitudes</li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Insignia de perfil verificado de confianza</li>
-                <li><span style="color: var(--secondary); font-weight: 800; margin-right: 6px;">✓</span> Cobro 100% íntegro (0% comisiones)</li>
-              </ul>
-            </div>
-            <a href="registro.html" class="btn-action pro" style="display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; background: var(--secondary); color: #fff;">Activar Promoción (2 Meses Gratis) →</a>
+            <a href="clientes.html" style="display: block; text-align: center; background: var(--primary); color: #ffffff; padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;">Contratar Fórmula Premium</a>
           </div>
 
         </div>
+
+        <!-- 2. BLOQUE PROFESIONALES (2 Tarjetas Claras) -->
+        <div id="panelPros" style="display: none; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px; text-align: left;">
+          
+          <!-- Pro Básico -->
+          <div style="background: #ffffff; border: 1.5px solid var(--border); border-radius: 20px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);">
+            <div>
+              <div style="display: inline-block; background: #f1f5f9; color: var(--muted); font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 12px;">Plan Gratuito</div>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 6px;">Plan Básico</h3>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 20px;">Para publicar tu disponibilidad sin costes fijos.</p>
+              
+              <div style="font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 24px;">
+                0 € <span style="font-size: 0.95rem; font-weight: 500; color: var(--muted);">/ para siempre</span>
+              </div>
+              
+              <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem;">
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> Perfil activo en tu ciudad y código postal</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> <strong>Máximo 2 contactos de clientes/mes</strong></li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> Tarifa por hora fijada libremente por ti</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> 0% comisiones (el 100% de la hora es tuyo)</li>
+              </ul>
+            </div>
+            <a href="registro.html" style="display: block; text-align: center; background: #ffffff; color: var(--secondary); border: 2px solid var(--secondary); padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;">Registrarme Gratis</a>
+          </div>
+
+          <!-- Pro Destacado (Promoción 30 inscritas) -->
+          <div style="background: #ffffff; border: 2.5px solid var(--secondary); border-radius: 20px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 15px 35px -5px rgba(5,150,105,0.18); position: relative;">
+            <div style="position: absolute; top: -14px; right: 20px; background: var(--secondary); color: #ffffff; padding: 4px 14px; border-radius: 9999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Primeras 30 inscritas</div>
+            <div>
+              <div style="display: inline-block; background: var(--secondary-light); color: var(--secondary-dark); font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 12px;">🌟 Promoción de Lanzamiento</div>
+              <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary-dark); margin-bottom: 6px;">Plan Pro Destacado</h3>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 20px;">Máxima visibilidad, alertas directas y agenda completa.</p>
+              
+              <div style="font-size: 2.5rem; font-weight: 800; color: var(--secondary-dark); margin-bottom: 4px;">
+                4,99 € <span style="font-size: 0.95rem; font-weight: 500; color: var(--muted);">/ mes</span>
+              </div>
+              <div style="font-size: 0.85rem; font-weight: 700; color: var(--secondary); margin-bottom: 24px;">
+                🎉 2 Meses Gratis de Prueba (0 € hoy)
+              </div>
+              
+              <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem;">
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> <strong>Contactos ilimitados</strong> con familias y empresas</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> Posicionamiento prioritario en tu código postal</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> Insignia oficial de Profesional Verificado</li>
+                <li style="display: flex; gap: 10px; align-items: flex-start;"><span style="color: var(--secondary); font-weight: 800;">✓</span> Sin permanencia ni cargos ocultos</li>
+              </ul>
+            </div>
+            <a href="registro.html" style="display: block; text-align: center; background: var(--secondary); color: #ffffff; padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;">Activar mis 2 Meses Gratis →</a>
+          </div>
+
+        </div>
+
       </div>
     </section>
+
+    <!-- Script de alternancia de la cápsula -->
+    <script>
+      function mostrarTarifas(tipo) {
+        var panelClientes = document.getElementById('panelClientes');
+        var panelPros = document.getElementById('panelPros');
+        var btnClientes = document.getElementById('tabBtnClientes');
+        var btnPros = document.getElementById('tabBtnPros');
+
+        if (tipo === 'clientes') {
+          panelClientes.style.display = 'grid';
+          panelPros.style.display = 'none';
+          
+          btnClientes.style.background = 'var(--primary)';
+          btnClientes.style.color = '#ffffff';
+          btnClientes.style.boxShadow = '0 4px 12px rgba(0,105,114,0.25)';
+          
+          btnPros.style.background = 'transparent';
+          btnPros.style.color = 'var(--muted)';
+          btnPros.style.boxShadow = 'none';
+        } else {
+          panelClientes.style.display = 'none';
+          panelPros.style.display = 'grid';
+          
+          btnPros.style.background = 'var(--secondary)';
+          btnPros.style.color = '#ffffff';
+          btnPros.style.boxShadow = '0 4px 12px rgba(5,150,105,0.25)';
+          
+          btnClientes.style.background = 'transparent';
+          btnClientes.style.color = 'var(--muted)';
+          btnClientes.style.boxShadow = 'none';
+        }
+      }
+    </script>
 
     /* Footer */
     footer { background: var(--dark); color: #94a3b8; padding: 40px 20px 30px; font-size: 0.85rem; text-align: center; }
