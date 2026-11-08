@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIMPIAPP | Conectamos Servicios de Limpieza por Código Postal</title>
   
-  <!-- Configuración de Deep Linking y tokens de diseño para Serxus (Figma / App) -->
   <meta name="apple-itunes-app" content="app-id=limpiapp">
   <link rel="alternate" href="limpiapp://home">
   <meta name="theme-color" content="#4f585d">
@@ -17,18 +16,15 @@
   <style>
     /* DESIGN TOKENS CORPORATIVOS EXTRAÍDOS DEL LOGO OFICIAL LIMPIAPP */
     :root {
-      /* Azul Glaciar / Acero Pulido (Trazo de la 'L', 'IMPI' y tejado) */
       --color-logo-blue: #7faecb;
       --color-logo-blue-dark: #6294b4;
       --color-logo-blue-light: #eef5f9;
       --color-logo-blue-soft: #d2e4f0;
       
-      /* Gris Grafito / Pizarra Carbón ('PP' y 'BY SHINECONNECT') */
       --color-logo-charcoal: #4f585d;
       --color-logo-charcoal-dark: #373e42;
       --color-logo-charcoal-light: #676e71;
       
-      /* Escala de Pizarra y Superficies */
       --color-slate-dark: #24292d;
       --color-slate-medium: #475259;
       --color-slate-muted: #6a767e;
@@ -321,7 +317,6 @@
       font-size: 1.05rem;
     }
 
-    /* Bloque Contenedor Específico */
     .pricing-group {
       background: #ffffff;
       border: 1.5px solid var(--color-slate-border);
@@ -479,15 +474,19 @@
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
     <select class="lang-select" onchange="cambiarIdioma(this.value)">
-      <option value="es" selected>Español</option>
-      <option value="ca">Valencià / Català</option>
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="it">Italiano</option>
-      <option value="pt">Português</option>
-      <option value="de">Deutsch</option>
-      <option value="gl">Galego</option>
-      <option value="eu">Euskara</option>
+      <optgroup label="Lenguas de España">
+        <option value="es" selected>Español</option>
+        <option value="ca">Valencià / Català</option>
+        <option value="gl">Galego</option>
+        <option value="eu">Euskara</option>
+      </optgroup>
+      <optgroup label="Unión Europea">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+      </optgroup>
     </select>
   </div>
 
@@ -515,15 +514,12 @@
         Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.
       </p>
 
-      <!-- Buscador de Código Postal (Preparación para SEO Programático) -->
       <form class="search-box-cp" onsubmit="buscarCP(event)">
         <input type="text" id="inputCP" placeholder="Introduce tu código postal (ej. 46006)" required>
         <button type="submit" id="btnBuscarCP">Ver Disponibilidad</button>
       </form>
 
-      <!-- Tarjetas de Acceso Rápido -->
       <div class="dual-cta-grid">
-        <!-- Cliente -->
         <div class="cta-card client">
           <div>
             <div class="card-tag" id="tagClient">Para Hogares y Empresas</div>
@@ -535,7 +531,6 @@
           <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
         </div>
 
-        <!-- Profesional -->
         <div class="cta-card pro">
           <div>
             <div class="card-tag" id="tagPro">Para Profesionales de Limpieza</div>
@@ -561,48 +556,48 @@
           <table class="comp-table">
             <thead>
               <tr>
-                <th>Características del Servicio</th>
-                <th class="col-limpiapp">✨ LIMPIAPP</th>
+                <th id="thCaract">Características del Servicio</th>
+                <th class="col-limpiapp" id="thLimpiapp">✨ LIMPIAPP</th>
                 <th id="thPlataformas">Otras Plataformas y Apps Intermediarias</th>
-                <th>Agencias Tradicionales</th>
+                <th id="thAgencias">Agencias Tradicionales</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Verificación de identidad y perfiles</strong></td>
-                <td class="col-limpiapp"><strong>100% Verificados</strong> (Profesionales y Clientes)</td>
-                <td>Registro automático sin filtro</td>
-                <td>Solo verifican al trabajador</td>
+                <td id="tdFila1Nom"><strong>Verificación de identidad y perfiles</strong></td>
+                <td class="col-limpiapp" id="tdFila1Lim"><strong>100% Verificados</strong> (Profesionales y Clientes)</td>
+                <td id="tdFila1Plat">Registro automático sin filtro</td>
+                <td id="tdFila1Agen">Solo verifican al trabajador</td>
               </tr>
               <tr>
-                <td><strong>Comisión por servicio realizado</strong></td>
-                <td class="col-limpiapp">0% (Cobro 100% del profesional)</td>
-                <td>15% - 25% de recargo</td>
-                <td>Hasta 35% sobre la hora</td>
+                <td id="tdFila2Nom"><strong>Comisión por servicio realizado</strong></td>
+                <td class="col-limpiapp" id="tdFila2Lim">0% (Cobro 100% del profesional)</td>
+                <td id="tdFila2Plat">15% - 25% de recargo</td>
+                <td id="tdFila2Agen">Hasta 35% sobre la hora</td>
               </tr>
               <tr>
-                <td><strong>Contacto directo entre cliente y profesional</strong></td>
-                <td class="col-limpiapp">✓ WhatsApp y llamada directa</td>
-                <td>✗ Chat cerrado o bloqueado</td>
-                <td>✗ Todo a través de la agencia</td>
+                <td id="tdFila3Nom"><strong>Contacto directo entre cliente y profesional</strong></td>
+                <td class="col-limpiapp" id="tdFila3Lim">✓ WhatsApp y llamada directa</td>
+                <td id="tdFila3Plat">✗ Chat cerrado o bloqueado</td>
+                <td id="tdFila3Agen">✗ Todo a través de la agencia</td>
               </tr>
               <tr>
-                <td><strong>Libertad absoluta de tarifas por hora</strong></td>
-                <td class="col-limpiapp">✓ Fijada libremente por el profesional</td>
-                <td>✗ Algoritmo impone el precio</td>
-                <td>✗ Tarifa fija de empresa</td>
+                <td id="tdFila4Nom"><strong>Libertad absoluta de tarifas por hora</strong></td>
+                <td class="col-limpiapp" id="tdFila4Lim">✓ Fijada libremente por el profesional</td>
+                <td id="tdFila4Plat">✗ Algoritmo impone el precio</td>
+                <td id="tdFila4Agen">✗ Tarifa fija de empresa</td>
               </tr>
               <tr>
-                <td><strong>Cobertura hiperlocal por Código Postal</strong></td>
-                <td class="col-limpiapp">✓ Demarcación exacta</td>
-                <td>Grandes áreas genéricas</td>
-                <td>Sujeto a personal propio</td>
+                <td id="tdFila5Nom"><strong>Cobertura hiperlocal por Código Postal</strong></td>
+                <td class="col-limpiapp" id="tdFila5Lim">✓ Demarcación exacta</td>
+                <td id="tdFila5Plat">Grandes áreas genéricas</td>
+                <td id="tdFila5Agen">Sujeto a personal propio</td>
               </tr>
               <tr>
-                <td><strong>Sin permanencias ni ataduras</strong></td>
-                <td class="col-limpiapp">✓ Total flexibilidad</td>
-                <td>Penalizaciones por cancelación</td>
-                <td>Contratos mensuales obligatorios</td>
+                <td id="tdFila6Nom"><strong>Sin permanencias ni ataduras</strong></td>
+                <td class="col-limpiapp" id="tdFila6Lim">✓ Total flexibilidad</td>
+                <td id="tdFila6Plat">Penalizaciones por cancelación</td>
+                <td id="tdFila6Agen">Contratos mensuales obligatorios</td>
               </tr>
             </tbody>
           </table>
@@ -610,7 +605,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PLANES Y TARIFAS (DOS BLOQUES SEPARADOS) -->
+    <!-- SECCIÓN PLANES Y TARIFAS -->
     <section class="pricing-section">
       <div class="pricing-container">
         
@@ -623,44 +618,44 @@
         <div class="pricing-group client-group">
           <div class="group-header">
             <div class="group-header-text">
-              <h3>🏢 Opciones para Hogares y Empresas</h3>
-              <p>Acceso directo al directorio para contratar personal verificado en tu zona.</p>
+              <h3 id="groupClientTitle">🏢 Opciones para Hogares y Empresas</h3>
+              <p id="groupClientDesc">Acceso directo al directorio para contratar personal verificado en tu zona.</p>
             </div>
-            <span class="group-badge client-badge">Acceso para Clientes</span>
+            <span class="group-badge client-badge" id="groupClientBadge">Acceso para Clientes</span>
           </div>
 
           <div class="group-cards-grid">
             <!-- Fórmula Básica -->
             <div class="plan-card-item">
               <div>
-                <div class="plan-name">Fórmula Básica</div>
-                <div class="plan-desc">Para necesidades puntuales o periódicas estándar en el hogar o la oficina.</div>
-                <div class="plan-price">5,99 € <span>/ mes</span></div>
+                <div class="plan-name" id="planClientBasicoName">Fórmula Básica</div>
+                <div class="plan-desc" id="planClientBasicoDesc">Para necesidades puntuales o periódicas estándar en el hogar o la oficina.</div>
+                <div class="plan-price">5,99 € <span id="spanMes1">/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales por mes</strong></li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Perfiles de profesionales <strong>100% verificados</strong></li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada telefónica</li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Sin comisiones sobre el precio de la hora pactada</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC1">Contacto con hasta <strong>5 profesionales por mes</strong></span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC2">Perfiles de profesionales <strong>100% verificados</strong></span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC3">Búsqueda por país, ciudad y código postal</span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC4">Trato directo vía WhatsApp o llamada telefónica</span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC5">Sin comisiones sobre el precio de la hora pactada</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client">Elegir Fórmula Básica</a>
+              <a href="clientes.html" class="btn-action client" id="btnClientBasico">Elegir Fórmula Básica</a>
             </div>
 
             <!-- Fórmula Premium -->
             <div class="plan-card-item featured-border-client">
               <div>
-                <div class="plan-name" style="color: var(--color-logo-blue-dark);">Fórmula Premium ★</div>
-                <div class="plan-desc">Para familias y empresas que requieren máxima agilidad y sustituciones urgentes.</div>
-                <div class="plan-price" style="color: var(--color-logo-blue-dark);">9,99 € <span>/ mes</span></div>
+                <div class="plan-name" style="color: var(--color-logo-blue-dark);" id="planClientPremName">Fórmula Premium ★</div>
+                <div class="plan-desc" id="planClientPremDesc">Para familias y empresas que requieren máxima agilidad y sustituciones urgentes.</div>
+                <div class="plan-price" style="color: var(--color-logo-blue-dark);">9,99 € <span id="spanMes2">/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Contacto con <strong>profesionales ilimitados</strong></li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Perfiles destacados y <strong>100% verificados</strong></li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Alertas inmediatas de disponibilidad en tu código postal</li>
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> Soporte prioritario de gestión de plataforma</li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP1">Contacto con <strong>profesionales ilimitados</strong></span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP2">Perfiles destacados y <strong>100% verificados</strong></span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP3">Alertas inmediatas de disponibilidad en tu código postal</span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP4">Soporte prioritario de gestión de plataforma</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client">Elegir Fórmula Premium</a>
+              <a href="clientes.html" class="btn-action client" id="btnClientPrem">Elegir Fórmula Premium</a>
             </div>
           </div>
         </div>
@@ -669,48 +664,48 @@
         <div class="pricing-group pro-group">
           <div class="group-header">
             <div class="group-header-text">
-              <h3>✨ Opciones para Profesionales de Limpieza</h3>
-              <p>Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes verificados.</p>
+              <h3 id="groupProTitle">✨ Opciones para Profesionales de Limpieza</h3>
+              <p id="groupProDesc">Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes verificados.</p>
             </div>
-            <span class="group-badge pro-badge">Acceso para Profesionales</span>
+            <span class="group-badge pro-badge" id="groupProBadge">Acceso para Profesionales</span>
           </div>
 
           <div class="group-cards-grid">
             <!-- Plan Básico -->
             <div class="plan-card-item">
               <div>
-                <div class="plan-name">Plan Básico</div>
-                <div class="plan-desc">Para publicar tu perfil verificado y comenzar a recibir solicitudes sin costes fijos.</div>
-                <div class="plan-price">0 € <span>/ para siempre</span></div>
+                <div class="plan-name" id="planProBasicoName">Plan Básico</div>
+                <div class="plan-desc" id="planProBasicoDesc">Para publicar tu perfil verificado y comenzar a recibir solicitudes sin costes fijos.</div>
+                <div class="plan-price">0 € <span id="spanSiempre">/ para siempre</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Perfil activo en tu ciudad y código postal</li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Contactos de clientes <strong>100% verificados</strong></li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Acceso limitado a 2 contactos de clientes/mes</strong></li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Tarifa horaria fijada libremente por el profesional</li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> 0% comisiones (cobras el 100% de tu servicio)</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP1">Perfil activo en tu ciudad y código postal</span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP2">Contactos de clientes <strong>100% verificados</strong></span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP3"><strong>Acceso limitado a 2 contactos de clientes/mes</strong></span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP4">Tarifa horaria fijada libremente por el profesional</span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP5">0% comisiones (cobras el 100% de tu servicio)</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);">Alta Gratuita</a>
+              <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
             </div>
 
             <!-- Plan Pro Destacado -->
             <div class="plan-card-item featured-border-pro">
-              <div class="card-top-tag">🔥 Primeras 30 inscripciones: 2 Meses Gratis</div>
+              <div class="card-top-tag" id="badgeProPromo">🔥 Primeras 30 inscripciones: 2 Meses Gratis</div>
               <div>
-                <div class="plan-name" style="color: var(--color-logo-charcoal);">Plan Pro Destacado</div>
-                <div class="plan-desc">Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.</div>
-                <div class="plan-price" style="color: var(--color-logo-charcoal);">4,99 € <span>/ mes</span></div>
-                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-logo-charcoal); margin-top: -12px; margin-bottom: 16px;">
+                <div class="plan-name" style="color: var(--color-logo-charcoal);" id="planProDestName">Plan Pro Destacado</div>
+                <div class="plan-desc" id="planProDestDesc">Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.</div>
+                <div class="plan-price" style="color: var(--color-logo-charcoal);">4,99 € <span id="spanMes3">/ mes</span></div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-logo-charcoal); margin-top: -12px; margin-bottom: 16px;" id="badgeDiasGratis">
                   🌟 0 € durante los primeros 60 días
                 </div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Contactos ilimitados</strong> con familias y empresas</li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Insignia oficial de Perfil 100% Verificado</strong></li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</li>
-                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> Posicionamiento preferente en tu código postal</li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP1"><strong>Contactos ilimitados</strong> con familias y empresas</span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP2"><strong>Insignia oficial de Perfil 100% Verificado</strong></span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP3"><strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</span></li>
+                  <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP4">Posicionamiento preferente en tu código postal</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro">Activar 2 Meses Gratis →</a>
+              <a href="registro.html" class="btn-action pro" id="btnProDest">Activar 2 Meses Gratis →</a>
             </div>
           </div>
         </div>
@@ -743,26 +738,25 @@
   <!-- Pie de página Legal -->
   <footer>
     <div class="footer-container">
-      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;">
+      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
         &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
       </p>
       <div class="footer-links">
-        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
         <span style="color: #475569;">|</span>
-        <a href="terminos.html">Términos y Condiciones</a>
+        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
         <span style="color: #475569;">|</span>
-        <a href="privacidad.html">Política de Privacidad</a>
+        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
         <span style="color: #475569;">|</span>
-        <a href="cookies.html">Política de Cookies</a>
+        <a href="cookies.html" id="footCookies">Política de Cookies</a>
       </div>
-      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">
+      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
         Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
       </p>
     </div>
   </footer>
 
- <script>
-    // 1. Buscador por Código Postal
+  <script>
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
@@ -771,7 +765,6 @@
       }
     }
 
-    // 2. Diccionario Multilingüe de Portada
     var dicc = {
       es: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -788,17 +781,97 @@
         titlePro: "¿Ofreces tus servicios?",
         descPro: "Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.",
         btnActionPro: "Registrarme como Profesional →",
+        
         compTitle: "¿Por qué LIMPIAPP frente a las alternativas?",
         compSub: "Compara nuestro modelo de trato directo y tarifa 100% libre frente a las agencias y plataformas tradicionales.",
+        thCaract: "Características del Servicio",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Otras Plataformas y Apps Intermediarias",
+        thAgencias: "Agencias Tradicionales",
+        tdFila1Nom: "<strong>Verificación de identidad y perfiles</strong>",
+        tdFila1Lim: "<strong>100% Verificados</strong> (Profesionales y Clientes)",
+        tdFila1Plat: "Registro automático sin filtro",
+        tdFila1Agen: "Solo verifican al trabajador",
+        tdFila2Nom: "<strong>Comisión por servicio realizado</strong>",
+        tdFila2Lim: "0% (Cobro 100% del profesional)",
+        tdFila2Plat: "15% - 25% de recargo",
+        tdFila2Agen: "Hasta 35% sobre la hora",
+        tdFila3Nom: "<strong>Contacto directo entre cliente y profesional</strong>",
+        tdFila3Lim: "✓ WhatsApp y llamada directa",
+        tdFila3Plat: "✗ Chat cerrado o bloqueado",
+        tdFila3Agen: "✗ Todo a través de la agencia",
+        tdFila4Nom: "<strong>Libertad absoluta de tarifas por hora</strong>",
+        tdFila4Lim: "✓ Fijada libremente por el profesional",
+        tdFila4Plat: "✗ Algoritmo impone el precio",
+        tdFila4Agen: "✗ Tarifa fija de empresa",
+        tdFila5Nom: "<strong>Cobertura hiperlocal por Código Postal</strong>",
+        tdFila5Lim: "✓ Demarcación exacta",
+        tdFila5Plat: "Grandes áreas genéricas",
+        tdFila5Agen: "Sujeto a personal propio",
+        tdFila6Nom: "<strong>Sin permanencias ni ataduras</strong>",
+        tdFila6Lim: "✓ Total flexibilidad",
+        tdFila6Plat: "Penalizaciones por cancelación",
+        tdFila6Agen: "Contratos mensuales obligatorios",
+
         priceTitle: "Planes y Tarifas Claros. Sin Letra Pequeña.",
         priceSub: "Modelo de directorio SaaS: tarifas transparentes de suscripción y 0% de comisiones sobre los servicios acordados.",
+        
+        groupClientTitle: "🏢 Opciones para Hogares y Empresas",
+        groupClientDesc: "Acceso directo al directorio para contratar personal verificado en tu zona.",
+        groupClientBadge: "Acceso para Clientes",
+        planClientBasicoName: "Fórmula Básica",
+        planClientBasicoDesc: "Para necesidades puntuales o periódicas estándar en el hogar o la oficina.",
+        spanMes1: "/ mes",
+        featC1: "Contacto con hasta <strong>5 profesionales por mes</strong>",
+        featC2: "Perfiles de profesionales <strong>100% verificados</strong>",
+        featC3: "Búsqueda por país, ciudad y código postal",
+        featC4: "Trato directo vía WhatsApp o llamada telefónica",
+        featC5: "Sin comisiones sobre el precio de la hora pactada",
+        btnClientBasico: "Elegir Fórmula Básica",
+
+        planClientPremName: "Fórmula Premium ★",
+        planClientPremDesc: "Para familias y empresas que requieren máxima agilidad y sustituciones urgentes.",
+        spanMes2: "/ mes",
+        featCP1: "Contacto con <strong>profesionales ilimitados</strong>",
+        featCP2: "Perfiles destacados y <strong>100% verificados</strong>",
+        featCP3: "Alertas inmediatas de disponibilidad en tu código postal",
+        featCP4: "Soporte prioritario de gestión de plataforma",
+        btnClientPrem: "Elegir Fórmula Premium",
+
+        groupProTitle: "✨ Opciones para Profesionales de Limpieza",
+        groupProDesc: "Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes verificados.",
+        groupProBadge: "Acceso para Profesionales",
+        planProBasicoName: "Plan Básico",
+        planProBasicoDesc: "Para publicar tu perfil verificado y comenzar a recibir solicitudes sin costes fijos.",
+        spanSiempre: "/ para siempre",
+        featP1: "Perfil activo en tu ciudad y código postal",
+        featP2: "Contactos de clientes <strong>100% verificados</strong>",
+        featP3: "<strong>Acceso limitado a 2 contactos de clientes/mes</strong>",
+        featP4: "Tarifa horaria fijada libremente por el profesional",
+        featP5: "0% comisiones (cobras el 100% de tu servicio)",
+        btnProBasico: "Alta Gratuita",
+
+        badgeProPromo: "🔥 Primeras 30 inscripciones: 2 Meses Gratis",
+        planProDestName: "Plan Pro Destacado",
+        planProDestDesc: "Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.",
+        spanMes3: "/ mes",
+        badgeDiasGratis: "🌟 0 € durante los primeros 60 días",
+        featPP1: "<strong>Contactos ilimitados</strong> con familias y empresas",
+        featPP2: "<strong>Insignia oficial de Perfil 100% Verificado</strong>",
+        featPP3: "<strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes",
+        featPP4: "Posicionamiento preferente en tu código postal",
+        btnProDest: "Activar 2 Meses Gratis →",
+
         feat1Title: "0% Comisiones por Servicio",
         feat1Desc: "El importe acordado es íntegro para el profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.",
         feat2Title: "Contacto Inmediato y Directo",
         feat2Desc: "Conversación fluida por teléfono o WhatsApp para coordinar horarios, llaves o detalles de limpieza sin intermediarios.",
         feat3Title: "Hiperlocalidad por Código Postal",
-        feat3Desc: "Optimización por radios de cobertura geográfica para que el personal profesional trabaje cerca de su domicilio y reduzca tiempos de traslado."
+        feat3Desc: "Optimización por radios de cobertura geográfica para que el personal profesional trabaje cerca de su domicilio y reduzca tiempos de traslado.",
+        footAviso: "Aviso Legal",
+        footTerminos: "Términos y Condiciones",
+        footPrivacidad: "Política de Privacidad",
+        footCookies: "Política de Cookies"
       },
       ca: {
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -815,17 +888,97 @@
         titlePro: "Ofereixes els teus serveis?",
         descPro: "Publica el teu perfil a la teva zona, fixa les teves tarifes i rep contactes directes per WhatsApp. 2 mesos de franc.",
         btnActionPro: "Registrar-me com a Professional →",
+
         compTitle: "Per què LIMPIAPP enfront de les alternatives?",
         compSub: "Compara el nostre model de tracte directe i tarifa 100% lliure davant agències i plataformes tradicionals.",
+        thCaract: "Característiques del Servei",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Altres Plataformes i Apps Intermediàries",
+        thAgencias: "Agències Tradicionals",
+        tdFila1Nom: "<strong>Verificació d'identitat i perfils</strong>",
+        tdFila1Lim: "<strong>100% Verificats</strong> (Professionals i Clients)",
+        tdFila1Plat: "Registre automàtic sense filtre",
+        tdFila1Agen: "Només verifiquen el treballador",
+        tdFila2Nom: "<strong>Comissió per servei realitzat</strong>",
+        tdFila2Lim: "0% (Cobrament 100% del professional)",
+        tdFila2Plat: "15% - 25% de recàrrec",
+        tdFila2Agen: "Fins a 35% sobre l'hora",
+        tdFila3Nom: "<strong>Contacte directe entre client i professional</strong>",
+        tdFila3Lim: "✓ WhatsApp i trucada directa",
+        tdFila3Plat: "✗ Xat tancat o bloquejat",
+        tdFila3Agen: "✗ Tot a través de l'agència",
+        tdFila4Nom: "<strong>Llibertat absoluta de tarifes per hora</strong>",
+        tdFila4Lim: "✓ Fixada lliurement pel professional",
+        tdFila4Plat: "✗ L'algorisme imposa el preu",
+        tdFila4Agen: "✗ Tarifa fixa d'empresa",
+        tdFila5Nom: "<strong>Cobertura hiperlocal per Codi Postal</strong>",
+        tdFila5Lim: "✓ Demarcació exacta",
+        tdFila5Plat: "Grans àrees genèriques",
+        tdFila5Agen: "Subjecte a personal propi",
+        tdFila6Nom: "<strong>Sense permanències ni lligams</strong>",
+        tdFila6Lim: "✓ Total flexibilitat",
+        tdFila6Plat: "Penalitzacions per cancel·lació",
+        tdFila6Agen: "Contractes mensuals obligatoris",
+
         priceTitle: "Plans i Tarifes Clars. Sense Lletra Petita.",
         priceSub: "Model de directori SaaS: quotes transparents de subscripció i 0% de comissions sobre els serveis acordats.",
+
+        groupClientTitle: "🏢 Opcions per a Llars i Empreses",
+        groupClientDesc: "Accés directe al directori per contractar personal verificat a la teva zona.",
+        groupClientBadge: "Accés per a Clients",
+        planClientBasicoName: "Fórmula Bàsica",
+        planClientBasicoDesc: "Per a necessitats puntuals o periòdiques estàndard a la llar o l'oficina.",
+        spanMes1: "/ mes",
+        featC1: "Contacte amb fins a <strong>5 professionals al mes</strong>",
+        featC2: "Perfils de professionals <strong>100% verificats</strong>",
+        featC3: "Cerca per país, ciutat i codi postal",
+        featC4: "Tracte directe per WhatsApp o trucada",
+        featC5: "Sense comissions sobre el preu acordat",
+        btnClientBasico: "Triar Fórmula Bàsica",
+
+        planClientPremName: "Fórmula Premium ★",
+        planClientPremDesc: "Per a famílies i empreses que requereixen màxima agilitat i substitucions urgents.",
+        spanMes2: "/ mes",
+        featCP1: "Contacte amb <strong>professionals il·limitats</strong>",
+        featCP2: "Perfils destacats i <strong>100% verificats</strong>",
+        featCP3: "Alertes immediates de disponibilitat al teu codi postal",
+        featCP4: "Suport prioritari de gestió de plataforma",
+        btnClientPrem: "Triar Fórmula Premium",
+
+        groupProTitle: "✨ Opcions per a Professionals de Neteja",
+        groupProDesc: "Promociona els teus serveis a la teva zona i rep contactes de clients verificats.",
+        groupProBadge: "Accés per a Professionals",
+        planProBasicoName: "Pla Bàsic",
+        planProBasicoDesc: "Per publicar el teu perfil verificat i rebre sol·licituds sense costos fixos.",
+        spanSiempre: "/ per sempre",
+        featP1: "Perfil actiu a la teva ciutat i codi postal",
+        featP2: "Contactes de clients <strong>100% verificats</strong>",
+        featP3: "<strong>Accés limitat a 2 contactes de clients/mes</strong>",
+        featP4: "Tarifa horària fixada lliurement pel professional",
+        featP5: "0% comissions (cobres el 100% del teu servei)",
+        btnProBasico: "Alta Gratuïta",
+
+        badgeProPromo: "🔥 Primeres 30 inscripcions: 2 Mesos de Franc",
+        planProDestName: "Pla Pro Destacat",
+        planProDestDesc: "Màxima visibilitat en cerques, alertes instantànies i agenda completa.",
+        spanMes3: "/ mes",
+        badgeDiasGratis: "🌟 0 € durant els primers 60 dies",
+        featPP1: "<strong>Contactes il·limitats</strong> amb famílies i empreses",
+        featPP2: "<strong>Insígnia oficial de Perfil 100% Verificat</strong>",
+        featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
+        featPP4: "Posicionament preferent al teu codi postal",
+        btnProDest: "Activar 2 Mesos de Franc →",
+
         feat1Title: "0% Comissions per Servei",
         feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions sobre el treball.",
         feat2Title: "Contacte Immediat i Directe",
         feat2Desc: "Conversa fluida per telèfon o WhatsApp sense traves d'intermediaris.",
         feat3Title: "Hiperlocalitat per Codi Postal",
-        feat3Desc: "Optimització per ràdios de cobertura per minimitzar desplaçaments."
+        feat3Desc: "Optimització per ràdios de cobertura per minimitzar desplaçaments.",
+        footAviso: "Avís Legal",
+        footTerminos: "Termes i Condicions",
+        footPrivacidad: "Política de Privacitat",
+        footCookies: "Política de Cookies"
       },
       gl: {
         badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
@@ -842,17 +995,97 @@
         titlePro: "Ofreces os teus servizos?",
         descPro: "Publica o teu perfil no teu código postal e recibe avisos directos por WhatsApp. 2 meses gratis.",
         btnActionPro: "Rexistrarme como Profesional →",
+
         compTitle: "Por que LIMPIAPP fronte ás alternativas?",
         compSub: "Compara o noso modelo directo fronte a axencias tradicionais e outras plataformas.",
+        thCaract: "Características do Servizo",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Outras Plataformas e Apps Intermediarias",
+        thAgencias: "Axencias Tradicionais",
+        tdFila1Nom: "<strong>Verificación de identidade e perfís</strong>",
+        tdFila1Lim: "<strong>100% Verificados</strong> (Profesionais e Clientes)",
+        tdFila1Plat: "Rexistro automático sen filtro",
+        tdFila1Agen: "Só verifican ao traballador",
+        tdFila2Nom: "<strong>Comisión por servizo realizado</strong>",
+        tdFila2Lim: "0% (Cobro 100% do profesional)",
+        tdFila2Plat: "15% - 25% de recarga",
+        tdFila2Agen: "Ata o 35% sobre a hora",
+        tdFila3Nom: "<strong>Contacto directo entre cliente e profesional</strong>",
+        tdFila3Lim: "✓ WhatsApp e chamada directa",
+        tdFila3Plat: "✗ Chat pechado ou bloqueado",
+        tdFila3Agen: "✗ Todo a través da axencia",
+        tdFila4Nom: "<strong>Liberdade absoluta de tarifas por hora</strong>",
+        tdFila4Lim: "✓ Fixada libremente polo profesional",
+        tdFila4Plat: "✗ O algoritmo impón o prezo",
+        tdFila4Agen: "✗ Tarifa fixa de empresa",
+        tdFila5Nom: "<strong>Cobertura hiperlocal por Código Postal</strong>",
+        tdFila5Lim: "✓ Demarcación exacta",
+        tdFila5Plat: "Grandes áreas xenéricas",
+        tdFila5Agen: "Suxeito a persoal propio",
+        tdFila6Nom: "<strong>Sen permanencias nin ataduras</strong>",
+        tdFila6Lim: "✓ Total flexibilidade",
+        tdFila6Plat: "Penalizacións por cancelación",
+        tdFila6Agen: "Contratos mensuais obrigatorios",
+
         priceTitle: "Plans e Tarifas Claras. Sen Letra Pequena.",
         priceSub: "Modelo de subscrición ao directorio: sen comisións sobre o servizo.",
+
+        groupClientTitle: "🏢 Opcións para Fogares e Empresas",
+        groupClientDesc: "Acceso directo ao directorio para contratar persoal verificado na túa zona.",
+        groupClientBadge: "Acceso para Clientes",
+        planClientBasicoName: "Fórmula Básica",
+        planClientBasicoDesc: "Para necesidades habituais ou periódicas estándar no fogar ou na oficina.",
+        spanMes1: "/ mes",
+        featC1: "Contacto con ata <strong>5 profesionais ao mes</strong>",
+        featC2: "Perfís de profesionais <strong>100% verificados</strong>",
+        featC3: "Busca por país, cidade e código postal",
+        featC4: "Trato directo por WhatsApp ou teléfono",
+        featC5: "Sen comisións sobre o prezo pactado",
+        btnClientBasico: "Elixir Fórmula Básica",
+
+        planClientPremName: "Fórmula Premium ★",
+        planClientPremDesc: "Para familias e empresas que precisan máxima axilidade e substitucións urxentes.",
+        spanMes2: "/ mes",
+        featCP1: "Contacto con <strong>profesionais ilimitados</strong>",
+        featCP2: "Perfís destacados e <strong>100% verificados</strong>",
+        featCP3: "Alertas inmediatas de dispoñibilidade no teu código postal",
+        featCP4: "Soporte prioritario de xestión",
+        btnClientPrem: "Elixir Fórmula Premium",
+
+        groupProTitle: "✨ Opcións para Profesionais de Limpeza",
+        groupProDesc: "Promociona os teus servizos no teu código postal e recibe avisos directos.",
+        groupProBadge: "Acceso para Profesionais",
+        planProBasicoName: "Plan Básico",
+        planProBasicoDesc: "Para publicar o teu perfil verificado e recibir avisos sen custos fixos.",
+        spanSiempre: "/ para sempre",
+        featP1: "Perfil activo na túa cidade e código postal",
+        featP2: "Contactos de clientes <strong>100% verificados</strong>",
+        featP3: "<strong>Acceso limitado a 2 contactos de clientes/mes</strong>",
+        featP4: "Tarifa horaria fixada libremente polo profesional",
+        featP5: "0% comisións (cobras o 100% do teu traballo)",
+        btnProBasico: "Alta Gratuíta",
+
+        badgeProPromo: "🔥 Primeiras 30 inscricións: 2 Meses Gratis",
+        planProDestName: "Plan Pro Destacado",
+        planProDestDesc: "Máxima visibilidade en buscas, alertas instantáneas e axenda completa.",
+        spanMes3: "/ mes",
+        badgeDiasGratis: "🌟 0 € durante os primeiros 60 días",
+        featPP1: "<strong>Contactos ilimitados</strong> con familias e empresas",
+        featPP2: "<strong>Insignia oficial de Perfil 100% Verificado</strong>",
+        featPP3: "<strong>Alertas inmediatas de WhatsApp</strong> con novas solicitudes",
+        featPP4: "Posicionamento preferente no teu código postal",
+        btnProDest: "Activar 2 Meses Gratis →",
+
         feat1Title: "0% Comisións por Servizo",
         feat1Desc: "O importe acordado é 100% para o profesional.",
         feat2Title: "Contacto Inmediato e Directo",
         feat2Desc: "Conversa directa por teléfono ou WhatsApp.",
         feat3Title: "Proximidade por Código Postal",
-        feat3Desc: "Optimización por áreas xeográficas para aforrar desprazamentos."
+        feat3Desc: "Optimización por áreas xeográficas para aforrar desprazamentos.",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condicións",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
       },
       eu: {
         badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
@@ -869,17 +1102,97 @@
         titlePro: "Zure zerbitzuak eskaintzen dituzu?",
         descPro: "Argitaratu zure profila zure posta-kodean eta jaso bezeroak WhatsApp bidez. 2 hilabete doan.",
         btnActionPro: "Profesional gisa Erregistratu →",
+
         compTitle: "Zergatik LIMPIAPP alternatiben aurrean?",
         compSub: "Alderatu gure komisiorik gabeko eredua ohiko agentzia eta plataformekin.",
+        thCaract: "Zerbitzuaren Ezaugarriak",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Beste Bitartekaritza Plataforma Batzuk",
+        thAgencias: "Ohiko Agentziak",
+        tdFila1Nom: "<strong>Nortasun eta profilen egiaztapena</strong>",
+        tdFila1Lim: "<strong>%100 Egiaztatuta</strong> (Profesionalak eta Bezeroak)",
+        tdFila1Plat: "Iragazkirik gabeko erregistro automatikoa",
+        tdFila1Agen: "Langilea bakarrik egiaztatzen dute",
+        tdFila2Nom: "<strong>Egindako zerbitzuagatiko komisioa</strong>",
+        tdFila2Lim: "%0 (Profesionalaren ordainketa osoa)",
+        tdFila2Plat: "%15 - %25 gehigarria",
+        tdFila2Agen: "%35eraino orduko",
+        tdFila3Nom: "<strong>Zuzeneko harremana bezero eta profesionalen artean</strong>",
+        tdFila3Lim: "✓ WhatsApp eta zuzeneko deia",
+        tdFila3Plat: "✗ Txat itxia edo blokeatua",
+        tdFila3Agen: "✗ Dena agentziaren bidez",
+        tdFila4Nom: "<strong>Orduko tarifen erabateko askatasuna</strong>",
+        tdFila4Lim: "✓ Profesionalak libreki ezarria",
+        tdFila4Plat: "✗ Algoritmoak prezioa ezartzen du",
+        tdFila4Agen: "✗ Enpresaren tarifa finkoa",
+        tdFila5Nom: "<strong>Posta-kodearen araberako estaldura</strong>",
+        tdFila5Lim: "✓ Eremu zehatza",
+        tdFila5Plat: "Eremu orokor handiak",
+        tdFila5Agen: "Langile propioen menpe",
+        tdFila6Nom: "<strong>Iraunkortasunik eta loturarik gabe</strong>",
+        tdFila6Lim: "✓ Erabateko malgutasuna",
+        tdFila6Plat: "Bertan behera uzteagatiko zigorrak",
+        tdFila6Agen: "Hileko derrigorrezko kontratuak",
+
         priceTitle: "Plangintza eta Tarifa Garbiak.",
         priceSub: "Direktorio-harpidetza: inolako komisiorik gabe adostutako zerbitzuan.",
+
+        groupClientTitle: "🏢 Etxe eta Enpresentzako Aukerak",
+        groupClientDesc: "Direktoriora sarbide zuzena zure inguruko langile egiaztatuak kontratatzeko.",
+        groupClientBadge: "Bezeroentzako Sarbidea",
+        planClientBasicoName: "Oinarrizko Formula",
+        planClientBasicoDesc: "Etxean edo bulegoan ohiko beharretarako.",
+        spanMes1: "/ hilean",
+        featC1: "Hilean <strong>5 profesionalekin harreman zuzena</strong>",
+        featC2: "Profesionalen profilak <strong>%100 egiaztatuta</strong>",
+        featC3: "Bilaketa herrialde, hiri eta posta-kodearen arabera",
+        featC4: "Zuzeneko harremana WhatsApp edo telefonoz",
+        featC5: "Komisiorik gabe adostutako orduko prezioan",
+        btnClientBasico: "Oinarrizko Formula Aukeratu",
+
+        planClientPremName: "Premium Formula ★",
+        planClientPremDesc: "Azkartasuna eta premiazko ordezkapenak behar dituztenentzat.",
+        spanMes2: "/ hilean",
+        featCP1: "Harremana <strong>mugagabeko profesionalekin</strong>",
+        featCP2: "Profil nabarmenduak eta <strong>%100 egiaztatuta</strong>",
+        featCP3: "Eskuragarritasunaren berehalako alertak posta-kodean",
+        featCP4: "Lehentasunezko laguntza",
+        btnClientPrem: "Premium Formula Aukeratu",
+
+        groupProTitle: "✨ Garbiketa Profesionalentzako Aukerak",
+        groupProDesc: "Ezagutarazi zure zerbitzuak eta jaso bezero egiaztatuen eskaerak.",
+        groupProBadge: "Profesionalentzako Sarbidea",
+        planProBasicoName: "Oinarrizko Plana",
+        planProBasicoDesc: "Profila argitaratzeko eta kostu finkorik gabe hasteko.",
+        spanSiempre: "/ betirako",
+        featP1: "Profil aktiboa zure hirian eta posta-kodean",
+        featP2: "Bezeroen kontaktuak <strong>%100 egiaztatuta</strong>",
+        featP3: "<strong>Gehienez 2 bezero-kontaktu hilean</strong>",
+        featP4: "Orduko tarifa libreki ezarria",
+        featP5: "%0 komisioak (zure lanaren %100 kobratzen duzu)",
+        btnProBasico: "Doako Alta",
+
+        badgeProPromo: "🔥 Lehen 30 inskripzioak: 2 Hilabete Doan",
+        planProDestName: "Plan Pro Nabarmendua",
+        planProDestDesc: "Ikusgarritasun handiena, alertak eta agenda betea.",
+        spanMes3: "/ hilean",
+        badgeDiasGratis: "🌟 0 € lehenengo 60 egunetan",
+        featPP1: "<strong>Mugagabeko kontaktuak</strong> familiekin eta enpresekin",
+        featPP2: "<strong>%100 Egiaztatutako Profilaren ikur ofiziala</strong>",
+        featPP3: "<strong>Berehalako WhatsApp alertak</strong> eskaera berriekin",
+        featPP4: "Lehentasunezko kokapena zure posta-kodean",
+        btnProDest: "2 Hilabete Doan Aktibatu →",
+
         feat1Title: "%0 Komisiorik Zerbitzuagatik",
         feat1Desc: "Hitzartutako diru-kopurua %100 profesionalean geratzen da.",
         feat2Title: "Berehalako Harreman Zuzena",
         feat2Desc: "Hitz egin zuzenean WhatsApp edo telefonoz.",
         feat3Title: "Posta-Kodearen Arabera",
-        feat3Desc: "Eremu hurbilak etxetik gertu lan egiteko."
+        feat3Desc: "Eremu hurbilak etxetik gertu lan egiteko.",
+        footAviso: "Legezko Oharra",
+        footTerminos: "Baldintzak eta Xedapenak",
+        footPrivacidad: "Pribatutasun Politika",
+        footCookies: "Cookie Politika"
       },
       en: {
         badgeHero: "🌍 International Technology Platform",
@@ -896,17 +1209,97 @@
         titlePro: "Do you offer cleaning services?",
         descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
+
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
         compSub: "Compare our direct contact model and 100% zero-commission structure against traditional agencies and platforms.",
+        thCaract: "Service Features",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Other Platforms & Intermediary Apps",
+        thAgencias: "Traditional Agencies",
+        tdFila1Nom: "<strong>Identity & profile verification</strong>",
+        tdFila1Lim: "<strong>100% Verified</strong> (Cleaners & Clients)",
+        tdFila1Plat: "Unfiltered automatic signup",
+        tdFila1Agen: "They only verify the employee",
+        tdFila2Nom: "<strong>Commission per completed service</strong>",
+        tdFila2Lim: "0% (100% cleaner payout)",
+        tdFila2Plat: "15% - 25% extra fee",
+        tdFila2Agen: "Up to 35% on the hourly rate",
+        tdFila3Nom: "<strong>Direct contact between client and cleaner</strong>",
+        tdFila3Lim: "✓ Direct WhatsApp and call",
+        tdFila3Plat: "✗ Closed or blocked chat",
+        tdFila3Agen: "✗ Everything through the agency",
+        tdFila4Nom: "<strong>Full freedom of hourly rates</strong>",
+        tdFila4Lim: "✓ Freely set by the professional",
+        tdFila4Plat: "✗ Algorithm dictates the price",
+        tdFila4Agen: "✗ Fixed company agency rates",
+        tdFila5Nom: "<strong>Hyperlocal Postal Code Matching</strong>",
+        tdFila5Lim: "✓ Exact local radius",
+        tdFila5Plat: "Broad generic cities",
+        tdFila5Agen: "Subject to internal staff",
+        tdFila6Nom: "<strong>No lock-in or permanent contracts</strong>",
+        tdFila6Lim: "✓ Total flexibility",
+        tdFila6Plat: "Cancellation penalties",
+        tdFila6Agen: "Mandatory monthly contracts",
+
         priceTitle: "Transparent Plans & Pricing. No Hidden Fees.",
         priceSub: "SaaS directory model: transparent subscription plans with 0% service commissions.",
+
+        groupClientTitle: "🏢 Options for Homes and Businesses",
+        groupClientDesc: "Direct directory access to hire verified cleaning personnel in your area.",
+        groupClientBadge: "Access for Clients",
+        planClientBasicoName: "Basic Plan",
+        planClientBasicoDesc: "For standard regular or occasional needs at home or at the office.",
+        spanMes1: "/ month",
+        featC1: "Contact up to <strong>5 professionals per month</strong>",
+        featC2: "<strong>100% verified</strong> professional profiles",
+        featC3: "Search by country, city, and postal code",
+        featC4: "Direct WhatsApp or phone contact",
+        featC5: "Zero commissions on the agreed hourly fee",
+        btnClientBasico: "Choose Basic Plan",
+
+        planClientPremName: "Premium Plan ★",
+        planClientPremDesc: "For households and businesses requiring maximum agility and urgent replacements.",
+        spanMes2: "/ month",
+        featCP1: "Contact <strong>unlimited professionals</strong>",
+        featCP2: "Featured and <strong>100% verified</strong> profiles",
+        featCP3: "Instant availability alerts in your postal code",
+        featCP4: "Priority platform support",
+        btnClientPrem: "Choose Premium Plan",
+
+        groupProTitle: "✨ Options for Cleaning Professionals",
+        groupProDesc: "Promote your cleaning services in your zip code and receive leads from verified clients.",
+        groupProBadge: "Access for Professionals",
+        planProBasicoName: "Basic Plan",
+        planProBasicoDesc: "To list your verified profile and start receiving inquiries with zero fixed costs.",
+        spanSiempre: "/ forever",
+        featP1: "Active profile in your city and postal code",
+        featP2: "<strong>100% verified</strong> client inquiries",
+        featP3: "<strong>Limited to 2 client leads/month</strong>",
+        featP4: "Hourly rate set 100% freely by you",
+        featP5: "0% commissions (keep 100% of your earnings)",
+        btnProBasico: "Free Registration",
+
+        badgeProPromo: "🔥 First 30 signups: 2 Months Free",
+        planProDestName: "Featured Pro Plan",
+        planProDestDesc: "Maximum search visibility, instant notifications, and a full schedule.",
+        spanMes3: "/ month",
+        badgeDiasGratis: "🌟 €0 during the first 60 days",
+        featPP1: "<strong>Unlimited contacts</strong> with families and companies",
+        featPP2: "<strong>Official 100% Verified Profile badge</strong>",
+        featPP3: "<strong>Instant WhatsApp alerts</strong> with new inquiries",
+        featPP4: "Top positioning in your postal code",
+        btnProDest: "Claim 2 Months Free →",
+
         feat1Title: "0% Service Fees",
         feat1Desc: "100% of the agreed earnings belong to the professional. We operate strictly as an optional SaaS advertising directory.",
         feat2Title: "Direct & Immediate Contact",
         feat2Desc: "Direct chat via WhatsApp or phone to manage schedules and cleaning details with zero friction.",
         feat3Title: "Postal Code Matching",
-        feat3Desc: "Hyperlocal radius optimization to allow cleaners to work close to home and minimize travel."
+        feat3Desc: "Hyperlocal radius optimization to allow cleaners to work close to home and minimize travel.",
+        footAviso: "Legal Notice",
+        footTerminos: "Terms & Conditions",
+        footPrivacidad: "Privacy Policy",
+        footCookies: "Cookie Policy"
       },
       fr: {
         badgeHero: "🌍 Plateforme Technologique Internationale",
@@ -923,17 +1316,97 @@
         titlePro: "Vous proposez vos services ?",
         descPro: "Publiez votre profil dans votre code postal et recevez des demandes directes sur WhatsApp. 2 mois offerts.",
         btnActionPro: "S'inscrire comme Professionnel →",
+
         compTitle: "Pourquoi LIMPIAPP par rapport aux alternatives ?",
         compSub: "Comparez notre modèle sans commission avec les agences et plateformes classiques.",
+        thCaract: "Caractéristiques du Service",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Autres Plateformes et Applications",
+        thAgencias: "Agences Traditionnelles",
+        tdFila1Nom: "<strong>Vérification d'identité et profils</strong>",
+        tdFila1Lim: "<strong>100% Vérifiés</strong> (Professionnels et Clients)",
+        tdFila1Plat: "Inscription automatique sans filtre",
+        tdFila1Agen: "Ils ne vérifient que le salarié",
+        tdFila2Nom: "<strong>Commission sur les prestations</strong>",
+        tdFila2Lim: "0% (Rémunération intégrale pour vous)",
+        tdFila2Plat: "15% à 25% de frais",
+        tdFila2Agen: "Jusqu'à 35% sur le taux horaire",
+        tdFila3Nom: "<strong>Contact direct client et intervenant</strong>",
+        tdFila3Lim: "✓ WhatsApp et appel direct",
+        tdFila3Plat: "✗ Messagerie fermée ou filtrée",
+        tdFila3Agen: "✗ Tout passe par l'agence",
+        tdFila4Nom: "<strong>Liberté totale sur les tarifs horaires</strong>",
+        tdFila4Lim: "✓ Fixé librement par le professionnel",
+        tdFila4Plat: "✗ Algorithme imposant le tarif",
+        tdFila4Agen: "✗ Grille tarifaire imposée",
+        tdFila5Nom: "<strong>Couverture par Code Postal</strong>",
+        tdFila5Lim: "✓ Périmètre géographique précis",
+        tdFila5Plat: "Grandes métropoles globales",
+        tdFila5Agen: "Selon personnel disponible",
+        tdFila6Nom: "<strong>Sans engagement ni contrainte</strong>",
+        tdFila6Lim: "✓ Flexibilité totale",
+        tdFila6Plat: "Frais de résiliation",
+        tdFila6Agen: "Abonnements mensuels obligatoires",
+
         priceTitle: "Des Tarifs Clairs et Transparents.",
         priceSub: "Modèle d'annuaire par abonnement : 0% de commission sur vos prestations.",
+
+        groupClientTitle: "🏢 Formules pour Foyers et Entreprises",
+        groupClientDesc: "Accès direct à l'annuaire pour réserver des intervenants vérifiés.",
+        groupClientBadge: "Accès Clients",
+        planClientBasicoName: "Formule Basique",
+        planClientBasicoDesc: "Pour les besoins d'entretien courants ou ponctuels à domicile ou au bureau.",
+        spanMes1: "/ mois",
+        featC1: "Mise en relation avec jusqu'à <strong>5 intervenants/mois</strong>",
+        featC2: "Profils professionnels <strong>100% vérifiés</strong>",
+        featC3: "Recherche par pays, ville et code postal",
+        featC4: "Contact direct par WhatsApp ou appel",
+        featC5: "Sans commission sur le tarif horaire négocié",
+        btnClientBasico: "Choisir la Formule Basique",
+
+        planClientPremName: "Formule Premium ★",
+        planClientPremDesc: "Pour les familles et professionnels recherchant un remplacement rapide.",
+        spanMes2: "/ mois",
+        featCP1: "Contact avec des <strong>intervenants illimités</strong>",
+        featCP2: "Profils prioritaires et <strong>100% vérifiés</strong>",
+        featCP3: "Alertes immédiates dans votre code postal",
+        featCP4: "Assistance prioritaire sur la plateforme",
+        btnClientPrem: "Choisir la Formule Premium",
+
+        groupProTitle: "✨ Formules pour Professionnels du Nettoyage",
+        groupProDesc: "Développez votre clientèle locale et recevez des demandes de clients vérifiés.",
+        groupProBadge: "Accès Professionnels",
+        planProBasicoName: "Offre Basique",
+        planProBasicoDesc: "Pour créer votre fiche vérifiée sans aucun coût fixe.",
+        spanSiempre: "/ pour toujours",
+        featP1: "Profil visible dans votre ville et code postal",
+        featP2: "Coordonnées de clients <strong>100% vérifiés</strong>",
+        featP3: "<strong>Limité à 2 contacts clients par mois</strong>",
+        featP4: "Taux horaire fixé librement par vous",
+        featP5: "0% de commission (100% de vos gains pour vous)",
+        btnProBasico: "Inscription Gratuite",
+
+        badgeProPromo: "🔥 30 premières inscriptions : 2 Mois Offerts",
+        planProDestName: "Offre Pro Vedette",
+        planProDestDesc: "Visibilité maximale dans les recherches, alertes immédiates et carnet plein.",
+        spanMes3: "/ mois",
+        badgeDiasGratis: "🌟 0 € pendant les 60 premiers jours",
+        featPP1: "<strong>Contacts illimités</strong> avec particuliers et sociétés",
+        featPP2: "<strong>Badge officiel de Profil 100% Vérifié</strong>",
+        featPP3: "<strong>Alertes WhatsApp immédiates</strong> sur vos créneaux",
+        featPP4: "Affichage prioritaire dans votre secteur",
+        btnProDest: "Profiter des 2 Mois Offerts →",
+
         feat1Title: "0% de Commission sur les Services",
         feat1Desc: "100% du prix négocié revient au professionnel.",
         feat2Title: "Contact Direct et Immédiat",
         feat2Desc: "Échanges directs par téléphone ou WhatsApp.",
         feat3Title: "Proximité par Code Postal",
-        feat3Desc: "Filtres géographiques précis pour réduire les temps de trajet."
+        feat3Desc: "Filtres géographiques précis pour réduire les temps de trajet.",
+        footAviso: "Mentions Légales",
+        footTerminos: "Conditions Générales",
+        footPrivacidad: "Politique de Confidentialité",
+        footCookies: "Gestion des Cookies"
       },
       de: {
         badgeHero: "🌍 Internationale Technologieplattform",
@@ -950,22 +1423,102 @@
         titlePro: "Bieten Sie Reinigungsdienste an?",
         descPro: "Profil erstellen, Stundensätze frei festlegen und direkte Anfragen per WhatsApp erhalten. 2 Monate kostenlos.",
         btnActionPro: "Als Dienstleister registrieren →",
+
         compTitle: "Warum LIMPIAPP gegenüber Alternativen?",
         compSub: "Vergleichen Sie unser Modell ohne Provisionen mit klassischen Vermittlungsplattformen.",
+        thCaract: "Service-Merkmale",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Andere Vermittlungs-Apps",
+        thAgencias: "Klassische Agenturen",
+        tdFila1Nom: "<strong>Identitäts- und Profilprüfung</strong>",
+        tdFila1Lim: "<strong>100% Geprüft</strong> (Dienstleister & Kunden)",
+        tdFila1Plat: "Ungeprüfte automatische Anmeldung",
+        tdFila1Agen: "Nur die Angestellten werden geprüft",
+        tdFila2Nom: "<strong>Provision pro Reinigungseinsatz</strong>",
+        tdFila2Lim: "0% (100% Auszahlung an die Fachkraft)",
+        tdFila2Plat: "15% - 25% Aufschlag",
+        tdFila2Agen: "Bis zu 35% auf den Stundensatz",
+        tdFila3Nom: "<strong>Direktkontakt zwischen Kunde und Reinigungskraft</strong>",
+        tdFila3Lim: "✓ Direkt via WhatsApp und Anruf",
+        tdFila3Plat: "✗ Geschlossener oder zensierter Chat",
+        tdFila3Agen: "✗ Gesamte Abwicklung über die Agentur",
+        tdFila4Nom: "<strong>Volle Freiheit bei der Preisgestaltung</strong>",
+        tdFila4Lim: "✓ Frei festgelegt durch die Fachkraft",
+        tdFila4Plat: "✗ Algorithmus gibt den Preis vor",
+        tdFila4Agen: "✗ Starre Agentur-Preise",
+        tdFila5Nom: "<strong>Postleitzahlen-Genaue Abdeckung</strong>",
+        tdFila5Lim: "✓ Exakter Radius",
+        tdFila5Plat: "Nur Großraum-Einteilung",
+        tdFila5Agen: "Abhängig von Agentur-Personal",
+        tdFila6Nom: "<strong>Keine Mindestvertragslaufzeit</strong>",
+        tdFila6Lim: "✓ Volle Flexibilität",
+        tdFila6Plat: "Stornogebühren",
+        tdFila6Agen: "Monatliche Knebelverträge",
+
         priceTitle: "Klare Tarife. Ohne Kleingedrucktes.",
         priceSub: "Verzeichnis-Abonnementmodell: keine Abzüge von den erbrachten Dienstleistungen.",
+
+        groupClientTitle: "🏢 Optionen für Haushalte und Unternehmen",
+        groupClientDesc: "Direkter Zugang zur Datenbank geprüfter Reinigungskräfte in Ihrer Region.",
+        groupClientBadge: "Zugang für Kunden",
+        planClientBasicoName: "Basis-Tarif",
+        planClientBasicoDesc: "Für regelmäßige oder gelegentliche Reinigungseinsätze daheim oder im Büro.",
+        spanMes1: "/ Monat",
+        featC1: "Kontakt zu bis zu <strong>5 Reinigungskräften/Monat</strong>",
+        featC2: "Zu <strong>100% verifizierte</strong> Profile",
+        featC3: "Suche nach Land, Stadt und Postleitzahl",
+        featC4: "Direkte Absprache via WhatsApp oder Telefon",
+        featC5: "Keine Vermittlungsgebühren auf den Stundensatz",
+        btnClientBasico: "Basis-Tarif wählen",
+
+        planClientPremName: "Premium-Tarif ★",
+        planClientPremDesc: "Für Familien und Firmen mit Bedarf an maximaler Flexibilität und raschem Ersatz.",
+        spanMes2: "/ Monat",
+        featCP1: "Kontakt zu <strong>unbegrenzten Fachkräften</strong>",
+        featCP2: "Hervorgehobene und <strong>100% geprüfte</strong> Profile",
+        featCP3: "Sofortige Verfügbarkeits-Benachrichtigungen nach PLZ",
+        featCP4: "Prioritärer Plattform-Support",
+        btnClientPrem: "Premium-Tarif wählen",
+
+        groupProTitle: "✨ Optionen für Reinigungskräfte",
+        groupProDesc: "Präsentieren Sie Ihr Angebot in Ihrer PLZ und erhalten Sie Anfragen geprüfter Kunden.",
+        groupProBadge: "Zugang für Dienstleister",
+        planProBasicoName: "Basis-Plan",
+        planProBasicoDesc: "Verifiziertes Profil schalten und ohne Fixkosten Kundenanfragen erhalten.",
+        spanSiempre: "/ dauerhaft kostenlos",
+        featP1: "Aktives Profil in Ihrer Stadt und Postleitzahl",
+        featP2: "Zu <strong>100% verifizierte Kundenkontakte</strong>",
+        featP3: "<strong>Begrenzt auf 2 Kundenkontakte pro Monat</strong>",
+        featP4: "Stundensatz wird komplett frei von Ihnen bestimmt",
+        featP5: "0% Provision (100% Ihres Verdienstes bleibt bei Ihnen)",
+        btnProBasico: "Kostenlos anmelden",
+
+        badgeProPromo: "🔥 Erste 30 Anmeldungen: 2 Monate kostenlos",
+        planProDestName: "Pro-Tarif Highlight",
+        planProDestDesc: "Höchste Suchplatzierung, Push-Nachrichten und volle Terminkalender.",
+        spanMes3: "/ Monat",
+        badgeDiasGratis: "🌟 0 € in den ersten 60 Tagen",
+        featPP1: "<strong>Unbegrenzte Kontakte</strong> zu Haushalten & Firmen",
+        featPP2: "<strong>Offizielles Siegel: 100% Verifiziertes Profil</strong>",
+        featPP3: "<strong>Sofortige WhatsApp-Alerts</strong> bei neuen Anfragen",
+        featPP4: "Bevorzugte Platzierung in Ihrer Postleitzahl",
+        btnProDest: "2 Monate kostenlos testen →",
+
         feat1Title: "0 % Vermittlungsgebühr",
         feat1Desc: "Der vereinbarte Betrag gehört zu 100 % der Fachkraft.",
         feat2Title: "Direkter Kontakt",
         feat2Desc: "Schnelle Absprachen per WhatsApp oder Anruf.",
         feat3Title: "Abdeckung nach Postleitzahl",
-        feat3Desc: "Gezielte Filter für kurze Arbeitswege."
+        feat3Desc: "Gezielte Filter für kurze Arbeitswege.",
+        footAviso: "Impressum",
+        footTerminos: "Allgemeine Geschäftsbedingungen",
+        footPrivacidad: "Datenschutzerklärung",
+        footCookies: "Cookie-Richtlinie"
       },
       it: {
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Servizi di pulizia professionale verificati <span>nel tuo CAP</span>",
-        heroSub: "Colleghiamo l'offerta indipendente con case e aziende. Trattativa directa e senza commissioni sul servizio.",
+        heroSub: "Colleghiamo l'offerta indipendente con case e aziende. Trattativa diretta e senza commissioni sul servizio.",
         btnBuscarCP: "Verifica Disponibilità",
         btnNavClient: "Cerca Servizio",
         btnNavPro: "Sono un Professionista",
@@ -977,17 +1530,97 @@
         titlePro: "Offri i tuoi servizi?",
         descPro: "Crea il tuo profilo nel tuo CAP, fissa le tue tariffe e ricevi richieste su WhatsApp. 2 mesi gratis.",
         btnActionPro: "Registrati come Professionista →",
+
         compTitle: "Perché scegliere LIMPIAPP?",
         compSub: "Confronta il nostro modello a zero commissioni rispetto ad agenzie e altre piattaforme.",
+        thCaract: "Caratteristiche del Servizio",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Altre Piattaforme e App Intermediarie",
+        thAgencias: "Agenzie Tradizionali",
+        tdFila1Nom: "<strong>Verifica identità e profili</strong>",
+        tdFila1Lim: "<strong>100% Verificati</strong> (Professionisti e Clienti)",
+        tdFila1Plat: "Registrazione automatica senza controlli",
+        tdFila1Agen: "Verificano solo il lavoratore",
+        tdFila2Nom: "<strong>Commissione sulle ore svolte</strong>",
+        tdFila2Lim: "0% (Compenso 100% del professionista)",
+        tdFila2Plat: "15% - 25% di ricarico",
+        tdFila2Agen: "Fino al 35% sulla tariffa oraria",
+        tdFila3Nom: "<strong>Contatto diretto tra cliente e lavoratore</strong>",
+        tdFila3Lim: "✓ WhatsApp e chiamata diretta",
+        tdFila3Plat: "✗ Chat limitata o bloccata",
+        tdFila3Agen: "✗ Tutto tramite agenzia",
+        tdFila4Nom: "<strong>Totale libertà sulla tariffa oraria</strong>",
+        tdFila4Lim: "✓ Fissata liberamente dal lavoratore",
+        tdFila4Plat: "✗ L'algoritmo impone la paga",
+        tdFila4Agen: "✗ Tariffa aziendale vincolata",
+        tdFila5Nom: "<strong>Copertura esatta per CAP</strong>",
+        tdFila5Lim: "✓ Raggio iperlocale",
+        tdFila5Plat: "Aree metropolitane generiche",
+        tdFila5Agen: "Soggetta al personale d'agenzia",
+        tdFila6Nom: "<strong>Senza vincoli o contratti fissi</strong>",
+        tdFila6Lim: "✓ Flessibilità completa",
+        tdFila6Plat: "Penali di recesso",
+        tdFila6Agen: "Contratti minimi obbligatori",
+
         priceTitle: "Piani e Tariffe Chiare. Senza Sorprese.",
         priceSub: "Modello in abbonamento: zero commissioni sul servizio concordato.",
+
+        groupClientTitle: "🏢 Soluzioni per Famiglie e Imprese",
+        groupClientDesc: "Accesso diretto alla banca dati per ingaggiare personale verificato nel tuo CAP.",
+        groupClientBadge: "Accesso Clienti",
+        planClientBasicoName: "Formula Base",
+        planClientBasicoDesc: "Per le esigenze di pulizia standard, saltuarie o periodiche.",
+        spanMes1: "/ mese",
+        featC1: "Contatta fino a <strong>5 professionisti al mese</strong>",
+        featC2: "Profili <strong>100% verificati</strong>",
+        featC3: "Ricerca per nazione, città e codice postale",
+        featC4: "Contatto diretto tramite WhatsApp o chiamata",
+        featC5: "Nessuna commissione sulla tariffa pattuita",
+        btnClientBasico: "Scegli Formula Base",
+
+        planClientPremName: "Formula Premium ★",
+        planClientPremDesc: "Per chi cerca massima rapidità e sostituzioni immediate.",
+        spanMes2: "/ mese",
+        featCP1: "Contatti con <strong>professionisti illimitati</strong>",
+        featCP2: "Profili in evidenza e <strong>100% verificati</strong>",
+        featCP3: "Avvisi immediati di disponibilità nel tuo CAP",
+        featCP4: "Assistenza prioritaria dedicata",
+        btnClientPrem: "Scegli Formula Premium",
+
+        groupProTitle: "✨ Soluzioni per Professionisti delle Pulizie",
+        groupProDesc: "Fatti trovare nella tua zona e ricevi richieste dirette da utenti verificati.",
+        groupProBadge: "Accesso Professionisti",
+        planProBasicoName: "Piano Base",
+        planProBasicoDesc: "Per pubblicare la tua scheda e ricevere richieste senza costi fissi.",
+        spanSiempre: "/ per sempre gratis",
+        featP1: "Profilo attivo nella tua città e CAP",
+        featP2: "Contatti di clienti <strong>100% verificati</strong>",
+        featP3: "<strong>Limitato a 2 contatti cliente/mese</strong>",
+        featP4: "Compenso orario stabilito solo da te",
+        featP5: "0% commissioni (incassi il 100% del tuo lavoro)",
+        btnProBasico: "Iscriviti Gratis",
+
+        badgeProPromo: "🔥 Prime 30 iscrizioni: 2 Mesi Gratis",
+        planProDestName: "Piano Pro in Evidenza",
+        planProDestDesc: "Massima visibilità, avvisi prioritari e calendario sempre pieno.",
+        spanMes3: "/ mese",
+        badgeDiasGratis: "🌟 0 € per i primi 60 giorni",
+        featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
+        featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
+        featPP3: "<strong>Avvisi WhatsApp in tempo reale</strong> con nuove offerte",
+        featPP4: "Posizionamento in cima alla tua zona",
+        btnProDest: "Attiva i 2 Mesi Gratis →",
+
         feat1Title: "0% Commissioni sui Servizi",
         feat1Desc: "L'importo concordato è al 100% per il professionista.",
         feat2Title: "Contatto Diretto e Immediato",
         feat2Desc: "Accordi rapidi su orari e dettagli senza intermediari.",
         feat3Title: "Copertura per CAP",
-        feat3Desc: "Raggi geografici ottimali per lavorare vicino casa."
+        feat3Desc: "Raggi geografici ottimali per lavorare vicino casa.",
+        footAviso: "Note Legali",
+        footTerminos: "Termini e Condizioni",
+        footPrivacidad: "Informativa sulla Privacy",
+        footCookies: "Cookie Policy"
       },
       pt: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -1004,30 +1637,108 @@
         titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
+
         compTitle: "Porquê a LIMPIAPP frente às alternativas?",
         compSub: "Compare o nosso modelo direto e 100% sem comissões.",
+        thCaract: "Características do Serviço",
+        thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Outras Plataformas e Aplicações",
+        thAgencias: "Agências Tradicionais",
+        tdFila1Nom: "<strong>Verificação de identidade e perfis</strong>",
+        tdFila1Lim: "<strong>100% Verificados</strong> (Profissionais e Clientes)",
+        tdFila1Plat: "Registo automático sem filtros",
+        tdFila1Agen: "Apenas verificam o trabalhador",
+        tdFila2Nom: "<strong>Comissão por serviço efetuado</strong>",
+        tdFila2Lim: "0% (Recebimento 100% do profissional)",
+        tdFila2Plat: "15% a 25% de taxa extra",
+        tdFila2Agen: "Até 35% sobre o valor da hora",
+        tdFila3Nom: "<strong>Contacto direto entre cliente e prestador</strong>",
+        tdFila3Lim: "✓ WhatsApp e chamada direta",
+        tdFila3Plat: "✗ Chat fechado ou bloqueado",
+        tdFila3Agen: "✗ Tudo mediado pela agência",
+        tdFila4Nom: "<strong>Total liberdade de preços por hora</strong>",
+        tdFila4Lim: "✓ Definido livremente pelo profissional",
+        tdFila4Plat: "✗ O algoritmo impõe a tarifa",
+        tdFila4Agen: "✗ Tarifas fixas de empresa",
+        tdFila5Nom: "<strong>Proximidade por Código Postal</strong>",
+        tdFila5Lim: "✓ Localização precisa",
+        tdFila5Plat: "Grandes zonas genéricas",
+        tdFila5Agen: "Sujeito ao pessoal próprio da agência",
+        tdFila6Nom: "<strong>Sem fidelizações obrigatórias</strong>",
+        tdFila6Lim: "✓ Flexibilidade total",
+        tdFila6Plat: "Penalizações de cancelamento",
+        tdFila6Agen: "Contratos mensais obrigatórios",
+
         priceTitle: "Planos e Preços Transparentes.",
         priceSub: "Modelo de subscrição de diretório: 0% de comissões sobre os serviços prestados.",
+
+        groupClientTitle: "🏢 Opções para Lares e Empresas",
+        groupClientDesc: "Acesso direto à plataforma para contratar pessoal verificado na sua área.",
+        groupClientBadge: "Acesso Clientes",
+        planClientBasicoName: "Fórmula Básica",
+        planClientBasicoDesc: "Para necessidades regulares ou pontuais na sua residência ou empresa.",
+        spanMes1: "/ mês",
+        featC1: "Contacto com até <strong>5 profissionais por mês</strong>",
+        featC2: "Perfis <strong>100% verificados</strong>",
+        featC3: "Pesquisa por país, cidade e código postal",
+        featC4: "Contacto direto por WhatsApp ou chamada",
+        featC5: "Sem comissões sobre o valor horário combinado",
+        btnClientBasico: "Escolher Fórmula Básica",
+
+        planClientPremName: "Fórmula Premium ★",
+        planClientPremDesc: "Para famílias e empresas que necessitam de rapidez e substituições urgentes.",
+        spanMes2: "/ mês",
+        featCP1: "Contactos com <strong>profissionais ilimitados</strong>",
+        featCP2: "Perfis em destaque e <strong>100% verificados</strong>",
+        featCP3: "Alertas imediatos na sua zona postal",
+        featCP4: "Apoio prioritário na plataforma",
+        btnClientPrem: "Escolher Fórmula Premium",
+
+        groupProTitle: "✨ Opções para Profissionais de Limpeza",
+        groupProDesc: "Divulgue os seus serviços e receba pedidos de clientes verificados na sua área.",
+        groupProBadge: "Acesso Profissionais",
+        planProBasicoName: "Plano Básico",
+        planProBasicoDesc: "Para publicar o seu perfil e receber solicitações sem mensalidades fixas.",
+        spanSiempre: "/ grátis para sempre",
+        featP1: "Perfil ativo na sua cidade e código postal",
+        featP2: "Contactos de clientes <strong>100% verificados</strong>",
+        featP3: "<strong>Limitado a 2 contactos de clientes/mês</strong>",
+        featP4: "Preço por hora definido exclusivamente por si",
+        featP5: "0% comissões (o valor do serviço é 100% seu)",
+        btnProBasico: "Registo Gratuito",
+
+        badgeProPromo: "🔥 Primeiras 30 inscrições: 2 Meses Grátis",
+        planProDestName: "Plano Pro em Destaque",
+        planProDestDesc: "Máxima visibilidade em pesquisas, notificações instantâneas e agenda preenchida.",
+        spanMes3: "/ mês",
+        badgeDiasGratis: "🌟 0 € durante os primeiros 60 dias",
+        featPP1: "<strong>Contactos ilimitados</strong> com particulares e empresas",
+        featPP2: "<strong>Selo oficial de Perfil 100% Verificado</strong>",
+        featPP3: "<strong>Alertas imediatos via WhatsApp</strong> com novos pedidos",
+        featPP4: "Posicionamento prioritário no seu código postal",
+        btnProDest: "Ativar 2 Meses Grátis →",
+
         feat1Title: "0% Comissões por Serviço",
         feat1Desc: "100% do valor cobrado pertence ao profissional.",
         feat2Title: "Contacto Direto e Imediato",
         feat2Desc: "Comunicação rápida e clara por WhatsApp ou telefone.",
         feat3Title: "Proximidade por Código Postal",
-        feat3Desc: "Otimização geográfica para trabalhar perto de casa."
+        feat3Desc: "Otimização geográfica para trabalhar perto de casa.",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condições",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
       }
     };
 
-    // 3. Función Central de Cambio de Idioma con Persistencia
     function cambiarIdioma(lang) {
-      // Guarda la preferencia en el navegador para todas las páginas legales y formularios
       localStorage.setItem('limpiapp_lang', lang);
-
       var t = dicc[lang] || dicc['es'];
+
       for (var id in t) {
         var el = document.getElementById(id);
         if (el) {
-          if (id === 'heroTitle') {
+          if (id === 'heroTitle' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge')) {
             el.innerHTML = t[id];
           } else {
             el.innerText = t[id];
@@ -1036,14 +1747,11 @@
       }
     }
 
-    // 4. Al cargar la portada: comprueba si ya había un idioma seleccionado previamente
     document.addEventListener('DOMContentLoaded', function() {
-      var guardado = localStorage.getItem('limpiapp_lang');
-      if (guardado && dicc[guardado]) {
-        var select = document.querySelector('.lang-select');
-        if (select) select.value = guardado;
-        cambiarIdioma(guardado);
-      }
+      var guardado = localStorage.getItem('limpiapp_lang') || 'es';
+      var select = document.querySelector('.lang-select');
+      if (select) select.value = guardado;
+      cambiarIdioma(guardado);
     });
   </script>
 </body>
