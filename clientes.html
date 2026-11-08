@@ -37,7 +37,7 @@
       --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     
     body {
       background-color: var(--color-bg-page);
@@ -232,7 +232,6 @@
     }
     .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
-    /* Modal de Éxito */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -281,7 +280,6 @@
 </head>
 <body>
 
-  <!-- Selector Multilingüe Universal -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
     <select class="lang-select" onchange="cambiarIdioma(this.value)">
@@ -403,7 +401,6 @@
     </div>
   </div>
 
-  <!-- Modal de Éxito con IDs dinámicos -->
   <div id="modalCliente" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
@@ -838,6 +835,16 @@
           inputEl.placeholder = t[pKey];
         }
       }
+
+      // Propagar dinámicamente el idioma en todos los enlaces legales
+      var links = document.querySelectorAll('footer a, .legal-box a');
+      links.forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href && href.includes('.html')) {
+          var base = href.split('?')[0];
+          a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang));
+        }
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function() {
