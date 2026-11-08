@@ -27,27 +27,27 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    body { background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; }
+    body { background-color: var(--bg-page); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
     /* Barra Superior Multilingüe */
     .top-bar {
       background-color: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 8px 20px;
+      padding: 10px 24px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-size: 0.85rem;
     }
-    #google_translate_element { display: inline-block; }
-    .goog-te-gadget { font-size: 0 !important; }
-    .goog-te-gadget .goog-te-combo {
+    .lang-select {
       padding: 5px 10px;
       border-radius: 6px;
       border: 1px solid #cbd5e1;
       font-size: 0.82rem;
       background: #f8fafc;
+      color: #334155;
+      font-weight: 500;
       cursor: pointer;
     }
 
@@ -59,8 +59,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
+      width: 100%;
+    }
+    .header-inner {
+      max-width: 1100px;
+      width: 100%;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .logo-container img {
       max-width: 220px;
@@ -97,9 +104,9 @@
 
     /* Sección Hero Principal */
     .hero {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 60px 20px 40px;
+      padding: 50px 20px 30px;
       text-align: center;
     }
     .badge-hero {
@@ -114,26 +121,26 @@
       margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: 2.8rem;
+      font-size: 2.7rem;
       font-weight: 800;
-      line-height: 1.2;
+      line-height: 1.25;
       color: #0f172a;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .hero h1 span { color: var(--primary); }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
       max-width: 760px;
       margin: 0 auto 36px;
     }
 
-    /* Tarjetas de Selección B2B / B2C */
+    /* Tarjetas de Selección */
     .dual-cta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
-      max-width: 900px;
+      max-width: 880px;
       margin: 0 auto 50px;
       text-align: left;
     }
@@ -149,7 +156,7 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .cta-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
     .cta-card.client { border-top: 5px solid var(--primary); }
@@ -163,16 +170,16 @@
     }
     .cta-card.client .card-tag { color: var(--primary); }
     .cta-card.pro .card-tag { color: var(--secondary); }
-    .cta-card h2 { font-size: 1.5rem; margin-bottom: 12px; color: #0f172a; }
+    .cta-card h2 { font-size: 1.45rem; margin-bottom: 10px; color: #0f172a; }
     .cta-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5; }
     .btn-action {
       display: block;
       text-align: center;
-      padding: 14px;
+      padding: 13px;
       border-radius: 10px;
       font-weight: 700;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.98rem;
       transition: background 0.2s;
     }
     .btn-action.client { background: var(--primary); color: #ffffff; }
@@ -180,12 +187,333 @@
     .btn-action.pro { background: var(--secondary); color: #ffffff; }
     .btn-action.pro:hover { background: var(--secondary-dark); }
 
-    /* Sección de Ventajas Globales */
+    /* Sección de Ventajas */
     .features-section {
       background: #ffffff;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 60px 20px;
+      padding: 50px 20px;
+      width: 100%;
     }
     .features-inner {
-      max-width: 1000px;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    .feature-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .feature-item h3 { font-size: 1.1rem; margin-bottom: 8px; color: #0f172a; }
+    .feature-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
+
+    /* Pie de página */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 45px 20px 35px;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+    }
+    .footer-container { max-width: 850px; margin: 0 auto; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin: 16px 0 20px;
+    }
+    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: #ffffff; }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 14px; }
+      .top-bar { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Idiomas Nativa (Sin scripts bloqueantes) -->
+  <div class="top-bar">
+    <span style="color: #64748b; font-weight: 600;">🌐 Idioma / Language:</span>
+    <select class="lang-select" onchange="cambiarIdioma(this.value)">
+      <option value="es" selected>Español</option>
+      <option value="ca">Català / Valencià</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+      <option value="pt">Português</option>
+      <option value="de">Deutsch</option>
+      <option value="nl">Nederlands</option>
+      <option value="gl">Galego</option>
+      <option value="eu">Euskara</option>
+    </select>
+  </div>
+
+  <!-- Cabecera -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
+        </a>
+      </div>
+      <div class="nav-actions">
+        <a href="clientes.html" class="btn-nav-client" id="btnNavClient">Buscar Servicio</a>
+        <a href="registro.html" class="btn-nav-pro" id="btnNavPro">Soy Profesional</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Principal -->
+  <main>
+    <section class="hero">
+      <span class="badge-hero" id="badgeHero">🌍 Plataforma Tecnológica Internacional</span>
+      <h1 id="heroTitle">La red que conecta la limpieza profesional con hogares y empresas <span>en cualquier ciudad</span></h1>
+      <p id="heroSub">
+        Acceso directo, transparente y sin comisiones sobre los servicios. Conectamos la oferta independiente con la demanda en tu código postal.
+      </p>
+
+      <!-- Tarjetas B2B y B2C -->
+      <div class="dual-cta-grid">
+        <!-- Cliente -->
+        <div class="cta-card client">
+          <div>
+            <div class="card-tag" id="tagClient">Para Hogares y Empresas</div>
+            <h2 id="titleClient">¿Buscas personal de confianza?</h2>
+            <p id="descClient">
+              Encuentra profesionales y servicios de limpieza en tu ciudad o barrio. Negocia directamente y sin sobrecostes de intermediación.
+            </p>
+          </div>
+          <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Registro Clientes →</a>
+        </div>
+
+        <!-- Profesional -->
+        <div class="cta-card pro">
+          <div>
+            <div class="card-tag" id="tagPro">Para Profesionales Independientes</div>
+            <h2 id="titlePro">¿Ofreces tus servicios?</h2>
+            <p id="descPro">
+              Publica tu perfil en tu zona, fija libremente tus tarifas y recibe contactos directos vía WhatsApp. 2 meses gratis de lanzamiento.
+            </p>
+          </div>
+          <a href="registro.html" class="btn-action pro" id="btnActionPro">Registrarme como Profesional →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ventajas -->
+    <section class="features-section">
+      <div class="features-inner">
+        <div class="feature-item">
+          <div class="feature-icon">💰</div>
+          <h3 id="feat1Title">0% Comisiones por Servicio</h3>
+          <p id="feat1Desc">El importe acordado es 100% para el profesional. La plataforma funciona únicamente mediante suscripción opcional de directorio.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📲</div>
+          <h3 id="feat2Title">Trato y Contacto Directo</h3>
+          <p id="feat2Desc">Comunícate por teléfono o WhatsApp de manera inmediata y sin trabas algorítmicas entre cliente y profesional.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📍</div>
+          <h3 id="feat3Title">Cobertura por Código Postal</h3>
+          <p id="feat3Desc">Filtros específicos por país, ciudad y zona geográfica para optimizar tiempos de traslado y disponibilidad inmediata.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <div class="footer-container">
+      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;">
+        &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
+      </p>
+      <div class="footer-links">
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <span style="color: #475569;">|</span>
+        <a href="terminos.html">Términos y Condiciones</a>
+        <span style="color: #475569;">|</span>
+        <a href="privacidad.html">Política de Privacidad</a>
+        <span style="color: #475569;">|</span>
+        <a href="cookies.html">Política de Cookies</a>
+      </div>
+      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;">
+        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
+      </p>
+    </div>
+  </footer>
+
+  <!-- Script Ligero de Traducción Inmediata -->
+  <script>
+    var traducciones = {
+      es: {
+        badgeHero: "🌍 Plataforma Tecnológica Internacional",
+        heroTitle: "La red que conecta la limpieza profesional con hogares y empresas <span>en cualquier ciudad</span>",
+        heroSub: "Acceso directo, transparente y sin comisiones sobre los servicios. Conectamos la oferta independiente con la demanda en tu código postal.",
+        btnNavClient: "Buscar Servicio",
+        btnNavPro: "Soy Profesional",
+        tagClient: "Para Hogares y Empresas",
+        titleClient: "¿Buscas personal de confianza?",
+        descClient: "Encuentra profesionales y servicios de limpieza en tu ciudad o barrio. Negocia directamente y sin sobrecostes de intermediación.",
+        btnActionClient: "Solicitar Servicio / Registro Clientes →",
+        tagPro: "Para Profesionales Independientes",
+        titlePro: "¿Ofreces tus servicios?",
+        descPro: "Publica tu perfil en tu zona, fija libremente tus tarifas y recibe contactos directos vía WhatsApp. 2 meses gratis de lanzamiento.",
+        btnActionPro: "Registrarme como Profesional →",
+        feat1Title: "0% Comisiones por Servicio",
+        feat1Desc: "El importe acordado es 100% para el profesional. La plataforma funciona únicamente mediante suscripción opcional de directorio.",
+        feat2Title: "Trato y Contacto Directo",
+        feat2Desc: "Comunícate por teléfono o WhatsApp de manera inmediata y sin trabas algorítmicas entre cliente y profesional.",
+        feat3Title: "Cobertura por Código Postal",
+        feat3Desc: "Filtros específicos por país, ciudad y zona geográfica para optimizar tiempos de traslado y disponibilidad inmediata."
+      },
+      ca: {
+        badgeHero: "🌍 Plataforma Tecnològica Internacional",
+        heroTitle: "La xarxa que connecta la neteja professional amb llars i empreses <span>a qualsevol ciutat</span>",
+        heroSub: "Accés directe, transparent i sense comissions sobre els serveis. Connectem l'oferta independent amb la demanda al teu codi postal.",
+        btnNavClient: "Cercar Servei",
+        btnNavPro: "Sóc Professional",
+        tagClient: "Per a Llars i Empreses",
+        titleClient: "Busques personal de confiança?",
+        descClient: "Troba professionals i serveis de neteja a la teva ciutat o barri. Negocia directament i sense sobrecostos d'intermediació.",
+        btnActionClient: "Demanar Servei / Registre Clients →",
+        tagPro: "Per a Professionals Independents",
+        titlePro: "Ofereixes els teus serveis?",
+        descPro: "Publica el teu perfil a la teva zona, fixa lliurement les teves tarifes i rep contactes directes via WhatsApp. 2 mesos de franc.",
+        btnActionPro: "Registrar-me com a Professional →",
+        feat1Title: "0% Comissions per Servei",
+        feat1Desc: "L'import acordat és 100% per al professional. La plataforma funciona únicament mitjançant subscripció opcional de directori.",
+        feat2Title: "Tracte i Contacte Directe",
+        feat2Desc: "Comunica't per telèfon o WhatsApp de manera immediata i sense traves algorítmiques.",
+        feat3Title: "Cobertura per Codi Postal",
+        feat3Desc: "Filtres específics per país, ciutat i zona geogràfica per optimitzar temps de trasllat."
+      },
+      en: {
+        badgeHero: "🌍 International Technology Platform",
+        heroTitle: "Connecting professional cleaning services with homes and businesses <span>in any city</span>",
+        heroSub: "Direct, transparent access with 0% commissions on services. We connect independent professionals with local demand by postal code.",
+        btnNavClient: "Find Service",
+        btnNavPro: "I am a Professional",
+        tagClient: "For Homes & Businesses",
+        titleClient: "Looking for trusted cleaning staff?",
+        descClient: "Find verified cleaning professionals in your city or neighborhood. Direct contact with zero intermediary markup fees.",
+        btnActionClient: "Request Service / Client Signup →",
+        tagPro: "For Independent Cleaners",
+        titlePro: "Do you offer cleaning services?",
+        descPro: "List your profile in your local area, set your own hourly rates, and receive direct WhatsApp leads. 2 months free trial.",
+        btnActionPro: "Register as a Professional →",
+        feat1Title: "0% Service Fees",
+        feat1Desc: "100% of your earnings belong to you. We operate strictly as an optional directory subscription model.",
+        feat2Title: "Direct Contact",
+        feat2Desc: "Chat directly via WhatsApp or phone with clients without automated algorithms in between.",
+        feat3Title: "Postal Code Coverage",
+        feat3Desc: "Dedicated filters by country, city, and zip code to minimize travel and ensure nearby availability."
+      },
+      fr: {
+        badgeHero: "🌍 Plateforme Technologique Internationale",
+        heroTitle: "Le réseau qui connecte le nettoyage professionnel aux foyers et entreprises <span>dans chaque ville</span>",
+        heroSub: "Accès direct, transparent et 0% de commission sur les services. Mise en relation directe par code postal.",
+        btnNavClient: "Trouver un Service",
+        btnNavPro: "Je suis Professionnel",
+        tagClient: "Pour Foyers et Entreprises",
+        titleClient: "Vous cherchez du personnel de confiance ?",
+        descClient: "Trouvez des professionnels du nettoyage dans votre ville. Contact direct sans frais d'intermédiaire.",
+        btnActionClient: "Demander un Service / Inscription Client →",
+        tagPro: "Pour Professionnels Indépendants",
+        titlePro: "Vous proposez vos services ?",
+        descPro: "Publiez votre profil, fixez librement vos tarifs et recevez des contacts directs par WhatsApp. 2 mois gratuits.",
+        btnActionPro: "S'inscrire comme Professionnel →",
+        feat1Title: "0% de Commission sur les Services",
+        feat1Desc: "100% du tarif négocié revient au professionnel.",
+        feat2Title: "Contact Direct",
+        feat2Desc: "Échangez directement par téléphone ou WhatsApp sans intermédiaire.",
+        feat3Title: "Couverture par Code Postal",
+        feat3Desc: "Filtres géographiques précis par pays, ville et quartier."
+      },
+      it: {
+        badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
+        heroTitle: "La rete che connette i servizi di pulizia con case e aziende <span>in qualsiasi città</span>",
+        heroSub: "Accesso diretto, trasparente e senza commissioni sui servizi. Connettiamo domanda e offerta nel tuo CAP.",
+        btnNavClient: "Cerca Servizio",
+        btnNavPro: "Sono un Professionista",
+        tagClient: "Per Case e Aziende",
+        titleClient: "Cerchi personale di fiducia?",
+        descClient: "Trova professionisti delle pulizie nella tua città. Trattativa diretta senza costi di intermediazione.",
+        btnActionClient: "Richiedi Servizio / Registrazione Clienti →",
+        tagPro: "Per Professionisti Indipendenti",
+        titlePro: "Offri i tuoi servizi?",
+        descPro: "Pubblica il tuo profilo, decidi liberamente le tue tariffe e ricevi contatti diretti su WhatsApp. 2 mesi gratis.",
+        btnActionPro: "Registrati come Professionista →",
+        feat1Title: "0% Commissioni sui Servizi",
+        feat1Desc: "L'importo concordato è 100% del professionista.",
+        feat2Title: "Contatto Diretto",
+        feat2Desc: "Comunica subito via telefono o WhatsApp con i tuoi clienti.",
+        feat3Title: "Copertura per Codice Postale",
+        feat3Desc: "Filtri dedicati per paese, città e quartiere per ottimizzare gli spostamenti."
+      },
+      pt: {
+        badgeHero: "🌍 Plataforma Tecnológica Internacional",
+        heroTitle: "A rede que liga os serviços de limpeza a lares e empresas <span>em qualquer cidade</span>",
+        heroSub: "Acesso direto, transparente e sem comissões. Ligamos profissionais independentes à procura no seu código postal.",
+        btnNavClient: "Procurar Serviço",
+        btnNavPro: "Sou Profissional",
+        tagClient: "Para Lares e Empresas",
+        titleClient: "Procura pessoal de confiança?",
+        descClient: "Encontre profissionais de limpeza na sua cidade. Contacto direto sem custos de intermediação.",
+        btnActionClient: "Pedir Serviço / Registo de Clientes →",
+        tagPro: "Para Profissionais Independentes",
+        titlePro: "Oferece os seus serviços?",
+        descPro: "Crie o seu perfil na sua área, defina os seus preços e receba contactos diretos via WhatsApp. 2 meses grátis.",
+        btnActionPro: "Registar como Profissional →",
+        feat1Title: "0% Comissões por Serviço",
+        feat1Desc: "O valor cobrado é 100% seu.",
+        feat2Title: "Contacto Direto",
+        feat2Desc: "Fale diretamente por WhatsApp ou telefone com os seus clientes.",
+        feat3Title: "Cobertura por Código Postal",
+        feat3Desc: "Filtros por país, cidade e código postal para viagens mais curtas."
+      },
+      de: {
+        badgeHero: "🌍 Internationale Technologieplattform",
+        heroTitle: "Das Netzwerk für professionelle Reinigungsdienste für Haushalte und Unternehmen <span>in jeder Stadt</span>",
+        heroSub: "Direkter, transparenter Zugang mit 0 % Serviceprovision. Wir verbinden Angebot und Nachfrage nach Postleitzahl.",
+        btnNavClient: "Service finden",
+        btnNavPro: "Ich bin Dienstleister",
+        tagClient: "Für Haushalte & Firmen",
+        titleClient: "Suchen Sie vertrauenswürdiges Reinigungspersonal?",
+        descClient: "Finden Sie Reinigungskräfte in Ihrer Stadt. Direkter Kontakt ohne Vermittlungsgebühren.",
+        btnActionClient: "Service anfragen / Kundenregistrierung →",
+        tagPro: "Für Selbstständige Reinigungskräfte",
+        titlePro: "Bieten Sie Reinigungsdienste an?",
+        descPro: "Profil erstellen, Stundensätze frei festlegen und direkte Anfragen per WhatsApp erhalten. 2 Monate kostenlos.",
+        btnActionPro: "Als Dienstleister registrieren →",
+        feat1Title: "0 % Vermittlungsgebühr",
+        feat1Desc: "Der vereinbarte Betrag gehört zu 100 % Ihnen.",
+        feat2Title: "Direkter Kontakt",
+        feat2Desc: "Direkte Absprachen via WhatsApp oder Anruf.",
+        feat3Title: "Abdeckung nach Postleitzahl",
+        feat3Desc: "Gezielte Filter nach Land, Stadt und PLZ für kurze Wege."
+      }
+    };
+
+    function cambiarIdioma(lang) {
+      var t = traducciones[lang] || traducciones['es'];
+      for (var id in t) {
+        var el = document.getElementById(id);
+        if (el) {
+          if (id === 'heroTitle') {
+            el.innerHTML = t[id];
+          } else {
+            el.innerText = t[id];
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>
