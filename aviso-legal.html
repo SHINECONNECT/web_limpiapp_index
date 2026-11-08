@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aviso Legal | LIMPIAPP</title>
+  <title>Aviso Legal y Condiciones de Uso | LIMPIAPP</title>
   <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-logo-blue: #7faecb;
@@ -22,19 +22,23 @@
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
-    .container { max-width: 860px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-    .back-btn { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; margin-bottom: 24px; }
-    h1 { font-size: 2rem; color: var(--color-slate-dark); margin-bottom: 20px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 12px; }
-    h2 { font-size: 1.25rem; color: var(--color-logo-charcoal); margin: 24px 0 10px; font-weight: 700; }
-    p { color: #475259; font-size: 0.95rem; margin-bottom: 14px; }
+    .container { max-width: 920px; margin: 40px auto; background: #fff; padding: 48px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .back-btn { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; margin-bottom: 24px; font-size: 0.95rem; }
+    .back-btn:hover { text-decoration: underline; }
+    h1 { font-size: 2.1rem; color: var(--color-slate-dark); margin-bottom: 24px; font-weight: 800; border-bottom: 2px solid var(--color-logo-blue); padding-bottom: 14px; }
+    h2 { font-size: 1.3rem; color: var(--color-logo-charcoal); margin: 32px 0 12px; font-weight: 700; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px; }
+    p { color: #334155; font-size: 0.95rem; margin-bottom: 14px; text-align: justify; }
+    ul { padding-left: 24px; margin-bottom: 16px; color: #334155; font-size: 0.95rem; }
+    li { margin-bottom: 8px; text-align: justify; }
+    strong { color: var(--color-slate-dark); }
   </style>
 </head>
 <body>
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelectAviso" onchange="cambiarIdiomaAviso(this.value)">
+    <select class="lang-select" id="langSelector" onchange="aplicarTraduccion(this.value)">
       <optgroup label="Lenguas de España">
-        <option value="es">Español</option>
+        <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
         <option value="gl">Galego</option>
         <option value="eu">Euskara</option>
@@ -45,148 +49,113 @@
         <option value="de">Deutsch</option>
         <option value="it">Italiano</option>
         <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+        <option value="ro">Română</option>
+        <option value="sv">Svenska</option>
+        <option value="da">Dansk</option>
+        <option value="cs">Čeština</option>
+        <option value="hu">Magyar</option>
+        <option value="el">Ελληνικά</option>
       </optgroup>
     </select>
   </div>
 
   <div class="container">
-    <a href="javascript:history.back()" class="back-btn" id="btnBack">← Volver</a>
-    <h1 id="aTitle">Aviso Legal e Información Societaria</h1>
-    <p id="aIntro">En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los datos identificativos de la entidad titular:</p>
-    
-    <h2 id="aSec1Title">1. Datos Identificativos de la Empresa</h2>
-    <p id="aSec1Desc"><strong>Denominación Social:</strong> SHINECONNECT S.L.<br><strong>NIF:</strong> B26917807<br><strong>Sede Operativa:</strong> Comunidad Valenciana, España.<br><strong>Contacto Electrónico:</strong> gerencia@shineconnect.app<br><strong>Marca Registrada:</strong> LIMPIAPP (OEPM).</p>
+    <a href="javascript:history.back()" class="back-btn">← Volver</a>
+    <h1>AVISO LEGAL Y CONDICIONES DE USO - SHINECONNECT S.L.</h1>
 
-    <h2 id="aSec2Title">2. Objeto de la Plataforma</h2>
-    <p id="aSec2Desc">LIMPIAPP es una infraestructura tecnológica de intermediación publicitaria que permite a profesionales independientes de limpieza ofrecer su disponibilidad a usuarios particulares y corporativos.</p>
+    <h2>1. INFORMACIÓN GENERAL (ART. 10 LSSI-CE)</h2>
+    <p>En cumplimiento del deber de información general contenido en el Artículo 10 de la LSSI-CE, se hace constar que el titular de este sitio web y prestador del servicio es:</p>
+    <ul>
+      <li><strong>Denominación Social:</strong> Shine Connect S.L.</li>
+      <li><strong>NIF:</strong> B26917807.</li>
+      <li><strong>Domicilio Social:</strong> c/Mayor, 5, Fortaleny, España.</li>
+      <li><strong>Correo Electrónico de Contacto:</strong> legal@shineconnect.app.</li>
+      <li><strong>Naturaleza de la Entidad:</strong> Sociedad mercantil constituida de conformidad con las leyes de España.</li>
+    </ul>
 
-    <h2 id="aSec3Title">3. Propiedad Intelectual</h2>
-    <p id="aSec3Desc">Todos los contenidos, diseños, logotipos corporativos, arquitectura y código fuente son titularidad exclusiva de SHINECONNECT S.L. Queda prohibida su reproducción o distribución sin autorización expresa.</p>
+    <h2>2. REGISTRO MERCANTIL</h2>
+    <p>ShineConnect S.L. se encuentra debidamente inscrita en el Registro Mercantil de su provincia (Valencia). Los datos registrales (Tomo, Libro, Folio, Sección y Hoja) están a disposición de cualquier autoridad o interesado que los solicite a través del canal de notificaciones oficiales arriba indicado.</p>
+
+    <h2>3. OBJETO Y ÁMBITO DE APLICACIÓN</h2>
+    <p>El presente Aviso Legal regula el acceso y la utilización de la infraestructura tecnológica denominada "ShineConnect", que actúa como un entorno de mercado (Marketplace) destinado a la intermediación técnica entre prestadores y receptores de servicios de limpieza.</p>
+    <ul>
+      <li>La condición de "Usuario" se adquiere por el mero acceso, navegación o uso de la Plataforma.</li>
+      <li>El acceso implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal.</li>
+      <li>Shine Connect S.L. se reserva el derecho a modificar unilateralmente estas condiciones para adaptarlas a novedades legislativas o tecnológicas, previa notificación conforme al Reglamento (UE) 2022/2065 (DSA).</li>
+    </ul>
+
+    <h2>4. RÉGIMEN DE RESPONSABILIDAD DEL PRESTADOR</h2>
+    <p>Shine Connect S.L. actúa como Prestador de Servicios de la Sociedad de la Información de naturaleza técnica y neutral. En consecuencia:</p>
+    <ul>
+      <li><strong>Intermediación:</strong> No es una empresa de limpieza ni ostenta vínculo laboral o de dependencia con los Profesionales que anuncian sus servicios.</li>
+      <li><strong>Exención de Responsabilidad:</strong> De conformidad con el Artículo 16 de la LSSI-CE, Shine Connect S.L. no será responsable de los contenidos (reseñas, perfiles, fotografías) alojados por los Usuarios, salvo que tenga conocimiento efectivo de su ilicitud y no actúe con diligencia para su retirada.</li>
+      <li><strong>Disponibilidad Técnica:</strong> No se garantiza el acceso ininterrumpido a la Plataforma cuando este dependa de infraestructuras ajenas, como redes de telecomunicaciones, servicios de hosting o suministros eléctricos.</li>
+      <li><strong>Seguridad:</strong> Aunque se implementan medidas de seguridad estándar en la industria, ShineConnect S.L. no garantiza la ausencia de virus u otros elementos lesivos introducidos por terceros que puedan producir alteraciones en los sistemas informáticos del Usuario.</li>
+    </ul>
+
+    <h2>5. PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>
+    <p>ShineConnect S.L. es titular única y exclusiva de todos los derechos de propiedad intelectual e industrial sobre la Plataforma:</p>
+    <ul>
+      <li><strong>Activos Protegidos:</strong> El código fuente, diseño gráfico, interfaces (UX/UI), logotipos, marcas, algoritmos y documentación técnica están protegidos por las leyes nacionales e internacionales de propiedad intelectual.</li>
+      <li><strong>Prohibiciones:</strong> Queda terminantemente prohibida la reproducción, transformación, distribución o comunicación pública de cualquier elemento de la Plataforma sin autorización previa y por escrito de Shine Connect S.L..</li>
+      <li><strong>Marcas:</strong> El uso de las marcas "Shine Connect" y sus variantes queda restringido a lo autorizado expresamente en las Condiciones de Servicio para Profesionales.</li>
+    </ul>
+
+    <h2>6. OBLIGACIONES Y CONDUCTA DEL USUARIO</h2>
+    <p>El Usuario se obliga a realizar un uso diligente, lícito y de buena fe de la Plataforma:</p>
+    <ul>
+      <li><strong>Uso Lícito:</strong> No utilizar el servicio para fines ilegales o contrarios a lo dispuesto en las Condiciones de Servicio.</li>
+      <li><strong>Veracidad:</strong> Garantizar la exactitud de los datos proporcionados en el registro, asumiendo la responsabilidad por suplantación de identidad o falsedad documental.</li>
+      <li><strong>No Elusión:</strong> Se prohíbe el uso de la Plataforma para concertar servicios fuera de la misma con el fin de eludir las tasas de gestión o suscripciones.</li>
+      <li><strong>Seguridad:</strong> No introducir código malicioso, virus o realizar acciones de ingeniería inversa o scraping sobre la base de datos de la empresa.</li>
+    </ul>
+
+    <h2>7. PROTOCOLO DE NOTIFICACIÓN DE CONTENIDOS ILÍCITOS (DSA)</h2>
+    <p>De acuerdo con el Reglamento (UE) 2022/2065, ShineConnect dispone de un canal específico para que cualquier persona notifique contenidos presuntamente ilícitos o infractores:</p>
+    <ul>
+      <li><strong>Canal Oficial:</strong> legal@shineconnect.app.</li>
+      <li><strong>Requisitos:</strong> Las notificaciones deberán estar motivadas, identificar inequívocamente el contenido infractor y proporcionar datos de contacto del reclamante.</li>
+      <li><strong>Acción:</strong> ShineConnect actuará con la diligencia debida para retirar o bloquear el acceso a contenidos que infrinjan la legalidad vigente tras la recepción de una notificación válida.</li>
+    </ul>
+
+    <h2>8. PROTECCIÓN DE DATOS Y COOKIES</h2>
+    <p>El tratamiento de los datos personales de los Usuarios se rige estrictamente por la Política de Privacidad de ShineConnect S.L., cumpliendo con el RGPD y la LOPDGDD. Para información sobre el uso de dispositivos de almacenamiento y recuperación de datos en equipos terminales, consulte nuestra Política de Cookies.</p>
+
+    <h2>9. LEGISLACIÓN APLICABLE Y JURISDICCIÓN</h2>
+    <ul>
+      <li><strong>Legislación:</strong> Este Aviso Legal se rige por la ley española.</li>
+      <li><strong>Jurisdicción B2B:</strong> Para disputas con Usuarios Profesionales, las partes se someten a la competencia exclusiva de los Juzgados y Tribunales de la ciudad de Valencia, España.</li>
+      <li><strong>Jurisdicción B2C:</strong> En caso de litigios con consumidores, será competente el tribunal del domicilio del consumidor de acuerdo con la normativa de consumo.</li>
+      <li><strong>Resolución en Línea:</strong> Se informa de la existencia de la plataforma de resolución de litigios en línea de la Unión Europea accesible en <a href="http://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">http://ec.europa.eu/consumers/odr</a>.</li>
+    </ul>
+
+    <p style="margin-top: 30px; font-weight: 600; color: var(--color-slate-muted);">Última revisión: Mayo de 2026.</p>
   </div>
 
+  <div id="google_translate_element" style="display:none;"></div>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script>
-    var textosAviso = {
-      es: {
-        btnBack: "← Volver",
-        aTitle: "Aviso Legal e Información Societaria",
-        aIntro: "En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los datos identificativos de la entidad titular:",
-        aSec1Title: "1. Datos Identificativos de la Empresa",
-        aSec1Desc: "<strong>Denominación Social:</strong> SHINECONNECT S.L.<br><strong>NIF:</strong> B26917807<br><strong>Sede Operativa:</strong> Comunidad Valenciana, España.<br><strong>Contacto Electrónico:</strong> gerencia@shineconnect.app<br><strong>Marca Registrada:</strong> LIMPIAPP (OEPM).",
-        aSec2Title: "2. Objeto de la Plataforma",
-        aSec2Desc: "LIMPIAPP es una infraestructura tecnológica de intermediación publicitaria que permite a profesionales independientes de limpieza ofrecer su disponibilidad a usuarios particulares y corporativos.",
-        aSec3Title: "3. Propiedad Intelectual",
-        aSec3Desc: "Todos los contenidos, diseños, logotipos corporativos, arquitectura y código fuente son titularidad exclusiva de SHINECONNECT S.L. Queda prohibida su reproducción o distribución sin autorización expresa."
-      },
-      ca: {
-        btnBack: "← Tornar",
-        aTitle: "Avís Legal i Informació Societària",
-        aIntro: "En compliment de l'article 10 de la Llei 34/2002 (LSSI-CE), s'ofereixen les dades identificatives de l'empresa titular de LIMPIAPP:",
-        aSec1Title: "1. Dades Identificatives",
-        aSec1Desc: "<strong>Raó Social:</strong> SHINECONNECT S.L.<br><strong>NIF:</strong> B26917807<br><strong>Seu:</strong> Comunitat Valenciana, Espanya.<br><strong>Correu:</strong> gerencia@shineconnect.app<br><strong>Marca Registrada:</strong> LIMPIAPP.",
-        aSec2Title: "2. Objecte",
-        aSec2Desc: "Plataforma de directori tecnològic que posa en contacte professionals independents de neteja amb particulars i empreses.",
-        aSec3Title: "3. Propietat Intel·lectual",
-        aSec3Desc: "El codi, logotips i continguts pertanyen exclusivament a SHINECONNECT S.L."
-      },
-      gl: {
-        btnBack: "← Volver",
-        aTitle: "Aviso Legal e Información Societaria",
-        aIntro: "Información xeral da entidade en cumprimento do artigo 10 da Lei 34/2002 (LSSI-CE):",
-        aSec1Title: "1. Datos Identificativos",
-        aSec1Desc: "<strong>Titular:</strong> SHINECONNECT S.L.<br><strong>NIF:</strong> B26917807<br><strong>Sede:</strong> Comunidade Valenciana, España.<br><strong>Contacto:</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Obxecto",
-        aSec2Desc: "Directorio dixital para a posta en contacto directo entre profesionais de limpeza e usuarios.",
-        aSec3Title: "3. Propiedade Intelectual",
-        aSec3Desc: "Todos os dereitos reservados a prol de SHINECONNECT S.L."
-      },
-      eu: {
-        btnBack: "← Itzuli",
-        aTitle: "Legezko Oharra eta Sozietate Informazioa",
-        aIntro: "34/2002 Legearen 10. artikuluak (LSSI-CE) ezarritakoa betez, entitatearen datu identifikatzaileak azaltzen dira:",
-        aSec1Title: "1. Identifikazio Datuak",
-        aSec1Desc: "<strong>Sozietatearen Izena:</strong> SHINECONNECT S.L.<br><strong>IFZ:</strong> B26917807<br><strong>Egoitza:</strong> Valentziako Erkidegoa, Espainia.<br><strong>Posta:</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Helburua",
-        aSec2Desc: "Garbiketa profesionalak eta bezeroak konektatzeko direktorio teknologikoa.",
-        aSec3Title: "3. Jabetza Intelektuala",
-        aSec3Desc: "Diseinu, kode eta eduki guztiak SHINECONNECT S.L.ren jabetza esklusibokoak dira."
-      },
-      en: {
-        btnBack: "← Back",
-        aTitle: "Legal Notice and Corporate Information",
-        aIntro: "In accordance with European commercial legislation and Spanish Law 34/2002 (LSSI-CE), our company details are provided below:",
-        aSec1Title: "1. Company Details",
-        aSec1Desc: "<strong>Corporate Name:</strong> SHINECONNECT S.L.<br><strong>Tax ID (NIF):</strong> B26917807<br><strong>Location:</strong> Valencian Community, Spain.<br><strong>Contact:</strong> gerencia@shineconnect.app<br><strong>Registered Trademark:</strong> LIMPIAPP.",
-        aSec2Title: "2. Purpose of the Platform",
-        aSec2Desc: "LIMPIAPP is an online technology directory facilitating direct contact between independent cleaning professionals and clients.",
-        aSec3Title: "3. Intellectual Property",
-        aSec3Desc: "All software, branding, design assets, and written content belong strictly to SHINECONNECT S.L."
-      },
-      fr: {
-        btnBack: "← Retour",
-        aTitle: "Mentions Légales",
-        aIntro: "Conformément aux obligations légales de transparence et à la loi 34/2002 (LSSI-CE) :",
-        aSec1Title: "1. Informations Légales",
-        aSec1Desc: "<strong>Raison Sociale :</strong> SHINECONNECT S.L.<br><strong>NIF :</strong> B26917807<br><strong>Siège :</strong> Valence, Espagne.<br><strong>Courriel :</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Objet",
-        aSec2Desc: "Annuaire technologique facilitant la mise en relation pour services de nettoyage.",
-        aSec3Title: "3. Propriété Intellectuelle",
-        aSec3Desc: "L'ensemble du site est la propriété exclusive de SHINECONNECT S.L."
-      },
-      de: {
-        btnBack: "← Zurück",
-        aTitle: "Impressum und Unternehmensdaten",
-        aIntro: "Angaben gemäß spanischem Informationsgesellschaftsgesetz 34/2002 (LSSI-CE):",
-        aSec1Title: "1. Unternehmensangaben",
-        aSec1Desc: "<strong>Firma:</strong> SHINECONNECT S.L.<br><strong>USt-IdNr.:</strong> B26917807<br><strong>Sitz:</strong> Valencia, Spanien.<br><strong>Kontakt:</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Plattformzweck",
-        aSec2Desc: "Bereitstellung eines digitalen Verzeichnisses zur Kontaktaufnahme zwischen Kunden und Dienstleistern.",
-        aSec3Title: "3. Urheberrecht",
-        aSec3Desc: "Alle Inhalte und Markenzeichen unterliegen dem Schutz von SHINECONNECT S.L."
-      },
-      it: {
-        btnBack: "← Torna indietro",
-        aTitle: "Note Legali e Dati Societari",
-        aIntro: "Informazioni rese ai sensi della normativa vigente (LSSI-CE):",
-        aSec1Title: "1. Dati della Società",
-        aSec1Desc: "<strong>Denominazione:</strong> SHINECONNECT S.L.<br><strong>P.IVA:</strong> B26917807<br><strong>Sede:</strong> Valencia, Spagna.<br><strong>E-mail:</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Oggetto",
-        aSec2Desc: "Piattaforma tecnologica di intermediazione pubblicitaria per servizi di pulizia.",
-        aSec3Title: "3. Proprietà Intellettuale",
-        aSec3Desc: "Tutti i marchi, loghi e codici sorgente appartengono a SHINECONNECT S.L."
-      },
-      pt: {
-        btnBack: "← Voltar",
-        aTitle: "Aviso Legal e Dados da Sociedade",
-        aIntro: "Em conformidade com o artigo 10 da Lei 34/2002 (LSSI-CE):",
-        aSec1Title: "1. Identificação da Empresa",
-        aSec1Desc: "<strong>Denominação:</strong> SHINECONNECT S.L.<br><strong>NIF:</strong> B26917807<br><strong>Sede:</strong> Valência, Espanha.<br><strong>Contacto:</strong> gerencia@shineconnect.app",
-        aSec2Title: "2. Objeto",
-        aSec2Desc: "Diretório tecnológico para ligação direta entre clientes e profissionais de limpeza.",
-        aSec3Title: "3. Propriedade Intelectual",
-        aSec3Desc: "Todos os conteúdos pertencem exclusivamente à SHINECONNECT S.L."
-      }
-    };
-
-    function cambiarIdiomaAviso(lang) {
-      localStorage.setItem('limpiapp_lang', lang);
-      var t = textosAviso[lang] || textosAviso['es'];
-      
-      document.getElementById('btnBack').innerText = t.btnBack;
-      document.getElementById('aTitle').innerText = t.aTitle;
-      document.getElementById('aIntro').innerText = t.aIntro;
-      document.getElementById('aSec1Title').innerText = t.aSec1Title;
-      document.getElementById('aSec1Desc').innerHTML = t.aSec1Desc;
-      document.getElementById('aSec2Title').innerText = t.aSec2Title;
-      document.getElementById('aSec2Desc').innerText = t.aSec2Desc;
-      document.getElementById('aSec3Title').innerText = t.aSec3Title;
-      document.getElementById('aSec3Desc').innerText = t.aSec3Desc;
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
     }
-
+    function aplicarTraduccion(lang) {
+      if (!lang) return;
+      localStorage.setItem('limpiapp_lang', lang);
+      var combo = document.querySelector('.goog-te-combo');
+      if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+      }
+    }
     document.addEventListener('DOMContentLoaded', function() {
-      var savedLang = localStorage.getItem('limpiapp_lang') || 'es';
-      var select = document.getElementById('langSelectAviso');
-      if (select) select.value = savedLang;
-      cambiarIdiomaAviso(savedLang);
+      var guardado = localStorage.getItem('limpiapp_lang') || 'es';
+      var select = document.getElementById('langSelector');
+      if (select) select.value = guardado;
+      if (guardado !== 'es') {
+        setTimeout(function() { aplicarTraduccion(guardado); }, 500);
+      }
     });
   </script>
 </body>
