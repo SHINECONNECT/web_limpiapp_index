@@ -761,8 +761,8 @@
     </div>
   </footer>
 
-  <script>
-    // Enrutador del Buscador por Código Postal
+ <script>
+    // 1. Buscador por Código Postal
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
@@ -771,7 +771,7 @@
       }
     }
 
-    // Diccionario Multilingüe Instantáneo
+    // 2. Diccionario Multilingüe de Portada
     var dicc = {
       es: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -827,6 +827,60 @@
         feat3Title: "Hiperlocalitat per Codi Postal",
         feat3Desc: "Optimització per ràdios de cobertura per minimitzar desplaçaments."
       },
+      gl: {
+        badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
+        heroTitle: "Servizos de limpeza profesional verificados <span>no teu código postal</span>",
+        heroSub: "Conectamos a oferta independente con fogares e empresas en calquera cidade. Trato directo e sen comisións.",
+        btnBuscarCP: "Ver Dispoñibilidade",
+        btnNavClient: "Buscar Servizo",
+        btnNavPro: "Son Profesional",
+        tagClient: "Para Fogares e Empresas",
+        titleClient: "Buscas persoal de confianza?",
+        descClient: "Atopa persoal profesional de limpeza preto de ti sen sobrecustos de intermediación.",
+        btnActionClient: "Solicitar Servizo / Rexistro Clientes →",
+        tagPro: "Para Profesionais de Limpeza",
+        titlePro: "Ofreces os teus servizos?",
+        descPro: "Publica o teu perfil no teu código postal e recibe avisos directos por WhatsApp. 2 meses gratis.",
+        btnActionPro: "Rexistrarme como Profesional →",
+        compTitle: "Por que LIMPIAPP fronte ás alternativas?",
+        compSub: "Compara o noso modelo directo fronte a axencias tradicionais e outras plataformas.",
+        thPlataformas: "Outras Plataformas e Apps Intermediarias",
+        priceTitle: "Plans e Tarifas Claras. Sen Letra Pequena.",
+        priceSub: "Modelo de subscrición ao directorio: sen comisións sobre o servizo.",
+        feat1Title: "0% Comisións por Servizo",
+        feat1Desc: "O importe acordado é 100% para o profesional.",
+        feat2Title: "Contacto Inmediato e Directo",
+        feat2Desc: "Conversa directa por teléfono ou WhatsApp.",
+        feat3Title: "Proximidade por Código Postal",
+        feat3Desc: "Optimización por áreas xeográficas para aforrar desprazamentos."
+      },
+      eu: {
+        badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
+        heroTitle: "Garbiketa profesional egiaztatua <span>zure posta-kodean</span>",
+        heroSub: "Etxebizitzak eta enpresak garbitzaile profesionalekin konektatzen ditugu. Zuzeneko harremana, komisiorik gabe.",
+        btnBuscarCP: "Eskuragarritasuna Ikusi",
+        btnNavClient: "Zerbitzua Bilatu",
+        btnNavPro: "Profesionala Naiz",
+        tagClient: "Etxe eta Enpresentzat",
+        titleClient: "Konfiantzazko langileen bila zabiltza?",
+        descClient: "Aurkitu zure inguruko garbiketa profesionalak bitartekaririk gabe.",
+        btnActionClient: "Zerbitzua Eskatu / Bezero Erregistroa →",
+        tagPro: "Garbiketa Profesionalentzat",
+        titlePro: "Zure zerbitzuak eskaintzen dituzu?",
+        descPro: "Argitaratu zure profila zure posta-kodean eta jaso bezeroak WhatsApp bidez. 2 hilabete doan.",
+        btnActionPro: "Profesional gisa Erregistratu →",
+        compTitle: "Zergatik LIMPIAPP alternatiben aurrean?",
+        compSub: "Alderatu gure komisiorik gabeko eredua ohiko agentzia eta plataformekin.",
+        thPlataformas: "Beste Bitartekaritza Plataforma Batzuk",
+        priceTitle: "Plangintza eta Tarifa Garbiak.",
+        priceSub: "Direktorio-harpidetza: inolako komisiorik gabe adostutako zerbitzuan.",
+        feat1Title: "%0 Komisiorik Zerbitzuagatik",
+        feat1Desc: "Hitzartutako diru-kopurua %100 profesionalean geratzen da.",
+        feat2Title: "Berehalako Harreman Zuzena",
+        feat2Desc: "Hitz egin zuzenean WhatsApp edo telefonoz.",
+        feat3Title: "Posta-Kodearen Arabera",
+        feat3Desc: "Eremu hurbilak etxetik gertu lan egiteko."
+      },
       en: {
         badgeHero: "🌍 International Technology Platform",
         heroTitle: "Verified professional cleaning services <span>in your postal code</span>",
@@ -881,10 +935,37 @@
         feat3Title: "Proximité par Code Postal",
         feat3Desc: "Filtres géographiques précis pour réduire les temps de trajet."
       },
+      de: {
+        badgeHero: "🌍 Internationale Technologieplattform",
+        heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
+        heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr.",
+        btnBuscarCP: "Verfügbarkeit prüfen",
+        btnNavClient: "Service finden",
+        btnNavPro: "Ich bin Dienstleister",
+        tagClient: "Für Haushalte & Firmen",
+        titleClient: "Suchen Sie vertrauenswürdiges Reinigungspersonal?",
+        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
+        btnActionClient: "Service anfragen / Kundenregistrierung →",
+        tagPro: "Für Reinigungskräfte & Firmen",
+        titlePro: "Bieten Sie Reinigungsdienste an?",
+        descPro: "Profil erstellen, Stundensätze frei festlegen und direkte Anfragen per WhatsApp erhalten. 2 Monate kostenlos.",
+        btnActionPro: "Als Dienstleister registrieren →",
+        compTitle: "Warum LIMPIAPP gegenüber Alternativen?",
+        compSub: "Vergleichen Sie unser Modell ohne Provisionen mit klassischen Vermittlungsplattformen.",
+        thPlataformas: "Andere Vermittlungs-Apps",
+        priceTitle: "Klare Tarife. Ohne Kleingedrucktes.",
+        priceSub: "Verzeichnis-Abonnementmodell: keine Abzüge von den erbrachten Dienstleistungen.",
+        feat1Title: "0 % Vermittlungsgebühr",
+        feat1Desc: "Der vereinbarte Betrag gehört zu 100 % der Fachkraft.",
+        feat2Title: "Direkter Kontakt",
+        feat2Desc: "Schnelle Absprachen per WhatsApp oder Anruf.",
+        feat3Title: "Abdeckung nach Postleitzahl",
+        feat3Desc: "Gezielte Filter für kurze Arbeitswege."
+      },
       it: {
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Servizi di pulizia professionale verificati <span>nel tuo CAP</span>",
-        heroSub: "Colleghiamo l'offerta indipendente con case e aziende. Trattativa diretta e senza commissioni sul servizio.",
+        heroSub: "Colleghiamo l'offerta indipendente con case e aziende. Trattativa directa e senza commissioni sul servizio.",
         btnBuscarCP: "Verifica Disponibilità",
         btnNavClient: "Cerca Servizio",
         btnNavPro: "Sono un Professionista",
@@ -920,7 +1001,7 @@
         descClient: "Encontre profissionais de limpeza na sua área. Contacto direto sem custos de intermediação.",
         btnActionClient: "Pedir Serviço / Registo de Clientes →",
         tagPro: "Para Profissionais de Limpeza",
-        titlePro: "Oferece os seus servicios?",
+        titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
         compTitle: "Porquê a LIMPIAPP frente às alternativas?",
@@ -934,91 +1015,14 @@
         feat2Desc: "Comunicação rápida e clara por WhatsApp ou telefone.",
         feat3Title: "Proximidade por Código Postal",
         feat3Desc: "Otimização geográfica para trabalhar perto de casa."
-      },
-      de: {
-        badgeHero: "🌍 Internationale Technologieplattform",
-        heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
-        heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr.",
-        btnBuscarCP: "Verfügbarkeit prüfen",
-        btnNavClient: "Service finden",
-        btnNavPro: "Ich bin Dienstleister",
-        tagClient: "Für Haushalte & Firmen",
-        titleClient: "Suchen Sie vertrauenswürdiges Reinigungspersonal?",
-        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
-        btnActionClient: "Service anfragen / Kundenregistrierung →",
-        tagPro: "Für Reinigungskräfte & Firmen",
-        titlePro: "Bieten Sie Reinigungsdienste an?",
-        descPro: "Profil erstellen, Stundensätze frei festlegen und direkte Anfragen per WhatsApp erhalten. 2 Monate kostenlos.",
-        btnActionPro: "Als Dienstleister registrieren →",
-        compTitle: "Warum LIMPIAPP gegenüber Alternativen?",
-        compSub: "Vergleichen Sie unser Modell ohne Provisionen mit klassischen Vermittlungsplattformen.",
-        thPlataformas: "Andere Vermittlungs-Apps",
-        priceTitle: "Klare Tarife. Ohne Kleingedrucktes.",
-        priceSub: "Verzeichnis-Abonnementmodell: keine Abzüge von den erbrachten Dienstleistungen.",
-        feat1Title: "0 % Vermittlungsgebühr",
-        feat1Desc: "Der vereinbarte Betrag gehört zu 100 % der Fachkraft.",
-        feat2Title: "Direkter Kontakt",
-        feat2Desc: "Schnelle Absprachen per WhatsApp oder Anruf.",
-        feat3Title: "Abdeckung nach Postleitzahl",
-        feat3Desc: "Gezielte Filter für kurze Arbeitswege."
-      },
-      gl: {
-        badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
-        heroTitle: "Servizos de limpeza profesional verificados <span>no teu código postal</span>",
-        heroSub: "Conectamos a oferta independente con fogares e empresas en calquera cidade. Trato directo e sen comisións.",
-        btnBuscarCP: "Ver Dispoñibilidade",
-        btnNavClient: "Buscar Servizo",
-        btnNavPro: "Son Profesional",
-        tagClient: "Para Fogares e Empresas",
-        titleClient: "Buscas persoal de confianza?",
-        descClient: "Atopa persoal profesional de limpeza preto de ti sen sobrecustos de intermediación.",
-        btnActionClient: "Solicitar Servizo / Rexistro Clientes →",
-        tagPro: "Para Profesionais de Limpeza",
-        titlePro: "Ofreces os teus servizos?",
-        descPro: "Publica o teu perfil no teu código postal e recibe avisos directos por WhatsApp. 2 meses gratis.",
-        btnActionPro: "Rexistrarme como Profesional →",
-        compTitle: "Por que LIMPIAPP fronte ás alternativas?",
-        compSub: "Compara o noso modelo directo fronte a axencias tradicionais e outras plataformas.",
-        thPlataformas: "Outras Plataformas e Apps Intermediarias",
-        priceTitle: "Plans e Tarifas Claras. Sen Letra Pequena.",
-        priceSub: "Modelo de subscrición ao directorio: sen comisións sobre o servizo.",
-        feat1Title: "0% Comisións por Servizo",
-        feat1Desc: "O importe acordado é 100% para o profesional.",
-        feat2Title: "Contacto Inmediato e Directo",
-        feat2Desc: "Conversa directa por teléfono ou WhatsApp.",
-        feat3Title: "Proximidade por Código Postal",
-        feat3Desc: "Optimización por áreas xeográficas para aforrar desprazamentos."
-      },
-      eu: {
-        badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
-        heroTitle: "Garbiketa profesional egiaztatua <span>zure posta-kodean</span>",
-        heroSub: "Etxebizitzak eta enpresak garbitzaile profesionalekin konektatzen ditugu. Zuzeneko harremana, komisiorik gabe.",
-        btnBuscarCP: "Eskuragarritasuna Ikusi",
-        btnNavClient: "Zerbitzua Bilatu",
-        btnNavPro: "Profesionala Naiz",
-        tagClient: "Etxe eta Enpresentzat",
-        titleClient: "Konfiantzazko langileen bila zabiltza?",
-        descClient: "Aurkitu zure inguruko garbiketa profesionalak bitartekaririk gabe.",
-        btnActionClient: "Zerbitzua Eskatu / Bezero Erregistroa →",
-        tagPro: "Garbiketa Profesionalentzat",
-        titlePro: "Zure zerbitzuak eskaintzen dituzu?",
-        descPro: "Argitaratu zure profila zure posta-kodean eta jaso bezeroak WhatsApp bidez. 2 hilabete doan.",
-        btnActionPro: "Profesional gisa Erregistratu →",
-        compTitle: "Zergatik LIMPIAPP alternatiben aurrean?",
-        compSub: "Alderatu gure komisiorik gabeko eredua ohiko agentzia eta plataformekin.",
-        thPlataformas: "Beste Bitartekaritza Plataforma Batzuk",
-        priceTitle: "Plangintza eta Tarifa Garbiak.",
-        priceSub: "Direktorio-harpidetza: inolako komisiorik gabe adostutako zerbitzuan.",
-        feat1Title: "%0 Komisiorik Zerbitzuagatik",
-        feat1Desc: "Hitzartutako diru-kopurua %100 profesionalean geratzen da.",
-        feat2Title: "Berehalako Harreman Zuzena",
-        feat2Desc: "Hitz egin zuzenean WhatsApp edo telefonoz.",
-        feat3Title: "Posta-Kodearen Arabera",
-        feat3Desc: "Eremu hurbilak etxetik gertu lan egiteko."
       }
     };
 
+    // 3. Función Central de Cambio de Idioma con Persistencia
     function cambiarIdioma(lang) {
+      // Guarda la preferencia en el navegador para todas las páginas legales y formularios
+      localStorage.setItem('limpiapp_lang', lang);
+
       var t = dicc[lang] || dicc['es'];
       for (var id in t) {
         var el = document.getElementById(id);
@@ -1031,6 +1035,16 @@
         }
       }
     }
+
+    // 4. Al cargar la portada: comprueba si ya había un idioma seleccionado previamente
+    document.addEventListener('DOMContentLoaded', function() {
+      var guardado = localStorage.getItem('limpiapp_lang');
+      if (guardado && dicc[guardado]) {
+        var select = document.querySelector('.lang-select');
+        if (select) select.value = guardado;
+        cambiarIdioma(guardado);
+      }
+    });
   </script>
 </body>
 </html>
