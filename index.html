@@ -292,22 +292,22 @@
       color: #065f46;
     }
 
-    /* SECCIÓN PLANES Y TARIFAS */
+    /* SECCIÓN PLANES Y TARIFAS (DOS BLOQUES SEPARADOS) */
     .pricing-section {
       background-color: var(--color-bg-page);
       padding: 70px 20px;
       width: 100%;
     }
     .pricing-container {
-      max-width: 1100px;
+      max-width: 1040px;
       margin: 0 auto;
     }
     .pricing-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 45px;
     }
     .pricing-header h2 {
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--color-slate-dark);
       margin-bottom: 10px;
@@ -316,104 +316,108 @@
       color: var(--color-slate-muted);
       font-size: 1.05rem;
     }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-    .plan-card {
+
+    /* Bloque Contenedor Específico */
+    .pricing-group {
       background: #ffffff;
       border: 1.5px solid #e2e8f0;
-      border-radius: var(--radius-lg);
-      padding: 30px 22px;
+      border-radius: 20px;
+      padding: 36px 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    }
+    .pricing-group.client-group { border-top: 6px solid var(--color-primary); }
+    .pricing-group.pro-group { border-top: 6px solid var(--color-secondary); }
+
+    .group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 16px;
+    }
+    .group-header-text h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 4px;
+    }
+    .group-header-text p {
+      font-size: 0.9rem;
+      color: var(--color-slate-muted);
+    }
+    .group-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+    }
+    .group-badge.client-badge { background: var(--color-primary-light); color: var(--color-primary); }
+    .group-badge.pro-badge { background: var(--color-secondary-light); color: var(--color-secondary-hover); }
+
+    .group-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .plan-card-item {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 28px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: var(--shadow-card);
       position: relative;
+      transition: all 0.2s;
     }
-    .plan-card.client-premium {
+    .plan-card-item:hover {
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+    }
+    .plan-card-item.featured-border-client {
       border: 2px solid var(--color-primary);
-      box-shadow: 0 12px 28px rgba(0, 105, 114, 0.12);
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 105, 114, 0.08);
     }
-    .plan-card.pro-featured {
+    .plan-card-item.featured-border-pro {
       border: 2px solid var(--color-secondary);
-      box-shadow: 0 14px 30px rgba(5, 150, 105, 0.16);
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.1);
     }
-    .plan-badge-top {
+    .card-top-tag {
       position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: -12px;
+      right: 20px;
       background: var(--color-secondary);
       color: #ffffff;
-      padding: 4px 12px;
+      padding: 3px 12px;
       border-radius: 9999px;
       font-size: 0.72rem;
       font-weight: 800;
-      white-space: nowrap;
-    }
-    .plan-role {
-      font-size: 0.75rem;
-      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
     }
-    .plan-role.c-role { color: var(--color-primary); }
-    .plan-role.p-role { color: var(--color-secondary); }
-    .plan-name {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--color-slate-dark);
-      margin-bottom: 6px;
-    }
-    .plan-desc {
-      font-size: 0.85rem;
-      color: var(--color-slate-muted);
-      margin-bottom: 20px;
-      min-height: 42px;
-    }
-    .plan-price {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--color-slate-dark);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
-    .plan-price span {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--color-slate-muted);
-    }
+
+    .plan-name { font-size: 1.35rem; font-weight: 800; color: var(--color-slate-dark); margin-bottom: 6px; }
+    .plan-desc { font-size: 0.88rem; color: var(--color-slate-muted); margin-bottom: 18px; min-height: 40px; }
+    .plan-price { font-size: 2.2rem; font-weight: 800; color: var(--color-slate-dark); margin-bottom: 20px; display: flex; align-items: baseline; gap: 6px; }
+    .plan-price span { font-size: 0.9rem; font-weight: 500; color: var(--color-slate-muted); }
+    
     .plan-features {
       list-style: none;
       padding: 0;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--color-slate-medium);
     }
-    .plan-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .plan-features li strong { color: var(--color-slate-dark); }
-    .plan-btn {
-      display: block;
-      text-align: center;
-      padding: 13px;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: all 0.2s;
-    }
+    .plan-features li { display: flex; align-items: flex-start; gap: 10px; }
 
     /* Sección de Ventajas Resumidas */
     .features-section {
@@ -455,13 +459,11 @@
     .footer-links a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
-    @media (max-width: 1024px) {
-      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .dual-cta-grid, .pricing-grid, .features-inner { grid-template-columns: 1fr; }
+    @media (max-width: 840px) {
+      .group-cards-grid, .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
+      .group-header { flex-direction: column; align-items: flex-start; gap: 10px; }
       .header-inner { flex-direction: column; gap: 14px; }
+      .hero h1 { font-size: 2rem; }
       .top-bar { justify-content: center; }
       .search-box-cp { flex-direction: column; }
     }
@@ -523,7 +525,7 @@
             <div class="card-tag" id="tagClient">Para Hogares y Empresas</div>
             <h2 id="titleClient">¿Buscas personal de confianza?</h2>
             <p id="descClient">
-              Encuentra profesionales de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.
+              Encuentra personal profesional de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.
             </p>
           </div>
           <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
@@ -532,7 +534,7 @@
         <!-- Profesional -->
         <div class="cta-card pro">
           <div>
-            <div class="card-tag" id="tagPro">Para Profesionales Independientes</div>
+            <div class="card-tag" id="tagPro">Para Profesionales de Limpieza</div>
             <h2 id="titlePro">¿Ofreces tus servicios?</h2>
             <p id="descPro">
               Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.
@@ -564,19 +566,19 @@
             <tbody>
               <tr>
                 <td><strong>Comisión por servicio realizado</strong></td>
-                <td class="col-limpiapp">0% (Cobro 100% tuyo)</td>
+                <td class="col-limpiapp">0% (Cobro 100% del profesional)</td>
                 <td>15% - 25% de recargo</td>
                 <td>Hasta 35% sobre la hora</td>
               </tr>
               <tr>
-                <td><strong>Contacto directo entre cliente y limpiadora</strong></td>
+                <td><strong>Contacto directo entre cliente y profesional</strong></td>
                 <td class="col-limpiapp">✓ WhatsApp y llamada directa</td>
                 <td>✗ Chat cerrado o bloqueado</td>
                 <td>✗ Todo a través de la agencia</td>
               </tr>
               <tr>
                 <td><strong>Libertad absoluta de tarifas por hora</strong></td>
-                <td class="col-limpiapp">✓ Fijada por la profesional</td>
+                <td class="col-limpiapp">✓ Fijada libremente por el profesional</td>
                 <td>✗ Algoritmo impone el precio</td>
                 <td>✗ Tarifa fija de empresa</td>
               </tr>
@@ -598,89 +600,109 @@
       </div>
     </section>
 
-    <!-- SECCIÓN PLANES Y TARIFAS -->
+    <!-- SECCIÓN PLANES Y TARIFAS (DOS BLOQUES SEPARADOS) -->
     <section class="pricing-section">
       <div class="pricing-container">
+        
         <div class="pricing-header">
           <h2 id="priceTitle">Planes y Tarifas Claros. Sin Letra Pequeña.</h2>
-          <p id="priceSub">Modelo de suscripción al directorio: cuotas transparentes, sin retenciones sobre los servicios.</p>
+          <p id="priceSub">Modelo de directorio SaaS: tarifas transparentes de suscripción y 0% de comisiones sobre los servicios acordados.</p>
         </div>
 
-        <div class="pricing-grid">
-          
-          <!-- 1. Cliente: Fórmula Básica -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-role c-role">Clientes / Hogares</div>
-              <div class="plan-name">Fórmula Básica</div>
-              <div class="plan-desc">Para necesidades puntuales o periódicas estándar en el hogar.</div>
-              <div class="plan-price">5,99 € <span>/ mes</span></div>
-              <ul class="plan-features">
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales/mes</strong></li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada</li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> 0% comisiones sobre la tarifa acordada</li>
-              </ul>
+        <!-- BLOQUE 1: CLIENTES / HOGARES Y EMPRESAS -->
+        <div class="pricing-group client-group">
+          <div class="group-header">
+            <div class="group-header-text">
+              <h3>🏢 Opciones para Hogares y Empresas</h3>
+              <p>Acceso directo al directorio para contratar personal verificado en tu zona.</p>
             </div>
-            <a href="clientes.html" class="plan-btn" style="background: var(--color-primary); color: #ffffff;">Elegir Básica</a>
+            <span class="group-badge client-badge">Acceso para Clientes</span>
           </div>
 
-          <!-- 2. Cliente: Fórmula Premium -->
-          <div class="plan-card client-premium">
-            <div>
-              <div class="plan-role c-role">Clientes / Hogares ★</div>
-              <div class="plan-name">Fórmula Premium</div>
-              <div class="plan-desc">Para familias y oficinas que requieren máxima disponibilidad.</div>
-              <div class="plan-price" style="color: var(--color-primary);">9,99 € <span>/ mes</span></div>
-              <ul class="plan-features">
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con <strong>perfiles ilimitados</strong></li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Acceso preferente a perfiles destacados</li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Alertas inmediatas en tu código postal</li>
-                <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Soporte prioritario de gestión</li>
-              </ul>
-            </div>
-            <a href="clientes.html" class="plan-btn" style="background: var(--color-primary); color: #ffffff;">Elegir Premium</a>
-          </div>
-
-          <!-- 3. Profesional: Plan Básico -->
-          <div class="plan-card">
-            <div>
-              <div class="plan-role p-role">Profesionales</div>
-              <div class="plan-name">Plan Básico</div>
-              <div class="plan-desc">Para publicar tu disponibilidad en tu código postal sin costes.</div>
-              <div class="plan-price">0 € <span>/ para siempre</span></div>
-              <ul class="plan-features">
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Perfil activo en tu demarcación</li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Máximo 2 contactos de clientes/mes</strong></li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Tarifa por hora fijada íntegramente por ti</li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> 0% comisiones (cobras el 100% de tu hora)</li>
-              </ul>
-            </div>
-            <a href="registro.html" class="plan-btn" style="background: var(--color-slate-medium); color: #ffffff;">Alta Gratuita</a>
-          </div>
-
-          <!-- 4. Profesional: Plan Pro Destacado -->
-          <div class="plan-card pro-featured">
-            <div class="plan-badge-top">🔥 Primeras 30 inscritas: 2 Meses Gratis</div>
-            <div>
-              <div class="plan-role p-role">Profesionales Destacadas</div>
-              <div class="plan-name">Plan Pro Destacado</div>
-              <div class="plan-desc">Máxima visibilidad, alertas directas y agenda completa.</div>
-              <div class="plan-price" style="color: var(--color-secondary);">4,99 € <span>/ mes</span></div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-secondary); margin-top: -12px; margin-bottom: 16px;">
-                🌟 0 € durante los primeros 60 días
+          <div class="group-cards-grid">
+            <!-- Fórmula Básica -->
+            <div class="plan-card-item">
+              <div>
+                <div class="plan-name">Fórmula Básica</div>
+                <div class="plan-desc">Para necesidades puntuales o periódicas estándar en el hogar o la oficina.</div>
+                <div class="plan-price">5,99 € <span>/ mes</span></div>
+                <ul class="plan-features">
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con hasta <strong>5 profesionales por mes</strong></li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Búsqueda por país, ciudad y código postal</li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Trato directo vía WhatsApp o llamada telefónica</li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Sin comisiones sobre el precio de la hora pactada</li>
+                </ul>
               </div>
-              <ul class="plan-features">
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Contactos directos ilimitados</strong></li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong></li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Posicionamiento preferente en tu C.P.</li>
-                <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Insignia oficial de Profesional Verificada</li>
-              </ul>
+              <a href="clientes.html" class="btn-action client">Elegir Fórmula Básica</a>
             </div>
-            <a href="registro.html" class="plan-btn" style="background: var(--color-secondary); color: #ffffff;">Activar 2 Meses Gratis →</a>
+
+            <!-- Fórmula Premium -->
+            <div class="plan-card-item featured-border-client">
+              <div>
+                <div class="plan-name" style="color: var(--color-primary);">Fórmula Premium ★</div>
+                <div class="plan-desc">Para familias y empresas que requieren máxima agilidad y sustituciones urgentes.</div>
+                <div class="plan-price" style="color: var(--color-primary);">9,99 € <span>/ mes</span></div>
+                <ul class="plan-features">
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Contacto con <strong>profesionales ilimitados</strong></li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Acceso preferente a perfiles con mejores valoraciones</li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Alertas inmediatas de disponibilidad en tu código postal</li>
+                  <li><span style="color: var(--color-primary); font-weight: 800;">✓</span> Soporte prioritario de gestión de plataforma</li>
+                </ul>
+              </div>
+              <a href="clientes.html" class="btn-action client">Elegir Fórmula Premium</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE 2: PROFESIONALES DE LIMPIEZA -->
+        <div class="pricing-group pro-group">
+          <div class="group-header">
+            <div class="group-header-text">
+              <h3>✨ Opciones para Profesionales de Limpieza</h3>
+              <p>Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes.</p>
+            </div>
+            <span class="group-badge pro-badge">Acceso para Profesionales</span>
           </div>
 
+          <div class="group-cards-grid">
+            <!-- Plan Básico -->
+            <div class="plan-card-item">
+              <div>
+                <div class="plan-name">Plan Básico</div>
+                <div class="plan-desc">Para publicar tu perfil y comenzar a recibir solicitudes sin costes fijos.</div>
+                <div class="plan-price">0 € <span>/ para siempre</span></div>
+                <ul class="plan-features">
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Perfil activo en tu ciudad y código postal</li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Acceso limitado a 2 contactos de clientes/mes</strong></li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Tarifa horaria fijada libremente por el profesional</li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> 0% comisiones (cobras el 100% de tu servicio)</li>
+                </ul>
+              </div>
+              <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);">Alta Gratuita</a>
+            </div>
+
+            <!-- Plan Pro Destacado -->
+            <div class="plan-card-item featured-border-pro">
+              <div class="card-top-tag">🔥 Primeras 30 inscripciones: 2 Meses Gratis</div>
+              <div>
+                <div class="plan-name" style="color: var(--color-secondary-hover);">Plan Pro Destacado</div>
+                <div class="plan-desc">Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.</div>
+                <div class="plan-price" style="color: var(--color-secondary);">4,99 € <span>/ mes</span></div>
+                <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-secondary); margin-top: -12px; margin-bottom: 16px;">
+                  🌟 0 € durante los primeros 60 días
+                </div>
+                <ul class="plan-features">
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Contactos directos ilimitados</strong> con familias y empresas</li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> <strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes</li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Posicionamiento preferente en tu código postal</li>
+                  <li><span style="color: var(--color-secondary); font-weight: 800;">✓</span> Insignia oficial de Profesional de Confianza</li>
+                </ul>
+              </div>
+              <a href="registro.html" class="btn-action pro">Activar 2 Meses Gratis →</a>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -690,7 +712,7 @@
         <div class="feature-item">
           <div class="feature-icon">💰</div>
           <h3 id="feat1Title">0% Comisiones por Servicio</h3>
-          <p id="feat1Desc">El importe acordado es íntegro para la profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.</p>
+          <p id="feat1Desc">El importe acordado es íntegro para el profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.</p>
         </div>
         <div class="feature-item">
           <div class="feature-icon">📲</div>
@@ -700,7 +722,7 @@
         <div class="feature-item">
           <div class="feature-icon">📍</div>
           <h3 id="feat3Title">Hiperlocalidad por Código Postal</h3>
-          <p id="feat3Desc">Optimización por radios de cobertura geográfica para que el personal trabaje cerca de su domicilio y reduzca tiempos de traslado.</p>
+          <p id="feat3Desc">Optimización por radios de cobertura geográfica para que el personal profesional trabaje cerca de su domicilio y reduzca tiempos de traslado.</p>
         </div>
       </div>
     </section>
@@ -748,22 +770,22 @@
         btnNavPro: "Soy Profesional",
         tagClient: "Para Hogares y Empresas",
         titleClient: "¿Buscas personal de confianza?",
-        descClient: "Encuentra profesionales de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.",
+        descClient: "Encuentra personal profesional de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.",
         btnActionClient: "Solicitar Servicio / Alta Clientes →",
-        tagPro: "Para Profesionales Independientes",
+        tagPro: "Para Profesionales de Limpieza",
         titlePro: "¿Ofreces tus servicios?",
         descPro: "Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.",
         btnActionPro: "Registrarme como Profesional →",
         compTitle: "¿Por qué LIMPIAPP frente a las alternativas?",
         compSub: "Compara nuestro modelo de trato directo y tarifa 100% libre frente a las agencias y apps tradicionales.",
         priceTitle: "Planes y Tarifas Claros. Sin Letra Pequeña.",
-        priceSub: "Modelo de suscripción al directorio: cuotas transparentes, sin retenciones sobre los servicios.",
+        priceSub: "Modelo de directorio SaaS: tarifas transparentes de suscripción y 0% de comisiones sobre los servicios acordados.",
         feat1Title: "0% Comisiones por Servicio",
-        feat1Desc: "El importe acordado es íntegro para la profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.",
+        feat1Desc: "El importe acordado es íntegro para el profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.",
         feat2Title: "Contacto Inmediato y Directo",
         feat2Desc: "Conversación fluida por teléfono o WhatsApp para coordinar horarios, llaves o detalles de limpieza sin intermediarios.",
         feat3Title: "Hiperlocalidad por Código Postal",
-        feat3Desc: "Optimización por radios de cobertura geográfica para que el personal trabaje cerca de su domicilio y reduzca tiempos de traslado."
+        feat3Desc: "Optimización por radios de cobertura geográfica para que el personal profesional trabaje cerca de su domicilio y reduzca tiempos de traslado."
       },
       ca: {
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -774,16 +796,16 @@
         btnNavPro: "Sóc Professional",
         tagClient: "Per a Llars i Empreses",
         titleClient: "Busques personal de confiança?",
-        descClient: "Troba professionals de neteja a prop teu. Negocia directament i sense sobrecostos d'intermediació.",
+        descClient: "Troba personal professional de neteja a prop teu. Negocia directament i sense sobrecostos d'intermediació.",
         btnActionClient: "Demanar Servei / Alta Clients →",
-        tagPro: "Per a Professionals Independents",
+        tagPro: "Per a Professionals de Neteja",
         titlePro: "Ofereixes els teus serveis?",
         descPro: "Publica el teu perfil a la teva zona, fixa les teves tarifes i rep contactes directes per WhatsApp. 2 mesos de franc.",
         btnActionPro: "Registrar-me com a Professional →",
         compTitle: "Per què LIMPIAPP enfront de les alternatives?",
         compSub: "Compara el nostre model de tracte directe i tarifa 100% lliure davant agències i apps tradicionals.",
         priceTitle: "Plans i Tarifes Clars. Sense Lletra Petita.",
-        priceSub: "Model de subscripció al directori: quotes transparents, sense retencions sobre els serveis.",
+        priceSub: "Model de directori SaaS: quotes transparents de subscripció i 0% de comissions sobre els serveis acordats.",
         feat1Title: "0% Comissions per Servei",
         feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions sobre el treball.",
         feat2Title: "Contacte Immediat i Directe",
@@ -802,14 +824,14 @@
         titleClient: "Looking for trusted cleaning staff?",
         descClient: "Find local cleaning professionals near you. Direct deal, verified profiles, and zero commission markups.",
         btnActionClient: "Request Service / Client Signup →",
-        tagPro: "For Independent Cleaners",
+        tagPro: "For Cleaning Professionals",
         titlePro: "Do you offer cleaning services?",
         descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
         compSub: "Compare our direct contact model and 100% zero-commission structure against apps and agencies.",
         priceTitle: "Transparent Plans & Pricing. No Hidden Fees.",
-        priceSub: "Directory subscription model: transparent fees with zero service deductions.",
+        priceSub: "SaaS directory model: transparent subscription plans with 0% service commissions.",
         feat1Title: "0% Service Fees",
         feat1Desc: "100% of the agreed earnings belong to the professional. We operate strictly as an optional SaaS advertising directory.",
         feat2Title: "Direct & Immediate Contact",
@@ -828,14 +850,14 @@
         titleClient: "Vous cherchez du personnel de confiance ?",
         descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociation directe sans intermédiaire.",
         btnActionClient: "Demander un Service / Inscription Client →",
-        tagPro: "Pour Professionnels Indépendants",
+        tagPro: "Pour Professionnels du Nettoyage",
         titlePro: "Vous proposez vos services ?",
         descPro: "Publiez votre profil dans votre code postal et recevez des demandes directes sur WhatsApp. 2 mois offerts.",
         btnActionPro: "S'inscrire comme Professionnel →",
         compTitle: "Pourquoi LIMPIAPP par rapport aux alternatives ?",
         compSub: "Comparez notre modèle sans commission avec les agences et applications classiques.",
         priceTitle: "Des Tarifs Clairs et Transparents.",
-        priceSub: "Modèle d'annuaire par abonnement sans retenue sur vos prestations.",
+        priceSub: "Modèle d'annuaire par abonnement : 0% de commission sur vos prestations.",
         feat1Title: "0% de Commission sur les Services",
         feat1Desc: "100% du prix négocié revient au professionnel.",
         feat2Title: "Contact Direct et Immédiat",
@@ -854,14 +876,14 @@
         titleClient: "Cerchi personale di fiducia?",
         descClient: "Trova professionisti delle pulizie nella tua zona. Contatto diretto senza intermediari.",
         btnActionClient: "Richiedi Servizio / Registrazione Clienti →",
-        tagPro: "Per Professionisti Indipendenti",
+        tagPro: "Per Professionisti delle Pulizie",
         titlePro: "Offri i tuoi servizi?",
         descPro: "Crea il tuo profilo nel tuo CAP, fissa le tue tariffe e ricevi richieste su WhatsApp. 2 mesi gratis.",
         btnActionPro: "Registrati come Professionista →",
         compTitle: "Perché scegliere LIMPIAPP?",
         compSub: "Confronta il nostro modello a zero commissioni rispetto ad agenzie e altre app.",
         priceTitle: "Piani e Tariffe Chiare. Senza Sorprese.",
-        priceSub: "Modello in abbonamento per directory: nessuna trattenuta sul servizio concordato.",
+        priceSub: "Modello in abbonamento: zero commissioni sul servizio concordato.",
         feat1Title: "0% Commissioni sui Servizi",
         feat1Desc: "L'importo concordato è al 100% per il professionista.",
         feat2Title: "Contatto Diretto e Immediato",
@@ -880,14 +902,14 @@
         titleClient: "Procura pessoal de confiança?",
         descClient: "Encontre profissionais de limpeza na sua área. Contacto direto sem custos de intermediação.",
         btnActionClient: "Pedir Serviço / Registo de Clientes →",
-        tagPro: "Para Profissionais Independentes",
+        tagPro: "Para Profissionais de Limpeza",
         titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
         compTitle: "Porquê a LIMPIAPP frente às alternativas?",
         compSub: "Compare o nosso modelo direto e 100% sem comissões.",
         priceTitle: "Planos e Preços Transparentes.",
-        priceSub: "Modelo de subscrição de diretório: sem retenções sobre o trabalho prestado.",
+        priceSub: "Modelo de subscrição de diretório: 0% de comissões sobre os serviços prestados.",
         feat1Title: "0% Comissões por Serviço",
         feat1Desc: "100% do valor cobrado pertence ao profissional.",
         feat2Title: "Contacto Direto e Imediato",
@@ -904,18 +926,18 @@
         btnNavPro: "Ich bin Dienstleister",
         tagClient: "Für Haushalte & Firmen",
         titleClient: "Suchen Sie vertrauenswürdiges Reinigungspersonal?",
-        descClient: "Finden Sie Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
+        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
         btnActionClient: "Service anfragen / Kundenregistrierung →",
-        tagPro: "Für Selbstständige Reinigungskräfte",
+        tagPro: "Für Reinigungskräfte & Firmen",
         titlePro: "Bieten Sie Reinigungsdienste an?",
         descPro: "Profil erstellen, Stundensätze frei festlegen und direkte Anfragen per WhatsApp erhalten. 2 Monate kostenlos.",
         btnActionPro: "Als Dienstleister registrieren →",
         compTitle: "Warum LIMPIAPP gegenüber Alternativen?",
         compSub: "Vergleichen Sie unser Modell ohne Provisionen mit klassischen Vermittlungsagenturen.",
         priceTitle: "Klare Tarife. Ohne Kleingedrucktes.",
-        priceSub: "Verzeichnis-Abonnementmodell: keine Abzüge von Ihrer geleisteten Arbeit.",
+        priceSub: "Verzeichnis-Abonnementmodell: keine Abzüge von den erbrachten Dienstleistungen.",
         feat1Title: "0 % Vermittlungsgebühr",
-        feat1Desc: "Der vereinbarte Betrag gehört zu 100 % der Reinigungskraft.",
+        feat1Desc: "Der vereinbarte Betrag gehört zu 100 % der Fachkraft.",
         feat2Title: "Direkter Kontakt",
         feat2Desc: "Schnelle Absprachen per WhatsApp oder Anruf.",
         feat3Title: "Abdeckung nach Postleitzahl",
@@ -930,9 +952,9 @@
         btnNavPro: "Son Profesional",
         tagClient: "Para Fogares e Empresas",
         titleClient: "Buscas persoal de confianza?",
-        descClient: "Atopa profesionais de limpeza preto de ti sen sobrecustos de intermediación.",
+        descClient: "Atopa persoal profesional de limpeza preto de ti sen sobrecustos de intermediación.",
         btnActionClient: "Solicitar Servizo / Rexistro Clientes →",
-        tagPro: "Para Profesionais Independentes",
+        tagPro: "Para Profesionais de Limpeza",
         titlePro: "Ofreces os teus servizos?",
         descPro: "Publica o teu perfil no teu código postal e recibe avisos directos por WhatsApp. 2 meses gratis.",
         btnActionPro: "Rexistrarme como Profesional →",
@@ -941,7 +963,7 @@
         priceTitle: "Plans e Tarifas Claras. Sen Letra Pequena.",
         priceSub: "Modelo de subscrición ao directorio: sen comisións sobre o servizo.",
         feat1Title: "0% Comisións por Servizo",
-        feat1Desc: "O importe acordado é 100% para a profesional.",
+        feat1Desc: "O importe acordado é 100% para o profesional.",
         feat2Title: "Contacto Inmediato e Directo",
         feat2Desc: "Conversa directa por teléfono ou WhatsApp.",
         feat3Title: "Proximidade por Código Postal",
