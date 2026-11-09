@@ -103,7 +103,6 @@
       margin: 0 auto;
     }
 
-    /* Pestañas de Modo (Iniciar Sesión vs Crear Cuenta) */
     .auth-mode-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -141,7 +140,6 @@
     }
     .back-link:hover { text-decoration: underline; }
 
-    /* Selector de Tipo de Perfil (Cliente vs Profesional) */
     .role-toggle {
       display: flex;
       background: #f1f5f9;
@@ -209,6 +207,36 @@
       box-shadow: 0 0 0 3px rgba(79, 88, 93, 0.2);
     }
 
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .password-wrapper input {
+      padding-right: 44px;
+    }
+    .toggle-password-btn {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-slate-muted);
+      user-select: none;
+    }
+    .toggle-password-btn:hover {
+      color: var(--color-slate-dark);
+    }
+    .toggle-password-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
     .pw-hint {
       font-size: 0.76rem;
       color: var(--color-slate-muted);
@@ -267,7 +295,6 @@
     }
     .alt-action a:hover { text-decoration: underline; }
 
-    /* Modal emergente */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -399,21 +426,37 @@
 
           <div class="form-group">
             <label id="lblPassword">Contraseña *</label>
-            <input type="password" name="password" id="inputPassword" required minlength="8" placeholder="••••••••">
+            <div class="password-wrapper">
+              <input type="password" name="password" id="inputPassword" required minlength="8" placeholder="••••••••">
+              <button type="button" class="toggle-password-btn" id="btnTogglePassword" title="Mostrar/ocultar contraseña" aria-label="Mostrar contraseña">
+                <svg id="eyeIconPw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
             <span class="pw-hint" id="pwHint">Mínimo 8 caracteres (se recomienda combinar letras y números).</span>
           </div>
 
           <!-- Confirmar contraseña solo al CREAR CUENTA -->
           <div class="form-group" id="groupConfirmPw" style="display: none;">
             <label id="lblConfirmPw">Confirmar Contraseña *</label>
-            <input type="password" id="inputConfirmPassword" minlength="8" placeholder="••••••••">
+            <div class="password-wrapper">
+              <input type="password" id="inputConfirmPassword" minlength="8" placeholder="••••••••">
+              <button type="button" class="toggle-password-btn" id="btnToggleConfirmPassword" title="Mostrar/ocultar confirmación" aria-label="Mostrar confirmación">
+                <svg id="eyeIconConfirm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
           </div>
 
           <!-- Checkbox legal solo al CREAR CUENTA -->
           <div class="legal-box" id="legalBoxRegister" style="display: none;">
             <label class="checkbox-label">
               <input type="checkbox" name="rgpd" id="checkRgpd">
-              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]</span>
+              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
             </label>
           </div>
 
@@ -430,7 +473,6 @@
     </div>
   </div>
 
-  <!-- Modal de Resultado / Preparación de App -->
   <div id="modalAuth" class="modal-overlay">
     <div class="modal-box">
       <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;" id="modalIcon">✓</div>
@@ -465,7 +507,6 @@
   </footer>
 
   <script>
-    // 1. Declaración prioritaria del diccionario multilingüe
     var dicc = {
       es: {
         tabLogin: "Iniciar Sesión",
@@ -494,11 +535,11 @@
         lblPassword: "Contraseña *",
         lblConfirmPw: "Confirmar Contraseña *",
         pwHint: "Mínimo 8 caracteres (se recomienda combinar letras y números).",
-        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
         modalTitleLog: "¡Sesión Verificada!",
         modalDescLog: "Tus credenciales se han validado correctamente. Tu cuenta está lista para la sincronización con la App.",
         modalTitleReg: "¡Cuenta Creada con Éxito!",
-        modalDescReg: "Tus datos y contraseña se han registrado. Podrás iniciar sesión tanto en la web como en la App móvil.",
+        modalDescReg: "Tus datos y contraseña se han registrado en Cuentas. Podrás iniciar sesión en la web y en la App móvil.",
         modalBtn: "Volver a la Portada",
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
@@ -532,7 +573,7 @@
         lblPassword: "Contrasenya *",
         lblConfirmPw: "Confirmar Contrasenya *",
         pwHint: "Mínim 8 caràcters (es recomana combinar lletres i números).",
-        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
         modalTitleLog: "Sessió Verificada!",
         modalDescLog: "Les teves credencials s'han validat correctament. El teu compte està a punt per a l'App.",
         modalTitleReg: "Compte Creat amb Èxit!",
@@ -570,7 +611,7 @@
         lblPassword: "Password *",
         lblConfirmPw: "Confirm Password *",
         pwHint: "Minimum 8 characters (letters and numbers recommended).",
-        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>[cite: 91].',
+        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
         modalTitleLog: "Session Verified!",
         modalDescLog: "Your credentials have been validated. Your account is ready for synchronization with the mobile App.",
         modalTitleReg: "Account Created Successfully!",
@@ -608,7 +649,7 @@
         lblPassword: "Mot de passe *",
         lblConfirmPw: "Confirmer le mot de passe *",
         pwHint: "8 caractères minimum (chiffres et lettres recommandés).",
-        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
         modalTitleLog: "Session Vérifiée !",
         modalDescLog: "Vos identifiants ont été validés. Votre compte est prêt pour l'App mobile.",
         modalTitleReg: "Compte Créé avec Succès !",
@@ -646,7 +687,7 @@
         lblPassword: "Passwort *",
         lblConfirmPw: "Passwort bestätigen *",
         pwHint: "Mindestens 8 Zeichen (Buchstaben und Zahlen empfohlen).",
-        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu[cite: 91].',
+        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
         modalTitleLog: "Sitzung Bestätigt!",
         modalDescLog: "Ihre Anmeldedaten wurden geprüft. Ihr Konto ist für die App-Synchronisierung bereit.",
         modalTitleReg: "Konto Erfolgreich Erstellt!",
@@ -684,7 +725,7 @@
         lblPassword: "Password *",
         lblConfirmPw: "Conferma Password *",
         pwHint: "Minimo 8 caratteri (consigliate lettere e numeri).",
-        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
         modalTitleLog: "Accesso Confermato!",
         modalDescLog: "Le tue credenziali sono state convalidate. Il tuo account è pronto per l'App.",
         modalTitleReg: "Account Creato con Successo!",
@@ -722,7 +763,7 @@
         lblPassword: "Palavra-passe *",
         lblConfirmPw: "Confirmar Palavra-passe *",
         pwHint: "Mínimo 8 caracteres (recomendado letras e números).",
-        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
         modalTitleLog: "Sessão Verificada!",
         modalDescLog: "As suas credenciais foram validadas. A conta está pronta para a App.",
         modalTitleReg: "Conta Criada com Sucesso!",
@@ -760,7 +801,7 @@
         lblPassword: "Contrasinal *",
         lblConfirmPw: "Confirmar Contrasinal *",
         pwHint: "Mínimo 8 caracteres (letras e números).",
-        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.[cite: 91]',
+        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
         modalTitleLog: "Sesión Verificada!",
         modalDescLog: "As túas credenciais foron validadas. Conta lista para a App.",
         modalTitleReg: "Conta Creada con Éxito!",
@@ -798,7 +839,7 @@
         lblPassword: "Pasahitza *",
         lblConfirmPw: "Berretsi Pasahitza *",
         pwHint: "Gutxienez 8 karaktere (letrak eta zenbakiak).",
-        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>[cite: 91].',
+        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
         modalTitleLog: "Saioa Egiaztatuta!",
         modalDescLog: "Kredentzialak ondo balioztatu dira. Zure kontua prest dago App-erako.",
         modalTitleReg: "Kontua Ondo Sortu Da!",
@@ -899,6 +940,24 @@
       }
     }
 
+    function setupPasswordToggle(buttonId, inputId) {
+      var btn = document.getElementById(buttonId);
+      var input = document.getElementById(inputId);
+      if (!btn || !input) return;
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+
+        if (isPassword) {
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+        } else {
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+        }
+      });
+    }
+
     function cambiarIdioma(lang) {
       localStorage.setItem('limpiapp_lang', lang);
       var t = dicc[lang] || dicc['es'];
@@ -943,9 +1002,10 @@
       setAuthMode(currentMode);
     }
 
-    // Inicialización y enlace de eventos del DOM
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Enlazar eventos de clics a las pestañas
+      setupPasswordToggle('btnTogglePassword', 'inputPassword');
+      setupPasswordToggle('btnToggleConfirmPassword', 'inputConfirmPassword');
+
       var tabLog = document.getElementById('tabLogin');
       if (tabLog) {
         tabLog.addEventListener('click', function() { setAuthMode('login'); });
@@ -963,7 +1023,6 @@
         });
       }
 
-      // 2. Enlazar botones de selección de rol
       var btnC = document.getElementById('btnRoleClient');
       if (btnC) {
         btnC.addEventListener('click', function() { setRole('cliente'); });
@@ -974,7 +1033,6 @@
         btnP.addEventListener('click', function() { setRole('profesional'); });
       }
 
-      // 3. Enlazar botón modal
       var modalBtn = document.getElementById('modalBtn');
       if (modalBtn) {
         modalBtn.addEventListener('click', function() {
@@ -984,7 +1042,6 @@
         });
       }
 
-      // 4. Enlazar selector de idioma
       var selectLang = document.getElementById('langSelectAuth');
       if (selectLang) {
         selectLang.addEventListener('change', function() {
@@ -992,7 +1049,6 @@
         });
       }
 
-      // 5. Cargar parámetros iniciales de URL o memoria
       var urlParams = new URLSearchParams(window.location.search);
       var modeParam = urlParams.get('mode');
       var roleParam = urlParams.get('role');
@@ -1014,15 +1070,41 @@
         setAuthMode('login');
       }
 
-      // 6. Manejo de envío del formulario
       var form = document.getElementById('authForm');
       if (form) {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
 
-          var pw = document.getElementById('inputPassword').value;
+          // Comprobación estricta del formulario HTML5
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
           if (currentMode === 'register') {
+            var nombreVal = document.getElementById('inputNombre').value.trim();
+            var telVal = document.getElementById('inputTel').value.trim();
+            var cpVal = document.getElementById('inputCP').value.trim();
+            var emailVal = document.getElementById('inputEmail').value.trim();
+            var checkVal = document.getElementById('checkRgpd').checked;
+            var pw = document.getElementById('inputPassword').value;
             var confirmPw = document.getElementById('inputConfirmPassword').value;
+
+            if (!nombreVal || !telVal || !cpVal || !emailVal) {
+              alert('Por favor, completa todos los campos obligatorios (*).');
+              return;
+            }
+
+            if (!checkVal) {
+              alert('Debes aceptar los Términos y Condiciones y la Política de Privacidad.');
+              return;
+            }
+
+            if (pw.length < 8) {
+              alert('La contraseña debe tener un mínimo de 8 caracteres.');
+              return;
+            }
+
             if (pw !== confirmPw) {
               alert('Las contraseñas no coinciden. Por favor, revísalas.');
               return;
@@ -1033,7 +1115,7 @@
           var originalText = btn ? btn.innerText : '...';
           if (btn) {
             btn.disabled = true;
-            btn.innerText = 'Procesando...';
+            btn.innerText = 'Guardando cuenta...';
           }
 
           var formData = new FormData(form);
@@ -1064,6 +1146,7 @@
 
             if (modal) modal.style.display = 'flex';
             form.reset();
+            setAuthMode(currentMode);
           })
           .catch(function() {
             alert('Error de conexión. Inténtalo de nuevo.');
