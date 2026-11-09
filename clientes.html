@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitud de Limpieza | LIMPIAPP</title>
+  <title>Solicitud de Servicio de Limpieza | LIMPIAPP</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     :root {
@@ -17,13 +17,16 @@
       --text-muted: #718096;
       --border: #e2e8f0;
       --focus: rgba(127, 174, 203, 0.35);
+      --footer-bg: #1a202c;
+      --footer-text: #a0aec0;
+      --footer-link: #cbd5e0;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
 
     body {
@@ -34,7 +37,7 @@
       flex-direction: column;
     }
 
-    /* ENCABEZADO CON EL LOGO OFICIAL */
+    /* ENCABEZADO CON LOGOTIPO OFICIAL */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
@@ -51,7 +54,7 @@
     }
 
     .brand-logo {
-      height: 40px;
+      height: 42px;
       width: auto;
       display: block;
       object-fit: contain;
@@ -68,28 +71,28 @@
       outline: none;
     }
 
-    /* CUERPO CENTRAL */
+    /* CUERPO DEL FORMULARIO */
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 36px 16px;
+      padding: 32px 16px;
     }
 
     .form-card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 560px;
+      max-width: 580px;
       border-radius: 12px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-      padding: 32px 30px;
+      padding: 30px 28px;
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .form-header h1 {
@@ -106,7 +109,7 @@
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 15px;
     }
 
     .form-row {
@@ -152,6 +155,7 @@
       min-height: 65px;
     }
 
+    /* CASILLA OBLIGATORIA RGPD */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
@@ -225,43 +229,55 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* PIE DE PÁGINA SUTIL, ELEGANTE Y COMPACTO */
+    /* PIE DE PÁGINA OSCURO ELEGANTE Y COMPACTO */
     footer {
-      background-color: transparent;
-      padding: 24px 20px 20px;
-      text-align: center;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 18px 24px;
       font-size: 12px;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #2d3748;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .footer-links {
-      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
     }
 
     .footer-links a {
-      color: var(--primary);
+      color: var(--footer-link);
       text-decoration: none;
-      margin: 0 8px;
+      transition: color 0.2s ease;
     }
 
     .footer-links a:hover {
+      color: #ffffff;
       text-decoration: underline;
-      color: var(--accent);
     }
 
     .footer-copy {
-      font-size: 11.5px;
-      color: #a0aec0;
+      font-size: 11px;
+      color: #718096;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
 
-  <!-- CABECERA CON EL LOGO OFICIAL -->
+  <!-- ENCABEZADO CON LOGO OFICIAL -->
   <header>
     <a href="index.html" class="brand-link" title="LIMPIAPP">
-      <img src="logo.png" alt="LIMPIAPP by Shineconnect" class="brand-logo" onerror="this.onerror=null; this.src='assets/logo.png';">
+      <img src="logo.png" alt="LIMPIAPP BY SHINECONNECT" class="brand-logo" onerror="this.onerror=null; this.src='logo.jpg';">
     </a>
     <div class="lang-switcher">
       <select id="selectLang" onchange="cambiarIdioma(this.value)">
@@ -305,6 +321,7 @@
             <label for="inputTelefono" id="lblTelefono">WhatsApp / Teléfono *</label>
             <input type="tel" name="telefono" id="inputTelefono" required placeholder="600 000 000">
           </div>
+          <!-- CAMPO EMAIL OBLIGATORIO -->
           <div class="form-group">
             <label for="inputEmail" id="lblEmail">Correo Electrónico *</label>
             <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
@@ -365,17 +382,20 @@
     </div>
   </main>
 
-  <!-- PIE DE PÁGINA ELEGANTE Y DISCRETO -->
+  <!-- ARMAZÓN LEGAL COMPACTO Y ELEGANTE -->
   <footer>
-    <div class="footer-links">
-      <a href="aviso-legal.html">Aviso Legal</a> &bull;
-      <a href="terminos.html">Términos y Condiciones</a> &bull;
-      <a href="privacidad.html">Privacidad</a> &bull;
-      <a href="cookies.html">Cookies</a> &bull;
-      <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a>
-    </div>
-    <div class="footer-copy">
-      &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados. WhatsApp Atención: +34 711 29 50 17
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="aviso-legal.html">Aviso Legal</a> &bull;
+        <a href="terminos.html">Términos y Condiciones</a> &bull;
+        <a href="privacidad.html">Privacidad</a> &bull;
+        <a href="cookies.html">Cookies</a> &bull;
+        <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a> &bull;
+        <a href="https://wa.me/34711295017" target="_blank">Soporte WhatsApp (+34 711 29 50 17)</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD y LOPDGDD.
+      </div>
     </div>
   </footer>
 
