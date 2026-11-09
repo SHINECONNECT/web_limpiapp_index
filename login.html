@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso y Registro de Cuenta | LIMPIAPP</title>
+  
+  <meta name="apple-itunes-app" content="app-id=limpiapp">
+  <link rel="alternate" href="limpiapp://auth">
+  <meta name="theme-color" content="#4f585d">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --color-logo-blue: #7faecb;
+      --color-logo-blue-dark: #6294b4;
+      --color-logo-blue-light: #eef5f9;
+      --color-logo-blue-soft: #d2e4f0;
+      
+      --color-logo-charcoal: #4f585d;
+      --color-logo-charcoal-dark: #373e42;
+      
+      --color-slate-dark: #24292d;
+      --color-slate-medium: #475259;
+      --color-slate-muted: #6a767e;
+      --color-slate-border: #d4dfe6;
+      
+      --color-bg-page: #f8fafc;
+      --color-bg-card: #ffffff;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    
+    body {
+      background-color: var(--color-bg-page);
+      color: var(--color-slate-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .top-bar {
+      background-color: var(--color-bg-card);
+      border-bottom: 1px solid var(--color-slate-border);
+      padding: 8px 24px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+    }
+    .lang-select {
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-slate-border);
+      font-size: 0.82rem;
+      background: var(--color-bg-page);
+      color: var(--color-slate-medium);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 30px 16px 50px;
+    }
+
+    .container {
+      max-width: 520px;
+      width: 100%;
+      background: var(--color-bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1.5px solid var(--color-slate-border);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background-color: #ffffff;
+      padding: 24px 20px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-slate-border);
+    }
+    .card-header img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Pestañas de Modo (Iniciar Sesión vs Crear Cuenta) */
+    .auth-mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #f1f5f9;
+      border-bottom: 1.5px solid var(--color-slate-border);
+    }
+    .auth-tab-btn {
+      padding: 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--color-slate-muted);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: all 0.2s;
+    }
+    .auth-tab-btn.active {
+      background: #ffffff;
+      color: var(--color-slate-dark);
+      border-bottom: 3px solid var(--color-logo-charcoal);
+    }
+
+    .content-area { padding: 28px 24px; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-logo-blue-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* Selector de Tipo de Perfil (Cliente vs Profesional) */
+    .role-toggle {
+      display: flex;
+      background: #f1f5f9;
+      border-radius: var(--radius-sm);
+      padding: 4px;
+      margin-bottom: 22px;
+      border: 1px solid var(--color-slate-border);
+    }
+    .role-btn {
+      flex: 1;
+      text-align: center;
+      padding: 9px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--color-slate-muted);
+      transition: all 0.2s;
+    }
+    .role-btn.active {
+      background: #ffffff;
+      color: var(--color-slate-dark);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .role-btn.active.pro {
+      color: var(--color-logo-charcoal);
+      border-bottom: 2px solid var(--color-logo-charcoal);
+    }
+    .role-btn.active.client {
+      color: var(--color-logo-blue-dark);
+      border-bottom: 2px solid var(--color-logo-blue-dark);
+    }
+
+    h1 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .subtitle {
+      color: var(--color-slate-muted);
+      font-size: 0.88rem;
+      margin-bottom: 22px;
+    }
+
+    .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
+    label { font-weight: 700; font-size: 0.88rem; color: var(--color-slate-dark); }
+    
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-slate-border);
+      font-size: 0.95rem;
+      font-family: inherit;
+      background-color: #ffffff;
+      color: var(--color-slate-dark);
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--color-logo-charcoal);
+      box-shadow: 0 0 0 3px rgba(79, 88, 93, 0.2);
+    }
+
+    .pw-hint {
+      font-size: 0.76rem;
+      color: var(--color-slate-muted);
+      margin-top: 4px;
+    }
+
+    .legal-box {
+      background: #f1f6f9;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      color: #475569;
+      margin: 18px 0;
+      border: 1px solid var(--color-slate-border);
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #475569;
+      cursor: pointer;
+    }
+    .checkbox-label input {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      accent-color: var(--color-logo-charcoal);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--color-logo-charcoal);
+      color: #ffffff;
+      padding: 13px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
+
+    .alt-action {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.88rem;
+      color: var(--color-slate-muted);
+    }
+    .alt-action a {
+      color: var(--color-logo-blue-dark);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .alt-action a:hover { text-decoration: underline; }
+
+    /* Modal emergente */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 41, 45, 0.6);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal-box {
+      background: #ffffff;
+      padding: 32px 28px;
+      border-radius: var(--radius-md);
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background-color: var(--color-slate-dark);
+      color: #94a3b8;
+      padding: 40px 20px 30px;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+    }
+    .footer-container { max-width: 850px; margin: 0 auto; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin: 14px 0 18px;
+    }
+    .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
+    .footer-links a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <!-- Selector Multilingüe Universal -->
+  <div class="top-bar">
+    <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
+    <select class="lang-select" id="langSelectAuth" onchange="cambiarIdioma(this.value)">
+      <optgroup label="Lenguas de España">
+        <option value="es" selected>Español</option>
+        <option value="ca">Valencià / Català</option>
+        <option value="gl">Galego</option>
+        <option value="eu">Euskara</option>
+      </optgroup>
+      <optgroup label="Unión Europea">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="main-wrapper">
+    <div class="container">
+      
+      <div class="card-header">
+        <a href="index.html">
+          <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
+        </a>
+      </div>
+
+      <!-- Pestañas de Selección: Iniciar Sesión vs Crear Cuenta -->
+      <div class="auth-mode-tabs">
+        <button type="button" class="auth-tab-btn active" id="tabLogin" onclick="setAuthMode('login')">
+          Iniciar Sesión
+        </button>
+        <button type="button" class="auth-tab-btn" id="tabRegister" onclick="setAuthMode('register')">
+          Crear Cuenta
+        </button>
+      </div>
+
+      <div class="content-area">
+        <a href="index.html" class="back-link" id="backLink">← Volver al inicio</a>
+        
+        <!-- Toggle de Tipo de Perfil -->
+        <div class="role-toggle">
+          <button type="button" class="role-btn active client" id="btnRoleClient" onclick="setRole('cliente')">
+            Hogar / Empresa
+          </button>
+          <button type="button" class="role-btn pro" id="btnRolePro" onclick="setRole('profesional')">
+            Profesional de Limpieza
+          </button>
+        </div>
+
+        <div>
+          <h1 id="authTitle">Accede a tu cuenta</h1>
+          <p class="subtitle" id="authSub">
+            Introduce tus credenciales para gestionar tus servicios o tu perfil en LIMPIAPP.
+          </p>
+        </div>
+
+        <form id="authForm" action="https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec" method="POST">
+          <input type="hidden" name="tipo_formulario" id="hiddenFormType" value="login">
+          <input type="hidden" name="perfil_usuario" id="hiddenRole" value="cliente">
+
+          <!-- Campos visibles únicamente al CREAR CUENTA -->
+          <div id="registerFields" style="display: none;">
+            <div class="form-group">
+              <label id="lblNombre">Nombre y Apellidos *</label>
+              <input type="text" name="nombre" id="inputNombre" placeholder="Tu nombre completo">
+            </div>
+
+            <div class="form-group">
+              <label id="lblTel">Teléfono / WhatsApp *</label>
+              <input type="tel" name="telefono" id="inputTel" placeholder="+34 600 000 000">
+            </div>
+
+            <div class="form-group">
+              <label id="lblCP">Código Postal *</label>
+              <input type="text" name="cp" id="inputCP" placeholder="Ej. 46006">
+            </div>
+          </div>
+
+          <!-- Campos Comunes: Email y Contraseña -->
+          <div class="form-group">
+            <label id="lblEmail">Correo Electrónico *</label>
+            <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label id="lblPassword">Contraseña *</label>
+            <input type="password" name="password" id="inputPassword" required minlength="8" placeholder="••••••••">
+            <span class="pw-hint" id="pwHint">Mínimo 8 caracteres (se recomienda combinar letras y números).</span>
+          </div>
+
+          <!-- Confirmar contraseña solo al CREAR CUENTA -->
+          <div class="form-group" id="groupConfirmPw" style="display: none;">
+            <label id="lblConfirmPw">Confirmar Contraseña *</label>
+            <input type="password" id="inputConfirmPassword" minlength="8" placeholder="••••••••">
+          </div>
+
+          <!-- Checkbox legal solo al CREAR CUENTA -->
+          <div class="legal-box" id="legalBoxRegister" style="display: none;">
+            <label class="checkbox-label">
+              <input type="checkbox" name="rgpd" id="checkRgpd">
+              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
+            </label>
+          </div>
+
+          <button type="submit" id="btnSubmitAuth" class="btn-submit">
+            Entrar a LIMPIAPP
+          </button>
+        </form>
+
+        <div class="alt-action">
+          <span id="txtAltPrompt">¿No tienes cuenta todavía?</span>
+          <a href="javascript:void(0)" id="linkToggleMode" onclick="toggleAuthMode()">Crea tu cuenta aquí</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Resultado / Preparación de App -->
+  <div id="modalAuth" class="modal-overlay">
+    <div class="modal-box">
+      <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;" id="modalIcon">✓</div>
+      <h3 style="color: var(--color-slate-dark); font-size: 1.35rem; margin-bottom: 10px;" id="modalTitle">¡Cuenta Preparada!</h3>
+      <p style="color: var(--color-slate-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 22px;" id="modalDesc">
+        Tus credenciales y perfil han quedado registrados en LIMPIAPP. Podrás iniciar sesión directamente en la nueva App móvil con este mismo correo y contraseña.
+      </p>
+      <button onclick="document.getElementById('modalAuth').style.display='none'; window.location.href='index.html';" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;" id="modalBtn">
+        Volver a la Portada
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
+        &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
+      </p>
+      <div class="footer-links">
+        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
+        <span style="color: #475569;">|</span>
+        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
+        <span style="color: #475569;">|</span>
+        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
+        <span style="color: #475569;">|</span>
+        <a href="cookies.html" id="footCookies">Política de Cookies</a>
+      </div>
+      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
+        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    var currentMode = 'login'; // 'login' o 'register'
+    var currentRole = 'cliente'; // 'cliente' o 'profesional'
+
+    function setAuthMode(mode) {
+      currentMode = mode;
+      document.getElementById('hiddenFormType').value = mode;
+
+      var tabLog = document.getElementById('tabLogin');
+      var tabReg = document.getElementById('tabRegister');
+      var regFields = document.getElementById('registerFields');
+      var groupConfirm = document.getElementById('groupConfirmPw');
+      var legalBox = document.getElementById('legalBoxRegister');
+      var checkRgpd = document.getElementById('checkRgpd');
+      var inputNombre = document.getElementById('inputNombre');
+      var inputTel = document.getElementById('inputTel');
+      var inputCP = document.getElementById('inputCP');
+      var inputConfirm = document.getElementById('inputConfirmPassword');
+
+      var lang = localStorage.getItem('limpiapp_lang') || 'es';
+      var t = dicc[lang] || dicc['es'];
+
+      if (mode === 'register') {
+        tabLog.classList.remove('active');
+        tabReg.classList.add('active');
+        regFields.style.display = 'block';
+        groupConfirm.style.display = 'flex';
+        legalBox.style.display = 'block';
+
+        inputNombre.required = true;
+        inputTel.required = true;
+        inputCP.required = true;
+        inputConfirm.required = true;
+        checkRgpd.required = true;
+
+        document.getElementById('authTitle').innerText = t.titleReg;
+        document.getElementById('authSub').innerText = t.subReg;
+        document.getElementById('btnSubmitAuth').innerText = t.btnSubmitReg;
+        document.getElementById('txtAltPrompt').innerText = t.promptHasAccount;
+        document.getElementById('linkToggleMode').innerText = t.linkGoLogin;
+      } else {
+        tabReg.classList.remove('active');
+        tabLog.classList.add('active');
+        regFields.style.display = 'none';
+        groupConfirm.style.display = 'none';
+        legalBox.style.display = 'none';
+
+        inputNombre.required = false;
+        inputTel.required = false;
+        inputCP.required = false;
+        inputConfirm.required = false;
+        checkRgpd.required = false;
+
+        document.getElementById('authTitle').innerText = t.titleLog;
+        document.getElementById('authSub').innerText = t.subLog;
+        document.getElementById('btnSubmitAuth').innerText = t.btnSubmitLog;
+        document.getElementById('txtAltPrompt').innerText = t.promptNoAccount;
+        document.getElementById('linkToggleMode').innerText = t.linkGoRegister;
+      }
+    }
+
+    function toggleAuthMode() {
+      if (currentMode === 'login') {
+        setAuthMode('register');
+      } else {
+        setAuthMode('login');
+      }
+    }
+
+    function setRole(role) {
+      currentRole = role;
+      document.getElementById('hiddenRole').value = role;
+
+      var btnC = document.getElementById('btnRoleClient');
+      var btnP = document.getElementById('btnRolePro');
+
+      if (role === 'profesional') {
+        btnC.classList.remove('active');
+        btnP.classList.add('active');
+      } else {
+        btnP.classList.remove('active');
+        btnC.classList.add('active');
+      }
+    }
+
+    var dicc = {
+      es: {
+        tabLogin: "Iniciar Sesión",
+        tabRegister: "Crear Cuenta",
+        backLink: "← Volver al inicio",
+        roleClient: "Hogar / Empresa",
+        rolePro: "Profesional de Limpieza",
+        titleLog: "Accede a tu cuenta",
+        subLog: "Introduce tus credenciales para gestionar tus servicios o tu perfil en LIMPIAPP.",
+        btnSubmitLog: "Entrar a LIMPIAPP",
+        promptNoAccount: "¿No tienes cuenta todavía? ",
+        linkGoRegister: "Crea tu cuenta aquí",
+        titleReg: "Crea tu cuenta personal",
+        subReg: "Regístrate con tu contraseña para acceder a la plataforma web y conectar con la App móvil.",
+        btnSubmitReg: "Crear mi Cuenta",
+        promptHasAccount: "¿Ya tienes cuenta registrada? ",
+        linkGoLogin: "Inicia sesión aquí",
+        lblNombre: "Nombre y Apellidos *",
+        placeholderNombre: "Tu nombre completo",
+        lblTel: "Teléfono / WhatsApp *",
+        placeholderTel: "+34 600 000 000",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ej. 46006",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "tu@email.com",
+        lblPassword: "Contraseña *",
+        lblConfirmPw: "Confirmar Contraseña *",
+        pwHint: "Mínimo 8 caracteres (se recomienda combinar letras y números).",
+        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
+        modalTitleLog: "¡Sesión Verificada!",
+        modalDescLog: "Tus credenciales se han validado correctamente. Tu cuenta está lista para la sincronización con la App.",
+        modalTitleReg: "¡Cuenta Creada con Éxito!",
+        modalDescReg: "Tus datos y contraseña se han registrado. Podrás iniciar sesión tanto en la web como en la App móvil.",
+        modalBtn: "Volver a la Portada",
+        footAviso: "Aviso Legal",
+        footTerminos: "Términos y Condiciones",
+        footPrivacidad: "Política de Privacidad",
+        footCookies: "Política de Cookies"
+      },
+      ca: {
+        tabLogin: "Iniciar Sessió",
+        tabRegister: "Crear Compte",
+        backLink: "← Tornar a l'inici",
+        roleClient: "Llar / Empresa",
+        rolePro: "Professional de Neteja",
+        titleLog: "Accedeix al teu compte",
+        subLog: "Introdueix les teves credencials per gestionar serveis o el teu perfil a LIMPIAPP.",
+        btnSubmitLog: "Entrar a LIMPIAPP",
+        promptNoAccount: "No tens compte encara? ",
+        linkGoRegister: "Crea el teu compte aquí",
+        titleReg: "Crea el teu compte personal",
+        subReg: "Registra't amb contrasenya per accedir al web i connectar amb l'App mòbil.",
+        btnSubmitReg: "Crear el meu Compte",
+        promptHasAccount: "Ja tens compte registrat? ",
+        linkGoLogin: "Inicia sessió aquí",
+        lblNombre: "Nom i Cognoms *",
+        placeholderNombre: "El teu nom complet",
+        lblTel: "Telèfon / WhatsApp *",
+        placeholderTel: "+34 600 000 000",
+        lblCP: "Codi Postal *",
+        placeholderCP: "Ex. 46006",
+        lblEmail: "Correu Electrònic *",
+        placeholderEmail: "el-teu@email.com",
+        lblPassword: "Contrasenya *",
+        lblConfirmPw: "Confirmar Contrasenya *",
+        pwHint: "Mínim 8 caràcters (es recomana combinar lletres i números).",
+        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
+        modalTitleLog: "Sessió Verificada!",
+        modalDescLog: "Les teves credencials s'han validat correctament. El teu compte està a punt per a l'App.",
+        modalTitleReg: "Compte Creat amb Èxit!",
+        modalDescReg: "Les teves dades i contrasenya s'han registrat. Podràs iniciar sessió a la web i a l'App.",
+        modalBtn: "Tornar a la Portada",
+        footAviso: "Avís Legal",
+        footTerminos: "Termes i Condicions",
+        footPrivacidad: "Política de Privacitat",
+        footCookies: "Política de Cookies"
+      },
+      en: {
+        tabLogin: "Sign In",
+        tabRegister: "Create Account",
+        backLink: "← Back to home",
+        roleClient: "Home / Business",
+        rolePro: "Cleaning Professional",
+        titleLog: "Access your account",
+        subLog: "Enter your credentials to manage your bookings or profile on LIMPIAPP.",
+        btnSubmitLog: "Sign In to LIMPIAPP",
+        promptNoAccount: "Don't have an account yet? ",
+        linkGoRegister: "Create your account here",
+        titleReg: "Create your personal account",
+        subReg: "Register with a password to access the web platform and connect to the mobile App.",
+        btnSubmitReg: "Create Account",
+        promptHasAccount: "Already registered? ",
+        linkGoLogin: "Sign in here",
+        lblNombre: "Full Name *",
+        placeholderNombre: "Your full name",
+        lblTel: "Phone / WhatsApp *",
+        placeholderTel: "+34 600 000 000",
+        lblCP: "Postal Code *",
+        placeholderCP: "e.g. 46006",
+        lblEmail: "Email Address *",
+        placeholderEmail: "your@email.com",
+        lblPassword: "Password *",
+        lblConfirmPw: "Confirm Password *",
+        pwHint: "Minimum 8 characters (letters and numbers recommended).",
+        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
+        modalTitleLog: "Session Verified!",
+        modalDescLog: "Your credentials have been validated. Your account is ready for synchronization with the mobile App.",
+        modalTitleReg: "Account Created Successfully!",
+        modalDescReg: "Your details and password have been stored. You can sign in on the web platform and the mobile App.",
+        modalBtn: "Back to Home",
+        footAviso: "Legal Notice",
+        footTerminos: "Terms & Conditions",
+        footPrivacidad: "Privacy Policy",
+        footCookies: "Cookie Policy"
+      },
+      fr: {
+        tabLogin: "Se connecter",
+        tabRegister: "Créer un compte",
+        backLink: "← Retour à l'accueil",
+        roleClient: "Foyer / Entreprise",
+        rolePro: "Professionnel du Nettoyage",
+        titleLog: "Accédez à votre compte",
+        subLog: "Entrez vos identifiants pour gérer vos prestations sur LIMPIAPP.",
+        btnSubmitLog: "Connexion à LIMPIAPP",
+        promptNoAccount: "Pas encore de compte ? ",
+        linkGoRegister: "Créez votre compte ici",
+        titleReg: "Créez votre compte personnel",
+        subReg: "Inscrivez-vous avec un mot de passe pour accéder au web et à l'App mobile.",
+        btnSubmitReg: "Créer mon Compte",
+        promptHasAccount: "Déjà un compte ? ",
+        linkGoLogin: "Connectez-vous ici",
+        lblNombre: "Nom et Prénom *",
+        placeholderNombre: "Votre nom complet",
+        lblTel: "Téléphone / WhatsApp *",
+        placeholderTel: "+33 600 000 000",
+        lblCP: "Code Postal *",
+        placeholderCP: "ex. 75001",
+        lblEmail: "Adresse Courriel *",
+        placeholderEmail: "votre@email.com",
+        lblPassword: "Mot de passe *",
+        lblConfirmPw: "Confirmer le mot de passe *",
+        pwHint: "8 caractères minimum (chiffres et lettres recommandés).",
+        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
+        modalTitleLog: "Session Vérifiée !",
+        modalDescLog: "Vos identifiants ont été validés. Votre compte est prêt pour l'App mobile.",
+        modalTitleReg: "Compte Créé avec Succès !",
+        modalDescReg: "Votre mot de passe et vos données sont enregistrés pour le web et l'App mobile.",
+        modalBtn: "Retour à l'accueil",
+        footAviso: "Mentions Légales",
+        footTerminos: "Conditions Générales",
+        footPrivacidad: "Politique de Confidentialité",
+        footCookies: "Gestion des Cookies"
+      },
+      de: {
+        tabLogin: "Anmelden",
+        tabRegister: "Konto erstellen",
+        backLink: "← Zurück zur Startseite",
+        roleClient: "Haushalt / Firma",
+        rolePro: "Reinigungskraft",
+        titleLog: "In Ihr Konto einloggen",
+        subLog: "Geben Sie Ihre Zugangsdaten ein, um Ihr Profil auf LIMPIAPP zu verwalten.",
+        btnSubmitLog: "Bei LIMPIAPP anmelden",
+        promptNoAccount: "Noch kein Konto? ",
+        linkGoRegister: "Hier registrieren",
+        titleReg: "Persönliches Konto erstellen",
+        subReg: "Registrieren Sie sich mit Passwort für den Zugriff auf Web und mobile App.",
+        btnSubmitReg: "Konto erstellen",
+        promptHasAccount: "Bereits registriert? ",
+        linkGoLogin: "Hier anmelden",
+        lblNombre: "Vor- und Nachname *",
+        placeholderNombre: "Ihr vollständiger Name",
+        lblTel: "Telefon / WhatsApp *",
+        placeholderTel: "+49 170 0000000",
+        lblCP: "Postleitzahl *",
+        placeholderCP: "z.B. 10115",
+        lblEmail: "E-Mail-Adresse *",
+        placeholderEmail: "ihre@email.de",
+        lblPassword: "Passwort *",
+        lblConfirmPw: "Passwort bestätigen *",
+        pwHint: "Mindestens 8 Zeichen (Buchstaben und Zahlen empfohlen).",
+        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
+        modalTitleLog: "Sitzung Bestätigt!",
+        modalDescLog: "Ihre Anmeldedaten wurden geprüft. Ihr Konto ist für die App-Synchronisierung bereit.",
+        modalTitleReg: "Konto Erfolgreich Erstellt!",
+        modalDescReg: "Ihre Zugangsdaten sind für Web und App aktiviert.",
+        modalBtn: "Zurück zur Startseite",
+        footAviso: "Impressum",
+        footTerminos: "Allgemeine Geschäftsbedingungen",
+        footPrivacidad: "Datenschutzerklärung",
+        footCookies: "Cookie-Richtlinie"
+      },
+      it: {
+        tabLogin: "Accedi",
+        tabRegister: "Crea Account",
+        backLink: "← Torna alla home",
+        roleClient: "Casa / Impresa",
+        rolePro: "Professionista Pulizie",
+        titleLog: "Accedi al tuo account",
+        subLog: "Inserisci le tue credenziali per gestire i servizi o il tuo profilo su LIMPIAPP.",
+        btnSubmitLog: "Entra in LIMPIAPP",
+        promptNoAccount: "Non hai ancora un account? ",
+        linkGoRegister: "Crea il tuo account qui",
+        titleReg: "Crea il tuo account personale",
+        subReg: "Registrati con password per accedere alla piattaforma web e all'App mobile.",
+        btnSubmitReg: "Crea Account",
+        promptHasAccount: "Hai già un account? ",
+        linkGoLogin: "Accedi qui",
+        lblNombre: "Nome e Cognome *",
+        placeholderNombre: "Il tuo nome completo",
+        lblTel: "Telefono / WhatsApp *",
+        placeholderTel: "+39 340 0000000",
+        lblCP: "CAP *",
+        placeholderCP: "Es. 00185",
+        lblEmail: "Indirizzo Email *",
+        placeholderEmail: "tua@email.it",
+        lblPassword: "Password *",
+        lblConfirmPw: "Conferma Password *",
+        pwHint: "Minimo 8 caratteri (consigliate lettere e numeri).",
+        txtRgpd: '
