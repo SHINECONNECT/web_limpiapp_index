@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitud de Servicio de Limpieza | LIMPIAPP by Shineconnect</title>
+  <title>Solicitud de Limpieza | LIMPIAPP</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     :root {
@@ -11,66 +11,58 @@
       --primary-hover: #3d4549;
       --accent: #7faecb;
       --accent-hover: #689cb9;
-      --bg-color: #f7fafc;
+      --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text-main: #2d3748;
+      --text: #2d3748;
       --text-muted: #718096;
-      --border-color: #e2e8f0;
-      --focus-ring: rgba(127, 174, 203, 0.4);
+      --border: #e2e8f0;
+      --focus: rgba(127, 174, 203, 0.35);
+      --dark-footer: #1e252b;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
     header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 24px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
       text-decoration: none;
     }
 
-    .brand-title {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      color: var(--primary);
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
+    .brand-logo {
+      height: 38px;
+      width: auto;
+      display: block;
     }
 
     .lang-switcher select {
       padding: 6px 12px;
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border);
       border-radius: 6px;
       background: #fff;
       font-size: 13px;
-      color: var(--text-main);
+      color: var(--primary);
       cursor: pointer;
       outline: none;
     }
@@ -80,38 +72,39 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 16px;
+      padding: 36px 16px;
     }
 
     .form-card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 580px;
+      max-width: 560px;
       border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      padding: 32px 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      padding: 32px 30px;
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .form-header h1 {
       font-size: 22px;
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .form-header p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
       line-height: 1.4;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-row {
@@ -125,9 +118,9 @@
 
     label {
       display: block;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: var(--primary);
     }
 
@@ -137,35 +130,35 @@
     select,
     textarea {
       width: 100%;
-      padding: 10px 14px;
-      font-size: 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
       background-color: #fff;
-      color: var(--text-main);
+      color: var(--text);
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
     }
 
     input:focus, select:focus, textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--focus-ring);
+      box-shadow: 0 0 0 3px var(--focus);
     }
 
     textarea {
       resize: vertical;
-      min-height: 75px;
+      min-height: 65px;
     }
 
     .checkbox-group {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      margin: 20px 0;
+      gap: 9px;
+      margin: 16px 0;
     }
 
     .checkbox-group input {
-      margin-top: 3px;
+      margin-top: 2px;
       accent-color: var(--primary);
       cursor: pointer;
     }
@@ -185,15 +178,16 @@
 
     .btn-submit {
       width: 100%;
-      padding: 13px;
+      padding: 12px;
       background-color: var(--primary);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      font-size: 15px;
+      border-radius: 7px;
+      font-size: 14.5px;
       font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.2s;
+      margin-top: 8px;
+      transition: background 0.2s ease;
     }
 
     .btn-submit:hover {
@@ -207,52 +201,91 @@
 
     .feedback-message {
       display: none;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 14px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 7px;
+      font-size: 13px;
       text-align: center;
       line-height: 1.4;
     }
 
     .feedback-message.success {
       display: block;
-      background-color: #edf7ed;
+      background: #edf7ed;
       color: #1e4620;
       border: 1px solid #c8e6c9;
     }
 
     .feedback-message.error {
       display: block;
-      background-color: #fdecea;
+      background: #fdecea;
       color: #611a15;
       border: 1px solid #f5c6cb;
     }
 
     footer {
-      border-top: 1px solid var(--border-color);
-      background: var(--card-bg);
-      padding: 20px 24px;
-      text-align: center;
+      background-color: var(--dark-footer);
+      color: #94a3b8;
+      padding: 24px 20px 18px;
       font-size: 12px;
-      color: var(--text-muted);
+      border-top: 1px solid #2d3748;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .footer-copy {
+      color: #64748b;
+      font-size: 11.5px;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html" class="brand">
-      <span class="brand-title">LIMPIAPP</span>
-      <span class="brand-sub">by Shineconnect</span>
+    <a href="index.html" class="brand-link" title="LIMPIAPP">
+      <img src="logo.png" alt="LIMPIAPP by Shineconnect" class="brand-logo" onerror="this.onerror=null; this.src='assets/logo.png';">
     </a>
     <div class="lang-switcher">
       <select id="selectLang" onchange="cambiarIdioma(this.value)">
-        <option value="es" selected>Español</option>
-        <option value="ca">Valencià</option>
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-        <option value="it">Italiano</option>
+        <optgroup label="Lenguas Oficiales y Autonómicas">
+          <option value="es" selected>Español</option>
+          <option value="ca">Valencià / Català</option>
+          <option value="gl">Galego</option>
+          <option value="eu">Euskara</option>
+        </optgroup>
+        <optgroup label="Unión Europea">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Português</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
+        </optgroup>
       </select>
     </div>
   </header>
@@ -277,6 +310,7 @@
             <label for="inputTelefono" id="lblTelefono">WhatsApp / Teléfono *</label>
             <input type="tel" name="telefono" id="inputTelefono" required placeholder="600 000 000">
           </div>
+          <!-- CAMPO EMAIL OBLIGATORIO -->
           <div class="form-group">
             <label for="inputEmail" id="lblEmail">Correo Electrónico *</label>
             <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
@@ -338,7 +372,20 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados. Contacto: gerencia@limpiapp.app | WhatsApp Atención: +34 711 29 50 17</p>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="terminos.html">Términos y Condiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a>
+        <a href="https://wa.me/34711295017" target="_blank">Soporte WhatsApp</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados.<br>
+        Directorio directo de servicios de limpieza conforme al RGPD y LOPDGDD.
+      </div>
+    </div>
   </footer>
 
   <script>
@@ -405,6 +452,68 @@
         exito: "Sol·licitud rebuda! T'hem enviat un correu des de gerencia@limpiapp.app per activar el teu compte personal.",
         error: "Hi ha hagut un error en processar la sol·licitud. Contacta amb gerencia@limpiapp.app o per WhatsApp."
       },
+      gl: {
+        titulo: "Solicitude de Servizo de Limpeza",
+        subtitulo: "Atopa o profesional verificado ideal na túa zona en poucos minutos.",
+        lblNombre: "Nome Completo *",
+        placeholderNombre: "Ex. Ana Gómez",
+        lblTelefono: "WhatsApp / Teléfono *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "oteu@email.com",
+        lblPais: "País *",
+        lblCiudad: "Cidade / Poboación *",
+        placeholderCiudad: "Ex. Santiago, Vigo...",
+        lblCp: "Código Postal *",
+        placeholderCp: "15001",
+        lblServicio: "Tipo de Servizo *",
+        optServRegular: "Mantemento periódico regular",
+        optServFondo: "Limpeza a fondo puntual",
+        optServMudanza: "Fin de obra ou mudanza",
+        optServTuristico: "Apartamento turístico",
+        optServOficina: "Oficinas ou locais comerciais",
+        lblFormula: "Fórmula Elixida *",
+        optFormEstandar: "Fórmula Estándar",
+        optFormPremium: "Fórmula Premium",
+        lblDetalles: "Detalles / Notas Adicionais",
+        placeholderDetalles: "Indica metros cadrados aproximados, cuartos, periodicidade...",
+        lblRgpd: "Lín e acepto os <a href='terminos.html' target='_blank'>Termos do Servizo</a> e a <a href='privacidad.html' target='_blank'>Política de Privacidade</a> de SHINECONNECT S.L.",
+        btnSubmit: "Solicitar Profesionais Dispoñibles",
+        enviando: "Enviando solicitude...",
+        exito: "Solicitude recibida! Enviámoste un correo dende gerencia@limpiapp.app para activar a túa conta.",
+        error: "Houbo un erro ao procesar a solicitude. Contacta con gerencia@limpiapp.app ou por WhatsApp."
+      },
+      eu: {
+        titulo: "Garbiketa Zerbitzuaren Eskaera",
+        subtitulo: "Aurkitu zure eremuan egiaztatutako profesional aproposa minutu gutxitan.",
+        lblNombre: "Izen-abizenak *",
+        placeholderNombre: "Adib. Ana Gómez",
+        lblTelefono: "WhatsApp / Telefonoa *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Posta Elektronikoa *",
+        placeholderEmail: "zure@email.com",
+        lblPais: "Herrialdea *",
+        lblCiudad: "Hiria / Herria *",
+        placeholderCiudad: "Adib. Bilbo, Donostia...",
+        lblCp: "Posta Kodea *",
+        placeholderCp: "48001",
+        lblServicio: "Zerbitzu Mota *",
+        optServRegular: "Ohiko aldizkako mantentzea",
+        optServFondo: "Noizbehinkako garbiketa sakona",
+        optServMudanza: "Obra amaiera edo lekualdatzea",
+        optServTuristico: "Apartamentu turistikoa",
+        optServOficina: "Bulegoak edo merkataritza-lokalak",
+        lblFormula: "Hautatutako Formula *",
+        optFormEstandar: "Formula Estandarra",
+        optFormPremium: "Formula Premium",
+        lblDetalles: "Xehetasunak / Ohar Gehigarriak",
+        placeholderDetalles: "Adierazi metro koadroak, gelak, maiztasuna...",
+        lblRgpd: "<a href='terminos.html' target='_blank'>Zerbitzuaren Baldintzak</a> eta SHINECONNECT S.L.ren <a href='privacidad.html' target='_blank'>Pribatutasun Politika</a> irakurri eta onartzen ditut.",
+        btnSubmit: "Eskatu Profesional Eskuragarriak",
+        enviando: "Eskaera bidaltzen...",
+        exito: "Eskaera jaso da! Posta elektroniko bat bidali dizugu gerencia@limpiapp.app helbidetik zure kontua aktibatzeko.",
+        error: "Errore bat gertatu da eskaera prozesatzean. Jarri harremanetan gerencia@limpiapp.app helbidean edo WhatsAppez."
+      },
       en: {
         titulo: "Cleaning Service Request",
         subtitulo: "Find the ideal verified professional in your area in just a few minutes.",
@@ -467,6 +576,37 @@
         exito: "Demande reçue ! Nous vous avons envoyé un e-mail depuis gerencia@limpiapp.app pour activer votre compte.",
         error: "Une erreur est survenue. Veuillez contacter gerencia@limpiapp.app ou utiliser WhatsApp."
       },
+      de: {
+        titulo: "Reinigungsdienst Anfordern",
+        subtitulo: "Finden Sie in wenigen Minuten die ideale Reinigungskraft in Ihrer Nähe.",
+        lblNombre: "Vollständiger Name *",
+        placeholderNombre: "z.B. Julia Müller",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-Mail-Adresse *",
+        placeholderEmail: "ihre@email.com",
+        lblPais: "Land *",
+        lblCiudad: "Stadt *",
+        placeholderCiudad: "z.B. Valencia...",
+        lblCp: "Postleitzahl *",
+        placeholderCp: "46001",
+        lblServicio: "Dienstleistungsart *",
+        optServRegular: "Regelmäßige Unterhaltsreinigung",
+        optServFondo: "Einmalige Grundreinigung",
+        optServMudanza: "Bauendreinigung oder Umzug",
+        optServTuristico: "Ferienwohnung",
+        optServOficina: "Büros und Gewerberäume",
+        lblFormula: "Gewählte Formel *",
+        optFormEstandar: "Standard-Formel",
+        optFormPremium: "Premium-Formel",
+        lblDetalles: "Details / Zusätzliche Hinweise",
+        placeholderDetalles: "Geben Sie Quadratmeter, Zimmeranzahl, Frequenz an...",
+        lblRgpd: "Ich habe die <a href='terminos.html' target='_blank'>Nutzungsbedingungen</a> und die <a href='privacidad.html' target='_blank'>Datenschutzrichtlinie</a> von SHINECONNECT S.L. gelesen und akzeptiere sie.",
+        btnSubmit: "Verfügbare Fachkräfte Anfragen",
+        enviando: "Anfrage wird gesendet...",
+        exito: "Anfrage erhalten! Wir haben eine E-Mail von gerencia@limpiapp.app gesendet.",
+        error: "Ein Fehler ist aufgetreten. Bitte kontaktieren Sie gerencia@limpiapp.app oder WhatsApp."
+      },
       it: {
         titulo: "Richiesta di Servizio di Pulizia",
         subtitulo: "Trova il professionista verificato ideale nella tua zona in pochi minuti.",
@@ -497,6 +637,99 @@
         enviando: "Invio in corso...",
         exito: "Richiesta ricevuta! Ti abbiamo inviato un'e-mail da gerencia@limpiapp.app per attivare il tuo account.",
         error: "Si è verificato un errore. Contattaci a gerencia@limpiapp.app o tramite WhatsApp."
+      },
+      pt: {
+        titulo: "Solicitação de Serviço de Limpeza",
+        subtitulo: "Encontre o profissional verificado ideal na sua área em poucos minutos.",
+        lblNombre: "Nome Completo *",
+        placeholderNombre: "Ex. Ana Maria Costa",
+        lblTelefono: "WhatsApp / Telefone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Endereço de E-mail *",
+        placeholderEmail: "seu@email.com",
+        lblPais: "País *",
+        lblCiudad: "Cidade *",
+        placeholderCiudad: "Ex. Valência...",
+        lblCp: "Código Postal *",
+        placeholderCp: "46001",
+        lblServicio: "Tipo de Serviço *",
+        optServRegular: "Manutenção periódica regular",
+        optServFondo: "Limpeza profunda pontual",
+        optServMudanza: "Fim de obra ou mudança",
+        optServTuristico: "Apartamento turístico",
+        optServOficina: "Escritórios ou espaços comerciais",
+        lblFormula: "Fórmula Escolhida *",
+        optFormEstandar: "Fórmula Padrão",
+        optFormPremium: "Fórmula Premium",
+        lblDetalles: "Detalhes / Notas Adicionais",
+        placeholderDetalles: "Indique metros quadrados aproximados, quartos, periodicidade...",
+        lblRgpd: "Li e aceito os <a href='terminos.html' target='_blank'>Termos de Serviço</a> e a <a href='privacidad.html' target='_blank'>Política de Privacidade</a> da SHINECONNECT S.L.",
+        btnSubmit: "Solicitar Profissionais Disponíveis",
+        enviando: "Enviando solicitação...",
+        exito: "Solicitação recebida! Enviamos um e-mail de gerencia@limpiapp.app para você ativar sua conta.",
+        error: "Ocorreu um erro ao processar. Contate gerencia@limpiapp.app ou envie WhatsApp."
+      },
+      nl: {
+        titulo: "Schoonmaakservice Aanvragen",
+        subtitulo: "Vind binnen enkele minuten de ideale geverifieerde professional in uw regio.",
+        lblNombre: "Volledige Naam *",
+        placeholderNombre: "bijv. Lisa Bakker",
+        lblTelefono: "WhatsApp / Telefoon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mailadres *",
+        placeholderEmail: "uw@email.com",
+        lblPais: "Land *",
+        lblCiudad: "Stad *",
+        placeholderCiudad: "bijv. Valencia...",
+        lblCp: "Postcode *",
+        placeholderCp: "46001",
+        lblServicio: "Type Dienstverlening *",
+        optServRegular: "Regulier periodiek onderhoud",
+        optServFondo: "Eenmalige grondige reiniging",
+        optServMudanza: "Opleverings- of verhuisschoonmaak",
+        optServTuristico: "Vakantieappartement",
+        optServOficina: "Kantoren en bedrijfsruimten",
+        lblFormula: "Gekozen Formule *",
+        optFormEstandar: "Standaard Formule",
+        optFormPremium: "Premium Formule",
+        lblDetalles: "Details / Aanvullende Notities",
+        placeholderDetalles: "Geef geschatte m², kamers, gewenste frequentie aan...",
+        lblRgpd: "Ik ga akkoord met de <a href='terminos.html' target='_blank'>Algemene Voorwaarden</a> en het <a href='privacidad.html' target='_blank'>Privacybeleid</a> van SHINECONNECT S.L.",
+        btnSubmit: "Beschikbare Professionals Aanvragen",
+        enviando: "Aanvraag verzenden...",
+        exito: "Aanvraag ontvangen! We hebben u een e-mail gestuurd vanaf gerencia@limpiapp.app.",
+        error: "Er is een fout opgetreden. Neem contact op via gerencia@limpiapp.app of WhatsApp."
+      },
+      pl: {
+        titulo: "Zamówienie Usługi Sprzątania",
+        subtitulo: "Znajdź idealnego, zweryfikowanego specjalistę w swojej okolicy w kilka minut.",
+        lblNombre: "Imię i Nazwisko *",
+        placeholderNombre: "np. Katarzyna Nowak",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adres E-mail *",
+        placeholderEmail: "twoj@email.com",
+        lblPais: "Kraj *",
+        lblCiudad: "Miasto *",
+        placeholderCiudad: "np. Walencja...",
+        lblCp: "Kod Pocztowy *",
+        placeholderCp: "46001",
+        lblServicio: "Rodzaj Usługi *",
+        optServRegular: "Regularne sprzątanie okresowe",
+        optServFondo: "Jednorazowe gruntowne sprzątanie",
+        optServMudanza: "Sprzątanie poremontowe lub przeprowadzka",
+        optServTuristico: "Apartament turystyczny",
+        optServOficina: "Biura i lokale użytkowe",
+        lblFormula: "Wybrana Formuła *",
+        optFormEstandar: "Formuła Standardowa",
+        optFormPremium: "Formuła Premium",
+        lblDetalles: "Szczegóły / Dodatkowe Uwagi",
+        placeholderDetalles: "Podaj metraż, liczbę pokoi, pożądaną częstotliwość...",
+        lblRgpd: "Przeczytałem i akceptuję <a href='terminos.html' target='_blank'>Regulamin</a> oraz <a href='privacidad.html' target='_blank'>Politykę Prywatności</a> SHINECONNECT S.L.",
+        btnSubmit: "Zapytaj o Dostępnych Specjalistów",
+        enviando: "Wysyłanie zgłoszenia...",
+        exito: "Zgłoszenie otrzymane! Wysłaliśmy e-mail z adresu gerencia@limpiapp.app w celu aktywacji konta.",
+        error: "Wystąpił błąd podczas przetwarzania. Skontaktuj się z gerencia@limpiapp.app lub przez WhatsApp."
       }
     };
 
@@ -549,7 +782,6 @@
 
       const formData = new FormData(form);
 
-      // Endpoint conectado a tu Apps Script implementado
       fetch(form.action || window.location.href, {
         method: 'POST',
         body: formData
