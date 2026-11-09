@@ -26,7 +26,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
     }
 
     body {
@@ -37,11 +37,11 @@
       flex-direction: column;
     }
 
-    /* ENCABEZADO CON LOGOTIPO OFICIAL */
+    /* ENCABEZADO CON EL LOGO OFICIAL */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 12px 32px;
+      padding: 10px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -54,8 +54,9 @@
     }
 
     .brand-logo {
-      height: 42px;
+      height: 44px;
       width: auto;
+      max-width: 220px;
       display: block;
       object-fit: contain;
     }
@@ -71,13 +72,13 @@
       outline: none;
     }
 
-    /* CUERPO DEL FORMULARIO */
+    /* FORMULARIO */
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 32px 16px;
+      padding: 30px 16px;
     }
 
     .form-card {
@@ -87,7 +88,7 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-      padding: 30px 28px;
+      padding: 28px 28px;
     }
 
     .form-header {
@@ -162,7 +163,7 @@
       box-shadow: 0 0 0 3px var(--focus);
     }
 
-    /* CASILLAS RGPD (NINGUNA MARCADA POR DEFECTO) */
+    /* CASILLAS RGPD (DESMARCADAS POR DEFECTO) */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
@@ -240,18 +241,18 @@
     footer {
       background-color: var(--footer-bg);
       color: var(--footer-text);
-      padding: 18px 24px;
+      padding: 16px 20px;
       font-size: 12px;
       border-top: 1px solid #2d3748;
       text-align: center;
     }
 
     .footer-inner {
-      max-width: 960px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .footer-links {
@@ -281,10 +282,13 @@
 </head>
 <body>
 
-  <!-- ENCABEZADO CON LOGO OFICIAL -->
+  <!-- CABECERA: CARGA EL LOGO CON RESOLUCIÓN DINÁMICA DE ARCHIVO -->
   <header>
     <a href="index.html" class="brand-link" title="LIMPIAPP">
-      <img src="logo.png" alt="LIMPIAPP BY SHINECONNECT" class="brand-logo" onerror="this.onerror=null; this.src='logo.jpg';">
+      <img src="logo.png" 
+           alt="LIMPIAPP BY SHINECONNECT" 
+           class="brand-logo" 
+           onerror="if (!this.triedJpg) { this.triedJpg = true; this.src = 'logo.jpg'; } else if (!this.triedAssets) { this.triedAssets = true; this.src = 'assets/logo.png'; }">
     </a>
     <div class="lang-switcher">
       <select id="selectLang" onchange="cambiarIdioma(this.value)">
@@ -307,7 +311,6 @@
     </div>
   </header>
 
-  <!-- FORMULARIO -->
   <main>
     <div class="form-card">
       <div class="form-header">
@@ -374,7 +377,7 @@
           </label>
         </div>
 
-        <!-- CASILLA TÉRMINOS Y PRIVACIDAD -->
+        <!-- CASILLA CONSENTIMIENTO OBLIGATORIO -->
         <div class="checkbox-group">
           <input type="checkbox" name="rgpd" id="checkRgpd" required>
           <label for="checkRgpd" id="lblRgpd">
@@ -398,7 +401,7 @@
         <a href="privacidad.html">Privacidad</a> &bull;
         <a href="cookies.html">Cookies</a> &bull;
         <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a> &bull;
-        <a href="https://wa.me/34711295017" target="_blank">Soporte WhatsApp (+34 711 29 50 17)</a>
+        <a href="https://wa.me/34711295017" target="_blank">WhatsApp (+34 711 29 50 17)</a>
       </div>
       <div class="footer-copy">
         &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD y LOPDGDD.
@@ -568,7 +571,7 @@
         btnSubmit: "Activer le Profil Professionnel",
         enviando: "Inscription en cours...",
         exito: "Inscription réussie ! Nous vous avons envoyé un e-mail depuis gerencia@limpiapp.app pour activer votre mot de passe.",
-        error: "Une erreur est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp."
+        error: "Une error est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp."
       },
       de: {
         badge: "🎉 Startangebot: Kostenloser Premium-Plan",
