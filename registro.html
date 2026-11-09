@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alta de Profesional de la Limpieza | LIMPIAPP by Shineconnect</title>
+  <title>Alta de Profesional | LIMPIAPP</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     :root {
@@ -11,38 +11,35 @@
       --primary-hover: #3d4549;
       --accent: #7faecb;
       --accent-hover: #689cb9;
-      --bg-color: #f7fafc;
+      --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text-main: #2d3748;
+      --text: #2d3748;
       --text-muted: #718096;
-      --border-color: #e2e8f0;
-      --focus-ring: rgba(127, 174, 203, 0.4);
-      --footer-bg: #1a202c;
-      --footer-text: #a0aec0;
-      --footer-heading: #ffffff;
-      --footer-link: #cbd5e0;
+      --border: #e2e8f0;
+      --focus: rgba(127, 174, 203, 0.35);
+      --dark-footer: #1e252b;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
-    /* ENCABEZADO CON LOGO OFICIAL */
+    /* HEADER CON LOGO OFICIAL */
     header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-      padding: 14px 28px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,71 +52,73 @@
     }
 
     .brand-logo {
-      height: 42px;
+      height: 38px;
       width: auto;
-      object-fit: contain;
+      display: block;
     }
 
     .lang-switcher select {
-      padding: 7px 12px;
-      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border: 1px solid var(--border);
       border-radius: 6px;
       background: #fff;
       font-size: 13px;
-      color: var(--text-main);
+      color: var(--primary);
       cursor: pointer;
       outline: none;
     }
 
+    /* CONTENEDOR CENTRAL */
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 44px 16px;
+      padding: 36px 16px;
     }
 
     .form-card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 580px;
+      max-width: 560px;
       border-radius: 12px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      padding: 34px 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      padding: 32px 30px;
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .badge-promo {
       display: inline-block;
-      background-color: #ebf5fb;
-      color: #2980b9;
+      background: #eef6fa;
+      color: #3b7b9e;
       font-size: 12px;
       font-weight: 700;
-      padding: 4px 14px;
+      padding: 4px 12px;
       border-radius: 20px;
-      margin-bottom: 12px;
-      border: 1px solid #d4e6f1;
+      margin-bottom: 10px;
+      border: 1px solid #d3e7f2;
     }
 
     .form-header h1 {
       font-size: 22px;
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .form-header p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-row {
@@ -133,9 +132,9 @@
 
     label {
       display: block;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: var(--primary);
     }
 
@@ -145,30 +144,31 @@
     input[type="number"],
     select {
       width: 100%;
-      padding: 10px 14px;
-      font-size: 14px;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13.5px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
       background-color: #fff;
-      color: var(--text-main);
+      color: var(--text);
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: all 0.2s ease;
     }
 
     input:focus, select:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--focus-ring);
+      box-shadow: 0 0 0 3px var(--focus);
     }
 
+    /* CASILLAS LEGALES */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      margin: 18px 0;
+      gap: 9px;
+      margin: 14px 0;
     }
 
     .checkbox-group input {
-      margin-top: 3px;
+      margin-top: 2px;
       accent-color: var(--primary);
       cursor: pointer;
     }
@@ -188,15 +188,16 @@
 
     .btn-submit {
       width: 100%;
-      padding: 13px;
+      padding: 12px;
       background-color: var(--primary);
       color: #fff;
       border: none;
-      border-radius: 8px;
-      font-size: 15px;
+      border-radius: 7px;
+      font-size: 14.5px;
       font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.2s;
+      margin-top: 8px;
+      transition: background 0.2s ease;
     }
 
     .btn-submit:hover {
@@ -210,76 +211,53 @@
 
     .feedback-message {
       display: none;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 14px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 7px;
+      font-size: 13px;
       text-align: center;
       line-height: 1.4;
     }
 
     .feedback-message.success {
       display: block;
-      background-color: #edf7ed;
+      background: #edf7ed;
       color: #1e4620;
       border: 1px solid #c8e6c9;
     }
 
     .feedback-message.error {
       display: block;
-      background-color: #fdecea;
+      background: #fdecea;
       color: #611a15;
       border: 1px solid #f5c6cb;
     }
 
-    /* ARMAZÓN LEGAL EN PIE OSCURO */
+    /* FOOTER OSCURO ELEGANTE Y COMPACTO */
     footer {
-      background-color: var(--footer-bg);
-      color: var(--footer-text);
-      padding: 48px 24px 28px;
-      font-size: 13px;
+      background-color: var(--dark-footer);
+      color: #94a3b8;
+      padding: 24px 20px 18px;
+      font-size: 12px;
       border-top: 1px solid #2d3748;
     }
 
-    .footer-container {
-      max-width: 1100px;
+    .footer-inner {
+      max-width: 900px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 36px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-    }
-
-    .footer-col h4 {
-      color: var(--footer-heading);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .footer-col p {
-      line-height: 1.6;
-      margin-bottom: 8px;
+      text-align: center;
     }
 
     .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 9px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
     }
 
     .footer-links a {
-      color: var(--footer-link);
+      color: #cbd5e1;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -289,43 +267,35 @@
       text-decoration: underline;
     }
 
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 36px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #2d3748;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      gap: 12px;
+    .footer-copy {
+      color: #64748b;
+      font-size: 11.5px;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO: LOGO + SELECTOR LINGÜÍSTICO COMPLETO -->
   <header>
-    <a href="index.html" class="brand-link" title="LIMPIAPP - Inicio">
-      <img src="assets/logo.png" alt="LIMPIAPP by Shineconnect" class="brand-logo" onerror="this.onerror=null; this.src='logo.png';">
+    <a href="index.html" class="brand-link" title="LIMPIAPP">
+      <img src="logo.png" alt="LIMPIAPP by Shineconnect" class="brand-logo" onerror="this.onerror=null; this.src='assets/logo.png';">
     </a>
     <div class="lang-switcher">
       <select id="selectLang" onchange="cambiarIdioma(this.value)">
-        <optgroup label="Lenguas Autonómicas">
+        <optgroup label="Lenguas Oficiales y Autonómicas">
           <option value="es" selected>Español</option>
           <option value="ca">Valencià / Català</option>
           <option value="gl">Galego</option>
           <option value="eu">Euskara</option>
         </optgroup>
         <optgroup label="Unión Europea">
-          <option value="en">English (UK/IE)</option>
-          <option value="fr">Français (FR/BE/LU)</option>
-          <option value="de">Deutsch (DE/AT/LU)</option>
-          <option value="it">Italiano (IT)</option>
-          <option value="pt">Português (PT)</option>
-          <option value="nl">Nederlands (NL/BE)</option>
-          <option value="pl">Polski (PL)</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Português</option>
+          <option value="nl">Nederlands</option>
+          <option value="pl">Polski</option>
         </optgroup>
       </select>
     </div>
@@ -352,6 +322,7 @@
             <label for="inputTelefono" id="lblTelefono">WhatsApp / Teléfono *</label>
             <input type="tel" name="telefono" id="inputTelefono" required placeholder="600 000 000">
           </div>
+          <!-- CAMPO EMAIL OBLIGATORIO -->
           <div class="form-group">
             <label for="inputEmail" id="lblEmail">Correo Electrónico *</label>
             <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
@@ -388,7 +359,7 @@
           </div>
         </div>
 
-        <!-- CASILLA DESMARCADA POR DEFECTO CONFORME A RGPD -->
+        <!-- CASILLA DESMARCADA POR DEFECTO (RGPD) -->
         <div class="checkbox-group">
           <input type="checkbox" name="alertas" id="checkAlertas" value="Si">
           <label for="checkAlertas" id="lblAlertas">
@@ -396,6 +367,7 @@
           </label>
         </div>
 
+        <!-- CASILLA CONSENTIMIENTO OBLIGATORIO -->
         <div class="checkbox-group">
           <input type="checkbox" name="rgpd" id="checkRgpd" required>
           <label for="checkRgpd" id="lblRgpd">
@@ -410,37 +382,21 @@
     </div>
   </main>
 
+  <!-- PIE DE PÁGINA ELEGANTE, OSCURO Y COMPACTO -->
   <footer>
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4>LIMPIAPP by Shineconnect</h4>
-        <p>Marketplace y directorio directo que conecta usuarios con profesionales independientes de la limpieza sin comisiones de intermediación.</p>
-        <p><strong>Titular:</strong> SHINECONNECT S.L. | <strong>N.I.F.:</strong> B26917807</p>
-        <p><strong>Sede:</strong> Comunitat Valenciana, España</p>
-        <p><strong>Contacto oficial:</strong> <a href="mailto:gerencia@limpiapp.app" style="color: #7faecb;">gerencia@limpiapp.app</a></p>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="aviso-legal.html">Aviso Legal</a>
+        <a href="terminos.html">Términos y Condiciones</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="cookies.html">Cookies</a>
+        <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a>
+        <a href="https://wa.me/34711295017" target="_blank">Soporte WhatsApp</a>
       </div>
-      <div class="footer-col">
-        <h4>Marco Legal</h4>
-        <ul class="footer-links">
-          <li><a href="aviso-legal.html">Aviso Legal</a></li>
-          <li><a href="terminos.html">Términos y Condiciones</a></li>
-          <li><a href="privacidad.html">Política de Privacidad</a></li>
-          <li><a href="cookies.html">Política de Cookies</a></li>
-        </ul>
+      <div class="footer-copy">
+        &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados.<br>
+        Directorio directo de servicios de limpieza conforme al RGPD y LOPDGDD.
       </div>
-      <div class="footer-col">
-        <h4>Atención & Soporte</h4>
-        <ul class="footer-links">
-          <li><a href="https://wa.me/34711295017" target="_blank">WhatsApp: +34 711 29 50 17</a></li>
-          <li><a href="clientes.html">Buscar Profesionales</a></li>
-          <li><a href="registro.html">Registro de Limpiadores</a></li>
-          <li><a href="login.html">Acceso a mi Cuenta</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>&copy; 2026 SHINECONNECT S.L. Todos los derechos reservados.</div>
-      <div>Plataforma conforme al RGPD (UE 2016/679) y LOPDGDD 3/2018.</div>
     </div>
   </footer>
 
