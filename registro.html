@@ -69,34 +69,21 @@
       outline: none;
     }
 
-    /* CABECERA CON NAVEGACIÓN Y LOGO */
+    /* CABECERA CON NAVEGACIÓN */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 10px 48px 16px;
+      padding: 12px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .brand-link {
-      display: inline-flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .brand-logo {
-      height: 52px;
-      width: auto;
-      max-width: 240px;
-      display: block;
-      object-fit: contain;
     }
 
     .header-nav {
       display: flex;
       align-items: center;
       gap: 16px;
+      margin-left: auto;
     }
 
     .nav-link {
@@ -143,13 +130,28 @@
       background: var(--primary-hover);
     }
 
-    /* CONTENEDOR CENTRAL AMPLIO Y ELEGANTE */
+    /* CONTENEDOR CENTRAL: LOGO DESTACADO SOBRE EL FORMULARIO */
     main {
       flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 48px 20px;
+      padding: 38px 20px 48px;
+    }
+
+    .form-brand-header {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .brand-logo-large {
+      width: 310px;
+      height: 78px;
+      max-width: 90vw;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.03));
     }
 
     .form-card {
@@ -171,6 +173,10 @@
       }
       .header-nav {
         display: none;
+      }
+      .brand-logo-large {
+        width: 250px;
+        height: 63px;
       }
       .form-card {
         padding: 30px 22px;
@@ -379,7 +385,7 @@
   <!-- BARRA DE IDIOMAS SUPERIOR -->
   <div class="top-lang-bar">
     <span>🌐 Idioma / Language:</span>
-    <select id="selectLang" onchange="cambiarIdioma(this.value)">
+    <select id="selectLang" onchange="aplicarIdiomaGlobal(this.value)">
       <optgroup label="Lenguas Oficiales y Autonómicas">
         <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
@@ -398,24 +404,33 @@
     </select>
   </div>
 
-  <!-- CABECERA IDÉNTICA A LA PORTADA -->
+  <!-- CABECERA -->
   <header>
-    <a href="index.html" class="brand-link" title="LIMPIAPP">
-      <!-- LOGO OFICIAL LIMPIAPP BY SHINECONNECT EXTRAÍDO DEL ARCHIVO ORIGINAL -->
-      <img src="logo.png" 
-           alt="LIMPIAPP BY SHINECONNECT" 
-           class="brand-logo"
-           onerror="if(!this.tried1){this.tried1=true;this.src='logo.jpg';}else if(!this.tried2){this.tried2=true;this.src='logo.jpg.jpg';}else if(!this.tried3){this.tried3=true;this.src='LimpiAPP definitivo - C.png';}">
+    <a href="index.html" class="brand-link legal-link" title="LIMPIAPP">
+      <span style="font-weight: 800; font-size: 17px; color: var(--primary); letter-spacing: 0.5px;">LIMPIAPP</span>
     </a>
     <nav class="header-nav">
-      <a href="login.html" class="nav-link">Iniciar Sesión</a>
-      <a href="clientes.html" class="btn-nav-outline">Buscar Servicio</a>
-      <a href="registro.html" class="btn-nav-solid">Soy Profesional</a>
+      <a href="login.html" class="nav-link legal-link" id="navLogin">Iniciar Sesión</a>
+      <a href="clientes.html" class="btn-nav-outline legal-link" id="navClientes">Buscar Servicio</a>
+      <a href="registro.html" class="btn-nav-solid legal-link" id="navRegistro">Soy Profesional</a>
     </nav>
   </header>
 
-  <!-- FORMULARIO PROFESIONAL -->
+  <!-- CONTENEDOR PRINCIPAL: LOGO GRANDE JUSTO SOBRE EL FORMULARIO -->
   <main>
+    <div class="form-brand-header">
+      <a href="index.html" class="legal-link" title="LIMPIAPP - Inicio">
+        <svg class="brand-logo-large" viewBox="0 0 380 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 18 V84 H260" stroke="#7FAECB" stroke-width="4.5" stroke-linecap="square"/>
+          <text x="14" y="76" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="300" font-size="64" fill="#7FAECB" letter-spacing="4">IMPI</text>
+          <path d="M198 76 L226 12 L254 76 Z" stroke="#7FAECB" stroke-width="4.5" fill="none"/>
+          <path d="M208 64 L226 26 L244 64 H212" stroke="#4F585D" stroke-width="4" fill="none"/>
+          <text x="254" y="76" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="400" font-size="64" fill="#4F585D" letter-spacing="4">PP</text>
+          <text x="256" y="90" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700" font-size="9" fill="#4F585D" letter-spacing="1.2">BY SHINECONNECT</text>
+        </svg>
+      </a>
+    </div>
+
     <div class="form-card">
       <div class="form-header">
         <span class="badge-promo" id="txtBadge">🎉 Lanzamiento: Plan Premium Gratuito</span>
@@ -485,7 +500,7 @@
         <div class="checkbox-group">
           <input type="checkbox" name="rgpd" id="checkRgpd" required>
           <label for="checkRgpd" id="lblRgpd">
-            He leído y acepto los <a href="terminos.html" target="_blank">Términos del Servicio</a> y la <a href="privacidad.html" target="_blank">Política de Privacidad</a> de SHINECONNECT S.L.
+            He leído y acepto los <a href="terminos.html" target="_blank" class="legal-link" id="linkTerminos">Términos del Servicio</a> y la <a href="privacidad.html" target="_blank" class="legal-link" id="linkPrivacidad">Política de Privacidad</a> de SHINECONNECT S.L.
           </label>
         </div>
 
@@ -496,14 +511,14 @@
     </div>
   </main>
 
-  <!-- PIE DE PÁGINA OSCURO LEGAL -->
+  <!-- ARMAZÓN LEGAL COMPLETO -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="aviso-legal.html">Aviso Legal</a> &bull;
-        <a href="terminos.html">Términos y Condiciones</a> &bull;
-        <a href="privacidad.html">Privacidad</a> &bull;
-        <a href="cookies.html">Cookies</a> &bull;
+        <a href="aviso-legal.html" class="legal-link" id="linkAviso">Aviso Legal</a> &bull;
+        <a href="terminos.html" class="legal-link" id="linkTerminosFoot">Términos y Condiciones</a> &bull;
+        <a href="privacidad.html" class="legal-link" id="linkPrivacidadFoot">Privacidad</a> &bull;
+        <a href="cookies.html" class="legal-link" id="linkCookies">Cookies</a> &bull;
         <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a> &bull;
         <a href="https://wa.me/34711295017" target="_blank">WhatsApp (+34 711 29 50 17)</a>
       </div>
@@ -536,11 +551,14 @@
         optExp2: "3 a 5 años",
         optExp3: "Más de 5 años",
         lblAlertas: "Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.",
-        lblRgpd: "He leído y acepto los <a href='terminos.html' target='_blank'>Términos del Servicio</a> y la <a href='privacidad.html' target='_blank'>Política de Privacidad</a> de SHINECONNECT S.L.",
+        lblRgpdTexto: "He leído y acepto los <a href='terminos.html' target='_blank' class='legal-link'>Términos del Servicio</a> y la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidad</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
         enviando: "Registrando perfil...",
         exito: "¡Inscripción recibida con éxito! Te hemos enviado un email desde gerencia@limpiapp.app para activar tu contraseña.",
-        error: "Hubo un error al registrar tu solicitud. Por favor, contáctanos a gerencia@limpiapp.app o vía WhatsApp."
+        error: "Hubo un error al registrar tu solicitud. Por favor, contáctanos a gerencia@limpiapp.app o vía WhatsApp.",
+        navLogin: "Iniciar Sesión",
+        navClientes: "Buscar Servicio",
+        navRegistro: "Soy Profesional"
       },
       ca: {
         badge: "🎉 Llançament: Pla Premium Gratuït",
@@ -563,11 +581,14 @@
         optExp2: "3 a 5 anys",
         optExp3: "Més de 5 anys",
         lblAlertas: "Desitge rebre avisos instantanis de nous clients per WhatsApp i correu electrònic.",
-        lblRgpd: "He llegit i accepte els <a href='terminos.html' target='_blank'>Termes del Servei</a> i la <a href='privacidad.html' target='_blank'>Política de Privacitat</a> de SHINECONNECT S.L.",
+        lblRgpdTexto: "He llegit i accepte els <a href='terminos.html' target='_blank' class='legal-link'>Termes del Servei</a> i la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacitat</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Professional",
         enviando: "Registrant perfil...",
         exito: "Inscripció rebuda amb èxit! T'hem enviat un correu des de gerencia@limpiapp.app per activar la teua contrasenya.",
-        error: "Hi ha hagut un error en registrar la sol·licitud. Contacta a gerencia@limpiapp.app o per WhatsApp."
+        error: "Hi ha hagut un error en registrar la sol·licitud. Contacta a gerencia@limpiapp.app o per WhatsApp.",
+        navLogin: "Iniciar Sessió",
+        navClientes: "Cercar Servei",
+        navRegistro: "Sóc Professional"
       },
       gl: {
         badge: "🎉 Lanzamento: Plan Premium De balde",
@@ -590,11 +611,14 @@
         optExp2: "3 a 5 anos",
         optExp3: "Máis de 5 anos",
         lblAlertas: "Desexo recibir avisos instantáneos de novos clientes por WhatsApp e correo electrónico.",
-        lblRgpd: "Lín e acepto os <a href='terminos.html' target='_blank'>Termos do Servizo</a> e a <a href='privacidad.html' target='_blank'>Política de Privacidade</a> de SHINECONNECT S.L.",
+        lblRgpdTexto: "Lín e acepto os <a href='terminos.html' target='_blank' class='legal-link'>Termos do Servizo</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
         enviando: "Rexistrando perfil...",
         exito: "Inscrición recibida con éxito! Enviámoste un correo dende gerencia@limpiapp.app para activar o teu contrasinal.",
-        error: "Houbo un erro ao rexistrar a solicitude. Contacta con gerencia@limpiapp.app ou por WhatsApp."
+        error: "Houbo un erro ao rexistrar a solicitude. Contacta con gerencia@limpiapp.app ou por WhatsApp.",
+        navLogin: "Iniciar Sesión",
+        navClientes: "Buscar Servizo",
+        navRegistro: "Son Profesional"
       },
       eu: {
         badge: "🎉 Abiaraztea: Doako Premium Plana",
@@ -617,11 +641,14 @@
         optExp2: "3 eta 5 urte artean",
         optExp3: "5 urte baino gehiago",
         lblAlertas: "Bezero berrien berehalako abisuak jaso nahi ditut WhatsApp eta posta elektronikoz.",
-        lblRgpd: "<a href='terminos.html' target='_blank'>Zerbitzuaren Baldintzak</a> eta SHINECONNECT S.L.ren <a href='privacidad.html' target='_blank'>Pribatutasun Politika</a> irakurri eta onartzen ditut.",
+        lblRgpdTexto: "<a href='terminos.html' target='_blank' class='legal-link'>Zerbitzuaren Baldintzak</a> eta SHINECONNECT S.L.ren <a href='privacidad.html' target='_blank' class='legal-link'>Pribatutasun Politika</a> irakurri eta onartzen ditut.",
         btnSubmit: "Aktibatu Profil Profesionala",
         enviando: "Profila erregistratzen...",
         exito: "Izen-ematea ondo jaso da! Posta elektroniko bat bidali dizugu gerencia@limpiapp.app helbidetik pasahitza aktibatzeko.",
-        error: "Errore bat gertatu da eskaera erregistratzean. Jarri harremanetan gerencia@limpiapp.app bidez edo WhatsAppez."
+        error: "Errore bat gertatu da eskaera erregistratzean. Jarri harremanetan gerencia@limpiapp.app bidez edo WhatsAppez.",
+        navLogin: "Hasi Saioa",
+        navClientes: "Bilatu Zerbitzua",
+        navRegistro: "Profesionala Naiz"
       },
       en: {
         badge: "🎉 Launch: Free Premium Plan",
@@ -644,11 +671,14 @@
         optExp2: "3 to 5 years",
         optExp3: "More than 5 years",
         lblAlertas: "I want to receive instant alerts for new local clients via WhatsApp and email.",
-        lblRgpd: "I have read and agree to the <a href='terminos.html' target='_blank'>Terms of Service</a> and <a href='privacidad.html' target='_blank'>Privacy Policy</a> of SHINECONNECT S.L.",
+        lblRgpdTexto: "I have read and agree to the <a href='terminos.html' target='_blank' class='legal-link'>Terms of Service</a> and <a href='privacidad.html' target='_blank' class='legal-link'>Privacy Policy</a> of SHINECONNECT S.L.",
         btnSubmit: "Activate Professional Profile",
         enviando: "Registering profile...",
         exito: "Registration successful! We have sent you an email from gerencia@limpiapp.app to activate your password.",
-        error: "There was an error submitting your details. Please contact us at gerencia@limpiapp.app or via WhatsApp."
+        error: "There was an error submitting your details. Please contact us at gerencia@limpiapp.app or via WhatsApp.",
+        navLogin: "Log In",
+        navClientes: "Find Cleaner",
+        navRegistro: "I'm a Cleaner"
       },
       fr: {
         badge: "🎉 Lancement: Plan Premium Gratuit",
@@ -671,11 +701,14 @@
         optExp2: "3 à 5 ans",
         optExp3: "Plus de 5 ans",
         lblAlertas: "Je souhaite recevoir des alertes instantanées de nouveaux clients par WhatsApp et e-mail.",
-        lblRgpd: "J'ai lu et j'accepte les <a href='terminos.html' target='_blank'>Conditions Générales</a> et la <a href='privacidad.html' target='_blank'>Politique de Confidentialité</a> de SHINECONNECT S.L.",
+        lblRgpdTexto: "J'ai lu et j'accepte les <a href='terminos.html' target='_blank' class='legal-link'>Conditions Générales</a> et la <a href='privacidad.html' target='_blank' class='legal-link'>Politique de Confidentialité</a> de SHINECONNECT S.L.",
         btnSubmit: "Activer le Profil Professionnel",
         enviando: "Inscription en cours...",
         exito: "Inscription réussie ! Nous vous avons envoyé un e-mail depuis gerencia@limpiapp.app pour activer votre mot de passe.",
-        error: "Une error est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp."
+        error: "Une error est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp.",
+        navLogin: "Connexion",
+        navClientes: "Trouver un Service",
+        navRegistro: "Je suis Professionnel"
       },
       de: {
         badge: "🎉 Startangebot: Kostenloser Premium-Plan",
@@ -698,11 +731,14 @@
         optExp2: "3 bis 5 Jahre",
         optExp3: "Mehr als 5 Jahre",
         lblAlertas: "Ich möchte sofortige Benachrichtigungen über neue Kunden per WhatsApp und E-Mail erhalten.",
-        lblRgpd: "Ich habe die <a href='terminos.html' target='_blank'>Nutzungsbedingungen</a> und die <a href='privacidad.html' target='_blank'>Datenschutzrichtlinie</a> von SHINECONNECT S.L. gelesen und akzeptiere sie.",
+        lblRgpdTexto: "Ich habe die <a href='terminos.html' target='_blank' class='legal-link'>Nutzungsbedingungen</a> und die <a href='privacidad.html' target='_blank' class='legal-link'>Datenschutzrichtlinie</a> von SHINECONNECT S.L. gelesen und akzeptiere sie.",
         btnSubmit: "Profil Aktivieren",
         enviando: "Profil wird registriert...",
         exito: "Registrierung erfolgreich! Wir haben Ihnen eine E-Mail von gerencia@limpiapp.app gesendet.",
-        error: "Fehler bei der Registrierung. Bitte kontaktieren Sie gerencia@limpiapp.app oder nutzen Sie WhatsApp."
+        error: "Fehler bei der Registrierung. Bitte kontaktieren Sie gerencia@limpiapp.app oder nutzen Sie WhatsApp.",
+        navLogin: "Anmelden",
+        navClientes: "Service Finden",
+        navRegistro: "Ich bin Profi"
       },
       it: {
         badge: "🎉 Lancio: Piano Premium Gratuito",
@@ -725,11 +761,14 @@
         optExp2: "3 a 5 anni",
         optExp3: "Più di 5 anni",
         lblAlertas: "Desidero ricevere avvisi istantanei di nuovi clienti tramite WhatsApp ed e-mail.",
-        lblRgpd: "Ho letto e accetto i <a href='terminos.html' target='_blank'>Termini di Servizio</a> e l'<a href='privacidad.html' target='_blank'>Informativa sulla Privacy</a> di SHINECONNECT S.L.",
+        lblRgpdTexto: "Ho letto e accetto i <a href='terminos.html' target='_blank' class='legal-link'>Termini di Servizio</a> e l'<a href='privacidad.html' target='_blank' class='legal-link'>Informativa sulla Privacy</a> di SHINECONNECT S.L.",
         btnSubmit: "Attiva Profilo Professionale",
         enviando: "Registrazione profilo...",
         exito: "Iscrizione ricevuta con successo! Ti abbiamo inviato un'e-mail da gerencia@limpiapp.app per attivare la password.",
-        error: "Si è verificato un errore durante la registrazione. Contattaci a gerencia@limpiapp.app o tramite WhatsApp."
+        error: "Si è verificato un errore durante la registrazione. Contattaci a gerencia@limpiapp.app o tramite WhatsApp.",
+        navLogin: "Accedi",
+        navClientes: "Cerca Servizio",
+        navRegistro: "Sono Professionista"
       },
       pt: {
         badge: "🎉 Lançamento: Plano Premium Gratuito",
@@ -752,11 +791,14 @@
         optExp2: "3 a 5 anos",
         optExp3: "Mais de 5 anos",
         lblAlertas: "Desejo receber alertas instantâneos de novos clientes por WhatsApp e e-mail.",
-        lblRgpd: "Li e aceito os <a href='terminos.html' target='_blank'>Termos de Serviço</a> e a <a href='privacidad.html' target='_blank'>Política de Privacidade</a> da SHINECONNECT S.L.",
+        lblRgpdTexto: "Li e aceito os <a href='terminos.html' target='_blank' class='legal-link'>Termos de Serviço</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> da SHINECONNECT S.L.",
         btnSubmit: "Ativar Perfil Profissional",
         enviando: "Registrando perfil...",
         exito: "Inscrição recebida! Enviamos um e-mail de gerencia@limpiapp.app para você ativar sua senha.",
-        error: "Ocorreu um erro no registro. Por favor, contate gerencia@limpiapp.app ou envie WhatsApp."
+        error: "Ocorreu um erro no registro. Por favor, contate gerencia@limpiapp.app ou envie WhatsApp.",
+        navLogin: "Entrar",
+        navClientes: "Buscar Serviço",
+        navRegistro: "Sou Profissional"
       },
       nl: {
         badge: "🎉 Lancering: Gratis Premium Plan",
@@ -779,11 +821,14 @@
         optExp2: "3 tot 5 jaar",
         optExp3: "Meer dan 5 jaar",
         lblAlertas: "Ik wil meldingen van nieuwe klanten ontvangen via WhatsApp en e-mail.",
-        lblRgpd: "Ik ga akkoord met de <a href='terminos.html' target='_blank'>Algemene Voorwaarden</a> en het <a href='privacidad.html' target='_blank'>Privacybeleid</a> van SHINECONNECT S.L.",
+        lblRgpdTexto: "Ik ga akkoord met de <a href='terminos.html' target='_blank' class='legal-link'>Algemene Voorwaarden</a> en het <a href='privacidad.html' target='_blank' class='legal-link'>Privacybeleid</a> van SHINECONNECT S.L.",
         btnSubmit: "Profiel Activeren",
         enviando: "Registreren...",
         exito: "Registratie gelukt! We hebben u een e-mail gestuurd vanaf gerencia@limpiapp.app.",
-        error: "Er is een fout opgetreden. Neem contact op via gerencia@limpiapp.app of WhatsApp."
+        error: "Er is een fout opgetreden. Neem contact op via gerencia@limpiapp.app of WhatsApp.",
+        navLogin: "Inloggen",
+        navClientes: "Dienst Zoeken",
+        navRegistro: "Ik ben Professional"
       },
       pl: {
         badge: "🎉 Premiera: Bezpłatny Plan Premium",
@@ -806,20 +851,35 @@
         optExp2: "Od 3 do 5 lat",
         optExp3: "Powyżej 5 lat",
         lblAlertas: "Chcę otrzymywać natychmiastowe powiadomienia o nowych klientach przez WhatsApp i e-mail.",
-        lblRgpd: "Przeczytałem i akceptuję <a href='terminos.html' target='_blank'>Regulamin</a> oraz <a href='privacidad.html' target='_blank'>Politykę Prywatności</a> SHINECONNECT S.L.",
+        lblRgpdTexto: "Przeczytałem i akceptuję <a href='terminos.html' target='_blank' class='legal-link'>Regulamin</a> oraz <a href='privacidad.html' target='_blank' class='legal-link'>Politykę Prywatności</a> SHINECONNECT S.L.",
         btnSubmit: "Aktywuj Profil",
         enviando: "Rejestracja...",
         exito: "Rejestracja udana! Wysłaliśmy e-mail z adresu gerencia@limpiapp.app, aby aktywować hasło.",
-        error: "Wystąpił błąd. Skontaktuj się z nami pod adresem gerencia@limpiapp.app lub przez WhatsApp."
+        error: "Wystąpił błąd. Skontaktuj się z nami pod adresem gerencia@limpiapp.app lub przez WhatsApp.",
+        navLogin: "Zaloguj się",
+        navClientes: "Szukaj Usługi",
+        navRegistro: "Jestem Specjalistą"
       }
     };
 
     let idiomaActual = 'es';
 
-    function cambiarIdioma(lang) {
+    function aplicarIdiomaGlobal(lang) {
+      if (!lang || !traducciones[lang]) lang = 'es';
       idiomaActual = lang;
+
+      // 1. Guardar en localStorage para que toda la web recuerde la preferencia
+      try {
+        localStorage.setItem('limpiapp_lang', lang);
+        localStorage.setItem('lang', lang);
+      } catch (e) {}
+
+      // 2. Sincronizar el desplegable
+      const sel = document.getElementById('selectLang');
+      if (sel && sel.value !== lang) sel.value = lang;
+
+      // 3. Traducir textos del formulario
       const t = traducciones[lang] || traducciones.es;
-      
       document.getElementById('txtBadge').innerText = t.badge;
       document.getElementById('txtTitulo').innerText = t.titulo;
       document.getElementById('txtSubtitulo').innerText = t.subtitulo;
@@ -840,9 +900,34 @@
       document.getElementById('optExp2').innerText = t.optExp2;
       document.getElementById('optExp3').innerText = t.optExp3;
       document.getElementById('lblAlertas').innerText = t.lblAlertas;
-      document.getElementById('lblRgpd').innerHTML = t.lblRgpd;
+      document.getElementById('lblRgpd').innerHTML = t.lblRgpdTexto;
       document.getElementById('btnSubmit').innerText = t.btnSubmit;
+
+      if (document.getElementById('navLogin')) document.getElementById('navLogin').innerText = t.navLogin;
+      if (document.getElementById('navClientes')) document.getElementById('navClientes').innerText = t.navClientes;
+      if (document.getElementById('navRegistro')) document.getElementById('navRegistro').innerText = t.navRegistro;
+
+      // 4. Propagación inmediata a TODOS los enlaces legales y de navegación
+      document.querySelectorAll('a.legal-link').forEach(link => {
+        try {
+          const u = new URL(link.getAttribute('href'), window.location.href);
+          u.searchParams.set('lang', lang);
+          link.setAttribute('href', u.pathname.split('/').pop() + u.search);
+        } catch (err) {}
+      });
     }
+
+    // Al cargar la página: leer URL (?lang=xx) o localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let langParam = urlParams.get('lang');
+      if (!langParam) {
+        try {
+          langParam = localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang');
+        } catch (e) {}
+      }
+      aplicarIdiomaGlobal(langParam || 'es');
+    });
 
     const form = document.getElementById('formProfesional');
     const btnSubmit = document.getElementById('btnSubmit');
