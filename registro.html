@@ -17,7 +17,6 @@
       --text-muted: #718096;
       --border: #e2e8f0;
       --focus: rgba(127, 174, 203, 0.35);
-      --dark-footer: #1e252b;
     }
 
     * {
@@ -35,7 +34,7 @@
       flex-direction: column;
     }
 
-    /* HEADER CON LOGO OFICIAL */
+    /* ENCABEZADO CON EL LOGO OFICIAL */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
@@ -52,9 +51,10 @@
     }
 
     .brand-logo {
-      height: 38px;
+      height: 40px;
       width: auto;
       display: block;
+      object-fit: contain;
     }
 
     .lang-switcher select {
@@ -68,7 +68,7 @@
       outline: none;
     }
 
-    /* CONTENEDOR CENTRAL */
+    /* CUERPO CENTRAL */
     main {
       flex: 1;
       display: flex;
@@ -98,7 +98,7 @@
       color: #3b7b9e;
       font-size: 12px;
       font-weight: 700;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
       margin-bottom: 10px;
       border: 1px solid #d3e7f2;
@@ -159,7 +159,7 @@
       box-shadow: 0 0 0 3px var(--focus);
     }
 
-    /* CASILLAS LEGALES */
+    /* CASILLAS RGPD */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
@@ -233,49 +233,40 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* FOOTER OSCURO ELEGANTE Y COMPACTO */
+    /* PIE DE PÁGINA SUTIL, ELEGANTE Y COMPACTO */
     footer {
-      background-color: var(--dark-footer);
-      color: #94a3b8;
-      padding: 24px 20px 18px;
-      font-size: 12px;
-      border-top: 1px solid #2d3748;
-    }
-
-    .footer-inner {
-      max-width: 900px;
-      margin: 0 auto;
+      background-color: transparent;
+      padding: 24px 20px 20px;
       text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
     }
 
     .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .footer-links a {
-      color: #cbd5e1;
+      color: var(--primary);
       text-decoration: none;
-      transition: color 0.2s;
+      margin: 0 8px;
     }
 
     .footer-links a:hover {
-      color: #ffffff;
       text-decoration: underline;
+      color: var(--accent);
     }
 
     .footer-copy {
-      color: #64748b;
       font-size: 11.5px;
-      line-height: 1.5;
+      color: #a0aec0;
     }
   </style>
 </head>
 <body>
 
+  <!-- CABECERA CON EL LOGO OFICIAL -->
   <header>
     <a href="index.html" class="brand-link" title="LIMPIAPP">
       <img src="logo.png" alt="LIMPIAPP by Shineconnect" class="brand-logo" onerror="this.onerror=null; this.src='assets/logo.png';">
@@ -301,6 +292,7 @@
     </div>
   </header>
 
+  <!-- FORMULARIO -->
   <main>
     <div class="form-card">
       <div class="form-header">
@@ -322,7 +314,6 @@
             <label for="inputTelefono" id="lblTelefono">WhatsApp / Teléfono *</label>
             <input type="tel" name="telefono" id="inputTelefono" required placeholder="600 000 000">
           </div>
-          <!-- CAMPO EMAIL OBLIGATORIO -->
           <div class="form-group">
             <label for="inputEmail" id="lblEmail">Correo Electrónico *</label>
             <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
@@ -367,7 +358,7 @@
           </label>
         </div>
 
-        <!-- CASILLA CONSENTIMIENTO OBLIGATORIO -->
+        <!-- CONSENTIMIENTO TÉRMINOS Y PRIVACIDAD -->
         <div class="checkbox-group">
           <input type="checkbox" name="rgpd" id="checkRgpd" required>
           <label for="checkRgpd" id="lblRgpd">
@@ -382,21 +373,17 @@
     </div>
   </main>
 
-  <!-- PIE DE PÁGINA ELEGANTE, OSCURO Y COMPACTO -->
+  <!-- PIE DE PÁGINA ELEGANTE Y DISCRETO -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="aviso-legal.html">Aviso Legal</a>
-        <a href="terminos.html">Términos y Condiciones</a>
-        <a href="privacidad.html">Privacidad</a>
-        <a href="cookies.html">Cookies</a>
-        <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a>
-        <a href="https://wa.me/34711295017" target="_blank">Soporte WhatsApp</a>
-      </div>
-      <div class="footer-copy">
-        &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados.<br>
-        Directorio directo de servicios de limpieza conforme al RGPD y LOPDGDD.
-      </div>
+    <div class="footer-links">
+      <a href="aviso-legal.html">Aviso Legal</a> &bull;
+      <a href="terminos.html">Términos y Condiciones</a> &bull;
+      <a href="privacidad.html">Privacidad</a> &bull;
+      <a href="cookies.html">Cookies</a> &bull;
+      <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados. WhatsApp Atención: +34 711 29 50 17
     </div>
   </footer>
 
@@ -594,7 +581,7 @@
       it: {
         badge: "🎉 Lancio: Piano Premium Gratuito",
         titulo: "Unisciti come Professionista",
-        subtitulo: "Pubblica il tuo profilo senza commissioni e ricevi richieste dirette di clienti nella tua zona.",
+        subtitulo: "Pubblica il tuo perfil senza commissioni e ricevi richieste dirette di clienti nella tua zona.",
         lblNombre: "Nome e Cognome *",
         placeholderNombre: "Es. Carmen Navarro",
         lblTelefono: "WhatsApp / Telefono *",
