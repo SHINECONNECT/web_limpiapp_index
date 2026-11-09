@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solicitud de Servicio de Limpieza | LIMPIAPP</title>
+  <title>Solicitud de Servicio de Limpieza | LIMPIAPP by Shineconnect</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     :root {
@@ -11,12 +11,14 @@
       --primary-hover: #3d4549;
       --accent: #7faecb;
       --accent-hover: #689cb9;
+      --accent-soft: #eef6fa;
       --bg: #f8fafc;
       --card-bg: #ffffff;
-      --text: #2d3748;
+      --text-main: #2d3748;
       --text-muted: #718096;
       --border: #e2e8f0;
-      --focus: rgba(127, 174, 203, 0.35);
+      --border-focus: #7faecb;
+      --focus-ring: rgba(127, 174, 203, 0.35);
       --footer-bg: #1a202c;
       --footer-text: #a0aec0;
       --footer-link: #cbd5e0;
@@ -26,22 +28,51 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* ENCABEZADO CON EL LOGO OFICIAL */
+    /* BARRA SUPERIOR IDIOMAS (COPIA EXACTA DE LA PORTADA) */
+    .top-lang-bar {
+      background: #ffffff;
+      padding: 8px 36px 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 13px;
+      color: #4a5568;
+    }
+
+    .top-lang-bar span {
+      margin-right: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .top-lang-bar select {
+      padding: 4px 8px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* CABECERA PRINCIPAL CON NAVEGACIÓN Y LOGO */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 10px 32px;
+      padding: 12px 36px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -54,68 +85,118 @@
     }
 
     .brand-logo {
-      height: 44px;
+      height: 48px;
       width: auto;
-      max-width: 220px;
       display: block;
-      object-fit: contain;
     }
 
-    .lang-switcher select {
-      padding: 6px 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #fff;
-      font-size: 13px;
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      text-decoration: none;
       color: var(--primary);
-      cursor: pointer;
-      outline: none;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 8px 12px;
+      transition: color 0.2s;
     }
 
-    /* FORMULARIO */
+    .nav-link:hover {
+      color: #1a202c;
+    }
+
+    .btn-nav-outline {
+      text-decoration: none;
+      color: #3b7b9e;
+      border: 1.5px solid var(--accent);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      background: #ffffff;
+    }
+
+    .btn-nav-outline:hover {
+      background: var(--accent-soft);
+    }
+
+    .btn-nav-solid {
+      text-decoration: none;
+      color: #ffffff;
+      background: var(--primary);
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .btn-nav-solid:hover {
+      background: var(--primary-hover);
+    }
+
+    /* CONTENEDOR PRINCIPAL AMPLIO Y ELEGANTE */
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 30px 16px;
+      padding: 44px 20px;
     }
 
     .form-card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 580px;
-      border-radius: 12px;
+      max-width: 720px;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-      padding: 28px 28px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      padding: 42px 46px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 12px 16px;
+      }
+      .header-nav {
+        display: none;
+      }
+      .form-card {
+        padding: 28px 20px;
+      }
     }
 
     .form-header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
 
     .form-header h1 {
-      font-size: 22px;
+      font-size: 26px;
       color: var(--primary);
-      margin-bottom: 6px;
-      font-weight: 700;
+      margin-bottom: 8px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
     }
 
     .form-header p {
-      font-size: 13.5px;
+      font-size: 15px;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
 
     .form-row {
       display: flex;
-      gap: 12px;
+      gap: 16px;
     }
 
     .form-row .form-group {
@@ -124,10 +205,10 @@
 
     label {
       display: block;
-      font-size: 12.5px;
+      font-size: 13.5px;
       font-weight: 600;
-      margin-bottom: 5px;
-      color: var(--primary);
+      margin-bottom: 6px;
+      color: #374151;
     }
 
     input[type="text"],
@@ -136,69 +217,77 @@
     select,
     textarea {
       width: 100%;
-      padding: 9px 12px;
-      font-size: 13.5px;
-      border: 1px solid var(--border);
-      border-radius: 7px;
+      height: 48px;
+      padding: 10px 14px;
+      font-size: 14.5px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
       background-color: #fff;
-      color: var(--text);
+      color: var(--text-main);
       outline: none;
       transition: all 0.2s ease;
     }
 
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--focus);
+    textarea {
+      height: auto;
+      min-height: 80px;
+      resize: vertical;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 65px;
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 4px var(--focus-ring);
     }
 
     /* CASILLA RGPD OBLIGATORIA */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
-      gap: 9px;
-      margin: 16px 0;
+      gap: 10px;
+      margin: 18px 0;
     }
 
     .checkbox-group input {
-      margin-top: 2px;
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
       accent-color: var(--primary);
       cursor: pointer;
     }
 
     .checkbox-group label {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: normal;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.45;
       cursor: pointer;
     }
 
     .checkbox-group a {
-      color: var(--accent);
+      color: #3b7b9e;
       text-decoration: underline;
     }
 
     .btn-submit {
       width: 100%;
-      padding: 12px;
+      height: 50px;
       background-color: var(--primary);
-      color: #fff;
+      color: #ffffff;
       border: none;
-      border-radius: 7px;
-      font-size: 14.5px;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      margin-top: 8px;
-      transition: background 0.2s ease;
+      margin-top: 12px;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     .btn-submit:hover {
       background-color: var(--primary-hover);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.99);
     }
 
     .btn-submit:disabled {
@@ -208,12 +297,12 @@
 
     .feedback-message {
       display: none;
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 7px;
-      font-size: 13px;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 14px;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .feedback-message.success {
@@ -230,18 +319,18 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* PIE DE PÁGINA OSCURO ELEGANTE Y COMPACTO */
+    /* PIE DE PÁGINA OSCURO COMPACTO Y LEGAL */
     footer {
       background-color: var(--footer-bg);
       color: var(--footer-text);
-      padding: 16px 20px;
+      padding: 18px 24px;
       font-size: 12px;
       border-top: 1px solid #2d3748;
       text-align: center;
     }
 
     .footer-inner {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -258,7 +347,7 @@
     .footer-links a {
       color: var(--footer-link);
       text-decoration: none;
-      transition: color 0.2s ease;
+      transition: color 0.2s;
     }
 
     .footer-links a:hover {
@@ -275,35 +364,49 @@
 </head>
 <body>
 
-  <!-- CABECERA: CARGA EL LOGO CON RESOLUCIÓN DINÁMICA DE ARCHIVO -->
+  <!-- BARRA DE IDIOMAS SUPERIOR -->
+  <div class="top-lang-bar">
+    <span>🌐 Idioma / Language:</span>
+    <select id="selectLang" onchange="cambiarIdioma(this.value)">
+      <optgroup label="Lenguas Oficiales y Autonómicas">
+        <option value="es" selected>Español</option>
+        <option value="ca">Valencià / Català</option>
+        <option value="gl">Galego</option>
+        <option value="eu">Euskara</option>
+      </optgroup>
+      <optgroup label="Unión Europea">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="nl">Nederlands</option>
+        <option value="pl">Polski</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <!-- CABECERA IDÉNTICA A LA PÁGINA PRINCIPAL -->
   <header>
     <a href="index.html" class="brand-link" title="LIMPIAPP">
-      <img src="logo.png" 
-           alt="LIMPIAPP BY SHINECONNECT" 
-           class="brand-logo" 
-           onerror="if (!this.triedJpg) { this.triedJpg = true; this.src = 'logo.jpg'; } else if (!this.triedAssets) { this.triedAssets = true; this.src = 'assets/logo.png'; }">
+      <!-- LOGO VECTORIAL OFICIAL LIMPIAPP BY SHINECONNECT -->
+      <svg class="brand-logo" viewBox="0 0 380 95" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 18 V84 H260" stroke="#7FAECB" stroke-width="4.5" stroke-linecap="square"/>
+        <text x="14" y="76" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="300" font-size="64" fill="#7FAECB" letter-spacing="4">IMPI</text>
+        <path d="M198 76 L226 12 L254 76 Z" stroke="#7FAECB" stroke-width="4.5" fill="none"/>
+        <path d="M208 64 L226 26 L244 64 H212" stroke="#4F585D" stroke-width="4" fill="none"/>
+        <text x="254" y="76" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="400" font-size="64" fill="#4F585D" letter-spacing="4">PP</text>
+        <text x="256" y="90" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700" font-size="9" fill="#4F585D" letter-spacing="1.2">BY SHINECONNECT</text>
+      </svg>
     </a>
-    <div class="lang-switcher">
-      <select id="selectLang" onchange="cambiarIdioma(this.value)">
-        <optgroup label="Lenguas Oficiales y Autonómicas">
-          <option value="es" selected>Español</option>
-          <option value="ca">Valencià / Català</option>
-          <option value="gl">Galego</option>
-          <option value="eu">Euskara</option>
-        </optgroup>
-        <optgroup label="Unión Europea">
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="it">Italiano</option>
-          <option value="pt">Português</option>
-          <option value="nl">Nederlands</option>
-          <option value="pl">Polski</option>
-        </optgroup>
-      </select>
-    </div>
+    <nav class="header-nav">
+      <a href="login.html" class="nav-link">Iniciar Sesión</a>
+      <a href="clientes.html" class="btn-nav-outline">Buscar Servicio</a>
+      <a href="registro.html" class="btn-nav-solid">Soy Profesional</a>
+    </nav>
   </header>
 
+  <!-- FORMULARIO CLIENTES -->
   <main>
     <div class="form-card">
       <div class="form-header">
@@ -385,7 +488,7 @@
     </div>
   </main>
 
-  <!-- ARMAZÓN LEGAL COMPACTO Y ELEGANTE -->
+  <!-- PIE DE PÁGINA OSCURO LEGAL -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
