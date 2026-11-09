@@ -313,7 +313,7 @@
   <!-- Selector Multilingüe Universal -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelectAuth" onchange="cambiarIdioma(this.value)">
+    <select class="lang-select" id="langSelectAuth">
       <optgroup label="Lenguas de España">
         <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
@@ -341,10 +341,10 @@
 
       <!-- Pestañas de Selección: Iniciar Sesión vs Crear Cuenta -->
       <div class="auth-mode-tabs">
-        <button type="button" class="auth-tab-btn active" id="tabLogin" onclick="setAuthMode('login')">
+        <button type="button" class="auth-tab-btn active" id="tabLogin">
           Iniciar Sesión
         </button>
-        <button type="button" class="auth-tab-btn" id="tabRegister" onclick="setAuthMode('register')">
+        <button type="button" class="auth-tab-btn" id="tabRegister">
           Crear Cuenta
         </button>
       </div>
@@ -354,10 +354,10 @@
         
         <!-- Toggle de Tipo de Perfil -->
         <div class="role-toggle">
-          <button type="button" class="role-btn active client" id="btnRoleClient" onclick="setRole('cliente')">
+          <button type="button" class="role-btn active client" id="btnRoleClient">
             Hogar / Empresa
           </button>
-          <button type="button" class="role-btn pro" id="btnRolePro" onclick="setRole('profesional')">
+          <button type="button" class="role-btn pro" id="btnRolePro">
             Profesional de Limpieza
           </button>
         </div>
@@ -413,7 +413,7 @@
           <div class="legal-box" id="legalBoxRegister" style="display: none;">
             <label class="checkbox-label">
               <input type="checkbox" name="rgpd" id="checkRgpd">
-              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
+              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]</span>
             </label>
           </div>
 
@@ -423,8 +423,8 @@
         </form>
 
         <div class="alt-action">
-          <span id="txtAltPrompt">¿No tienes cuenta todavía?</span>
-          <a href="javascript:void(0)" id="linkToggleMode" onclick="toggleAuthMode()">Crea tu cuenta aquí</a>
+          <span id="txtAltPrompt">¿No tienes cuenta todavía? </span>
+          <a href="javascript:void(0)" id="linkToggleMode">Crea tu cuenta aquí</a>
         </div>
       </div>
     </div>
@@ -438,7 +438,7 @@
       <p style="color: var(--color-slate-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 22px;" id="modalDesc">
         Tus credenciales y perfil han quedado registrados en LIMPIAPP. Podrás iniciar sesión directamente en la nueva App móvil con este mismo correo y contraseña.
       </p>
-      <button onclick="document.getElementById('modalAuth').style.display='none'; window.location.href='index.html';" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;" id="modalBtn">
+      <button type="button" id="modalBtn" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">
         Volver a la Portada
       </button>
     </div>
@@ -465,90 +465,7 @@
   </footer>
 
   <script>
-    var currentMode = 'login'; // 'login' o 'register'
-    var currentRole = 'cliente'; // 'cliente' o 'profesional'
-
-    function setAuthMode(mode) {
-      currentMode = mode;
-      document.getElementById('hiddenFormType').value = mode;
-
-      var tabLog = document.getElementById('tabLogin');
-      var tabReg = document.getElementById('tabRegister');
-      var regFields = document.getElementById('registerFields');
-      var groupConfirm = document.getElementById('groupConfirmPw');
-      var legalBox = document.getElementById('legalBoxRegister');
-      var checkRgpd = document.getElementById('checkRgpd');
-      var inputNombre = document.getElementById('inputNombre');
-      var inputTel = document.getElementById('inputTel');
-      var inputCP = document.getElementById('inputCP');
-      var inputConfirm = document.getElementById('inputConfirmPassword');
-
-      var lang = localStorage.getItem('limpiapp_lang') || 'es';
-      var t = dicc[lang] || dicc['es'];
-
-      if (mode === 'register') {
-        tabLog.classList.remove('active');
-        tabReg.classList.add('active');
-        regFields.style.display = 'block';
-        groupConfirm.style.display = 'flex';
-        legalBox.style.display = 'block';
-
-        inputNombre.required = true;
-        inputTel.required = true;
-        inputCP.required = true;
-        inputConfirm.required = true;
-        checkRgpd.required = true;
-
-        document.getElementById('authTitle').innerText = t.titleReg;
-        document.getElementById('authSub').innerText = t.subReg;
-        document.getElementById('btnSubmitAuth').innerText = t.btnSubmitReg;
-        document.getElementById('txtAltPrompt').innerText = t.promptHasAccount;
-        document.getElementById('linkToggleMode').innerText = t.linkGoLogin;
-      } else {
-        tabReg.classList.remove('active');
-        tabLog.classList.add('active');
-        regFields.style.display = 'none';
-        groupConfirm.style.display = 'none';
-        legalBox.style.display = 'none';
-
-        inputNombre.required = false;
-        inputTel.required = false;
-        inputCP.required = false;
-        inputConfirm.required = false;
-        checkRgpd.required = false;
-
-        document.getElementById('authTitle').innerText = t.titleLog;
-        document.getElementById('authSub').innerText = t.subLog;
-        document.getElementById('btnSubmitAuth').innerText = t.btnSubmitLog;
-        document.getElementById('txtAltPrompt').innerText = t.promptNoAccount;
-        document.getElementById('linkToggleMode').innerText = t.linkGoRegister;
-      }
-    }
-
-    function toggleAuthMode() {
-      if (currentMode === 'login') {
-        setAuthMode('register');
-      } else {
-        setAuthMode('login');
-      }
-    }
-
-    function setRole(role) {
-      currentRole = role;
-      document.getElementById('hiddenRole').value = role;
-
-      var btnC = document.getElementById('btnRoleClient');
-      var btnP = document.getElementById('btnRolePro');
-
-      if (role === 'profesional') {
-        btnC.classList.remove('active');
-        btnP.classList.add('active');
-      } else {
-        btnP.classList.remove('active');
-        btnC.classList.add('active');
-      }
-    }
-
+    // 1. Declaración prioritaria del diccionario multilingüe
     var dicc = {
       es: {
         tabLogin: "Iniciar Sesión",
@@ -577,7 +494,7 @@
         lblPassword: "Contraseña *",
         lblConfirmPw: "Confirmar Contraseña *",
         pwHint: "Mínimo 8 caracteres (se recomienda combinar letras y números).",
-        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
+        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]',
         modalTitleLog: "¡Sesión Verificada!",
         modalDescLog: "Tus credenciales se han validado correctamente. Tu cuenta está lista para la sincronización con la App.",
         modalTitleReg: "¡Cuenta Creada con Éxito!",
@@ -615,7 +532,7 @@
         lblPassword: "Contrasenya *",
         lblConfirmPw: "Confirmar Contrasenya *",
         pwHint: "Mínim 8 caràcters (es recomana combinar lletres i números).",
-        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
+        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.[cite: 91]',
         modalTitleLog: "Sessió Verificada!",
         modalDescLog: "Les teves credencials s'han validat correctament. El teu compte està a punt per a l'App.",
         modalTitleReg: "Compte Creat amb Èxit!",
@@ -653,7 +570,7 @@
         lblPassword: "Password *",
         lblConfirmPw: "Confirm Password *",
         pwHint: "Minimum 8 characters (letters and numbers recommended).",
-        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
+        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>[cite: 91].',
         modalTitleLog: "Session Verified!",
         modalDescLog: "Your credentials have been validated. Your account is ready for synchronization with the mobile App.",
         modalTitleReg: "Account Created Successfully!",
@@ -691,7 +608,7 @@
         lblPassword: "Mot de passe *",
         lblConfirmPw: "Confirmer le mot de passe *",
         pwHint: "8 caractères minimum (chiffres et lettres recommandés).",
-        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
+        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.[cite: 91]',
         modalTitleLog: "Session Vérifiée !",
         modalDescLog: "Vos identifiants ont été validés. Votre compte est prêt pour l'App mobile.",
         modalTitleReg: "Compte Créé avec Succès !",
@@ -729,7 +646,7 @@
         lblPassword: "Passwort *",
         lblConfirmPw: "Passwort bestätigen *",
         pwHint: "Mindestens 8 Zeichen (Buchstaben und Zahlen empfohlen).",
-        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
+        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu[cite: 91].',
         modalTitleLog: "Sitzung Bestätigt!",
         modalDescLog: "Ihre Anmeldedaten wurden geprüft. Ihr Konto ist für die App-Synchronisierung bereit.",
         modalTitleReg: "Konto Erfolgreich Erstellt!",
@@ -767,4 +684,399 @@
         lblPassword: "Password *",
         lblConfirmPw: "Conferma Password *",
         pwHint: "Minimo 8 caratteri (consigliate lettere e numeri).",
-        txtRgpd: '
+        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.[cite: 91]',
+        modalTitleLog: "Accesso Confermato!",
+        modalDescLog: "Le tue credenziali sono state convalidate. Il tuo account è pronto per l'App.",
+        modalTitleReg: "Account Creato con Successo!",
+        modalDescReg: "Dati e password memorizzati per il web e l'App mobile.",
+        modalBtn: "Torna alla Home",
+        footAviso: "Note Legali",
+        footTerminos: "Termini e Condizioni",
+        footPrivacidad: "Informativa sulla Privacy",
+        footCookies: "Cookie Policy"
+      },
+      pt: {
+        tabLogin: "Iniciar Sessão",
+        tabRegister: "Criar Conta",
+        backLink: "← Voltar ao início",
+        roleClient: "Lar / Empresa",
+        rolePro: "Profissional de Limpeza",
+        titleLog: "Aceda à sua conta",
+        subLog: "Introduza as suas credenciais para gerir os seus serviços na LIMPIAPP.",
+        btnSubmitLog: "Entrar na LIMPIAPP",
+        promptNoAccount: "Ainda não tem conta? ",
+        linkGoRegister: "Crie a sua conta aqui",
+        titleReg: "Crie a sua conta pessoal",
+        subReg: "Registe-se com palavra-passe para aceder ao portal e à App móvel.",
+        btnSubmitReg: "Criar Conta",
+        promptHasAccount: "Já tem conta? ",
+        linkGoLogin: "Inicie sessão aqui",
+        lblNombre: "Nome e Apelidos *",
+        placeholderNombre: "O seu nome completo",
+        lblTel: "Telefone / WhatsApp *",
+        placeholderTel: "+351 912 000 000",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ex. 1000-001",
+        lblEmail: "Correio Eletrónico *",
+        placeholderEmail: "o-seu@email.pt",
+        lblPassword: "Palavra-passe *",
+        lblConfirmPw: "Confirmar Palavra-passe *",
+        pwHint: "Mínimo 8 caracteres (recomendado letras e números).",
+        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.[cite: 91]',
+        modalTitleLog: "Sessão Verificada!",
+        modalDescLog: "As suas credenciais foram validadas. A conta está pronta para a App.",
+        modalTitleReg: "Conta Criada com Sucesso!",
+        modalDescReg: "Palavra-passe e perfil ativos para o portal e para a App móvel.",
+        modalBtn: "Voltar à Página Inicial",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condições",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
+      },
+      gl: {
+        tabLogin: "Iniciar Sesión",
+        tabRegister: "Crear Conta",
+        backLink: "← Volver ao inicio",
+        roleClient: "Fogar / Empresa",
+        rolePro: "Profesional de Limpeza",
+        titleLog: "Accede á túa conta",
+        subLog: "Introduce as túas credenciais para xestionar servizos en LIMPIAPP.",
+        btnSubmitLog: "Entrar en LIMPIAPP",
+        promptNoAccount: "Non tes conta aínda? ",
+        linkGoRegister: "Crea a túa conta aquí",
+        titleReg: "Crea a túa conta persoal",
+        subReg: "Rexístrate con contrasinal para acceder á web e á App móbil.",
+        btnSubmitReg: "Crear a miña Conta",
+        promptHasAccount: "Xa tes conta? ",
+        linkGoLogin: "Inicia sesión aquí",
+        lblNombre: "Nome e Apelidos *",
+        placeholderNombre: "O teu nome completo",
+        lblTel: "Teléfono / WhatsApp *",
+        placeholderTel: "+34 600 000 000",
+        lblCP: "Código Postal *",
+        placeholderCP: "Ex. 46006",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "oteu@email.com",
+        lblPassword: "Contrasinal *",
+        lblConfirmPw: "Confirmar Contrasinal *",
+        pwHint: "Mínimo 8 caracteres (letras e números).",
+        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.[cite: 91]',
+        modalTitleLog: "Sesión Verificada!",
+        modalDescLog: "As túas credenciais foron validadas. Conta lista para a App.",
+        modalTitleReg: "Conta Creada con Éxito!",
+        modalDescReg: "O teu contrasinal e perfil foron rexistrados para a web e a App.",
+        modalBtn: "Volver á Portada",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condicións",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies"
+      },
+      eu: {
+        tabLogin: "Hasi Saioa",
+        tabRegister: "Sortu Kontua",
+        backLink: "← Hasierara itzuli",
+        roleClient: "Etxea / Enpresa",
+        rolePro: "Garbiketa Profesionala",
+        titleLog: "Sartu zure kontuan",
+        subLog: "Sartu zure kredentzialak LIMPIAPPen zerbitzuak kudeatzeko.",
+        btnSubmitLog: "LIMPIAPPera Sartu",
+        promptNoAccount: "Ez al duzu konturik oraindik? ",
+        linkGoRegister: "Sortu zure kontua hemen",
+        titleReg: "Sortu zure kontu pertsonala",
+        subReg: "Erregistratu pasahitzarekin webgunera eta mugikorreko App-era sartzeko.",
+        btnSubmitReg: "Sortu nire Kontua",
+        promptHasAccount: "Baduzu kontua? ",
+        linkGoLogin: "Hasi saioa hemen",
+        lblNombre: "Izen-abizenak *",
+        placeholderNombre: "Zure izen osoa",
+        lblTel: "Telefonoa / WhatsApp *",
+        placeholderTel: "+34 600 000 000",
+        lblCP: "Posta-kodea *",
+        placeholderCP: "Adib. 46006",
+        lblEmail: "Posta Elektronikoa *",
+        placeholderEmail: "zure@email.eus",
+        lblPassword: "Pasahitza *",
+        lblConfirmPw: "Berretsi Pasahitza *",
+        pwHint: "Gutxienez 8 karaktere (letrak eta zenbakiak).",
+        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>[cite: 91].',
+        modalTitleLog: "Saioa Egiaztatuta!",
+        modalDescLog: "Kredentzialak ondo balioztatu dira. Zure kontua prest dago App-erako.",
+        modalTitleReg: "Kontua Ondo Sortu Da!",
+        modalDescReg: "Zure pasahitza eta datuak erregistratuta geratu dira weberako eta App-erako.",
+        modalBtn: "Hasierara Itzuli",
+        footAviso: "Legezko Oharra",
+        footTerminos: "Baldintzak eta Xedapenak",
+        footPrivacidad: "Pribatutasun Politika",
+        footCookies: "Cookie Politika"
+      }
+    };
+
+    var currentMode = 'login';
+    var currentRole = 'cliente';
+
+    function setAuthMode(mode) {
+      currentMode = mode;
+      var hiddenType = document.getElementById('hiddenFormType');
+      if (hiddenType) hiddenType.value = mode;
+
+      var tabLog = document.getElementById('tabLogin');
+      var tabReg = document.getElementById('tabRegister');
+      var regFields = document.getElementById('registerFields');
+      var groupConfirm = document.getElementById('groupConfirmPw');
+      var legalBox = document.getElementById('legalBoxRegister');
+      var checkRgpd = document.getElementById('checkRgpd');
+      var inputNombre = document.getElementById('inputNombre');
+      var inputTel = document.getElementById('inputTel');
+      var inputCP = document.getElementById('inputCP');
+      var inputConfirm = document.getElementById('inputConfirmPassword');
+
+      var lang = localStorage.getItem('limpiapp_lang') || 'es';
+      var t = dicc[lang] || dicc['es'];
+
+      if (mode === 'register') {
+        if (tabLog) tabLog.classList.remove('active');
+        if (tabReg) tabReg.classList.add('active');
+        if (regFields) regFields.style.display = 'block';
+        if (groupConfirm) groupConfirm.style.display = 'flex';
+        if (legalBox) legalBox.style.display = 'block';
+
+        if (inputNombre) inputNombre.required = true;
+        if (inputTel) inputTel.required = true;
+        if (inputCP) inputCP.required = true;
+        if (inputConfirm) inputConfirm.required = true;
+        if (checkRgpd) checkRgpd.required = true;
+
+        var aTitle = document.getElementById('authTitle');
+        if (aTitle) aTitle.innerText = t.titleReg;
+        var aSub = document.getElementById('authSub');
+        if (aSub) aSub.innerText = t.subReg;
+        var btnSub = document.getElementById('btnSubmitAuth');
+        if (btnSub) btnSub.innerText = t.btnSubmitReg;
+        var altPrompt = document.getElementById('txtAltPrompt');
+        if (altPrompt) altPrompt.innerText = t.promptHasAccount;
+        var linkToggle = document.getElementById('linkToggleMode');
+        if (linkToggle) linkToggle.innerText = t.linkGoLogin;
+      } else {
+        if (tabReg) tabReg.classList.remove('active');
+        if (tabLog) tabLog.classList.add('active');
+        if (regFields) regFields.style.display = 'none';
+        if (groupConfirm) groupConfirm.style.display = 'none';
+        if (legalBox) legalBox.style.display = 'none';
+
+        if (inputNombre) inputNombre.required = false;
+        if (inputTel) inputTel.required = false;
+        if (inputCP) inputCP.required = false;
+        if (inputConfirm) inputConfirm.required = false;
+        if (checkRgpd) checkRgpd.required = false;
+
+        var aTitle = document.getElementById('authTitle');
+        if (aTitle) aTitle.innerText = t.titleLog;
+        var aSub = document.getElementById('authSub');
+        if (aSub) aSub.innerText = t.subLog;
+        var btnSub = document.getElementById('btnSubmitAuth');
+        if (btnSub) btnSub.innerText = t.btnSubmitLog;
+        var altPrompt = document.getElementById('txtAltPrompt');
+        if (altPrompt) altPrompt.innerText = t.promptNoAccount;
+        var linkToggle = document.getElementById('linkToggleMode');
+        if (linkToggle) linkToggle.innerText = t.linkGoRegister;
+      }
+    }
+
+    function setRole(role) {
+      currentRole = role;
+      var hiddenRole = document.getElementById('hiddenRole');
+      if (hiddenRole) hiddenRole.value = role;
+
+      var btnC = document.getElementById('btnRoleClient');
+      var btnP = document.getElementById('btnRolePro');
+
+      if (role === 'profesional') {
+        if (btnC) btnC.classList.remove('active');
+        if (btnP) btnP.classList.add('active');
+      } else {
+        if (btnP) btnP.classList.remove('active');
+        if (btnC) btnC.classList.add('active');
+      }
+    }
+
+    function cambiarIdioma(lang) {
+      localStorage.setItem('limpiapp_lang', lang);
+      var t = dicc[lang] || dicc['es'];
+
+      var textMapping = {
+        'tabLogin': t.tabLogin,
+        'tabRegister': t.tabRegister,
+        'backLink': t.backLink,
+        'btnRoleClient': t.roleClient,
+        'btnRolePro': t.rolePro,
+        'lblNombre': t.lblNombre,
+        'lblTel': t.lblTel,
+        'lblCP': t.lblCP,
+        'lblEmail': t.lblEmail,
+        'lblPassword': t.lblPassword,
+        'lblConfirmPw': t.lblConfirmPw,
+        'pwHint': t.pwHint,
+        'modalBtn': t.modalBtn,
+        'footAviso': t.footAviso,
+        'footTerminos': t.footTerminos,
+        'footPrivacidad': t.footPrivacidad,
+        'footCookies': t.footCookies
+      };
+
+      for (var id in textMapping) {
+        var el = document.getElementById(id);
+        if (el && textMapping[id]) el.innerText = textMapping[id];
+      }
+
+      var inputNombre = document.getElementById('inputNombre');
+      if (inputNombre && t.placeholderNombre) inputNombre.placeholder = t.placeholderNombre;
+      var inputTel = document.getElementById('inputTel');
+      if (inputTel && t.placeholderTel) inputTel.placeholder = t.placeholderTel;
+      var inputCP = document.getElementById('inputCP');
+      if (inputCP && t.placeholderCP) inputCP.placeholder = t.placeholderCP;
+      var inputEmail = document.getElementById('inputEmail');
+      if (inputEmail && t.placeholderEmail) inputEmail.placeholder = t.placeholderEmail;
+
+      var rgpdSpan = document.getElementById('txtRgpd');
+      if (rgpdSpan && t.txtRgpd) rgpdSpan.innerHTML = t.txtRgpd;
+
+      setAuthMode(currentMode);
+    }
+
+    // Inicialización y enlace de eventos del DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Enlazar eventos de clics a las pestañas
+      var tabLog = document.getElementById('tabLogin');
+      if (tabLog) {
+        tabLog.addEventListener('click', function() { setAuthMode('login'); });
+      }
+
+      var tabReg = document.getElementById('tabRegister');
+      if (tabReg) {
+        tabReg.addEventListener('click', function() { setAuthMode('register'); });
+      }
+
+      var linkToggle = document.getElementById('linkToggleMode');
+      if (linkToggle) {
+        linkToggle.addEventListener('click', function() {
+          setAuthMode(currentMode === 'login' ? 'register' : 'login');
+        });
+      }
+
+      // 2. Enlazar botones de selección de rol
+      var btnC = document.getElementById('btnRoleClient');
+      if (btnC) {
+        btnC.addEventListener('click', function() { setRole('cliente'); });
+      }
+
+      var btnP = document.getElementById('btnRolePro');
+      if (btnP) {
+        btnP.addEventListener('click', function() { setRole('profesional'); });
+      }
+
+      // 3. Enlazar botón modal
+      var modalBtn = document.getElementById('modalBtn');
+      if (modalBtn) {
+        modalBtn.addEventListener('click', function() {
+          var modal = document.getElementById('modalAuth');
+          if (modal) modal.style.display = 'none';
+          window.location.href = 'index.html';
+        });
+      }
+
+      // 4. Enlazar selector de idioma
+      var selectLang = document.getElementById('langSelectAuth');
+      if (selectLang) {
+        selectLang.addEventListener('change', function() {
+          cambiarIdioma(this.value);
+        });
+      }
+
+      // 5. Cargar parámetros iniciales de URL o memoria
+      var urlParams = new URLSearchParams(window.location.search);
+      var modeParam = urlParams.get('mode');
+      var roleParam = urlParams.get('role');
+      var langParam = urlParams.get('lang');
+
+      var finalLang = langParam || localStorage.getItem('limpiapp_lang') || 'es';
+      if (selectLang) selectLang.value = finalLang;
+      cambiarIdioma(finalLang);
+
+      if (roleParam === 'profesional') {
+        setRole('profesional');
+      } else {
+        setRole('cliente');
+      }
+
+      if (modeParam === 'register') {
+        setAuthMode('register');
+      } else {
+        setAuthMode('login');
+      }
+
+      // 6. Manejo de envío del formulario
+      var form = document.getElementById('authForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          var pw = document.getElementById('inputPassword').value;
+          if (currentMode === 'register') {
+            var confirmPw = document.getElementById('inputConfirmPassword').value;
+            if (pw !== confirmPw) {
+              alert('Las contraseñas no coinciden. Por favor, revísalas.');
+              return;
+            }
+          }
+
+          var btn = document.getElementById('btnSubmitAuth');
+          var originalText = btn ? btn.innerText : '...';
+          if (btn) {
+            btn.disabled = true;
+            btn.innerText = 'Procesando...';
+          }
+
+          var formData = new FormData(form);
+          var params = new URLSearchParams(formData);
+
+          fetch(form.action, {
+            method: 'POST',
+            body: params,
+            mode: 'no-cors'
+          })
+          .then(function() {
+            var lang = localStorage.getItem('limpiapp_lang') || 'es';
+            var t = dicc[lang] || dicc['es'];
+
+            var modal = document.getElementById('modalAuth');
+            var modalTitle = document.getElementById('modalTitle');
+            var modalDesc = document.getElementById('modalDesc');
+
+            if (modalTitle && modalDesc) {
+              if (currentMode === 'login') {
+                modalTitle.innerText = t.modalTitleLog;
+                modalDesc.innerText = t.modalDescLog;
+              } else {
+                modalTitle.innerText = t.modalTitleReg;
+                modalDesc.innerText = t.modalDescReg;
+              }
+            }
+
+            if (modal) modal.style.display = 'flex';
+            form.reset();
+          })
+          .catch(function() {
+            alert('Error de conexión. Inténtalo de nuevo.');
+          })
+          .finally(function() {
+            if (btn) {
+              btn.disabled = false;
+              btn.innerText = originalText;
+            }
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
