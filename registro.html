@@ -3,870 +3,553 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alta Profesional | LIMPIAPP</title>
-  
-  <meta name="apple-itunes-app" content="app-id=limpiapp">
-  <link rel="alternate" href="limpiapp://pro-register">
-  <meta name="theme-color" content="#4f585d">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <title>Alta de Profesional de la Limpieza | LIMPIAPP by Shineconnect</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
     :root {
-      --color-logo-blue: #7faecb;
-      --color-logo-blue-dark: #6294b4;
-      --color-logo-blue-light: #eef5f9;
-      --color-logo-blue-soft: #d2e4f0;
-      
-      --color-logo-charcoal: #4f585d;
-      --color-logo-charcoal-dark: #373e42;
-      
-      --color-slate-dark: #24292d;
-      --color-slate-medium: #475259;
-      --color-slate-muted: #6a767e;
-      --color-slate-border: #d4dfe6;
-      
-      --color-bg-page: #f8fafc;
-      --color-bg-card: #ffffff;
-      
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
+      --primary: #4f585d;
+      --primary-hover: #3d4549;
+      --accent: #7faecb;
+      --accent-hover: #689cb9;
+      --bg-color: #f7fafc;
+      --card-bg: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --focus-ring: rgba(127, 174, 203, 0.4);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
     body {
-      background-color: var(--color-bg-page);
-      color: var(--color-slate-dark);
-      line-height: 1.6;
-      min-height: 100vh;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .top-bar {
-      background-color: var(--color-bg-card);
-      border-bottom: 1px solid var(--color-slate-border);
-      padding: 8px 24px;
-      width: 100%;
+    .brand {
       display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.85rem;
-    }
-    .lang-select {
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--color-slate-border);
-      font-size: 0.82rem;
-      background: var(--color-bg-page);
-      color: var(--color-slate-medium);
-      font-weight: 600;
-      cursor: pointer;
+      align-items: baseline;
+      gap: 6px;
+      text-decoration: none;
     }
 
-    .main-wrapper {
-      width: 100%;
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .lang-switcher select {
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background: #fff;
+      font-size: 13px;
+      color: var(--text-main);
+      cursor: pointer;
+      outline: none;
+    }
+
+    main {
+      flex: 1;
       display: flex;
       justify-content: center;
-      padding: 24px 16px 40px;
+      align-items: center;
+      padding: 40px 16px;
     }
 
-    .container {
-      max-width: 660px;
+    .form-card {
+      background: var(--card-bg);
       width: 100%;
-      background: var(--color-bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      border: 1.5px solid var(--color-slate-border);
-      overflow: hidden;
+      max-width: 580px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 32px 28px;
     }
 
-    .card-header {
-      background-color: #ffffff;
-      padding: 24px 20px 16px;
+    .form-header {
       text-align: center;
-      border-bottom: 1px solid var(--color-slate-border);
-    }
-    .card-header img {
-      max-width: 240px;
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
+      margin-bottom: 24px;
     }
 
-    .badge-sub {
-      margin-top: 12px;
+    .badge-promo {
       display: inline-block;
-      background: #eef1f3;
-      color: var(--color-logo-charcoal);
-      padding: 4px 14px;
-      border-radius: 9999px;
-      font-size: 0.82rem;
+      background-color: #ebf5fb;
+      color: #2980b9;
+      font-size: 12px;
       font-weight: 700;
-      border: 1px solid #d8e0e5;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      border: 1px solid #d4e6f1;
     }
 
-    .content-area { padding: 26px 28px; }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--color-logo-charcoal);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-    }
-    .back-link:hover { text-decoration: underline; }
-
-    h1 {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: var(--color-slate-dark);
+    .form-header h1 {
+      font-size: 22px;
+      color: var(--primary);
       margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .subtitle {
-      color: var(--color-slate-muted);
-      font-size: 0.92rem;
-      margin-bottom: 24px;
     }
 
-    .promo-box {
-      background: var(--color-logo-blue-light);
-      border: 1px solid var(--color-logo-blue-soft);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      margin-bottom: 24px;
-      font-size: 0.88rem;
-      color: var(--color-slate-dark);
+    .form-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-row {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
-    label { font-weight: 700; font-size: 0.88rem; color: var(--color-slate-dark); }
-    
-    input[type="text"], input[type="tel"], input[type="number"], select {
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    select {
       width: 100%;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--color-slate-border);
-      font-size: 0.95rem;
-      font-family: inherit;
-      background-color: #ffffff;
-      color: var(--color-slate-dark);
-    }
-    input:focus, select:focus {
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: #fff;
+      color: var(--text-main);
       outline: none;
-      border-color: var(--color-logo-charcoal);
-      box-shadow: 0 0 0 3px rgba(79, 88, 93, 0.2);
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .row-3 {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 0.8fr;
-      gap: 10px;
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--focus-ring);
     }
 
-    .row-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .legal-box {
-      background: #f1f6f9;
-      padding: 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      color: #475569;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 20px 0;
-      border: 1px solid var(--color-slate-border);
-    }
-    .checkbox-label {
+    .checkbox-group {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      font-size: 0.82rem;
-      color: #475569;
+      margin: 18px 0;
+    }
+
+    .checkbox-group input {
+      margin-top: 3px;
+      accent-color: var(--primary);
       cursor: pointer;
     }
-    .checkbox-label input {
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      margin-top: 2px;
-      accent-color: var(--color-logo-charcoal);
+
+    .checkbox-group label {
+      font-size: 12px;
+      font-weight: normal;
+      color: var(--text-muted);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    .checkbox-group a {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     .btn-submit {
       width: 100%;
-      background: var(--color-logo-charcoal);
-      color: #ffffff;
-      padding: 14px;
+      padding: 13px;
+      background-color: var(--primary);
+      color: #fff;
       border: none;
-      border-radius: var(--radius-sm);
-      font-size: 1.05rem;
+      border-radius: 8px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background-color 0.2s;
     }
-    .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
 
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(36, 41, 45, 0.6);
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
+    .btn-submit:hover {
+      background-color: var(--primary-hover);
     }
-    .modal-box {
-      background: #ffffff;
-      padding: 32px;
-      border-radius: var(--radius-md);
-      max-width: 440px;
-      width: 100%;
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .feedback-message {
+      display: none;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 14px;
       text-align: center;
-      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
+      line-height: 1.4;
+    }
+
+    .feedback-message.success {
+      display: block;
+      background-color: #edf7ed;
+      color: #1e4620;
+      border: 1px solid #c8e6c9;
+    }
+
+    .feedback-message.error {
+      display: block;
+      background-color: #fdecea;
+      color: #611a15;
+      border: 1px solid #f5c6cb;
     }
 
     footer {
-      background-color: var(--color-slate-dark);
-      color: #94a3b8;
-      padding: 45px 20px 35px;
-      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--card-bg);
+      padding: 20px 24px;
       text-align: center;
-      width: 100%;
-    }
-    .footer-container { max-width: 850px; margin: 0 auto; }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin: 16px 0 20px;
-    }
-    .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
-    .footer-links a:hover { color: #ffffff; }
-
-    @media (max-width: 600px) {
-      .row-3, .row-2 { grid-template-columns: 1fr; }
-      .content-area { padding: 18px 14px; }
-      .top-bar { justify-content: center; }
+      font-size: 12px;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelectPro" onchange="cambiarIdioma(this.value)">
-      <optgroup label="Lenguas de España">
+  <header>
+    <a href="index.html" class="brand">
+      <span class="brand-title">LIMPIAPP</span>
+      <span class="brand-sub">by Shineconnect</span>
+    </a>
+    <div class="lang-switcher">
+      <select id="selectLang" onchange="cambiarIdioma(this.value)">
         <option value="es" selected>Español</option>
-        <option value="ca">Valencià / Català</option>
-        <option value="gl">Galego</option>
-        <option value="eu">Euskara</option>
-      </optgroup>
-      <optgroup label="Unión Europea">
+        <option value="ca">Valencià</option>
         <option value="en">English</option>
         <option value="fr">Français</option>
-        <option value="de">Deutsch</option>
         <option value="it">Italiano</option>
-        <option value="pt">Português</option>
-      </optgroup>
-    </select>
-  </div>
+      </select>
+    </div>
+  </header>
 
-  <div class="main-wrapper">
-    <div class="container">
-      
-      <div class="card-header">
-        <a href="index.html">
-          <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
-        </a>
-        <div>
-          <span class="badge-sub" id="badgeSub">REGISTRO DE PROFESIONALES DE LIMPIEZA</span>
-        </div>
+  <main>
+    <div class="form-card">
+      <div class="form-header">
+        <span class="badge-promo" id="txtBadge">🎉 Lanzamiento: Plan Premium Gratuito</span>
+        <h1 id="txtTitulo">Únete como Profesional</h1>
+        <p id="txtSubtitulo">Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.</p>
       </div>
 
-      <div class="content-area">
-        <a href="index.html" class="back-link" id="backLink">← Volver al inicio</a>
-        
-        <div>
-          <h1 id="titleForm">Alta como Profesional Independiente</h1>
-          <p class="subtitle" id="subForm">
-            Publica tu perfil en tu demarcación, fija libremente tu tarifa horaria y recibe solicitudes directas de clientes sin comisiones sobre tus horas de trabajo.
-          </p>
+      <form id="formProfesional">
+        <input type="hidden" name="perfil_usuario" value="profesional">
+
+        <div class="form-group">
+          <label for="inputNombre" id="lblNombre">Nombre y Apellidos *</label>
+          <input type="text" name="nombre" id="inputNombre" required placeholder="Ej. Carmen Navarro">
         </div>
 
-        <div class="promo-box" id="promoBox">
-          <span style="font-size: 1.3rem;">🔥</span>
-          <span id="promoText"><strong>Promoción especial:</strong> 2 meses de acceso gratuito para las primeras 30 inscripciones.</span>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="inputTelefono" id="lblTelefono">WhatsApp / Teléfono *</label>
+            <input type="tel" name="telefono" id="inputTelefono" required placeholder="600 000 000">
+          </div>
+          <div class="form-group">
+            <label for="inputEmail" id="lblEmail">Correo Electrónico *</label>
+            <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
+          </div>
         </div>
 
-        <form id="proForm" action="https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec" method="POST">
-          <input type="hidden" name="tipo_registro" value="profesional">
-
+        <div class="form-row">
           <div class="form-group">
-            <label id="lblNombre">Nombre y Apellidos *</label>
-            <input type="text" name="nombre" id="inputNombre" required placeholder="Tu nombre completo">
+            <label for="inputPais" id="lblPais">País *</label>
+            <input type="text" name="pais" id="inputPais" value="España" required>
           </div>
-
           <div class="form-group">
-            <label id="lblTel">Teléfono / WhatsApp (con prefijo internacional) *</label>
-            <input type="tel" name="telefono" id="inputTel" required placeholder="+34 612 345 678">
+            <label for="inputCiudad" id="lblCiudad">Ciudad / Población *</label>
+            <input type="text" name="ciudad" id="inputCiudad" required placeholder="Ej. Valencia, Fortaleny...">
           </div>
-
-          <div class="row-3">
-            <div class="form-group">
-              <label id="lblPais">País *</label>
-              <input type="text" name="pais" id="inputPais" required placeholder="Ej. España">
-            </div>
-            <div class="form-group">
-              <label id="lblCiudad">Ciudad *</label>
-              <input type="text" name="ciudad" id="inputCiudad" required placeholder="Tu ciudad">
-            </div>
-            <div class="form-group">
-              <label id="lblCP">Código Postal *</label>
-              <input type="text" name="cp" id="inputCP" required placeholder="Ej. 46006">
-            </div>
+          <div class="form-group">
+            <label for="inputCp" id="lblCp">Código Postal *</label>
+            <input type="text" name="cp" id="inputCp" required maxlength="5" placeholder="46001">
           </div>
+        </div>
 
-          <div class="row-2">
-            <div class="form-group">
-              <label id="lblTarifa">Tarifa por Hora (€/h) *</label>
-              <input type="number" name="tarifa" id="inputTarifa" min="8" max="60" step="0.5" required placeholder="Ej. 12">
-            </div>
-            <div class="form-group">
-              <label id="lblExp">Experiencia en Limpieza *</label>
-              <select name="experiencia" id="selectExp" required>
-                <option value="Menos de 1 año" id="optExp1">Menos de 1 año</option>
-                <option value="1 a 3 años" id="optExp2">De 1 a 3 años</option>
-                <option value="3 a 5 años" selected id="optExp3">De 3 a 5 años</option>
-                <option value="Más de 5 años" id="optExp4">Más de 5 años</option>
-              </select>
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="inputTarifa" id="lblTarifa">Tarifa Deseada (€/h) *</label>
+            <input type="number" name="tarifa" id="inputTarifa" required min="8" max="50" step="0.5" placeholder="12">
           </div>
-
-          <div class="legal-box">
-            <label class="checkbox-label">
-              <input type="checkbox" name="rgpd" required>
-              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a>, las <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condiciones de Suscripción y Calidad B2B</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]</span>
-            </label>
-            
-            <label class="checkbox-label">
-              <input type="checkbox" name="alertas" value="Si">
-              <span id="txtAlertas">Deseo recibir alertas inmediatas por WhatsApp con nuevas ofertas de clientes en mi demarcación.</span>
-            </label>
-
-            <div id="txtLegalFooter">
-              <strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br>
-              <strong>Finalidad:</strong> Publicación en directorio e intermediación de contactos profesionales en LIMPIAPP.<br>
-              <strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.
-            </div>
+          <div class="form-group">
+            <label for="selectExperiencia" id="lblExp">Experiencia *</label>
+            <select name="experiencia" id="selectExperiencia">
+              <option value="1 a 2 años" id="optExp1">1 a 2 años</option>
+              <option value="3 a 5 años" id="optExp2" selected>3 a 5 años</option>
+              <option value="Más de 5 años" id="optExp3">Más de 5 años</option>
+            </select>
           </div>
+        </div>
 
-          <button type="submit" id="btnSubmitPro" class="btn-submit">
-            Registrarme como Profesional
-          </button>
-        </form>
-      </div>
+        <div class="checkbox-group">
+          <input type="checkbox" name="alertas" id="checkAlertas" value="Si" checked>
+          <label for="checkAlertas" id="lblAlertas">
+            Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" name="rgpd" id="checkRgpd" required>
+          <label for="checkRgpd" id="lblRgpd">
+            He leído y acepto los <a href="terminos.html" target="_blank">Términos del Servicio</a> y la <a href="privacidad.html" target="_blank">Política de Privacidad</a> de SHINECONNECT S.L.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSubmit">Activar Perfil Profesional</button>
+
+        <div id="feedbackBox" class="feedback-message"></div>
+      </form>
     </div>
-  </div>
-
-  <div id="modalPro" class="modal-overlay">
-    <div class="modal-box">
-      <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;">✓</div>
-      <h3 style="color: var(--color-slate-dark); font-size: 1.4rem; margin-bottom: 10px;" id="modalTitle">¡Registro Completado!</h3>
-      <p style="color: var(--color-slate-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;" id="modalDesc">
-        Tu perfil ha sido registrado correctamente con la promoción de lanzamiento. Comenzarás a recibir avisos de clientes verificados en tu WhatsApp.
-      </p>
-      <button onclick="document.getElementById('modalPro').style.display='none'; window.location.href='index.html';" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;" id="modalBtn">
-        Volver a la Portada
-      </button>
-    </div>
-  </div>
+  </main>
 
   <footer>
-    <div class="footer-container">
-      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
-        &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
-      </p>
-      <div class="footer-links">
-        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
-        <span style="color: #475569;">|</span>
-        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
-        <span style="color: #475569;">|</span>
-        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
-        <span style="color: #475569;">|</span>
-        <a href="cookies.html" id="footCookies">Política de Cookies</a>
-      </div>
-      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
-        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
-      </p>
-    </div>
+    <p>&copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados. Contacto: gerencia@limpiapp.app | WhatsApp Atención: +34 711 29 50 17</p>
   </footer>
 
   <script>
-    var dicc = {
+    const traducciones = {
       es: {
-        badgeSub: "REGISTRO DE PROFESIONALES DE LIMPIEZA",
-        backLink: "← Volver al inicio",
-        titleForm: "Alta como Profesional Independiente",
-        subForm: "Publica tu perfil en tu demarcación, fija libremente tu tarifa horaria y recibe solicitudes directas de clientes sin comisiones sobre tus horas de trabajo.",
-        promoText: "<strong>Promoción especial:</strong> 2 meses de acceso gratuito para las primeras 30 inscripciones.",
+        badge: "🎉 Lanzamiento: Plan Premium Gratuito",
+        titulo: "Únete como Profesional",
+        subtitulo: "Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.",
         lblNombre: "Nombre y Apellidos *",
-        placeholderNombre: "Tu nombre completo",
-        lblTel: "Teléfono / WhatsApp (con prefijo internacional) *",
-        placeholderTel: "+34 612 345 678",
+        placeholderNombre: "Ej. Carmen Navarro",
+        lblTelefono: "WhatsApp / Teléfono *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "tu@email.com",
         lblPais: "País *",
-        placeholderPais: "Ej. España",
-        lblCiudad: "Ciudad *",
-        placeholderCiudad: "Tu ciudad",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ej. 46006",
-        lblTarifa: "Tarifa por Hora (€/h) *",
-        placeholderTarifa: "Ej. 12",
-        lblExp: "Experiencia en Limpieza *",
-        optExp1: "Menos de 1 año",
-        optExp2: "De 1 a 3 años",
-        optExp3: "De 3 a 5 años",
-        optExp4: "Más de 5 años",
-        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a>, las <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condiciones de Suscripción y Calidad B2B</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.[cite: 91]',
-        txtAlertas: "Deseo recibir alertas inmediatas por WhatsApp con nuevas ofertas de clientes en mi demarcación.",
-        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidad:</strong> Publicación en directorio e intermediación de contactos profesionales en LIMPIAPP.<br><strong>Derechos:</strong> Acceso, rectificación y supresión vía <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "Registrarme como Profesional",
-        modalTitle: "¡Registro Completado!",
-        modalDesc: "Tu perfil ha sido registrado correctamente con la promoción de lanzamiento. Comenzarás a recibir avisos de clientes verificados en tu WhatsApp.",
-        modalBtn: "Volver a la Portada",
-        footAviso: "Aviso Legal",
-        footTerminos: "Términos y Condiciones",
-        footPrivacidad: "Política de Privacidad",
-        footCookies: "Política de Cookies"
+        lblCiudad: "Ciudad / Población *",
+        placeholderCiudad: "Ej. Valencia, Fortaleny...",
+        lblCp: "Código Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarifa Deseada (€/h) *",
+        lblExp: "Experiencia *",
+        optExp1: "1 a 2 años",
+        optExp2: "3 a 5 años",
+        optExp3: "Más de 5 años",
+        lblAlertas: "Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.",
+        lblRgpd: "He leído y acepto los <a href='terminos.html' target='_blank'>Términos del Servicio</a> y la <a href='privacidad.html' target='_blank'>Política de Privacidad</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activar Perfil Profesional",
+        enviando: "Registrando perfil...",
+        exito: "¡Inscripción recibida con éxito! Te hemos enviado un email desde gerencia@limpiapp.app para activar tu contraseña.",
+        error: "Hubo un error al registrar tu solicitud. Por favor, contáctanos a gerencia@limpiapp.app o vía WhatsApp."
       },
       ca: {
-        badgeSub: "REGISTRE DE PROFESSIONALS DE NETEJA",
-        backLink: "← Tornar a l'inici",
-        titleForm: "Alta com a Professional Independent",
-        subForm: "Publica el teu perfil a la teva zona, fixa lliurement la teva tarifa horària i rep sol·licituds directes sense comissions.",
-        promoText: "<strong>Promoció especial:</strong> 2 mesos d'accés gratuït per a les primeres 30 inscripcions.",
+        badge: "🎉 Llançament: Pla Premium Gratuït",
+        titulo: "Uneix-te com a Professional",
+        subtitulo: "Publica el teu perfil sense comissions i rep contactes directes de clients a la teua zona.",
         lblNombre: "Nom i Cognoms *",
-        placeholderNombre: "El teu nom complet",
-        lblTel: "Telèfon / WhatsApp (amb prefix internacional) *",
-        placeholderTel: "+34 612 345 678",
+        placeholderNombre: "Ex. Carme Navarro",
+        lblTelefono: "WhatsApp / Telèfon *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correu Electrònic *",
+        placeholderEmail: "el-teu@email.com",
         lblPais: "País *",
-        placeholderPais: "Ex. Espanya",
-        lblCiudad: "Ciutat *",
-        placeholderCiudad: "La teva ciutat",
-        lblCP: "Codi Postal *",
-        placeholderCP: "Ex. 46006",
-        lblTarifa: "Tarifa per Hora (€/h) *",
-        placeholderTarifa: "Ex. 12",
-        lblExp: "Experiència en Neteja *",
-        optExp1: "Menys d'1 any",
-        optExp2: "D'1 a 3 anys",
-        optExp3: "De 3 a 5 anys",
-        optExp4: "Més de 5 anys",
-        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a>, les <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condicions de Subscripció i Qualitat B2B</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.[cite: 91]',
-        txtAlertas: "Desitjo rebre alertes immediates per WhatsApp amb noves sol·licituds de clients a la meva zona.",
-        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalitat:</strong> Publicació en directori i intermediació a LIMPIAPP.<br><strong>Drets:</strong> Accés, rectificació i supressió via <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "Registrar-me com a Professional",
-        modalTitle: "Registre Completat!",
-        modalDesc: "El teu perfil s'ha registrat correctament amb la promoció de llançament. Començaràs a rebre avisos de clients verificats al teu WhatsApp.",
-        modalBtn: "Tornar a la Portada",
-        footAviso: "Avís Legal",
-        footTerminos: "Termes i Condicions",
-        footPrivacidad: "Política de Privacitat",
-        footCookies: "Política de Cookies"
-      },
-      gl: {
-        badgeSub: "REXISTRO DE PROFESIONAIS DE LIMPEZA",
-        backLink: "← Volver ao inicio",
-        titleForm: "Alta como Profesional Independente",
-        subForm: "Publica o teu perfil no teu código postal, fixa a túa tarifa e recibe avisos directos de clientes sen comisións.",
-        promoText: "<strong>Promoción especial:</strong> 2 meses de acceso gratuíto para as primeiras 30 inscricións.",
-        lblNombre: "Nome e Apelidos *",
-        placeholderNombre: "O teu nome completo",
-        lblTel: "Teléfono / WhatsApp (con prefixo internacional) *",
-        placeholderTel: "+34 612 345 678",
-        lblPais: "País *",
-        placeholderPais: "Ex. España",
-        lblCiudad: "Cidade *",
-        placeholderCiudad: "A túa cidade",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ex. 46006",
-        lblTarifa: "Tarifa por Hora (€/h) *",
-        placeholderTarifa: "Ex. 12",
-        lblExp: "Experiencia en Limpeza *",
-        optExp1: "Menos de 1 ano",
-        optExp2: "De 1 a 3 anos",
-        optExp3: "De 3 a 5 anos",
-        optExp4: "Máis de 5 anos",
-        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a>, as <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condicións de Subscrición e Calidade B2B</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.[cite: 91]',
-        txtAlertas: "Desexo recibir alertas inmediatas por WhatsApp con novas ofertas de clientes na miña demarcación.",
-        txtLegalFooter: '<strong>Responsable:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Publicación no directorio e contacto en LIMPIAPP.<br><strong>Dereitos:</strong> Acceso, rectificación e supresión vía <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "Rexistrarme como Profesional",
-        modalTitle: "Rexistro Completado!",
-        modalDesc: "O teu perfil foi rexistrado correctamente coa promoción de lanzamento. Comezarás a recibir avisos de clientes verificados no teu WhatsApp.",
-        modalBtn: "Volver á Portada",
-        footAviso: "Aviso Legal",
-        footTerminos: "Termos e Condicións",
-        footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies"
-      },
-      eu: {
-        badgeSub: "GARBIKETA PROFESIONALEN ERREGISTROA",
-        backLink: "← Hasierara itzuli",
-        titleForm: "Profesional Independente gisa Izena Eman",
-        subForm: "Argitaratu zure profila zure eremuan, ezarri zure orduko tarifa eta jaso bezeroen eskaerak komisiorik gabe.",
-        promoText: "<strong>Promozio berezia:</strong> 2 hilabeteko doako sarbidea lehen 30 inskripzioentzat.",
-        lblNombre: "Izen-abizenak *",
-        placeholderNombre: "Zure izen osoa",
-        lblTel: "Telefonoa / WhatsApp (nazioarteko aurrizkiarekin) *",
-        placeholderTel: "+34 612 345 678",
-        lblPais: "Herrialdea *",
-        placeholderPais: "Adib. Espainia",
-        lblCiudad: "Hiria *",
-        placeholderCiudad: "Zure hiria",
-        lblCP: "Posta-kodea *",
-        placeholderCP: "Adib. 46006",
-        lblTarifa: "Orduko Tarifa (€/h) *",
-        placeholderTarifa: "Adib. 12",
-        lblExp: "Esperientzia Garbiketan *",
-        optExp1: "Urtebete baino gutxiago",
-        optExp2: "1 eta 3 urte bitartean",
-        optExp3: "3 eta 5 urte bitartean",
-        optExp4: "5 urte baino gehiago",
-        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a>, <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">B2B Harpidetza eta Kalitate Baldintzak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>[cite: 91].',
-        txtAlertas: "WhatsApp bidez berehalako alertak jaso nahi ditut nire eremuko bezero berrien eskaerekin.",
-        txtLegalFooter: '<strong>Arduraduna:</strong> Shineconnect S.L. (B26917807)<br><strong>Helburua:</strong> Direktorioan argitaratzea eta LIMPIAPPeko kontaktuen kudeaketa.<br><strong>Eskubideak:</strong> Atzitzea, zuzentzea eta ezabatzea <code>gerencia@shineconnect.app</code> bidez.',
-        btnSubmitPro: "Profesional gisa Erregistratu",
-        modalTitle: "Erregistroa Osatuta!",
-        modalDesc: "Zure profila behar bezala erregistratu da sustapenarekin. WhatsApp bidez bezero egiaztatuen jakinarazpenak jasotzen hasiko zara.",
-        modalBtn: "Hasierara Itzuli",
-        footAviso: "Legezko Oharra",
-        footTerminos: "Baldintzak eta Xedapenak",
-        footPrivacidad: "Pribatutasun Politika",
-        footCookies: "Cookie Politika"
+        lblCiudad: "Ciutat / Població *",
+        placeholderCiudad: "Ex. València, Fortaleny...",
+        lblCp: "Codi Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarifa Desitjada (€/h) *",
+        lblExp: "Experiència *",
+        optExp1: "1 a 2 anys",
+        optExp2: "3 a 5 anys",
+        optExp3: "Més de 5 anys",
+        lblAlertas: "Desitge rebre avisos instantanis de nous clients per WhatsApp i correu electrònic.",
+        lblRgpd: "He llegit i accepte els <a href='terminos.html' target='_blank'>Termes del Servei</a> i la <a href='privacidad.html' target='_blank'>Política de Privacitat</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activar Perfil Professional",
+        enviando: "Registrant perfil...",
+        exito: "Inscripció rebuda amb èxit! T'hem enviat un correu des de gerencia@limpiapp.app per activar la teua contrasenya.",
+        error: "Hi ha hagut un error en registrar la sol·licitud. Contacta a gerencia@limpiapp.app o per WhatsApp."
       },
       en: {
-        badgeSub: "CLEANING PROFESSIONALS REGISTRATION",
-        backLink: "← Back to home",
-        titleForm: "Sign up as an Independent Cleaner",
-        subForm: "List your profile in your postal code, set your own hourly rates, and receive direct client inquiries with 0% service commissions.",
-        promoText: "<strong>Special Launch Promotion:</strong> 2 months of free access for the first 30 signups.",
+        badge: "🎉 Launch: Free Premium Plan",
+        titulo: "Join as a Cleaning Professional",
+        subtitulo: "Publish your profile with zero commissions and receive direct customer requests in your area.",
         lblNombre: "Full Name *",
-        placeholderNombre: "Your full name",
-        lblTel: "Phone / WhatsApp (with country code) *",
-        placeholderTel: "+34 612 345 678",
+        placeholderNombre: "e.g. Carmen Navarro",
+        lblTelefono: "WhatsApp / Phone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Email Address *",
+        placeholderEmail: "your@email.com",
         lblPais: "Country *",
-        placeholderPais: "e.g. Spain, UK",
-        lblCiudad: "City *",
-        placeholderCiudad: "Your city",
-        lblCP: "Postal Code *",
-        placeholderCP: "e.g. 46006",
-        lblTarifa: "Hourly Rate (€/h) *",
-        placeholderTarifa: "e.g. 12",
-        lblExp: "Cleaning Experience *",
-        optExp1: "Less than 1 year",
-        optExp2: "1 to 3 years",
-        optExp3: "3 to 5 years",
-        optExp4: "More than 5 years",
-        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a>, the <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">B2B Subscription & Quality Standards</a>, and the <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>[cite: 91].',
-        txtAlertas: "I want to receive instant WhatsApp notifications with new client leads in my area[cite: 95].",
-        txtLegalFooter: '<strong>Controller:</strong> Shineconnect S.L. (B26917807)<br><strong>Purpose:</strong> Directory listing and matchmaking on LIMPIAPP.<br><strong>Rights:</strong> Access, rectification, and erasure via <code>gerencia@shineconnect.app</code>[cite: 95].',
-        btnSubmitPro: "Register as a Professional",
-        modalTitle: "Registration Completed!",
-        modalDesc: "Your profile has been successfully registered with the launch promotion. You will start receiving leads from verified clients via WhatsApp.",
-        modalBtn: "Back to Home",
-        footAviso: "Legal Notice",
-        footTerminos: "Terms & Conditions",
-        footPrivacidad: "Privacy Policy",
-        footCookies: "Cookie Policy"
+        lblCiudad: "City / Town *",
+        placeholderCiudad: "e.g. Valencia, Fortaleny...",
+        lblCp: "Postal Code *",
+        placeholderCp: "46001",
+        lblTarifa: "Desired Rate (€/h) *",
+        lblExp: "Experience *",
+        optExp1: "1 to 2 years",
+        optExp2: "3 to 5 years",
+        optExp3: "More than 5 years",
+        lblAlertas: "I want to receive instant alerts for new local clients via WhatsApp and email.",
+        lblRgpd: "I have read and agree to the <a href='terminos.html' target='_blank'>Terms of Service</a> and <a href='privacidad.html' target='_blank'>Privacy Policy</a> of SHINECONNECT S.L.",
+        btnSubmit: "Activate Professional Profile",
+        enviando: "Registering profile...",
+        exito: "Registration successful! We have sent you an email from gerencia@limpiapp.app to activate your password.",
+        error: "There was an error submitting your details. Please contact us at gerencia@limpiapp.app or via WhatsApp."
       },
       fr: {
-        badgeSub: "INSCRIPTION DES PROFESSIONNELS DU NETTOYAGE",
-        backLink: "← Retour à l'accueil",
-        titleForm: "Inscription Professionnel Indépendant",
-        subForm: "Publiez votre profil dans votre code postal, fixez vos tarifs horaires et recevez des demandes directes sans commission.",
-        promoText: "<strong>Offre de lancement :</strong> 2 mois d'accès gratuit pour les 30 premières inscriptions.",
+        badge: "🎉 Lancement: Plan Premium Gratuit",
+        titulo: "Rejoignez-nous en tant que Professionnel",
+        subtitulo: "Publiez votre profil sans commission et recevez des demandes directes de clients dans votre région.",
         lblNombre: "Nom et Prénom *",
-        placeholderNombre: "Votre nom complet",
-        lblTel: "Téléphone / WhatsApp (indicatif inclus) *",
-        placeholderTel: "+33 612 345 678",
+        placeholderNombre: "Ex. Jeanne Martin",
+        lblTelefono: "WhatsApp / Téléphone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adresse e-mail *",
+        placeholderEmail: "votre@email.com",
         lblPais: "Pays *",
-        placeholderPais: "ex. France, Espagne",
         lblCiudad: "Ville *",
-        placeholderCiudad: "Votre ville",
-        lblCP: "Code Postal *",
-        placeholderCP: "ex. 75001",
-        lblTarifa: "Tarif Horaire (€/h) *",
-        placeholderTarifa: "ex. 12",
-        lblExp: "Expérience dans le Nettoyage *",
-        optExp1: "Moins d'un an",
-        optExp2: "De 1 à 3 ans",
-        optExp3: "De 3 a 5 ans",
-        optExp4: "Plus de 5 ans",
-        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a>, les <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions d\'Abonnement B2B</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.[cite: 91]',
-        txtAlertas: "Je souhaite recevoir des alertes WhatsApp avec de nouvelles demandes de clients dans ma zone.",
-        txtLegalFooter: '<strong>Responsable :</strong> Shineconnect S.L. (B26917807)<br><strong>Finalité :</strong> Publication dans l\'annuaire et mise en relation sur LIMPIAPP.<br><strong>Droits :</strong> Accès, rectification et suppression via <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "S'inscrire comme Professionnel",
-        modalTitle: "Inscription Terminée !",
-        modalDesc: "Votre profil a été enregistré avec succès avec l'offre de lancement. Vous recevrez des alertes de clients vérifiés sur WhatsApp.",
-        modalBtn: "Retour à l'accueil",
-        footAviso: "Mentions Légales",
-        footTerminos: "Conditions Générales",
-        footPrivacidad: "Politique de Confidentialité",
-        footCookies: "Gestion des Cookies"
-      },
-      de: {
-        badgeSub: "REGISTRIERUNG FÜR REINIGUNGSKRÄFTE",
-        backLink: "← Zurück zur Startseite",
-        titleForm: "Als Dienstleister registrieren",
-        subForm: "Profil in Ihrer Postleitzahl erstellen, Stundensätze frei festlegen und direkte Kundenanfragen ohne Provisionen erhalten.",
-        promoText: "<strong>Start-Aktion:</strong> 2 Monate kostenloser Zugang für die ersten 30 Registrierungen.",
-        lblNombre: "Vor- und Nachname *",
-        placeholderNombre: "Ihr vollständiger Name",
-        lblTel: "Telefon / WhatsApp (mit Ländervorwahl) *",
-        placeholderTel: "+49 170 1234567",
-        lblPais: "Land *",
-        placeholderPais: "z.B. Deutschland",
-        lblCiudad: "Stadt *",
-        placeholderCiudad: "Ihre Stadt",
-        lblCP: "Postleitzahl *",
-        placeholderCP: "z.B. 10115",
-        lblTarifa: "Stundensatz (€/h) *",
-        placeholderTarifa: "z.B. 12",
-        lblExp: "Erfahrung in der Reinigung *",
-        optExp1: "Weniger als 1 Jahr",
-        optExp2: "1 bis 3 Jahre",
-        optExp3: "3 bis 5 Jahre",
-        optExp4: "Mehr als 5 Jahre",
-        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a>, die <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">B2B-Abonnementbedingungen</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu[cite: 91].',
-        txtAlertas: "Ich möchte sofortige WhatsApp-Benachrichtigungen über neue Kundenanfragen in meiner Nähe erhalten.",
-        txtLegalFooter: '<strong>Verantwortlicher:</strong> Shineconnect S.L. (B26917807)<br><strong>Zweck:</strong> Verzeichnis-Eintrag und Vermittlung auf LIMPIAPP.<br><strong>Rechte:</strong> Auskunft, Berichtigung und Löschung via <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "Als Dienstleister registrieren",
-        modalTitle: "Registrierung Erfolgreich!",
-        modalDesc: "Ihr Profil wurde erfolgreich mit der Start-Aktion registriert. Sie erhalten ab sofort Anfragen geprüfter Kunden per WhatsApp.",
-        modalBtn: "Zurück zur Startseite",
-        footAviso: "Impressum",
-        footTerminos: "Allgemeine Geschäftsbedingungen",
-        footPrivacidad: "Datenschutzerklärung",
-        footCookies: "Cookie-Richtlinie"
+        placeholderCiudad: "Ex. Valence...",
+        lblCp: "Code Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarif Souhaité (€/h) *",
+        lblExp: "Expérience *",
+        optExp1: "1 à 2 ans",
+        optExp2: "3 à 5 ans",
+        optExp3: "Plus de 5 ans",
+        lblAlertas: "Je souhaite recevoir des alertes instantanées de nouveaux clients par WhatsApp et e-mail.",
+        lblRgpd: "J'ai lu et j'accepte les <a href='terminos.html' target='_blank'>Conditions Générales</a> et la <a href='privacidad.html' target='_blank'>Politique de Confidentialité</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activer le Profil Professionnel",
+        enviando: "Inscription en cours...",
+        exito: "Inscription réussie ! Nous vous avons envoyé un e-mail depuis gerencia@limpiapp.app pour activer votre mot de passe.",
+        error: "Une erreur est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp."
       },
       it: {
-        badgeSub: "REGISTRAZIONE PROFESSIONISTI PULIZIE",
-        backLink: "← Torna alla home",
-        titleForm: "Iscriviti come Professionista",
-        subForm: "Pubblica il tuo profilo nel tuo CAP, decidi liberamente la tua tariffa oraria e ricevi contatti diretti senza commissioni.",
-        promoText: "<strong>Promozione lancio:</strong> 2 mesi di accesso gratuito per le prime 30 iscrizioni.",
+        badge: "🎉 Lancio: Piano Premium Gratuito",
+        titulo: "Unisciti come Professionista",
+        subtitulo: "Pubblica il tuo profilo senza commissioni e ricevi richieste dirette di clienti nella tua zona.",
         lblNombre: "Nome e Cognome *",
-        placeholderNombre: "Il tuo nome completo",
-        lblTel: "Telefono / WhatsApp (con prefisso internazionale) *",
-        placeholderTel: "+39 340 1234567",
+        placeholderNombre: "Es. Carmen Navarro",
+        lblTelefono: "WhatsApp / Telefono *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Indirizzo e-mail *",
+        placeholderEmail: "tua@email.com",
         lblPais: "Paese *",
-        placeholderPais: "Es. Italia",
         lblCiudad: "Città *",
-        placeholderCiudad: "La tua città",
-        lblCP: "CAP *",
-        placeholderCP: "Es. 00185",
-        lblTarifa: "Tariffa Oraria (€/h) *",
-        placeholderTarifa: "Es. 12",
-        lblExp: "Esperienza nel settore *",
-        optExp1: "Meno di 1 anno",
-        optExp2: "Da 1 a 3 anni",
-        optExp3: "Da 3 a 5 anni",
-        optExp4: "Più di 5 anni",
-        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a>, le <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condizioni di Abbonamento B2B</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.[cite: 91, 98]',
-        txtAlertas: "Desidero ricevere avvisi immediati su WhatsApp con nuove richieste di clienti nella mia zona.",
-        txtLegalFooter: '<strong>Titolare:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalità:</strong> Pubblicazione nella directory e contatti su LIMPIAPP.<br><strong>Diritti:</strong> Accesso, rettifica e cancellazione via <code>gerencia@shineconnect.app</code>[cite: 98].',
-        btnSubmitPro: "Registrati come Professionista[cite: 98]",
-        modalTitle: "Registrazione Completata!",
-        modalDesc: "Il tuo profilo è stato registrato con successo con la promozione di lancio. Inizierai a ricevere richieste da clienti verificati su WhatsApp.",
-        modalBtn: "Torna alla Home",
-        footAviso: "Note Legali[cite: 98]",
-        footTerminos: "Termini e Condizioni[cite: 98]",
-        footPrivacidad: "Informativa sulla Privacy[cite: 98]",
-        footCookies: "Cookie Policy[cite: 98]"
-      },
-      pt: {
-        badgeSub: "REGISTO DE PROFISSIONAIS DE LIMPEZA",
-        backLink: "← Voltar ao início",
-        titleForm: "Registo de Profissional Independente",
-        subForm: "Crie o seu perfil na sua área postal, defina os seus preços por hora e receba contactos diretos sem comissões.",
-        promoText: "<strong>Promoção especial:</strong> 2 meses de acesso gratuito para as primeiras 30 inscrições.",
-        lblNombre: "Nome e Apelidos *",
-        placeholderNombre: "O seu nome completo",
-        lblTel: "Telefone / WhatsApp (com indicativo internacional) *",
-        placeholderTel: "+351 912 345 678",
-        lblPais: "País *",
-        placeholderPais: "Ex. Portugal",
-        lblCiudad: "Cidade *",
-        placeholderCiudad: "A sua cidade",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ex. 1000-001",
-        lblTarifa: "Tarifa por Hora (€/h) *",
-        placeholderTarifa: "Ex. 12",
-        lblExp: "Experiência em Limpeza *",
-        optExp1: "Menos de 1 ano",
-        optExp2: "De 1 a 3 anos",
-        optExp3: "De 3 a 5 anos",
-        optExp4: "Mais de 5 anos",
-        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a>, as <a href="condiciones-profesionales.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Condições de Subscrição B2B</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.[cite: 91]',
-        txtAlertas: "Desejo receber alertas imediatos por WhatsApp com novas solicitações de clientes na minha zona.",
-        txtLegalFooter: '<strong>Responsável:</strong> Shineconnect S.L. (B26917807)<br><strong>Finalidade:</strong> Publicação no diretório e intermediação na LIMPIAPP.<br><strong>Direitos:</strong> Acesso, retificação e eliminação via <code>gerencia@shineconnect.app</code>.',
-        btnSubmitPro: "Registar como Profissional",
-        modalTitle: "Registo Concluído!",
-        modalDesc: "O seu perfil foi registado com sucesso com a promoção de lançamento. Começará a receber pedidos de clientes verificados no seu WhatsApp.",
-        modalBtn: "Voltar à Página Inicial",
-        footAviso: "Aviso Legal",
-        footTerminos: "Termos e Condições",
-        footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies"
+        placeholderCiudad: "Es. Valencia...",
+        lblCp: "Codice Postale *",
+        placeholderCp: "46001",
+        lblTarifa: "Tariffa Desiderata (€/h) *",
+        lblExp: "Esperienza *",
+        optExp1: "1 a 2 anni",
+        optExp2: "3 a 5 anni",
+        optExp3: "Più di 5 anni",
+        lblAlertas: "Desidero ricevere avvisi istantanei di nuovi clienti tramite WhatsApp ed e-mail.",
+        lblRgpd: "Ho letto e accetto i <a href='terminos.html' target='_blank'>Termini di Servizio</a> e l'<a href='privacidad.html' target='_blank'>Informativa sulla Privacy</a> di SHINECONNECT S.L.",
+        btnSubmit: "Attiva Profilo Professionale",
+        enviando: "Registrazione profilo...",
+        exito: "Iscrizione ricevuta con successo! Ti abbiamo inviato un'e-mail da gerencia@limpiapp.app per attivare la password.",
+        error: "Si è verificato un errore durante la registrazione. Contattaci a gerencia@limpiapp.app o tramite WhatsApp."
       }
     };
 
-    function sincronizarEnlacesLegales(lang) {
-      var enlaces = document.querySelectorAll('footer a, .legal-box a');
-      enlaces.forEach(function(a) {
-        var href = a.getAttribute('href');
-        if (href && href.includes('.html')) {
-          var base = href.split('?')[0];
-          a.setAttribute('href', base + '?lang=' + encodeURIComponent(lang));
-        }
-      });
-    }
+    let idiomaActual = 'es';
 
     function cambiarIdioma(lang) {
-      localStorage.setItem('limpiapp_lang', lang);
-
-      // Escribe la cookie global para que cualquier pestaña nueva la herede inmediatamente
-      var val = (lang === 'es') ? '' : '/es/' + lang;
-      var host = window.location.hostname;
-      var domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
+      idiomaActual = lang;
+      const t = traducciones[lang] || traducciones.es;
       
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
-      
-      if (val) {
-        document.cookie = "googtrans=" + val + "; path=/;";
-        if (domain) document.cookie = "googtrans=" + val + "; path=/; domain=" + domain + ";";
-      }
-
-      var t = dicc[lang] || dicc['es'];
-
-      var textKeys = [
-        'badgeSub', 'backLink', 'titleForm', 'subForm', 'lblNombre',
-        'lblTel', 'lblPais', 'lblCiudad', 'lblCP', 'lblTarifa',
-        'lblExp', 'optExp1', 'optExp2', 'optExp3', 'optExp4',
-        'txtAlertas', 'btnSubmitPro', 'modalTitle', 'modalDesc', 'modalBtn',
-        'footAviso', 'footTerminos', 'footPrivacidad', 'footCookies'
-      ];
-
-      for (var i = 0; i < textKeys.length; i++) {
-        var k = textKeys[i];
-        var el = document.getElementById(k);
-        if (el && t[k]) {
-          el.innerText = t[k];
-        }
-      }
-
-      var htmlKeys = ['promoText', 'txtRgpd', 'txtLegalFooter'];
-      for (var j = 0; j < htmlKeys.length; j++) {
-        var hk = htmlKeys[j];
-        var hel = document.getElementById(hk);
-        if (hel && t[hk]) {
-          hel.innerHTML = t[hk];
-        }
-      }
-
-      var pMap = {
-        'inputNombre': 'placeholderNombre',
-        'inputTel': 'placeholderTel',
-        'inputPais': 'placeholderPais',
-        'inputCiudad': 'placeholderCiudad',
-        'inputCP': 'placeholderCP',
-        'inputTarifa': 'placeholderTarifa'
-      };
-
-      for (var inputId in pMap) {
-        var inputEl = document.getElementById(inputId);
-        var pKey = pMap[inputId];
-        if (inputEl && t[pKey]) {
-          inputEl.placeholder = t[pKey];
-        }
-      }
-
-      // Propaga de forma inequívoca el parámetro ?lang= en cada enlace legal
-      sincronizarEnlacesLegales(lang);
+      document.getElementById('txtBadge').innerText = t.badge;
+      document.getElementById('txtTitulo').innerText = t.titulo;
+      document.getElementById('txtSubtitulo').innerText = t.subtitulo;
+      document.getElementById('lblNombre').innerText = t.lblNombre;
+      document.getElementById('inputNombre').placeholder = t.placeholderNombre;
+      document.getElementById('lblTelefono').innerText = t.lblTelefono;
+      document.getElementById('inputTelefono').placeholder = t.placeholderTelefono;
+      document.getElementById('lblEmail').innerText = t.lblEmail;
+      document.getElementById('inputEmail').placeholder = t.placeholderEmail;
+      document.getElementById('lblPais').innerText = t.lblPais;
+      document.getElementById('lblCiudad').innerText = t.lblCiudad;
+      document.getElementById('inputCiudad').placeholder = t.placeholderCiudad;
+      document.getElementById('lblCp').innerText = t.lblCp;
+      document.getElementById('inputCp').placeholder = t.placeholderCp;
+      document.getElementById('lblTarifa').innerText = t.lblTarifa;
+      document.getElementById('lblExp').innerText = t.lblExp;
+      document.getElementById('optExp1').innerText = t.optExp1;
+      document.getElementById('optExp2').innerText = t.optExp2;
+      document.getElementById('optExp3').innerText = t.optExp3;
+      document.getElementById('lblAlertas').innerText = t.lblAlertas;
+      document.getElementById('lblRgpd').innerHTML = t.lblRgpd;
+      document.getElementById('btnSubmit').innerText = t.btnSubmit;
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var guardado = localStorage.getItem('limpiapp_lang');
-      if (guardado && dicc[guardado]) {
-        var select = document.getElementById('langSelectPro');
-        if (select) select.value = guardado;
-        cambiarIdioma(guardado);
-      } else {
-        sincronizarEnlacesLegales('es');
-      }
-    });
+    const form = document.getElementById('formProfesional');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const feedbackBox = document.getElementById('feedbackBox');
 
-    document.addEventListener('DOMContentLoaded', function() {
-      var form = document.getElementById('proForm');
-      if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const t = traducciones[idiomaActual];
 
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
+      btnSubmit.disabled = true;
+      btnSubmit.innerText = t.enviando;
+      feedbackBox.className = 'feedback-message';
+      feedbackBox.style.display = 'none';
 
-        var btn = document.getElementById('btnSubmitPro');
-        if (btn) {
-          btn.disabled = true;
-          btn.innerText = '...';
-        }
+      const formData = new FormData(form);
 
-        var formData = new FormData(form);
-        var params = new URLSearchParams(formData);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: params,
-          mode: 'no-cors'
-        })
-        .then(function() {
-          var modal = document.getElementById('modalPro');
-          if (modal) modal.style.display = 'flex';
-          form.reset();
-        })
-        .catch(function() {
-          alert('Error de conexión.');
-        })
-        .finally(function() {
-          if (btn) {
-            btn.disabled = false;
-            var currentLang = localStorage.getItem('limpiapp_lang') || 'es';
-            var t = dicc[currentLang] || dicc['es'];
-            btn.innerText = t.btnSubmitPro;
-          }
-        });
+      fetch(form.action || window.location.href, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json().catch(() => ({ result: 'success' })))
+      .then(data => {
+        feedbackBox.innerText = t.exito;
+        feedbackBox.className = 'feedback-message success';
+        feedbackBox.style.display = 'block';
+        form.reset();
+      })
+      .catch(error => {
+        console.error('Error enviando formulario:', error);
+        feedbackBox.innerText = t.error;
+        feedbackBox.className = 'feedback-message error';
+        feedbackBox.style.display = 'block';
+      })
+      .finally(() => {
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = t.btnSubmit;
       });
     });
   </script>
