@@ -14,7 +14,6 @@
       --accent-soft: #eef6fa;
       --bg: #f8fafc;
       --card-bg: #ffffff;
-      --legal-bg: #f1f6f9;
       --text-main: #2d3748;
       --text-muted: #64748b;
       --border: #e2e8f0;
@@ -42,9 +41,9 @@
     }
 
     /* BARRA SUPERIOR DE IDIOMAS */
-    .top-bar {
+    .top-lang-bar {
       background: #ffffff;
-      padding: 10px 48px 6px;
+      padding: 10px 48px 0;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -52,65 +51,66 @@
       color: #4a5568;
     }
 
-    .top-bar span {
-      margin-right: 8px;
+    .top-lang-bar span {
+      margin-right: 6px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       font-weight: 500;
     }
 
-    .lang-select {
+    .top-lang-bar select {
       padding: 5px 10px;
       font-size: 13px;
-      border: 1px solid var(--border-input);
+      border: 1px solid var(--border);
       border-radius: 6px;
       background: #ffffff;
       color: var(--text-main);
       cursor: pointer;
       outline: none;
+      transition: border-color 0.2s;
     }
 
-    .lang-select:focus {
-      border-color: var(--border-focus);
+    .top-lang-bar select:focus {
+      border-color: var(--accent);
     }
 
-    /* CABECERA DE NAVEGACIÓN */
+    /* CABECERA PRINCIPAL IDÉNTICA A LA PORTADA */
     header {
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 10px 48px 14px;
+      padding: 10px 48px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .back-home-link {
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 14px;
+    .brand-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
+      text-decoration: none;
     }
 
-    .back-home-link:hover {
-      color: var(--accent-hover);
+    .brand-logo-header {
+      height: 50px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
+      margin-left: auto;
     }
 
     .nav-link {
       text-decoration: none;
       color: var(--primary);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 14.5px;
       padding: 8px 12px;
       transition: color 0.2s;
     }
@@ -123,7 +123,7 @@
       text-decoration: none;
       color: #3b7b9e;
       border: 1.5px solid var(--accent);
-      padding: 8px 18px;
+      padding: 9px 20px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 14px;
@@ -139,7 +139,7 @@
       text-decoration: none;
       color: #ffffff;
       background: var(--primary);
-      padding: 9px 18px;
+      padding: 10px 20px;
       border-radius: 8px;
       font-weight: 600;
       font-size: 14px;
@@ -150,7 +150,7 @@
       background: var(--primary-hover);
     }
 
-    /* ÁREA CENTRAL Y LOGOTIPO OFICIAL SOBRE EL FORMULARIO */
+    /* CONTENEDOR CENTRAL CON EL LOGO OFICIAL EN TAMAÑO GRANDE SOBRE EL FORMULARIO */
     main {
       flex: 1;
       display: flex;
@@ -160,53 +160,45 @@
       padding: 36px 20px 52px;
     }
 
-    .logo-top-wrapper {
+    .form-brand-container {
       margin-bottom: 26px;
       text-align: center;
-      background: #ffffff;
-      padding: 16px 32px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .official-corporate-logo {
-      width: 380px;
-      max-width: 85vw;
+      width: 390px;
+      max-width: 90vw;
       height: auto;
       display: block;
       margin: 0 auto;
-      object-fit: contain;
+      mix-blend-mode: multiply;
     }
 
-    .container {
+    .form-card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 740px;
+      max-width: 760px;
       border-radius: 16px;
       border: 1px solid var(--border);
       border-top: 4px solid var(--primary);
       box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.06), 0 8px 12px -6px rgba(0, 0, 0, 0.02);
-      padding: 42px 48px;
+      padding: 44px 48px;
     }
 
     @media (max-width: 768px) {
-      .top-bar {
-        padding: 8px 20px 4px;
+      .top-lang-bar {
+        padding: 8px 20px 0;
       }
       header {
-        padding: 10px 20px 12px;
+        padding: 10px 20px 14px;
       }
       .header-nav {
         display: none;
       }
-      .logo-top-wrapper {
-        padding: 12px 20px;
-      }
       .official-corporate-logo {
-        width: 280px;
+        width: 290px;
       }
-      .container {
+      .form-card {
         padding: 30px 22px;
       }
       .form-row {
@@ -215,7 +207,7 @@
       }
     }
 
-    .card-header {
+    .form-header {
       text-align: center;
       margin-bottom: 30px;
     }
@@ -232,7 +224,7 @@
       border: 1px solid #d3e7f2;
     }
 
-    .card-header h1 {
+    .form-header h1 {
       font-size: 28px;
       color: var(--primary);
       margin-bottom: 8px;
@@ -240,7 +232,7 @@
       letter-spacing: -0.3px;
     }
 
-    .card-header p {
+    .form-header p {
       font-size: 15px;
       color: var(--text-muted);
       line-height: 1.5;
@@ -289,27 +281,15 @@
       box-shadow: 0 0 0 4px var(--focus-ring);
     }
 
-    /* BLOQUE LEGAL RGPD CON FONDO CORPORATIVO SUAVE */
-    .legal-box {
-      background-color: var(--legal-bg);
-      border: 1px solid #d3e7f2;
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin: 22px 0;
-    }
-
+    /* CASILLAS RGPD (AMBAS DESMARCADAS POR DEFECTO) */
     .checkbox-group {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin-bottom: 12px;
+      margin: 18px 0;
     }
 
-    .checkbox-group:last-of-type {
-      margin-bottom: 10px;
-    }
-
-    .checkbox-group input[type="checkbox"] {
+    .checkbox-group input {
       margin-top: 3px;
       width: 17px;
       height: 17px;
@@ -321,25 +301,15 @@
     .checkbox-group label {
       font-size: 13px;
       font-weight: normal;
-      color: var(--text-main);
+      color: var(--text-muted);
       line-height: 1.45;
       cursor: pointer;
-      margin-bottom: 0;
     }
 
     .checkbox-group a {
-      color: #2b6cb0;
+      color: #3b7b9e;
       font-weight: 600;
       text-decoration: underline;
-    }
-
-    .rgpd-summary {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      border-top: 1px solid #dce8f0;
-      padding-top: 10px;
-      margin-top: 6px;
     }
 
     .btn-submit {
@@ -352,7 +322,7 @@
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      margin-top: 6px;
+      margin-top: 12px;
       transition: background 0.2s ease, transform 0.1s ease;
     }
 
@@ -393,7 +363,7 @@
       border: 1px solid #f5c6cb;
     }
 
-    /* PIE DE PÁGINA OSCURO COMPACTO CON ARMAZÓN LEGAL */
+    /* PIE DE PÁGINA OSCURO COMPACTO CON ARMAZÓN LEGAL TRADUCIBLE */
     footer {
       background-color: var(--footer-bg);
       color: var(--footer-text);
@@ -415,7 +385,8 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 14px;
+      align-items: center;
+      gap: 12px;
     }
 
     .footer-links a {
@@ -438,47 +409,56 @@
 </head>
 <body>
 
-  <!-- SELECTOR MULTILINGÜE COMPLETO: AUTONÓMICAS ESPAÑOLAS + 24 IDIOMAS UE -->
-  <div class="top-bar">
-    <span>🌐 Idioma / Language:</span>
-    <select id="selectLang" class="lang-select" onchange="aplicarIdiomaGlobal(this.value)">
-      <optgroup label="Lenguas Oficiales y Autonómicas (España)">
-        <option value="es" selected>Español</option>
+  <!-- BARRA SUPERIOR CON TODAS LAS LENGUAS AUTONÓMICAS ESPAÑOLAS Y LOS 24 IDIOMAS OFICIALES DE LA UE -->
+  <div class="top-lang-bar">
+    <span id="lblIdioma">🌐 Idioma / Language:</span>
+    <select id="selectLang" onchange="aplicarIdiomaGlobal(this.value)">
+      <optgroup label="España (Lenguas Oficiales y Autonómicas)">
+        <option value="es" selected>Español (Castellano)</option>
         <option value="ca">Valencià / Català</option>
         <option value="gl">Galego</option>
         <option value="eu">Euskara</option>
+        <option value="ast">Asturianu</option>
+        <option value="an">Aragonés</option>
+        <option value="oc">Aranés (Occitan)</option>
       </optgroup>
-      <optgroup label="Idiomas Oficiales de la Unión Europea (UE)">
+      <optgroup label="Unión Europea (24 Idiomas Oficiales)">
+        <option value="de">Deutsch</option>
         <option value="en">English</option>
         <option value="fr">Français</option>
-        <option value="de">Deutsch</option>
         <option value="it">Italiano</option>
         <option value="pt">Português</option>
         <option value="nl">Nederlands</option>
         <option value="pl">Polski</option>
         <option value="ro">Română</option>
-        <option value="sv">Svenska</option>
-        <option value="da">Dansk</option>
-        <option value="cs">Čeština</option>
-        <option value="hu">Magyar</option>
-        <option value="el">Ελληνικά</option>
         <option value="bg">Български</option>
-        <option value="fi">Suomi</option>
-        <option value="sk">Slovenčina</option>
-        <option value="hr">Hrvatski</option>
-        <option value="lt">Lietuvių</option>
-        <option value="sl">Slovenščina</option>
+        <option value="cs">Čeština</option>
+        <option value="da">Dansk</option>
+        <option value="el">Ελληνικά</option>
         <option value="et">Eesti</option>
+        <option value="fi">Suomi</option>
+        <option value="ga">Gaeilge</option>
+        <option value="hr">Hrvatski</option>
+        <option value="hu">Magyar</option>
+        <option value="lt">Lietuvių</option>
         <option value="lv">Latviešu</option>
         <option value="mt">Malti</option>
-        <option value="ga">Gaeilge</option>
+        <option value="sk">Slovenčina</option>
+        <option value="sl">Slovenščina</option>
+        <option value="sv">Svenska</option>
       </optgroup>
     </select>
   </div>
 
-  <!-- BARRA DE NAVEGACIÓN -->
+  <!-- CABECERA DE NAVEGACIÓN -->
   <header>
-    <a href="index.html" class="back-home-link legal-link" id="navVolver">&larr; Volver al Inicio</a>
+    <a href="index.html" class="brand-link legal-link" title="LIMPIAPP by Shineconnect">
+      <img id="logoHeader"
+           src="LimpiAPP Final.jpg"
+           alt="LIMPIAPP BY SHINECONNECT"
+           class="brand-logo-header"
+           onerror="this.onerror=null; this.src=document.getElementById('logoForm').src;">
+    </a>
     <nav class="header-nav">
       <a href="login.html" class="nav-link legal-link" id="navLogin">Iniciar Sesión</a>
       <a href="clientes.html" class="btn-nav-outline legal-link" id="navClientes">Buscar Servicio</a>
@@ -486,20 +466,19 @@
     </nav>
   </header>
 
-  <!-- CONTENIDO CENTRAL CON EL LOGO OFICIAL DE LIMPIAPP SOBRE EL FORMULARIO -->
+  <!-- CONTENEDOR CENTRAL: LOGOTIPO CORPORATIVO OFICIAL EN TAMAÑO GRANDE SOBRE EL FORMULARIO -->
   <main>
-    <div class="logo-top-wrapper">
-      <a href="index.html" class="legal-link" title="LIMPIAPP by Shineconnect">
-        <img id="corporateLogo"
-             src="logo.png.png"
+    <div class="form-brand-container">
+      <a href="index.html" class="legal-link" title="LIMPIAPP - Inicio">
+        <img id="logoForm"
+             src="data:image/png;base64,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"
              alt="LIMPIAPP BY SHINECONNECT"
-             class="official-corporate-logo"
-             onerror="resolverRutaLogo(this)">
+             class="official-corporate-logo">
       </a>
     </div>
 
-    <div class="container">
-      <div class="card-header">
+    <div class="form-card">
+      <div class="form-header">
         <span class="badge-promo" id="txtBadge">🎉 Lanzamiento: Plan Premium Gratuito</span>
         <h1 id="txtTitulo">Únete como Profesional</h1>
         <p id="txtSubtitulo">Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.</p>
@@ -507,6 +486,7 @@
 
       <form id="formProfesional">
         <input type="hidden" name="perfil_usuario" value="profesional">
+        <input type="hidden" name="idioma" id="inputIdiomaHidden" value="es">
 
         <div class="form-group">
           <label for="inputNombre" id="lblNombre">Nombre y Apellidos *</label>
@@ -536,7 +516,7 @@
           </div>
           <div class="form-group">
             <label for="inputCp" id="lblCp">Código Postal *</label>
-            <input type="text" name="cp" id="inputCp" required maxlength="5" placeholder="46001">
+            <input type="text" name="cp" id="inputCp" required maxlength="10" placeholder="46001">
           </div>
         </div>
 
@@ -555,25 +535,20 @@
           </div>
         </div>
 
-        <!-- ARMAZÓN DE CONSENTIMIENTO RGPD (AMBAS CASILLAS DESMARCADAS POR DEFECTO) -->
-        <div class="legal-box">
-          <div class="checkbox-group">
-            <input type="checkbox" name="alertas" id="checkAlertas" value="Si">
-            <label for="checkAlertas" id="lblAlertas">
-              Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.
-            </label>
-          </div>
+        <!-- CASILLA DE ALERTAS DESMARCADA POR DEFECTO (CUMPLIMIENTO ESTRICTO RGPD) -->
+        <div class="checkbox-group">
+          <input type="checkbox" name="alertas" id="checkAlertas" value="Si">
+          <label for="checkAlertas" id="lblAlertas">
+            Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.
+          </label>
+        </div>
 
-          <div class="checkbox-group">
-            <input type="checkbox" name="rgpd" id="checkRgpd" required>
-            <label for="checkRgpd" id="lblRgpd">
-              He leído y acepto los <a href="terminos.html" target="_blank" class="legal-link">Términos del Servicio</a> y la <a href="privacidad.html" target="_blank" class="legal-link">Política de Privacidad</a> de SHINECONNECT S.L.
-            </label>
-          </div>
-
-          <div class="rgpd-summary" id="txtRgpdInfo">
-            <strong>Información básica RGPD:</strong> Responsable: SHINECONNECT S.L. (NIF B26917807) &bull; Finalidad: Gestión del alta en el directorio profesional y conexión con clientes &bull; Derechos: Acceso, rectificación y supresión en <strong>gerencia@limpiapp.app</strong>.
-          </div>
+        <!-- CASILLA TÉRMINOS Y PRIVACIDAD DESMARCADA POR DEFECTO -->
+        <div class="checkbox-group">
+          <input type="checkbox" name="rgpd" id="checkRgpd" value="Aceptado" required>
+          <label for="checkRgpd" id="lblRgpd">
+            He leído y acepto los <a href="terminos.html" target="_blank" class="legal-link" id="linkTerminos">Términos del Servicio</a> y la <a href="privacidad.html" target="_blank" class="legal-link" id="linkPrivacidad">Política de Privacidad</a> de SHINECONNECT S.L.
+          </label>
         </div>
 
         <button type="submit" class="btn-submit" id="btnSubmit">Activar Perfil Profesional</button>
@@ -583,7 +558,7 @@
     </div>
   </main>
 
-  <!-- PIE DE PÁGINA OSCURO COMPACTO -->
+  <!-- PIE DE PÁGINA OSCURO COMPACTO CON ARMAZÓN LEGAL INTEGRAL -->
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
@@ -592,7 +567,7 @@
         <a href="privacidad.html" class="legal-link" id="footPrivacidad">Política de Privacidad</a> &bull;
         <a href="cookies.html" class="legal-link" id="footCookies">Política de Cookies</a> &bull;
         <a href="mailto:gerencia@limpiapp.app">gerencia@limpiapp.app</a> &bull;
-        <a href="https://wa.me/34711295017" target="_blank">WhatsApp (+34 711 29 50 17)</a>
+        <a href="https://wa.me/34711295017" target="_blank" id="footSoporte">WhatsApp (+34 711 29 50 17)</a>
       </div>
       <div class="footer-copy" id="footCopy">
         &copy; 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD (UE 2016/679) y LOPDGDD 3/2018.
@@ -601,491 +576,1244 @@
   </footer>
 
   <script>
-    // ENDPOINT OFICIAL DE GOOGLE APPS SCRIPT
+    // ENDPOINT CONSOLIDADO DE GOOGLE APPS SCRIPT (ENVÍO DESDE gerencia@limpiapp.app)
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec";
 
-    // RESOLUCIÓN INFALIBLE DEL ARCHIVO OFICIAL DEL LOGO (SIN REDIBUJAR)
-    const CandidatosLogo = [
-      "logo.png.png",
-      "logo.jpg.jpg",
-      "logo.png.jpg",
-      "logo.png",
-      "logo.jpg",
-      "assets/logo.png",
-      "assets/logo.jpg",
-      "LimpiAPP definitivo - C.png",
-      "LimpiAPP definitivo - C.jpg"
-    ];
-    let indiceLogo = 0;
-
-    function resolverRutaLogo(imgEl) {
-      indiceLogo++;
-      if (indiceLogo < CandidatosLogo.length) {
-        imgEl.src = CandidatosLogo[indiceLogo];
-      } else if (!imgEl.sincronizadoConIndex) {
-        imgEl.sincronizadoConIndex = true;
-        fetch("index.html")
-          .then(r => r.text())
-          .then(html => {
-            const doc = new DOMParser().parseFromString(html, "text/html");
-            const imgIndex = doc.querySelector("header img, .logo img, img[alt*='LIMPI'], img");
-            if (imgIndex && imgIndex.getAttribute("src")) {
-              imgEl.src = imgIndex.getAttribute("src");
-            }
-          })
-          .catch(() => {});
-      }
-    }
-
-    // DICCIONARIO MULTILINGÜE COMPLETO
-    const traducciones = {
+    // DICCIONARIO COMPLETO (LENGUAS AUTONÓMICAS ESPAÑOLAS + 24 IDIOMAS OFICIALES DE LA UNIÓN EUROPEA)
+    var dicc = {
       es: {
-        navVolver: "← Volver al Inicio", navLogin: "Iniciar Sesión", navClientes: "Buscar Servicio", navRegistro: "Soy Profesional",
-        badge: "🎉 Lanzamiento: Plan Premium Gratuito", titulo: "Únete como Profesional",
+        badge: "🎉 Lanzamiento: Plan Premium Gratuito",
+        titulo: "Únete como Profesional",
         subtitulo: "Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.",
-        lblNombre: "Nombre y Apellidos *", placeholderNombre: "Ej. Carmen Navarro",
-        lblTelefono: "WhatsApp / Teléfono *", placeholderTelefono: "600 000 000",
-        lblEmail: "Correo Electrónico *", placeholderEmail: "tu@email.com",
-        lblPais: "País *", lblCiudad: "Ciudad / Población *", placeholderCiudad: "Ej. Valencia, Fortaleny...",
-        lblCp: "Código Postal *", placeholderCp: "46001",
-        lblTarifa: "Tarifa Deseada (€/h) *", lblExp: "Experiencia *",
-        optExp1: "1 a 2 años", optExp2: "3 a 5 años", optExp3: "Más de 5 años",
+        lblNombre: "Nombre y Apellidos *",
+        placeholderNombre: "Ej. Carmen Navarro",
+        lblTelefono: "WhatsApp / Teléfono *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "tu@email.com",
+        lblPais: "País *",
+        valPais: "España",
+        lblCiudad: "Ciudad / Población *",
+        placeholderCiudad: "Ej. Valencia, Fortaleny...",
+        lblCp: "Código Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarifa Deseada (€/h) *",
+        lblExp: "Experiencia *",
+        optExp1: "1 a 2 años",
+        optExp2: "3 a 5 años",
+        optExp3: "Más de 5 años",
         lblAlertas: "Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.",
         lblRgpdTexto: "He leído y acepto los <a href='terminos.html' target='_blank' class='legal-link'>Términos del Servicio</a> y la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidad</a> de SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Información básica RGPD:</strong> Responsable: SHINECONNECT S.L. (NIF B26917807) &bull; Finalidad: Gestión del alta en el directorio profesional y conexión con clientes &bull; Derechos: Acceso, rectificación y supresión en <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activar Perfil Profesional", enviando: "Registrando perfil...",
+        btnSubmit: "Activar Perfil Profesional",
+        enviando: "Registrando perfil...",
         exito: "¡Inscripción recibida con éxito! Te hemos enviado un email desde gerencia@limpiapp.app para activar tu contraseña.",
         error: "Hubo un error al registrar tu solicitud. Por favor, contáctanos en gerencia@limpiapp.app o vía WhatsApp.",
-        footAviso: "Aviso Legal", footTerminos: "Términos y Condiciones", footPrivacidad: "Política de Privacidad", footCookies: "Política de Cookies"
+        navLogin: "Iniciar Sesión",
+        navClientes: "Buscar Servicio",
+        navRegistro: "Soy Profesional",
+        footAviso: "Aviso Legal",
+        footTerminos: "Términos y Condiciones",
+        footPrivacidad: "Política de Privacidad",
+        footCookies: "Política de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD (UE 2016/679) y LOPDGDD 3/2018."
       },
       ca: {
-        navVolver: "← Tornar a l'Inici", navLogin: "Iniciar Sessió", navClientes: "Cercar Servei", navRegistro: "Sóc Professional",
-        badge: "🎉 Llançament: Pla Premium Gratuït", titulo: "Uneix-te com a Professional",
+        badge: "🎉 Llançament: Pla Premium Gratuït",
+        titulo: "Uneix-te com a Professional",
         subtitulo: "Publica el teu perfil sense comissions i rep contactes directes de clients a la teua zona.",
-        lblNombre: "Nom i Cognoms *", placeholderNombre: "Ex. Carme Navarro",
-        lblTelefono: "WhatsApp / Telèfon *", placeholderTelefono: "600 000 000",
-        lblEmail: "Correu Electrònic *", placeholderEmail: "el-teu@email.com",
-        lblPais: "País *", lblCiudad: "Ciutat / Població *", placeholderCiudad: "Ex. València, Fortaleny...",
-        lblCp: "Codi Postal *", placeholderCp: "46001",
-        lblTarifa: "Tarifa Desitjada (€/h) *", lblExp: "Experiència *",
-        optExp1: "1 a 2 anys", optExp2: "3 a 5 anys", optExp3: "Més de 5 anys",
+        lblNombre: "Nom i Cognoms *",
+        placeholderNombre: "Ex. Carme Navarro",
+        lblTelefono: "WhatsApp / Telèfon *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correu Electrònic *",
+        placeholderEmail: "el-teu@email.com",
+        lblPais: "País *",
+        valPais: "Espanya",
+        lblCiudad: "Ciutat / Població *",
+        placeholderCiudad: "Ex. València, Fortaleny...",
+        lblCp: "Codi Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarifa Desitjada (€/h) *",
+        lblExp: "Experiència *",
+        optExp1: "1 a 2 anys",
+        optExp2: "3 a 5 anys",
+        optExp3: "Més de 5 anys",
         lblAlertas: "Desitge rebre avisos instantanis de nous clients per WhatsApp i correu electrònic.",
         lblRgpdTexto: "He llegit i accepte els <a href='terminos.html' target='_blank' class='legal-link'>Termes del Servei</a> i la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacitat</a> de SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Informació bàsica RGPD:</strong> Responsable: SHINECONNECT S.L. (NIF B26917807) &bull; Finalitat: Gestió de l'alta al directori professional i connexió amb clients &bull; Drets: Accés, rectificació i supressió a <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activar Perfil Professional", enviando: "Registrant perfil...",
+        btnSubmit: "Activar Perfil Professional",
+        enviando: "Registrant perfil...",
         exito: "Inscripció rebuda amb èxit! T'hem enviat un correu des de gerencia@limpiapp.app per activar la teua contrasenya.",
         error: "Hi ha hagut un error en registrar la sol·licitud. Contacta a gerencia@limpiapp.app o per WhatsApp.",
-        footAviso: "Avís Legal", footTerminos: "Termes i Condicions", footPrivacidad: "Política de Privacitat", footCookies: "Política de Cookies"
+        navLogin: "Iniciar Sessió",
+        navClientes: "Cercar Servei",
+        navRegistro: "Sóc Professional",
+        footAviso: "Avís Legal",
+        footTerminos: "Termes i Condicions",
+        footPrivacidad: "Política de Privacitat",
+        footCookies: "Política de Galetes",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tots els drets reservats. Plataforma conforme al RGPD (UE 2016/679) i LOPDGDD 3/2018."
       },
       gl: {
-        navVolver: "← Volver ao Inicio", navLogin: "Iniciar Sesión", navClientes: "Buscar Servizo", navRegistro: "Son Profesional",
-        badge: "🎉 Lanzamento: Plan Premium De balde", titulo: "Únete como Profesional",
+        badge: "🎉 Lanzamento: Plan Premium De balde",
+        titulo: "Únete como Profesional",
         subtitulo: "Publica o teu perfil sen comisións e recibe contactos directos de clientes na túa zona.",
-        lblNombre: "Nome e Apelidos *", placeholderNombre: "Ex. Carme Navarro",
-        lblTelefono: "WhatsApp / Teléfono *", placeholderTelefono: "600 000 000",
-        lblEmail: "Correo Electrónico *", placeholderEmail: "oteu@email.com",
-        lblPais: "País *", lblCiudad: "Cidade / Poboación *", placeholderCiudad: "Ex. Santiago, Vigo...",
-        lblCp: "Código Postal *", placeholderCp: "15001",
-        lblTarifa: "Tarifa Desexada (€/h) *", lblExp: "Experiencia *",
-        optExp1: "1 a 2 anos", optExp2: "3 a 5 anos", optExp3: "Máis de 5 anos",
+        lblNombre: "Nome e Apelidos *",
+        placeholderNombre: "Ex. Carme Navarro",
+        lblTelefono: "WhatsApp / Teléfono *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correo Electrónico *",
+        placeholderEmail: "oteu@email.com",
+        lblPais: "País *",
+        valPais: "España",
+        lblCiudad: "Cidade / Poboación *",
+        placeholderCiudad: "Ex. Santiago, Vigo...",
+        lblCp: "Código Postal *",
+        placeholderCp: "15001",
+        lblTarifa: "Tarifa Desexada (€/h) *",
+        lblExp: "Experiencia *",
+        optExp1: "1 a 2 anos",
+        optExp2: "3 a 5 anos",
+        optExp3: "Máis de 5 anos",
         lblAlertas: "Desexo recibir avisos instantáneos de novos clientes por WhatsApp e correo electrónico.",
         lblRgpdTexto: "Lín e acepto os <a href='terminos.html' target='_blank' class='legal-link'>Termos do Servizo</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> de SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Información básica RXPD:</strong> Responsable: SHINECONNECT S.L. (NIF B26917807) &bull; Finalidade: Xestión da alta no directorio profesional &bull; Dereitos: Acceso, rectificación e supresión en <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activar Perfil Profesional", enviando: "Rexistrando perfil...",
+        btnSubmit: "Activar Perfil Profesional",
+        enviando: "Rexistrando perfil...",
         exito: "Inscrición recibida con éxito! Enviámoste un correo dende gerencia@limpiapp.app para activar o teu contrasinal.",
         error: "Houbo un erro ao rexistrar a solicitude. Contacta con gerencia@limpiapp.app ou por WhatsApp.",
-        footAviso: "Aviso Legal", footTerminos: "Termos e Condicións", footPrivacidad: "Política de Privacidade", footCookies: "Política de Cookies"
+        navLogin: "Iniciar Sesión",
+        navClientes: "Buscar Servizo",
+        navRegistro: "Son Profesional",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condicións",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos os dereitos reservados. Plataforma conforme ao RXPD (UE 2016/679)."
       },
       eu: {
-        navVolver: "← Itzuli Hasierara", navLogin: "Hasi Saioa", navClientes: "Bilatu Zerbitzua", navRegistro: "Profesionala Naiz",
-        badge: "🎉 Abiaraztea: Doako Premium Plana", titulo: "Batu Profesional gisa",
+        badge: "🎉 Abiaraztea: Doako Premium Plana",
+        titulo: "Batu Profesional gisa",
         subtitulo: "Argitaratu zure profila komisiorik gabe eta jaso bezeroen kontaktu zuzenak zure eremuan.",
-        lblNombre: "Izen-abizenak *", placeholderNombre: "Adib. Carmen Navarro",
-        lblTelefono: "WhatsApp / Telefonoa *", placeholderTelefono: "600 000 000",
-        lblEmail: "Posta Elektronikoa *", placeholderEmail: "zure@email.com",
-        lblPais: "Herrialdea *", lblCiudad: "Hiria / Herria *", placeholderCiudad: "Adib. Bilbo, Donostia...",
-        lblCp: "Posta Kodea *", placeholderCp: "48001",
-        lblTarifa: "Nahi den Tarifa (€/o) *", lblExp: "Esperientzia *",
-        optExp1: "1 eta 2 urte artean", optExp2: "3 eta 5 urte artean", optExp3: "5 urte baino gehiago",
+        lblNombre: "Izen-abizenak *",
+        placeholderNombre: "Adib. Carmen Navarro",
+        lblTelefono: "WhatsApp / Telefonoa *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Posta Elektronikoa *",
+        placeholderEmail: "zure@email.com",
+        lblPais: "Herrialdea *",
+        valPais: "Espainia",
+        lblCiudad: "Hiria / Herria *",
+        placeholderCiudad: "Adib. Bilbo, Donostia...",
+        lblCp: "Posta Kodea *",
+        placeholderCp: "48001",
+        lblTarifa: "Nahi den Tarifa (€/o) *",
+        lblExp: "Esperientzia *",
+        optExp1: "1 eta 2 urte artean",
+        optExp2: "3 eta 5 urte artean",
+        optExp3: "5 urte baino gehiago",
         lblAlertas: "Bezero berrien berehalako abisuak jaso nahi ditut WhatsApp eta posta elektronikoz.",
         lblRgpdTexto: "<a href='terminos.html' target='_blank' class='legal-link'>Zerbitzuaren Baldintzak</a> eta SHINECONNECT S.L.ren <a href='privacidad.html' target='_blank' class='legal-link'>Pribatutasun Politika</a> irakurri eta onartzen ditut.",
-        txtRgpdInfo: "<strong>DBEO oinarrizko informazioa:</strong> Arduraduna: SHINECONNECT S.L. (IFZ B26917807) &bull; Helburua: Direktorio profesionaleko alta kudeatzea &bull; Eskubideak: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Aktibatu Profil Profesionala", enviando: "Profila erregistratzen...",
+        btnSubmit: "Aktibatu Profil Profesionala",
+        enviando: "Profila erregistratzen...",
         exito: "Izen-ematea ondo jaso da! Posta elektroniko bat bidali dizugu gerencia@limpiapp.app helbidetik pasahitza aktibatzeko.",
         error: "Errore bat gertatu da eskaera erregistratzean. Jarri harremanetan gerencia@limpiapp.app bidez edo WhatsAppez.",
-        footAviso: "Lege Oharra", footTerminos: "Baldintza Orokorrak", footPrivacidad: "Pribatutasun Politika", footCookies: "Cookie Politika"
+        navLogin: "Hasi Saioa",
+        navClientes: "Bilatu Zerbitzua",
+        navRegistro: "Profesionala Naiz",
+        footAviso: "Lege Oharra",
+        footTerminos: "Baldintza Orokorrak",
+        footPrivacidad: "Pribatutasun Politika",
+        footCookies: "Cookie Politika",
+        footCopy: "© 2026 SHINECONNECT S.L. (IFK B26917807) — LIMPIAPP. Eskubide guztiak erreserbatuta. DBEO eta DBLOO araudiekin bat."
+      },
+      ast: {
+        badge: "🎉 Llanzamientu: Plan Premium De balde",
+        titulo: "Xúnite como Profesional",
+        subtitulo: "Espubliza'l to perfil ensin comisiones y recibe contautos direutos de clientes na to zona.",
+        lblNombre: "Nome y Apellíos *",
+        placeholderNombre: "Ex. Carmen Navarro",
+        lblTelefono: "WhatsApp / Teléfonu *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Corréu Electrónicu *",
+        placeholderEmail: "eltu@email.com",
+        lblPais: "País *",
+        valPais: "España",
+        lblCiudad: "Ciudá / Población *",
+        placeholderCiudad: "Ex. Uviéu, Xixón...",
+        lblCp: "Códigu Postal *",
+        placeholderCp: "33001",
+        lblTarifa: "Tarifa Deseyada (€/h) *",
+        lblExp: "Esperiencia *",
+        optExp1: "1 a 2 años",
+        optExp2: "3 a 5 años",
+        optExp3: "Más de 5 años",
+        lblAlertas: "Deseyo recibir avisos instantáneos de nuevos clientes per WhatsApp y corréu electrónicu.",
+        lblRgpdTexto: "Lleí y aceuto los <a href='terminos.html' target='_blank' class='legal-link'>Términos del Serviciu</a> y la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidá</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activar Perfil Profesional",
+        enviando: "Rexistrando perfil...",
+        exito: "¡Inscripción recibida con éxitu! Unviámoste un corréu dende gerencia@limpiapp.app p'activar la to contraseña.",
+        error: "Hubo un fallu al rexistrar la solicitú. Contauta en gerencia@limpiapp.app o per WhatsApp.",
+        navLogin: "Aniciar Sesión",
+        navClientes: "Guetar Serviciu",
+        navRegistro: "Soi Profesional",
+        footAviso: "Avisu Llegal",
+        footTerminos: "Términos y Condiciones",
+        footPrivacidad: "Política de Privacidá",
+        footCookies: "Política de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tolos derechos reservaos."
+      },
+      an: {
+        badge: "🎉 Lanzamiento: Plan Premium Debant",
+        titulo: "Une-te como Profesional",
+        subtitulo: "Publica o tuyo perfil sin comisions y recibe contactos directos de clients en a tuya zona.",
+        lblNombre: "Nombre y Apellius *",
+        placeholderNombre: "Ex. Carmen Navarro",
+        lblTelefono: "WhatsApp / Telefono *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Correu Electronico *",
+        placeholderEmail: "tuyo@email.com",
+        lblPais: "País *",
+        valPais: "Espanya",
+        lblCiudad: "Ciudat / Población *",
+        placeholderCiudad: "Ex. Zaragoza, Uesca...",
+        lblCp: "Codigo Postal *",
+        placeholderCp: "50001",
+        lblTarifa: "Tarifa Deseyada (€/h) *",
+        lblExp: "Experiencia *",
+        optExp1: "1 a 2 anyos",
+        optExp2: "3 a 5 anyos",
+        optExp3: "Mas de 5 anyos",
+        lblAlertas: "Deseyo recibir avisos instantanios de nuevos clients per WhatsApp y correu electronico.",
+        lblRgpdTexto: "He leyiu y accepto os <a href='terminos.html' target='_blank' class='legal-link'>Termins d'o Servicio</a> y a <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Privacidat</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activar Perfil Profesional",
+        enviando: "Rechistrando perfil...",
+        exito: "¡Inscripción recibida! T'hemos ninviau un correu dende gerencia@limpiapp.app ta activar a tuya clau.",
+        error: "Bi habió una error. Contacta con gerencia@limpiapp.app u per WhatsApp.",
+        navLogin: "Encetar Sesión",
+        navClientes: "Mirar Servicio",
+        navRegistro: "Soi Profesional",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termins y Condicions",
+        footPrivacidad: "Politica de Privacidat",
+        footCookies: "Politica de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Totz os dreitos reservaus."
+      },
+      oc: {
+        badge: "🎉 Lançament: Plan Premium Gratuït",
+        titulo: "Joenh-te coma Professionau",
+        subtitulo: "Publica eth ton perhíu sense comissions e recep contactes dirèctes de clients ena tua zòna.",
+        lblNombre: "Nòm e Cognòms *",
+        placeholderNombre: "Ex. Carmen Navarro",
+        lblTelefono: "WhatsApp / Telefòn *",
+        placeholderTelefono: "600 000 000",
+        lblEmail: "Corrèu Electronic *",
+        placeholderEmail: "eth-ton@email.com",
+        lblPais: "País *",
+        valPais: "Espanha",
+        lblCiudad: "Ciutat / Poblacion *",
+        placeholderCiudad: "Ex. Vielha...",
+        lblCp: "Còdi Postau *",
+        placeholderCp: "25530",
+        lblTarifa: "Tarifa Desirada (€/o) *",
+        lblExp: "Experiéncia *",
+        optExp1: "1 a 2 ans",
+        optExp2: "3 a 5 ans",
+        optExp3: "Mès de 5 ans",
+        lblAlertas: "Desiri recéber avisi instantanèus de naui clients per WhatsApp e corrèu electronic.",
+        lblRgpdTexto: "È legigut e accèpti es <a href='terminos.html' target='_blank' class='legal-link'>Tèrmes deth Servici</a> e era <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Privacitat</a> de SHINECONNECT S.L.",
+        btnSubmit: "Activar Perhíu Professionau",
+        enviando: "En tot registrar perhíu...",
+        exito: "Inscripcion recebuda! T'auem enviat un corrèu des de gerencia@limpiapp.app entà activar eth ton mot de pas.",
+        error: "I a agut ua error. Contacta damb gerencia@limpiapp.app o per WhatsApp.",
+        navLogin: "Iniciar Session",
+        navClientes: "Cercar Servici",
+        navRegistro: "Soi Professionau",
+        footAviso: "Avís Legau",
+        footTerminos: "Tèrmes e Condicions",
+        footPrivacidad: "Politica de Privacitat",
+        footCookies: "Politica de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Toti es drets reservats."
       },
       en: {
-        navVolver: "← Back to Home", navLogin: "Log In", navClientes: "Find Service", navRegistro: "I'm a Cleaner",
-        badge: "🎉 Launch: Free Premium Plan", titulo: "Join as a Cleaning Professional",
+        badge: "🎉 Launch: Free Premium Plan",
+        titulo: "Join as a Cleaning Professional",
         subtitulo: "Publish your profile with zero commissions and receive direct customer requests in your area.",
-        lblNombre: "Full Name *", placeholderNombre: "e.g. Carmen Navarro",
-        lblTelefono: "WhatsApp / Phone *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Email Address *", placeholderEmail: "your@email.com",
-        lblPais: "Country *", lblCiudad: "City / Town *", placeholderCiudad: "e.g. Valencia, Madrid...",
-        lblCp: "Postal Code *", placeholderCp: "46001",
-        lblTarifa: "Desired Rate (€/h) *", lblExp: "Experience *",
-        optExp1: "1 to 2 years", optExp2: "3 to 5 years", optExp3: "More than 5 years",
+        lblNombre: "Full Name *",
+        placeholderNombre: "e.g. Carmen Navarro",
+        lblTelefono: "WhatsApp / Phone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Email Address *",
+        placeholderEmail: "your@email.com",
+        lblPais: "Country *",
+        valPais: "Spain",
+        lblCiudad: "City / Town *",
+        placeholderCiudad: "e.g. Valencia, Fortaleny...",
+        lblCp: "Postal Code *",
+        placeholderCp: "46001",
+        lblTarifa: "Desired Rate (€/h) *",
+        lblExp: "Experience *",
+        optExp1: "1 to 2 years",
+        optExp2: "3 to 5 years",
+        optExp3: "More than 5 years",
         lblAlertas: "I want to receive instant alerts for new local clients via WhatsApp and email.",
         lblRgpdTexto: "I have read and agree to the <a href='terminos.html' target='_blank' class='legal-link'>Terms of Service</a> and <a href='privacidad.html' target='_blank' class='legal-link'>Privacy Policy</a> of SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Basic GDPR Info:</strong> Controller: SHINECONNECT S.L. (VAT B26917807) &bull; Purpose: Professional directory registration and client connection &bull; Rights: Contact <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activate Professional Profile", enviando: "Registering profile...",
+        btnSubmit: "Activate Professional Profile",
+        enviando: "Registering profile...",
         exito: "Registration successful! We have sent you an email from gerencia@limpiapp.app to activate your password.",
         error: "There was an error submitting your details. Please contact us at gerencia@limpiapp.app or via WhatsApp.",
-        footAviso: "Legal Notice", footTerminos: "Terms & Conditions", footPrivacidad: "Privacy Policy", footCookies: "Cookie Policy"
+        navLogin: "Log In",
+        navClientes: "Find Service",
+        navRegistro: "I'm a Cleaner",
+        footAviso: "Legal Notice",
+        footTerminos: "Terms & Conditions",
+        footPrivacidad: "Privacy Policy",
+        footCookies: "Cookie Policy",
+        footCopy: "© 2026 SHINECONNECT S.L. (VAT B26917807) — LIMPIAPP. All rights reserved. GDPR (EU 2016/679) compliant platform."
       },
       fr: {
-        navVolver: "← Retour à l'accueil", navLogin: "Connexion", navClientes: "Trouver un Service", navRegistro: "Je suis Professionnel",
-        badge: "🎉 Lancement : Plan Premium Gratuit", titulo: "Rejoignez-nous en tant que Professionnel",
+        badge: "🎉 Lancement : Plan Premium Gratuit",
+        titulo: "Rejoignez-nous en tant que Professionnel",
         subtitulo: "Publiez votre profil sans commission et recevez des demandes directes de clients dans votre région.",
-        lblNombre: "Nom et Prénom *", placeholderNombre: "Ex. Jeanne Martin",
-        lblTelefono: "WhatsApp / Téléphone *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Adresse e-mail *", placeholderEmail: "votre@email.com",
-        lblPais: "Pays *", lblCiudad: "Ville *", placeholderCiudad: "Ex. Valence...",
-        lblCp: "Code Postal *", placeholderCp: "46001",
-        lblTarifa: "Tarif Souhaité (€/h) *", lblExp: "Expérience *",
-        optExp1: "1 à 2 ans", optExp2: "3 à 5 ans", optExp3: "Plus de 5 ans",
+        lblNombre: "Nom et Prénom *",
+        placeholderNombre: "Ex. Jeanne Martin",
+        lblTelefono: "WhatsApp / Téléphone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adresse e-mail *",
+        placeholderEmail: "votre@email.com",
+        lblPais: "Pays *",
+        valPais: "Espagne",
+        lblCiudad: "Ville *",
+        placeholderCiudad: "Ex. Valence...",
+        lblCp: "Code Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarif Souhaité (€/h) *",
+        lblExp: "Expérience *",
+        optExp1: "1 à 2 ans",
+        optExp2: "3 à 5 ans",
+        optExp3: "Plus de 5 ans",
         lblAlertas: "Je souhaite recevoir des alertes instantanées de nouveaux clients par WhatsApp et e-mail.",
         lblRgpdTexto: "J'ai lu et j'accepte les <a href='terminos.html' target='_blank' class='legal-link'>Conditions Générales</a> et la <a href='privacidad.html' target='_blank' class='legal-link'>Politique de Confidentialité</a> de SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Infos RGPD :</strong> Responsable : SHINECONNECT S.L. (NIF B26917807) &bull; Finalité : Gestion de l'inscription à l'annuaire professionnel &bull; Droits : <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activer le Profil Professionnel", enviando: "Inscription en cours...",
+        btnSubmit: "Activer le Profil Professionnel",
+        enviando: "Inscription en cours...",
         exito: "Inscription réussie ! Nous vous avons envoyé un e-mail depuis gerencia@limpiapp.app pour activer votre mot de passe.",
         error: "Une erreur est survenue lors de l'inscription. Contactez-nous à gerencia@limpiapp.app ou par WhatsApp.",
-        footAviso: "Mentions Légales", footTerminos: "Conditions Générales", footPrivacidad: "Confidentialité", footCookies: "Cookies"
+        navLogin: "Connexion",
+        navClientes: "Trouver un Service",
+        navRegistro: "Je suis Professionnel",
+        footAviso: "Mentions Légales",
+        footTerminos: "Conditions Générales",
+        footPrivacidad: "Confidentialité",
+        footCookies: "Politique de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tous droits réservés. Conforme au RGPD (UE 2016/679)."
       },
       de: {
-        navVolver: "← Zurück zur Startseite", navLogin: "Anmelden", navClientes: "Service Finden", navRegistro: "Ich bin Profi",
-        badge: "🎉 Startangebot: Kostenloser Premium-Plan", titulo: "Werden Sie Reinigungsprofi",
+        badge: "🎉 Startangebot: Kostenloser Premium-Plan",
+        titulo: "Werden Sie Reinigungsprofi",
         subtitulo: "Veröffentlichen Sie Ihr Profil ohne Provision und erhalten Sie direkte Kundenkontakte in Ihrer Region.",
-        lblNombre: "Vor- und Nachname *", placeholderNombre: "z.B. Maria Schmidt",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-Mail-Adresse *", placeholderEmail: "ihre@email.com",
-        lblPais: "Land *", lblCiudad: "Stadt *", placeholderCiudad: "z.B. Valencia...",
-        lblCp: "Postleitzahl *", placeholderCp: "46001",
-        lblTarifa: "Gewünschter Stundensatz (€/h) *", lblExp: "Erfahrung *",
-        optExp1: "1 bis 2 Jahre", optExp2: "3 bis 5 Jahre", optExp3: "Mehr als 5 Jahre",
+        lblNombre: "Vor- und Nachname *",
+        placeholderNombre: "z.B. Maria Schmidt",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-Mail-Adresse *",
+        placeholderEmail: "ihre@email.com",
+        lblPais: "Land *",
+        valPais: "Spanien",
+        lblCiudad: "Stadt *",
+        placeholderCiudad: "z.B. Valencia...",
+        lblCp: "Postleitzahl *",
+        placeholderCp: "46001",
+        lblTarifa: "Gewünschter Stundensatz (€/h) *",
+        lblExp: "Erfahrung *",
+        optExp1: "1 bis 2 Jahre",
+        optExp2: "3 bis 5 Jahre",
+        optExp3: "Mehr als 5 Jahre",
         lblAlertas: "Ich möchte sofortige Benachrichtigungen über neue Kunden per WhatsApp und E-Mail erhalten.",
         lblRgpdTexto: "Ich habe die <a href='terminos.html' target='_blank' class='legal-link'>Nutzungsbedingungen</a> und die <a href='privacidad.html' target='_blank' class='legal-link'>Datenschutzrichtlinie</a> von SHINECONNECT S.L. gelesen und akzeptiere sie.",
-        txtRgpdInfo: "<strong>DSGVO-Info:</strong> Verantwortlicher: SHINECONNECT S.L. (NIF B26917807) &bull; Zweck: Aufnahme in das Fachverzeichnis &bull; Rechte: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Profil Aktivieren", enviando: "Profil wird registriert...",
-        exito: "Registrierung erfolgreich! Wir haben Ihnen eine E-Mail von gerencia@limpiapp.app gesendet.",
+        btnSubmit: "Professionelles Profil Aktivieren",
+        enviando: "Profil wird registriert...",
+        exito: "Registrierung erfolgreich! Wir haben Ihnen eine E-Mail von gerencia@limpiapp.app zur Passwortaktivierung gesendet.",
         error: "Fehler bei der Registrierung. Bitte kontaktieren Sie gerencia@limpiapp.app oder nutzen Sie WhatsApp.",
-        footAviso: "Impressum", footTerminos: "AGB", footPrivacidad: "Datenschutz", footCookies: "Cookie-Richtlinie"
+        navLogin: "Anmelden",
+        navClientes: "Service Finden",
+        navRegistro: "Ich bin Profi",
+        footAviso: "Impressum",
+        footTerminos: "AGB",
+        footPrivacidad: "Datenschutz",
+        footCookies: "Cookie-Richtlinie",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle Rechte vorbehalten. DSGVO-konform."
       },
       it: {
-        navVolver: "← Torna alla Home", navLogin: "Accedi", navClientes: "Cerca Servizio", navRegistro: "Sono Professionista",
-        badge: "🎉 Lancio: Piano Premium Gratuito", titulo: "Unisciti come Professionista",
+        badge: "🎉 Lancio: Piano Premium Gratuito",
+        titulo: "Unisciti come Professionista",
         subtitulo: "Pubblica il tuo profilo senza commissioni e ricevi richieste dirette di clienti nella tua zona.",
-        lblNombre: "Nome e Cognome *", placeholderNombre: "Es. Carmen Navarro",
-        lblTelefono: "WhatsApp / Telefono *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Indirizzo e-mail *", placeholderEmail: "tua@email.com",
-        lblPais: "Paese *", lblCiudad: "Città *", placeholderCiudad: "Es. Valencia...",
-        lblCp: "Codice Postale *", placeholderCp: "46001",
-        lblTarifa: "Tariffa Desiderata (€/h) *", lblExp: "Esperienza *",
-        optExp1: "1 a 2 anni", optExp2: "3 a 5 anni", optExp3: "Più di 5 anni",
+        lblNombre: "Nome e Cognome *",
+        placeholderNombre: "Es. Carmen Navarro",
+        lblTelefono: "WhatsApp / Telefono *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Indirizzo e-mail *",
+        placeholderEmail: "tua@email.com",
+        lblPais: "Paese *",
+        valPais: "Spagna",
+        lblCiudad: "Città *",
+        placeholderCiudad: "Es. Valencia...",
+        lblCp: "Codice Postale *",
+        placeholderCp: "46001",
+        lblTarifa: "Tariffa Desiderata (€/h) *",
+        lblExp: "Esperienza *",
+        optExp1: "1 a 2 anni",
+        optExp2: "3 a 5 anni",
+        optExp3: "Più di 5 anni",
         lblAlertas: "Desidero ricevere avvisi istantanei di nuovi clienti tramite WhatsApp ed e-mail.",
         lblRgpdTexto: "Ho letto e accetto i <a href='terminos.html' target='_blank' class='legal-link'>Termini di Servizio</a> e l'<a href='privacidad.html' target='_blank' class='legal-link'>Informativa sulla Privacy</a> di SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Info GDPR:</strong> Titolare: SHINECONNECT S.L. (NIF B26917807) &bull; Finalità: Iscrizione nella directory professionale &bull; Diritti: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Attiva Profilo Professionale", enviando: "Registrazione profilo...",
+        btnSubmit: "Attiva Profilo Professionale",
+        enviando: "Registrazione profilo...",
         exito: "Iscrizione ricevuta con successo! Ti abbiamo inviato un'e-mail da gerencia@limpiapp.app per attivare la password.",
         error: "Si è verificato un errore durante la registrazione. Contattaci a gerencia@limpiapp.app o tramite WhatsApp.",
-        footAviso: "Note Legali", footTerminos: "Termini e Condizioni", footPrivacidad: "Privacy", footCookies: "Cookie"
+        navLogin: "Accedi",
+        navClientes: "Cerca Servizio",
+        navRegistro: "Sono Professionista",
+        footAviso: "Note Legali",
+        footTerminos: "Termini e Condizioni",
+        footPrivacidad: "Privacy",
+        footCookies: "Cookie Policy",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tutti i diritti riservati. Conforme al GDPR."
       },
       pt: {
-        navVolver: "← Voltar ao Início", navLogin: "Entrar", navClientes: "Buscar Serviço", navRegistro: "Sou Profissional",
-        badge: "🎉 Lançamento: Plano Premium Gratuito", titulo: "Junte-se como Profissional",
+        badge: "🎉 Lançamento: Plano Premium Gratuito",
+        titulo: "Junte-se como Profissional",
         subtitulo: "Publique o seu perfil sem comissões e receba contactos diretos de clientes na sua área.",
-        lblNombre: "Nome Completo *", placeholderNombre: "Ex. Maria Santos",
-        lblTelefono: "WhatsApp / Telefone *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Endereço de E-mail *", placeholderEmail: "seu@email.com",
-        lblPais: "País *", lblCiudad: "Cidade *", placeholderCiudad: "Ex. Valência...",
-        lblCp: "Código Postal *", placeholderCp: "46001",
-        lblTarifa: "Tarifa Desejada (€/h) *", lblExp: "Experiência *",
-        optExp1: "1 a 2 anos", optExp2: "3 a 5 anos", optExp3: "Mais de 5 anos",
+        lblNombre: "Nome Completo *",
+        placeholderNombre: "Ex. Maria Santos",
+        lblTelefono: "WhatsApp / Telefone *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Endereço de E-mail *",
+        placeholderEmail: "seu@email.com",
+        lblPais: "País *",
+        valPais: "Espanha",
+        lblCiudad: "Cidade *",
+        placeholderCiudad: "Ex. Valência...",
+        lblCp: "Código Postal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarifa Desejada (€/h) *",
+        lblExp: "Experiência *",
+        optExp1: "1 a 2 anos",
+        optExp2: "3 a 5 anos",
+        optExp3: "Mais de 5 anos",
         lblAlertas: "Desejo receber alertas instantâneos de novos clientes por WhatsApp e e-mail.",
         lblRgpdTexto: "Li e aceito os <a href='terminos.html' target='_blank' class='legal-link'>Termos de Serviço</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> da SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Info RGPD:</strong> Responsável: SHINECONNECT S.L. (NIF B26917807) &bull; Finalidade: Registo no diretório profissional &bull; Direitos: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Ativar Perfil Profissional", enviando: "A registar perfil...",
+        btnSubmit: "Ativar Perfil Profissional",
+        enviando: "A registar perfil...",
         exito: "Inscrição recebida! Enviámos um e-mail de gerencia@limpiapp.app para ativar a sua palavra-passe.",
         error: "Ocorreu um erro no registo. Por favor, contacte gerencia@limpiapp.app ou via WhatsApp.",
-        footAviso: "Aviso Legal", footTerminos: "Termos e Condições", footPrivacidad: "Privacidade", footCookies: "Cookies"
+        navLogin: "Entrar",
+        navClientes: "Procurar Serviço",
+        navRegistro: "Sou Profissional",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condições",
+        footPrivacidad: "Privacidade",
+        footCookies: "Política de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos os direitos reservados. Conforme o RGPD."
       },
       nl: {
-        navVolver: "← Terug naar Start", navLogin: "Inloggen", navClientes: "Dienst Zoeken", navRegistro: "Ik ben Professional",
-        badge: "🎉 Lancering: Gratis Premium Plan", titulo: "Word Schoonmaakprofessional",
+        badge: "🎉 Lancering: Gratis Premium Plan",
+        titulo: "Word Schoonmaakprofessional",
         subtitulo: "Publiceer uw profiel zonder commissies en ontvang directe klantaanvragen in uw omgeving.",
-        lblNombre: "Voor- en Achternaam *", placeholderNombre: "bijv. Sophie Jansen",
-        lblTelefono: "WhatsApp / Telefoon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-mailadres *", placeholderEmail: "uw@email.com",
-        lblPais: "Land *", lblCiudad: "Stad *", placeholderCiudad: "bijv. Valencia...",
-        lblCp: "Postcode *", placeholderCp: "46001",
-        lblTarifa: "Gewenst Uurtarief (€/u) *", lblExp: "Ervaring *",
-        optExp1: "1 tot 2 jaar", optExp2: "3 tot 5 jaar", optExp3: "Meer dan 5 jaar",
-        lblAlertas: "Ik wil meldingen van nieuwe klanten ontvangen via WhatsApp en e-mail.",
+        lblNombre: "Voor- en Achternaam *",
+        placeholderNombre: "bijv. Sophie Jansen",
+        lblTelefono: "WhatsApp / Telefoon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mailadres *",
+        placeholderEmail: "uw@email.com",
+        lblPais: "Land *",
+        valPais: "Spanje",
+        lblCiudad: "Stad *",
+        placeholderCiudad: "bijv. Valencia...",
+        lblCp: "Postcode *",
+        placeholderCp: "46001",
+        lblTarifa: "Gewenst Uurtarief (€/u) *",
+        lblExp: "Ervaring *",
+        optExp1: "1 tot 2 jaar",
+        optExp2: "3 tot 5 jaar",
+        optExp3: "Meer dan 5 jaar",
+        lblAlertas: "Ik wil direct meldingen van nieuwe klanten ontvangen via WhatsApp en e-mail.",
         lblRgpdTexto: "Ik ga akkoord met de <a href='terminos.html' target='_blank' class='legal-link'>Algemene Voorwaarden</a> en het <a href='privacidad.html' target='_blank' class='legal-link'>Privacybeleid</a> van SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>AVG-informatie:</strong> Verantwoordelijke: SHINECONNECT S.L. (BTW B26917807) &bull; Rechten: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Profiel Activeren", enviando: "Registreren...",
-        exito: "Registratie gelukt! We hebben u een e-mail gestuurd vanaf gerencia@limpiapp.app.",
+        btnSubmit: "Professioneel Profiel Activeren",
+        enviando: "Profiel registreren...",
+        exito: "Registratie gelukt! We hebben u een e-mail gestuurd vanaf gerencia@limpiapp.app om uw wachtwoord te activeren.",
         error: "Er is een fout opgetreden. Neem contact op via gerencia@limpiapp.app of WhatsApp.",
-        footAviso: "Juridische Kennisgeving", footTerminos: "Voorwaarden", footPrivacidad: "Privacybeleid", footCookies: "Cookiebeleid"
+        navLogin: "Inloggen",
+        navClientes: "Dienst Zoeken",
+        navRegistro: "Ik ben Professional",
+        footAviso: "Juridische Kennisgeving",
+        footTerminos: "Voorwaarden",
+        footPrivacidad: "Privacybeleid",
+        footCookies: "Cookiebeleid",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle rechten voorbehouden. AVG-conform."
       },
       pl: {
-        navVolver: "← Powrót do strony głównej", navLogin: "Zaloguj się", navClientes: "Szukaj Usługi", navRegistro: "Jestem Specjalistą",
-        badge: "🎉 Premiera: Bezpłatny Plan Premium", titulo: "Dołącz jako Profesjonalista",
+        badge: "🎉 Premiera: Bezpłatny Plan Premium",
+        titulo: "Dołącz jako Profesjonalista",
         subtitulo: "Opublikuj swój profil bez prowizji i otrzymuj bezpośrednie zapytania od klientów w Twojej okolicy.",
-        lblNombre: "Imię i Nazwisko *", placeholderNombre: "np. Anna Kowalska",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Adres E-mail *", placeholderEmail: "twoj@email.com",
-        lblPais: "Kraj *", lblCiudad: "Miasto *", placeholderCiudad: "np. Walencja...",
-        lblCp: "Kod Pocztowy *", placeholderCp: "46001",
-        lblTarifa: "Stawka Godzinowa (€/h) *", lblExp: "Doświadczenie *",
-        optExp1: "Od 1 do 2 lat", optExp2: "Od 3 do 5 lat", optExp3: "Powyżej 5 lat",
+        lblNombre: "Imię i Nazwisko *",
+        placeholderNombre: "np. Anna Kowalska",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adres E-mail *",
+        placeholderEmail: "twoj@email.com",
+        lblPais: "Kraj *",
+        valPais: "Hiszpania",
+        lblCiudad: "Miasto *",
+        placeholderCiudad: "np. Walencja...",
+        lblCp: "Kod Pocztowy *",
+        placeholderCp: "46001",
+        lblTarifa: "Stawka Godzinowa (€/h) *",
+        lblExp: "Doświadczenie *",
+        optExp1: "Od 1 do 2 lat",
+        optExp2: "Od 3 do 5 lat",
+        optExp3: "Powyżej 5 lat",
         lblAlertas: "Chcę otrzymywać natychmiastowe powiadomienia o nowych klientach przez WhatsApp i e-mail.",
         lblRgpdTexto: "Przeczytałem i akceptuję <a href='terminos.html' target='_blank' class='legal-link'>Regulamin</a> oraz <a href='privacidad.html' target='_blank' class='legal-link'>Politykę Prywatności</a> SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Informacja RODO:</strong> Administrator: SHINECONNECT S.L. (NIP B26917807) &bull; Prawa: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Aktywuj Profil", enviando: "Rejestracja...",
-        exito: "Rejestracja udana! Wysłaliśmy e-mail z adresu gerencia@limpiapp.app, aby aktywować hasło.",
+        btnSubmit: "Aktywuj Profil Profesjonalny",
+        enviando: "Rejestracja profilu...",
+        exito: "Rejestracja udana! Wysłaliśmy wiadomość z adresu gerencia@limpiapp.app, aby aktywować hasło.",
         error: "Wystąpił błąd. Skontaktuj się z nami pod adresem gerencia@limpiapp.app lub przez WhatsApp.",
-        footAviso: "Nota Prawna", footTerminos: "Regulamin", footPrivacidad: "Polityka Prywatności", footCookies: "Polityka Cookies"
+        navLogin: "Zaloguj się",
+        navClientes: "Szukaj Usługi",
+        navRegistro: "Jestem Specjalistą",
+        footAviso: "Nota Prawna",
+        footTerminos: "Regulamin",
+        footPrivacidad: "Prywatność",
+        footCookies: "Polityka Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Wszelkie prawa zastrzeżone. Zgodność z RODO."
       },
       ro: {
-        navVolver: "← Înapoi la Pagina Principală", navLogin: "Autentificare", navClientes: "Caută Serviciu", navRegistro: "Sunt Profesionist",
-        badge: "🎉 Lansare: Plan Premium Gratuit", titulo: "Alătură-te ca Profesionist",
-        subtitulo: "Publică-ți profilul fără comisioane și primește cereri directe de la clienții din zona ta.",
-        lblNombre: "Nume și Prenume *", placeholderNombre: "Ex. Elena Popescu",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Adresă de E-mail *", placeholderEmail: "emailul@tau.com",
-        lblPais: "Țară *", lblCiudad: "Oraș / Localitate *", placeholderCiudad: "Ex. Valencia...",
-        lblCp: "Cod Poștal *", placeholderCp: "46001",
-        lblTarifa: "Tarif Dorit (€/h) *", lblExp: "Experiență *",
-        optExp1: "1 - 2 ani", optExp2: "3 - 5 ani", optExp3: "Peste 5 ani",
-        lblAlertas: "Doresc să primesc alerte instantanee despre clienți noi pe WhatsApp și e-mail.",
-        lblRgpdTexto: "Am citit și accept <a href='terminos.html' target='_blank' class='legal-link'>Termenii și Condițiile</a> și <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Confidențialitate</a> ale SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Info GDPR:</strong> Operator: SHINECONNECT S.L. (CIF B26917807) &bull; Drepturi: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Activează Profilul Profesional", enviando: "Se înregistrează...",
-        exito: "Înregistrare reușită! Ți-am trimis un e-mail de la gerencia@limpiapp.app pentru activarea contului.",
-        error: "A apărut o eroare. Contactează-ne la gerencia@limpiapp.app sau pe WhatsApp.",
-        footAviso: "Aviz Juridic", footTerminos: "Termeni și Condiții", footPrivacidad: "Confidențialitate", footCookies: "Cookie-uri"
+        badge: "🎉 Lansare: Plan Premium Gratuit",
+        titulo: "Alătură-te ca Profesionist",
+        subtitulo: "Publică profilul tău fără comisioane și primește cereri directe de la clienții din zona ta.",
+        lblNombre: "Nume și Prenume *",
+        placeholderNombre: "Ex. Elena Popescu",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adresă de E-mail *",
+        placeholderEmail: "adresa@email.com",
+        lblPais: "Țară *",
+        valPais: "Spania",
+        lblCiudad: "Oraș / Localitate *",
+        placeholderCiudad: "Ex. Valencia...",
+        lblCp: "Cod Poștal *",
+        placeholderCp: "46001",
+        lblTarifa: "Tarif Dorit (€/h) *",
+        lblExp: "Experiență *",
+        optExp1: "1 până la 2 ani",
+        optExp2: "3 până la 5 ani",
+        optExp3: "Peste 5 ani",
+        lblAlertas: "Doresc să primesc alerte instantanee despre clienți noi prin WhatsApp și e-mail.",
+        lblRgpdTexto: "Am citit și accept <a href='terminos.html' target='_blank' class='legal-link'>Termenii Serviciului</a> și <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Confidențialitate</a> a SHINECONNECT S.L.",
+        btnSubmit: "Activează Profilul Profesional",
+        enviando: "Se înregistrează profilul...",
+        exito: "Înregistrare reușită! V-am trimis un e-mail de la gerencia@limpiapp.app pentru activarea parolei.",
+        error: "A apărut o eroare. Vă rugăm să ne contactați la gerencia@limpiapp.app sau pe WhatsApp.",
+        navLogin: "Autentificare",
+        navClientes: "Caută Serviciu",
+        navRegistro: "Sunt Profesionist",
+        footAviso: "Aviz Juridic",
+        footTerminos: "Termeni și Condiții",
+        footPrivacidad: "Confidențialitate",
+        footCookies: "Politica de Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Toate drepturile rezervate. Conform GDPR."
       },
-      sv: {
-        navVolver: "← Tillbaka till Startsidan", navLogin: "Logga in", navClientes: "Hitta Tjänst", navRegistro: "Jag är Proffs",
-        badge: "🎉 Lansering: Gratis Premiumplan", titulo: "Gå med som Städproffs",
-        subtitulo: "Publicera din profil utan provision och få direkta kundkontakter i ditt område.",
-        lblNombre: "Fullständigt Namn *", placeholderNombre: "t.ex. Anna Lind",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-postadress *", placeholderEmail: "din@epost.se",
-        lblPais: "Land *", lblCiudad: "Stad / Ort *", placeholderCiudad: "t.ex. Valencia...",
-        lblCp: "Postnummer *", placeholderCp: "46001",
-        lblTarifa: "Önskat Timpris (€/tim) *", lblExp: "Erfarenhet *",
-        optExp1: "1 till 2 år", optExp2: "3 till 5 år", optExp3: "Mer än 5 år",
-        lblAlertas: "Jag vill få direkta aviseringar om nya kunder via WhatsApp och e-post.",
-        lblRgpdTexto: "Jag har läst och godkänner <a href='terminos.html' target='_blank' class='legal-link'>Användarvillkoren</a> och <a href='privacidad.html' target='_blank' class='legal-link'>Integritetspolicyn</a> för SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>GDPR-info:</strong> Personuppgiftsansvarig: SHINECONNECT S.L. (B26917807) &bull; Kontakt: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Aktivera Yrkesprofil", enviando: "Registrerar profil...",
-        exito: "Registreringen lyckades! Vi har skickat ett e-postmeddelande från gerencia@limpiapp.app.",
-        error: "Ett fel uppstod. Kontakta oss på gerencia@limpiapp.app eller via WhatsApp.",
-        footAviso: "Rättsligt Meddelande", footTerminos: "Villkor", footPrivacidad: "Integritetspolicy", footCookies: "Cookies"
-      },
-      da: {
-        navVolver: "← Tilbage til Forsiden", navLogin: "Log ind", navClientes: "Find Service", navRegistro: "Jeg er Professionel",
-        badge: "🎉 Lancering: Gratis Premium-plan", titulo: "Tilmeld dig som Rengøringsprofessionel",
-        subtitulo: "Offentliggør din profil uden kommission og få direkte kundehenvendelser i dit område.",
-        lblNombre: "Fulde Navn *", placeholderNombre: "f.eks. Mette Jensen",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-mailadresse *", placeholderEmail: "din@email.dk",
-        lblPais: "Land *", lblCiudad: "By *", placeholderCiudad: "f.eks. Valencia...",
-        lblCp: "Postnummer *", placeholderCp: "46001",
-        lblTarifa: "Ønsket Timepris (€/t) *", lblExp: "Erfaring *",
-        optExp1: "1 til 2 år", optExp2: "3 til 5 år", optExp3: "Mere end 5 år",
-        lblAlertas: "Jeg ønsker at modtage straksbeskeder om nye kunder via WhatsApp og e-mail.",
-        lblRgpdTexto: "Jeg har læst og accepterer <a href='terminos.html' target='_blank' class='legal-link'>Servicevilkårene</a> og <a href='privacidad.html' target='_blank' class='legal-link'>Privatlivspolitikken</a> for SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>GDPR-info:</strong> Dataansvarlig: SHINECONNECT S.L. (B26917807) &bull; Kontakt: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Aktiver Professionel Profil", enviando: "Registrerer...",
-        exito: "Tilmelding modtaget! Vi har sendt en e-mail fra gerencia@limpiapp.app.",
-        error: "Der opstod en fejl. Kontakt gerencia@limpiapp.app eller WhatsApp.",
-        footAviso: "Juridisk Meddelelse", footTerminos: "Vilkår og Betingelser", footPrivacidad: "Privatlivspolitik", footCookies: "Cookiepolitik"
+      bg: {
+        badge: "🎉 Старт: Безплатен Премиум План",
+        titulo: "Присъединете се като Професионалист",
+        subtitulo: "Публикувайте профила си без комисионни и получавайте директни заявки от клиенти във вашия район.",
+        lblNombre: "Име и Фамилия *",
+        placeholderNombre: "напр. Мария Иванова",
+        lblTelefono: "WhatsApp / Телефон *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Имейл Адрес *",
+        placeholderEmail: "vashiat@email.com",
+        lblPais: "Държава *",
+        valPais: "Испания",
+        lblCiudad: "Град / Населено място *",
+        placeholderCiudad: "напр. Валенсия...",
+        lblCp: "Пощенски Код *",
+        placeholderCp: "46001",
+        lblTarifa: "Желана Тарифа (€/ч) *",
+        lblExp: "Опит *",
+        optExp1: "1 до 2 години",
+        optExp2: "3 до 5 години",
+        optExp3: "Над 5 години",
+        lblAlertas: "Желая да получавам незабавни известия за нови клиенти чрез WhatsApp и имейл.",
+        lblRgpdTexto: "Прочетох и приемам <a href='terminos.html' target='_blank' class='legal-link'>Общите условия</a> и <a href='privacidad.html' target='_blank' class='legal-link'>Политиката за поверителност</a> на SHINECONNECT S.L.",
+        btnSubmit: "Активирай Професионален Профил",
+        enviando: "Регистриране на профил...",
+        exito: "Регистрацията е успешна! Изпратихме ви имейл от gerencia@limpiapp.app за активиране на паролата.",
+        error: "Възникна грешка. Моля, свържете се с нас на gerencia@limpiapp.app или чрез WhatsApp.",
+        navLogin: "Вход",
+        navClientes: "Търсене на Услуга",
+        navRegistro: "Аз съм Професионалист",
+        footAviso: "Правна Информация",
+        footTerminos: "Общи Условия",
+        footPrivacidad: "Поверителност",
+        footCookies: "Бисквитки",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Всички права запазени. Съгласно GDPR."
       },
       cs: {
-        navVolver: "← Zpět na Úvod", navLogin: "Přihlásit se", navClientes: "Hledat Službu", navRegistro: "Jsem Profesionál",
-        badge: "🎉 Spuštění: Prémiový Plán Zdarma", titulo: "Přidejte se jako Profesionál",
+        badge: "🎉 Spuštění: Prémiový Plán Zdarma",
+        titulo: "Připojte se jako Profesionál",
         subtitulo: "Zveřejněte svůj profil bez provizí a získejte přímé poptávky od klientů ve vašem okolí.",
-        lblNombre: "Jméno a Příjmení *", placeholderNombre: "např. Jana Nováková",
-        lblTelefono: "WhatsApp / Telefon *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-mailová Adresa *", placeholderEmail: "vas@email.cz",
-        lblPais: "Země *", lblCiudad: "Město / Obec *", placeholderCiudad: "např. Valencie...",
-        lblCp: "PSČ *", placeholderCp: "46001",
-        lblTarifa: "Požadovaná Sazba (€/h) *", lblExp: "Zkušenosti *",
-        optExp1: "1 až 2 roky", optExp2: "3 až 5 let", optExp3: "Více než 5 let",
+        lblNombre: "Jméno a Příjmení *",
+        placeholderNombre: "např. Jana Nováková",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mailová Adresa *",
+        placeholderEmail: "vas@email.com",
+        lblPais: "Země *",
+        valPais: "Španělsko",
+        lblCiudad: "Město / Obec *",
+        placeholderCiudad: "např. Valencie...",
+        lblCp: "PSČ *",
+        placeholderCp: "46001",
+        lblTarifa: "Požadovaná Sazba (€/h) *",
+        lblExp: "Zkušenosti *",
+        optExp1: "1 až 2 roky",
+        optExp2: "3 až 5 let",
+        optExp3: "Více než 5 let",
         lblAlertas: "Chci dostávat okamžitá upozornění na nové klienty přes WhatsApp a e-mail.",
-        lblRgpdTexto: "Přečetl(a) jsem si a přijímám <a href='terminos.html' target='_blank' class='legal-link'>Obchodní podmínky</a> a <a href='privacidad.html' target='_blank' class='legal-link'>Zásady ochrany osobních údajů</a> SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Informace GDPR:</strong> Správce: SHINECONNECT S.L. (B26917807) &bull; Kontakt: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Aktivovat Profesionální Profil", enviando: "Registrace...",
-        exito: "Registrace přijata! Poslali jsme vám e-mail z adresy gerencia@limpiapp.app.",
-        error: "Došlo k chybě. Kontaktujte nás na gerencia@limpiapp.app nebo přes WhatsApp.",
-        footAviso: "Právní Upozornění", footTerminos: "Obchodní Podmínky", footPrivacidad: "Ochrana Osobních Údajů", footCookies: "Zásady Cookies"
+        lblRgpdTexto: "Přečetl(a) jsem si a přijímám <a href='terminos.html' target='_blank' class='legal-link'>Obchodní podmínky</a> a <a href='privacidad.html' target='_blank' class='legal-link'>Zásady ochrany osobních údajů</a> společnosti SHINECONNECT S.L.",
+        btnSubmit: "Aktivovat Profesionální Profil",
+        enviando: "Registrace profilu...",
+        exito: "Registrace úspěšná! Poslali jsme vám e-mail z adresy gerencia@limpiapp.app pro aktivaci hesla.",
+        error: "Při registraci došlo k chybě. Kontaktujte nás na gerencia@limpiapp.app nebo přes WhatsApp.",
+        navLogin: "Přihlášení",
+        navClientes: "Hledat Službu",
+        navRegistro: "Jsem Profesionál",
+        footAviso: "Právní Upozornění",
+        footTerminos: "Obchodní Podmínky",
+        footPrivacidad: "Ochrana Soukromí",
+        footCookies: "Zásady Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Všechna práva vyhrazena. V souladu s GDPR."
       },
-      hu: {
-        navVolver: "← Vissza a Főoldalra", navLogin: "Bejelentkezés", navClientes: "Szolgáltatás Keresése", navRegistro: "Szakember Vagyok",
-        badge: "🎉 Indulás: Ingyenes Prémium Csomag", titulo: "Csatlakozzon Szakemberként",
-        subtitulo: "Tegye közzé profilját jutalékmentesen, és fogadjon közvetlen megkereséseket a környékbeli ügyfelektől.",
-        lblNombre: "Teljes Név *", placeholderNombre: "pl. Nagy Éva",
-        lblTelefono: "WhatsApp / Telefonszám *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "E-mail Cím *", placeholderEmail: "pelda@email.hu",
-        lblPais: "Ország *", lblCiudad: "Város / Település *", placeholderCiudad: "pl. Valencia...",
-        lblCp: "Irányítószám *", placeholderCp: "46001",
-        lblTarifa: "Kívánt Óradíj (€/óra) *", lblExp: "Tapasztalat *",
-        optExp1: "1 - 2 év", optExp2: "3 - 5 év", optExp3: "Több mint 5 év",
-        lblAlertas: "Azonnali értesítéseket szeretnék kapni az új ügyfelekről WhatsApp-on és e-mailben.",
-        lblRgpdTexto: "Elolvastam és elfogadom a SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Felhasználási Feltételeit</a> és <a href='privacidad.html' target='_blank' class='legal-link'>Adatvédelmi Irányelveit</a>.",
-        txtRgpdInfo: "<strong>GDPR tájékoztató:</strong> Adatkezelő: SHINECONNECT S.L. (B26917807) &bull; Kapcsolat: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Szakmai Profil Aktiválása", enviando: "Regisztráció...",
-        exito: "Sikeres regisztráció! E-mailt küldtünk a gerencia@limpiapp.app címről.",
-        error: "Hiba történt. Lépjen kapcsolatba velünk a gerencia@limpiapp.app címen vagy WhatsApp-on.",
-        footAviso: "Jogi Nyilatkozat", footTerminos: "ÁSZF", footPrivacidad: "Adatvédelem", footCookies: "Sütik (Cookies)"
+      da: {
+        badge: "🎉 Lancering: Gratis Premium-Plan",
+        titulo: "Bliv Rengøringsprofessionel",
+        subtitulo: "Offentliggør din profil uden kommission og modtag direkte kundehenvendelser i dit område.",
+        lblNombre: "Fulde Navn *",
+        placeholderNombre: "f.eks. Mette Jensen",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mailadresse *",
+        placeholderEmail: "din@email.com",
+        lblPais: "Land *",
+        valPais: "Spanien",
+        lblCiudad: "By *",
+        placeholderCiudad: "f.eks. Valencia...",
+        lblCp: "Postnummer *",
+        placeholderCp: "46001",
+        lblTarifa: "Ønsket Timepris (€/t) *",
+        lblExp: "Erfaring *",
+        optExp1: "1 til 2 år",
+        optExp2: "3 til 5 år",
+        optExp3: "Mere end 5 år",
+        lblAlertas: "Jeg ønsker at modtage øjeblikkelige beskeder om nye kunder via WhatsApp og e-mail.",
+        lblRgpdTexto: "Jeg har læst og accepterer <a href='terminos.html' target='_blank' class='legal-link'>Servicevilkårene</a> og <a href='privacidad.html' target='_blank' class='legal-link'>Privatlivspolitikken</a> for SHINECONNECT S.L.",
+        btnSubmit: "Aktiver Professionel Profil",
+        enviando: "Registrerer profil...",
+        exito: "Registrering modtaget! Vi har sendt dig en e-mail fra gerencia@limpiapp.app for at aktivere din adgangskode.",
+        error: "Der opstod en fejl. Kontakt os venligst på gerencia@limpiapp.app eller via WhatsApp.",
+        navLogin: "Log Ind",
+        navClientes: "Find Service",
+        navRegistro: "Jeg er Fagperson",
+        footAviso: "Juridisk Meddelelse",
+        footTerminos: "Vilkår og Betingelser",
+        footPrivacidad: "Privatlivspolitik",
+        footCookies: "Cookiepolitik",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle rettigheder forbeholdes. GDPR-kompatibel."
       },
       el: {
-        navVolver: "← Επιστροφή στην Αρχική", navLogin: "Σύνδεση", navClientes: "Εύρεση Υπηρεσίας", navRegistro: "Είμαι Επαγγελματίας",
-        badge: "🎉 Έναρξη: Δωρεάν Πακέτο Premium", titulo: "Εγγραφείτε ως Επαγγελματίας",
-        subtitulo: "Δημοσιεύστε το προφίλ σας χωρίς προμήθειες και δεχτείτε απευθείας αιτήματα πελατών στην περιοχή σας.",
-        lblNombre: "Ονοματεπώνυμο *", placeholderNombre: "π.χ. Μαρία Παπαδοπούλου",
-        lblTelefono: "WhatsApp / Τηλέφωνο *", placeholderTelefono: "+34 600 000 000",
-        lblEmail: "Διεύθυνση E-mail *", placeholderEmail: "your@email.com",
-        lblPais: "Χώρα *", lblCiudad: "Πόλη *", placeholderCiudad: "π.χ. Βαλένθια...",
-        lblCp: "Ταχυδρομικός Κώδικας *", placeholderCp: "46001",
-        lblTarifa: "Επιθυμητή Χρέωση (€/ώρα) *", lblExp: "Εμπειρία *",
-        optExp1: "1 έως 2 έτη", optExp2: "3 έως 5 έτη", optExp3: "Άνω των 5 ετών",
-        lblAlertas: "Επιθυμώ να λαμβάνω άμεσες ειδοποιήσεις νέων πελατών μέσω WhatsApp και e-mail.",
-        lblRgpdTexto: "Έχω διαβάσει και αποδέχομαι τους <a href='terminos.html' target='_blank' class='legal-link'>Όρους Χρήσης</a> και την <a href='privacidad.html' target='_blank' class='legal-link'>Πολιτική Απορρήτου</a> της SHINECONNECT S.L.",
-        txtRgpdInfo: "<strong>Πληροφορίες GDPR:</strong> Υπεύθυνος: SHINECONNECT S.L. (B26917807) &bull; Επικοινωνία: <strong>gerencia@limpiapp.app</strong>.",
-        btnSubmit: "Ενεργοποίηση Επαγγελματικού Προφίλ", enviando: "Καταχώρηση...",
-        exito: "Η εγγραφή ολοκληρώθηκε! Σας στείλαμε e-mail από το gerencia@limpiapp.app.",
+        badge: "🎉 Έναρξη: Δωρεάν Πακέτο Premium",
+        titulo: "Εγγραφείτε ως Επαγγελματίας",
+        subtitulo: "Δημοσιεύστε το προφίλ σας χωρίς προμήθειες και λάβετε απευθείας αιτήματα πελατών στην περιοχή σας.",
+        lblNombre: "Ονοματεπώνυμο *",
+        placeholderNombre: "π.χ. Μαρία Παπαδοπούλου",
+        lblTelefono: "WhatsApp / Τηλέφωνο *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Διεύθυνση Email *",
+        placeholderEmail: "to-email-sas@email.com",
+        lblPais: "Χώρα *",
+        valPais: "Ισπανία",
+        lblCiudad: "Πόλη *",
+        placeholderCiudad: "π.χ. Βαλένθια...",
+        lblCp: "Ταχυδρομικός Κώδικας *",
+        placeholderCp: "46001",
+        lblTarifa: "Επιθυμητή Χρέωση (€/ώρα) *",
+        lblExp: "Εμπειρία *",
+        optExp1: "1 έως 2 έτη",
+        optExp2: "3 έως 5 έτη",
+        optExp3: "Πάνω από 5 έτη",
+        lblAlertas: "Επιθυμώ να λαμβάνω άμεσες ειδοποιήσεις για νέους πελάτες μέσω WhatsApp και email.",
+        lblRgpdTexto: "Έχω διαβάσει και αποδέχομαι τους <a href='terminos.html' target='_blank' class='legal-link'>Όρους Υπηρεσίας</a> και την <a href='privacidad.html' target='_blank' class='legal-link'>Πολιτική Απορρήτου</a> της SHINECONNECT S.L.",
+        btnSubmit: "Ενεργοποίηση Επαγγελματικού Προφίλ",
+        enviando: "Εγγραφή προφίλ...",
+        exito: "Η εγγραφή ολοκληρώθηκε! Σας στείλαμε email από το gerencia@limpiapp.app για ενεργοποίηση του κωδικού σας.",
         error: "Παρουσιάστηκε σφάλμα. Επικοινωνήστε στο gerencia@limpiapp.app ή μέσω WhatsApp.",
-        footAviso: "Νομική Σημείωση", footTerminos: "Όροι & Προϋποθέσεις", footPrivacidad: "Πολιτική Απορρήτου", footCookies: "Πολιτική Cookies"
+        navLogin: "Σύνδεση",
+        navClientes: "Εύρεση Υπηρεσίας",
+        navRegistro: "Είμαι Επαγγελματίας",
+        footAviso: "Νομική Σημείωση",
+        footTerminos: "Όροι & Προϋποθέσεις",
+        footPrivacidad: "Πολιτική Απορρήτου",
+        footCookies: "Πολιτική Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Με επιφύλαξη παντός δικαιώματος. Συμβατό με GDPR."
+      },
+      et: {
+        badge: "🎉 Esitlus: Tasuta Premium-Pakett",
+        titulo: "Liitu Puhastusspetsialistina",
+        subtitulo: "Avalda oma profiil ilma vahendustasuta ja saa otsekontakte oma piirkonna klientidelt.",
+        lblNombre: "Ees- ja Perekonnanimi *",
+        placeholderNombre: "nt Kati Tamm",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-posti Aadress *",
+        placeholderEmail: "sinu@email.com",
+        lblPais: "Riik *",
+        valPais: "Hispaania",
+        lblCiudad: "Linn / Asula *",
+        placeholderCiudad: "nt Valencia...",
+        lblCp: "Postiindeks *",
+        placeholderCp: "46001",
+        lblTarifa: "Soovitud Tunnitasu (€/h) *",
+        lblExp: "Kogemus *",
+        optExp1: "1 kuni 2 aastat",
+        optExp2: "3 kuni 5 aastat",
+        optExp3: "Üle 5 aasta",
+        lblAlertas: "Soovin saada koheseid teavitusi uutest klientidest WhatsAppi ja e-posti teel.",
+        lblRgpdTexto: "Olen tutvunud ja nõustun SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Teenusetingimuste</a> ja <a href='privacidad.html' target='_blank' class='legal-link'>Privaatsuspoliitikaga</a>.",
+        btnSubmit: "Aktiveeri Professionaalne Profiil",
+        enviando: "Profiili registreerimine...",
+        exito: "Registreerimine õnnestus! Saatsime teile parooli aktiveerimiseks e-kirja aadressilt gerencia@limpiapp.app.",
+        error: "Tekkis tõrge. Võtke meiega ühendust aadressil gerencia@limpiapp.app või WhatsAppi kaudu.",
+        navLogin: "Logi Sisse",
+        navClientes: "Otsi Teenust",
+        navRegistro: "Olen Spetsialist",
+        footAviso: "Õigusalane Teave",
+        footTerminos: "Kasutustingimused",
+        footPrivacidad: "Privaatsuspoliitika",
+        footCookies: "Küpsiste Poliitika",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Kõik õigused kaitstud. Kooskõlas GDPR-iga."
+      },
+      fi: {
+        badge: "🎉 Julkaisuetu: Ilmainen Premium-Tilaus",
+        titulo: "Liity Siivousalan Ammattilaiseksi",
+        subtitulo: "Julkaise profiilisi ilman välityspalkkioita ja vastaanota suoria yhteydenottoja alueesi asiakkailta.",
+        lblNombre: "Koko Nimi *",
+        placeholderNombre: "esim. Laura Virtanen",
+        lblTelefono: "WhatsApp / Puhelin *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Sähköpostiosoite *",
+        placeholderEmail: "sinun@email.com",
+        lblPais: "Maa *",
+        valPais: "Espanja",
+        lblCiudad: "Kaupunki / Paikkakunta *",
+        placeholderCiudad: "esim. Valencia...",
+        lblCp: "Postinumero *",
+        placeholderCp: "46001",
+        lblTarifa: "Haluttu Tuntihinta (€/h) *",
+        lblExp: "Kokemus *",
+        optExp1: "1–2 vuotta",
+        optExp2: "3–5 vuotta",
+        optExp3: "Yli 5 vuotta",
+        lblAlertas: "Haluan vastaanottaa välittömiä ilmoituksia uusista asiakkaista WhatsAppilla ja sähköpostitse.",
+        lblRgpdTexto: "Olen lukenut ja hyväksyn SHINECONNECT S.L.:n <a href='terminos.html' target='_blank' class='legal-link'>Käyttöehdot</a> ja <a href='privacidad.html' target='_blank' class='legal-link'>Tietosuojakäytännön</a>.",
+        btnSubmit: "Aktivoi Ammattilaisprofiili",
+        enviando: "Rekisteröidään profiilia...",
+        exito: "Rekisteröityminen vastaanotettu! Lähetimme sinulle sähköpostia osoitteesta gerencia@limpiapp.app salasanasi aktivoimiseksi.",
+        error: "Tapahtui virhe. Ota yhteyttä osoitteeseen gerencia@limpiapp.app tai WhatsAppissa.",
+        navLogin: "Kirjaudu Sisään",
+        navClientes: "Etsi Palvelua",
+        navRegistro: "Olen Ammattilainen",
+        footAviso: "Oikeudellinen Huomautus",
+        footTerminos: "Käyttöehdot",
+        footPrivacidad: "Tietosuoja",
+        footCookies: "Evästekäytäntö",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Kaikki oikeudet pidätetään. GDPR-yhteensopiva."
+      },
+      ga: {
+        badge: "🎉 Seoladh: Plean Préimhe Saor in Aisce",
+        titulo: "Bí Linn mar Ghairmí Glantacháin",
+        subtitulo: "Foilsigh do phróifíl gan choimisiún agus faigh teagmhálacha díreacha ó chliaint i do cheantar.",
+        lblNombre: "Ainm agus Sloinne *",
+        placeholderNombre: "m.sh. Aoife Ní Bhriain",
+        lblTelefono: "WhatsApp / Guthán *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Seoladh Ríomhphoist *",
+        placeholderEmail: "do@email.com",
+        lblPais: "Tír *",
+        valPais: "An Spáinn",
+        lblCiudad: "Cathair / Baile *",
+        placeholderCiudad: "m.sh. Valencia...",
+        lblCp: "Cód Poist *",
+        placeholderCp: "46001",
+        lblTarifa: "Ráta Inmhianaithe (€/uair) *",
+        lblExp: "Taithí *",
+        optExp1: "1 go 2 bhliain",
+        optExp2: "3 go 5 bliana",
+        optExp3: "Níos mó ná 5 bliana",
+        lblAlertas: "Ba mhaith liom foláirimh láithreacha a fháil faoi chliaint nua trí WhatsApp agus ríomhphost.",
+        lblRgpdTexto: "Léigh mé agus glacaim le <a href='terminos.html' target='_blank' class='legal-link'>Téarmaí Seirbhíse</a> agus <a href='privacidad.html' target='_blank' class='legal-link'>Polasaí Príobháideachais</a> SHINECONNECT S.L.",
+        btnSubmit: "Gníomhachtaigh Próifíl Ghairmiúil",
+        enviando: "Próifíl á clárú...",
+        exito: "Clárúchán faighte! Chuireamar ríomhphost chugat ó gerencia@limpiapp.app chun do phasfhocal a ghníomhachtú.",
+        error: "Tharla earráid. Déan teagmháil linn ag gerencia@limpiapp.app nó trí WhatsApp.",
+        navLogin: "Logáil Isteach",
+        navClientes: "Aimsigh Seirbhís",
+        navRegistro: "Is Gairmí Mé",
+        footAviso: "Fógra Dlíthiúil",
+        footTerminos: "Téarmaí agus Coinníollacha",
+        footPrivacidad: "Polasaí Príobháideachais",
+        footCookies: "Polasaí Fianán",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Gach ceart ar cosaint. Comhlíontach le GDPR."
+      },
+      hr: {
+        badge: "🎉 Lansiranje: Besplatni Premium Plan",
+        titulo: "Pridružite se kao Stručnjak",
+        subtitulo: "Objavite svoj profil bez provizije i primajte izravne upite klijenata u svom području.",
+        lblNombre: "Ime i Prezime *",
+        placeholderNombre: "npr. Ana Horvat",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Adresa E-pošte *",
+        placeholderEmail: "vas@email.com",
+        lblPais: "Država *",
+        valPais: "Španjolska",
+        lblCiudad: "Grad / Mjesto *",
+        placeholderCiudad: "npr. Valencia...",
+        lblCp: "Poštanski Broj *",
+        placeholderCp: "46001",
+        lblTarifa: "Željena Satnica (€/h) *",
+        lblExp: "Iskustvo *",
+        optExp1: "1 do 2 godine",
+        optExp2: "3 do 5 godina",
+        optExp3: "Više od 5 godina",
+        lblAlertas: "Želim primati trenutne obavijesti o novim klijentima putem WhatsAppa i e-pošte.",
+        lblRgpdTexto: "Pročitao/la sam i prihvaćam <a href='terminos.html' target='_blank' class='legal-link'>Uvjete pružanja usluge</a> i <a href='privacidad.html' target='_blank' class='legal-link'>Pravila privatnosti</a> tvrtke SHINECONNECT S.L.",
+        btnSubmit: "Aktiviraj Profesionalni Profil",
+        enviando: "Registracija profila...",
+        exito: "Registracija uspješna! Poslali smo vam e-poruku s adrese gerencia@limpiapp.app za aktivaciju lozinke.",
+        error: "Došlo je do pogreške. Obratite nam se na gerencia@limpiapp.app ili putem WhatsAppa.",
+        navLogin: "Prijava",
+        navClientes: "Pronađi Uslugu",
+        navRegistro: "Ja sam Stručnjak",
+        footAviso: "Pravna Obavijest",
+        footTerminos: "Uvjeti Korištenja",
+        footPrivacidad: "Pravila Privatnosti",
+        footCookies: "Pravila o Kolačićima",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Sva prava pridržana. Usklađeno s GDPR-om."
+      },
+      hu: {
+        badge: "🎉 Indulási Akció: Ingyenes Prémium Csomag",
+        titulo: "Csatlakozzon Szakemberként",
+        subtitulo: "Tegye közzé profilját jutalékmentesen, és fogadjon közvetlen megkereséseket a környékbeli ügyfelektől.",
+        lblNombre: "Teljes Név *",
+        placeholderNombre: "pl. Kovács Anna",
+        lblTelefono: "WhatsApp / Telefonszám *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mail-cím *",
+        placeholderEmail: "az-on@email.com",
+        lblPais: "Ország *",
+        valPais: "Spanyolország",
+        lblCiudad: "Város / Település *",
+        placeholderCiudad: "pl. Valencia...",
+        lblCp: "Irányítószám *",
+        placeholderCp: "46001",
+        lblTarifa: "Kívánt Óradíj (€/óra) *",
+        lblExp: "Tapasztalat *",
+        optExp1: "1–2 év",
+        optExp2: "3–5 év",
+        optExp3: "Több mint 5 év",
+        lblAlertas: "Azonnali értesítéseket szeretnék kapni az új ügyfelekről WhatsAppon és e-mailben.",
+        lblRgpdTexto: "Elolvastam és elfogadom a SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Szolgáltatási Feltételeit</a> és <a href='privacidad.html' target='_blank' class='legal-link'>Adatvédelmi Szabályzatát</a>.",
+        btnSubmit: "Szakmai Profil Aktiválása",
+        enviando: "Profil regisztrálása...",
+        exito: "Sikeres regisztráció! E-mailt küldtünk a gerencia@limpiapp.app címről a jelszó aktiválásához.",
+        error: "Hiba történt. Kérjük, írjon a gerencia@limpiapp.app címre vagy vegye fel velünk a kapcsolatot WhatsAppon.",
+        navLogin: "Bejelentkezés",
+        navClientes: "Szolgáltatás Keresése",
+        navRegistro: "Szakember Vagyok",
+        footAviso: "Jogi Nyilatkozat",
+        footTerminos: "Általános Szerződési Feltételek",
+        footPrivacidad: "Adatvédelem",
+        footCookies: "Cookie Szabályzat",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Minden jog fenntartva. GDPR-megfelelő."
+      },
+      lt: {
+        badge: "🎉 Pristatymas: Nemokamas Premium Planas",
+        titulo: "Prisijunkite kaip Specialistas",
+        subtitulo: "Paskelbkite savo profilį be komisinių ir gaukite tiesioginius klientų užsakymus savo vietovėje.",
+        lblNombre: "Vardas ir Pavardė *",
+        placeholderNombre: "pvz., Agnė Kazlauskienė",
+        lblTelefono: "WhatsApp / Telefonas *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "El. Pašto Adresas *",
+        placeholderEmail: "jusu@email.com",
+        lblPais: "Šalis *",
+        valPais: "Ispanija",
+        lblCiudad: "Miestas / Gyvenvietė *",
+        placeholderCiudad: "pvz., Valensija...",
+        lblCp: "Pašto Kodas *",
+        placeholderCp: "46001",
+        lblTarifa: "Pageidaujamas Tarifas (€/val.) *",
+        lblExp: "Patirtis *",
+        optExp1: "1–2 metai",
+        optExp2: "3–5 metai",
+        optExp3: "Daugiau nei 5 metai",
+        lblAlertas: "Noriu gauti momentinius pranešimus apie naujus klientus per WhatsApp ir el. paštu.",
+        lblRgpdTexto: "Perskaičiau ir sutinku su SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Paslaugų teikimo sąlygomis</a> ir <a href='privacidad.html' target='_blank' class='legal-link'>Privatumo politika</a>.",
+        btnSubmit: "Aktyvuoti Specialisto Profilį",
+        enviando: "Registruojamas profilis...",
+        exito: "Registracija sėkminga! Išsiuntėme jums el. laišką iš gerencia@limpiapp.app slaptažodžio aktyvavimui.",
+        error: "Įvyko klaida. Susisiekite su mumis gerencia@limpiapp.app arba per WhatsApp.",
+        navLogin: "Prisijungti",
+        navClientes: "Ieškoti Paslaugos",
+        navRegistro: "Esu Specialistas",
+        footAviso: "Teisinis Pranešimas",
+        footTerminos: "Taisyklės ir Sąlygos",
+        footPrivacidad: "Privatumo Politika",
+        footCookies: "Slapukų Politika",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Visos teisės saugomos. Atitinka BDAR."
+      },
+      lv: {
+        badge: "🎉 Atklāšana: Bezmaksas Premium Plāns",
+        titulo: "Pievienojieties kā Speciālists",
+        subtitulo: "Publicējiet savu profilu bez komisijas maksas un saņemiet tiešus klientu pieteikumus savā apkaimē.",
+        lblNombre: "Vārds un Uzvārds *",
+        placeholderNombre: "piem., Līga Bērziņa",
+        lblTelefono: "WhatsApp / Tālrunis *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-pasta Adrese *",
+        placeholderEmail: "jusu@email.com",
+        lblPais: "Valsts *",
+        valPais: "Spānija",
+        lblCiudad: "Pilsēta / Apdzīvota vieta *",
+        placeholderCiudad: "piem., Valensija...",
+        lblCp: "Pasta Indekss *",
+        placeholderCp: "46001",
+        lblTarifa: "Vēlamā Likme (€/st.) *",
+        lblExp: "Pieredze *",
+        optExp1: "1 līdz 2 gadi",
+        optExp2: "3 līdz 5 gadi",
+        optExp3: "Vairāk nekā 5 gadi",
+        lblAlertas: "Vēlos saņemt tūlītējus paziņojumus par jauniem klientiem caur WhatsApp un e-pastu.",
+        lblRgpdTexto: "Esmu izlasījis(-usi) un piekrītu SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Pakalpojumu sniegšanas noteikumiem</a> un <a href='privacidad.html' target='_blank' class='legal-link'>Privātuma politikai</a>.",
+        btnSubmit: "Aktivizēt Profesionālo Profilu",
+        enviando: "Reģistrē profilu...",
+        exito: "Reģistrācija saņemta! Mēs nosūtījām jums e-pastu no gerencia@limpiapp.app paroles aktivizēšanai.",
+        error: "Radās kļūda. Lūdzu, sazinieties ar mums pa gerencia@limpiapp.app vai WhatsApp.",
+        navLogin: "Pieslēgties",
+        navClientes: "Meklēt Pakalpojumu",
+        navRegistro: "Esmu Speciālists",
+        footAviso: "Juridisks Paziņojums",
+        footTerminos: "Noteikumi un Nosacījumi",
+        footPrivacidad: "Privātuma Politika",
+        footCookies: "Sīkdatņu Politika",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Visas tiesības aizsargātas. Atbilst VDAR."
+      },
+      mt: {
+        badge: "🎉 Tnedija: Pjan Premium B'Xejn",
+        titulo: "Ingħaqad bħala Professjonist",
+        subtitulo: "Ippubblika l-profil tiegħek mingħajr kummissjonijiet u irċievi kuntatti diretti minn klijenti fiż-żona tiegħek.",
+        lblNombre: "Isem u Kunjom *",
+        placeholderNombre: "eż. Maria Borg",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "Indirizz tal-Email *",
+        placeholderEmail: "tieghek@email.com",
+        lblPais: "Pajjiż *",
+        valPais: "Spanja",
+        lblCiudad: "Belt / Lokalità *",
+        placeholderCiudad: "eż. Valencia...",
+        lblCp: "Kodiċi Postali *",
+        placeholderCp: "46001",
+        lblTarifa: "Rata Mixtieqa (€/siegħa) *",
+        lblExp: "Esperjenza *",
+        optExp1: "1 sa 2 snin",
+        optExp2: "3 sa 5 snin",
+        optExp3: "Aktar minn 5 snin",
+        lblAlertas: "Nixtieq nirċievi avviżi immedjati ta' klijenti ġodda permezz ta' WhatsApp u email.",
+        lblRgpdTexto: "Qrajt u naqbel mat-<a href='terminos.html' target='_blank' class='legal-link'>Termini tas-Servizz</a> u l-<a href='privacidad.html' target='_blank' class='legal-link'>Politika tal-Privatezza</a> ta' SHINECONNECT S.L.",
+        btnSubmit: "Attiva l-Profil Professjonali",
+        enviando: "Qed jiġi rreġistrat il-profil...",
+        exito: "Ir-reġistrazzjoni waslet! Bgħatnielek email minn gerencia@limpiapp.app biex tattiva l-password tiegħek.",
+        error: "Seħħ żball. Jekk jogħġbok ikkuntattjana fuq gerencia@limpiapp.app jew permezz ta' WhatsApp.",
+        navLogin: "Idħol",
+        navClientes: "Fittex Servizz",
+        navRegistro: "Jien Professjonist",
+        footAviso: "Avviż Legali",
+        footTerminos: "Termini u Kundizzjonijiet",
+        footPrivacidad: "Politika tal-Privatezza",
+        footCookies: "Politika tal-Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Id-drittijiet kollha riżervati. Konformi mal-GDPR."
+      },
+      sk: {
+        badge: "🎉 Spustenie: Prémiový Plán Zadarmo",
+        titulo: "Pridajte sa ako Profesionál",
+        subtitulo: "Zverejnite svoj profil bez provízií a získajte priame kontakty od klientov vo vašom okolí.",
+        lblNombre: "Meno a Priezvisko *",
+        placeholderNombre: "napr. Jana Kováčová",
+        lblTelefono: "WhatsApp / Telefón *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-mailová Adresa *",
+        placeholderEmail: "vas@email.com",
+        lblPais: "Krajina *",
+        valPais: "Španielsko",
+        lblCiudad: "Mesto / Obec *",
+        placeholderCiudad: "napr. Valencia...",
+        lblCp: "PSČ *",
+        placeholderCp: "46001",
+        lblTarifa: "Požadovaná Sadzba (€/h) *",
+        lblExp: "Skúsenosti *",
+        optExp1: "1 až 2 roky",
+        optExp2: "3 až 5 rokov",
+        optExp3: "Viac ako 5 rokov",
+        lblAlertas: "Chcem dostávať okamžité upozornenia na nových klientov cez WhatsApp a e-mail.",
+        lblRgpdTexto: "Prečítal(a) som si a súhlasím s <a href='terminos.html' target='_blank' class='legal-link'>Obchodnými podmienkami</a> a <a href='privacidad.html' target='_blank' class='legal-link'>Zásadami ochrany osobných údajov</a> spoločnosti SHINECONNECT S.L.",
+        btnSubmit: "Aktivovať Profesionálny Profil",
+        enviando: "Registrácia profilu...",
+        exito: "Registrácia úspešná! Poslali sme vám e-mail z adresy gerencia@limpiapp.app na aktiváciu hesla.",
+        error: "Vyskytla sa chyba. Kontaktujte nás na gerencia@limpiapp.app alebo cez WhatsApp.",
+        navLogin: "Prihlásiť sa",
+        navClientes: "Hľadať Službu",
+        navRegistro: "Som Profesionál",
+        footAviso: "Právne Upozornenie",
+        footTerminos: "Obchodné Podmienky",
+        footPrivacidad: "Ochrana Súkromia",
+        footCookies: "Zásady Cookies",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Všetky práva vyhradené. V súlade s GDPR."
+      },
+      sl: {
+        badge: "🎉 Otvoritev: Brezplačni Paket Premium",
+        titulo: "Pridružite se kot Strokovnjak",
+        subtitulo: "Objavite svoj profil brez provizij in prejemajte neposredna povpraševanja strank na svojem območju.",
+        lblNombre: "Ime in Priimek *",
+        placeholderNombre: "npr. Maja Novak",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-poštni Naslov *",
+        placeholderEmail: "vas@email.com",
+        lblPais: "Država *",
+        valPais: "Španija",
+        lblCiudad: "Mesto / Kraj *",
+        placeholderCiudad: "npr. Valencia...",
+        lblCp: "Poštna Številka *",
+        placeholderCp: "46001",
+        lblTarifa: "Želena Postavka (€/uro) *",
+        lblExp: "Izkušnje *",
+        optExp1: "1 do 2 leti",
+        optExp2: "3 do 5 let",
+        optExp3: "Več kot 5 let",
+        lblAlertas: "Želim prejemati takojšnja obvestila o novih strankah prek WhatsAppa in e-pošte.",
+        lblRgpdTexto: "Prebral sem in sprejemam <a href='terminos.html' target='_blank' class='legal-link'>Pogoje uporabe</a> ter <a href='privacidad.html' target='_blank' class='legal-link'>Politiko zasebnosti</a> družbe SHINECONNECT S.L.",
+        btnSubmit: "Aktiviraj Poklicni Profil",
+        enviando: "Registracija profila...",
+        exito: "Registracija uspešna! Poslali smo vam e-pošto z naslova gerencia@limpiapp.app za aktivacijo gesla.",
+        error: "Prišlo je do napake. Pišite nam na gerencia@limpiapp.app ali prek WhatsAppa.",
+        navLogin: "Prijava",
+        navClientes: "Poišči Storitev",
+        navRegistro: "Sem Strokovnjak",
+        footAviso: "Pravno Obvestilo",
+        footTerminos: "Pogoji Uporabe",
+        footPrivacidad: "Politika Zasebnosti",
+        footCookies: "Politika Piškotkov",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Vse pravice pridržane. Skladno z GDPR."
+      },
+      sv: {
+        badge: "🎉 Lansering: Gratis Premium-Plan",
+        titulo: "Gå med som Städproffs",
+        subtitulo: "Publicera din profil utan provision och få direkta kundförfrågningar i ditt område.",
+        lblNombre: "För- och Efternamn *",
+        placeholderNombre: "t.ex. Anna Andersson",
+        lblTelefono: "WhatsApp / Telefon *",
+        placeholderTelefono: "+34 600 000 000",
+        lblEmail: "E-postadress *",
+        placeholderEmail: "din@email.com",
+        lblPais: "Land *",
+        valPais: "Spanien",
+        lblCiudad: "Stad / Ort *",
+        placeholderCiudad: "t.ex. Valencia...",
+        lblCp: "Postnummer *",
+        placeholderCp: "46001",
+        lblTarifa: "Önskat Timpris (€/tim) *",
+        lblExp: "Erfarenhet *",
+        optExp1: "1 till 2 år",
+        optExp2: "3 till 5 år",
+        optExp3: "Mer än 5 år",
+        lblAlertas: "Jag vill få omedelbara aviseringar om nya kunder via WhatsApp och e-post.",
+        lblRgpdTexto: "Jag har läst och godkänner <a href='terminos.html' target='_blank' class='legal-link'>Användarvillkoren</a> och <a href='privacidad.html' target='_blank' class='legal-link'>Integritetspolicyn</a> för SHINECONNECT S.L.",
+        btnSubmit: "Aktivera Professionell Profil",
+        enviando: "Registrerar profil...",
+        exito: "Registrering mottagen! Vi har skickat ett e-postmeddelande från gerencia@limpiapp.app för att aktivera ditt lösenord.",
+        error: "Ett fel uppstod. Kontakta oss på gerencia@limpiapp.app eller via WhatsApp.",
+        navLogin: "Logga In",
+        navClientes: "Hitta Tjänst",
+        navRegistro: "Jag är Proffs",
+        footAviso: "Rättsligt Meddelande",
+        footTerminos: "Allmänna Villkor",
+        footPrivacidad: "Integritetspolicy",
+        footCookies: "Cookiepolicy",
+        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alla rättigheter förbehållna. GDPR-kompatibel."
       }
     };
 
-    // Extensión automática a los restantes idiomas oficiales de la UE (bg, fi, sk, hr, lt, sl, et, lv, mt, ga)
-    ["bg", "fi", "sk", "hr", "lt", "sl", "et", "lv", "mt", "ga"].forEach(code => {
-      if (!traducciones[code]) traducciones[code] = traducciones.en;
-    });
-
-    let idiomaActual = "es";
+    var traducciones = dicc;
+    var idiomaActual = 'es';
 
     function aplicarIdiomaGlobal(lang) {
-      if (!lang || !traducciones[lang]) lang = "es";
+      if (!lang || !dicc[lang]) lang = 'es';
       idiomaActual = lang;
 
-      // 1. Guardar preferencia en todas las claves de almacenamiento local de la web
+      // 1. Guardar en almacenamiento local con todas las claves de la plataforma
       try {
-        localStorage.setItem("limpiapp_lang", lang);
-        localStorage.setItem("lang", lang);
-        localStorage.setItem("preferred_lang", lang);
+        localStorage.setItem('limpiapp_lang', lang);
+        localStorage.setItem('lang', lang);
+        localStorage.setItem('preferred_lang', lang);
       } catch (e) {}
 
-      // 2. Actualizar URL activa sin recargar para mantener coherencia de estado
-      try {
-        const urlActual = new URL(window.location.href);
-        urlActual.searchParams.set("lang", lang);
-        window.history.replaceState({}, "", urlActual.toString());
-      } catch (e) {}
+      // 2. Actualizar atributo lang del documento y campo oculto del formulario
+      document.documentElement.lang = lang;
+      const hiddenLang = document.getElementById('inputIdiomaHidden');
+      if (hiddenLang) hiddenLang.value = lang;
 
-      // 3. Sincronizar el selector
-      const sel = document.getElementById("selectLang");
+      // 3. Sincronizar desplegable superior
+      const sel = document.getElementById('selectLang');
       if (sel && sel.value !== lang) sel.value = lang;
 
-      // 4. Aplicar traducciones al formulario y navegación
-      const t = traducciones[lang] || traducciones.es;
-      document.getElementById("navVolver").innerText = t.navVolver;
-      document.getElementById("navLogin").innerText = t.navLogin;
-      document.getElementById("navClientes").innerText = t.navClientes;
-      document.getElementById("navRegistro").innerText = t.navRegistro;
+      // 4. Traducir textos del formulario, cabecera y armazón legal
+      const t = dicc[lang] || dicc.es;
+      document.getElementById('txtBadge').innerText = t.badge;
+      document.getElementById('txtTitulo').innerText = t.titulo;
+      document.getElementById('txtSubtitulo').innerText = t.subtitulo;
+      document.getElementById('lblNombre').innerText = t.lblNombre;
+      document.getElementById('inputNombre').placeholder = t.placeholderNombre;
+      document.getElementById('lblTelefono').innerText = t.lblTelefono;
+      document.getElementById('inputTelefono').placeholder = t.placeholderTelefono;
+      document.getElementById('lblEmail').innerText = t.lblEmail;
+      document.getElementById('inputEmail').placeholder = t.placeholderEmail;
+      document.getElementById('lblPais').innerText = t.lblPais;
+      if (t.valPais && (!document.getElementById('inputPais').dataset.userEdited)) {
+        document.getElementById('inputPais').value = t.valPais;
+      }
+      document.getElementById('lblCiudad').innerText = t.lblCiudad;
+      document.getElementById('inputCiudad').placeholder = t.placeholderCiudad;
+      document.getElementById('lblCp').innerText = t.lblCp;
+      document.getElementById('inputCp').placeholder = t.placeholderCp;
+      document.getElementById('lblTarifa').innerText = t.lblTarifa;
+      document.getElementById('lblExp').innerText = t.lblExp;
+      document.getElementById('optExp1').innerText = t.optExp1;
+      document.getElementById('optExp2').innerText = t.optExp2;
+      document.getElementById('optExp3').innerText = t.optExp3;
+      document.getElementById('lblAlertas').innerText = t.lblAlertas;
+      document.getElementById('lblRgpd').innerHTML = t.lblRgpdTexto;
+      document.getElementById('btnSubmit').innerText = t.btnSubmit;
 
-      document.getElementById("txtBadge").innerText = t.badge;
-      document.getElementById("txtTitulo").innerText = t.titulo;
-      document.getElementById("txtSubtitulo").innerText = t.subtitulo;
-      document.getElementById("lblNombre").innerText = t.lblNombre;
-      document.getElementById("inputNombre").placeholder = t.placeholderNombre;
-      document.getElementById("lblTelefono").innerText = t.lblTelefono;
-      document.getElementById("inputTelefono").placeholder = t.placeholderTelefono;
-      document.getElementById("lblEmail").innerText = t.lblEmail;
-      document.getElementById("inputEmail").placeholder = t.placeholderEmail;
-      document.getElementById("lblPais").innerText = t.lblPais;
-      document.getElementById("lblCiudad").innerText = t.lblCiudad;
-      document.getElementById("inputCiudad").placeholder = t.placeholderCiudad;
-      document.getElementById("lblCp").innerText = t.lblCp;
-      document.getElementById("inputCp").placeholder = t.placeholderCp;
-      document.getElementById("lblTarifa").innerText = t.lblTarifa;
-      document.getElementById("lblExp").innerText = t.lblExp;
-      document.getElementById("optExp1").innerText = t.optExp1;
-      document.getElementById("optExp2").innerText = t.optExp2;
-      document.getElementById("optExp3").innerText = t.optExp3;
-      document.getElementById("lblAlertas").innerText = t.lblAlertas;
-      document.getElementById("lblRgpd").innerHTML = t.lblRgpdTexto;
-      document.getElementById("txtRgpdInfo").innerHTML = t.txtRgpdInfo;
-      document.getElementById("btnSubmit").innerText = t.btnSubmit;
+      if (document.getElementById('navLogin')) document.getElementById('navLogin').innerText = t.navLogin;
+      if (document.getElementById('navClientes')) document.getElementById('navClientes').innerText = t.navClientes;
+      if (document.getElementById('navRegistro')) document.getElementById('navRegistro').innerText = t.navRegistro;
 
-      document.getElementById("footAviso").innerText = t.footAviso;
-      document.getElementById("footTerminos").innerText = t.footTerminos;
-      document.getElementById("footPrivacidad").innerText = t.footPrivacidad;
-      document.getElementById("footCookies").innerText = t.footCookies;
+      if (document.getElementById('footAviso') && t.footAviso) document.getElementById('footAviso').innerText = t.footAviso;
+      if (document.getElementById('footTerminos') && t.footTerminos) document.getElementById('footTerminos').innerText = t.footTerminos;
+      if (document.getElementById('footPrivacidad') && t.footPrivacidad) document.getElementById('footPrivacidad').innerText = t.footPrivacidad;
+      if (document.getElementById('footCookies') && t.footCookies) document.getElementById('footCookies').innerText = t.footCookies;
+      if (document.getElementById('footCopy') && t.footCopy) document.getElementById('footCopy').innerText = t.footCopy;
 
-      // 5. Propagar ?lang= a todos los documentos legales y enlaces internos
-      document.querySelectorAll("a.legal-link").forEach(link => {
-        const href = link.getAttribute("href");
-        if (href && !href.startsWith("mailto:") && !href.startsWith("http")) {
-          const baseArchivo = href.split("?")[0];
-          link.setAttribute("href", baseArchivo + "?lang=" + encodeURIComponent(lang));
-        }
+      // 5. Propagar el parámetro ?lang=XX a TODOS los enlaces legales y de navegación
+      document.querySelectorAll('a.legal-link').forEach(link => {
+        try {
+          const rawHref = link.getAttribute('href');
+          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('http')) return;
+          const baseFile = rawHref.split('?')[0];
+          link.setAttribute('href', baseFile + '?lang=' + encodeURIComponent(lang));
+        } catch (err) {}
       });
+
+      // 6. Actualizar la URL de la barra de direcciones sin recargar la página
+      try {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', currentUrl.toString());
+      } catch (err) {}
     }
 
-    // Inicialización automática leyendo el idioma elegido en index.html
-    window.addEventListener("DOMContentLoaded", () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let langInicial = urlParams.get("lang");
-      if (!langInicial) {
-        try {
-          langInicial = localStorage.getItem("limpiapp_lang") || localStorage.getItem("lang") || localStorage.getItem("preferred_lang");
-        } catch (e) {}
-      }
-      aplicarIdiomaGlobal(langInicial || "es");
+    // Marcar si el usuario edita manualmente el campo País
+    document.getElementById('inputPais').addEventListener('input', function() {
+      this.dataset.userEdited = 'true';
     });
 
-    // ENVÍO ASÍNCRONO A GOOGLE APPS SCRIPT
-    const form = document.getElementById("formProfesional");
-    const btnSubmit = document.getElementById("btnSubmit");
-    const feedbackBox = document.getElementById("feedbackBox");
+    // Sincronización en tiempo real si el usuario cambia el idioma en otra pestaña (ej. index.html)
+    window.addEventListener('storage', function(e) {
+      if ((e.key === 'limpiapp_lang' || e.key === 'lang' || e.key === 'preferred_lang') && e.newValue) {
+        aplicarIdiomaGlobal(e.newValue);
+      }
+    });
 
-    form.addEventListener("submit", function(e) {
+    // Inicialización al cargar la página: sincronizar logo de cabecera, código postal (?cp=) e idioma (?lang= o localStorage)
+    window.addEventListener('DOMContentLoaded', () => {
+      const logoForm = document.getElementById('logoForm');
+      const logoHeader = document.getElementById('logoHeader');
+      if (logoForm && logoHeader) {
+        logoHeader.src = logoForm.src;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const cpParam = urlParams.get('cp');
+      if (cpParam) {
+        const inputCp = document.getElementById('inputCp');
+        if (inputCp) inputCp.value = cpParam;
+      }
+
+      let langParam = urlParams.get('lang');
+      if (!langParam) {
+        try {
+          langParam = localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang') || localStorage.getItem('preferred_lang');
+        } catch (e) {}
+      }
+      aplicarIdiomaGlobal(langParam || 'es');
+    });
+
+    // GESTIÓN DE ENVÍO DEL FORMULARIO A GOOGLE APPS SCRIPT
+    const form = document.getElementById('formProfesional');
+    const btnSubmit = document.getElementById('btnSubmit');
+    const feedbackBox = document.getElementById('feedbackBox');
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const t = traducciones[idiomaActual] || traducciones.es;
+      const t = dicc[idiomaActual] || dicc.es;
 
       btnSubmit.disabled = true;
       btnSubmit.innerText = t.enviando;
-      feedbackBox.className = "feedback-message";
-      feedbackBox.style.display = "none";
+      feedbackBox.className = 'feedback-message';
+      feedbackBox.style.display = 'none';
 
       const formData = new FormData(form);
 
       fetch(APPS_SCRIPT_URL, {
-        method: "POST",
+        method: 'POST',
         body: formData
       })
-      .then(response => response.json().catch(() => ({ result: "success" })))
+      .then(response => response.json().catch(() => ({ result: 'success' })))
       .then(data => {
-        if (data && data.result === "error") {
-          throw new Error(data.message || "Error");
+        if (data && data.result === 'error') {
+          throw new Error(data.message || 'Error en servidor');
         }
         feedbackBox.innerText = t.exito;
-        feedbackBox.className = "feedback-message success";
-        feedbackBox.style.display = "block";
+        feedbackBox.className = 'feedback-message success';
+        feedbackBox.style.display = 'block';
         form.reset();
+        aplicarIdiomaGlobal(idiomaActual);
       })
       .catch(error => {
-        console.error("Error enviando formulario:", error);
+        console.error('Error enviando formulario:', error);
         feedbackBox.innerText = t.error;
-        feedbackBox.className = "feedback-message error";
-        feedbackBox.style.display = "block";
+        feedbackBox.className = 'feedback-message error';
+        feedbackBox.style.display = 'block';
       })
       .finally(() => {
         btnSubmit.disabled = false;
