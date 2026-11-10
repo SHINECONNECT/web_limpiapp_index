@@ -78,8 +78,10 @@
     }
     .logo-container img {
       max-width: 230px;
-      height: auto;
+      height: 50px;
+      object-fit: contain;
       display: block;
+      mix-blend-mode: multiply;
     }
     .nav-actions {
       display: flex;
@@ -477,7 +479,7 @@
   <!-- Selector de Idiomas Optimizado para Europa y España -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select id="selectLang" class="lang-select" onchange="aplicarIdiomaGlobal(this.value)">
+    <select id="selectLang" class="lang-select" onchange="cambiarIdioma(this.value)">
       <optgroup label="España (Lenguas Oficiales y Autonómicas)">
         <option value="es" selected>Español (Castellano)</option>
         <option value="ca">Valencià / Català</option>
@@ -519,13 +521,12 @@
     <div class="header-inner">
       <div class="logo-container">
         <a href="index.html" class="legal-link">
-          <!-- LOGOTIPO BASE64 BLINDADO -->
-          <img src="data:image/png;base64,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" alt="LIMPIAPP by Shineconnect">
+          <!-- LOGOTIPO ENLAZADO DESDE EL SERVIDOR LOCAL -->
+          <img src="LimpiAPP Final.jpg" onerror="this.onerror=null; this.src='logo.jpg';" alt="LIMPIAPP by Shineconnect">
         </a>
       </div>
       <div class="nav-actions">
+        <!-- Botón de Inicio de Sesión añadido -->
         <a href="login.html" class="btn-nav-login legal-link" id="btnNavLogin">Iniciar Sesión</a>
         <a href="clientes.html" class="btn-nav-client legal-link" id="btnNavClient">Buscar Servicio</a>
         <a href="registro.html" class="btn-nav-pro legal-link" id="btnNavPro">Soy Profesional</a>
@@ -690,7 +691,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
           <div class="group-header">
             <div class="group-header-text">
               <h3 id="groupProTitle">✨ Opciones para Profesionales de Limpieza</h3>
-              <p id="groupProDesc">Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes verificados.</p>
+              <p id="groupProDesc">Promociona tus servicios de limpieza en tu demarcación y recibe avisos directos de clientes en tu WhatsApp.</p>
             </div>
             <span class="group-badge pro-badge" id="groupProBadge">Acceso para Profesionales</span>
           </div>
@@ -779,7 +780,6 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
   </footer>
 
   <script>
-    // Búsqueda de disponibilidad guardando el idioma activo
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
@@ -789,7 +789,6 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
       }
     }
 
-    // DICCIONARIO MULTILINGÜE INTEGRAL
     var dicc = {
       es: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -866,7 +865,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         btnClientPrem: "Elegir Fórmula Premium",
 
         groupProTitle: "✨ Opciones para Profesionales de Limpieza",
-        groupProDesc: "Promociona tus servicios de limpieza en tu demarcación y recibe avisos de clientes verificados.",
+        groupProDesc: "Promociona tus servicios de limpieza en tu demarcación y recibe avisos directos de clientes en tu WhatsApp.",
         groupProBadge: "Acceso para Profesionales",
         planProBasicoName: "Plan Básico",
         planProBasicoDesc: "Para publicar tu perfil verificado y comenzar a recibir solicitudes sin costes fijos.",
@@ -899,7 +898,8 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
         footCookies: "Política de Cookies",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD (UE 2016/679) y LOPDGDD 3/2018."
+        footDesc: "Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados."
       },
       ca: {
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -993,23 +993,24 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         planProDestDesc: "Màxima visibilitat en cerques i agenda completa.",
         spanMes3: "/ mes",
         badgeDiasGratis: "🌟 0 € durant els primers 60 dies",
-        featPP1: "<strong>Contactes il·limitats</strong> amb famílies i empreses",
+        featPP1: "<strong>Contactos il·limitats</strong> amb famílies i empreses",
         featPP2: "<strong>Insígnia oficial de Perfil 100% Verificat</strong>",
         featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
         featPP4: "Posicionament preferent al teu codi postal",
-        btnProDest: "Activar 2 Mesos de Franc →",
+        btnProDest: "Activar 2 Meses de Franc →",
 
         feat1Title: "0% Comissions per Servei",
-        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions.",
+        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions sobre el treball.",
         feat2Title: "Contacte Immediat i Directe",
-        feat2Desc: "Conversa fluida per telèfon o WhatsApp per coordinar horaris sense intermediaris.",
+        feat2Desc: "Conversa fluida per telèfon o WhatsApp sense traves d'intermediaris.",
         feat3Title: "Hiperlocalitat per Codi Postal",
-        feat3Desc: "Optimització per ràdios de cobertura geogràfica per minimitzar desplaçaments.",
+        feat3Desc: "Optimització per ràdios de cobertura per minimitzar desplaçaments.",
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
         footCookies: "Política de Galetes",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tots els drets reservats. Conforme al RGPD (UE 2016/679)."
+        footDesc: "Plataforma tecnològica d'intermediació de serveis de neteja. Operada a nivell internacional per Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tots els drets reservats."
       },
       en: {
         badgeHero: "🌍 International Technology Platform",
@@ -1017,7 +1018,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         heroSub: "Connecting independent cleaners with homes and companies in any city. Direct contact, 0% service fees, and full transparency.",
         placeholderCP: "Enter your postal code (e.g. 46006)",
         btnBuscarCP: "Check Availability",
-        btnNavLogin: "Log In",
+        btnNavLogin: "Sign In",
         btnNavClient: "Find Service",
         btnNavPro: "I am a Professional",
         tagClient: "For Homes & Businesses",
@@ -1026,7 +1027,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         btnActionClient: "Request Service / Client Signup →",
         tagPro: "For Cleaning Professionals",
         titlePro: "Do you offer cleaning services?",
-        descPro: "Publish your profile in your area, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
+        descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
 
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
@@ -1119,7 +1120,8 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
         footCookies: "Cookie Policy",
-        footCopy: "© 2026 SHINECONNECT S.L. (VAT B26917807) — LIMPIAPP. All rights reserved. GDPR (EU 2016/679) compliant platform."
+        footDesc: "Cleaning services matchmaking technological platform. Operated internationally by Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. All rights reserved."
       },
       de: {
         badgeHero: "🌍 Internationale Technologie-Plattform",
@@ -1227,27 +1229,28 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         feat3Desc: "Hyperlokale Radiusoptimierung, damit Reinigungskräfte in der Nähe ihres Wohnorts arbeiten können.",
         footAviso: "Impressum",
         footTerminos: "AGB",
-        footPrivacidad: "Datenschutz",
+        footPrivacidad: "Datenschutzerklärung",
         footCookies: "Cookie-Richtlinie",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle Rechte vorbehalten. DSGVO-konform."
+        footDesc: "Technologische Plattform für Reinigungsdienste. International betrieben von Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Alle Rechte vorbehalten."
       },
       fr: {
         badgeHero: "🌍 Plateforme Technologique Internationale",
-        heroTitle: "Services de nettoyage professionnels vérifiés <span>dans votre code postal</span>",
-        heroSub: "Nous connectons l'offre indépendante avec les foyers et entreprises. Contact direct, zéro commission et transparence totale.",
+        heroTitle: "Services de nettoyage professionnel vérifiés <span>dans votre code postal</span>",
+        heroSub: "Mise en relation directe entre professionnels indépendants, foyers et entreprises. Sans commission sur les prestations.",
         placeholderCP: "Entrez votre code postal (ex. 75001)",
-        btnBuscarCP: "Voir les disponibilités",
+        btnBuscarCP: "Vérifier la Disponibilité",
         btnNavLogin: "Connexion",
         btnNavClient: "Trouver un Service",
         btnNavPro: "Je suis Professionnel",
         tagClient: "Pour Foyers et Entreprises",
         titleClient: "Vous cherchez du personnel de confiance ?",
-        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociez directement, sans frais d'intermédiation.",
+        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociation directe sans intermédiaire.",
         btnActionClient: "Demander un Service / Inscription Client →",
-        tagPro: "Pour les Professionnels du Nettoyage",
+        tagPro: "Pour Professionnels du Nettoyage",
         titlePro: "Vous proposez vos services ?",
-        descPro: "Publiez votre profil, fixez vos prix et recevez des demandes directes sur WhatsApp. 2 mois gratuits.",
-        btnActionPro: "M'inscrire comme Professionnel →",
+        descPro: "Publiez votre profil dans votre code postal et recevez des demandes directes sur WhatsApp. 2 mois offerts.",
+        btnActionPro: "S'inscrire comme Professionnel →",
         
         compTitle: "Pourquoi choisir LIMPIAPP par rapport aux alternatives ?",
         compSub: "Comparez notre modèle de contact direct et tarif 100% libre avec les agences et plateformes traditionnelles.",
@@ -1280,8 +1283,8 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         tdFila6Plat: "Pénalités d'annulation",
         tdFila6Agen: "Contrats mensuels obligatoires",
 
-        priceTitle: "Plans et Tarifs Transparents. Sans Frais Cachés.",
-        priceSub: "Modèle d'annuaire SaaS : abonnements transparents et 0% de commission sur les services.",
+        priceTitle: "Des Tarifs Clairs et Transparents.",
+        priceSub: "Modèle d'annuaire par abonnement : 0% de commission sur vos prestations.",
         
         groupClientTitle: "🏢 Options pour Foyers et Entreprises",
         groupClientDesc: "Accès direct à l'annuaire pour embaucher du personnel vérifié dans votre zone.",
@@ -1337,9 +1340,10 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         feat3Desc: "Optimisation géographique pour travailler près de chez soi.",
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
-        footPrivacidad: "Confidentialité",
-        footCookies: "Politique de Cookies",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tous droits réservés. Conforme au RGPD (UE 2016/679)."
+        footPrivacidad: "Politique de Confidentialité",
+        footCookies: "Gestion des Cookies",
+        footDesc: "Plateforme technologique d'intermédiation pour les services de nettoyage. Gérée par Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tous droits réservés."
       },
       it: {
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
@@ -1392,6 +1396,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
 
         priceTitle: "Piani e Tariffe Chiare. Senza Sorprese.",
         priceSub: "Modello in abbonamento: zero commissioni sul servizio concordato.",
+
         groupClientTitle: "🏢 Soluzioni per Famiglie e Imprese",
         groupClientDesc: "Accesso diretto alla banca dati per ingaggiare personale verificato nel tuo CAP.",
         groupClientBadge: "Accesso Clienti",
@@ -1404,7 +1409,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         featC4: "Contatto diretto tramite WhatsApp o chiamata",
         featC5: "Nessuna commissione sulla tariffa pattuita",
         btnClientBasico: "Scegli Formula Base",
-        
+
         planClientPremName: "Formula Premium ★",
         planClientPremDesc: "Per chi cerca massima rapidità e sostituzioni immediate.",
         spanMes2: "/ mese",
@@ -1419,7 +1424,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         groupProBadge: "Accesso Professionisti",
         planProBasicoName: "Piano Base",
         planProBasicoDesc: "Per pubblicare la tua scheda e ricevere richieste senza costi fissi.",
-        spanSiempre: "/ per sempre",
+        spanSiempre: "/ per sempre gratis",
         featP1: "Profilo attivo nella tua città e CAP",
         featP2: "Contatti di clienti <strong>100% verificati</strong>",
         featP3: "<strong>Limitato a 2 contatti cliente/mese</strong>",
@@ -1435,7 +1440,7 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
         featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
         featPP3: "<strong>Avvisi WhatsApp in tempo reale</strong> con nuove offerte",
-        featPP4: "Posizionamento in cima alla tua zona",
+        featPP4: "Posicionamento in cima alla tua zona",
         btnProDest: "Attiva i 2 Mesi Gratis →",
 
         feat1Title: "0% Commissioni sui Servizi",
@@ -1448,7 +1453,8 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
         footCookies: "Cookie Policy",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tutti i diritti riservati. Conforme al GDPR."
+        footDesc: "Piattaforma tecnologica di intermediazione per servizi di pulizia. Gestita da Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tutti i diritti riservati."
       },
       pt: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -1558,49 +1564,61 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
         footCookies: "Política de Cookies",
-        footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos os direitos reservados. Conforme o RGPD."
+        footDesc: "Plataforma de intermediação de serviços de limpeza. Operada internacionalmente por Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos os direitos reservados."
       }
     };
 
-    function aplicarIdiomaGlobal(lang) {
+    function cambiarIdioma(lang) {
+      // Recuperación segura a 'es'
       if (!lang || !dicc[lang]) {
         lang = dicc[lang] ? lang : (['es','ca','gl','eu','ast','an','oc'].includes(lang) ? 'es' : 'en');
       }
-      window.idiomaActual = lang;
 
-      try {
-        localStorage.setItem('limpiapp_lang', lang);
-        localStorage.setItem('lang', lang);
-        localStorage.setItem('preferred_lang', lang);
-      } catch (e) {}
+      localStorage.setItem('limpiapp_lang', lang);
+      localStorage.setItem('lang', lang);
+      localStorage.setItem('preferred_lang', lang);
 
       document.documentElement.lang = lang;
-      
-      const sel = document.querySelector('.lang-select');
-      if (sel && sel.value !== lang) sel.value = lang;
+      window.idiomaActual = lang;
 
-      const t = dicc[lang] || dicc.es;
-      
-      // Aplicar traducciones
-      for (var key in t) {
-        var el = document.getElementById(key);
+      var t = dicc[lang] || dicc['es'];
+
+      // Bucle general de reemplazo por ID
+      for (var id in t) {
+        var el = document.getElementById(id);
         if (el) {
-          if (['tdFila', 'feat', 'badge'].some(prefix => key.startsWith(prefix)) || key === 'heroTitle' || key.endsWith('Nom')) {
-            el.innerHTML = t[key];
+          if (id === 'heroTitle' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge')) {
+            el.innerHTML = t[id];
           } else {
-            if (el.childNodes.length > 0 && el.childNodes[0].nodeType === 3) {
-              el.childNodes[0].nodeValue = t[key];
-            } else {
-              el.innerText = t[key];
-            }
+            el.innerText = t[id];
           }
         }
       }
 
-      if (document.getElementById('inputCP')) document.getElementById('inputCP').placeholder = t.placeholderCP;
+      // Placeholders y Enlaces Nav
+      var inputCP = document.getElementById('inputCP');
+      if (inputCP && t.placeholderCP) {
+        inputCP.placeholder = t.placeholderCP;
+      }
 
-      // Actualizar URLs
-      document.querySelectorAll('.legal-link').forEach(link => {
+      var btnLogin = document.getElementById('btnNavLogin');
+      if (btnLogin) btnLogin.setAttribute('href', 'login.html?lang=' + encodeURIComponent(lang));
+
+      var btnNav = document.getElementById('btnNavClient');
+      if (btnNav) btnNav.setAttribute('href', 'clientes.html?lang=' + encodeURIComponent(lang));
+      
+      var btnPro = document.getElementById('btnNavPro');
+      if (btnPro) btnPro.setAttribute('href', 'registro.html?lang=' + encodeURIComponent(lang));
+      
+      var btnActClient = document.getElementById('btnActionClient');
+      if (btnActClient) btnActClient.setAttribute('href', 'clientes.html?lang=' + encodeURIComponent(lang));
+
+      var btnActPro = document.getElementById('btnActionPro');
+      if (btnActPro) btnActPro.setAttribute('href', 'registro.html?lang=' + encodeURIComponent(lang));
+
+      // Enlaces legales
+      document.querySelectorAll('a.legal-link').forEach(link => {
         try {
           const rawHref = link.getAttribute('href');
           if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('http')) return;
@@ -1616,30 +1634,14 @@ bDf9xEZPFDeG73uTdP6iRzzDrsUkO0yb/NAzvdZBBacJVf8q+sXUB6psWrWQhzH5BKrHUrCmsoSahwSW
       } catch (err) {}
     }
 
-    function buscarCP(e) {
-      e.preventDefault();
-      var cp = document.getElementById('inputCP').value.trim();
-      var langActual = localStorage.getItem('limpiapp_lang') || 'es';
-      if (cp) {
-        window.location.href = 'clientes.html?cp=' + encodeURIComponent(cp) + '&lang=' + encodeURIComponent(langActual);
-      }
-    }
-
-    window.addEventListener('storage', function(e) {
-      if ((e.key === 'limpiapp_lang' || e.key === 'lang' || e.key === 'preferred_lang') && e.newValue) {
-        aplicarIdiomaGlobal(e.newValue);
-      }
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
+      var guardado = localStorage.getItem('limpiapp_lang') || 'es';
       const urlParams = new URLSearchParams(window.location.search);
-      let langParam = urlParams.get('lang');
-      if (!langParam) {
-        try {
-          langParam = localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang') || localStorage.getItem('preferred_lang');
-        } catch (e) {}
-      }
-      aplicarIdiomaGlobal(langParam || 'es');
+      if (urlParams.get('lang')) { guardado = urlParams.get('lang'); }
+      
+      var select = document.querySelector('.lang-select');
+      if (select) select.value = guardado;
+      cambiarIdioma(guardado);
     });
   </script>
 </body>
