@@ -476,43 +476,22 @@
 </head>
 <body>
 
-  <!-- Selector de Idiomas Optimizado para Europa y España -->
+  <!-- Selector de Idiomas -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select id="selectLang" class="lang-select" onchange="cambiarIdioma(this.value)">
-      <optgroup label="España (Lenguas Oficiales y Autonómicas)">
-        <option value="es" selected>Español (Castellano)</option>
+    <select class="lang-select" onchange="cambiarIdioma(this.value)">
+      <optgroup label="Lenguas de España">
+        <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
         <option value="gl">Galego</option>
         <option value="eu">Euskara</option>
-        <option value="ast">Asturianu</option>
-        <option value="an">Aragonés</option>
-        <option value="oc">Aranés (Occitan)</option>
       </optgroup>
-      <optgroup label="Unión Europea (24 Idiomas Oficiales)">
-        <option value="de">Deutsch</option>
+      <optgroup label="Unión Europea">
         <option value="en">English</option>
         <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
         <option value="it">Italiano</option>
         <option value="pt">Português</option>
-        <option value="nl">Nederlands</option>
-        <option value="pl">Polski</option>
-        <option value="ro">Română</option>
-        <option value="bg">Български</option>
-        <option value="cs">Čeština</option>
-        <option value="da">Dansk</option>
-        <option value="el">Ελληνικά</option>
-        <option value="et">Eesti</option>
-        <option value="fi">Suomi</option>
-        <option value="ga">Gaeilge</option>
-        <option value="hr">Hrvatski</option>
-        <option value="hu">Magyar</option>
-        <option value="lt">Lietuvių</option>
-        <option value="lv">Latviešu</option>
-        <option value="mt">Malti</option>
-        <option value="sk">Slovenčina</option>
-        <option value="sl">Slovenščina</option>
-        <option value="sv">Svenska</option>
       </optgroup>
     </select>
   </div>
@@ -520,16 +499,14 @@
   <header>
     <div class="header-inner">
       <div class="logo-container">
-        <a href="index.html" class="legal-link">
-          <!-- LOGOTIPO ENLAZADO DESDE EL SERVIDOR LOCAL -->
-          <img src="LimpiAPP Final.jpg" onerror="this.onerror=null; this.src='logo.jpg';" alt="LIMPIAPP by Shineconnect">
+        <a href="index.html">
+          <img src="logo.png.png" onerror="if(!this.t1){this.t1=1;this.src='logo.png';}else if(!this.t2){this.t2=1;this.src='logo.jpg';}" alt="LIMPIAPP by Shineconnect">
         </a>
       </div>
       <div class="nav-actions">
-        <!-- Botón de Inicio de Sesión añadido -->
-        <a href="login.html" class="btn-nav-login legal-link" id="btnNavLogin">Iniciar Sesión</a>
-        <a href="clientes.html" class="btn-nav-client legal-link" id="btnNavClient">Buscar Servicio</a>
-        <a href="registro.html" class="btn-nav-pro legal-link" id="btnNavPro">Soy Profesional</a>
+        <a href="login.html" class="btn-nav-login" id="btnNavLogin">Iniciar Sesión</a>
+        <a href="clientes.html" class="btn-nav-client" id="btnNavClient">Buscar Servicio</a>
+        <a href="registro.html" class="btn-nav-pro" id="btnNavPro">Soy Profesional</a>
       </div>
     </div>
   </header>
@@ -556,7 +533,7 @@
               Encuentra personal profesional de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.
             </p>
           </div>
-          <a href="clientes.html" class="btn-action client legal-link" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
+          <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
         </div>
 
         <div class="cta-card pro">
@@ -567,7 +544,7 @@
               Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.
             </p>
           </div>
-          <a href="registro.html" class="btn-action pro legal-link" id="btnActionPro">Registrarme como Profesional →</a>
+          <a href="registro.html" class="btn-action pro" id="btnActionPro">Registrarme como Profesional →</a>
         </div>
       </div>
     </section>
@@ -666,7 +643,7 @@
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC5">Sin comisiones sobre el precio de la hora pactada</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client legal-link" id="btnClientBasico">Elegir Fórmula Básica</a>
+              <a href="clientes.html" class="btn-action client" id="btnClientBasico">Elegir Fórmula Básica</a>
             </div>
 
             <div class="plan-card-item featured-border-client">
@@ -681,7 +658,7 @@
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP4">Soporte prioritario de gestión de plataforma</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client legal-link" id="btnClientPrem">Elegir Fórmula Premium</a>
+              <a href="clientes.html" class="btn-action client" id="btnClientPrem">Elegir Fórmula Premium</a>
             </div>
           </div>
         </div>
@@ -710,7 +687,7 @@
                   <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP5">0% comisiones (cobras el 100% de tu servicio)</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro legal-link" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
+              <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
             </div>
 
             <div class="plan-card-item featured-border-pro">
@@ -729,7 +706,7 @@
                   <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP4">Posicionamiento preferente en tu código postal</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro legal-link" id="btnProDest">Activar 2 Meses Gratis →</a>
+              <a href="registro.html" class="btn-action pro" id="btnProDest">Activar 2 Meses Gratis →</a>
             </div>
           </div>
         </div>
@@ -765,13 +742,13 @@
         &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
       </p>
       <div class="footer-links">
-        <a href="aviso-legal.html" class="legal-link" id="footAviso">Aviso Legal</a>
+        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
         <span style="color: #475569;">|</span>
-        <a href="terminos.html" class="legal-link" id="footTerminos">Términos y Condiciones</a>
+        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
         <span style="color: #475569;">|</span>
-        <a href="privacidad.html" class="legal-link" id="footPrivacidad">Política de Privacidad</a>
+        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
         <span style="color: #475569;">|</span>
-        <a href="cookies.html" class="legal-link" id="footCookies">Política de Cookies</a>
+        <a href="cookies.html" id="footCookies">Política de Cookies</a>
       </div>
       <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
         Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app
@@ -897,9 +874,7 @@
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
-        footCookies: "Política de Cookies",
-        footDesc: "Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados."
+        footCookies: "Política de Cookies"
       },
       ca: {
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -1000,17 +975,15 @@
         btnProDest: "Activar 2 Meses de Franc →",
 
         feat1Title: "0% Comissions per Servei",
-        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions sobre el treball.",
+        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions.",
         feat2Title: "Contacte Immediat i Directe",
-        feat2Desc: "Conversa fluida per telèfon o WhatsApp sense traves d'intermediaris.",
+        feat2Desc: "Conversa fluida per telèfon o WhatsApp per coordinar horaris sense intermediaris.",
         feat3Title: "Hiperlocalitat per Codi Postal",
-        feat3Desc: "Optimització per ràdios de cobertura per minimitzar desplaçaments.",
+        feat3Desc: "Optimització per ràdios de cobertura geogràfica per minimitzar desplaçaments.",
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
-        footCookies: "Política de Galetes",
-        footDesc: "Plataforma tecnològica d'intermediació de serveis de neteja. Operada a nivell internacional per Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tots els drets reservats."
+        footCookies: "Política de Galetes"
       },
       en: {
         badgeHero: "🌍 International Technology Platform",
@@ -1027,7 +1000,7 @@
         btnActionClient: "Request Service / Client Signup →",
         tagPro: "For Cleaning Professionals",
         titlePro: "Do you offer cleaning services?",
-        descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
+        descPro: "Publish your profile in your area, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
 
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
@@ -1119,22 +1092,20 @@
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
-        footCookies: "Cookie Policy",
-        footDesc: "Cleaning services matchmaking technological platform. Operated internationally by Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. All rights reserved."
+        footCookies: "Cookie Policy"
       },
       de: {
-        badgeHero: "🌍 Internationale Technologie-Plattform",
+        badgeHero: "🌍 Internationale Technologieplattform",
         heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
-        heroSub: "Wir verbinden unabhängige Angebote mit Haushalten und Unternehmen in jeder Stadt. Direkter Kontakt, keine Vermittlungsgebühren und volle Transparenz.",
+        heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr.",
         placeholderCP: "Postleitzahl eingeben (z. B. 46006)",
         btnBuscarCP: "Verfügbarkeit prüfen",
         btnNavLogin: "Anmelden",
-        btnNavClient: "Service Finden",
-        btnNavPro: "Ich bin Profi",
+        btnNavClient: "Service finden",
+        btnNavPro: "Ich bin Dienstleister",
         tagClient: "Für Haushalte & Firmen",
         titleClient: "Suchen Sie vertrauenswürdiges Personal?",
-        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt, ohne Vermittlungsgebühren.",
+        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
         btnActionClient: "Service anfragen / Kundenregistrierung →",
         tagPro: "Für Reinigungskräfte",
         titlePro: "Bieten Sie Reinigungsdienste an?",
@@ -1230,14 +1201,12 @@
         footAviso: "Impressum",
         footTerminos: "AGB",
         footPrivacidad: "Datenschutzerklärung",
-        footCookies: "Cookie-Richtlinie",
-        footDesc: "Technologische Plattform für Reinigungsdienste. International betrieben von Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Alle Rechte vorbehalten."
+        footCookies: "Cookie-Richtlinie"
       },
       fr: {
         badgeHero: "🌍 Plateforme Technologique Internationale",
         heroTitle: "Services de nettoyage professionnel vérifiés <span>dans votre code postal</span>",
-        heroSub: "Mise en relation directe entre professionnels indépendants, foyers et entreprises. Sans commission sur les prestations.",
+        heroSub: "Nous connectons l'offre indépendante avec les foyers et entreprises. Contact direct, zéro commission et transparence totale.",
         placeholderCP: "Entrez votre code postal (ex. 75001)",
         btnBuscarCP: "Vérifier la Disponibilité",
         btnNavLogin: "Connexion",
@@ -1340,10 +1309,8 @@
         feat3Desc: "Optimisation géographique pour travailler près de chez soi.",
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
-        footPrivacidad: "Politique de Confidentialité",
-        footCookies: "Gestion des Cookies",
-        footDesc: "Plateforme technologique d'intermédiation pour les services de nettoyage. Gérée par Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tous droits réservés."
+        footPrivacidad: "Confidentialité",
+        footCookies: "Politique de Cookies"
       },
       it: {
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
@@ -1363,8 +1330,8 @@
         descPro: "Crea il tuo profilo nel tuo CAP, fissa le tue tariffe e ricevi richieste su WhatsApp. 2 mesi gratis.",
         btnActionPro: "Registrati come Professionista →",
 
-        compTitle: "Perché scegliere LIMPIAPP rispetto alle alternative?",
-        compSub: "Confronta il nostro modello di contatto diretto e tariffa 100% libera rispetto ad agenzie e piattaforme tradizionali.",
+        compTitle: "Perché scegliere LIMPIAPP?",
+        compSub: "Confronta il nostro modello a zero commissioni rispetto ad agenzie e altre piattaforme.",
         thCaract: "Caratteristiche del Servizio",
         thLimpiapp: "✨ LIMPIAPP",
         thPlataformas: "Altre Piattaforme e App Intermediarie",
@@ -1440,7 +1407,7 @@
         featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
         featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
         featPP3: "<strong>Avvisi WhatsApp in tempo reale</strong> con nuove offerte",
-        featPP4: "Posicionamento in cima alla tua zona",
+        featPP4: "Posizionamento in cima alla tua zona",
         btnProDest: "Attiva i 2 Mesi Gratis →",
 
         feat1Title: "0% Commissioni sui Servizi",
@@ -1452,9 +1419,7 @@
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
-        footCookies: "Cookie Policy",
-        footDesc: "Piattaforma tecnologica di intermediazione per servizi di pulizia. Gestita da Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tutti i diritti riservati."
+        footCookies: "Cookie Policy"
       },
       pt: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -1473,7 +1438,7 @@
         titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
-        
+
         compTitle: "Porquê a LIMPIAPP em relação às alternativas?",
         compSub: "Compare o nosso modelo de contacto direto e tarifa 100% livre face às agências e plataformas tradicionais.",
         thCaract: "Características do Serviço",
@@ -1507,7 +1472,7 @@
 
         priceTitle: "Planos e Preços Transparentes.",
         priceSub: "Modelo de subscrição de diretório: 0% de comissões sobre os serviços prestados.",
-        
+
         groupClientTitle: "🏢 Opções para Lares e Empresas",
         groupClientDesc: "Acesso direto para contratar pessoal verificado na sua área.",
         groupClientBadge: "Acesso para Clientes",
@@ -1563,28 +1528,14 @@
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies",
-        footDesc: "Plataforma de intermediação de serviços de limpeza. Operada internacionalmente por Shineconnect S.L. (B26917807).",
-        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos os direitos reservados."
+        footCookies: "Política de Cookies"
       }
     };
 
     function cambiarIdioma(lang) {
-      // Recuperación segura a 'es'
-      if (!lang || !dicc[lang]) {
-        lang = dicc[lang] ? lang : (['es','ca','gl','eu','ast','an','oc'].includes(lang) ? 'es' : 'en');
-      }
-
       localStorage.setItem('limpiapp_lang', lang);
-      localStorage.setItem('lang', lang);
-      localStorage.setItem('preferred_lang', lang);
-
-      document.documentElement.lang = lang;
-      window.idiomaActual = lang;
-
       var t = dicc[lang] || dicc['es'];
 
-      // Bucle general de reemplazo por ID
       for (var id in t) {
         var el = document.getElementById(id);
         if (el) {
@@ -1596,7 +1547,6 @@
         }
       }
 
-      // Placeholders y Enlaces Nav
       var inputCP = document.getElementById('inputCP');
       if (inputCP && t.placeholderCP) {
         inputCP.placeholder = t.placeholderCP;
@@ -1608,37 +1558,18 @@
       var btnNav = document.getElementById('btnNavClient');
       if (btnNav) btnNav.setAttribute('href', 'clientes.html?lang=' + encodeURIComponent(lang));
       
+      var btnAct = document.getElementById('btnActionClient');
+      if (btnAct) btnAct.setAttribute('href', 'clientes.html?lang=' + encodeURIComponent(lang));
+
       var btnPro = document.getElementById('btnNavPro');
       if (btnPro) btnPro.setAttribute('href', 'registro.html?lang=' + encodeURIComponent(lang));
-      
-      var btnActClient = document.getElementById('btnActionClient');
-      if (btnActClient) btnActClient.setAttribute('href', 'clientes.html?lang=' + encodeURIComponent(lang));
 
       var btnActPro = document.getElementById('btnActionPro');
       if (btnActPro) btnActPro.setAttribute('href', 'registro.html?lang=' + encodeURIComponent(lang));
-
-      // Enlaces legales
-      document.querySelectorAll('a.legal-link').forEach(link => {
-        try {
-          const rawHref = link.getAttribute('href');
-          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('http')) return;
-          const baseFile = rawHref.split('?')[0];
-          link.setAttribute('href', baseFile + '?lang=' + encodeURIComponent(lang));
-        } catch (err) {}
-      });
-      
-      try {
-        const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', currentUrl.toString());
-      } catch (err) {}
     }
 
     document.addEventListener('DOMContentLoaded', function() {
       var guardado = localStorage.getItem('limpiapp_lang') || 'es';
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('lang')) { guardado = urlParams.get('lang'); }
-      
       var select = document.querySelector('.lang-select');
       if (select) select.value = guardado;
       cambiarIdioma(guardado);
