@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" class="notranslate">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Privacidad y Protección de Datos | LIMPIAPP</title>
   <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +20,13 @@
       --color-bg-page: #f8fafc;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
+    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; top: 0px !important; }
+    
+    /* Ocultar barra superior de Google Translate */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
     .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
@@ -38,7 +44,7 @@
 <body>
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelect" onchange="cambiarIdiomaDoc(this.value)">
+    <select class="lang-select" id="langSelect">
       <optgroup label="Lenguas de España">
         <option value="es">Español</option>
         <option value="ca">Valencià / Català</option>
@@ -56,15 +62,15 @@
   </div>
 
   <div class="container">
-    <a href="javascript:history.back()" class="back-btn">← Volver</a>
+    <a href="index.html" class="back-btn" id="linkVolver">← Volver</a>
     <h1>POLÍTICA DE PRIVACIDAD Y PROTECCIÓN DE DATOS - SHINECONNECT S.L.</h1>
     
     <h2>1. RESPONSABLE DEL TRATAMIENTO</h2>
-    <p>El responsable del tratamiento de sus datos personales es ShineConnect S.L. (en adelante, "ShineConnect"), con NIF B26917807 y domicilio social en c/Mayor, 5, Fortaleny, España.</p>
-    <p>Para cualquier consulta, ejercicio de derechos o comunicación relativa a su privacidad, puede contactar con nuestro Delegado de Protección de Datos (DPO) a través de la dirección de correo electrónico: <strong>dpo@shineconnect.app</strong>.</p>
+    <p>El responsable del tratamiento de sus datos personales es Shineconnect S.L. (en adelante, "Shineconnect"), con NIF B26917807 y domicilio social en c/Mayor, 5, Fortaleny, España.</p>
+    <p>Para cualquier consulta, ejercicio de derechos o comunicación relativa a su privacidad, puede contactar con nuestro Delegado de Protección de Datos (DPO) a través de la dirección de correo electrónico: <strong>gerencia@limpiapp.app</strong> (o <strong>dpo@shineconnect.app</strong>).</p>
 
     <h2>2. CATEGORÍAS DE DATOS OBJETO DE TRATAMIENTO</h2>
-    <p>ShineConnect tratará las siguientes categorías de datos personales en función del perfil de Usuario (Cliente o Profesional) y del uso de las funcionalidades de la Plataforma:</p>
+    <p>Shineconnect tratará las siguientes categorías de datos personales en función del perfil de Usuario (Cliente o Profesional) y del uso de las funcionalidades de la Plataforma:</p>
     <ul>
       <li><strong>Datos Identificativos y de Contacto:</strong> Nombre, apellidos, NIF/NIE/Pasaporte, dirección de correo electrónico, número de teléfono y fotografía de perfil.</li>
       <li><strong>Datos de Localización Geográfica:</strong> Datos de ubicación en tiempo real derivados del dispositivo móvil para la gestión de reservas y trazabilidad del servicio.</li>
@@ -76,7 +82,7 @@
     </ul>
 
     <h2>3. FINALIDADES DEL TRATAMIENTO</h2>
-    <p>ShineConnect tratará sus datos personales para las siguientes finalidades específicas:</p>
+    <p>Shineconnect tratará sus datos personales para las siguientes finalidades específicas:</p>
     <ol>
       <li><strong>Gestión de la Relación Contractual:</strong> Registro de cuenta, mantenimiento de la relación jurídica, gestión de reservas de servicios de limpieza y soporte técnico.</li>
       <li><strong>Procesamiento de Pagos:</strong> Facilitar la liquidación de servicios entre Clientes y Profesionales y la gestión de suscripciones SaaS.</li>
@@ -101,16 +107,16 @@
     <p>Sus datos podrán ser comunicados a los siguientes destinatarios:</p>
     <ul>
       <li><strong>Proveedores de Servicios Tecnológicos:</strong> Stripe (pasarela de pagos), Google Cloud (alojamiento), Google Maps (geolocalización) y proveedores de e-IDV (verificación de identidad).</li>
-      <li><strong>Entidades Aseguradoras y Corredurías:</strong> En el marco del Programa de Seguros facilitado por ShineConnect.</li>
+      <li><strong>Entidades Aseguradoras y Corredurías:</strong> En el marco del Programa de Seguros facilitado por Shineconnect.</li>
       <li><strong>Autoridades Públicas:</strong> Agencia Tributaria (AEAT), Fuerzas y Cuerpos de Seguridad del Estado y órganos judiciales cuando exista una obligación legal.</li>
-      <li><strong>Transferencias Internacionales:</strong> ShineConnect utiliza servicios de proveedores (como Stripe o Google) que pueden procesar datos fuera del Espacio Económico Europeo. Dichas transferencias se realizan bajo el amparo de Cláusulas Contractuales Tipo aprobadas por la Comisión Europea o marcos de adecuación equivalentes.</li>
+      <li><strong>Transferencias Internacionales:</strong> Shineconnect utiliza servicios de proveedores (como Stripe o Google) que pueden procesar datos fuera del Espacio Económico Europeo. Dichas transferencias se realizan bajo el amparo de Cláusulas Contractuales Tipo aprobadas por la Comisión Europea o marcos de adecuación equivalentes.</li>
     </ul>
 
     <h2>6. CONSERVACIÓN DE LOS DATOS</h2>
-    <p>Los datos personales se conservarán mientras se mantenga la condición de Usuario registrado. Tras la baja de la cuenta, ShineConnect mantendrá los datos debidamente bloqueados durante los plazos de prescripción de las obligaciones legales y responsabilidades contractuales que pudieran derivarse (con carácter general, hasta 10 años por normativa mercantil y fiscal).</p>
+    <p>Los datos personales se conservarán mientras se mantenga la condición de Usuario registrado. Tras la baja de la cuenta, Shineconnect mantendrá los datos debidamente bloqueados durante los plazos de prescripción de las obligaciones legales y responsabilidades contractuales que pudieran derivarse (con carácter general, hasta 10 años por normativa mercantil y fiscal).</p>
 
     <h2>7. DERECHOS DEL USUARIO</h2>
-    <p>Usted puede ejercer ante ShineConnect S.L. los siguientes derechos reconocidos por el RGPD:</p>
+    <p>Usted puede ejercer ante Shineconnect S.L. los siguientes derechos reconocidos por el RGPD:</p>
     <ul>
       <li><strong>Acceso:</strong> Confirmar si estamos tratando sus datos y obtener copia de los mismos.</li>
       <li><strong>Rectificación:</strong> Corregir datos inexactos o incompletos.</li>
@@ -119,13 +125,13 @@
       <li><strong>Limitación:</strong> Solicitar la suspensión temporal del tratamiento en los casos previstos por la ley.</li>
       <li><strong>Portabilidad:</strong> Recibir sus datos en un formato estructurado y de uso común para transmitirlos a otro responsable.</li>
     </ul>
-    <p><strong>Ejercicio de derechos:</strong> Mediante comunicación escrita a <strong>dpo@shineconnect.app</strong>, acompañando prueba de identidad. Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) (www.aepd.es) si considera vulnerados sus derechos.</p>
+    <p><strong>Ejercicio de derechos:</strong> Mediante comunicación escrita a <strong>gerencia@limpiapp.app</strong> (o <strong>dpo@shineconnect.app</strong>), acompañando prueba de identidad. Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) (www.aepd.es) si considera vulnerados sus derechos.</p>
 
     <h2>8. SEGURIDAD DE LA INFORMACIÓN</h2>
-    <p>ShineConnect implementa medidas de seguridad técnicas y organizativas de vanguardia (cifrado SSL/TLS, controles de acceso, anonimización de datos) para garantizar la integridad, confidencialidad y disponibilidad de sus datos personales, cumpliendo con los estándares exigibles a un prestador de servicios de intermediación técnica.</p>
+    <p>Shineconnect implementa medidas de seguridad técnicas y organizativas de vanguardia (cifrado SSL/TLS, controles de acceso, anonimización de datos) para garantizar la integridad, confidencialidad y disponibilidad de sus datos personales, cumpliendo con los estándares exigibles a un prestador de servicios de intermediación técnica.</p>
 
     <h2>9. MENORES DE EDAD</h2>
-    <p>El Servicio ShineConnect está estrictamente prohibido para menores de 18 años. ShineConnect implementa mecanismos de verificación de edad y, si se detecta el tratamiento de datos de un menor, se procederá a la eliminación inmediata de la cuenta y toda la información asociada.</p>
+    <p>El Servicio LIMPIAPP está estrictamente prohibido para menores de 18 años. Shineconnect implementa mecanismos de verificación de edad y, si se detecta el tratamiento de datos de un menor, se procederá a la eliminación inmediata de la cuenta y toda la información asociada.</p>
 
     <h2>10. ACTUALIZACIÓN DE LA POLÍTICA</h2>
     <p>Esta política podrá ser modificada para adaptarse a cambios legislativos o funcionales de la App. Las modificaciones se comunicarán a través de la propia Plataforma o por correo electrónico antes de su entrada en vigor.</p>
@@ -137,10 +143,10 @@
       <p>Este anexo constituye el registro público de las actividades de tratamiento de datos personales llevadas a cabo por SHINECONNECT S.L., de conformidad con el Artículo 30 del Reglamento (UE) 2016/679 (RGPD) y el Artículo 31 de la Ley Orgánica 3/2018 (LOPDGDD).</p>
 
       <h3>1. IDENTIFICACIÓN DEL RESPONSABLE Y CONTACTO</h3>
-      <p><strong>Responsable del Tratamiento:</strong> ShineConnect S.L.<br>
+      <p><strong>Responsable del Tratamiento:</strong> Shineconnect S.L.<br>
       <strong>NIF:</strong> B26917807.<br>
       <strong>Domicilio Social:</strong> c/Mayor, 5, Fortaleny, España.<br>
-      <strong>Delegado de Protección de Datos (DPO):</strong> dpo@shineconnect.app.</p>
+      <strong>Delegado de Protección de Datos (DPO):</strong> gerencia@limpiapp.app (o dpo@shineconnect.app).</p>
 
       <h3>2. DESCRIPCIÓN DETALLADA DE LAS ACTIVIDADES DE TRATAMIENTO</h3>
       
@@ -197,91 +203,69 @@
       </ul>
 
       <h3>4. CANAL DE EJERCICIO DE DERECHOS</h3>
-      <p>Email: legal@shineconnect.app | Dirección Postal: c/Mayor, 5, Fortaleny, España.</p>
+      <p>Email: gerencia@limpiapp.app (o legal@shineconnect.app) | Dirección Postal: c/Mayor, 5, Fortaleny, España.</p>
     </div>
 
     <p class="meta-date">Última actualización: Mayo de 2026.</p>
   </div>
 
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- Contenedor del motor de traducción -->
+  <div id="google_translate_element" style="display:none;"></div>
+
   <script>
-    function setTranslateCookie(lang) {
-      var cookieVal = (lang === 'es') ? '/es/es' : '/es/' + lang;
-      document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + window.location.hostname;
-      document.cookie = "googtrans=" + cookieVal + "; path=/;";
-    }
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+      
+      const host = window.location.hostname;
+      const domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
+      const cookieVal = (lang === 'es') ? '' : '/es/' + lang;
+      
+      const currentCookie = (document.cookie.match(/(^|; )googtrans=([^;]+)/) || [])[2] || '';
+      if (decodeURIComponent(currentCookie) !== cookieVal) {
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+        
+        if (cookieVal) {
+          document.cookie = "googtrans=" + cookieVal + "; path=/;";
+          if (domain) document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
+        }
+      }
+    })();
 
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
-    }
-
-    function cambiarIdiomaDoc(lang) {
-      if (!lang) return;
-      localStorage.setItem('limpiapp_lang', lang);
-      setTranslateCookie(lang);
-
-      if (lang === 'es') {
-        var iframe = document.querySelector('iframe.goog-te-banner-frame');
-        if (iframe) {
-          var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-          var b = innerDoc.querySelector('.goog-close-link');
-          if (b) b.click();
-        }
-        var combo = document.querySelector('.goog-te-combo');
-        if (combo) {
-          combo.value = 'es';
-          combo.dispatchEvent(new Event('change'));
-        }
-        return;
-      }
-
-      var combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        combo.value = lang;
-        combo.dispatchEvent(new Event('change'));
-      } else {
-        setTimeout(function() {
-          var retryCombo = document.querySelector('.goog-te-combo');
-          if (retryCombo) {
-            retryCombo.value = lang;
-            retryCombo.dispatchEvent(new Event('change'));
-          }
-        }, 200);
-      }
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        autoDisplay: false
+      }, 'google_translate_element');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var langUrl = urlParams.get('lang');
-      var savedLang = langUrl || localStorage.getItem('limpiapp_lang') || 'es';
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+      
+      const select = document.getElementById('langSelect');
+      if (select) {
+        select.value = lang;
+        select.onchange = function() {
+          const nuevoIdioma = this.value;
+          localStorage.setItem('limpiapp_lang', nuevoIdioma);
+          localStorage.setItem('lang', nuevoIdioma);
+          const url = new URL(window.location.href);
+          url.searchParams.set('lang', nuevoIdioma);
+          window.location.href = url.toString();
+        };
+      }
 
-      setTranslateCookie(savedLang);
-
-      var select = document.getElementById('langSelect');
-      if (select) select.value = savedLang;
-
-      if (savedLang !== 'es') {
-        var checkInterval = setInterval(function() {
-          var combo = document.querySelector('.goog-te-combo');
-          if (combo) {
-            clearInterval(checkInterval);
-            cambiarIdiomaDoc(savedLang);
-          }
-        }, 100);
-        setTimeout(function() { clearInterval(checkInterval); }, 3000);
+      const btnVolver = document.getElementById('linkVolver');
+      if (btnVolver) {
+        btnVolver.onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
+        };
       }
     });
- <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const p = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-    const b = document.getElementById('linkVolver') || document.querySelector('.back-btn');
-    if (b) {
-      b.onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'index.html?lang=' + encodeURIComponent(p);
-      };
-    }
-  });
-</script>
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
