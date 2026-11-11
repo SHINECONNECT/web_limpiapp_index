@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
     <title>Condiciones de Servicio y Políticas de Cancelación | LIMPIAPP</title>
     <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +40,10 @@
       --color-slate-border: #d4dfe6;
       --color-bg-page: #f8fafc;
     }
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+body { top: 0px !important; }
+#goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+.goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
@@ -387,35 +390,66 @@
 
     <p class="meta-date">Última actualización: Mayo de 2026.[]</p>
   </div>
+<!-- Contenedor del motor de traducción -->
+  <div id="google_translate_element" style="display:none;"></div>
 
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // 1. Obtener el idioma activo guardado o de la URL
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+    // 1. Configurar cookie de traducción de forma inmediata según el parámetro URL
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+      
+      const host = window.location.hostname;
+      const domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
+      const cookieVal = (lang === 'es') ? '' : '/es/' + lang;
+      
+      const currentCookie = (document.cookie.match(/(^|; )googtrans=([^;]+)/) || [])[2] || '';
+      if (decodeURIComponent(currentCookie) !== cookieVal) {
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+        
+        if (cookieVal) {
+          document.cookie = "googtrans=" + cookieVal + "; path=/;";
+          if (domain) document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
+        }
+      }
+    })();
 
-    // 2. Si existe el selector en la página, marcar el idioma actual
-    const sel = document.getElementById('langSelect');
-    if (sel) {
-      sel.value = lang;
-      sel.onchange = function() {
-        localStorage.setItem('limpiapp_lang', this.value);
-        localStorage.setItem('lang', this.value);
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', this.value);
-        window.location.href = url.toString();
-      };
+    // 2. Inicializador oficial de Google Translate en segundo plano
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        autoDisplay: false
+      }, 'google_translate_element');
     }
 
-    // 3. Configurar el botón "← Volver" para retornar al index conservando el idioma
-    const btnVolver = document.getElementById('linkVolver') || document.querySelector('.back-btn');
-    if (btnVolver) {
-      btnVolver.onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
-      };
-    }
-  });
-</script>
+    // 3. Control del selector y retorno a la portada
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+      
+      const sel = document.getElementById('langSelect');
+      if (sel) {
+        sel.value = lang;
+        sel.onchange = function() {
+          const nuevoIdioma = this.value;
+          localStorage.setItem('limpiapp_lang', nuevoIdioma);
+          localStorage.setItem('lang', nuevoIdioma);
+          const url = new URL(window.location.href);
+          url.searchParams.set('lang', nuevoIdioma);
+          window.location.href = url.toString();
+        };
+      }
+
+      const btnVolver = document.getElementById('linkVolver') || document.querySelector('.back-btn');
+      if (btnVolver) {
+        btnVolver.onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
+        };
+      }
+    });
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
