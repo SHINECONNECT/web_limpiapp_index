@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" class="notranslate">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google" content="notranslate">
   <title>Aviso Legal | LIMPIAPP</title>
   <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +20,13 @@
       --color-bg-page: #f8fafc;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
+    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; top: 0px !important; }
+    
+    /* Ocultar barra invasiva superior de Google Translate */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
     .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
@@ -38,7 +43,7 @@
 <body>
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelect" onchange="cambiarIdiomaDoc(this.value)">
+    <select class="lang-select" id="langSelect">
       <optgroup label="Lenguas de España">
         <option value="es">Español</option>
         <option value="ca">Valencià / Català</option>
@@ -56,45 +61,45 @@
   </div>
 
   <div class="container">
-    <a href="javascript:history.back()" class="back-btn">← Volver</a>
+    <a href="index.html" class="back-btn" id="linkVolver">← Volver</a>
     <h1>AVISO LEGAL Y CONDICIONES DE USO - SHINECONNECT S.L.</h1>
     
     <h2>1. INFORMACIÓN GENERAL (ART. 10 LSSI-CE)</h2>
     <p>En cumplimiento del deber de información general contenido en el Artículo 10 de la LSSI-CE, se hace constar que el titular de este sitio web y prestador del servicio es:</p>
     <div class="legal-id-box">
-      <p><strong>Denominación Social:</strong> Shine Connect S.L.</p>
+      <p><strong>Denominación Social:</strong> Shineconnect S.L.</p>
       <p><strong>NIF:</strong> B26917807.</p>
       <p><strong>Domicilio Social:</strong> c/Mayor, 5, Fortaleny, España.</p>
-      <p><strong>Correo Electrónico de Contacto:</strong> legal@shineconnect.app.</p>
+      <p><strong>Correo Electrónico de Contacto:</strong> gerencia@limpiapp.app</p>
       <p><strong>Naturaleza de la Entidad:</strong> Sociedad mercantil constituida de conformidad con las leyes de España.</p>
     </div>
 
     <h2>2. REGISTRO MERCANTIL</h2>
-    <p>ShineConnect S.L. se encuentra debidamente inscrita en el Registro Mercantil de su provincia (Valencia). Los datos registrales (Tomo, Libro, Folio, Sección y Hoja) están a disposición de cualquier autoridad o interesado que los solicite a través del canal de notificaciones oficiales arriba indicado.</p>
+    <p>Shineconnect S.L. se encuentra debidamente inscrita en el Registro Mercantil de su provincia (Valencia). Los datos registrales (Tomo, Libro, Folio, Sección y Hoja) están a disposición de cualquier autoridad o interesado que los solicite a través del canal de notificaciones oficiales arriba indicado.</p>
 
     <h2>3. OBJETO Y ÁMBITO DE APLICACIÓN</h2>
-    <p>El presente Aviso Legal regula el acceso y la utilización de la infraestructura tecnológica denominada "ShineConnect", que actúa como un entorno de mercado (Marketplace) destinado a la intermediación técnica entre prestadores y receptores de servicios de limpieza.</p>
+    <p>El presente Aviso Legal regula el acceso y la utilización de la infraestructura tecnológica denominada "LIMPIAPP", operada por Shineconnect S.L., que actúa como un entorno de mercado (Marketplace) destinado a la intermediación técnica entre prestadores y receptores de servicios de limpieza.</p>
     <ul>
       <li>La condición de "Usuario" se adquiere por el mero acceso, navegación o uso de la Plataforma.</li>
       <li>El acceso implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal.</li>
-      <li>Shine Connect S.L. se reserva el derecho a modificar unilateralmente estas condiciones para adaptarlas a novedades legislativas o tecnológicas, previa notificación conforme al Reglamento (UE) 2022/2065 (DSA).</li>
+      <li>Shineconnect S.L. se reserva el derecho a modificar unilateralmente estas condiciones para adaptarlas a novedades legislativas o tecnológicas, previa notificación conforme al Reglamento (UE) 2022/2065 (DSA).</li>
     </ul>
 
     <h2>4. RÉGIMEN DE RESPONSABILIDAD DEL PRESTADOR</h2>
-    <p>Shine Connect S.L. actúa como Prestador de Servicios de la Sociedad de la Información de naturaleza técnica y neutral. En consecuencia:</p>
+    <p>Shineconnect S.L. actúa como Prestador de Servicios de la Sociedad de la Información de naturaleza técnica y neutral. En consecuencia:</p>
     <ul>
       <li><strong>Intermediación:</strong> No es una empresa de limpieza ni ostenta vínculo laboral o de dependencia con los Profesionales que anuncian sus servicios.</li>
-      <li><strong>Exención de Responsabilidad:</strong> De conformidad con el Artículo 16 de la LSSI-CE, Shine Connect S.L. no será responsable de los contenidos (reseñas, perfiles, fotografías) alojados por los Usuarios, salvo que tenga conocimiento efectivo de su ilicitud y no actúe con diligencia para su retirada.</li>
+      <li><strong>Exención de Responsabilidad:</strong> De conformidad con el Artículo 16 de la LSSI-CE, Shineconnect S.L. no será responsable de los contenidos (reseñas, perfiles, fotografías) alojados por los Usuarios, salvo que tenga conocimiento efectivo de su ilicitud y no actúe con diligencia para su retirada.</li>
       <li><strong>Disponibilidad Técnica:</strong> No se garantiza el acceso ininterrumpido a la Plataforma cuando este dependa de infraestructuras ajenas, como redes de telecomunicaciones, servicios de hosting o suministros eléctricos.</li>
-      <li><strong>Seguridad:</strong> Aunque se implementan medidas de seguridad estándar en la industria, ShineConnect S.L. no garantiza la ausencia de virus u otros elementos lesivos introducidos por terceros que puedan producir alteraciones en los sistemas informáticos del Usuario.</li>
+      <li><strong>Seguridad:</strong> Aunque se implementan medidas de seguridad estándar en la industria, Shineconnect S.L. no garantiza la ausencia de virus u otros elementos lesivos introducidos por terceros que puedan producir alteraciones en los sistemas informáticos del Usuario.</li>
     </ul>
 
     <h2>5. PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>
-    <p>ShineConnect S.L. es titular única y exclusiva de todos los derechos de propiedad intelectual e industrial sobre la Plataforma:</p>
+    <p>Shineconnect S.L. es titular única y exclusiva de todos los derechos de propiedad intelectual e industrial sobre la Plataforma:</p>
     <ul>
       <li><strong>Activos Protegidos:</strong> El código fuente, diseño gráfico, interfaces (UX/UI), logotipos, marcas, algoritmos y documentación técnica están protegidos por las leyes nacionales e internacionales de propiedad intelectual.</li>
-      <li><strong>Prohibiciones:</strong> Queda terminantemente prohibida la reproducción, transformación, distribución o comunicación pública de cualquier elemento de la Plataforma sin autorización previa y por escrito de Shine Connect S.L..</li>
-      <li><strong>Marcas:</strong> El uso de las marcas "Shine Connect" y sus variantes queda restringido a lo autorizado expresamente en las Condiciones de Servicio para Profesionales.</li>
+      <li><strong>Prohibiciones:</strong> Queda terminantemente prohibida la reproducción, transformación, distribución o comunicación pública de cualquier elemento de la Plataforma sin autorización previa y por escrito de Shineconnect S.L..</li>
+      <li><strong>Marcas:</strong> El uso de las marcas "LIMPIAPP", "Shineconnect" y sus variantes queda restringido a lo autorizado expresamente en las Condiciones de Servicio para Profesionales.</li>
     </ul>
 
     <h2>6. OBLIGACIONES Y CONDUCTA DEL USUARIO</h2>
@@ -107,15 +112,15 @@
     </ul>
 
     <h2>7. PROTOCOLO DE NOTIFICACIÓN DE CONTENIDOS ILÍCITOS (DSA)</h2>
-    <p>De acuerdo con el Reglamento (UE) 2022/2065, ShineConnect dispone de un canal específico para que cualquier persona notifique contenidos presuntamente ilícitos o infractores:</p>
+    <p>De acuerdo con el Reglamento (UE) 2022/2065, Shineconnect S.L. dispone de un canal específico para que cualquier persona notifique contenidos presuntamente ilícitos o infractores:</p>
     <ul>
-      <li><strong>Canal Oficial:</strong> legal@shineconnect.app.</li>
+      <li><strong>Canal Oficial:</strong> gerencia@limpiapp.app</li>
       <li><strong>Requisitos:</strong> Las notificaciones deberán estar motivadas, identificar inequívocamente el contenido infractor y proporcionar datos de contacto del reclamante.</li>
-      <li><strong>Acción:</strong> ShineConnect actuará con la diligencia debida para retirar o bloquear el acceso a contenidos que infrinjan la legalidad vigente tras la recepción de una notificación válida.</li>
+      <li><strong>Acción:</strong> Shineconnect S.L. actuará con la diligencia debida para retirar o bloquear el acceso a contenidos que infrinjan la legalidad vigente tras la recepción de una notificación válida.</li>
     </ul>
 
     <h2>8. PROTECCIÓN DE DATOS Y COOKIES</h2>
-    <p>El tratamiento de los datos personales de los Usuarios se rige estrictamente por la Política de Privacidad de ShineConnect S.L., cumpliendo con el RGPD y la LOPDGDD. Para información sobre el uso de dispositivos de almacenamiento y recuperación de datos en equipos terminales, consulte nuestra Política de Cookies.</p>
+    <p>El tratamiento de los datos personales de los Usuarios se rige estrictamente por la Política de Privacidad de Shineconnect S.L., cumpliendo con el RGPD y la LOPDGDD. Para información sobre el uso de dispositivos de almacenamiento y recuperación de datos en equipos terminales, consulte nuestra Política de Cookies.</p>
 
     <h2>9. LEGISLACIÓN APLICABLE Y JURISDICCIÓN</h2>
     <ul>
@@ -128,87 +133,13 @@
     <p class="meta-date">Última revisión: Mayo de 2026.</p>
   </div>
 
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- Motor de traducción en segundo plano -->
+  <div id="google_translate_element" style="display:none;"></div>
+
   <script>
-    function setTranslateCookie(lang) {
-      var cookieVal = (lang === 'es') ? '/es/es' : '/es/' + lang;
-      document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + window.location.hostname;
-      document.cookie = "googtrans=" + cookieVal + "; path=/;";
-    }
-
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
-    }
-
-    function cambiarIdiomaDoc(lang) {
-      if (!lang) return;
-      localStorage.setItem('limpiapp_lang', lang);
-      setTranslateCookie(lang);
-
-      if (lang === 'es') {
-        var iframe = document.querySelector('iframe.goog-te-banner-frame');
-        if (iframe) {
-          var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-          var b = innerDoc.querySelector('.goog-close-link');
-          if (b) b.click();
-        }
-        var combo = document.querySelector('.goog-te-combo');
-        if (combo) {
-          combo.value = 'es';
-          combo.dispatchEvent(new Event('change'));
-        }
-        return;
-      }
-
-      var combo = document.querySelector('.goog-te-combo');
-      if (combo) {
-        combo.value = lang;
-        combo.dispatchEvent(new Event('change'));
-      } else {
-        setTimeout(function() {
-          var retryCombo = document.querySelector('.goog-te-combo');
-          if (retryCombo) {
-            retryCombo.value = lang;
-            retryCombo.dispatchEvent(new Event('change'));
-          }
-        }, 200);
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var langUrl = urlParams.get('lang');
-      var savedLang = langUrl || localStorage.getItem('limpiapp_lang') || 'es';
-
-      setTranslateCookie(savedLang);
-
-      var select = document.getElementById('langSelect');
-      if (select) select.value = savedLang;
-
-      if (savedLang !== 'es') {
-        var checkInterval = setInterval(function() {
-          var combo = document.querySelector('.goog-te-combo');
-          if (combo) {
-            clearInterval(checkInterval);
-            cambiarIdiomaDoc(savedLang);
-          }
-        }, 100);
-        setTimeout(function() { clearInterval(checkInterval); }, 3000);
-      }
-    });
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const p = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-    const b = document.getElementById('linkVolver') || document.querySelector('.back-btn');
-    if (b) {
-      b.onclick = function(e) {
-        e.preventDefault();
-        window.location.href = 'index.html?lang=' + encodeURIComponent(p);
-      };
-    }
-  });
-</script>
-</body>
-</html>
-</body>
-</html>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+      
+      const host = window.location.hostname;
+      const domain = (host.indexOf('.') !== -1 && !/
