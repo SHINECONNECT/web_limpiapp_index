@@ -477,7 +477,6 @@
     .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
-    /* RESPONSIVE MÓVIL */
     @media (max-width: 840px) {
       .group-cards-grid, .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
       .group-header { flex-direction: column; align-items: flex-start; gap: 10px; }
@@ -497,8 +496,8 @@
   <!-- Selector de Idiomas -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" onchange="cambiarIdioma(this.value)">
-      <optgroup label="Lenguas de España">
+    <select class="lang-select" id="selectLang" onchange="aplicarIdiomaGlobal(this.value)">
+      <optgroup label="España">
         <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
         <option value="gl">Galego</option>
@@ -514,18 +513,18 @@
     </select>
   </div>
 
-  <!-- CABECERA CON LOGO CENTRADO Y BOTONES A LA DERECHA -->
+  <!-- CABECERA: LOGO CENTRADO Y BOTONES A LA DERECHA -->
   <header>
     <div class="header-inner">
       <div class="logo-container">
-        <a href="index.html">
+        <a href="index.html" class="legal-link">
           <img src="logo.png.png" onerror="if(!this.t1){this.t1=1;this.src='logo.png';}else if(!this.t2){this.t2=1;this.src='logo.jpg';}" alt="LIMPIAPP by Shineconnect">
         </a>
       </div>
       <div class="nav-actions">
-        <a href="login.html" class="btn-nav-login" id="btnNavLogin">Iniciar Sesión</a>
-        <a href="clientes.html" class="btn-nav-client" id="btnNavClient">Buscar Servicio</a>
-        <a href="registro.html" class="btn-nav-pro" id="btnNavPro">Soy Profesional</a>
+        <a href="login.html" class="btn-nav-login legal-link" id="btnNavLogin">Iniciar Sesión</a>
+        <a href="clientes.html" class="btn-nav-client legal-link" id="btnNavClient">Buscar Servicio</a>
+        <a href="registro.html" class="btn-nav-pro legal-link" id="btnNavPro">Soy Profesional</a>
       </div>
     </div>
   </header>
@@ -552,7 +551,7 @@
               Encuentra personal profesional de limpieza cerca de ti. Negocia directamente, revisa disponibilidades y sin recargos de intermediación.
             </p>
           </div>
-          <a href="clientes.html" class="btn-action client" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
+          <a href="clientes.html" class="btn-action client legal-link" id="btnActionClient">Solicitar Servicio / Alta Clientes →</a>
         </div>
 
         <div class="cta-card pro">
@@ -563,7 +562,7 @@
               Publica tu perfil en tu demarcación, fija tus precios y recibe avisos directos de clientes en tu WhatsApp. 2 meses gratis de lanzamiento.
             </p>
           </div>
-          <a href="registro.html" class="btn-action pro" id="btnActionPro">Registrarme como Profesional →</a>
+          <a href="registro.html" class="btn-action pro legal-link" id="btnActionPro">Registrarme como Profesional →</a>
         </div>
       </div>
     </section>
@@ -662,7 +661,7 @@
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC5">Sin comisiones sobre el precio de la hora pactada</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client" id="btnClientBasico">Elegir Fórmula Básica</a>
+              <a href="clientes.html" class="btn-action client legal-link" id="btnClientBasico">Elegir Fórmula Básica</a>
             </div>
 
             <div class="plan-card-item featured-border-client">
@@ -677,7 +676,7 @@
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP4">Soporte prioritario de gestión de plataforma</span></li>
                 </ul>
               </div>
-              <a href="clientes.html" class="btn-action client" id="btnClientPrem">Elegir Fórmula Premium</a>
+              <a href="clientes.html" class="btn-action client legal-link" id="btnClientPrem">Elegir Fórmula Premium</a>
             </div>
           </div>
         </div>
@@ -706,7 +705,7 @@
                   <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featP5">0% comisiones (cobras el 100% de tu servicio)</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
+              <a href="registro.html" class="btn-action pro legal-link" style="background: var(--color-slate-medium);" id="btnProBasico">Alta Gratuita</a>
             </div>
 
             <div class="plan-card-item featured-border-pro">
@@ -725,7 +724,7 @@
                   <li><span style="color: var(--color-logo-charcoal); font-weight: 800;">✓</span> <span id="featPP4">Posicionamiento preferente en tu código postal</span></li>
                 </ul>
               </div>
-              <a href="registro.html" class="btn-action pro" id="btnProDest">Activar 2 Meses Gratis →</a>
+              <a href="registro.html" class="btn-action pro legal-link" id="btnProDest">Activar 2 Meses Gratis →</a>
             </div>
           </div>
         </div>
@@ -761,13 +760,13 @@
         &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
       </p>
       <div class="footer-links">
-        <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
+        <a href="aviso-legal.html" class="legal-link" id="footAviso">Aviso Legal</a>
         <span style="color: #475569;">|</span>
-        <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
+        <a href="terminos.html" class="legal-link" id="footTerminos">Términos y Condiciones</a>
         <span style="color: #475569;">|</span>
-        <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
+        <a href="privacidad.html" class="legal-link" id="footPrivacidad">Política de Privacidad</a>
         <span style="color: #475569;">|</span>
-        <a href="cookies.html" id="footCookies">Política de Cookies</a>
+        <a href="cookies.html" class="legal-link" id="footCookies">Política de Cookies</a>
       </div>
       <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
         Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app
@@ -785,6 +784,7 @@
       }
     }
 
+    // DICCIONARIO HOMOGÉNEO Y COMPLETO PARA TODAS LAS SECCIONES DE LA WEB
     var dicc = {
       es: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -837,7 +837,6 @@
 
         priceTitle: "Planes y Tarifas Claros. Sin Letra Pequeña.",
         priceSub: "Modelo de directorio SaaS: tarifas transparentes de suscripción y 0% de comisiones sobre los servicios acordados.",
-        
         groupClientTitle: "🏢 Opciones para Hogares y Empresas",
         groupClientDesc: "Acceso directo al directorio para contratar personal verificado en tu zona.",
         groupClientBadge: "Acceso para Clientes",
@@ -893,7 +892,9 @@
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Cookies",
+        footDesc: "Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados."
       },
       ca: {
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -946,7 +947,6 @@
 
         priceTitle: "Plans i Tarifes Clars. Sense Lletra Petita.",
         priceSub: "Model de directori SaaS: quotes transparents de subscripció i 0% de comissions sobre els serveis.",
-
         groupClientTitle: "🏢 Opcions per a Llars i Empreses",
         groupClientDesc: "Accés directe al directori per contractar personal verificat a la teva zona.",
         groupClientBadge: "Accés per a Clients",
@@ -991,10 +991,10 @@
         featPP2: "<strong>Insígnia oficial de Perfil 100% Verificat</strong>",
         featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
         featPP4: "Posicionament preferent al teu codi postal",
-        btnProDest: "Activar 2 Mesos de Franc →",
+        btnProDest: "Activar 2 Meses de Franc →",
 
         feat1Title: "0% Comissions per Servei",
-        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions.",
+        feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions sobre el treball.",
         feat2Title: "Contacte Immediat i Directe",
         feat2Desc: "Conversa fluida per telèfon o WhatsApp per coordinar horaris sense intermediaris.",
         feat3Title: "Hiperlocalitat per Codi Postal",
@@ -1002,7 +1002,9 @@
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
-        footCookies: "Política de Galetes"
+        footCookies: "Política de Galetes",
+        footDesc: "Plataforma tecnològica d'intermediació de serveis de neteja. Operada a nivell internacional per Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tots els drets reservats."
       },
       en: {
         badgeHero: "🌍 International Technology Platform",
@@ -1019,7 +1021,7 @@
         btnActionClient: "Request Service / Client Signup →",
         tagPro: "For Cleaning Professionals",
         titlePro: "Do you offer cleaning services?",
-        descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
+        descPro: "Publish your profile in your area, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
 
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
@@ -1055,7 +1057,6 @@
 
         priceTitle: "Transparent Plans & Pricing. No Hidden Fees.",
         priceSub: "SaaS directory model: transparent subscription plans with 0% service commissions.",
-
         groupClientTitle: "🏢 Options for Homes and Businesses",
         groupClientDesc: "Direct directory access to hire verified cleaning personnel in your area.",
         groupClientBadge: "Access for Clients",
@@ -1111,20 +1112,22 @@
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
-        footCookies: "Cookie Policy"
+        footCookies: "Cookie Policy",
+        footDesc: "Cleaning services matchmaking technological platform. Operated internationally by Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. All rights reserved."
       },
       de: {
-        badgeHero: "🌍 Internationale Technologieplattform",
+        badgeHero: "🌍 Internationale Technologie-Plattform",
         heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
-        heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr.",
+        heroSub: "Wir verbinden unabhängige Angebote mit Haushalten und Unternehmen in jeder Stadt. Direkter Kontakt, keine Vermittlungsgebühren und volle Transparenz.",
         placeholderCP: "Postleitzahl eingeben (z. B. 46006)",
         btnBuscarCP: "Verfügbarkeit prüfen",
         btnNavLogin: "Anmelden",
-        btnNavClient: "Service finden",
-        btnNavPro: "Ich bin Dienstleister",
+        btnNavClient: "Service Finden",
+        btnNavPro: "Ich bin Profi",
         tagClient: "Für Haushalte & Firmen",
         titleClient: "Suchen Sie vertrauenswürdiges Personal?",
-        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt ohne Vermittlungsgebühren.",
+        descClient: "Finden Sie professionelle Reinigungskräfte in Ihrer Nähe. Direkter Kontakt, ohne Vermittlungsgebühren.",
         btnActionClient: "Service anfragen / Kundenregistrierung →",
         tagPro: "Für Reinigungskräfte",
         titlePro: "Bieten Sie Reinigungsdienste an?",
@@ -1164,7 +1167,6 @@
 
         priceTitle: "Klare Pläne und Tarife. Ohne Kleingedrucktes.",
         priceSub: "SaaS-Verzeichnismodell: transparente Abonnements und 0% Provision auf Dienstleistungen.",
-        
         groupClientTitle: "🏢 Optionen für Haushalte und Unternehmen",
         groupClientDesc: "Direkter Zugriff auf das Verzeichnis, um geprüftes Personal in Ihrer Nähe zu finden.",
         groupClientBadge: "Zugang für Kunden",
@@ -1220,7 +1222,9 @@
         footAviso: "Impressum",
         footTerminos: "AGB",
         footPrivacidad: "Datenschutzerklärung",
-        footCookies: "Cookie-Richtlinie"
+        footCookies: "Cookie-Richtlinie",
+        footDesc: "Technologische Plattform für Reinigungsdienste. International betrieben von Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Alle Rechte vorbehalten."
       },
       fr: {
         badgeHero: "🌍 Plateforme Technologique Internationale",
@@ -1233,7 +1237,7 @@
         btnNavPro: "Je suis Professionnel",
         tagClient: "Pour Foyers et Entreprises",
         titleClient: "Vous cherchez du personnel de confiance ?",
-        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociez directement, sans frais d'intermédiation.",
+        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociation directe sans intermédiaire.",
         btnActionClient: "Demander un Service / Inscription Client →",
         tagPro: "Pour les Professionnels du Nettoyage",
         titlePro: "Vous proposez vos services ?",
@@ -1273,7 +1277,6 @@
 
         priceTitle: "Des Tarifs Clairs et Transparents.",
         priceSub: "Modèle d'annuaire par abonnement : 0% de commission sur vos prestations.",
-        
         groupClientTitle: "🏢 Options pour Foyers et Entreprises",
         groupClientDesc: "Accès direct à l'annuaire pour embaucher du personnel vérifié dans votre zone.",
         groupClientBadge: "Accès pour Clients",
@@ -1329,7 +1332,9 @@
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
         footPrivacidad: "Confidentialité",
-        footCookies: "Politique de Cookies"
+        footCookies: "Gestion des Cookies",
+        footDesc: "Plateforme technologique d'intermédiation pour les services de nettoyage. Gérée par Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tous droits réservés."
       },
       it: {
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
@@ -1349,7 +1354,7 @@
         descPro: "Crea il tuo profilo nel tuo CAP, fissa le tue tariffe e ricevi richieste su WhatsApp. 2 mesi gratis.",
         btnActionPro: "Registrati come Professionista →",
 
-        compTitle: "Perché scegliere LIMPIAPP?",
+        compTitle: "Perché scegliere LIMPIAPP respecto alle alternative?",
         compSub: "Confronta il nostro modello a zero commissioni rispetto ad agenzie e altre piattaforme.",
         thCaract: "Caratteristiche del Servizio",
         thLimpiapp: "✨ LIMPIAPP",
@@ -1382,7 +1387,6 @@
 
         priceTitle: "Piani e Tariffe Chiare. Senza Sorprese.",
         priceSub: "Modello in abbonamento: zero commissioni sul servizio concordato.",
-
         groupClientTitle: "🏢 Soluzioni per Famiglie e Imprese",
         groupClientDesc: "Accesso diretto alla banca dati per ingaggiare personale verificato nel tuo CAP.",
         groupClientBadge: "Accesso Clienti",
@@ -1438,7 +1442,9 @@
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
-        footCookies: "Cookie Policy"
+        footCookies: "Cookie Policy",
+        footDesc: "Piattaforma tecnologica di intermediazione per servizi di pulizia. Gestita da Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Tutti i diritti riservati."
       },
       pt: {
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -1457,7 +1463,7 @@
         titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
-        
+
         compTitle: "Porquê a LIMPIAPP em relação às alternativas?",
         compSub: "Compare o nosso modelo de contacto direto e tarifa 100% livre face às agências e plataformas tradicionais.",
         thCaract: "Características do Serviço",
@@ -1491,7 +1497,6 @@
 
         priceTitle: "Planos e Preços Transparentes.",
         priceSub: "Modelo de subscrição de diretório: 0% de comissões sobre os serviços prestados.",
-        
         groupClientTitle: "🏢 Opções para Lares e Empresas",
         groupClientDesc: "Acesso direto para contratar pessoal verificado na sua área.",
         groupClientBadge: "Acesso para Clientes",
@@ -1547,17 +1552,241 @@
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Cookies",
+        footDesc: "Plataforma de intermediação de serviços de limpeza. Operada internacionalmente por Shineconnect S.L. (B26917807).",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos os direitos reservados."
+      },
+      gl: {
+        badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
+        heroTitle: "Servizos de limpeza profesional verificados <span>no teu código postal</span>",
+        heroSub: "Conectamos a oferta independente con fogares e empresas en calquera cidade. Trato directo e sen comisións.",
+        placeholderCP: "Introduce o teu código postal (ex. 46006)",
+        btnBuscarCP: "Ver Dispoñibilidade",
+        btnNavLogin: "Iniciar Sesión",
+        btnNavClient: "Buscar Servizo",
+        btnNavPro: "Son Profesional",
+        tagClient: "Para Fogares e Empresas",
+        titleClient: "Buscas persoal de confianza?",
+        descClient: "Atopa persoal profesional de limpeza preto de ti sen sobrecustos de intermediación.",
+        btnActionClient: "Solicitar Servizo / Rexistro Clientes →",
+        tagPro: "Para Profesionais de Limpeza",
+        titlePro: "Ofreces os teus servizos?",
+        descPro: "Publica o teu perfil no teu código postal e recibe avisos directos por WhatsApp. 2 meses gratis.",
+        btnActionPro: "Rexistrarme como Profesional →",
+        compTitle: "Por que LIMPIAPP fronte ás alternativas?",
+        compSub: "Compara o noso modelo de trato directo e tarifa 100% libre fronte ás axencias e plataformas tradicionais.",
+        thCaract: "Características do Servizo",
+        thLimpiapp: "✨ LIMPIAPP",
+        thPlataformas: "Outras Plataformas e Apps",
+        thAgencias: "Axencias Tradicionais",
+        tdFila1Nom: "<strong>Verificación de identidade e perfís</strong>",
+        tdFila1Lim: "<strong>100% Verificados</strong> (Profesionais e Clientes)",
+        tdFila1Plat: "Rexistro automático sen filtro",
+        tdFila1Agen: "Só verifican ao traballador",
+        tdFila2Nom: "<strong>Comisión por servizo realizado</strong>",
+        tdFila2Lim: "0% (Cobro 100% do profesional)",
+        tdFila2Plat: "15% - 25% de recarga",
+        tdFila2Agen: "Ata 35% sobre a hora",
+        tdFila3Nom: "<strong>Contacto directo</strong>",
+        tdFila3Lim: "✓ WhatsApp e chamada directa",
+        tdFila3Plat: "✗ Chat pechado ou bloqueado",
+        tdFila3Agen: "✗ Todo a través da axencia",
+        tdFila4Nom: "<strong>Liberdade absoluta de tarifas</strong>",
+        tdFila4Lim: "✓ Fixada libremente polo profesional",
+        tdFila4Plat: "✗ Algoritmo impón o prezo",
+        tdFila4Agen: "✗ Tarifa fixa de empresa",
+        tdFila5Nom: "<strong>Cobertura hiperlocal por Código Postal</strong>",
+        tdFila5Lim: "✓ Demarcación exacta",
+        tdFila5Plat: "Grandes áreas xenéricas",
+        tdFila5Agen: "Suxeito a persoal propio",
+        tdFila6Nom: "<strong>Sen permanencias ni ataduras</strong>",
+        tdFila6Lim: "✓ Total flexibilidade",
+        tdFila6Plat: "Penalizacións por cancelación",
+        tdFila6Agen: "Contratos mensuais obrigatorios",
+        priceTitle: "Plans e Tarifas Claras. Sen Letra Pequena.",
+        priceSub: "Modelo de subscrición ao directorio: sen comisións sobre o servizo.",
+        groupClientTitle: "🏢 Opciones para Fogares e Empresas",
+        groupClientDesc: "Acceso directo ao directorio para contratar persoal verificado na túa zona.",
+        groupClientBadge: "Acceso para Clientes",
+        planClientBasicoName: "Fórmula Básica",
+        planClientBasicoDesc: "Para necesidades periódicas estándar.",
+        spanMes1: "/ mes",
+        featC1: "Contacto con ata <strong>5 profesionais ao mes</strong>",
+        featC2: "Perfís <strong>100% verificados</strong>",
+        featC3: "Busca por país, cidade e código postal",
+        featC4: "Trato directo por WhatsApp ou chamada",
+        featC5: "Sen comisións sobre o prezo pactado",
+        btnClientBasico: "Elixir Fórmula Básica",
+        planClientPremName: "Fórmula Premium ★",
+        planClientPremDesc: "Para familias e empresas que requiren máxima axilidade.",
+        spanMes2: "/ mes",
+        featCP1: "Contacto con <strong>profesionais ilimitados</strong>",
+        featCP2: "Perfís destacados e <strong>100% verificados</strong>",
+        featCP3: "Alertas inmediatas de dispoñibilidade",
+        featCP4: "Soporte prioritario",
+        btnClientPrem: "Elixir Fórmula Premium",
+        groupProTitle: "✨ Opciones para Profesionais de Limpeza",
+        groupProDesc: "Promociona os teus servizos e recibe avisos de clientes verificados.",
+        groupProBadge: "Acceso Profesionais",
+        planProBasicoName: "Plan Básico",
+        planProBasicoDesc: "Para publicar o teu perfil sen custos fixos.",
+        spanSiempre: "/ para sempre",
+        featP1: "Perfil activo na túa cidade e código postal",
+        featP2: "Contactos de clientes <strong>100% verificados</strong>",
+        featP3: "<strong>Limitado a 2 contactos/mes</strong>",
+        featP4: "Tarifa horaria fixada libremente",
+        featP5: "0% comisións (cobras o 100%)",
+        btnProBasico: "Alta de Balde",
+        badgeProPromo: "🔥 Primeiras 30 inscricións: 2 Meses De Balde",
+        planProDestName: "Plan Pro Destacado",
+        planProDestDesc: "Máxima visibilidade e avisos ao instante.",
+        spanMes3: "/ mes",
+        badgeDiasGratis: "🌟 0 € durante os primeiros 60 días",
+        featPP1: "<strong>Contactos ilimitados</strong>",
+        featPP2: "<strong>Insignia oficial de Perfil Verificado</strong>",
+        featPP3: "<strong>Alertas inmediatas de WhatsApp</strong>",
+        featPP4: "Posicionamento preferente",
+        btnProDest: "Activar 2 Meses De Balde →",
+        feat1Title: "0% Comisións por Servizo",
+        feat1Desc: "O importe acordado é íntegro para o profesional.",
+        feat2Title: "Contacto Inmediato e Directo",
+        feat2Desc: "Conversa fluída por teléfono ou WhatsApp sen intermediarios.",
+        feat3Title: "Hiperlocalidade por Código Postal",
+        feat3Desc: "Optimización xeográfica para reducir tempos de traslado.",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condicións",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies",
+        footDesc: "Plataforma tecnolóxica de intermediación. Operada internacionalmente por Shineconnect S.L.",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Todos os dereitos reservados."
+      },
+      eu: {
+        badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
+        heroTitle: "Garbiketa profesional egiaztatua <span>zure posta-kodean</span>",
+        heroSub: "Etxebizitzak eta enpresak garbitzaile profesionalekin konektatzen ditugu. Zuzeneko harremana, komisiorik gabe.",
+        placeholderCP: "Sartu zure posta-kodea (adib. 46006)",
+        btnBuscarCP: "Eskuragarritasuna Ikusi",
+        btnNavLogin: "Hasi Saioa",
+        btnNavClient: "Zerbitzua Bilatu",
+        btnNavPro: "Profesionala Naiz",
+        tagClient: "Etxe eta Enpresentzat",
+        titleClient: "Konfiantzazko langileen bila zabiltza?",
+        descClient: "Aurkitu zure inguruko garbiketa profesionalak bitartekaririk gabe.",
+        btnActionClient: "Zerbitzua Eskatu / Bezero Erregistroa →",
+        tagPro: "Garbiketa Profesionalentzat",
+        titlePro: "Zure zerbitzuak eskaintzen dituzu?",
+        descPro: "Argitaratu zure profila zure posta-kodean eta jaso bezeroak WhatsApp bidez. 2 hilabete doan.",
+        btnActionPro: "Profesional gisa Erregistratu →",
+        compTitle: "Zergatik LIMPIAPP alternatiben aldean?",
+        compSub: "Konparatu gure harreman zuzeneko eta %100eko tarifa libreko eredua agentzien eta plataforma tradizionalen aldean.",
+        thCaract: "Zerbitzuaren Ezaugarriak",
+        thLimpiapp: "✨ LIMPIAPP",
+        thPlataformas: "Beste Plataforma Bitartekariak",
+        thAgencias: "Agentzia Tradizionalak",
+        tdFila1Nom: "<strong>Nortasun eta profil egiaztapena</strong>",
+        tdFila1Lim: "<strong>%100 Egiaztatuak</strong>",
+        tdFila1Plat: "Erregistro automatikoa iragazkirik gabe",
+        tdFila1Agen: "Langilea bakarrik egiaztatzen dute",
+        tdFila2Nom: "<strong>Garbiketa zerbitzuagatiko komisioa</strong>",
+        tdFila2Lim: "0% (Profesionalak %100a jasotzen du)",
+        tdFila2Plat: "%15 - %25eko errekargua",
+        tdFila2Agen: "%35eraino orduko",
+        tdFila3Nom: "<strong>Zuzeneko harremana</strong>",
+        tdFila3Lim: "✓ WhatsApp eta zuzeneko deia",
+        tdFila3Plat: "✗ Txat itxia edo blokeatua",
+        tdFila3Agen: "✗ Dena agentziaren bidez",
+        tdFila4Nom: "<strong>Orduko tarifen erabateko askatasuna</strong>",
+        tdFila4Lim: "✓ Profesionalak askatasunez finkatua",
+        tdFila4Plat: "✗ Algoritmoak ezartzen du prezioa",
+        tdFila4Agen: "✗ Enpresako tarifa finkoa",
+        tdFila5Nom: "<strong>Estaldura hiperlokala</strong>",
+        tdFila5Lim: "✓ Demarkazio zehatza",
+        tdFila5Plat: "Eremu orokor handiak",
+        tdFila5Agen: "Berezko langileen menpe",
+        tdFila6Nom: "<strong>Iraupen edo loturarik gabe</strong>",
+        tdFila6Lim: "✓ Malgutasun osoa",
+        tdFila6Plat: "Ezeztapen zigorrak",
+        tdFila6Agen: "Derrigorrezko hileko kontratuak",
+        priceTitle: "Plangintza eta Tarifa Garbiak.",
+        priceSub: "Direktorio-harpidetza: inolako komisiorik gabe adostutako zerbitzuan.",
+        groupClientTitle: "🏢 Etxe eta Enpresentzako Aukerak",
+        groupClientDesc: "Direktoriorako sarbide zuzena langile egiaztatuak kontratatzeko.",
+        groupClientBadge: "Bezeroentzako Sarbidea",
+        planClientBasicoName: "Oinarrizko Formula",
+        planClientBasicoDesc: "Ohiko beharretarako.",
+        spanMes1: "/ hilean",
+        featC1: "Hilean gehienez <strong>5 profesionalekin harremana</strong>",
+        featC2: "Profilak <strong>%100 egiaztatuta</strong>",
+        featC3: "Bilaketa herrialde, hiri eta posta-kodearen arabera",
+        featC4: "Zuzeneko harremana WhatsApp edo deien bidez",
+        featC5: "Komisiorik gabe orduko prezioan",
+        btnClientBasico: "Oinarrizko Formula Hautatu",
+        planClientPremName: "Premium Formula ★",
+        planClientPremDesc: "Agilitate maximoa behar dutenentzat.",
+        spanMes2: "/ hilean",
+        featCP1: "Harremana <strong>mugarik gabeko profesionalekin</strong>",
+        featCP2: "Profil nabarmenduak eta <strong>%100 egiaztatuta</strong>",
+        featCP3: "Eskuragarritasun-abisuak berehala",
+        featCP4: "Lehentasunezko laguntza",
+        btnClientPrem: "Premium Formula Hautatu",
+        groupProTitle: "✨ Garbiketako Profesionalentzako Aukerak",
+        groupProDesc: "Zure zerbitzuak sustatu eta bezeroen abisuak jaso.",
+        groupProBadge: "Profesionalen Sarbidea",
+        planProBasicoName: "Oinarrizko Plana",
+        planProBasicoDesc: "Profila argitaratzeko kostu finkorik gabe.",
+        spanSiempre: "/ betirako",
+        featP1: "Profil aktiboa zure hirian eta posta-kodean",
+        featP2: "Bezeroen kontaktuak <strong>%100 egiaztatuta</strong>",
+        featP3: "<strong>Hilean 2 kontaktura mugatuta</strong>",
+        featP4: "Orduko tarifa askatasunez finkatua",
+        featP5: "%0 komisioak (%100 zurea)",
+        btnProBasico: "Doako Izena Ematea",
+        badgeProPromo: "🔥 Lehenengo 30ak: 2 Hilabete Doan",
+        planProDestName: "Plan Pro Nabarmendua",
+        planProDestDesc: "Ikusgarritasun maximoa eta abisuak berehala.",
+        spanMes3: "/ hilean",
+        badgeDiasGratis: "🌟 0 € lehenengo 60 egunetan",
+        featPP1: "<strong>Mugarik gabeko kontaktuak</strong>",
+        featPP2: "<strong>Profil Egiaztatuaren intsignia ofiziala</strong>",
+        featPP3: "<strong>Berehalako WhatsApp abisuak</strong>",
+        featPP4: "Lehentasunezko posizionamendua",
+        btnProDest: "2 Hilabete Doan Aktibatu →",
+        feat1Title: "%0 Komisio Zerbitzuagatik",
+        feat1Desc: "Adostutako dirua %100 profesionalarentzat da.",
+        feat2Title: "Berehalako Harreman Zuzena",
+        feat2Desc: "Elkarrizketa erraza telefonoz edo WhatsAppez.",
+        feat3Title: "Hiperlokaltasuna Posta Kodearen bidez",
+        feat3Desc: "Eremu geografikoen optimizazioa joan-etorriak murrizteko.",
+        footAviso: "Legezko Oharra",
+        footTerminos: "Baldintzak eta Xedapenak",
+        footPrivacidad: "Pribatutasun Politika",
+        footCookies: "Cookie Politika",
+        footDesc: "Nazioarteko garbiketa-zerbitzuen plataforma teknologikoa. Shineconnect S.L.-k operatua.",
+        footCopy: "© 2026 SHINECONNECT S.L. — LIMPIAPP. Eskubide guztiak erreserbatuta."
       }
     };
 
-    function cambiarIdioma(lang) {
-      localStorage.setItem('limpiapp_lang', lang);
-      var t = dicc[lang] || dicc['es'];
+    // FUNCIÓN DE TRADUCCIÓN UNIFICADA Y HOMOGÉNEA CON LOS FORMULARIOS
+    function aplicarIdiomaGlobal(lang) {
+      if (!lang || !dicc[lang]) {
+        lang = dicc[lang] ? lang : (['es','ca','gl','eu'].includes(lang) ? 'es' : 'en');
+      }
 
-      for (var id in t) {
+      // Persistencia sincronizada en almacenamiento local
+      localStorage.setItem('limpiapp_lang', lang);
+      localStorage.setItem('lang', lang);
+      localStorage.setItem('preferred_lang', lang);
+
+      document.documentElement.lang = lang;
+      window.idiomaActual = lang;
+
+      // Fusionar con el diccionario base en español para que ninguna clave quede sin traducir
+      var t = Object.assign({}, dicc['es'], dicc[lang] || {});
+
+      // Bucle que garantiza la actualización de todas las etiquetas de la página
+      for (var id in dicc['es']) {
         var el = document.getElementById(id);
-        if (el) {
+        if (el && t[id]) {
           if (id === 'heroTitle' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge')) {
             el.innerHTML = t[id];
           } else {
@@ -1566,11 +1795,13 @@
         }
       }
 
+      // Actualizar el placeholder del buscador
       var inputCP = document.getElementById('inputCP');
       if (inputCP && t.placeholderCP) {
         inputCP.placeholder = t.placeholderCP;
       }
 
+      // Propagar el idioma activo (?lang=xx) a los enlaces de navegación y botones
       var btnLogin = document.getElementById('btnNavLogin');
       if (btnLogin) btnLogin.setAttribute('href', 'login.html?lang=' + encodeURIComponent(lang));
 
@@ -1585,13 +1816,50 @@
 
       var btnActPro = document.getElementById('btnActionPro');
       if (btnActPro) btnActPro.setAttribute('href', 'registro.html?lang=' + encodeURIComponent(lang));
+
+      // Propagación a los documentos legales del pie de página
+      document.querySelectorAll('.footer-links a, .legal-link').forEach(link => {
+        try {
+          const rawHref = link.getAttribute('href');
+          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('http')) return;
+          const baseFile = rawHref.split('?')[0];
+          link.setAttribute('href', baseFile + '?lang=' + encodeURIComponent(lang));
+        } catch (err) {}
+      });
+
+      // Sincronizar el selector visualmente
+      var select = document.querySelector('.lang-select');
+      if (select && select.value !== lang) select.value = lang;
+
+      // Actualizar la barra de direcciones del navegador
+      try {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', currentUrl.toString());
+      } catch (err) {}
     }
 
+    // Alias para mantener compatibilidad total con llamadas existentes
+    function cambiarIdioma(lang) {
+      aplicarIdiomaGlobal(lang);
+    }
+
+    // Sincronización en tiempo real si el usuario cambia el idioma desde un formulario en otra pestaña
+    window.addEventListener('storage', function(e) {
+      if ((e.key === 'limpiapp_lang' || e.key === 'lang' || e.key === 'preferred_lang') && e.newValue) {
+        aplicarIdiomaGlobal(e.newValue);
+      }
+    });
+
+    // Carga inicial: leer parámetro de URL o memoria local
     document.addEventListener('DOMContentLoaded', function() {
-      var guardado = localStorage.getItem('limpiapp_lang') || 'es';
+      const urlParams = new URLSearchParams(window.location.search);
+      let langParam = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang') || 'es';
+      
       var select = document.querySelector('.lang-select');
-      if (select) select.value = guardado;
-      cambiarIdioma(guardado);
+      if (select) select.value = langParam;
+      
+      aplicarIdiomaGlobal(langParam);
     });
   </script>
 </body>
