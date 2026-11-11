@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="notranslate">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="google" content="notranslate">
   <title>Política de Privacidad y Protección de Datos | LIMPIAPP</title>
   <meta name="theme-color" content="#4f585d">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -271,7 +271,17 @@
         setTimeout(function() { clearInterval(checkInterval); }, 3000);
       }
     });
-  </script>
-  <div id="google_translate_element" style="display:none;"></div>
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const p = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+    const b = document.getElementById('linkVolver') || document.querySelector('.back-btn');
+    if (b) {
+      b.onclick = function(e) {
+        e.preventDefault();
+        window.location.href = 'index.html?lang=' + encodeURIComponent(p);
+      };
+    }
+  });
+</script>
 </body>
 </html>
