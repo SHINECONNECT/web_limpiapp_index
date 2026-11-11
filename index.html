@@ -44,7 +44,7 @@
     .top-bar {
       background-color: var(--color-bg-card);
       border-bottom: 1px solid var(--color-slate-border);
-      padding: 8px 24px;
+      padding: 8px 48px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -62,32 +62,45 @@
       cursor: pointer;
     }
 
+    /* CABECERA: LOGO CENTRADO Y BOTONES A LA DERECHA */
     header {
       background: var(--color-bg-card);
       border-bottom: 1px solid var(--color-slate-border);
-      padding: 16px 24px;
+      padding: 14px 48px;
       width: 100%;
+      position: relative;
     }
     .header-inner {
-      max-width: 1100px;
+      max-width: 100%;
       width: 100%;
       margin: 0 auto;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
+      position: relative;
+      min-height: 70px;
+    }
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .logo-container img {
-      max-width: 230px;
-      height: 50px;
+      max-width: 310px;
+      height: 68px;
       object-fit: contain;
       display: block;
       mix-blend-mode: multiply;
     }
     .nav-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       flex-wrap: wrap;
+      margin-left: auto;
     }
     .btn-nav-login {
       color: var(--color-logo-charcoal);
@@ -464,12 +477,17 @@
     .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
+    /* RESPONSIVE MÓVIL */
     @media (max-width: 840px) {
       .group-cards-grid, .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
       .group-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .header-inner { flex-direction: column; gap: 14px; }
+      header { padding: 14px 20px; }
+      .header-inner { flex-direction: column; gap: 14px; min-height: auto; }
+      .logo-container { position: static; transform: none; }
+      .logo-container img { max-width: 240px; height: 52px; }
+      .nav-actions { margin-left: 0; justify-content: center; }
       .hero h1 { font-size: 2rem; }
-      .top-bar { justify-content: center; }
+      .top-bar { justify-content: center; padding: 8px 16px; }
       .search-box-cp { flex-direction: column; }
     }
   </style>
@@ -496,6 +514,7 @@
     </select>
   </div>
 
+  <!-- CABECERA CON LOGO CENTRADO Y BOTONES A LA DERECHA -->
   <header>
     <div class="header-inner">
       <div class="logo-container">
@@ -972,7 +991,7 @@
         featPP2: "<strong>Insígnia oficial de Perfil 100% Verificat</strong>",
         featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
         featPP4: "Posicionament preferent al teu codi postal",
-        btnProDest: "Activar 2 Meses de Franc →",
+        btnProDest: "Activar 2 Mesos de Franc →",
 
         feat1Title: "0% Comissions per Servei",
         feat1Desc: "L'import acordat és 100% per al professional. Model de directori sense comissions.",
@@ -1000,7 +1019,7 @@
         btnActionClient: "Request Service / Client Signup →",
         tagPro: "For Cleaning Professionals",
         titlePro: "Do you offer cleaning services?",
-        descPro: "Publish your profile in your area, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
+        descPro: "Publish your profile in your postal code, set your rates, and get direct WhatsApp client leads. 2 months free launch trial.",
         btnActionPro: "Register as a Professional →",
 
         compTitle: "Why LIMPIAPP vs. Traditional Alternatives?",
@@ -1205,20 +1224,20 @@
       },
       fr: {
         badgeHero: "🌍 Plateforme Technologique Internationale",
-        heroTitle: "Services de nettoyage professionnel vérifiés <span>dans votre code postal</span>",
+        heroTitle: "Services de nettoyage professionnels vérifiés <span>dans votre code postal</span>",
         heroSub: "Nous connectons l'offre indépendante avec les foyers et entreprises. Contact direct, zéro commission et transparence totale.",
         placeholderCP: "Entrez votre code postal (ex. 75001)",
-        btnBuscarCP: "Vérifier la Disponibilité",
+        btnBuscarCP: "Voir les disponibilités",
         btnNavLogin: "Connexion",
         btnNavClient: "Trouver un Service",
         btnNavPro: "Je suis Professionnel",
         tagClient: "Pour Foyers et Entreprises",
         titleClient: "Vous cherchez du personnel de confiance ?",
-        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociation directe sans intermédiaire.",
+        descClient: "Trouvez des professionnels du nettoyage près de chez vous. Négociez directement, sans frais d'intermédiation.",
         btnActionClient: "Demander un Service / Inscription Client →",
-        tagPro: "Pour Professionnels du Nettoyage",
+        tagPro: "Pour les Professionnels du Nettoyage",
         titlePro: "Vous proposez vos services ?",
-        descPro: "Publiez votre profil dans votre code postal et recevez des demandes directes sur WhatsApp. 2 mois offerts.",
+        descPro: "Publiez votre profil, fixez vos prix et recevez des demandes directes sur WhatsApp. 2 mois gratuits.",
         btnActionPro: "S'inscrire comme Professionnel →",
         
         compTitle: "Pourquoi choisir LIMPIAPP par rapport aux alternatives ?",
@@ -1438,7 +1457,7 @@
         titlePro: "Oferece os seus serviços?",
         descPro: "Publique o seu perfil no seu código postal e receba contactos via WhatsApp. 2 meses grátis.",
         btnActionPro: "Registar como Profissional →",
-
+        
         compTitle: "Porquê a LIMPIAPP em relação às alternativas?",
         compSub: "Compare o nosso modelo de contacto direto e tarifa 100% livre face às agências e plataformas tradicionais.",
         thCaract: "Características do Serviço",
@@ -1472,7 +1491,7 @@
 
         priceTitle: "Planos e Preços Transparentes.",
         priceSub: "Modelo de subscrição de diretório: 0% de comissões sobre os serviços prestados.",
-
+        
         groupClientTitle: "🏢 Opções para Lares e Empresas",
         groupClientDesc: "Acesso direto para contratar pessoal verificado na sua área.",
         groupClientBadge: "Acesso para Clientes",
