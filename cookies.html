@@ -19,14 +19,15 @@
       --color-slate-border: #d4dfe6;
       --color-bg-page: #f8fafc;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; top: 0px !important; }
     
-    /* Ocultar barra superior invasiva de Google Translate */
+    /* Ocultar barra invasiva superior de Google Translate */
     .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+    body { top: 0px !important; }
     #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
     .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
     .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
@@ -130,29 +131,42 @@
     <p class="meta-date">Última actualización: Mayo de 2026.</p>
   </div>
 
-  <!-- Contenedor del motor de traducción -->
+  <!-- Contenedor oculto del traductor -->
   <div id="google_translate_element" style="display:none;"></div>
 
   <script>
-    (function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      let lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-      
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+
+    function purgarYFijarCookie(targetLang) {
+      const cookieVal = (targetLang === 'es') ? '' : '/es/' + targetLang;
       const host = window.location.hostname;
-      const domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
-      const cookieVal = (lang === 'es') ? '' : '/es/' + lang;
+      const parts = host.split('.');
       
-      const currentCookie = (document.cookie.match(/(^|; )googtrans=([^;]+)/) || [])[2] || '';
-      if (decodeURIComponent(currentCookie) !== cookieVal) {
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
-        
-        if (cookieVal) {
-          document.cookie = "googtrans=" + cookieVal + "; path=/;";
-          if (domain) document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
+      const dominios = ['', host, '.' + host];
+      if (parts.length >= 2) {
+        const rootDomain = '.' + parts.slice(-2).join('.');
+        dominios.push(rootDomain);
+      }
+
+      dominios.forEach(d => {
+        const domainStr = d ? '; domain=' + d : '';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/' + domainStr;
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=""' + domainStr;
+      });
+
+      if (cookieVal) {
+        document.cookie = 'googtrans=' + cookieVal + '; path=/;';
+        if (parts.length >= 2) {
+          const rootDomain = '.' + parts.slice(-2).join('.');
+          document.cookie = 'googtrans=' + cookieVal + '; path=/; domain=' + rootDomain + ';';
         }
       }
-    })();
+    }
+
+    purgarYFijarCookie(lang);
+    localStorage.setItem('limpiapp_lang', lang);
+    localStorage.setItem('lang', lang);
 
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -162,16 +176,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-      
-      const select = document.getElementById('langSelect');
-      if (select) {
-        select.value = lang;
-        select.onchange = function() {
+      const sel = document.getElementById('langSelect');
+      if (sel) {
+        sel.value = lang;
+        sel.onchange = function() {
           const nuevoIdioma = this.value;
+          purgarYFijarCookie(nuevoIdioma);
           localStorage.setItem('limpiapp_lang', nuevoIdioma);
           localStorage.setItem('lang', nuevoIdioma);
+          
           const url = new URL(window.location.href);
           url.searchParams.set('lang', nuevoIdioma);
           window.location.href = url.toString();
@@ -184,6 +197,22 @@
           e.preventDefault();
           window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
         };
+      }
+
+      if (lang !== 'es') {
+        let intentos = 0;
+        const checkCombo = setInterval(function() {
+          intentos++;
+          const combo = document.querySelector('.goog-te-combo');
+          if (combo) {
+            clearInterval(checkCombo);
+            if (combo.value !== lang) {
+              combo.value = lang;
+              combo.dispatchEvent(new Event('change'));
+            }
+          }
+          if (intentos > 30) clearInterval(checkCombo);
+        }, 100);
       }
     });
   </script>
