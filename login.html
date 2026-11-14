@@ -96,11 +96,12 @@
       border-bottom: 1px solid var(--color-slate-border);
     }
     .card-header img {
-      max-width: 220px;
-      width: 100%;
+      max-width: 260px;
+      width: 80%;
       height: auto;
       display: block;
       margin: 0 auto;
+      mix-blend-mode: multiply;
     }
 
     .auth-mode-tabs {
@@ -333,6 +334,43 @@
     }
     .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
+
+    /* RESPONSIVE MÓVIL (ANDROID E IPHONE) */
+    @media (max-width: 600px) {
+      .top-bar {
+        justify-content: center;
+        padding: 8px 14px;
+        gap: 8px;
+        font-size: 0.8rem;
+      }
+      .lang-select {
+        font-size: 16px; /* Evita zoom automático en iPhone */
+        max-width: 175px;
+        padding: 4px 8px;
+      }
+      .main-wrapper {
+        padding: 18px 12px 36px;
+      }
+      .card-header {
+        padding: 20px 16px 14px;
+      }
+      .card-header img {
+        max-width: 240px;
+      }
+      .content-area {
+        padding: 22px 18px;
+      }
+      .role-btn {
+        font-size: 0.82rem;
+        padding: 8px 6px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"] {
+        font-size: 16px !important; /* Evita zoom automático en iPhone Safari */
+      }
+    }
   </style>
 </head>
 <body>
@@ -361,8 +399,8 @@
     <div class="container">
       
       <div class="card-header">
-        <a href="index.html">
-          <img src="logo.png.png" alt="LIMPIAPP by Shineconnect">
+        <a href="index.html" id="logoLink">
+          <img src="logo.png.png" onerror="if(!this.t1){this.t1=1;this.src='logo.png';}else if(!this.t2){this.t2=1;this.src='logo.jpg';}" alt="LIMPIAPP by Shineconnect">
         </a>
       </div>
 
@@ -399,6 +437,7 @@
         <form id="authForm" action="https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec" method="POST">
           <input type="hidden" name="tipo_formulario" id="hiddenFormType" value="login">
           <input type="hidden" name="perfil_usuario" id="hiddenRole" value="cliente">
+          <input type="hidden" name="idioma" id="hiddenLang" value="es">
 
           <!-- Campos visibles únicamente al CREAR CUENTA -->
           <div id="registerFields" style="display: none;">
@@ -501,7 +540,7 @@
         <a href="cookies.html" id="footCookies">Política de Cookies</a>
       </div>
       <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
-        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@shineconnect.app
+        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app
       </p>
     </div>
   </footer>
@@ -535,7 +574,7 @@
         lblPassword: "Contraseña *",
         lblConfirmPw: "Confirmar Contraseña *",
         pwHint: "Mínimo 8 caracteres (se recomienda combinar letras y números).",
-        txtRgpd: 'He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
+        txtRgpd: 'He leído y acepto los <a href="terminos.html?lang=es" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html?lang=es" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
         modalTitleLog: "¡Sesión Verificada!",
         modalDescLog: "Tus credenciales se han validado correctamente. Tu cuenta está lista para la sincronización con la App.",
         modalTitleReg: "¡Cuenta Creada con Éxito!",
@@ -573,7 +612,7 @@
         lblPassword: "Contrasenya *",
         lblConfirmPw: "Confirmar Contrasenya *",
         pwHint: "Mínim 8 caràcters (es recomana combinar lletres i números).",
-        txtRgpd: 'He llegit i accepto els <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
+        txtRgpd: 'He llegit i accepto els <a href="terminos.html?lang=ca" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html?lang=ca" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
         modalTitleLog: "Sessió Verificada!",
         modalDescLog: "Les teves credencials s'han validat correctament. El teu compte està a punt per a l'App.",
         modalTitleReg: "Compte Creat amb Èxit!",
@@ -611,7 +650,7 @@
         lblPassword: "Password *",
         lblConfirmPw: "Confirm Password *",
         pwHint: "Minimum 8 characters (letters and numbers recommended).",
-        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
+        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html?lang=en" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html?lang=en" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
         modalTitleLog: "Session Verified!",
         modalDescLog: "Your credentials have been validated. Your account is ready for synchronization with the mobile App.",
         modalTitleReg: "Account Created Successfully!",
@@ -649,7 +688,7 @@
         lblPassword: "Mot de passe *",
         lblConfirmPw: "Confirmer le mot de passe *",
         pwHint: "8 caractères minimum (chiffres et lettres recommandés).",
-        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
+        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html?lang=fr" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html?lang=fr" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
         modalTitleLog: "Session Vérifiée !",
         modalDescLog: "Vos identifiants ont été validés. Votre compte est prêt pour l'App mobile.",
         modalTitleReg: "Compte Créé avec Succès !",
@@ -687,7 +726,7 @@
         lblPassword: "Passwort *",
         lblConfirmPw: "Passwort bestätigen *",
         pwHint: "Mindestens 8 Zeichen (Buchstaben und Zahlen empfohlen).",
-        txtRgpd: 'Ich habe die <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
+        txtRgpd: 'Ich habe die <a href="terminos.html?lang=de" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html?lang=de" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
         modalTitleLog: "Sitzung Bestätigt!",
         modalDescLog: "Ihre Anmeldedaten wurden geprüft. Ihr Konto ist für die App-Synchronisierung bereit.",
         modalTitleReg: "Konto Erfolgreich Erstellt!",
@@ -725,7 +764,7 @@
         lblPassword: "Password *",
         lblConfirmPw: "Conferma Password *",
         pwHint: "Minimo 8 caratteri (consigliate lettere e numeri).",
-        txtRgpd: 'Ho letto e accetto i <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
+        txtRgpd: 'Ho letto e accetto i <a href="terminos.html?lang=it" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html?lang=it" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
         modalTitleLog: "Accesso Confermato!",
         modalDescLog: "Le tue credenziali sono state convalidate. Il tuo account è pronto per l'App.",
         modalTitleReg: "Account Creato con Successo!",
@@ -763,7 +802,7 @@
         lblPassword: "Palavra-passe *",
         lblConfirmPw: "Confirmar Palavra-passe *",
         pwHint: "Mínimo 8 caracteres (recomendado letras e números).",
-        txtRgpd: 'Li e aceito os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
+        txtRgpd: 'Li e aceito os <a href="terminos.html?lang=pt" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html?lang=pt" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
         modalTitleLog: "Sessão Verificada!",
         modalDescLog: "As suas credenciais foram validadas. A conta está pronta para a App.",
         modalTitleReg: "Conta Criada com Sucesso!",
@@ -801,7 +840,7 @@
         lblPassword: "Contrasinal *",
         lblConfirmPw: "Confirmar Contrasinal *",
         pwHint: "Mínimo 8 caracteres (letras e números).",
-        txtRgpd: 'Lin e acepto os <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
+        txtRgpd: 'Lin e acepto os <a href="terminos.html?lang=gl" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html?lang=gl" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
         modalTitleLog: "Sesión Verificada!",
         modalDescLog: "As túas credenciais foron validadas. Conta lista para a App.",
         modalTitleReg: "Conta Creada con Éxito!",
@@ -839,7 +878,7 @@
         lblPassword: "Pasahitza *",
         lblConfirmPw: "Berretsi Pasahitza *",
         pwHint: "Gutxienez 8 karaktere (letrak eta zenbakiak).",
-        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
+        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html?lang=eu" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html?lang=eu" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
         modalTitleLog: "Saioa Egiaztatuta!",
         modalDescLog: "Kredentzialak ondo balioztatu dira. Zure kontua prest dago App-erako.",
         modalTitleReg: "Kontua Ondo Sortu Da!",
@@ -960,6 +999,24 @@
 
     function cambiarIdioma(lang) {
       localStorage.setItem('limpiapp_lang', lang);
+      localStorage.setItem('lang', lang);
+
+      // Sincronizar cookie googtrans para los documentos legales vinculados
+      var host = window.location.hostname;
+      var domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
+      var cookieVal = (lang === 'es') ? '' : '/es/' + lang;
+      
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
+      
+      if (cookieVal) {
+        document.cookie = "googtrans=" + cookieVal + "; path=/;";
+        if (domain) document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
+      }
+
+      var hiddenLang = document.getElementById('hiddenLang');
+      if (hiddenLang) hiddenLang.value = lang;
+
       var t = dicc[lang] || dicc['es'];
 
       var textMapping = {
@@ -998,6 +1055,20 @@
 
       var rgpdSpan = document.getElementById('txtRgpd');
       if (rgpdSpan && t.txtRgpd) rgpdSpan.innerHTML = t.txtRgpd;
+
+      // Propagar idioma a enlaces de navegación y legales del pie
+      var navLinks = [
+        { id: 'logoLink', base: 'index.html' },
+        { id: 'backLink', base: 'index.html' },
+        { id: 'footAviso', base: 'aviso-legal.html' },
+        { id: 'footTerminos', base: 'terminos.html' },
+        { id: 'footPrivacidad', base: 'privacidad.html' },
+        { id: 'footCookies', base: 'cookies.html' }
+      ];
+      navLinks.forEach(function(item) {
+        var linkEl = document.getElementById(item.id);
+        if (linkEl) linkEl.setAttribute('href', item.base + '?lang=' + encodeURIComponent(lang));
+      });
 
       setAuthMode(currentMode);
     }
@@ -1038,7 +1109,8 @@
         modalBtn.addEventListener('click', function() {
           var modal = document.getElementById('modalAuth');
           if (modal) modal.style.display = 'none';
-          window.location.href = 'index.html';
+          var activeLang = localStorage.getItem('limpiapp_lang') || 'es';
+          window.location.href = 'index.html?lang=' + encodeURIComponent(activeLang);
         });
       }
 
@@ -1075,7 +1147,6 @@
         form.addEventListener('submit', function(e) {
           e.preventDefault();
 
-          // Comprobación estricta del formulario HTML5
           if (!form.checkValidity()) {
             form.reportValidity();
             return;
