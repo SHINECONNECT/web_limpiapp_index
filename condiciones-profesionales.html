@@ -8,25 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <script>
-    // Asigna la cookie del traductor antes de cargar cualquier elemento
-    (function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-      var val = (lang === 'es') ? '' : '/es/' + lang;
-      var host = window.location.hostname;
-      var domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
-      
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
-      
-      if (val) {
-        document.cookie = "googtrans=" + val + "; path=/;";
-        if (domain) document.cookie = "googtrans=" + val + "; path=/; domain=" + domain + ";";
-      }
-    })();
-  </script>
 
   <style>
     :root {
@@ -39,8 +20,16 @@
       --color-slate-border: #d4dfe6;
       --color-bg-page: #f8fafc;
     }
+
+    /* Ocultar barra superior invasiva de Google Translate */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; }
+    body > .skiptranslate { display: none !important; }
+    body { top: 0px !important; }
+    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; top: 0px !important; }
+    body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.7; padding-bottom: 60px; }
     .top-bar { background: #fff; border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
     .lang-select { padding: 5px 12px; border-radius: 6px; border: 1px solid var(--color-slate-border); font-size: 0.82rem; background: var(--color-bg-page); font-weight: 600; cursor: pointer; color: var(--color-slate-dark); }
     .container { max-width: 900px; margin: 40px auto; background: #fff; padding: 45px; border-radius: 16px; border: 1.5px solid var(--color-slate-border); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
@@ -52,15 +41,22 @@
     li { margin-bottom: 8px; }
     .highlight-box { background: #f8fafc; border-left: 4px solid var(--color-logo-charcoal); padding: 18px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
     .meta-date { font-weight: 700; color: var(--color-slate-muted); font-size: 0.88rem; margin-top: 30px; border-top: 1px solid var(--color-slate-border); padding-top: 15px; }
-    .goog-te-banner-frame.skiptranslate { display: none !important; }
-    body > .skiptranslate { display: none !important; }
+
+    /* RESPONSIVE MÓVIL (ANDROID E IPHONE) */
+    @media (max-width: 768px) {
+      .top-bar { justify-content: center; padding: 8px 14px; gap: 8px; }
+      .lang-select { font-size: 16px; max-width: 180px; }
+      .container { margin: 20px 12px; padding: 26px 20px; }
+      h1 { font-size: 1.55rem; }
+      h2 { font-size: 1.1rem; }
+    }
   </style>
 </head>
 <body>
 
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelect" onchange="cambiarIdiomaEnPagina(this.value)">
+    <select class="lang-select" id="langSelect">
       <optgroup label="Lenguas de España">
         <option value="es">Español</option>
         <option value="ca">Valencià / Català</option>
@@ -78,157 +74,190 @@
   </div>
 
   <div class="container">
-    <a href="javascript:history.back()" class="back-btn" id="btnBack">← Volver</a>
-    <h1>CONDICIONES DE SUSCRIPCIÓN PARA PROFESIONALES (B2B) - SHINECONNECT S.L.[cite: 91]</h1>
+    <a href="index.html" class="back-btn" id="linkVolver">← Volver</a>
+    <h1>CONDICIONES DE SUSCRIPCIÓN PARA PROFESIONALES (B2B) - SHINECONNECT S.L.</h1>
 
     <h2>ARTÍCULO 1. OBJETO Y ÁMBITO DE APLICACIÓN</h2>
-    <p><strong>1.1. Definición del Servicio SaaS:</strong> Las presentes Condiciones de Suscripción regulan el acceso oneroso a las funcionalidades premium de la plataforma ShineConnect para los Usuarios registrados bajo el perfil de "Profesional"[cite: 91]. El servicio consiste en la provisión de una infraestructura tecnológica de Software como Servicio (SaaS) que permite la gestión de reservas, visibilidad en el mercado digital, herramientas de facturación y sistemas de mensajería profesional[cite: 91].</p>
-    <p><strong>1.2. Naturaleza Mercantil (B2B):</strong> El Profesional reconoce y acepta que la suscripción a ShineConnect se realiza en el ejercicio de una actividad económica o profesional independiente[cite: 91]. En consecuencia, la relación jurídica aquí descrita tiene carácter estrictamente mercantil, quedando excluida la aplicación de las normas de protección de consumidores y usuarios, salvo en aquello que la ley disponga de forma imperativa para microempresas o autónomos[cite: 91].</p>
+    <p><strong>1.1. Definición del Servicio SaaS:</strong> Las presentes Condiciones de Suscripción regulan el acceso oneroso a las funcionalidades premium de la plataforma LIMPIAPP (operada por Shineconnect S.L.) para los Usuarios registrados bajo el perfil de "Profesional". El servicio consiste en la provisión de una infraestructura tecnológica de Software como Servicio (SaaS) que permite la gestión de reservas, visibilidad en el mercado digital, herramientas de facturación y sistemas de mensajería profesional.</p>
+    <p><strong>1.2. Naturaleza Mercantil (B2B):</strong> El Profesional reconoce y acepta que la suscripción a LIMPIAPP se realiza en el ejercicio de una actividad económica o profesional independiente. En consecuencia, la relación jurídica aquí descrita tiene carácter estrictamente mercantil, quedando excluida la aplicación de las normas de protección de consumidores y usuarios, salvo en aquello que la ley disponga de forma imperativa para microempresas o autónomos.</p>
 
     <h2>ARTÍCULO 2. MODALIDADES DE SUSCRIPCIÓN Y TARIFAS</h2>
-    <p><strong>2.1. Planes de Suscripción:</strong> ShineConnect S.L. pone a disposición del Profesional diversos planes de suscripción (ej. Mensual, Anual) cuyas características técnicas y límites de uso se detallan de forma específica en el panel de control del Profesional[cite: 91].</p>
-    <p><strong>2.2. Tarifas e Impuestos:</strong> El precio de la suscripción será el vigente en el momento de la contratación[cite: 91]. Todas las tarifas se expresarán en Euros (€) y se les aplicará el Impuesto sobre el Valor Añadido (IVA) correspondiente en España o, en su caso, el régimen de inversión del sujeto pasivo si el Profesional opera desde otro estado miembro de la UE con NIF-IVA intracomunitario válido[cite: 91].</p>
+    <p><strong>2.1. Planes de Suscripción:</strong> Shineconnect S.L. pone a disposición del Profesional diversos planes de suscripción (ej. Mensual, Anual) cuyas características técnicas y límites de uso se detallan de forma específica en el panel de control del Profesional.</p>
+    <p><strong>2.2. Tarifas e Impuestos:</strong> El precio de la suscripción será el vigente en el momento de la contratación. Todas las tarifas se expresarán en Euros (€) y se les aplicará el Impuesto sobre el Valor Añadido (IVA) correspondiente en España o, en su caso, el régimen de inversión del sujeto pasivo si el Profesional opera desde otro estado miembro de la UE con NIF-IVA intracomunitario válido.</p>
 
     <h2>ARTÍCULO 3. PROCESAMIENTO DE PAGOS Y FACTURACIÓN</h2>
-    <p><strong>3.1. Pasarela de Pagos:</strong> El pago de las cuotas de suscripción se realizará de forma obligatoria a través de la pasarela de pagos integrada de Stripe Payments Europe, Ltd., de acuerdo con los estándares de seguridad PCI-DSS[cite: 91].</p>
-    <p><strong>3.2. Autorización de Cargo Recurrente:</strong> Al contratar una modalidad de suscripción, el Profesional autoriza de forma expresa y recurrente a ShineConnect S.L. para realizar el cargo automático de la cuota en el método de pago facilitado (tarjeta de crédito/débito o cuenta bancaria) al inicio de cada periodo de facturación[cite: 91].</p>
-    <p><strong>3.3. Emisión de Facturas:</strong> ShineConnect S.L. emitirá la correspondiente factura electrónica por cada cargo realizado, la cual estará disponible para su descarga en el área privada del Profesional de conformidad con el Reglamento de Facturación español[cite: 91].</p>
+    <p><strong>3.1. Pasarela de Pagos:</strong> El pago de las cuotas de suscripción se realizará de forma obligatoria a través de la pasarela de pagos integrada de Stripe Payments Europe, Ltd., de acuerdo con los estándares de seguridad PCI-DSS.</p>
+    <p><strong>3.2. Autorización de Cargo Recurrente:</strong> Al contratar una modalidad de suscripción, el Profesional autoriza de forma expresa y recurrente a Shineconnect S.L. para realizar el cargo automático de la cuota en el método de pago facilitado (tarjeta de crédito/débito o cuenta bancaria) al inicio de cada periodo de facturación.</p>
+    <p><strong>3.3. Emisión de Facturas:</strong> Shineconnect S.L. emitirá la correspondiente factura electrónica por cada cargo realizado, la cual estará disponible para su descarga en el área privada del Profesional de conformidad con el Reglamento de Facturación español.</p>
 
     <h2>ARTÍCULO 4. RENOVACIÓN, CANCELACIÓN Y SUSPENSIÓN</h2>
-    <p><strong>4.1. Renovación Automática:</strong> Salvo que el Profesional proceda a la cancelación de su suscripción a través de las herramientas de la plataforma con una antelación mínima de 24 horas a la fecha de vencimiento, la suscripción se renovará automáticamente por periodos idénticos al contratado[cite: 91].</p>
-    <p><strong>4.2. Impago y Mora:</strong> En caso de que un cargo resulte fallido, ShineConnect S.L. intentará realizar el cobro en tres (3) ocasiones adicionales[cite: 91]. Si tras el último intento el pago no ha sido satisfecho[cite: 91]:</p>
+    <p><strong>4.1. Renovación Automática:</strong> Salvo que el Profesional proceda a la cancelación de su suscripción a través de las herramientas de la plataforma con una antelación mínima de 24 horas a la fecha de vencimiento, la suscripción se renovará automáticamente por periodos idénticos al contratado.</p>
+    <p><strong>4.2. Impago y Mora:</strong> En caso de que un cargo resulte fallido, Shineconnect S.L. intentará realizar el cobro en tres (3) ocasiones adicionales. Si tras el último intento el pago no ha sido satisfecho:</p>
     <ul>
-      <li>El acceso del Profesional a las funcionalidades de reserva será suspendido de forma inmediata[cite: 91].</li>
-      <li>El perfil del Profesional dejará de ser visible en los resultados de búsqueda de los Clientes[cite: 91].</li>
-      <li>ShineConnect S.L. se reserva el derecho de resolver el contrato y reclamar las cuotas impagadas más los intereses de demora legales conforme a la Ley 3/2004 de lucha contra la morosidad en operaciones comerciales[cite: 91].</li>
+      <li>El acceso del Profesional a las funcionalidades de reserva será suspendido de forma inmediata.</li>
+      <li>El perfil del Profesional dejará de ser visible en los resultados de búsqueda de los Clientes.</li>
+      <li>Shineconnect S.L. se reserva el derecho de resolver el contrato y reclamar las cuotas impagadas más los intereses de demora legales conforme a la Ley 3/2004 de lucha contra la morosidad en operaciones comerciales.</li>
     </ul>
 
     <h2>ARTÍCULO 5. DERECHO DE DESISTIMIENTO Y REEMBOLSOS</h2>
-    <p><strong>5.1. Exclusión para Profesionales:</strong> Dado que el Profesional actúa como empresario o profesional liberal, no le asiste el derecho de desistimiento de 14 días previsto para los consumidores en la LGDCU[cite: 91].</p>
-    <p><strong>5.2. Ejecución Inmediata del Servicio:</strong> El Profesional reconoce expresamente que el acceso a las herramientas de gestión y la activación del perfil público constituyen la ejecución íntegra del servicio de software[cite: 91]. En consecuencia, no se realizarán reembolsos totales ni parciales por periodos de suscripción ya abonados, incluso si el Profesional decide no utilizar la plataforma o solicita la baja antes de la finalización del periodo[cite: 91].</p>
+    <p><strong>5.1. Exclusión para Profesionales:</strong> Dado que el Profesional actúa como empresario o profesional liberal, no le asiste el derecho de desistimiento de 14 días previsto para los consumidores en la LGDCU.</p>
+    <p><strong>5.2. Ejecución Inmediata del Servicio:</strong> El Profesional reconoce expresamente que el acceso a las herramientas de gestión y la activación del perfil público constituyen la ejecución íntegra del servicio de software. En consecuencia, no se realizarán reembolsos totales ni parciales por periodos de suscripción ya abonados, incluso si el Profesional decide no utilizar la plataforma o solicita la baja antes de la finalización del periodo.</p>
 
     <h2>ARTÍCULO 6. INTEGRACIÓN DEL PROGRAMA DE SEGUROS</h2>
-    <p><strong>6.1. Cobertura Facilitada:</strong> De conformidad con el Artículo 21 de las Condiciones de Servicio, ShineConnect S.L. facilita al Profesional la posibilidad de adherirse a un seguro de Responsabilidad Civil Profesional[cite: 91].</p>
+    <p><strong>6.1. Cobertura Facilitada:</strong> De conformidad con el Artículo 21 de las Condiciones de Servicio, Shineconnect S.L. facilita al Profesional la posibilidad de adherirse a un seguro de Responsabilidad Civil Profesional.</p>
     <ul>
-      <li><strong>Mes de Cortesía:</strong> La suscripción puede incluir un periodo promocional de un mes de seguro gratuito subvencionado por ShineConnect S.L.[cite: 91]</li>
-      <li><strong>Renovación del Seguro:</strong> Una vez finalizado el periodo promocional, el coste de la prima se cargará de forma conjunta o segregada con la cuota de suscripción, según la modalidad elegida, salvo cancelación expresa por parte del Profesional[cite: 91].</li>
+      <li><strong>Mes de Cortesía:</strong> La suscripción puede incluir un periodo promocional de un mes de seguro gratuito subvencionado por Shineconnect S.L.</li>
+      <li><strong>Renovación del Seguro:</strong> Una vez finalizado el periodo promocional, el coste de la prima se cargará de forma conjunta o segregada con la cuota de suscripción, según la modalidad elegida, salvo cancelación expresa por parte del Profesional.</li>
     </ul>
 
     <h2>ARTÍCULO 7. CUMPLIMIENTO FISCAL Y REQUERIMIENTOS DAC7</h2>
-    <p><strong>7.1. Obligación de Información:</strong> Para mantener la suscripción activa, el Profesional se compromete a facilitar toda la información fiscal requerida por la Directiva (UE) 2021/514 (DAC7)[cite: 91]. ShineConnect S.L. podrá retener la transferencia de fondos de servicios de limpieza realizados o suspender la suscripción si el Profesional no proporciona un NIF válido o información veraz sobre su residencia fiscal tras ser requerido para ello[cite: 91].</p>
+    <p><strong>7.1. Obligación de Información:</strong> Para mantener la suscripción activa, el Profesional se compromete a facilitar toda la información fiscal requerida por la Directiva (UE) 2021/514 (DAC7). Shineconnect S.L. podrá retener la transferencia de fondos de servicios de limpieza realizados o suspender la suscripción si el Profesional no proporciona un NIF válido o información veraz sobre su residencia fiscal tras ser requerido para ello.</p>
 
     <h2>ARTÍCULO 8. MODIFICACIÓN DE TARIFAS</h2>
-    <p>ShineConnect S.L. se reserva el derecho de modificar los precios de sus planes de suscripción[cite: 91]. Cualquier cambio de tarifa será notificado al Profesional con una antelación mínima de treinta (30) días naturales[cite: 91]. Si el Profesional no está de acuerdo con el nuevo precio, podrá cancelar su suscripción sin penalización alguna antes de la siguiente fecha de renovación[cite: 91].</p>
+    <p>Shineconnect S.L. se reserva el derecho de modificar los precios de sus planes de suscripción. Cualquier cambio de tarifa será notificado al Profesional con una antelación mínima de treinta (30) días naturales. Si el Profesional no está de acuerdo con el nuevo precio, podrá cancelar su suscripción sin penalización alguna antes de la siguiente fecha de renovación.</p>
 
     <h2>ARTÍCULO 9. LEY APLICABLE Y JURISDICCIÓN B2B</h2>
-    <p><strong>9.1. Ley:</strong> Estas condiciones se rigen por la legislación comercial de España[cite: 91].</p>
-    <p><strong>9.2. Fuero:</strong> Para cualquier disputa derivada de la interpretación o ejecución de este contrato de suscripción, las partes, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, se someten a la jurisdicción exclusiva de los Juzgados y Tribunales de la ciudad de Valencia, España[cite: 91].</p>
+    <p><strong>9.1. Ley:</strong> Estas condiciones se rigen por la legislación comercial de España.</p>
+    <p><strong>9.2. Fuero:</strong> Para cualquier disputa derivada de la interpretación o ejecución de este contrato de suscripción, las partes, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, se someten a la jurisdicción exclusiva de los Juzgados y Tribunales de la ciudad de Valencia, España.</p>
 
     <div class="highlight-box">
-      <p><strong>CLÁUSULA DE ACEPTACIÓN B2B:</strong> AL CONTRATAR CUALQUIER PLAN DE SUSCRIPCIÓN, USTED DECLARA BAJO SU RESPONSABILIDAD QUE ACTÚA COMO TRABAJADOR AUTÓNOMO O REPRESENTANTE LEGAL DE UNA EMPRESA Y QUE ACEPTA ÍNTEGRAMENTE ESTAS CONDICIONES MERCANTILES[cite: 91].</p>
+      <p><strong>CLÁUSULA DE ACEPTACIÓN B2B:</strong> AL CONTRATAR CUALQUIER PLAN DE SUSCRIPCIÓN, USTED DECLARA BAJO SU RESPONSABILIDAD QUE ACTÚA COMO TRABAJADOR AUTÓNOMO O REPRESENTANTE LEGAL DE UNA EMPRESA Y QUE ACEPTA ÍNTEGRAMENTE ESTAS CONDICIONES MERCANTILES.</p>
     </div>
 
-    <h1 style="margin-top: 50px;">ESTÁNDARES DE CALIDAD Y COMUNIDAD PARA PROFESIONALES - SHINECONNECT S.L.[cite: 92]</h1>
+    <h1 style="margin-top: 50px;">ESTÁNDARES DE CALIDAD Y COMUNIDAD PARA PROFESIONALES - SHINECONNECT S.L.</h1>
 
     <h2>ARTÍCULO 1. OBJETO Y NATURALEZA DE LOS ESTÁNDARES</h2>
-    <p><strong>1.1. Finalidad:</strong> El presente documento tiene como objeto definir los niveles de servicio y estándares de comportamiento profesional exigidos para mantener el derecho de acceso y uso de la infraestructura SaaS de ShineConnect S.L.[cite: 92]</p>
-    <p><strong>1.2. Ámbito Mercantil:</strong> Estos estándares no constituyen un manual de instrucciones laborales ni una dirección jerárquica del trabajo[cite: 92]. Se definen como métricas de calidad técnica que el Profesional, como contratista independiente, acepta cumplir para garantizar la integridad y el prestigio del ecosistema digital ShineConnect[cite: 92].</p>
+    <p><strong>1.1. Finalidad:</strong> El presente documento tiene como objeto definir los niveles de servicio y estándares de comportamiento profesional exigidos para mantener el derecho de acceso y uso de la infraestructura SaaS de Shineconnect S.L.</p>
+    <p><strong>1.2. Ámbito Mercantil:</strong> Estos estándares no constituyen un manual de instrucciones laborales ni una dirección jerárquica del trabajo. Se definen como métricas de calidad técnica que el Profesional, como contratista independiente, acepta cumplir para garantizar la integridad y el prestigio del ecosistema digital LIMPIAPP.</p>
 
     <h2>ARTÍCULO 2. MÉTRICAS DE EFICIENCIA EN EL MARKETPLACE</h2>
-    <p>Para garantizar una experiencia óptima de los Usuarios Clientes dentro de la plataforma, el Profesional se compromete a mantener los siguientes niveles de eficiencia técnica[cite: 92]:</p>
+    <p>Para garantizar una experiencia óptima de los Usuarios Clientes dentro de la plataforma, el Profesional se compromete a mantener los siguientes niveles de eficiencia técnica:</p>
     <ul>
-      <li><strong>Tasa de Respuesta:</strong> El Profesional procurará responder a las solicitudes de reserva o mensajes de los Clientes a través del chat interno en un plazo razonable, preferiblemente inferior a 24 horas[cite: 92].</li>
-      <li><strong>Fiabilidad de Calendario:</strong> El Profesional es el único responsable de mantener actualizada su disponibilidad en la herramienta de calendario de la App[cite: 92]. La discrepancia reiterada entre la disponibilidad declarada y la real podrá dar lugar a la pérdida de visibilidad del perfil[cite: 92].</li>
-      <li><strong>Ratio de Cancelaciones:</strong> El Profesional reconoce que la cancelación injustificada de reservas ya confirmadas genera un perjuicio reputacional a la plataforma[cite: 92]. Se monitorizará la tasa de cancelaciones de última hora como métrica de fiabilidad profesional[cite: 92].</li>
+      <li><strong>Tasa de Respuesta:</strong> El Profesional procurará responder a las solicitudes de reserva o mensajes de los Clientes a través del chat interno en un plazo razonable, preferiblemente inferior a 24 horas.</li>
+      <li><strong>Fiabilidad de Calendario:</strong> El Profesional es el único responsable de mantener actualizada su disponibilidad en la herramienta de calendario de la App. La discrepancia reiterada entre la disponibilidad declarada y la real podrá dar lugar a la pérdida de visibilidad del perfil.</li>
+      <li><strong>Ratio de Cancelaciones:</strong> El Profesional reconoce que la cancelación injustificada de reservas ya confirmadas genera un perjuicio reputacional a la plataforma. Se monitorizará la tasa de cancelaciones de última hora como métrica de fiabilidad profesional.</li>
     </ul>
 
     <h2>ARTÍCULO 3. REPUTACIÓN Y VALORACIONES DE LOS USUARIOS</h2>
-    <p><strong>3.1. Sistema de Feedback:</strong> De conformidad con la Directiva Omnibus y el Artículo 2.5 de las Condiciones de Servicio, el sistema de reseñas es el mecanismo principal de control de calidad del Marketplace[cite: 53, 92].</p>
-    <p><strong>3.2. Puntuación Mínima:</strong> ShineConnect S.L. se reserva el derecho de suspender técnicamente el acceso a la plataforma de aquellos Profesionales que mantengan una puntuación media de valoraciones de Clientes significativamente inferior a la media de la comunidad de forma persistente, por entenderse que el servicio no cumple con los estándares mínimos esperados por el mercado[cite: 92].</p>
+    <p><strong>3.1. Sistema de Feedback:</strong> De conformidad con la Directiva Omnibus y el Artículo 2.5 de las Condiciones de Servicio, el sistema de reseñas es el mecanismo principal de control de calidad del Marketplace.</p>
+    <p><strong>3.2. Puntuación Mínima:</strong> Shineconnect S.L. se reserva el derecho de suspender técnicamente el acceso a la plataforma de aquellos Profesionales que mantengan una puntuación media de valoraciones de Clientes significativamente inferior a la media de la comunidad de forma persistente, por entenderse que el servicio no cumple con los estándares mínimos esperados por el mercado.</p>
 
     <h2>ARTÍCULO 4. INDEPENDENCIA TÉCNICA Y DE CRITERIO</h2>
-    <p><strong>4.1. Ausencia de Supervisión Material:</strong> ShineConnect S.L. no supervisa, inspecciona ni dirige la ejecución material de los servicios de limpieza[cite: 92]. El Profesional ostenta plena autonomía para determinar las técnicas, productos y métodos de trabajo que considere adecuados para cada encargo[cite: 92].</p>
-    <p><strong>4.2. Medios Materiales:</strong> El Profesional es el único responsable de aportar su propio equipo, uniformidad y materiales de limpieza, salvo acuerdo directo con el Cliente[cite: 92]. ShineConnect S.L. no proporciona suministros ni herramientas de trabajo[cite: 92].</p>
-    <p><strong>4.3. No Exclusividad:</strong> El Profesional es libre de prestar sus servicios en otras plataformas concurrentes o de forma directa, sin que ShineConnect S.L. imponga restricciones de exclusividad o permanencia[cite: 92].</p>
+    <p><strong>4.1. Ausencia de Supervisión Material:</strong> Shineconnect S.L. no supervisa, inspecciona ni dirige la ejecución material de los servicios de limpieza. El Profesional ostenta plena autonomía para determinar las técnicas, productos y métodos de trabajo que considere adecuados para cada encargo.</p>
+    <p><strong>4.2. Medios Materiales:</strong> El Profesional es el único responsable de aportar su propio equipo, uniformidad y materiales de limpieza, salvo acuerdo directo con el Cliente. Shineconnect S.L. no proporciona suministros ni herramientas de trabajo.</p>
+    <p><strong>4.3. No Exclusividad:</strong> El Profesional es libre de prestar sus servicios en otras plataformas concurrentes o de forma directa, sin que Shineconnect S.L. imponga restricciones de exclusividad o permanencia.</p>
 
     <h2>ARTÍCULO 5. CONDUCTA PROFESIONAL EN LA PLATAFORMA</h2>
-    <p>El Profesional se obliga a mantener una conducta respetuosa y profesional en todas las interacciones realizadas a través de las herramientas de comunicación de ShineConnect[cite: 92]. Quedan prohibidas[cite: 92]:</p>
+    <p>El Profesional se obliga a mantener una conducta respetuosa y profesional en todas las interacciones realizadas a través de las herramientas de comunicación de LIMPIAPP. Quedan prohibidas:</p>
     <ul>
-      <li>El uso de lenguaje ofensivo, discriminatorio o acosador en el chat interno[cite: 92].</li>
-      <li>La captación de Clientes fuera de la plataforma para eludir el sistema de seguridad y comisiones (Disintermediación), conforme al Artículo 4.3 de las Condiciones de Servicio[cite: 55, 92].</li>
-      <li>La suplantación de identidad o la cesión de la cuenta de usuario a terceros no autorizados[cite: 92].</li>
+      <li>El uso de lenguaje ofensivo, discriminatorio o acosador en el chat interno.</li>
+      <li>La captación de Clientes fuera de la plataforma para eludir el sistema de seguridad y comisiones (Disintermediación), conforme al Artículo 4.3 de las Condiciones de Servicio.</li>
+      <li>La suplantación de identidad o la cesión de la cuenta de usuario a terceros no autorizados.</li>
     </ul>
 
     <h2>ARTÍCULO 6. CONSECUENCIAS TÉCNICAS DEL INCUMPLIMIENTO</h2>
-    <p><strong>6.1. Resolución Mercantil:</strong> El incumplimiento grave o reiterado de estos estándares no dará lugar a sanciones disciplinarias laborales, sino a las siguientes consecuencias técnicas y mercantiles en el marco del servicio SaaS[cite: 92]:</p>
+    <p><strong>6.1. Resolución Mercantil:</strong> El incumplimiento grave o reiterado de estos estándares no dará lugar a sanciones disciplinarias laborales, sino a las siguientes consecuencias técnicas y mercantiles en el marco del servicio SaaS:</p>
     <ul>
-      <li><strong>Reducción de Visibilidad:</strong> El perfil del Profesional podrá ser desplazado a posiciones inferiores en los resultados de búsqueda de la App[cite: 92].</li>
-      <li><strong>Suspensión Temporal:</strong> Inhabilitación del acceso a la recepción de nuevas reservas durante un periodo de auditoría técnica[cite: 92].</li>
-      <li><strong>Resolución de Suscripción:</strong> Terminación definitiva del contrato de suscripción y cierre de cuenta por incumplimiento de los estándares de calidad del Marketplace[cite: 92].</li>
+      <li><strong>Reducción de Visibilidad:</strong> El perfil del Profesional podrá ser desplazado a posiciones inferiores en los resultados de búsqueda de la App.</li>
+      <li><strong>Suspensión Temporal:</strong> Inhabilitación del acceso a la recepción de nuevas reservas durante un periodo de auditoría técnica.</li>
+      <li><strong>Resolución de Suscripción:</strong> Terminación definitiva del contrato de suscripción y cierre de cuenta por incumplimiento de los estándares de calidad del Marketplace.</li>
     </ul>
 
     <h2>ARTÍCULO 7. LIMITACIÓN DE RESPONSABILIDAD</h2>
-    <p>De acuerdo con el Artículo 16 de las Condiciones de Servicio, ShineConnect S.L. no asume responsabilidad alguna por las reclamaciones derivadas de la actuación del Profesional[cite: 71, 92]. La existencia de estos estándares de calidad no altera la naturaleza de ShineConnect como tercero ajeno a la ejecución material del servicio de limpieza[cite: 92]. El Profesional mantendrá indemne a ShineConnect S.L. por cualquier daño personal o material causado durante la prestación de sus servicios, para lo cual se facilita la adhesión al Programa de Seguros descrito en el Artículo 21 de las Condiciones de Servicio[cite: 76, 92].</p>
+    <p>De acuerdo con el Artículo 16 de las Condiciones de Servicio, Shineconnect S.L. no asume responsabilidad alguna por las reclamaciones derivadas de la actuación del Profesional. La existencia de estos estándares de calidad no altera la naturaleza de Shineconnect como tercero ajeno a la ejecución material del servicio de limpieza. El Profesional mantendrá indemne a Shineconnect S.L. por cualquier daño personal o material causado durante la prestación de sus servicios, para lo cual se facilita la adhesión al Programa de Seguros descrito en el Artículo 21 de las Condiciones de Servicio.</p>
 
     <div class="highlight-box">
-      <p><strong>ACEPTACIÓN:</strong> EL PROFESIONAL RECONOCE QUE ESTOS ESTÁNDARES SON ESENCIALES PARA LA PRESTACIÓN DEL SERVICIO TECNOLÓGICO Y SE COMPROMETE A CUMPLIRLOS PARA MANTENER SU POSICIÓN DENTRO DE LA COMUNIDAD SHINECONNECT[cite: 92].</p>
+      <p><strong>ACEPTACIÓN:</strong> EL PROFESIONAL RECONOCE QUE ESTOS ESTÁNDARES SON ESENCIALES PARA LA PRESTACIÓN DEL SERVICIO TECNOLÓGICO Y SE COMPROMETE A CUMPLIRLOS PARA MANTENER SU POSICIÓN DENTRO DE LA COMUNIDAD SHINECONNECT.</p>
     </div>
 
-    <p class="meta-date">Última actualización: Mayo de 2026[cite: 92].</p>
+    <p class="meta-date">Última actualización: Mayo de 2026.</p>
   </div>
 
+  <!-- Contenedor oculto del traductor -->
   <div id="google_translate_element" style="display:none;"></div>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'es', autoDisplay: false }, 'google_translate_element');
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+
+    function purgarYFijarCookie(targetLang) {
+      const cookieVal = (targetLang === 'es') ? '' : '/es/' + targetLang;
+      const host = window.location.hostname;
+      const parts = host.split('.');
+      
+      const dominios = ['', host, '.' + host];
+      if (parts.length >= 2) {
+        const rootDomain = '.' + parts.slice(-2).join('.');
+        dominios.push(rootDomain);
+      }
+
+      dominios.forEach(d => {
+        const domainStr = d ? '; domain=' + d : '';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/' + domainStr;
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=""' + domainStr;
+      });
+
+      if (cookieVal) {
+        document.cookie = 'googtrans=' + cookieVal + '; path=/;';
+        if (parts.length >= 2) {
+          const rootDomain = '.' + parts.slice(-2).join('.');
+          document.cookie = 'googtrans=' + cookieVal + '; path=/; domain=' + rootDomain + ';';
+        }
+      }
     }
 
-    function cambiarIdiomaEnPagina(lang) {
-      localStorage.setItem('limpiapp_lang', lang);
-      
-      var url = new URL(window.location.href);
-      url.searchParams.set('lang', lang);
-      window.location.href = url.toString();
+    purgarYFijarCookie(lang);
+    localStorage.setItem('limpiapp_lang', lang);
+    localStorage.setItem('lang', lang);
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        autoDisplay: false
+      }, 'google_translate_element');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      var urlParams = new URLSearchParams(window.location.search);
-      var currentLang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
-      
-      var select = document.getElementById('langSelect');
-      if (select) select.value = currentLang;
-
-      var backBtn = document.getElementById('btnBack');
-      if (backBtn) {
-        var textosVolver = {
-          es: '← Volver',
-          ca: '← Tornar',
-          gl: '← Volver',
-          eu: '← Itzuli',
-          en: '← Back',
-          fr: '← Retour',
-          de: '← Zurück',
-          it: '← Torna indietro',
-          pt: '← Voltar'
+      const sel = document.getElementById('langSelect');
+      if (sel) {
+        sel.value = lang;
+        sel.onchange = function() {
+          const nuevoIdioma = this.value;
+          purgarYFijarCookie(nuevoIdioma);
+          localStorage.setItem('limpiapp_lang', nuevoIdioma);
+          localStorage.setItem('lang', nuevoIdioma);
+          
+          const url = new URL(window.location.href);
+          url.searchParams.set('lang', nuevoIdioma);
+          window.location.href = url.toString();
         };
-        backBtn.innerText = textosVolver[currentLang] || '← Volver';
       }
 
-      if (currentLang !== 'es') {
-        var retries = 0;
-        var interval = setInterval(function() {
-          var combo = document.querySelector('.goog-te-combo');
+      const btnVolver = document.getElementById('linkVolver');
+      if (btnVolver) {
+        btnVolver.onclick = function(e) {
+          e.preventDefault();
+          window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
+        };
+      }
+
+      if (lang !== 'es') {
+        let intentos = 0;
+        const checkCombo = setInterval(function() {
+          intentos++;
+          const combo = document.querySelector('.goog-te-combo');
           if (combo) {
-            clearInterval(interval);
-            combo.value = currentLang;
-            combo.dispatchEvent(new Event('change'));
+            clearInterval(checkCombo);
+            if (combo.value !== lang) {
+              combo.value = lang;
+              combo.dispatchEvent(new Event('change'));
+            }
           }
-          retries++;
-          if (retries > 30) clearInterval(interval);
+          if (intentos > 30) clearInterval(checkCombo);
         }, 100);
       }
     });
   </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
