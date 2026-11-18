@@ -326,7 +326,7 @@
       box-shadow: 0 0 0 4px var(--focus-ring);
     }
 
-select {
+    select {
       -webkit-appearance: none;
       appearance: none;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f585d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -335,6 +335,7 @@ select {
       background-size: 16px;
       padding-right: 40px;
     }
+
     /* CASILLAS RGPD */
     .checkbox-group {
       display: flex;
@@ -532,7 +533,7 @@ select {
 
     <div class="form-card">
       <div class="form-header">
-        <span class="badge-promo" id="txtBadge">🎉 Lanzamiento: Plan Premium Gratuito</span>
+        <span class="badge-promo" id="txtBadge">🎉 Lanzamiento: Plan Básico 1º mes a 0 € / Pro con Promoción</span>
         <h1 id="txtTitulo">Únete como Profesional</h1>
         <p id="txtSubtitulo">Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.</p>
       </div>
@@ -587,6 +588,15 @@ select {
           </div>
         </div>
 
+        <!-- NUEVO SELECTOR DE PLANES PROFESIONALES -->
+        <div class="form-group">
+          <label for="selectPlan" id="lblPlan">Plan Seleccionado *</label>
+          <select name="plan" id="selectPlan">
+            <option value="Plan Básico Profesional" id="optPlanBasico" selected>Plan Básico Profesional (7,99 €/mes - 1º mes gratis cupo pionero 50 reg.)</option>
+            <option value="Plan Pro Destacado" id="optPlanPro">Plan Pro Destacado (14,99 €/mes - 7,99 €/mes primeros 2 meses)</option>
+          </select>
+        </div>
+
         <div class="checkbox-group">
           <input type="checkbox" name="alertas" id="checkAlertas" value="Si">
           <label for="checkAlertas" id="lblAlertas">
@@ -631,7 +641,7 @@ select {
 
     var dicc = {
       es: {
-        badge: "🎉 Lanzamiento: Plan Premium Gratuito",
+        badge: "🎉 Lanzamiento: Plan Básico 1º mes a 0 € / Pro con Promoción",
         titulo: "Únete como Profesional",
         subtitulo: "Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.",
         lblNombre: "Nombre y Apellidos *",
@@ -651,6 +661,9 @@ select {
         optExp1: "1 a 2 años",
         optExp2: "3 a 5 años",
         optExp3: "Más de 5 años",
+        lblPlan: "Plan Seleccionado *",
+        optPlanBasico: "Plan Básico Profesional (7,99 €/mes - 1º mes gratis cupo pionero 50 reg.)",
+        optPlanPro: "Plan Pro Destacado (14,99 €/mes - 7,99 €/mes primeros 2 meses)",
         lblAlertas: "Deseo recibir avisos instantáneos de nuevos clientes por WhatsApp y correo electrónico.",
         lblRgpdTexto: "He leído y acepto los <a href='terminos.html' target='_blank' class='legal-link'>Términos del Servicio</a> y la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidad</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
@@ -667,7 +680,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos los derechos reservados. Plataforma conforme al RGPD (UE 2016/679) y LOPDGDD 3/2018."
       },
       ca: {
-        badge: "🎉 Llançament: Pla Premium Gratuït",
+        badge: "🎉 Llançament: Pla Bàsic 1r mes a 0 € / Pro amb Promoció",
         titulo: "Uneix-te com a Professional",
         subtitulo: "Publica el teu perfil sense comissions i rep contactes directes de clients a la teua zona.",
         lblNombre: "Nom i Cognoms *",
@@ -687,6 +700,9 @@ select {
         optExp1: "1 a 2 anys",
         optExp2: "3 a 5 anys",
         optExp3: "Més de 5 anys",
+        lblPlan: "Pla Seleccionat *",
+        optPlanBasico: "Pla Bàsic Professional (7,99 €/mes - 1r mes gratis cupo pioner)",
+        optPlanPro: "Pla Pro Destacat (14,99 €/mes - 7,99 €/mes primers 2 mesos)",
         lblAlertas: "Desitge rebre avisos instantanis de nous clients per WhatsApp i correu electrònic.",
         lblRgpdTexto: "He llegit i accepte els <a href='terminos.html' target='_blank' class='legal-link'>Termes del Servei</a> i la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacitat</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Professional",
@@ -703,7 +719,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tots els drets reservats. Plataforma conforme al RGPD (UE 2016/679) i LOPDGDD 3/2018."
       },
       gl: {
-        badge: "🎉 Lanzamento: Plan Premium De balde",
+        badge: "🎉 Lanzamento: Plan Básico 1º mes a 0 € / Pro con Promoción",
         titulo: "Únete como Profesional",
         subtitulo: "Publica o teu perfil sen comisións e recibe contactos directos de clientes na túa zona.",
         lblNombre: "Nome e Apelidos *",
@@ -723,6 +739,9 @@ select {
         optExp1: "1 a 2 anos",
         optExp2: "3 a 5 anos",
         optExp3: "Máis de 5 anos",
+        lblPlan: "Plan Elixido *",
+        optPlanBasico: "Plan Básico Profesional (7,99 €/mes - 1º mes de balde)",
+        optPlanPro: "Plan Pro Destacado (14,99 €/mes - 7,99 €/mes primeiros 2 meses)",
         lblAlertas: "Desexo recibir avisos instantáneos de novos clientes por WhatsApp e correo electrónico.",
         lblRgpdTexto: "Lín e acepto os <a href='terminos.html' target='_blank' class='legal-link'>Termos do Servizo</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
@@ -739,7 +758,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos os dereitos reservados. Plataforma conforme ao RXPD (UE 2016/679)."
       },
       eu: {
-        badge: "🎉 Abiaraztea: Doako Premium Plana",
+        badge: "🎉 Abiaraztea: Oinarrizko Plana 1. hilabetea 0 € / Pro Promozioarekin",
         titulo: "Batu Profesional gisa",
         subtitulo: "Argitaratu zure profila komisiorik gabe eta jaso bezeroen kontaktu zuzenak zure eremuan.",
         lblNombre: "Izen-abizenak *",
@@ -759,6 +778,9 @@ select {
         optExp1: "1 eta 2 urte artean",
         optExp2: "3 eta 5 urte artean",
         optExp3: "5 urte baino gehiago",
+        lblPlan: "Hautatutako Plana *",
+        optPlanBasico: "Oinarrizko Plana Profesionala (7,99 €/hilabete - 1. hilabetea doan)",
+        optPlanPro: "Pro Plan Nabarmendua (14,99 €/hilabete - lehen 2 hilabeteetan 7,99 €)",
         lblAlertas: "Bezero berrien berehalako abisuak jaso nahi ditut WhatsApp eta posta elektronikoz.",
         lblRgpdTexto: "<a href='terminos.html' target='_blank' class='legal-link'>Zerbitzuaren Baldintzak</a> eta SHINECONNECT S.L.ren <a href='privacidad.html' target='_blank' class='legal-link'>Pribatutasun Politika</a> irakurri eta onartzen ditut.",
         btnSubmit: "Aktibatu Profil Profesionala",
@@ -775,7 +797,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (IFK B26917807) — LIMPIAPP. Eskubide guztiak erreserbatuta. DBEO eta DBLOO araudiekin bat."
       },
       ast: {
-        badge: "🎉 Llanzamientu: Plan Premium De balde",
+        badge: "🎉 Llanzamientu: Plan Básicu 1ᵘ mes a 0 € / Pro con Promoción",
         titulo: "Xúnite como Profesional",
         subtitulo: "Espubliza'l to perfil ensin comisiones y recibe contautos direutos de clientes na to zona.",
         lblNombre: "Nome y Apellíos *",
@@ -795,6 +817,9 @@ select {
         optExp1: "1 a 2 años",
         optExp2: "3 a 5 años",
         optExp3: "Más de 5 años",
+        lblPlan: "Plan Escoyíu *",
+        optPlanBasico: "Plan Básicu Profesional (7,99 €/mes - 1ᵘ mes de balde)",
+        optPlanPro: "Plan Pro Destacáu (14,99 €/mes - 7,99 €/mes primeros 2 meses)",
         lblAlertas: "Deseyo recibir avisos instantáneos de nuevos clientes per WhatsApp y corréu electrónicu.",
         lblRgpdTexto: "Lleí y aceuto los <a href='terminos.html' target='_blank' class='legal-link'>Términos del Serviciu</a> y la <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidá</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
@@ -811,7 +836,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tolos derechos reservaos."
       },
       an: {
-        badge: "🎉 Lanzamiento: Plan Premium Debant",
+        badge: "🎉 Lanzamiento: Plan Basico 1º mes a 0 € / Pro con Promoción",
         titulo: "Une-te como Profesional",
         subtitulo: "Publica o tuyo perfil sin comisions y recibe contactos directos de clients en a tuya zona.",
         lblNombre: "Nombre y Apellius *",
@@ -831,6 +856,9 @@ select {
         optExp1: "1 a 2 anyos",
         optExp2: "3 a 5 anyos",
         optExp3: "Mas de 5 anyos",
+        lblPlan: "Plan Triguau *",
+        optPlanBasico: "Plan Basico Profesional (7,99 €/mes - 1º mes gratis)",
+        optPlanPro: "Plan Pro Destacau (14,99 €/mes - 7,99 €/mes primeros 2 meses)",
         lblAlertas: "Deseyo recibir avisos instantanios de nuevos clients per WhatsApp y correu electronico.",
         lblRgpdTexto: "He leyiu y accepto os <a href='terminos.html' target='_blank' class='legal-link'>Termins d'o Servicio</a> y a <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Privacidat</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perfil Profesional",
@@ -847,7 +875,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Totz os dreitos reservaus."
       },
       oc: {
-        badge: "🎉 Lançament: Plan Premium Gratuït",
+        badge: "🎉 Lançament: Plan Basic 1èr mes a 0 € / Pro amb Promocion",
         titulo: "Joenh-te coma Professionau",
         subtitulo: "Publica eth ton perhíu sense comissions e recep contactes dirèctes de clients ena tua zòna.",
         lblNombre: "Nòm e Cognòms *",
@@ -867,6 +895,9 @@ select {
         optExp1: "1 a 2 ans",
         optExp2: "3 a 5 ans",
         optExp3: "Mès de 5 ans",
+        lblPlan: "Plan Causit *",
+        optPlanBasico: "Plan Basic Professionau (7,99 €/mes - 1èr mes gratuit)",
+        optPlanPro: "Plan Pro Destacat (14,99 €/mes - 7,99 €/mes prumèrs 2 meses)",
         lblAlertas: "Desiri recéber avisi instantanèus de naui clients per WhatsApp e corrèu electronic.",
         lblRgpdTexto: "È legigut e accèpti es <a href='terminos.html' target='_blank' class='legal-link'>Tèrmes deth Servici</a> e era <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Privacitat</a> de SHINECONNECT S.L.",
         btnSubmit: "Activar Perhíu Professionau",
@@ -883,7 +914,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Toti es drets reservats."
       },
       en: {
-        badge: "🎉 Launch: Free Premium Plan",
+        badge: "🎉 Launch: Basic Plan 1st month at €0 / Pro with Promotion",
         titulo: "Join as a Cleaning Professional",
         subtitulo: "Publish your profile with zero commissions and receive direct customer requests in your area.",
         lblNombre: "Full Name *",
@@ -903,6 +934,9 @@ select {
         optExp1: "1 to 2 years",
         optExp2: "3 to 5 years",
         optExp3: "More than 5 years",
+        lblPlan: "Selected Plan *",
+        optPlanBasico: "Basic Professional Plan (€7.99/mo - 1st month free)",
+        optPlanPro: "Featured Pro Plan (€14.99/mo - €7.99/mo first 2 months)",
         lblAlertas: "I want to receive instant alerts for new local clients via WhatsApp and email.",
         lblRgpdTexto: "I have read and agree to the <a href='terminos.html' target='_blank' class='legal-link'>Terms of Service</a> and <a href='privacidad.html' target='_blank' class='legal-link'>Privacy Policy</a> of SHINECONNECT S.L.",
         btnSubmit: "Activate Professional Profile",
@@ -919,7 +953,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (VAT B26917807) — LIMPIAPP. All rights reserved. GDPR (EU 2016/679) compliant platform."
       },
       fr: {
-        badge: "🎉 Lancement : Plan Premium Gratuit",
+        badge: "🎉 Lancement : Plan Basique 1er mois à 0 € / Pro avec Promotion",
         titulo: "Rejoignez-nous en tant que Professionnel",
         subtitulo: "Publiez votre profil sans commission et recevez des demandes directes de clients dans votre région.",
         lblNombre: "Nom et Prénom *",
@@ -939,6 +973,9 @@ select {
         optExp1: "1 à 2 ans",
         optExp2: "3 à 5 ans",
         optExp3: "Plus de 5 ans",
+        lblPlan: "Plan Sélectionné *",
+        optPlanBasico: "Plan Professionnel Basique (7,99 €/mois - 1er mois gratuit)",
+        optPlanPro: "Plan Pro Vedette (14,99 €/mois - 7,99 €/mois 2 premiers mois)",
         lblAlertas: "Je souhaite recevoir des alertes instantanées de nouveaux clients par WhatsApp et e-mail.",
         lblRgpdTexto: "J'ai lu et j'accepte les <a href='terminos.html' target='_blank' class='legal-link'>Conditions Générales</a> et la <a href='privacidad.html' target='_blank' class='legal-link'>Politique de Confidentialité</a> de SHINECONNECT S.L.",
         btnSubmit: "Activer le Profil Professionnel",
@@ -955,7 +992,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tous droits réservés. Conforme au RGPD (UE 2016/679)."
       },
       de: {
-        badge: "🎉 Startangebot: Kostenloser Premium-Plan",
+        badge: "🎉 Startangebot: Basis-Plan 1. Monat 0 € / Pro mit Aktion",
         titulo: "Werden Sie Reinigungsprofi",
         subtitulo: "Veröffentlichen Sie Ihr Profil ohne Provision und erhalten Sie direkte Kundenkontakte in Ihrer Region.",
         lblNombre: "Vor- und Nachname *",
@@ -975,6 +1012,9 @@ select {
         optExp1: "1 bis 2 Jahre",
         optExp2: "3 bis 5 Jahre",
         optExp3: "Mehr als 5 Jahre",
+        lblPlan: "Ausgewählter Plan *",
+        optPlanBasico: "Basis-Profi-Plan (7,99 €/Monat - 1. Monat kostenlos)",
+        optPlanPro: "Pro-Empfohlen-Plan (14,99 €/Monat - 7,99 €/Monat erste 2 Monate)",
         lblAlertas: "Ich möchte sofortige Benachrichtigungen über neue Kunden per WhatsApp und E-Mail erhalten.",
         lblRgpdTexto: "Ich habe die <a href='terminos.html' target='_blank' class='legal-link'>Nutzungsbedingungen</a> und die <a href='privacidad.html' target='_blank' class='legal-link'>Datenschutzrichtlinie</a> von SHINECONNECT S.L. gelesen und akzeptiere sie.",
         btnSubmit: "Professionelles Profil Aktivieren",
@@ -991,7 +1031,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle Rechte vorbehalten. DSGVO-konform."
       },
       it: {
-        badge: "🎉 Lancio: Piano Premium Gratuito",
+        badge: "🎉 Lancio: Piano Base 1° mese a 0 € / Pro con Promozione",
         titulo: "Unisciti come Professionista",
         subtitulo: "Pubblica il tuo profilo senza commissioni e ricevi richieste dirette di clienti nella tua zona.",
         lblNombre: "Nome e Cognome *",
@@ -1011,6 +1051,9 @@ select {
         optExp1: "1 a 2 anni",
         optExp2: "3 a 5 anni",
         optExp3: "Più di 5 anni",
+        lblPlan: "Piano Selezionato *",
+        optPlanBasico: "Piano Base Professionale (7,99 €/mese - 1° mese gratis)",
+        optPlanPro: "Piano Pro In Evidenza (14,99 €/mese - 7,99 €/mese primi 2 mesi)",
         lblAlertas: "Desidero ricevere avvisi istantanei di nuovi clienti tramite WhatsApp ed e-mail.",
         lblRgpdTexto: "Ho letto e accetto i <a href='terminos.html' target='_blank' class='legal-link'>Termini di Servizio</a> e l'<a href='privacidad.html' target='_blank' class='legal-link'>Informativa sulla Privacy</a> di SHINECONNECT S.L.",
         btnSubmit: "Attiva Profilo Professionale",
@@ -1027,7 +1070,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Tutti i diritti riservati. Conforme al GDPR."
       },
       pt: {
-        badge: "🎉 Lançamento: Plano Premium Gratuito",
+        badge: "🎉 Lançamento: Plano Básico 1º mês a 0 € / Pro com Promoção",
         titulo: "Junte-se como Profissional",
         subtitulo: "Publique o seu perfil sem comissões e receba contactos diretos de clientes na sua área.",
         lblNombre: "Nome Completo *",
@@ -1047,6 +1090,9 @@ select {
         optExp1: "1 a 2 anos",
         optExp2: "3 a 5 anos",
         optExp3: "Mais de 5 anos",
+        lblPlan: "Plano Selecionado *",
+        optPlanBasico: "Plano Profissional Básico (7,99 €/mês - 1º mês grátis)",
+        optPlanPro: "Plano Pro Destacado (14,99 €/mês - 7,99 €/mês primeiros 2 meses)",
         lblAlertas: "Desejo receber alertas instantâneos de novos clientes por WhatsApp e e-mail.",
         lblRgpdTexto: "Li e aceito os <a href='terminos.html' target='_blank' class='legal-link'>Termos de Serviço</a> e a <a href='privacidad.html' target='_blank' class='legal-link'>Política de Privacidade</a> da SHINECONNECT S.L.",
         btnSubmit: "Ativar Perfil Profissional",
@@ -1063,7 +1109,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Todos os direitos reservados. Conforme o RGPD."
       },
       nl: {
-        badge: "🎉 Lancering: Gratis Premium Plan",
+        badge: "🎉 Lancering: Basisplan 1e maand 0 € / Pro met Actie",
         titulo: "Word Schoonmaakprofessional",
         subtitulo: "Publiceer uw profiel zonder commissies en ontvang directe klantaanvragen in uw omgeving.",
         lblNombre: "Voor- en Achternaam *",
@@ -1083,6 +1129,9 @@ select {
         optExp1: "1 tot 2 jaar",
         optExp2: "3 tot 5 jaar",
         optExp3: "Meer dan 5 jaar",
+        lblPlan: "Gekozen Plan *",
+        optPlanBasico: "Basis Professioneel Plan (7,99 €/maand - 1e maand gratis)",
+        optPlanPro: "Uitgelicht Pro Plan (14,99 €/maand - 7,99 €/maand eerste 2 maanden)",
         lblAlertas: "Ik wil direct meldingen van nieuwe klanten ontvangen via WhatsApp en e-mail.",
         lblRgpdTexto: "Ik ga akkoord met de <a href='terminos.html' target='_blank' class='legal-link'>Algemene Voorwaarden</a> en het <a href='privacidad.html' target='_blank' class='legal-link'>Privacybeleid</a> van SHINECONNECT S.L.",
         btnSubmit: "Professioneel Profiel Activeren",
@@ -1099,7 +1148,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle rechten voorbehouden. AVG-conform."
       },
       pl: {
-        badge: "🎉 Premiera: Bezpłatny Plan Premium",
+        badge: "🎉 Premiera: Plan Podstawowy 1. miesiąc 0 € / Pro z Promocją",
         titulo: "Dołącz jako Profesjonalista",
         subtitulo: "Opublikuj swój profil bez prowizji i otrzymuj bezpośrednie zapytania od klientów w Twojej okolicy.",
         lblNombre: "Imię i Nazwisko *",
@@ -1119,6 +1168,9 @@ select {
         optExp1: "Od 1 do 2 lat",
         optExp2: "Od 3 do 5 lat",
         optExp3: "Powyżej 5 lat",
+        lblPlan: "Wybrany Plan *",
+        optPlanBasico: "Podstawowy Plan Profesjonalny (7,99 €/miesiąc - 1. miesiąc gratis)",
+        optPlanPro: "Plan Pro Wyróżniony (14,99 €/miesiąc - 7,99 €/miesiąc przez pierwsze 2 miesiące)",
         lblAlertas: "Chcę otrzymywać natychmiastowe powiadomienia o nowych klientach przez WhatsApp i e-mail.",
         lblRgpdTexto: "Przeczytałem i akceptuję <a href='terminos.html' target='_blank' class='legal-link'>Regulamin</a> oraz <a href='privacidad.html' target='_blank' class='legal-link'>Politykę Prywatności</a> SHINECONNECT S.L.",
         btnSubmit: "Aktywuj Profil Profesjonalny",
@@ -1135,7 +1187,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Wszelkie prawa zastrzeżone. Zgodność z RODO."
       },
       ro: {
-        badge: "🎉 Lansare: Plan Premium Gratuit",
+        badge: "🎉 Lansare: Plan de Bază prima lună 0 € / Pro cu Promoție",
         titulo: "Alătură-te ca Profesionist",
         subtitulo: "Publică profilul tău fără comisioane și primește cereri directe de la clienții din zona ta.",
         lblNombre: "Nume și Prenume *",
@@ -1155,6 +1207,9 @@ select {
         optExp1: "1 până la 2 ani",
         optExp2: "3 până la 5 ani",
         optExp3: "Peste 5 ani",
+        lblPlan: "Plan Selectat *",
+        optPlanBasico: "Plan Profesional de Bază (7,99 €/lună - prima lună gratuit)",
+        optPlanPro: "Plan Pro Evidențiat (14,99 €/lună - 7,99 €/lună primele 2 luni)",
         lblAlertas: "Doresc să primesc alerte instantanee despre clienți noi prin WhatsApp și e-mail.",
         lblRgpdTexto: "Am citit și accept <a href='terminos.html' target='_blank' class='legal-link'>Termenii Serviciului</a> și <a href='privacidad.html' target='_blank' class='legal-link'>Politica de Confidențialitate</a> a SHINECONNECT S.L.",
         btnSubmit: "Activează Profilul Profesional",
@@ -1171,7 +1226,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Toate drepturile rezervate. Conform GDPR."
       },
       bg: {
-        badge: "🎉 Старт: Безплатен Премиум План",
+        badge: "🎉 Старт: Базов план 1-ви месец 0 € / Pro с Промоция",
         titulo: "Присъединете се като Професионалист",
         subtitulo: "Публикувайте профила си без комисионни и получавайте директни заявки от клиенти във вашия район.",
         lblNombre: "Име и Фамилия *",
@@ -1191,6 +1246,9 @@ select {
         optExp1: "1 до 2 години",
         optExp2: "3 до 5 години",
         optExp3: "Над 5 години",
+        lblPlan: "Избран План *",
+        optPlanBasico: "Базов професионален план (7,99 €/месец - 1-ви месец безплатно)",
+        optPlanPro: "Професионален план Про (14,99 €/месец - 7,99 €/месец първите 2 месеца)",
         lblAlertas: "Желая да получавам незабавни известия за нови клиенти чрез WhatsApp и имейл.",
         lblRgpdTexto: "Прочетох и приемам <a href='terminos.html' target='_blank' class='legal-link'>Общите условия</a> и <a href='privacidad.html' target='_blank' class='legal-link'>Политиката за поверителност</a> на SHINECONNECT S.L.",
         btnSubmit: "Активирай Професионален Профил",
@@ -1207,7 +1265,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Всички права запазени. Съгласно GDPR."
       },
       cs: {
-        badge: "🎉 Spuštění: Prémiový Plán Zdarma",
+        badge: "🎉 Spuštění: Základní plán 1. měsíc 0 € / Pro s akcí",
         titulo: "Připojte se jako Profesionál",
         subtitulo: "Zveřejněte svůj profil bez provizí a získejte přímé poptávky od klientů ve vašem okolí.",
         lblNombre: "Jméno a Příjmení *",
@@ -1227,6 +1285,9 @@ select {
         optExp1: "1 až 2 roky",
         optExp2: "3 až 5 let",
         optExp3: "Více než 5 let",
+        lblPlan: "Zvolený Tarif *",
+        optPlanBasico: "Základní profesionální tarif (7,99 €/měsíc - 1. měsíc zdarma)",
+        optPlanPro: "Prémiový tarif Pro (14,99 €/měsíc - 7,99 €/měsíc první 2 měsíce)",
         lblAlertas: "Chci dostávat okamžitá upozornění na nové klienty přes WhatsApp a e-mail.",
         lblRgpdTexto: "Přečetl(a) jsem si a přijímám <a href='terminos.html' target='_blank' class='legal-link'>Obchodní podmínky</a> a <a href='privacidad.html' target='_blank' class='legal-link'>Zásady ochrany osobních údajů</a> společnosti SHINECONNECT S.L.",
         btnSubmit: "Aktivovat Profesionální Profil",
@@ -1243,7 +1304,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Všechna práva vyhrazena. V souladu s GDPR."
       },
       da: {
-        badge: "🎉 Lancering: Gratis Premium-Plan",
+        badge: "🎉 Lancering: Basisplan 1. måned 0 € / Pro med Kampagne",
         titulo: "Bliv Rengøringsprofessionel",
         subtitulo: "Offentliggør din profil uden kommission og modtag direkte kundehenvendelser i dit område.",
         lblNombre: "Fulde Navn *",
@@ -1263,6 +1324,9 @@ select {
         optExp1: "1 til 2 år",
         optExp2: "3 til 5 år",
         optExp3: "Mere end 5 år",
+        lblPlan: "Valgt Plan *",
+        optPlanBasico: "Basis Professionel Plan (7,99 €/md. - 1. måned gratis)",
+        optPlanPro: "Fremhævet Pro Plan (14,99 €/md. - 7,99 €/md. de første 2 måneder)",
         lblAlertas: "Jeg ønsker at modtage øjeblikkelige beskeder om nye kunder via WhatsApp og e-mail.",
         lblRgpdTexto: "Jeg har læst og accepterer <a href='terminos.html' target='_blank' class='legal-link'>Servicevilkårene</a> og <a href='privacidad.html' target='_blank' class='legal-link'>Privatlivspolitikken</a> for SHINECONNECT S.L.",
         btnSubmit: "Aktiver Professionel Profil",
@@ -1279,7 +1343,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Alle rettigheder forbeholdes. GDPR-kompatibel."
       },
       el: {
-        badge: "🎉 Έναρξη: Δωρεάν Πακέτο Premium",
+        badge: "🎉 Έναρξη: Βασικό πρόγραμμα 1ος μήνας 0 € / Pro με Προσφορά",
         titulo: "Εγγραφείτε ως Επαγγελματίας",
         subtitulo: "Δημοσιεύστε το προφίλ σας χωρίς προμήθειες και λάβετε απευθείας αιτήματα πελατών στην περιοχή σας.",
         lblNombre: "Ονοματεπώνυμο *",
@@ -1299,6 +1363,9 @@ select {
         optExp1: "1 έως 2 έτη",
         optExp2: "3 έως 5 έτη",
         optExp3: "Πάνω από 5 έτη",
+        lblPlan: "Επιλεγμένο Πρόγραμμα *",
+        optPlanBasico: "Βασικό Επαγγελματικό Πρόγραμμα (7,99 €/μήνα - 1ος μήνας δωρεάν)",
+        optPlanPro: "Προηγμένο Πρόγραμμα Pro (14,99 €/μήνα - 7,99 €/μήνα για τους πρώτους 2 μήνες)",
         lblAlertas: "Επιθυμώ να λαμβάνω άμεσες ειδοποιήσεις για νέους πελάτες μέσω WhatsApp και email.",
         lblRgpdTexto: "Έχω διαβάσει και αποδέχομαι τους <a href='terminos.html' target='_blank' class='legal-link'>Όρους Υπηρεσίας</a> και την <a href='privacidad.html' target='_blank' class='legal-link'>Πολιτική Απορρήτου</a> της SHINECONNECT S.L.",
         btnSubmit: "Ενεργοποίηση Επαγγελματικού Προφίλ",
@@ -1315,7 +1382,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Με επιφύλαξη παντός δικαιώματος. Συμβατό με GDPR."
       },
       et: {
-        badge: "🎉 Esitlus: Tasuta Premium-Pakett",
+        badge: "🎉 Esitlus: Põhiplaan 1. kuu 0 € / Pro soodustusega",
         titulo: "Liitu Puhastusspetsialistina",
         subtitulo: "Avalda oma profiil ilma vahendustasuta ja saa otsekontakte oma piirkonna klientidelt.",
         lblNombre: "Ees- ja Perekonnanimi *",
@@ -1335,6 +1402,9 @@ select {
         optExp1: "1 kuni 2 aastat",
         optExp2: "3 kuni 5 aastat",
         optExp3: "Üle 5 aasta",
+        lblPlan: "Valitud Plaan *",
+        optPlanBasico: "Professionaalne põhiplaan (7,99 €/kuu - 1. kuu tasuta)",
+        optPlanPro: "Professionaalne Pro plaan (14,99 €/kuu - 7,99 €/kuu esimesed 2 kuud)",
         lblAlertas: "Soovin saada koheseid teavitusi uutest klientidest WhatsAppi ja e-posti teel.",
         lblRgpdTexto: "Olen tutvunud ja nõustun SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Teenusetingimuste</a> ja <a href='privacidad.html' target='_blank' class='legal-link'>Privaatsuspoliitikaga</a>.",
         btnSubmit: "Aktiveeri Professionaalne Profiil",
@@ -1351,7 +1421,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Kõik õigused kaitstud. Kooskõlas GDPR-iga."
       },
       fi: {
-        badge: "🎉 Julkaisuetu: Ilmainen Premium-Tilaus",
+        badge: "🎉 Julkaisu: Peruspaketti 1. kuukausi 0 € / Pro kampanjalla",
         titulo: "Liity Siivousalan Ammattilaiseksi",
         subtitulo: "Julkaise profiilisi ilman välityspalkkioita ja vastaanota suoria yhteydenottoja alueesi asiakkailta.",
         lblNombre: "Koko Nimi *",
@@ -1371,6 +1441,9 @@ select {
         optExp1: "1–2 vuotta",
         optExp2: "3–5 vuotta",
         optExp3: "Yli 5 vuotta",
+        lblPlan: "Valittu Tilaus *",
+        optPlanBasico: "Ammatillinen peruspaketti (7,99 €/kk - 1. kuukausi ilmainen)",
+        optPlanPro: "Ammatillinen Pro-paketti (14,99 €/kk - 7,99 €/kk ensimmäiset 2 kuukautta)",
         lblAlertas: "Haluan vastaanottaa välittömiä ilmoituksia uusista asiakkaista WhatsAppilla ja sähköpostitse.",
         lblRgpdTexto: "Olen lukenut ja hyväksyn SHINECONNECT S.L.:n <a href='terminos.html' target='_blank' class='legal-link'>Käyttöehdot</a> ja <a href='privacidad.html' target='_blank' class='legal-link'>Tietosuojakäytännön</a>.",
         btnSubmit: "Aktivoi Ammattilaisprofiili",
@@ -1387,7 +1460,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Kaikki oikeudet pidätetään. GDPR-yhteensopiva."
       },
       ga: {
-        badge: "🎉 Seoladh: Plean Préimhe Saor in Aisce",
+        badge: "🎉 Seoladh: Plean Bunúsach 1ú mhí ag 0 € / Pro le Cur Chun Cinn",
         titulo: "Bí Linn mar Ghairmí Glantacháin",
         subtitulo: "Foilsigh do phróifíl gan choimisiún agus faigh teagmhálacha díreacha ó chliaint i do cheantar.",
         lblNombre: "Ainm agus Sloinne *",
@@ -1407,6 +1480,9 @@ select {
         optExp1: "1 go 2 bhliain",
         optExp2: "3 go 5 bliana",
         optExp3: "Níos mó ná 5 bliana",
+        lblPlan: "Plean Roghnaithe *",
+        optPlanBasico: "Plean Gairmiúil Bunúsach (7,99 €/mí - 1ú mhí saor in aisce)",
+        optPlanPro: "Plean Pro Speisialta (14,99 €/mí - 7,99 €/mí don chéad 2 mhí)",
         lblAlertas: "Ba mhaith liom foláirimh láithreacha a fháil faoi chliaint nua trí WhatsApp agus ríomhphost.",
         lblRgpdTexto: "Léigh mé agus glacaim le <a href='terminos.html' target='_blank' class='legal-link'>Téarmaí Seirbhíse</a> agus <a href='privacidad.html' target='_blank' class='legal-link'>Polasaí Príobháideachais</a> SHINECONNECT S.L.",
         btnSubmit: "Gníomhachtaigh Próifíl Ghairmiúil",
@@ -1423,7 +1499,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Gach ceart ar cosaint. Comhlíontach le GDPR."
       },
       hr: {
-        badge: "🎉 Lansiranje: Besplatni Premium Plan",
+        badge: "🎉 Lansiranje: Osnovni plan 1. mjesec 0 € / Pro s promocijom",
         titulo: "Pridružite se kao Stručnjak",
         subtitulo: "Objavite svoj profil bez provizije i primajte izravne upite klijenata u svom području.",
         lblNombre: "Ime i Prezime *",
@@ -1443,6 +1519,9 @@ select {
         optExp1: "1 do 2 godine",
         optExp2: "3 do 5 godina",
         optExp3: "Više od 5 godina",
+        lblPlan: "Odabrani Plan *",
+        optPlanBasico: "Osnovni profesionalni plan (7,99 €/mj. - 1. mjesec besplatno)",
+        optPlanPro: "Istaknuti Pro plan (14,99 €/mj. - 7,99 €/mj. prva 2 mjeseca)",
         lblAlertas: "Želim primati trenutne obavijesti o novim klijentima putem WhatsAppa i e-pošte.",
         lblRgpdTexto: "Pročitao/la sam i prihvaćam <a href='terminos.html' target='_blank' class='legal-link'>Uvjete pružanja usluge</a> i <a href='privacidad.html' target='_blank' class='legal-link'>Pravila privatnosti</a> tvrtke SHINECONNECT S.L.",
         btnSubmit: "Aktiviraj Profesionalni Profil",
@@ -1459,7 +1538,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Sva prava pridržana. Usklađeno s GDPR-om."
       },
       hu: {
-        badge: "🎉 Indulási Akció: Ingyenes Prémium Csomag",
+        badge: "🎉 Indulás: Alap csomag 1. hónap 0 € / Pro promócióval",
         titulo: "Csatlakozzon Szakemberként",
         subtitulo: "Tegye közzé profilját jutalékmentesen, és fogadjon közvetlen megkereséseket a környékbeli ügyfelektől.",
         lblNombre: "Teljes Név *",
@@ -1479,6 +1558,9 @@ select {
         optExp1: "1–2 év",
         optExp2: "3–5 év",
         optExp3: "Több mint 5 év",
+        lblPlan: "Kiválasztott Csomag *",
+        optPlanBasico: "Alap professzionális csomag (7,99 €/hó - 1. hónap ingyen)",
+        optPlanPro: "Kiemelt Pro csomag (14,99 €/hó - 7,99 €/hó az első 2 hónapban)",
         lblAlertas: "Azonnali értesítéseket szeretnék kapni az új ügyfelekről WhatsAppon és e-mailben.",
         lblRgpdTexto: "Elolvastam és elfogadom a SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Szolgáltatási Feltételeit</a> és <a href='privacidad.html' target='_blank' class='legal-link'>Adatvédelmi Szabályzatát</a>.",
         btnSubmit: "Szakmai Profil Aktiválása",
@@ -1495,7 +1577,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Minden jog fenntartva. GDPR-megfelelő."
       },
       lt: {
-        badge: "🎉 Pristatymas: Nemokamas Premium Planas",
+        badge: "🎉 Pristatymas: Bazinis planas 1 mėn. 0 € / Pro su akcija",
         titulo: "Prisijunkite kaip Specialistas",
         subtitulo: "Paskelbkite savo profilį be komisinių ir gaukite tiesioginius klientų užsakymus savo vietovėje.",
         lblNombre: "Vardas ir Pavardė *",
@@ -1515,6 +1597,9 @@ select {
         optExp1: "1–2 metai",
         optExp2: "3–5 metai",
         optExp3: "Daugiau nei 5 metai",
+        lblPlan: "Pasirinktas Planas *",
+        optPlanBasico: "Bazinis profesionalus planas (7,99 €/mėn. - 1 mėn. nemokamai)",
+        optPlanPro: "„Pro“ planas (14,99 €/mėn. - 7,99 €/mėn. pirmuosius 2 mėn.)",
         lblAlertas: "Noriu gauti momentinius pranešimus apie naujus klientus per WhatsApp ir el. paštu.",
         lblRgpdTexto: "Perskaičiau ir sutinku su SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Paslaugų teikimo sąlygomis</a> ir <a href='privacidad.html' target='_blank' class='legal-link'>Privatumo politika</a>.",
         btnSubmit: "Aktyvuoti Specialisto Profilį",
@@ -1531,7 +1616,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Visos teisės saugomos. Atitinka BDAR."
       },
       lv: {
-        badge: "🎉 Atklāšana: Bezmaksas Premium Plāns",
+        badge: "🎉 Atklāšana: Pamata plāns 1. mēnesis 0 € / Pro ar akciju",
         titulo: "Pievienojieties kā Speciālists",
         subtitulo: "Publicējiet savu profilu bez komisijas maksas un saņemiet tiešus klientu pieteikumus savā apkaimē.",
         lblNombre: "Vārds un Uzvārds *",
@@ -1551,6 +1636,9 @@ select {
         optExp1: "1 līdz 2 gadi",
         optExp2: "3 līdz 5 gadi",
         optExp3: "Vairāk nekā 5 gadi",
+        lblPlan: "Izvēlētais Plāns *",
+        optPlanBasico: "Pamata profesionālais plāns (7,99 €/mēn. - 1. mēnesis bez maksas)",
+        optPlanPro: "Pro plāns (14,99 €/mēn. - 7,99 €/mēn. pirmos 2 mēnešus)",
         lblAlertas: "Vēlos saņemt tūlītējus paziņojumus par jauniem klientiem caur WhatsApp un e-pastu.",
         lblRgpdTexto: "Esmu izlasījis(-usi) un piekrītu SHINECONNECT S.L. <a href='terminos.html' target='_blank' class='legal-link'>Pakalpojumu sniegšanas noteikumiem</a> un <a href='privacidad.html' target='_blank' class='legal-link'>Privātuma politikai</a>.",
         btnSubmit: "Aktivizēt Profesionālo Profilu",
@@ -1567,7 +1655,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Visas tiesības aizsargātas. Atbilst VDAR."
       },
       mt: {
-        badge: "🎉 Tnedija: Pjan Premium B'Xejn",
+        badge: "🎉 Tnedija: Pjan Bażiku 1 xahar 0 € / Pro bi Promozzjoni",
         titulo: "Ingħaqad bħala Professjonist",
         subtitulo: "Ippubblika l-profil tiegħek mingħajr kummissjonijiet u irċievi kuntatti diretti minn klijenti fiż-żona tiegħek.",
         lblNombre: "Isem u Kunjom *",
@@ -1587,6 +1675,9 @@ select {
         optExp1: "1 sa 2 snin",
         optExp2: "3 sa 5 snin",
         optExp3: "Aktar minn 5 snin",
+        lblPlan: "Pjan Magħżul *",
+        optPlanBasico: "Pjan Professjonali Bażiku (7,99 €/xahar - l-1 xahar b'xejn)",
+        optPlanPro: "Pjan Pro Dehrus (14,99 €/xahar - 7,99 €/xahar l-ewwel 2 xhur)",
         lblAlertas: "Nixtieq nirċievi avviżi immedjati ta' klijenti ġodda permezz ta' WhatsApp u email.",
         lblRgpdTexto: "Qrajt u naqbel mat-<a href='terminos.html' target='_blank' class='legal-link'>Termini tas-Servizz</a> u l-<a href='privacidad.html' target='_blank' class='legal-link'>Politika tal-Privatezza</a> ta' SHINECONNECT S.L.",
         btnSubmit: "Attiva l-Profil Professjonali",
@@ -1603,11 +1694,11 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Id-drittijiet kollha riżervati. Konformi mal-GDPR."
       },
       sk: {
-        badge: "🎉 Spustenie: Prémiový Plán Zadarmo",
+        badge: "🎉 Spustenie: Základný plán 1. mesiac 0 € / Pro s akciou",
         titulo: "Pridajte sa ako Profesionál",
         subtitulo: "Zverejnite svoj profil bez provízií a získajte priame kontakty od klientov vo vašom okolí.",
         lblNombre: "Meno a Priezvisko *",
-        placeholderNombre: "napr. Jana Kováčová",
+        placeholderNombre: "npr. Jana Kováčová",
         lblTelefono: "WhatsApp / Telefón *",
         placeholderTelefono: "+34 600 000 000",
         lblEmail: "E-mailová Adresa *",
@@ -1615,7 +1706,7 @@ select {
         lblPais: "Krajina *",
         valPais: "Španielsko",
         lblCiudad: "Mesto / Obec *",
-        placeholderCiudad: "napr. Valencia...",
+        placeholderCiudad: "npr. Valencia...",
         lblCp: "PSČ *",
         placeholderCp: "46001",
         lblTarifa: "Požadovaná Sadzba (€/h) *",
@@ -1623,6 +1714,9 @@ select {
         optExp1: "1 až 2 roky",
         optExp2: "3 až 5 rokov",
         optExp3: "Viac ako 5 rokov",
+        lblPlan: "Zvolený Program *",
+        optPlanBasico: "Základný profesionálny program (7,99 €/mesiac - 1. mesiac zadarmo)",
+        optPlanPro: "Prémiový program Pro (14,99 €/mesiac - 7,99 €/mesiac prvé 2 mesiace)",
         lblAlertas: "Chcem dostávať okamžité upozornenia na nových klientov cez WhatsApp a e-mail.",
         lblRgpdTexto: "Prečítal(a) som si a súhlasím s <a href='terminos.html' target='_blank' class='legal-link'>Obchodnými podmienkami</a> a <a href='privacidad.html' target='_blank' class='legal-link'>Zásadami ochrany osobných údajov</a> spoločnosti SHINECONNECT S.L.",
         btnSubmit: "Aktivovať Profesionálny Profil",
@@ -1639,7 +1733,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Všetky práva vyhradené. V súlade s GDPR."
       },
       sl: {
-        badge: "🎉 Otvoritev: Brezplačni Paket Premium",
+        badge: "🎉 Otvoritev: Osnovni paket 1. mesec 0 € / Pro s promocijo",
         titulo: "Pridružite se kot Strokovnjak",
         subtitulo: "Objavite svoj profil brez provizij in prejemajte neposredna povpraševanja strank na svojem območju.",
         lblNombre: "Ime in Priimek *",
@@ -1659,6 +1753,9 @@ select {
         optExp1: "1 do 2 leti",
         optExp2: "3 do 5 let",
         optExp3: "Več kot 5 let",
+        lblPlan: "Izbrani Paket *",
+        optPlanBasico: "Osnovni profesionalni paket (7,99 €/mesec - 1. mesec brezplačno)",
+        optPlanPro: "Izpostavljeni Pro paket (14,99 €/mesec - 7,99 €/mesec prva 2 meseca)",
         lblAlertas: "Želim prejemati takojšnja obvestila o novih strankah prek WhatsAppa in e-pošte.",
         lblRgpdTexto: "Prebral sem in sprejemam <a href='terminos.html' target='_blank' class='legal-link'>Pogoje uporabe</a> ter <a href='privacidad.html' target='_blank' class='legal-link'>Politiko zasebnosti</a> družbe SHINECONNECT S.L.",
         btnSubmit: "Aktiviraj Poklicni Profil",
@@ -1675,7 +1772,7 @@ select {
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Vse pravice pridržane. Skladno z GDPR."
       },
       sv: {
-        badge: "🎉 Lansering: Gratis Premium-Plan",
+        badge: "🎉 Lansering: Basplan 1:a månaden 0 € / Pro med Kampanj",
         titulo: "Gå med som Städproffs",
         subtitulo: "Publicera din profil utan provision och få direkta kundförfrågningar i ditt område.",
         lblNombre: "För- och Efternamn *",
@@ -1695,6 +1792,9 @@ select {
         optExp1: "1 till 2 år",
         optExp2: "3 till 5 år",
         optExp3: "Mer än 5 år",
+        lblPlan: "Vald Plan *",
+        optPlanBasico: "Grundläggande proffsplan (7,99 €/mån - 1:a månaden gratis)",
+        optPlanPro: "Utvald Pro-plan (14,99 €/mån - 7,99 €/mån de första 2 månaderna)",
         lblAlertas: "Jag vill få omedelbara aviseringar om nya kunder via WhatsApp och e-post.",
         lblRgpdTexto: "Jag har läst och godkänner <a href='terminos.html' target='_blank' class='legal-link'>Användarvillkoren</a> och <a href='privacidad.html' target='_blank' class='legal-link'>Integritetspolicyn</a> för SHINECONNECT S.L.",
         btnSubmit: "Aktivera Professionell Profil",
@@ -1771,6 +1871,9 @@ select {
       document.getElementById('optExp1').innerText = t.optExp1;
       document.getElementById('optExp2').innerText = t.optExp2;
       document.getElementById('optExp3').innerText = t.optExp3;
+      document.getElementById('lblPlan').innerText = t.lblPlan;
+      document.getElementById('optPlanBasico').innerText = t.optPlanBasico;
+      document.getElementById('optPlanPro').innerText = t.optPlanPro;
       document.getElementById('lblAlertas').innerText = t.lblAlertas;
       document.getElementById('lblRgpd').innerHTML = t.lblRgpdTexto;
       document.getElementById('btnSubmit').innerText = t.btnSubmit;
