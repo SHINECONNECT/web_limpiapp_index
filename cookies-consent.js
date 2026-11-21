@@ -150,7 +150,7 @@
 
   function getLang() {
     const p = new URLSearchParams(window.location.search).get('lang');
-    const l = p || localStorage.getItem('limpiapp_lang') || 'es';
+    const l = p || localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang') || 'es';
     return textos[l] ? l : 'es';
   }
 
@@ -395,6 +395,67 @@
     if (modal) modal.style.display = 'none';
   }
 
+  function applyCookieTexts() {
+    const lang = getLang();
+    const t = textos[lang] || textos.es;
+
+    const banner = document.getElementById('lmp-cookie-banner');
+    const modal = document.getElementById('lmp-cookie-modal');
+    if (banner) banner.setAttribute('aria-label', t.titulo);
+
+    const titleEl = document.getElementById('lmpCookieTitleText');
+    if (titleEl) titleEl.innerText = t.titulo;
+
+    const descEl = document.getElementById('lmpCookieDescText');
+    if (descEl) descEl.innerHTML = t.desc;
+
+    const btnReject = document.getElementById('lmpBtnRejectAll');
+    if (btnReject) btnReject.innerText = t.btnRechazar;
+
+    const btnConfig = document.getElementById('lmpBtnOpenConfig');
+    if (btnConfig) btnConfig.innerText = t.btnConfig;
+
+    const btnAccept = document.getElementById('lmpBtnAcceptAll');
+    if (btnAccept) btnAccept.innerText = t.btnAceptar;
+
+    const modalTitle = document.getElementById('lmpModalTitleText');
+    if (modalTitle) modalTitle.innerText = t.modalTitulo;
+
+    const catTecTitle = document.getElementById('lmpCatTecTitle');
+    if (catTecTitle) catTecTitle.innerText = t.catTecTitle;
+
+    const catTecBadge = document.getElementById('lmpCatTecBadge');
+    if (catTecBadge) catTecBadge.innerText = t.catTecBadge;
+
+    const catTecDesc = document.getElementById('lmpCatTecDesc');
+    if (catTecDesc) catTecDesc.innerText = t.catTecDesc;
+
+    const catAnaTitle = document.getElementById('lmpCatAnaTitle');
+    if (catAnaTitle) catAnaTitle.innerText = t.catAnaTitle;
+
+    const catAnaDesc = document.getElementById('lmpCatAnaDesc');
+    if (catAnaDesc) catAnaDesc.innerText = t.catAnaDesc;
+
+    const catMktTitle = document.getElementById('lmpCatMktTitle');
+    if (catMktTitle) catMktTitle.innerText = t.catMktTitle;
+
+    const catMktDesc = document.getElementById('lmpCatMktDesc');
+    if (catMktDesc) catMktDesc.innerText = t.catMktDesc;
+
+    const modalReject = document.getElementById('lmpModalReject');
+    if (modalReject) modalReject.innerText = t.btnRechazar;
+
+    const modalAccept = document.getElementById('lmpModalAccept');
+    if (modalAccept) modalAccept.innerText = t.btnAceptar;
+
+    const modalSave = document.getElementById('lmpModalSave');
+    if (modalSave) modalSave.innerText = t.btnGuardar;
+
+    if (modal && !modal.getAttribute('aria-label')) {
+      modal.setAttribute('aria-label', t.modalTitulo);
+    }
+  }
+
   function buildUI() {
     injectStyles();
     const lang = getLang();
@@ -408,8 +469,8 @@
     banner.innerHTML = `
       <div class="lmp-cookie-inner">
         <div class="lmp-cookie-text">
-          <div class="lmp-cookie-title">🍪 ${t.titulo}</div>
-          <p class="lmp-cookie-desc">${t.desc}</p>
+          <div class="lmp-cookie-title">🍪 <span id="lmpCookieTitleText">${t.titulo}</span></div>
+          <p class="lmp-cookie-desc" id="lmpCookieDescText">${t.desc}</p>
         </div>
         <div class="lmp-cookie-actions">
           <button type="button" class="lmp-btn-cookie lmp-btn-reject" id="lmpBtnRejectAll">${t.btnRechazar}</button>
@@ -427,30 +488,30 @@
     modal.innerHTML = `
       <div class="lmp-modal-card">
         <div class="lmp-modal-header">
-          <h3>🍪 ${t.modalTitulo}</h3>
+          <h3>🍪 <span id="lmpModalTitleText">${t.modalTitulo}</span></h3>
           <button type="button" class="lmp-modal-close" id="lmpModalClose" aria-label="Cerrar">&times;</button>
         </div>
         <div class="lmp-modal-body">
           <div class="lmp-cat-item">
             <div class="lmp-cat-top">
-              <span class="lmp-cat-title">${t.catTecTitle}</span>
-              <span class="lmp-cat-badge">${t.catTecBadge}</span>
+              <span class="lmp-cat-title" id="lmpCatTecTitle">${t.catTecTitle}</span>
+              <span class="lmp-cat-badge" id="lmpCatTecBadge">${t.catTecBadge}</span>
             </div>
-            <p class="lmp-cat-desc">${t.catTecDesc}</p>
+            <p class="lmp-cat-desc" id="lmpCatTecDesc">${t.catTecDesc}</p>
           </div>
           <div class="lmp-cat-item">
             <div class="lmp-cat-top">
-              <label class="lmp-cat-title" for="lmpChkAna" style="cursor:pointer;">${t.catAnaTitle}</label>
+              <label class="lmp-cat-title" id="lmpCatAnaTitle" for="lmpChkAna" style="cursor:pointer;">${t.catAnaTitle}</label>
               <input type="checkbox" id="lmpChkAna" style="width:18px;height:18px;accent-color:#4f585d;cursor:pointer;">
             </div>
-            <p class="lmp-cat-desc">${t.catAnaDesc}</p>
+            <p class="lmp-cat-desc" id="lmpCatAnaDesc">${t.catAnaDesc}</p>
           </div>
           <div class="lmp-cat-item">
             <div class="lmp-cat-top">
-              <label class="lmp-cat-title" for="lmpChkMkt" style="cursor:pointer;">${t.catMktTitle}</label>
+              <label class="lmp-cat-title" id="lmpCatMktTitle" for="lmpChkMkt" style="cursor:pointer;">${t.catMktTitle}</label>
               <input type="checkbox" id="lmpChkMkt" style="width:18px;height:18px;accent-color:#4f585d;cursor:pointer;">
             </div>
-            <p class="lmp-cat-desc">${t.catMktDesc}</p>
+            <p class="lmp-cat-desc" id="lmpCatMktDesc">${t.catMktDesc}</p>
           </div>
         </div>
         <div class="lmp-modal-footer">
@@ -495,8 +556,13 @@
     } catch (e) {}
   }
 
+  window.refrescarIdiomaCookies = function() {
+    applyCookieTexts();
+  };
+
   // Función global para reabrir el panel desde el pie de página (Revocación RGPD)
   window.abrirConfiguracionCookies = function() {
+    applyCookieTexts();
     const modal = document.getElementById('lmp-cookie-modal');
     if (modal) {
       modal.style.display = 'flex';
