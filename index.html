@@ -479,7 +479,7 @@
 
     /* BANNER Y MODAL DE COOKIES (RGPD / LSSI-CE ESPAÑA) */
     #cookieBanner {
-      display: none;
+      display: block;
       position: fixed;
       bottom: 18px;
       left: 50%;
@@ -490,9 +490,12 @@
       border: 1.5px solid var(--color-slate-border);
       border-top: 4px solid var(--color-logo-blue-dark);
       border-radius: var(--radius-lg);
-      box-shadow: 0 18px 40px rgba(36, 41, 45, 0.18);
+      box-shadow: 0 18px 40px rgba(36, 41, 45, 0.22);
       padding: 20px 24px;
-      z-index: 9998;
+      z-index: 99998;
+    }
+    #cookieBanner.hidden {
+      display: none !important;
     }
     .cookie-banner-inner {
       display: flex;
@@ -563,7 +566,7 @@
       position: fixed;
       inset: 0;
       background: rgba(36, 41, 45, 0.55);
-      z-index: 9999;
+      z-index: 99999;
       align-items: center;
       justify-content: center;
       padding: 16px;
@@ -1748,14 +1751,14 @@
       }
     };
 
-    var COOKIE_CONSENT_KEY = 'limpiapp_cookie_consent_v1';
+    var COOKIE_CONSENT_KEY = 'limpiapp_cookie_consent_v2';
 
     function leerConsentimientoCookies() {
       try {
         var raw = localStorage.getItem(COOKIE_CONSENT_KEY);
         if (raw) return JSON.parse(raw);
       } catch (e) {}
-      var match = document.cookie.match(/(?:^|;\s*)limpiapp_cookies=([^;]*)/);
+      var match = document.cookie.match(/(?:^|;\s*)limpiapp_cookies_v2=([^;]*)/);
       if (match && match[1]) {
         try {
           return JSON.parse(decodeURIComponent(match[1]));
@@ -1775,7 +1778,7 @@
         localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(payload));
       } catch (e) {}
       var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-      document.cookie = 'limpiapp_cookies=' + encodeURIComponent(JSON.stringify(payload)) + '; expires=' + expires + '; path=/; SameSite=Lax';
+      document.cookie = 'limpiapp_cookies_v2=' + encodeURIComponent(JSON.stringify(payload)) + '; expires=' + expires + '; path=/; SameSite=Lax';
       window.limpiappCookieConsent = payload;
       ocultarBannerCookies();
       cerrarModalCookies();
@@ -1783,12 +1786,18 @@
 
     function mostrarBannerCookies() {
       var banner = document.getElementById('cookieBanner');
-      if (banner) banner.style.display = 'block';
+      if (banner) {
+        banner.classList.remove('hidden');
+        banner.style.display = 'block';
+      }
     }
 
     function ocultarBannerCookies() {
       var banner = document.getElementById('cookieBanner');
-      if (banner) banner.style.display = 'none';
+      if (banner) {
+        banner.classList.add('hidden');
+        banner.style.display = 'none';
+      }
     }
 
     function abrirConfiguracionCookies() {
@@ -1897,9 +1906,9 @@
         mostrarBannerCookies();
       } else {
         window.limpiappCookieConsent = consent;
+        ocultarBannerCookies();
       }
     });
-  </script>  
-  <script src="cookies-consent.js"></script>
+  </script>
 </body>
 </html>
