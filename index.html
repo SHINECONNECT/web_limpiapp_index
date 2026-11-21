@@ -1029,12 +1029,37 @@
   </div>
 
 <script>
+    // Configuración de derivación hacia la app desarrollada por Serxus (ajustar rutas según indique Serxus)
+    var APP_CONFIG = {
+      appBaseUrl: 'https://app.limpiapp.app',
+      routes: {
+        login: '/login',
+        clientSearch: '/buscar',
+        clientSignup: '/clientes/registro',
+        proSignup: '/profesionales/registro'
+      }
+    };
+
+    function construirUrlApp(ruta, paramsExtra) {
+      var langActual = localStorage.getItem('limpiapp_lang') || 'es';
+      var url = new URL(APP_CONFIG.appBaseUrl + ruta);
+      url.searchParams.set('lang', langActual);
+      url.searchParams.set('source', 'web_limpiapp');
+      if (paramsExtra) {
+        Object.keys(paramsExtra).forEach(function(clave) {
+          if (paramsExtra[clave]) {
+            url.searchParams.set(clave, paramsExtra[clave]);
+          }
+        });
+      }
+      return url.toString();
+    }
+
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
-      var langActual = localStorage.getItem('limpiapp_lang') || 'es';
       if (cp) {
-        window.location.href = 'clientes.html?cp=' + encodeURIComponent(cp) + '&lang=' + encodeURIComponent(langActual);
+        window.location.href = construirUrlApp(APP_CONFIG.routes.clientSearch, { cp: cp });
       }
     }
 
@@ -1836,7 +1861,7 @@
         tdFila1Lim: "<strong>100% Verificati</strong> (Professionisti e Clienti)",
         tdFila1Plat: "Registrazione automatica senza controlli",
         tdFila1Agen: "Verificano solo il lavoratore",
-        tdFila2Nom: "<strong>Commissione per servizio svolto</strong>",
+        tdFila2Nom: "<strong>Commissione sulle ore svolte</strong>",
         tdFila2Lim: "0% (Compenso 100% del professionista)",
         tdFila2Plat: "15% - 25% di ricarico",
         tdFila2Agen: "Fino al 35% sulla tariffa oraria",
@@ -1897,7 +1922,7 @@
         planProDestDesc: "Massima visibilità nelle ricerche, avvisi istantanei e agenda completa.",
         spanMes3: "/ mese",
         badgeDiasGratis: "🌟 7,99 euro/mese durante i primi 2 mesi per le prime 20 iscrizioni",
-        featPP1: "<strong>Contatti illimitati</strong> con famiglie e aziende",
+        featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
         featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
         featPP3: "<strong>Avvisi WhatsApp immediati</strong> con nuove richieste",
         featPP4: "Posizionamento preferenziale nel tuo CAP",
@@ -1956,7 +1981,7 @@
         tdFila3Agen: "✗ Tudo através da agência",
         tdFila4Nom: "<strong>Liberdade absoluta de tarifas à hora</strong>",
         tdFila4Lim: "✓ Fixada livremente pelo profissional",
-        tdFila4Plat: "✗ O algoritmo impõe o preço",
+        tdFila4Plat: "✗ O algoritmo impone o preço",
         tdFila4Agen: "✗ Tarifa fixa de empresa",
         tdFila5Nom: "<strong>Cobertura hiperlocal por Código Postal</strong>",
         tdFila5Lim: "✓ Demarcação exata",
@@ -2112,6 +2137,44 @@
       });
     }
 
+    function actualizarEnlacesApp(lang) {
+      var cpActual = (document.getElementById('inputCP') && document.getElementById('inputCP').value.trim()) || '';
+
+      var appLinksConfig = [
+        { id: 'btnNavLogin', ruta: APP_CONFIG.routes.login, extra: {} },
+        { id: 'btnNavClient', ruta: APP_CONFIG.routes.clientSearch, extra: cpActual ? { cp: cpActual } : {} },
+        { id: 'btnActionClient', ruta: APP_CONFIG.routes.clientSignup, extra: cpActual ? { cp: cpActual } : {} },
+        { id: 'btnClientBasico', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_basico' } },
+        { id: 'btnClientPrem', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_premium' } },
+        { id: 'btnNavPro', ruta: APP_CONFIG.routes.proSignup, extra: {} },
+        { id: 'btnActionPro', ruta: APP_CONFIG.routes.proSignup, extra: {} },
+        { id: 'btnProBasico', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_basico' } },
+        { id: 'btnProDest', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_premium' } }
+      ];
+
+      appLinksConfig.forEach(function(item) {
+        var elem = document.getElementById(item.id);
+        if (elem) {
+          elem.setAttribute('href', construirUrlApp(item.ruta, item.extra));
+        }
+      });
+
+      var legalLinksConfig = [
+        { id: 'footAviso', base: 'aviso-legal.html' },
+        { id: 'footTerminos', base: 'terminos.html' },
+        { id: 'footPrivacidad', base: 'privacidad.html' },
+        { id: 'footCookies', base: 'cookies.html' },
+        { id: 'cookieBannerLink', base: 'cookies.html' }
+      ];
+
+      legalLinksConfig.forEach(function(item) {
+        var elem = document.getElementById(item.id);
+        if (elem) {
+          elem.setAttribute('href', item.base + '?lang=' + encodeURIComponent(lang));
+        }
+      });
+    }
+
     function cambiarIdioma(lang) {
       localStorage.setItem('limpiapp_lang', lang);
       localStorage.setItem('lang', lang);
@@ -2147,31 +2210,7 @@
         inputCP.placeholder = t.placeholderCP;
       }
 
-      // 1. Actualizar enlaces de navegación y botones de acción
-      var linksConfig = [
-        { id: 'btnNavLogin', base: 'login.html' },
-        { id: 'btnNavClient', base: 'clientes.html' },
-        { id: 'btnActionClient', base: 'clientes.html' },
-        { id: 'btnClientBasico', base: 'clientes.html' },
-        { id: 'btnClientPrem', base: 'clientes.html' },
-        { id: 'btnNavPro', base: 'registro.html' },
-        { id: 'btnActionPro', base: 'registro.html' },
-        { id: 'btnProBasico', base: 'registro.html' },
-        { id: 'btnProDest', base: 'registro.html' },
-        // 2. Actualizar enlaces legales del Footer y Banner con el idioma
-        { id: 'footAviso', base: 'aviso-legal.html' },
-        { id: 'footTerminos', base: 'terminos.html' },
-        { id: 'footPrivacidad', base: 'privacidad.html' },
-        { id: 'footCookies', base: 'cookies.html' },
-        { id: 'cookieBannerLink', base: 'cookies.html' }
-      ];
-
-      linksConfig.forEach(function(item) {
-        var elem = document.getElementById(item.id);
-        if (elem) {
-          elem.setAttribute('href', item.base + '?lang=' + encodeURIComponent(lang));
-        }
-      });
+      actualizarEnlacesApp(lang);
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -2180,6 +2219,14 @@
       var select = document.querySelector('.lang-select');
       if (select) select.value = guardado;
       cambiarIdioma(guardado);
+
+      var inputCP = document.getElementById('inputCP');
+      if (inputCP) {
+        inputCP.addEventListener('input', function() {
+          var langActual = localStorage.getItem('limpiapp_lang') || 'es';
+          actualizarEnlacesApp(langActual);
+        });
+      }
 
       var consent = leerConsentimientoCookies();
       if (!consent) {
