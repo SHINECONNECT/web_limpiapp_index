@@ -216,6 +216,7 @@
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get('lang') || localStorage.getItem('limpiapp_lang') || 'es';
+    document.documentElement.lang = lang;
 
     function purgarYFijarCookie(targetLang) {
       const cookieVal = (targetLang === 'es') ? '' : '/es/' + targetLang;
@@ -260,6 +261,7 @@
         sel.value = lang;
         sel.onchange = function() {
           const nuevoIdioma = this.value;
+          document.documentElement.lang = nuevoIdioma;
           purgarYFijarCookie(nuevoIdioma);
           localStorage.setItem('limpiapp_lang', nuevoIdioma);
           localStorage.setItem('lang', nuevoIdioma);
@@ -274,7 +276,8 @@
       if (btnVolver) {
         btnVolver.onclick = function(e) {
           e.preventDefault();
-          window.location.href = 'index.html?lang=' + encodeURIComponent(lang);
+          const idiomaActivo = localStorage.getItem('limpiapp_lang') || lang;
+          window.location.href = 'index.html?lang=' + encodeURIComponent(idiomaActivo);
         };
       }
 
@@ -295,6 +298,6 @@
       }
     });
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
