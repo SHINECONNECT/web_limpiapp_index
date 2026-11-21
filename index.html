@@ -1031,14 +1031,14 @@
 <script>
     // Configuración de derivación hacia la app desarrollada por Serxus (ajustar rutas según indique Serxus)
     var APP_CONFIG = {
-      appBaseUrl: 'https://app.limpiapp.app',
-      routes: {
-        login: '/login',
-        clientSearch: '/buscar',
-        clientSignup: '/clientes/registro',
-        proSignup: '/profesionales/registro'
-      }
-    };
+  appBaseUrl: 'https://limpiapp.app',
+  routes: {
+    login: '/login.html',
+    clientSearch: '/clientes.html',
+    clientSignup: '/clientes.html',
+    proSignup: '/registro.html'
+  }
+};
 
     function construirUrlApp(ruta, paramsExtra) {
       var langActual = localStorage.getItem('limpiapp_lang') || 'es';
