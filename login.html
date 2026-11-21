@@ -538,7 +538,7 @@
         <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
         <span style="color: #475569;">|</span>
         <a href="cookies.html" id="footCookies">Política de Cookies</a><span style="color: #475569;">|</span>
-        <a href="javascript:void(0)" onclick="abrirConfiguracionCookies()">Configurar Cookies</a>
+        <a href="javascript:void(0)" id="footConfigCookies" onclick="abrirConfiguracionCookies()">Configurar Cookies</a>
       </div>
       <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
         Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app
@@ -584,7 +584,8 @@
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Cookies",
+        footConfigCookies: "Configurar Cookies"
       },
       ca: {
         tabLogin: "Iniciar Sessió",
@@ -622,7 +623,8 @@
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Galetes",
+        footConfigCookies: "Configurar Galetes"
       },
       en: {
         tabLogin: "Sign In",
@@ -660,7 +662,8 @@
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
-        footCookies: "Cookie Policy"
+        footCookies: "Cookie Policy",
+        footConfigCookies: "Cookie Settings"
       },
       fr: {
         tabLogin: "Se connecter",
@@ -698,7 +701,8 @@
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
         footPrivacidad: "Politique de Confidentialité",
-        footCookies: "Gestion des Cookies"
+        footCookies: "Gestion des Cookies",
+        footConfigCookies: "Configurer les Cookies"
       },
       de: {
         tabLogin: "Anmelden",
@@ -736,7 +740,8 @@
         footAviso: "Impressum",
         footTerminos: "Allgemeine Geschäftsbedingungen",
         footPrivacidad: "Datenschutzerklärung",
-        footCookies: "Cookie-Richtlinie"
+        footCookies: "Cookie-Richtlinie",
+        footConfigCookies: "Cookies konfigurieren"
       },
       it: {
         tabLogin: "Accedi",
@@ -774,7 +779,8 @@
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
-        footCookies: "Cookie Policy"
+        footCookies: "Cookie Policy",
+        footConfigCookies: "Configura Cookie"
       },
       pt: {
         tabLogin: "Iniciar Sessão",
@@ -812,7 +818,8 @@
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Cookies",
+        footConfigCookies: "Configurar Cookies"
       },
       gl: {
         tabLogin: "Iniciar Sesión",
@@ -850,7 +857,8 @@
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condicións",
         footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies"
+        footCookies: "Política de Cookies",
+        footConfigCookies: "Configurar Cookies"
       },
       eu: {
         tabLogin: "Hasi Saioa",
@@ -888,7 +896,8 @@
         footAviso: "Legezko Oharra",
         footTerminos: "Baldintzak eta Xedapenak",
         footPrivacidad: "Pribatutasun Politika",
-        footCookies: "Cookie Politika"
+        footCookies: "Cookie Politika",
+        footConfigCookies: "Cookieak Konfiguratu"
       }
     };
 
@@ -999,8 +1008,10 @@
     }
 
     function cambiarIdioma(lang) {
+      if (!lang || !dicc[lang]) lang = 'es';
       localStorage.setItem('limpiapp_lang', lang);
       localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
 
       // Sincronizar cookie googtrans para los documentos legales vinculados
       var host = window.location.hostname;
@@ -1017,6 +1028,9 @@
 
       var hiddenLang = document.getElementById('hiddenLang');
       if (hiddenLang) hiddenLang.value = lang;
+
+      var selectLang = document.getElementById('langSelectAuth');
+      if (selectLang && selectLang.value !== lang) selectLang.value = lang;
 
       var t = dicc[lang] || dicc['es'];
 
@@ -1037,7 +1051,8 @@
         'footAviso': t.footAviso,
         'footTerminos': t.footTerminos,
         'footPrivacidad': t.footPrivacidad,
-        'footCookies': t.footCookies
+        'footCookies': t.footCookies,
+        'footConfigCookies': t.footConfigCookies
       };
 
       for (var id in textMapping) {
@@ -1070,6 +1085,12 @@
         var linkEl = document.getElementById(item.id);
         if (linkEl) linkEl.setAttribute('href', item.base + '?lang=' + encodeURIComponent(lang));
       });
+
+      try {
+        var currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', currentUrl.toString());
+      } catch (err) {}
 
       setAuthMode(currentMode);
     }
@@ -1128,6 +1149,7 @@
       var langParam = urlParams.get('lang');
 
       var finalLang = langParam || localStorage.getItem('limpiapp_lang') || 'es';
+      if (!dicc[finalLang]) finalLang = 'es';
       if (selectLang) selectLang.value = finalLang;
       cambiarIdioma(finalLang);
 
