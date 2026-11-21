@@ -41,6 +41,14 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
+    /* ACCESO MÓVIL A LA APP (OCULTO EN ESCRITORIO) */
+    .mobile-app-strip {
+      display: none;
+    }
+    .mobile-app-card {
+      display: none;
+    }
+
     .top-bar {
       background-color: var(--color-bg-card);
       border-bottom: 1px solid var(--color-slate-border);
@@ -625,6 +633,103 @@
     @media (max-width: 840px) {
       .group-cards-grid, .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
       .group-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+      .mobile-app-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        background: linear-gradient(90deg, #eef5f9 0%, #ffffff 100%);
+        border-bottom: 1.5px solid var(--color-logo-blue-soft);
+        padding: 10px 14px;
+        font-size: 0.84rem;
+      }
+      .mobile-app-strip.hidden {
+        display: none;
+      }
+      .mobile-app-strip-info {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+      }
+      .mobile-app-strip-info strong {
+        color: var(--color-slate-dark);
+        font-size: 0.88rem;
+      }
+      .mobile-app-strip-info span {
+        color: var(--color-slate-muted);
+        font-size: 0.78rem;
+      }
+      .mobile-app-strip-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .btn-mobile-app-open {
+        background: var(--color-logo-charcoal);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.82rem;
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+      }
+      .btn-mobile-app-open:hover {
+        background: var(--color-logo-charcoal-dark);
+      }
+      .btn-mobile-app-close {
+        background: transparent;
+        border: none;
+        color: var(--color-slate-muted);
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 4px 6px;
+        cursor: pointer;
+      }
+
+      .mobile-app-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: #ffffff;
+        border: 1.5px solid var(--color-logo-blue);
+        border-left: 5px solid var(--color-logo-blue-dark);
+        border-radius: var(--radius-md);
+        padding: 14px 16px;
+        margin: -18px auto 28px;
+        max-width: 540px;
+        text-align: left;
+        box-shadow: 0 8px 18px rgba(127, 174, 203, 0.16);
+      }
+      .mobile-app-card-text strong {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--color-slate-dark);
+        margin-bottom: 2px;
+      }
+      .mobile-app-card-text span {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--color-slate-muted);
+        line-height: 1.35;
+      }
+      .btn-mobile-app-card {
+        background: var(--color-logo-blue-dark);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 10px 14px;
+        border-radius: var(--radius-sm);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .btn-mobile-app-card:hover {
+        background: var(--color-logo-charcoal);
+      }
       
       .top-bar {
         justify-content: center;
@@ -684,6 +789,18 @@
 </head>
 <body>
 
+  <!-- Franja rápida para pasar a la app desde móvil -->
+  <div class="mobile-app-strip" id="mobileAppStrip">
+    <div class="mobile-app-strip-info">
+      <strong id="mobileStripTitle">📱 LIMPIAPP en tu móvil</strong>
+      <span id="mobileStripSub">Continúa en la app con tu idioma</span>
+    </div>
+    <div class="mobile-app-strip-actions">
+      <a href="clientes.html" class="btn-mobile-app-open" id="btnMobileStripApp">Abrir App</a>
+      <button type="button" class="btn-mobile-app-close" id="btnMobileStripClose" aria-label="Cerrar" onclick="ocultarFranjaAppMovil()">✕</button>
+    </div>
+  </div>
+
   <!-- Selector de Idiomas -->
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
@@ -732,6 +849,15 @@
         <input type="text" id="inputCP" placeholder="Introduce tu código postal (ej. 46006)" required>
         <button type="submit" id="btnBuscarCP">Ver Disponibilidad</button>
       </form>
+
+      <!-- Acceso destacado a la app en móvil -->
+      <div class="mobile-app-card" id="mobileAppCard">
+        <div class="mobile-app-card-text">
+          <strong id="mobileCardTitle">¿Prefieres usar la App?</strong>
+          <span id="mobileCardSub">Pasa a la aplicación manteniendo tu idioma y código postal.</span>
+        </div>
+        <a href="clientes.html" class="btn-mobile-app-card" id="btnMobileCardApp">Ir a la App →</a>
+      </div>
 
       <div class="dual-cta-grid">
         <div class="cta-card client">
@@ -1029,16 +1155,17 @@
   </div>
 
 <script>
-    // Configuración de derivación hacia la app desarrollada por Serxus (ajustar rutas según indique Serxus)
+    // Configuración preparada para la app de Serxus (mantiene rutas locales válidas hasta sustituir por URL/ruta final)
     var APP_CONFIG = {
-  appBaseUrl: 'https://limpiapp.app',
-  routes: {
-    login: '/login.html',
-    clientSearch: '/clientes.html',
-    clientSignup: '/clientes.html',
-    proSignup: '/registro.html'
-  }
-};
+      appBaseUrl: 'https://limpiapp.app',
+      routes: {
+        mobileApp: '/clientes.html',
+        login: '/login.html',
+        clientSearch: '/clientes.html',
+        clientSignup: '/clientes.html',
+        proSignup: '/registro.html'
+      }
+    };
 
     function construirUrlApp(ruta, paramsExtra) {
       var langActual = localStorage.getItem('limpiapp_lang') || 'es';
@@ -1055,6 +1182,13 @@
       return url.toString();
     }
 
+    function ocultarFranjaAppMovil() {
+      var strip = document.getElementById('mobileAppStrip');
+      if (strip) {
+        strip.classList.add('hidden');
+      }
+    }
+
     function buscarCP(e) {
       e.preventDefault();
       var cp = document.getElementById('inputCP').value.trim();
@@ -1065,6 +1199,12 @@
 
     var dicc = {
       es: {
+        mobileStripTitle: "📱 LIMPIAPP en tu móvil",
+        mobileStripSub: "Continúa en la app con tu idioma",
+        btnMobileStripApp: "Abrir App",
+        mobileCardTitle: "¿Prefieres usar la App?",
+        mobileCardSub: "Pasa a la aplicación manteniendo tu idioma y código postal.",
+        btnMobileCardApp: "Ir a la App →",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
         heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
@@ -1175,6 +1315,12 @@
         btnCookieAccept: "Aceptar todas"
       },
       ca: {
+        mobileStripTitle: "📱 LIMPIAPP al teu mòbil",
+        mobileStripSub: "Continua a l'app amb el teu idioma",
+        btnMobileStripApp: "Obrir App",
+        mobileCardTitle: "Prefereixes usar l'App?",
+        mobileCardSub: "Passa a l'aplicació mantenint l'idioma i el codi postal.",
+        btnMobileCardApp: "Anar a l'App →",
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
         heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
         heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions sobre el servei i amb total transparència.",
@@ -1285,6 +1431,12 @@
         btnCookieAccept: "Acceptar totes"
       },
       gl: {
+        mobileStripTitle: "📱 LIMPIAPP no teu móbil",
+        mobileStripSub: "Continúa na app co teu idioma",
+        btnMobileStripApp: "Abrir App",
+        mobileCardTitle: "Prefires usar a App?",
+        mobileCardSub: "Pasa á aplicación mantendo o idioma e o código postal.",
+        btnMobileCardApp: "Ir á App →",
         badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
         heroTitle: "Servizos de limpeza profesional verificados <span>no teu código postal</span>",
         heroSub: "Conectamos a oferta independente con fogares e empresas en calquera cidade. Trato directo, sen comisións sobre o servizo e con total transparencia.",
@@ -1341,7 +1493,7 @@
         spanMes1: "/ mes",
         featC1: "Contacto limitado a 3 profesionais da súa zona por mes",
         featC2: "Perfís de profesionais <strong>100% verificados</strong>",
-        featC3: "Busca por país, cidade e código postal",
+        featC3: "Busca por país, ciutat e código postal",
         featC4: "Trato directo vía WhatsApp ou chamada telefónica",
         featC5: "Sen comisións sobre o prezo da hora pactada",
         btnClientBasico: "Elixir Plan Básico",
@@ -1395,6 +1547,12 @@
         btnCookieAccept: "Aceptar todas"
       },
       eu: {
+        mobileStripTitle: "📱 LIMPIAPP zure mugikorrean",
+        mobileStripSub: "Jarraitu app-ean zure hizkuntzarekin",
+        btnMobileStripApp: "App Ireki",
+        mobileCardTitle: "Nahiago duzu App-a erabili?",
+        mobileCardSub: "Joan aplikaziora hizkuntza eta posta-kodea mantenduz.",
+        btnMobileCardApp: "App-era Joan →",
         badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
         heroTitle: "Egiaztatutako garbiketa-zerbitzu profesionalak <span>zure posta-kodean</span>",
         heroSub: "Eskaintza independentea edozein hiritako etxe eta enpresekin konektatzen dugu. Zuzeneko tratua, zerbitzuaren gaineko komisiorik gabe eta erabateko gardentasunez.",
@@ -1505,6 +1663,12 @@
         btnCookieAccept: "Denak onartu"
       },
       en: {
+        mobileStripTitle: "📱 LIMPIAPP on your phone",
+        mobileStripSub: "Continue in the app in your language",
+        btnMobileStripApp: "Open App",
+        mobileCardTitle: "Prefer using the App?",
+        mobileCardSub: "Switch to the app keeping your language and postal code.",
+        btnMobileCardApp: "Go to App →",
         badgeHero: "🌍 International Technology Platform",
         heroTitle: "Verified professional cleaning services <span>in your postal code</span>",
         heroSub: "Connecting independent cleaners with homes and companies in any city. Direct contact, 0% service fees, and full transparency.",
@@ -1615,6 +1779,12 @@
         btnCookieAccept: "Accept all"
       },
       de: {
+        mobileStripTitle: "📱 LIMPIAPP auf dem Handy",
+        mobileStripSub: "In der App mit Ihrer Sprache fortfahren",
+        btnMobileStripApp: "App öffnen",
+        mobileCardTitle: "Lieber die App nutzen?",
+        mobileCardSub: "Zur App wechseln und Sprache sowie PLZ behalten.",
+        btnMobileCardApp: "Zur App →",
         badgeHero: "🌍 Internationale Technologieplattform",
         heroTitle: "Geprüfte professionelle Reinigungsdienste <span>in Ihrer Postleitzahl</span>",
         heroSub: "Direkter Kontakt zwischen selbstständigen Reinigungskräften, Haushalten und Unternehmen. 0 % Vermittlungsgebühr und volle Transparenz.",
@@ -1725,6 +1895,12 @@
         btnCookieAccept: "Alle akzeptieren"
       },
       fr: {
+        mobileStripTitle: "📱 LIMPIAPP sur mobile",
+        mobileStripSub: "Continuer dans l'app dans votre langue",
+        btnMobileStripApp: "Ouvrir l'App",
+        mobileCardTitle: "Préférez-vous l'App ?",
+        mobileCardSub: "Passez à l'application en gardant langue et code postal.",
+        btnMobileCardApp: "Aller à l'App →",
         badgeHero: "🌍 Plateforme Technologique Internationale",
         heroTitle: "Services de nettoyage professionnels vérifiés <span>dans votre code postal</span>",
         heroSub: "Nous connectons l'offre indépendante avec les foyers et entreprises dans toute ville. Contact direct, zéro commission et transparence totale.",
@@ -1835,6 +2011,12 @@
         btnCookieAccept: "Tout accepter"
       },
       it: {
+        mobileStripTitle: "📱 LIMPIAPP sul tuo cellulare",
+        mobileStripSub: "Continua nell'app nella tua lingua",
+        btnMobileStripApp: "Apri App",
+        mobileCardTitle: "Preferisci usare l'App?",
+        mobileCardSub: "Passa all'app mantenendo lingua e CAP.",
+        btnMobileCardApp: "Vai all'App →",
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Servizi di pulizia professionale verificati <span>nel tuo CAP</span>",
         heroSub: "Colleghiamo l'offerta indipendente con case e aziende in qualsiasi città. Trattativa diretta, senza commissioni sul servizio e con piena trasparenza.",
@@ -1945,6 +2127,12 @@
         btnCookieAccept: "Accetta tutti"
       },
       pt: {
+        mobileStripTitle: "📱 LIMPIAPP no telemóvel",
+        mobileStripSub: "Continue na app no seu idioma",
+        btnMobileStripApp: "Abrir App",
+        mobileCardTitle: "Prefere usar a App?",
+        mobileCardSub: "Passe para a aplicação mantendo idioma e código postal.",
+        btnMobileCardApp: "Ir para a App →",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Serviços de limpeza profissional verificados <span>no seu código postal</span>",
         heroSub: "Ligamos a oferta independente a lares e empresas em qualquer cidade. Contacto direto, sem comissões sobre o serviço e com total transparência.",
@@ -2139,11 +2327,14 @@
 
     function actualizarEnlacesApp(lang) {
       var cpActual = (document.getElementById('inputCP') && document.getElementById('inputCP').value.trim()) || '';
+      var extraCp = cpActual ? { cp: cpActual } : {};
 
       var appLinksConfig = [
+        { id: 'btnMobileStripApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
+        { id: 'btnMobileCardApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
         { id: 'btnNavLogin', ruta: APP_CONFIG.routes.login, extra: {} },
-        { id: 'btnNavClient', ruta: APP_CONFIG.routes.clientSearch, extra: cpActual ? { cp: cpActual } : {} },
-        { id: 'btnActionClient', ruta: APP_CONFIG.routes.clientSignup, extra: cpActual ? { cp: cpActual } : {} },
+        { id: 'btnNavClient', ruta: APP_CONFIG.routes.clientSearch, extra: extraCp },
+        { id: 'btnActionClient', ruta: APP_CONFIG.routes.clientSignup, extra: extraCp },
         { id: 'btnClientBasico', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_basico' } },
         { id: 'btnClientPrem', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_premium' } },
         { id: 'btnNavPro', ruta: APP_CONFIG.routes.proSignup, extra: {} },
