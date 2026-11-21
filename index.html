@@ -477,6 +477,147 @@
     .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
     .footer-links a:hover { color: #ffffff; }
 
+    /* BANNER Y MODAL DE COOKIES (RGPD / LSSI-CE ESPAÑA) */
+    #cookieBanner {
+      display: none;
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 960px;
+      background: #ffffff;
+      border: 1.5px solid var(--color-slate-border);
+      border-top: 4px solid var(--color-logo-blue-dark);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 18px 40px rgba(36, 41, 45, 0.18);
+      padding: 20px 24px;
+      z-index: 9998;
+    }
+    .cookie-banner-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .cookie-banner-text {
+      flex: 1 1 440px;
+      font-size: 0.88rem;
+      color: var(--color-slate-medium);
+      line-height: 1.55;
+    }
+    .cookie-banner-text strong {
+      color: var(--color-slate-dark);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+    .cookie-banner-text a {
+      color: var(--color-logo-blue-dark);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .cookie-banner-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-cookie-reject {
+      background: #f1f5f9;
+      color: var(--color-slate-dark);
+      border: 1px solid var(--color-slate-border);
+      padding: 10px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-cookie-reject:hover { background: #e2e8f0; }
+    .btn-cookie-config {
+      background: #ffffff;
+      color: var(--color-logo-charcoal);
+      border: 1.5px solid var(--color-logo-charcoal);
+      padding: 10px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-cookie-config:hover { background: #f8fafc; }
+    .btn-cookie-accept {
+      background: var(--color-logo-blue-dark);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-cookie-accept:hover { background: var(--color-logo-charcoal); }
+
+    #cookieModalBackdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 41, 45, 0.55);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .cookie-modal {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 560px;
+      width: 100%;
+      padding: 26px;
+      box-shadow: 0 24px 50px rgba(36, 41, 45, 0.25);
+      border: 1px solid var(--color-slate-border);
+    }
+    .cookie-modal h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 8px;
+    }
+    .cookie-modal p.cookie-modal-intro {
+      font-size: 0.88rem;
+      color: var(--color-slate-muted);
+      margin-bottom: 18px;
+    }
+    .cookie-category {
+      border: 1px solid var(--color-slate-border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      background: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .cookie-category strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--color-slate-dark);
+      margin-bottom: 3px;
+    }
+    .cookie-category span {
+      font-size: 0.82rem;
+      color: var(--color-slate-muted);
+      display: block;
+    }
+    .cookie-modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
 /* RESPONSIVE MÓVIL (ANDROID E IPHONE) */
     @media (max-width: 840px) {
       .group-cards-grid, .dual-cta-grid, .features-inner { grid-template-columns: 1fr; }
@@ -826,6 +967,63 @@
       </p>
     </div>
   </footer>
+
+  <!-- BANNER DE CONSENTIMIENTO DE COOKIES (RGPD / LSSI-CE) -->
+  <div id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <strong id="cookieBannerTitle">🍪 Uso de Cookies en LIMPIAPP</strong>
+        <span id="cookieBannerDesc">
+          Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y, solo con tu consentimiento, cookies de preferencias/idioma y analítica conforme a la normativa española (LSSI-CE y RGPD). Puedes aceptar todas, rechazar las no esenciales o configurar tus preferencias. Consulta nuestra <a href="cookies.html" id="cookieBannerLink">Política de Cookies</a>.
+        </span>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn-cookie-reject" id="btnCookieReject" onclick="rechazarCookiesNoEsenciales()">Rechazar no esenciales</button>
+        <button type="button" class="btn-cookie-config" id="btnCookieConfig" onclick="abrirConfiguracionCookies()">Configurar</button>
+        <button type="button" class="btn-cookie-accept" id="btnCookieAccept" onclick="aceptarTodasLasCookies()">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CONFIGURACIÓN GRANULAR DE COOKIES -->
+  <div id="cookieModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
+    <div class="cookie-modal">
+      <h3 id="cookieModalTitle">Configuración de Cookies</h3>
+      <p class="cookie-modal-intro" id="cookieModalIntro">
+        Selecciona qué categorías de cookies deseas permitir. Las cookies técnicas estrictamente necesarias siempre permanecen activas.
+      </p>
+
+      <div class="cookie-category">
+        <div>
+          <strong id="catTechTitle">Cookies técnicas y necesarias</strong>
+          <span id="catTechDesc">Imprescindibles para la navegación básica y seguridad del servicio. No requieren consentimiento.</span>
+        </div>
+        <input type="checkbox" checked disabled aria-label="Cookies técnicas obligatorias">
+      </div>
+
+      <div class="cookie-category">
+        <div>
+          <strong id="catPrefTitle">Cookies de preferencias e idioma</strong>
+          <span id="catPrefDesc">Permiten recordar el idioma seleccionado y parámetros de búsqueda (por ejemplo, código postal o idioma).</span>
+        </div>
+        <input type="checkbox" id="chkCookiePref" aria-label="Cookies de preferencias e idioma">
+      </div>
+
+      <div class="cookie-category">
+        <div>
+          <strong id="catAnalyticsTitle">Cookies analíticas y de medición</strong>
+          <span id="catAnalyticsDesc">Nos ayudan a comprender de forma agregada cómo se utiliza la web para mejorar su rendimiento.</span>
+        </div>
+        <input type="checkbox" id="chkCookieAnalytics" aria-label="Cookies analíticas">
+      </div>
+
+      <div class="cookie-modal-footer">
+        <button type="button" class="btn-cookie-reject" id="btnModalReject" onclick="rechazarCookiesNoEsenciales()">Rechazar no esenciales</button>
+        <button type="button" class="btn-cookie-config" id="btnModalSave" onclick="guardarPreferenciasCookies()">Guardar preferencias</button>
+        <button type="button" class="btn-cookie-accept" id="btnModalAccept" onclick="aceptarTodasLasCookies()">Aceptar todas</button>
+      </div>
+    </div>
+  </div>
 
 <script>
     function buscarCP(e) {
@@ -1431,7 +1629,7 @@
         planProDestDesc: "Massima visibilità, avvisi prioritari e calendario sempre pieno.",
         spanMes3: "/ mese",
         badgeDiasGratis: "🌟 7,99 euro/mese durante i primi 2 mesi",
-        featPP1: "<strong>Contatti illimitados</strong> con famiglie e ditte",
+        featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
         featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
         featPP3: "<strong>Avvisi WhatsApp in tempo reale</strong> con nuove offerte",
         featPP4: "Posizionamento in cima alla tua zona",
@@ -1550,6 +1748,81 @@
       }
     };
 
+    var COOKIE_CONSENT_KEY = 'limpiapp_cookie_consent_v1';
+
+    function leerConsentimientoCookies() {
+      try {
+        var raw = localStorage.getItem(COOKIE_CONSENT_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      var match = document.cookie.match(/(?:^|;\s*)limpiapp_cookies=([^;]*)/);
+      if (match && match[1]) {
+        try {
+          return JSON.parse(decodeURIComponent(match[1]));
+        } catch (e) {}
+      }
+      return null;
+    }
+
+    function guardarConsentimientoCookies(prefs) {
+      var payload = {
+        necessary: true,
+        preferences: Boolean(prefs.preferences),
+        analytics: Boolean(prefs.analytics),
+        updatedAt: new Date().toISOString()
+      };
+      try {
+        localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(payload));
+      } catch (e) {}
+      var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = 'limpiapp_cookies=' + encodeURIComponent(JSON.stringify(payload)) + '; expires=' + expires + '; path=/; SameSite=Lax';
+      window.limpiappCookieConsent = payload;
+      ocultarBannerCookies();
+      cerrarModalCookies();
+    }
+
+    function mostrarBannerCookies() {
+      var banner = document.getElementById('cookieBanner');
+      if (banner) banner.style.display = 'block';
+    }
+
+    function ocultarBannerCookies() {
+      var banner = document.getElementById('cookieBanner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    function abrirConfiguracionCookies() {
+      var current = leerConsentimientoCookies() || { preferences: false, analytics: false };
+      var chkPref = document.getElementById('chkCookiePref');
+      var chkAna = document.getElementById('chkCookieAnalytics');
+      if (chkPref) chkPref.checked = Boolean(current.preferences);
+      if (chkAna) chkAna.checked = Boolean(current.analytics);
+      var backdrop = document.getElementById('cookieModalBackdrop');
+      if (backdrop) backdrop.style.display = 'flex';
+    }
+
+    function cerrarModalCookies() {
+      var backdrop = document.getElementById('cookieModalBackdrop');
+      if (backdrop) backdrop.style.display = 'none';
+    }
+
+    function aceptarTodasLasCookies() {
+      guardarConsentimientoCookies({ preferences: true, analytics: true });
+    }
+
+    function rechazarCookiesNoEsenciales() {
+      guardarConsentimientoCookies({ preferences: false, analytics: false });
+    }
+
+    function guardarPreferenciasCookies() {
+      var chkPref = document.getElementById('chkCookiePref');
+      var chkAna = document.getElementById('chkCookieAnalytics');
+      guardarConsentimientoCookies({
+        preferences: chkPref ? chkPref.checked : false,
+        analytics: chkAna ? chkAna.checked : false
+      });
+    }
+
     function cambiarIdioma(lang) {
       localStorage.setItem('limpiapp_lang', lang);
       localStorage.setItem('lang', lang);
@@ -1596,11 +1869,12 @@
         { id: 'btnActionPro', base: 'registro.html' },
         { id: 'btnProBasico', base: 'registro.html' },
         { id: 'btnProDest', base: 'registro.html' },
-        // 2. Actualizar enlaces legales del Footer con el idioma
+        // 2. Actualizar enlaces legales del Footer y Banner con el idioma
         { id: 'footAviso', base: 'aviso-legal.html' },
         { id: 'footTerminos', base: 'terminos.html' },
         { id: 'footPrivacidad', base: 'privacidad.html' },
-        { id: 'footCookies', base: 'cookies.html' }
+        { id: 'footCookies', base: 'cookies.html' },
+        { id: 'cookieBannerLink', base: 'cookies.html' }
       ];
 
       linksConfig.forEach(function(item) {
@@ -1617,6 +1891,13 @@
       var select = document.querySelector('.lang-select');
       if (select) select.value = guardado;
       cambiarIdioma(guardado);
+
+      var consent = leerConsentimientoCookies();
+      if (!consent) {
+        mostrarBannerCookies();
+      } else {
+        window.limpiappCookieConsent = consent;
+      }
     });
   </script>  
   <script src="cookies-consent.js"></script>
