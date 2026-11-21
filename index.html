@@ -447,6 +447,295 @@
     }
     .plan-features li { display: flex; align-items: flex-start; gap: 10px; }
 
+    /* SECCIÓN CONÉCTATE DESDE CUALQUIER LUGAR CON LA APP DE LIMPIAPP */
+    .app-connect-section {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-slate-border);
+      padding: 64px 20px 36px;
+      width: 100%;
+      text-align: center;
+    }
+    .app-connect-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .app-connect-title {
+      font-size: 2.05rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .store-badges-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 42px;
+    }
+    .store-badge-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #14171a;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1.5px solid #2d343a;
+      min-width: 184px;
+      text-align: left;
+      box-shadow: 0 8px 18px rgba(20, 23, 26, 0.14);
+      transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .store-badge-btn:hover {
+      transform: translateY(-2px);
+      background: #24292d;
+      border-color: var(--color-logo-blue);
+    }
+    .store-badge-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .store-badge-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .store-badge-kicker {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #cbd5e1;
+      letter-spacing: 0.02em;
+    }
+    .store-badge-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .phones-showcase {
+      position: relative;
+      max-width: 660px;
+      height: 410px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .phone-frame {
+      background: #1c2024;
+      border: 4px solid #394047;
+      box-shadow: 0 22px 45px rgba(20, 23, 26, 0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .phone-android {
+      position: relative;
+      width: 268px;
+      height: 392px;
+      border-radius: 26px 26px 0 0;
+      border-bottom: none;
+      margin-left: 118px;
+      z-index: 1;
+    }
+    .phone-android-notch {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #0f1215;
+      margin: 8px auto 6px;
+      border: 1px solid #475259;
+    }
+    .phone-iphone {
+      position: relative;
+      width: 264px;
+      height: 368px;
+      border-radius: 34px 34px 0 0;
+      border-bottom: none;
+      margin-left: -386px;
+      z-index: 2;
+      background: #14171a;
+      border-color: #4f585d;
+    }
+    .phone-iphone-island {
+      width: 76px;
+      height: 18px;
+      border-radius: 9999px;
+      background: #090b0d;
+      margin: 9px auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+    }
+    .phone-iphone-island::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #273746;
+    }
+    .phone-screen {
+      flex: 1;
+      background: #f8fafc;
+      margin: 0 6px;
+      border-radius: 16px 16px 0 0;
+      padding: 10px 11px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+    }
+    .phone-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--color-slate-dark);
+    }
+    .phone-app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--color-slate-border);
+    }
+    .phone-app-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+    }
+    .phone-cp-pill {
+      background: var(--color-logo-blue-light);
+      color: var(--color-logo-blue-dark);
+      border: 1px solid var(--color-logo-blue-soft);
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+    .phone-verify-banner {
+      background: var(--color-logo-blue-light);
+      border-left: 3px solid var(--color-logo-blue-dark);
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      color: var(--color-slate-medium);
+      line-height: 1.3;
+    }
+    .phone-verify-banner strong {
+      color: var(--color-logo-blue-dark);
+    }
+    .pro-mini-card {
+      background: #ffffff;
+      border: 1px solid var(--color-slate-border);
+      border-radius: 10px;
+      padding: 8px 9px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(36, 41, 45, 0.04);
+    }
+    .pro-mini-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .pro-avatar-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .pro-avatar-badge.av-blue {
+      background: linear-gradient(135deg, var(--color-logo-blue-dark), var(--color-logo-charcoal));
+    }
+    .pro-avatar-badge.av-charcoal {
+      background: linear-gradient(135deg, var(--color-logo-charcoal), #24292d);
+    }
+    .pro-avatar-badge.av-teal {
+      background: linear-gradient(135deg, #4b83a6, var(--color-logo-blue));
+    }
+    .pro-avatar-badge::after {
+      content: "✓";
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #22c55e;
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid #ffffff;
+    }
+    .pro-mini-info {
+      min-width: 0;
+    }
+    .pro-mini-name {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      line-height: 1.2;
+    }
+    .pro-mini-role {
+      font-size: 0.65rem;
+      color: var(--color-slate-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pro-mini-rating {
+      font-size: 0.64rem;
+      font-weight: 700;
+      color: var(--color-slate-medium);
+      margin-top: 2px;
+    }
+    .pro-mini-price {
+      text-align: right;
+      flex-shrink: 0;
+      line-height: 1.15;
+    }
+    .pro-mini-price span {
+      display: block;
+      font-size: 0.58rem;
+      color: var(--color-slate-muted);
+    }
+    .pro-mini-price strong {
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+    }
+    .pro-mini-price small {
+      display: block;
+      font-size: 0.58rem;
+      color: var(--color-logo-blue-dark);
+      font-weight: 700;
+    }
+
     .features-section {
       background: var(--color-bg-card);
       border-top: 1px solid var(--color-slate-border);
@@ -784,6 +1073,14 @@
       .hero h1 { font-size: 1.9rem; }
       .search-box-cp { flex-direction: column; }
       .search-box-cp input { font-size: 16px; }
+
+      .app-connect-section { padding: 44px 16px 24px; }
+      .app-connect-title { font-size: 1.5rem; }
+      .phones-showcase { height: 345px; max-width: 360px; }
+      .phone-android { width: 196px; height: 325px; margin-left: 84px; }
+      .phone-iphone { width: 194px; height: 306px; margin-left: -272px; }
+      .phone-screen { padding: 8px; gap: 6px; }
+      .pro-avatar-badge { width: 28px; height: 28px; font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -1054,6 +1351,157 @@
       </div>
     </section>
 
+    <!-- SECCIÓN: CONÉCTATE DESDE CUALQUIER LUGAR CON LA APP DE LIMPIAPP -->
+    <section class="app-connect-section" id="appConnectSection">
+      <div class="app-connect-inner">
+        <h2 class="app-connect-title" id="appConnectTitle">Conéctate desde cualquier lugar con la app de LIMPIAPP</h2>
+
+        <div class="store-badges-row">
+          <a href="clientes.html" class="store-badge-btn" id="btnStoreApple" aria-label="Consíguelo en el App Store">
+            <span class="store-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.05.62-2.71 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.07-.52 2.71-1.3z"/>
+              </svg>
+            </span>
+            <span class="store-badge-copy">
+              <span class="store-badge-kicker" id="appleKicker">Consíguelo en el</span>
+              <span class="store-badge-name" id="appleName">App Store</span>
+            </span>
+          </a>
+
+          <a href="clientes.html" class="store-badge-btn" id="btnStoreGoogle" aria-label="Disponible en Google Play">
+            <span class="store-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="23" height="23">
+                <path fill="#4285F4" d="M3.61 1.814L13.793 12 3.61 22.186a1.96 1.96 0 0 1-.44-1.24V3.054c0-.465.16-.9.44-1.24z"/>
+                <path fill="#34A853" d="M17.18 8.613L5.63 1.946c-.62-.36-1.36-.34-1.95.02L13.793 12l3.387-3.387z"/>
+                <path fill="#FBBC05" d="M17.18 15.387L13.793 12 3.68 22.034c.59.36 1.33.38 1.95.02l11.55-6.667z"/>
+                <path fill="#EA4335" d="M20.39 10.45l-3.21-1.837L13.793 12l3.387 3.387 3.21-1.837c.82-.47.82-1.63 0-2.1z"/>
+              </svg>
+            </span>
+            <span class="store-badge-copy">
+              <span class="store-badge-kicker" id="googleKicker">DISPONIBLE EN</span>
+              <span class="store-badge-name" id="googleName">Google Play</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="phones-showcase">
+          <!-- Teléfono Android (trasero) -->
+          <div class="phone-frame phone-android" aria-label="Vista previa de profesionales de limpieza en Android">
+            <div class="phone-android-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <span>9:41</span>
+                <span>LIMPIAPP</span>
+                <span>5G</span>
+              </div>
+              <div class="phone-app-header">
+                <span class="phone-app-title" id="phoneAndTitle">Limpieza en tu zona</span>
+                <span class="phone-cp-pill" id="phoneAndCp">CP 46006</span>
+              </div>
+              <div class="phone-verify-banner" id="phoneAndVerify">
+                <strong>Verificación real</strong> de profesionales de limpieza.
+              </div>
+              <div class="pro-mini-card">
+                <div class="pro-mini-left">
+                  <div class="pro-avatar-badge av-blue">CM</div>
+                  <div class="pro-mini-info">
+                    <div class="pro-mini-name">Carmen M.</div>
+                    <div class="pro-mini-role" id="proRole1">Hogar y oficinas · 0,6 km</div>
+                    <div class="pro-mini-rating" id="proRat1">★ 5,0 · 28 servicios</div>
+                  </div>
+                </div>
+                <div class="pro-mini-price">
+                  <span id="lblDesde1">desde</span>
+                  <strong>14 €</strong>
+                  <small id="lblHora1">por hora</small>
+                </div>
+              </div>
+              <div class="pro-mini-card">
+                <div class="pro-mini-left">
+                  <div class="pro-avatar-badge av-charcoal">LR</div>
+                  <div class="pro-mini-info">
+                    <div class="pro-mini-name">Lucía R.</div>
+                    <div class="pro-mini-role" id="proRole2">Limpieza a fondo · 1,1 km</div>
+                    <div class="pro-mini-rating" id="proRat2">★ 4,9 · 19 servicios</div>
+                  </div>
+                </div>
+                <div class="pro-mini-price">
+                  <span id="lblDesde2">desde</span>
+                  <strong>16 €</strong>
+                  <small id="lblHora2">por hora</small>
+                </div>
+              </div>
+              <div class="pro-mini-card">
+                <div class="pro-mini-left">
+                  <div class="pro-avatar-badge av-teal">DP</div>
+                  <div class="pro-mini-info">
+                    <div class="pro-mini-name">Diego P.</div>
+                    <div class="pro-mini-role" id="proRole3">Fin de obra y locales</div>
+                    <div class="pro-mini-rating" id="proRat3">★ 5,0 · 15 servicios</div>
+                  </div>
+                </div>
+                <div class="pro-mini-price">
+                  <span id="lblDesde3">desde</span>
+                  <strong>18 €</strong>
+                  <small id="lblHora3">por hora</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teléfono iPhone / Apple (delantero) -->
+          <div class="phone-frame phone-iphone" aria-label="Vista previa de profesionales de limpieza en iPhone">
+            <div class="phone-iphone-island"></div>
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <span>9:41</span>
+                <span>LIMPIAPP</span>
+                <span>●●●</span>
+              </div>
+              <div class="phone-app-header">
+                <span class="phone-app-title" id="phoneIosTitle">Limpieza en tu zona</span>
+                <span class="phone-cp-pill" id="phoneIosCp">CP 46006</span>
+              </div>
+              <div class="phone-verify-banner" id="phoneIosVerify">
+                <strong>0% comisiones</strong> · Trato directo por WhatsApp.
+              </div>
+              <div class="pro-mini-card">
+                <div class="pro-mini-left">
+                  <div class="pro-avatar-badge av-charcoal">SG</div>
+                  <div class="pro-mini-info">
+                    <div class="pro-mini-name">Sofía G.</div>
+                    <div class="pro-mini-role" id="proIosRole1">Mantenimiento hogar · 0,4 km</div>
+                    <div class="pro-mini-rating" id="proIosRat1">★ 5,0 · 41 servicios</div>
+                  </div>
+                </div>
+                <div class="pro-mini-price">
+                  <span id="lblIosDesde1">desde</span>
+                  <strong>13 €</strong>
+                  <small id="lblIosHora1">por hora</small>
+                </div>
+              </div>
+              <div class="pro-mini-card">
+                <div class="pro-mini-left">
+                  <div class="pro-avatar-badge av-blue">MV</div>
+                  <div class="pro-mini-info">
+                    <div class="pro-mini-name">Marta V.</div>
+                    <div class="pro-mini-role" id="proIosRole2">Vivienda y oficinas · 0,9 km</div>
+                    <div class="pro-mini-rating" id="proIosRat2">★ 4,9 · 24 servicios</div>
+                  </div>
+                </div>
+                <div class="pro-mini-price">
+                  <span id="lblIosDesde2">desde</span>
+                  <strong>15 €</strong>
+                  <small id="lblIosHora2">por hora</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Sección de Ventajas Resumidas -->
     <section class="features-section">
       <div class="features-inner">
@@ -1163,7 +1611,11 @@
         login: '/login.html',
         clientSearch: '/clientes.html',
         clientSignup: '/clientes.html',
-        proSignup: '/registro.html'
+        proSignup: '/registro.html',
+        stores: {
+          ios: '/clientes.html',
+          android: '/clientes.html'
+        }
       }
     };
 
@@ -1297,6 +1749,35 @@
         featPP3: "<strong>Alertas inmediatas de WhatsApp</strong> con nuevas solicitudes",
         featPP4: "Posicionamiento preferente en tu código postal",
         btnProDest: "Activar con Promoción →",
+        appConnectTitle: "Conéctate desde cualquier lugar con la app de LIMPIAPP",
+        appleKicker: "Consíguelo en el",
+        appleName: "App Store",
+        googleKicker: "DISPONIBLE EN",
+        googleName: "Google Play",
+        phoneAndTitle: "Limpieza en tu zona",
+        phoneAndVerify: "<strong>Verificación real</strong> de profesionales de limpieza.",
+        proRole1: "Hogar y oficinas · 0,6 km",
+        proRat1: "★ 5,0 · 28 servicios",
+        lblDesde1: "desde",
+        lblHora1: "por hora",
+        proRole2: "Limpieza a fondo · 1,1 km",
+        proRat2: "★ 4,9 · 19 servicios",
+        lblDesde2: "desde",
+        lblHora2: "por hora",
+        proRole3: "Fin de obra y locales",
+        proRat3: "★ 5,0 · 15 servicios",
+        lblDesde3: "desde",
+        lblHora3: "por hora",
+        phoneIosTitle: "Limpieza en tu zona",
+        phoneIosVerify: "<strong>0% comisiones</strong> · Trato directo por WhatsApp.",
+        proIosRole1: "Mantenimiento hogar · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 servicios",
+        lblIosDesde1: "desde",
+        lblIosHora1: "por hora",
+        proIosRole2: "Vivienda y oficinas · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 servicios",
+        lblIosDesde2: "desde",
+        lblIosHora2: "por hora",
         feat1Title: "0% Comisiones por Servicio",
         feat1Desc: "El importe acordado es íntegro para el profesional. La plataforma funciona mediante modelo SaaS publicitario sin mermar los ingresos del servicio.",
         feat2Title: "Contacto Inmediato y Directo",
@@ -1413,6 +1894,35 @@
         featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
         featPP4: "Posicionament preferent al teu codi postal",
         btnProDest: "Activar amb Promoció →",
+        appConnectTitle: "Connecta't des de qualsevol lloc amb l'app de LIMPIAPP",
+        appleKicker: "Aconsegueix-lo a l'",
+        appleName: "App Store",
+        googleKicker: "DISPONIBLE A",
+        googleName: "Google Play",
+        phoneAndTitle: "Neteja a la teva zona",
+        phoneAndVerify: "<strong>Verificació real</strong> de professionals de neteja.",
+        proRole1: "Llar i oficines · 0,6 km",
+        proRat1: "★ 5,0 · 28 serveis",
+        lblDesde1: "des de",
+        lblHora1: "per hora",
+        proRole2: "Neteja a fons · 1,1 km",
+        proRat2: "★ 4,9 · 19 serveis",
+        lblDesde2: "des de",
+        lblHora2: "per hora",
+        proRole3: "Fi d'obra i locals",
+        proRat3: "★ 5,0 · 15 serveis",
+        lblDesde3: "des de",
+        lblHora3: "per hora",
+        phoneIosTitle: "Neteja a la teva zona",
+        phoneIosVerify: "<strong>0% comissions</strong> · Tracte directe per WhatsApp.",
+        proIosRole1: "Manteniment llar · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 serveis",
+        lblIosDesde1: "des de",
+        lblIosHora1: "per hora",
+        proIosRole2: "Habitatge i oficines · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 serveis",
+        lblIosDesde2: "des de",
+        lblIosHora2: "per hora",
         feat1Title: "0% Comissions per Servei",
         feat1Desc: "L'import acordat és íntegre per al professional. La plataforma funciona mitjançant model SaaS publicitari sense minvar els ingressos del servei.",
         feat2Title: "Contacte Immediat i Directe",
@@ -1529,8 +2039,37 @@
         featPP3: "<strong>Alertas inmediatas de WhatsApp</strong> con novas solicitudes",
         featPP4: "Posicionamento preferente no teu código postal",
         btnProDest: "Activar con Promoción →",
+        appConnectTitle: "Conéctate desde calquera lugar coa app de LIMPIAPP",
+        appleKicker: "Consígueo na",
+        appleName: "App Store",
+        googleKicker: "DISPOÑIBLE EN",
+        googleName: "Google Play",
+        phoneAndTitle: "Limpeza na túa zona",
+        phoneAndVerify: "<strong>Verificación real</strong> de profesionais de limpeza.",
+        proRole1: "Fogar e oficinas · 0,6 km",
+        proRat1: "★ 5,0 · 28 servizos",
+        lblDesde1: "desde",
+        lblHora1: "por hora",
+        proRole2: "Limpeza a fondo · 1,1 km",
+        proRat2: "★ 4,9 · 19 servizos",
+        lblDesde2: "desde",
+        lblHora2: "por hora",
+        proRole3: "Fin de obra e locais",
+        proRat3: "★ 5,0 · 15 servizos",
+        lblDesde3: "desde",
+        lblHora3: "por hora",
+        phoneIosTitle: "Limpeza na túa zona",
+        phoneIosVerify: "<strong>0% comisións</strong> · Trato directo por WhatsApp.",
+        proIosRole1: "Mantemento fogar · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 servizos",
+        lblIosDesde1: "desde",
+        lblIosHora1: "por hora",
+        proIosRole2: "Vivenda e oficinas · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 servizos",
+        lblIosDesde2: "desde",
+        lblIosHora2: "por hora",
         feat1Title: "0% Comisións por Servizo",
-        feat1Desc: "O importe acordado é íntegro para o profesional. A plataforma funciona mediante modelo SaaS publicitario sen minguar os ingresos do servizo.",
+        feat1Desc: "O importe acordado é íntegro para o profesional. A plataforma funciona mediante modelo SaaS publicitario sen minguar os ingresos del servizo.",
         feat2Title: "Contacto Inmediato e Directo",
         feat2Desc: "Conversa fluída por teléfono ou WhatsApp para coordinar horarios, chaves ou detalles de limpeza sen intermediarios.",
         feat3Title: "Hiperlocalidade por Código Postal",
@@ -1645,6 +2184,35 @@
         featPP3: "<strong>Berehalako WhatsApp alertak</strong> eskaera berriekin",
         featPP4: "Lehentasunezko kokapena zure posta-kodean",
         btnProDest: "Promozioarekin Aktibatu →",
+        appConnectTitle: "Konektatu edonondik LIMPIAPP-en app-arekin",
+        appleKicker: "Lortu hemen:",
+        appleName: "App Store",
+        googleKicker: "ESKURAGARRI HEMENTXE:",
+        googleName: "Google Play",
+        phoneAndTitle: "Garbiketa zure eremuan",
+        phoneAndVerify: "Garbiketa profesionalen <strong>benetako egiaztapena</strong>.",
+        proRole1: "Etxea eta bulegoak · 0,6 km",
+        proRat1: "★ 5,0 · 28 zerbitzu",
+        lblDesde1: "hemendik",
+        lblHora1: "orduko",
+        proRole2: "Sakoneko garbiketa · 1,1 km",
+        proRat2: "★ 4,9 · 19 zerbitzu",
+        lblDesde2: "hemendik",
+        lblHora2: "orduko",
+        proRole3: "Obra amaiera eta lokalak",
+        proRat3: "★ 5,0 · 15 zerbitzu",
+        lblDesde3: "hemendik",
+        lblHora3: "orduko",
+        phoneIosTitle: "Garbiketa zure eremuan",
+        phoneIosVerify: "<strong>%0 komisio</strong> · Zuzeneko tratua WhatsAppez.",
+        proIosRole1: "Etxeko mantentzea · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 zerbitzu",
+        lblIosDesde1: "hemendik",
+        lblIosHora1: "orduko",
+        proIosRole2: "Etxebizitza eta bulegoak · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 zerbitzu",
+        lblIosDesde2: "hemendik",
+        lblIosHora2: "orduko",
         feat1Title: "%0 Komisio Zerbitzu Bakoitzeko",
         feat1Desc: "Adostutako zenbatekoa osorik profesionalarentzat da. Plataforma iragarki-SaaS ereduaren bidez funtzionatzen du zerbitzuaren diru-sarrerak murriztu gabe.",
         feat2Title: "Berehalako eta Zuzeneko Kontaktua",
@@ -1761,6 +2329,35 @@
         featPP3: "<strong>Instant WhatsApp alerts</strong> with new requests",
         featPP4: "Priority placement in your postal code",
         btnProDest: "Activate with Promotion →",
+        appConnectTitle: "Connect from anywhere with the LIMPIAPP app",
+        appleKicker: "Download on the",
+        appleName: "App Store",
+        googleKicker: "GET IT ON",
+        googleName: "Google Play",
+        phoneAndTitle: "Cleaning near you",
+        phoneAndVerify: "<strong>Real verification</strong> of cleaning pros.",
+        proRole1: "Home & office · 0.6 km",
+        proRat1: "★ 5.0 · 28 jobs",
+        lblDesde1: "from",
+        lblHora1: "per hour",
+        proRole2: "Deep cleaning · 1.1 km",
+        proRat2: "★ 4.9 · 19 jobs",
+        lblDesde2: "from",
+        lblHora2: "per hour",
+        proRole3: "Move-out & offices",
+        proRat3: "★ 5.0 · 15 jobs",
+        lblDesde3: "from",
+        lblHora3: "per hour",
+        phoneIosTitle: "Cleaning near you",
+        phoneIosVerify: "<strong>0% fees</strong> · Direct WhatsApp contact.",
+        proIosRole1: "Home care · 0.4 km",
+        proIosRat1: "★ 5.0 · 41 jobs",
+        lblIosDesde1: "from",
+        lblIosHora1: "per hour",
+        proIosRole2: "Home & office · 0.9 km",
+        proIosRat2: "★ 4.9 · 24 jobs",
+        lblIosDesde2: "from",
+        lblIosHora2: "per hour",
         feat1Title: "0% Service Fees",
         feat1Desc: "100% of the agreed earnings belong to the professional. We operate strictly as an optional SaaS advertising directory.",
         feat2Title: "Direct & Immediate Contact",
@@ -1877,6 +2474,35 @@
         featPP3: "<strong>Sofortige WhatsApp-Alarme</strong> bei neuen Anfragen",
         featPP4: "Bevorzugte Platzierung in Ihrer Postleitzahl",
         btnProDest: "Mit Aktion aktivieren →",
+        appConnectTitle: "Überall verbunden mit der LIMPIAPP-App",
+        appleKicker: "Laden im",
+        appleName: "App Store",
+        googleKicker: "JETZT BEI",
+        googleName: "Google Play",
+        phoneAndTitle: "Reinigung in der Nähe",
+        phoneAndVerify: "<strong>Echte Prüfung</strong> von Reinigungskräften.",
+        proRole1: "Haushalt & Büro · 0,6 km",
+        proRat1: "★ 5,0 · 28 Aufträge",
+        lblDesde1: "ab",
+        lblHora1: "pro Stunde",
+        proRole2: "Grundreinigung · 1,1 km",
+        proRat2: "★ 4,9 · 19 Aufträge",
+        lblDesde2: "ab",
+        lblHora2: "pro Stunde",
+        proRole3: "Endreinigung & Gewerbe",
+        proRat3: "★ 5,0 · 15 Aufträge",
+        lblDesde3: "ab",
+        lblHora3: "pro Stunde",
+        phoneIosTitle: "Reinigung in der Nähe",
+        phoneIosVerify: "<strong>0 % Provision</strong> · Direkt per WhatsApp.",
+        proIosRole1: "Haushaltspflege · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 Aufträge",
+        lblIosDesde1: "ab",
+        lblIosHora1: "pro Stunde",
+        proIosRole2: "Wohnung & Büro · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 Aufträge",
+        lblIosDesde2: "ab",
+        lblIosHora2: "pro Stunde",
         feat1Title: "0% Servicegebühren",
         feat1Desc: "Der vereinbarte Betrag gehört zu 100% der Fachkraft. Wir arbeiten als reines Anzeigenverzeichnis ohne Kürzung der Einnahmen.",
         feat2Title: "Direkter und sofortiger Kontakt",
@@ -1993,6 +2619,35 @@
         featPP3: "<strong>Alertes WhatsApp immédiates</strong> pour les nouvelles demandes",
         featPP4: "Positionnement préférentiel dans votre code postal",
         btnProDest: "Activer avec Promotion →",
+        appConnectTitle: "Connectez-vous où que vous soyez avec l'app LIMPIAPP",
+        appleKicker: "Télécharger dans",
+        appleName: "l'App Store",
+        googleKicker: "DISPONIBLE SUR",
+        googleName: "Google Play",
+        phoneAndTitle: "Nettoyage près de vous",
+        phoneAndVerify: "<strong>Vérification réelle</strong> des pros du nettoyage.",
+        proRole1: "Maison & bureaux · 0,6 km",
+        proRat1: "★ 5,0 · 28 missions",
+        lblDesde1: "dès",
+        lblHora1: "par heure",
+        proRole2: "Nettoyage en profondeur · 1,1 km",
+        proRat2: "★ 4,9 · 19 missions",
+        lblDesde2: "dès",
+        lblHora2: "par heure",
+        proRole3: "Fin de chantier & locaux",
+        proRat3: "★ 5,0 · 15 missions",
+        lblDesde3: "dès",
+        lblHora3: "par heure",
+        phoneIosTitle: "Nettoyage près de vous",
+        phoneIosVerify: "<strong>0 % de commission</strong> · Contact direct WhatsApp.",
+        proIosRole1: "Entretien maison · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 missions",
+        lblIosDesde1: "dès",
+        lblIosHora1: "par heure",
+        proIosRole2: "Logement & bureaux · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 missions",
+        lblIosDesde2: "dès",
+        lblIosHora2: "par heure",
         feat1Title: "0% de Frais de Service",
         feat1Desc: "Le montant convenu appartient à 100% au professionnel. La plateforme fonctionne selon un modèle SaaS publicitaire sans réduire les revenus du service.",
         feat2Title: "Contact Direct et Immédiat",
@@ -2109,6 +2764,35 @@
         featPP3: "<strong>Avvisi WhatsApp immediati</strong> con nuove richieste",
         featPP4: "Posizionamento preferenziale nel tuo CAP",
         btnProDest: "Attiva con Promozione →",
+        appConnectTitle: "Collegati ovunque con l'app di LIMPIAPP",
+        appleKicker: "Scarica su",
+        appleName: "App Store",
+        googleKicker: "DISPONIBILE SU",
+        googleName: "Google Play",
+        phoneAndTitle: "Pulizie nella tua zona",
+        phoneAndVerify: "<strong>Verifica reale</strong> dei professionisti di pulizia.",
+        proRole1: "Casa e uffici · 0,6 km",
+        proRat1: "★ 5,0 · 28 servizi",
+        lblDesde1: "da",
+        lblHora1: "all'ora",
+        proRole2: "Pulizia a fondo · 1,1 km",
+        proRat2: "★ 4,9 · 19 servizi",
+        lblDesde2: "da",
+        lblHora2: "all'ora",
+        proRole3: "Fine cantiere e locali",
+        proRat3: "★ 5,0 · 15 servizi",
+        lblDesde3: "da",
+        lblHora3: "all'ora",
+        phoneIosTitle: "Pulizie nella tua zona",
+        phoneIosVerify: "<strong>0% commissioni</strong> · Contatto diretto WhatsApp.",
+        proIosRole1: "Cura casa · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 servizi",
+        lblIosDesde1: "da",
+        lblIosHora1: "all'ora",
+        proIosRole2: "Casa e uffici · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 servizi",
+        lblIosDesde2: "da",
+        lblIosHora2: "all'ora",
         feat1Title: "0% Commissioni sui Servizi",
         feat1Desc: "L'importo concordato spetta al 100% al professionista. La piattaforma opera con modello SaaS pubblicitario senza ridurre i guadagni del servizio.",
         feat2Title: "Contatto Diretto e Immediato",
@@ -2225,6 +2909,35 @@
         featPP3: "<strong>Alertas imediatos de WhatsApp</strong> com novas solicitações",
         featPP4: "Posicionamento preferencial no seu código postal",
         btnProDest: "Ativar com Promoção →",
+        appConnectTitle: "Ligue-se a partir de qualquer lugar com a app LIMPIAPP",
+        appleKicker: "Descarregar na",
+        appleName: "App Store",
+        googleKicker: "DISPONÍVEL NO",
+        googleName: "Google Play",
+        phoneAndTitle: "Limpeza na sua zona",
+        phoneAndVerify: "<strong>Verificação real</strong> de profissionais de limpeza.",
+        proRole1: "Casa e escritórios · 0,6 km",
+        proRat1: "★ 5,0 · 28 serviços",
+        lblDesde1: "desde",
+        lblHora1: "por hora",
+        proRole2: "Limpeza a fundo · 1,1 km",
+        proRat2: "★ 4,9 · 19 serviços",
+        lblDesde2: "desde",
+        lblHora2: "por hora",
+        proRole3: "Pós-obra e espaços",
+        proRat3: "★ 5,0 · 15 serviços",
+        lblDesde3: "desde",
+        lblHora3: "por hora",
+        phoneIosTitle: "Limpeza na sua zona",
+        phoneIosVerify: "<strong>0% comissões</strong> · Contacto direto por WhatsApp.",
+        proIosRole1: "Manutenção casa · 0,4 km",
+        proIosRat1: "★ 5,0 · 41 serviços",
+        lblIosDesde1: "desde",
+        lblIosHora1: "por hora",
+        proIosRole2: "Habitação e escritórios · 0,9 km",
+        proIosRat2: "★ 4,9 · 24 serviços",
+        lblIosDesde2: "desde",
+        lblIosHora2: "por hora",
         feat1Title: "0% Comissões por Serviço",
         feat1Desc: "O valor acordado é integral para o profissional. A plataforma funciona mediante modelo SaaS publicitário sem reduzir os rendimentos do serviço.",
         feat2Title: "Contacto Imediato e Direto",
@@ -2329,9 +3042,17 @@
       var cpActual = (document.getElementById('inputCP') && document.getElementById('inputCP').value.trim()) || '';
       var extraCp = cpActual ? { cp: cpActual } : {};
 
+      var cpLabel = cpActual ? ('CP ' + cpActual) : 'CP 46006';
+      var phoneAndCp = document.getElementById('phoneAndCp');
+      var phoneIosCp = document.getElementById('phoneIosCp');
+      if (phoneAndCp) phoneAndCp.innerText = cpLabel;
+      if (phoneIosCp) phoneIosCp.innerText = cpLabel;
+
       var appLinksConfig = [
         { id: 'btnMobileStripApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
         { id: 'btnMobileCardApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
+        { id: 'btnStoreApple', ruta: APP_CONFIG.routes.stores.ios, extra: Object.assign({ store: 'ios' }, extraCp) },
+        { id: 'btnStoreGoogle', ruta: APP_CONFIG.routes.stores.android, extra: Object.assign({ store: 'android' }, extraCp) },
         { id: 'btnNavLogin', ruta: APP_CONFIG.routes.login, extra: {} },
         { id: 'btnNavClient', ruta: APP_CONFIG.routes.clientSearch, extra: extraCp },
         { id: 'btnActionClient', ruta: APP_CONFIG.routes.clientSignup, extra: extraCp },
@@ -2388,7 +3109,7 @@
       for (var id in t) {
         var el = document.getElementById(id);
         if (el) {
-          if (id === 'heroTitle' || id === 'cookieBannerDesc' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge')) {
+          if (id === 'heroTitle' || id === 'cookieBannerDesc' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge') || id.startsWith('phoneAndVerify') || id.startsWith('phoneIosVerify')) {
             el.innerHTML = t[id];
           } else {
             el.innerText = t[id];
