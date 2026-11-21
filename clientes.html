@@ -1829,6 +1829,20 @@
 
     var idiomaActual = 'es';
 
+    function aplicarPlanDesdeUrl() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const planParam = urlParams.get('plan');
+        const selectFormula = document.getElementById('selectFormula');
+        if (!planParam || !selectFormula) return;
+        if (planParam === 'cliente_premium') {
+          selectFormula.selectedIndex = 1;
+        } else if (planParam === 'cliente_basico') {
+          selectFormula.selectedIndex = 0;
+        }
+      } catch (e) {}
+    }
+
     function aplicarIdiomaGlobal(lang) {
       if (!lang || !dicc[lang]) lang = 'es';
       idiomaActual = lang;
@@ -1914,7 +1928,7 @@
         } catch (err) {}
       });
 
-      // 7. Actualizar la URL en la barra de navegación sin recargar
+      // 7. Actualizar la URL en la barra de navegación sin recargar conservando plan y cp
       try {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('lang', lang);
@@ -1953,6 +1967,7 @@
         } catch (e) {}
       }
       aplicarIdiomaGlobal(langParam || 'es');
+      aplicarPlanDesdeUrl();
     });
 
     // GESTIÓN DE ENVÍO DEL FORMULARIO A GOOGLE APPS SCRIPT
@@ -1985,6 +2000,7 @@
         feedbackBox.style.display = 'block';
         form.reset();
         aplicarIdiomaGlobal(idiomaActual);
+        aplicarPlanDesdeUrl();
       })
       .catch(error => {
         console.error('Error enviando formulario:', error);
