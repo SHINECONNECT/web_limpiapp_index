@@ -38,7 +38,7 @@
       --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.06);
     }
 
-- { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     body { background-color: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
 
     .top-bar {
@@ -701,7 +701,7 @@
                 <div class="plan-desc" id="planClientBasicoDesc">Para necesidades puntuales o periódicas estándar en el hogar o la oficina.</div>
                 <div class="plan-price">7,99 € <span id="spanMes1">/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC1">Contacto con profesionales en tu zona</span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC1">Contacto limitado a 3 profesionales de su zona por mes</span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC2">Perfiles de profesionales <strong>100% verificados</strong></span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC3">Búsqueda por país, ciudad y código postal</span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featC4">Trato directo vía WhatsApp o llamada telefónica</span></li>
@@ -717,7 +717,7 @@
                 <div class="plan-desc" id="planClientPremDesc">Para familias y empresas que requieren máxima agilidad y prioridad en sus reservas.</div>
                 <div class="plan-price" style="color: var(--color-logo-blue-dark);">14,99 € <span id="spanMes2">/ mes</span></div>
                 <ul class="plan-features">
-                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP1">Contacto con <strong>prioridad y ventajas exclusivas</strong></span></li>
+                  <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP1">Contacto con un número ilimitado de profesionales cada mes</span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP2">Perfiles destacados y <strong>100% verificados</strong></span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP3">Alertas inmediatas de disponibilidad en tu código postal</span></li>
                   <li><span style="color: var(--color-logo-blue-dark); font-weight: 800;">✓</span> <span id="featCP4">Soporte prioritario de gestión de plataforma</span></li>
@@ -893,7 +893,7 @@
         planClientBasicoName: "Plan Básico Cliente",
         planClientBasicoDesc: "Para necesidades puntuales o periódicas estándar en el hogar o la oficina.",
         spanMes1: "/ mes",
-        featC1: "Contacto con profesionales en tu zona",
+        featC1: "Contacto limitado a 3 profesionales de su zona por mes",
         featC2: "Perfiles de profesionales <strong>100% verificados</strong>",
         featC3: "Búsqueda por país, ciudad y código postal",
         featC4: "Trato directo vía WhatsApp o llamada telefónica",
@@ -902,7 +902,7 @@
         planClientPremName: "Plan Premium Cliente ★",
         planClientPremDesc: "Para familias y empresas que requieren máxima agilidad y prioridad en sus reservas.",
         spanMes2: "/ mes",
-        featCP1: "Contacto con <strong>prioridad y ventajas exclusivas</strong>",
+        featCP1: "Contacto con un número ilimitado de profesionales cada mes",
         featCP2: "Perfiles destacados y <strong>100% verificados</strong>",
         featCP3: "Alertas inmediatas de disponibilidad en tu código postal",
         featCP4: "Soporte prioritario de gestión de plataforma",
@@ -913,12 +913,14 @@
         planProBasicoName: "Plan Básico",
         planProBasicoDesc: "Para publicar tu perfil verificado y comenzar a recibir solicitudes sin costes fijos.",
         spanSiempre: "/ para siempre",
+        badgePrimerMesGratis: "🎉 Primer mes GRATIS para las primeras 50 inscripciones",
         featP1: "Perfil activo en tu ciudad y código postal",
         featP2: "Contactos de clientes <strong>100% verificados</strong>",
-        featP3: "Tarifa horaria fijada libremente por el profesional",
-        featP4: "0% comisiones (cobras el 100% de tu servicio)",
+        featP3: "<strong>Acceso limitado a 2 contactos de clientes/mes</strong>",
+        featP4: "Tarifa horaria fijada libremente por el profesional",
+        featP5: "0% comisiones (cobras el 100% de tu servicio)",
         featP6: "Limitado a 2 contactos de clientes por mes",
-        btnProBasico: "Elegir Plan Básico",
+        btnProBasico: "Alta Gratuita",
         badgeProPromo: "🔥 PRIMERAS 20 INSCRIPCIONES A PRECIO REDUCIDO DE 7,99 EUROS/MES",
         planProDestName: "Plan Premium Profesionales",
         planProDestDesc: "Máxima visibilidad en búsquedas, alertas instantáneas y agenda completa.",
@@ -1429,7 +1431,7 @@
         planProDestDesc: "Massima visibilità, avvisi prioritari e calendario sempre pieno.",
         spanMes3: "/ mese",
         badgeDiasGratis: "🌟 7,99 euro/mese durante i primi 2 mesi",
-        featPP1: "<strong>Contatti illimitati</strong> con famiglie e ditte",
+        featPP1: "<strong>Contatti illimitados</strong> con famiglie e ditte",
         featPP2: "<strong>Badge ufficiale di Profilo 100% Verificato</strong>",
         featPP3: "<strong>Avvisi WhatsApp in tempo reale</strong> con nuove offerte",
         featPP4: "Posizionamento in cima alla tua zona",
