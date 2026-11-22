@@ -1,0 +1,20 @@
+{
+  "name": "LIMPIAPP — Servicios de limpieza",
+  "short_name": "LIMPIAPP",
+  "description": "Plataforma tecnológica de intermediación de servicios de limpieza por código postal operada por Shineconnect S.L. en limpiapp.app.",
+  "start_url": "/index.html?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f585d",
+  "lang": "es-ES",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
