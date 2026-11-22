@@ -8,6 +8,12 @@
   <meta name="apple-itunes-app" content="app-id=limpiapp">
   <link rel="alternate" href="limpiapp://home">
   <meta name="theme-color" content="#4f585d">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="LIMPIAPP">
+  <link rel="apple-touch-icon" href="/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1525,6 +1531,9 @@
 <script>
     var APP_CONFIG = {
       appBaseUrl: 'https://limpiapp.app',
+      // Rellenar con la URL o deep link facilitado por Serxus cuando esté disponible
+      serxusAppUrl: null,
+      syncStateEndpoint: '/api/account/sync-state',
       routes: {
         mobileApp: '/clientes.html',
         login: '/login.html',
@@ -1535,11 +1544,24 @@
           ios: '/clientes.html',
           android: '/clientes.html'
         }
+      },
+      plans: {
+        cliente_basico: { role: 'client', priceEur: 7.99, label: 'Plan Básico Cliente' },
+        cliente_premium: { role: 'client', priceEur: 14.99, label: 'Plan Premium Cliente' },
+        pro_basico: { role: 'professional', priceEur: 7.99, monthlyContactLimit: 2, label: 'Plan Básico' },
+        pro_premium: { role: 'professional', priceEur: 14.99, monthlyContactLimit: null, label: 'Plan Premium Profesionales' }
       }
     };
 
     var estadoIdiomaMemoria = 'es';
     var COOKIE_CONSENT_KEY = 'limpiapp_cookie_consent_v2';
+    window.LIMPIAPP_SHARED_STATE = {
+      authenticated: false,
+      userId: null,
+      activePlanCode: null,
+      subscriptionStatus: 'none',
+      contactsUsedThisMonth: 0
+    };
 
     function leerConsentimientoCookies() {
       try {
@@ -1574,7 +1596,10 @@
       try {
         var url = new URL(ruta, APP_CONFIG.appBaseUrl);
         url.searchParams.set('lang', langActual);
-        url.searchParams.set('source', 'web_limpiapp');
+        url.searchParams.set('source', 'web_limpiapp_pwa');
+        if (window.LIMPIAPP_SHARED_STATE && window.LIMPIAPP_SHARED_STATE.userId) {
+          url.searchParams.set('uid', window.LIMPIAPP_SHARED_STATE.userId);
+        }
         if (paramsExtra) {
           Object.keys(paramsExtra).forEach(function(clave) {
             if (paramsExtra[clave]) {
@@ -1586,7 +1611,7 @@
       } catch (e) {
         var base = (APP_CONFIG.appBaseUrl || '').replace(/\/+$/, '') + '/' + String(ruta || '').replace(/^\/+/, '');
         var sep = base.indexOf('?') === -1 ? '?' : '&';
-        var query = 'lang=' + encodeURIComponent(langActual) + '&source=web_limpiapp';
+        var query = 'lang=' + encodeURIComponent(langActual) + '&source=web_limpiapp_pwa';
         if (paramsExtra) {
           Object.keys(paramsExtra).forEach(function(k) {
             if (paramsExtra[k]) query += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(paramsExtra[k]);
@@ -1594,6 +1619,64 @@
         }
         return base + sep + query;
       }
+    }
+
+    function construirUrlMigracionApp(paramsExtra) {
+      if (!APP_CONFIG.serxusAppUrl) {
+        return construirUrlApp(APP_CONFIG.routes.mobileApp, paramsExtra);
+      }
+      var langActual = obtenerIdiomaActual();
+      try {
+        var url = new URL(APP_CONFIG.serxusAppUrl, window.location.origin);
+        url.searchParams.set('lang', langActual);
+        url.searchParams.set('from', 'limpiapp_pwa');
+        if (window.LIMPIAPP_SHARED_STATE && window.LIMPIAPP_SHARED_STATE.userId) {
+          url.searchParams.set('uid', window.LIMPIAPP_SHARED_STATE.userId);
+        }
+        if (window.LIMPIAPP_SHARED_STATE && window.LIMPIAPP_SHARED_STATE.activePlanCode) {
+          url.searchParams.set('active_plan', window.LIMPIAPP_SHARED_STATE.activePlanCode);
+        }
+        if (paramsExtra) {
+          Object.keys(paramsExtra).forEach(function(clave) {
+            if (paramsExtra[clave]) {
+              url.searchParams.set(clave, paramsExtra[clave]);
+            }
+          });
+        }
+        return url.toString();
+      } catch (e) {
+        return construirUrlApp(APP_CONFIG.routes.mobileApp, paramsExtra);
+      }
+    }
+
+    function puedeIniciarAltaPlan(planKey) {
+      var st = window.LIMPIAPP_SHARED_STATE;
+      if (!st || !st.authenticated) return true;
+      if (st.subscriptionStatus === 'active' && st.activePlanCode === planKey) {
+        return false;
+      }
+      return true;
+    }
+
+    async function sincronizarEstadoCompartidoLimpiapp() {
+      if (!APP_CONFIG.syncStateEndpoint) return;
+      try {
+        var res = await fetch(APP_CONFIG.syncStateEndpoint, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store'
+        });
+        if (!res.ok) return;
+        var data = await res.json();
+        window.LIMPIAPP_SHARED_STATE = {
+          authenticated: Boolean(data.authenticated),
+          userId: data.userId || null,
+          activePlanCode: data.activePlanCode || null,
+          subscriptionStatus: data.subscriptionStatus || 'none',
+          contactsUsedThisMonth: Number(data.contactsUsedThisMonth || 0)
+        };
+        actualizarEnlacesApp(obtenerIdiomaActual());
+      } catch (_err) {}
     }
 
     function ocultarFranjaAppMovil() {
@@ -1614,7 +1697,6 @@
       return '<span>' + questionText + '</span><span class="faq-chevron" aria-hidden="true">⌄</span>';
     }
 
-    // Reutilizamos el diccionario base en español y añadimos variantes localizadas
     var dicc = {
       es: {
         mobileStripTitle: "📱 LIMPIAPP en tu móvil",
@@ -1780,7 +1862,6 @@
       }
     };
 
-    // Hereda claves faltantes de 'es' en los demás idiomas para evitar huecos de traducción
     ['ca', 'gl', 'eu', 'en', 'de', 'fr', 'it', 'pt'].forEach(function(code) {
       if (!dicc[code]) {
         dicc[code] = Object.assign({}, dicc.es);
@@ -1869,25 +1950,34 @@
       if (phoneIosCp) phoneIosCp.textContent = cpLabel;
 
       var appLinksConfig = [
-        { id: 'btnMobileStripApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
-        { id: 'btnMobileCardApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp },
-        { id: 'btnStoreApple', ruta: APP_CONFIG.routes.stores.ios, extra: Object.assign({ store: 'ios' }, extraCp) },
-        { id: 'btnStoreGoogle', ruta: APP_CONFIG.routes.stores.android, extra: Object.assign({ store: 'android' }, extraCp) },
+        { id: 'btnMobileStripApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp, migrateToSerxusApp: true },
+        { id: 'btnMobileCardApp', ruta: APP_CONFIG.routes.mobileApp, extra: extraCp, migrateToSerxusApp: true },
+        { id: 'btnStoreApple', ruta: APP_CONFIG.routes.stores.ios, extra: Object.assign({ store: 'ios' }, extraCp), migrateToSerxusApp: true },
+        { id: 'btnStoreGoogle', ruta: APP_CONFIG.routes.stores.android, extra: Object.assign({ store: 'android' }, extraCp), migrateToSerxusApp: true },
         { id: 'btnNavLogin', ruta: APP_CONFIG.routes.login, extra: {} },
         { id: 'btnNavClient', ruta: APP_CONFIG.routes.clientSearch, extra: extraCp },
         { id: 'btnActionClient', ruta: APP_CONFIG.routes.clientSignup, extra: extraCp },
-        { id: 'btnClientBasico', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_basico' } },
-        { id: 'btnClientPrem', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_premium' } },
+        { id: 'btnClientBasico', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_basico' }, planKey: 'cliente_basico' },
+        { id: 'btnClientPrem', ruta: APP_CONFIG.routes.clientSignup, extra: { plan: 'cliente_premium' }, planKey: 'cliente_premium' },
         { id: 'btnNavPro', ruta: APP_CONFIG.routes.proSignup, extra: {} },
         { id: 'btnActionPro', ruta: APP_CONFIG.routes.proSignup, extra: {} },
-        { id: 'btnProBasico', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_basico' } },
-        { id: 'btnProDest', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_premium' } }
+        { id: 'btnProBasico', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_basico' }, planKey: 'pro_basico' },
+        { id: 'btnProDest', ruta: APP_CONFIG.routes.proSignup, extra: { plan: 'pro_premium' }, planKey: 'pro_premium' }
       ];
 
       appLinksConfig.forEach(function(item) {
         var elem = document.getElementById(item.id);
         if (elem) {
-          elem.setAttribute('href', construirUrlApp(item.ruta, item.extra));
+          var href = item.migrateToSerxusApp
+            ? construirUrlMigracionApp(item.extra)
+            : construirUrlApp(item.ruta, item.extra);
+          elem.setAttribute('href', href);
+
+          if (item.planKey && !puedeIniciarAltaPlan(item.planKey)) {
+            elem.dataset.planAlreadyActive = 'true';
+          } else {
+            delete elem.dataset.planAlreadyActive;
+          }
         }
       });
 
@@ -1950,6 +2040,14 @@
       actualizarEnlacesApp(lang);
     }
 
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').catch(function(err) {
+          console.error('Error al registrar Service Worker en limpiapp.app:', err);
+        });
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       var urlParams = new URLSearchParams(window.location.search);
       var guardado = urlParams.get('lang') || (permitePreferencias() ? localStorage.getItem('limpiapp_lang') : null) || 'es';
@@ -1971,6 +2069,8 @@
         window.limpiappCookieConsent = consent;
         ocultarBannerCookies();
       }
+
+      sincronizarEstadoCompartidoLimpiapp();
     });
   </script>
 </body>
