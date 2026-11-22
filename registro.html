@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alta de Profesional | LIMPIAPP by Shineconnect</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="theme-color" content="#4f585d">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="LIMPIAPP">
+  <link rel="apple-touch-icon" href="/logo.png">
   <style>
     :root {
       --primary: #4f585d;
@@ -25,7 +32,7 @@
       --footer-link: #cbd5e0;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -184,7 +191,7 @@
       padding: 44px 48px;
     }
 
-   @media (max-width: 768px) {
+    @media (max-width: 768px) {
       .top-lang-bar {
         padding: 8px 16px;
         justify-content: center;
@@ -281,6 +288,60 @@
       font-size: 15px;
       color: var(--text-muted);
       line-height: 1.5;
+    }
+
+    .app-migration-banner {
+      background: var(--accent-soft);
+      border: 1px solid #c7dfed;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .app-migration-banner strong {
+      display: block;
+      color: var(--primary);
+      font-size: 13.5px;
+    }
+
+    .app-migration-banner span {
+      color: var(--text-muted);
+      font-size: 12.5px;
+    }
+
+    .btn-app-bridge {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 7px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-app-bridge:hover {
+      background: var(--primary-hover);
+    }
+
+    .plan-conflict-alert {
+      display: none;
+      background: #fff8e7;
+      border: 1px solid #f3cf7a;
+      color: #6c4a00;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .form-group {
@@ -538,9 +599,22 @@
         <p id="txtSubtitulo">Publica tu perfil sin comisiones y recibe contactos directos de clientes en tu zona.</p>
       </div>
 
+      <div class="app-migration-banner" id="proAppMigrationBox">
+        <div>
+          <strong id="proAppMigrationTitle">¿Prefieres gestionar tu perfil desde la app de LIMPIAPP?</strong>
+          <span id="proAppMigrationSub">Conservamos tu idioma, código postal y plan seleccionado al migrar a la app.</span>
+        </div>
+        <button type="button" class="btn-app-bridge" id="btnProOpenApp" onclick="migrarProfesionalAApp()">Abrir en la app</button>
+      </div>
+
+      <div class="plan-conflict-alert" id="proPlanConflictAlert" role="alert"></div>
+
       <form id="formProfesional">
         <input type="hidden" name="perfil_usuario" value="profesional">
         <input type="hidden" name="idioma" id="inputIdiomaHidden" value="es">
+        <input type="hidden" name="plan_codigo" id="inputPlanCodigoHidden" value="pro_basico">
+        <input type="hidden" name="source_channel" id="inputSourceHidden" value="web_limpiapp_pwa">
+        <input type="hidden" name="shared_user_id" id="inputSharedUserIdHidden" value="">
 
         <div class="form-group">
           <label for="inputNombre" id="lblNombre">Nombre y Apellidos *</label>
@@ -588,12 +662,12 @@
           </div>
         </div>
 
-        <!-- NUEVO SELECTOR DE PLANES PROFESIONALES -->
+        <!-- SELECTOR DE PLANES PROFESIONALES -->
         <div class="form-group">
           <label for="selectPlan" id="lblPlan">Plan Seleccionado *</label>
-          <select name="plan" id="selectPlan">
-            <option value="Plan Básico Profesional" id="optPlanBasico" selected>Plan Básico Profesional (7,99 €/mes - 1º mes gratis cupo pionero 50 reg.)</option>
-            <option value="Plan Pro Destacado" id="optPlanPro">Plan Pro Destacado (14,99 €/mes - 7,99 €/mes primeros 2 meses)</option>
+          <select name="plan" id="selectPlan" onchange="sincronizarPlanProfesional()">
+            <option value="Plan Básico Profesional" data-plan-code="pro_basico" id="optPlanBasico" selected>Plan Básico Profesional (7,99 €/mes - 1º mes gratis cupo pionero 50 reg.)</option>
+            <option value="Plan Pro Destacado" data-plan-code="pro_premium" id="optPlanPro">Plan Pro Destacado (14,99 €/mes - 7,99 €/mes primeros 2 meses)</option>
           </select>
         </div>
 
@@ -638,6 +712,19 @@
 
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec";
+
+    // Configuración compartida con index.html, clientes.html y futura app de Serxus
+    const PRO_BRIDGE_CONFIG = {
+      serxusAppUrl: null, // Rellenar cuando Serxus facilite la URL o deep link de la app
+      syncStateEndpoint: '/api/account/sync-state'
+    };
+
+    window.LIMPIAPP_SHARED_STATE = {
+      authenticated: false,
+      userId: null,
+      activePlanCode: null,
+      subscriptionStatus: 'none'
+    };
 
     var dicc = {
       es: {
@@ -1298,7 +1385,7 @@
         navClientes: "Hledat Službu",
         navRegistro: "Jsem Profesionál",
         footAviso: "Právní Upozornění",
-        footTerminos: "Obchodní Podmínky",
+        footTerminos: "Obchodné Podmínky",
         footPrivacidad: "Ochrana Soukromí",
         footCookies: "Zásady Cookies",
         footCopy: "© 2026 SHINECONNECT S.L. (NIF B26917807) — LIMPIAPP. Všechna práva vyhrazena. V souladu s GDPR."
@@ -1814,18 +1901,102 @@
 
     var idiomaActual = 'es';
 
+    function obtenerPlanCodigoProfesional() {
+      const selectPlan = document.getElementById('selectPlan');
+      if (!selectPlan) return 'pro_basico';
+      const opt = selectPlan.options[selectPlan.selectedIndex];
+      return (opt && opt.dataset.planCode) ? opt.dataset.planCode : (selectPlan.selectedIndex === 1 ? 'pro_premium' : 'pro_basico');
+    }
+
+    function evaluarConflictoPlanProfesional() {
+      const alertEl = document.getElementById('proPlanConflictAlert');
+      const planCode = obtenerPlanCodigoProfesional();
+      const st = window.LIMPIAPP_SHARED_STATE || {};
+      if (!alertEl) return false;
+      if (st.authenticated && st.subscriptionStatus === 'active' && st.activePlanCode === planCode) {
+        alertEl.style.display = 'block';
+        alertEl.textContent = 'Ya tienes activo este mismo plan profesional en tu cuenta de LIMPIAPP. Para evitar cobros duplicados, gestiona tu suscripción actual o continúa directamente en la app.';
+        return true;
+      }
+      alertEl.style.display = 'none';
+      alertEl.textContent = '';
+      return false;
+    }
+
+    function sincronizarPlanProfesional() {
+      const planCode = obtenerPlanCodigoProfesional();
+      const hiddenPlan = document.getElementById('inputPlanCodigoHidden');
+      if (hiddenPlan) hiddenPlan.value = planCode;
+      evaluarConflictoPlanProfesional();
+      try {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('plan', planCode);
+        window.history.replaceState({}, '', currentUrl.toString());
+      } catch (e) {}
+    }
+
     function aplicarPlanDesdeUrl() {
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const planParam = urlParams.get('plan');
         const selectPlan = document.getElementById('selectPlan');
-        if (!planParam || !selectPlan) return;
+        if (!selectPlan) return;
         if (planParam === 'pro_premium') {
           selectPlan.selectedIndex = 1;
         } else if (planParam === 'pro_basico') {
           selectPlan.selectedIndex = 0;
         }
+        sincronizarPlanProfesional();
       } catch (e) {}
+    }
+
+    function migrarProfesionalAApp() {
+      const subEl = document.getElementById('proAppMigrationSub');
+      const cpVal = (document.getElementById('inputCp') && document.getElementById('inputCp').value.trim()) || '';
+      const planCode = obtenerPlanCodigoProfesional();
+      const uid = window.LIMPIAPP_SHARED_STATE && window.LIMPIAPP_SHARED_STATE.userId;
+
+      if (!PRO_BRIDGE_CONFIG.serxusAppUrl) {
+        if (subEl) {
+          subEl.textContent = 'La redirección directa a la app se activará en cuanto se configure la URL facilitada por Serxus. Tu idioma, CP (' + (cpVal || 'sin indicar') + ') y plan (' + planCode + ') quedan listos.';
+        }
+        return;
+      }
+
+      try {
+        const url = new URL(PRO_BRIDGE_CONFIG.serxusAppUrl, window.location.origin);
+        url.searchParams.set('from', 'limpiapp_pwa');
+        url.searchParams.set('role', 'professional');
+        url.searchParams.set('lang', idiomaActual);
+        url.searchParams.set('plan', planCode);
+        if (cpVal) url.searchParams.set('cp', cpVal);
+        if (uid) url.searchParams.set('uid', uid);
+        window.location.href = url.toString();
+      } catch (e) {}
+    }
+
+    async function sincronizarEstadoProfesional() {
+      if (!PRO_BRIDGE_CONFIG.syncStateEndpoint) return;
+      try {
+        const res = await fetch(PRO_BRIDGE_CONFIG.syncStateEndpoint, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store'
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        window.LIMPIAPP_SHARED_STATE = {
+          authenticated: Boolean(data.authenticated),
+          userId: data.userId || null,
+          activePlanCode: data.activePlanCode || null,
+          subscriptionStatus: data.subscriptionStatus || 'none'
+        };
+        const hiddenUid = document.getElementById('inputSharedUserIdHidden');
+        if (hiddenUid && window.LIMPIAPP_SHARED_STATE.userId) {
+          hiddenUid.value = window.LIMPIAPP_SHARED_STATE.userId;
+        }
+        evaluarConflictoPlanProfesional();
+      } catch (_err) {}
     }
 
     function aplicarIdiomaGlobal(lang) {
@@ -1912,10 +2083,13 @@
         } catch (err) {}
       });
 
-      // 7. Actualizar la URL de la barra de direcciones sin recargar la página conservando plan y cp
+      // 7. Actualizar la URL de la barra de direcciones sin recargar conservando plan y cp
       try {
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.set('lang', lang);
+        const cpVal = (document.getElementById('inputCp') && document.getElementById('inputCp').value.trim()) || '';
+        if (cpVal) currentUrl.searchParams.set('cp', cpVal);
+        currentUrl.searchParams.set('plan', obtenerPlanCodigoProfesional());
         window.history.replaceState({}, '', currentUrl.toString());
       } catch (err) {}
     }
@@ -1929,6 +2103,14 @@
         aplicarIdiomaGlobal(e.newValue);
       }
     });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js').catch(function(err) {
+          console.error('Error al registrar Service Worker en limpiapp.app:', err);
+        });
+      });
+    }
 
     window.addEventListener('DOMContentLoaded', () => {
       const logoForm = document.getElementById('logoForm');
@@ -1944,6 +2126,14 @@
         if (inputCp) inputCp.value = cpParam;
       }
 
+      const sourceParam = urlParams.get('source') || urlParams.get('from');
+      const hiddenSource = document.getElementById('inputSourceHidden');
+      if (hiddenSource && sourceParam) hiddenSource.value = sourceParam;
+
+      const uidParam = urlParams.get('uid');
+      const hiddenUid = document.getElementById('inputSharedUserIdHidden');
+      if (hiddenUid && uidParam) hiddenUid.value = uidParam;
+
       let langParam = urlParams.get('lang');
       if (!langParam) {
         try {
@@ -1952,6 +2142,7 @@
       }
       aplicarIdiomaGlobal(langParam || 'es');
       aplicarPlanDesdeUrl();
+      sincronizarEstadoProfesional();
     });
 
     // GESTIÓN DE ENVÍO DEL FORMULARIO A GOOGLE APPS SCRIPT
@@ -1963,6 +2154,11 @@
       e.preventDefault();
       const t = dicc[idiomaActual] || dicc.es;
 
+      if (evaluarConflictoPlanProfesional()) {
+        return;
+      }
+
+      sincronizarPlanProfesional();
       btnSubmit.disabled = true;
       btnSubmit.innerText = t.enviando;
       feedbackBox.className = 'feedback-message';
