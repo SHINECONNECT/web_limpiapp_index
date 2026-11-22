@@ -197,7 +197,7 @@
     .search-box-cp {
       background: #ffffff;
       max-width: 540px;
-      margin: 0 auto 45px;
+      margin: 0 auto 32px;
       padding: 8px;
       border-radius: var(--radius-md);
       border: 2px solid var(--color-logo-blue);
@@ -225,6 +225,65 @@
       transition: background 0.2s;
     }
     .search-box-cp button:hover { background: var(--color-logo-charcoal-dark); }
+
+    /* BOTÓN DE INSTALACIÓN PWA (ESCRITORIO PC/MAC Y MÓVIL) */
+    .pwa-install-box {
+      display: none;
+      max-width: 540px;
+      margin: 0 auto 38px;
+      background: #ffffff;
+      border: 1.5px solid var(--color-logo-blue-soft);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: 0 8px 18px rgba(36, 41, 45, 0.06);
+      text-align: left;
+    }
+    .pwa-install-box.visible {
+      display: block;
+    }
+    .pwa-install-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pwa-install-copy strong {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--color-slate-dark);
+      margin-bottom: 2px;
+    }
+    .pwa-install-copy span {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--color-slate-muted);
+      line-height: 1.35;
+    }
+    .btn-pwa-install {
+      background: var(--color-logo-charcoal);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 10px 15px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-pwa-install:hover {
+      background: var(--color-logo-charcoal-dark);
+    }
+    .pwa-ios-hint {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--color-slate-border);
+      font-size: 0.82rem;
+      color: var(--color-slate-medium);
+      line-height: 1.45;
+    }
 
     .dual-cta-grid {
       display: grid;
@@ -992,6 +1051,22 @@
         <button type="submit" id="btnBuscarCP">Ver Disponibilidad</button>
       </form>
 
+      <!-- Botón de instalación PWA visible en escritorio (PC/Mac) y móvil -->
+      <div class="pwa-install-box visible" id="pwaInstallBox">
+        <div class="pwa-install-row">
+          <div class="pwa-install-copy">
+            <strong id="pwaInstallTitle">📲 Instala LIMPIAPP en tu pantalla de inicio</strong>
+            <span id="pwaInstallSub">Acceso directo rápido y sin navegador, sincronizado con tu cuenta.</span>
+          </div>
+          <button type="button" class="btn-pwa-install" id="btnPwaInstall" onclick="instalarPwaLimpiapp()">
+            Instalar acceso rápido
+          </button>
+        </div>
+        <div class="pwa-ios-hint" id="pwaIosHint">
+          En <strong>iPhone / iPad (Safari)</strong>: pulsa el botón <strong>Compartir</strong> y selecciona <strong>«Añadir a pantalla de inicio»</strong>. En <strong>PC / Mac</strong>: usa el icono de instalar en la barra del navegador o el menú del navegador.
+        </div>
+      </div>
+
       <!-- Acceso destacado a la app en móvil -->
       <div class="mobile-app-card" id="mobileAppCard">
         <div class="mobile-app-card-text">
@@ -1555,6 +1630,8 @@
 
     var estadoIdiomaMemoria = 'es';
     var COOKIE_CONSENT_KEY = 'limpiapp_cookie_consent_v2';
+    var deferredPwaPrompt = null;
+
     window.LIMPIAPP_SHARED_STATE = {
       authenticated: false,
       userId: null,
@@ -1649,6 +1726,52 @@
       }
     }
 
+    function esModoStandalonePwa() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    }
+
+    function esDispositivoIos() {
+      return /iphone|ipad|ipod/i.test(window.navigator.userAgent || '');
+    }
+
+    function actualizarVisibilidadBotonPwa() {
+      var box = document.getElementById('pwaInstallBox');
+      if (!box) return;
+
+      // Ocultar si ya corre en modo app/standalone o si ya está activa la URL de la app de Serxus
+      if (esModoStandalonePwa() || APP_CONFIG.serxusAppUrl) {
+        box.classList.remove('visible');
+        return;
+      }
+
+      // Mostrar en móvil y en PC/Mac
+      box.classList.add('visible');
+    }
+
+    async function instalarPwaLimpiapp() {
+      if (APP_CONFIG.serxusAppUrl) {
+        window.location.href = construirUrlMigracionApp();
+        return;
+      }
+
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+        try {
+          var choice = await deferredPwaPrompt.userChoice;
+          if (choice && choice.outcome === 'accepted') {
+            deferredPwaPrompt = null;
+            actualizarVisibilidadBotonPwa();
+          }
+        } catch (_e) {}
+        return;
+      }
+
+      var hint = document.getElementById('pwaIosHint');
+      if (hint) {
+        hint.style.display = hint.style.display === 'block' ? 'none' : 'block';
+      }
+    }
+
     function puedeIniciarAltaPlan(planKey) {
       var st = window.LIMPIAPP_SHARED_STATE;
       if (!st || !st.authenticated) return true;
@@ -1705,6 +1828,10 @@
         mobileCardTitle: "¿Prefieres usar la App?",
         mobileCardSub: "Pasa a la aplicación manteniendo tu idioma y código postal.",
         btnMobileCardApp: "Ir a la App →",
+        pwaInstallTitle: "📲 Instala LIMPIAPP en tu pantalla de inicio",
+        pwaInstallSub: "Acceso directo rápido y sin navegador, sincronizado con tu cuenta.",
+        btnPwaInstall: "Instalar acceso rápido",
+        pwaIosHint: "En <strong>iPhone / iPad (Safari)</strong>: pulsa el botón <strong>Compartir</strong> y selecciona <strong>«Añadir a pantalla de inicio»</strong>. En <strong>PC / Mac</strong>: usa el icono de instalar en la barra del navegador o el menú del navegador.",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
         heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
@@ -1859,12 +1986,365 @@
         btnCookieReject: "Rechazar no esenciales",
         btnCookieConfig: "Configurar",
         btnCookieAccept: "Aceptar todas"
+      },
+      ca: {
+        mobileStripTitle: "📱 LIMPIAPP al teu mòbil",
+        mobileStripSub: "Continua a l'app amb el teu idioma",
+        btnMobileStripApp: "Obrir App",
+        mobileCardTitle: "Prefereixes utilitzar l'App?",
+        mobileCardSub: "Passa a l'aplicació mantenint l'idioma i el codi postal.",
+        btnMobileCardApp: "Anar a l'App →",
+        pwaInstallTitle: "📲 Instal·la LIMPIAPP a la pantalla d'inici",
+        pwaInstallSub: "Accés directe ràpid i sense navegador, sincronitzat amb el teu compte.",
+        btnPwaInstall: "Instal·lar accés ràpid",
+        pwaIosHint: "A <strong>iPhone / iPad (Safari)</strong>: prem <strong>Compartir</strong> i selecciona <strong>«Afegir a la pantalla d'inici»</strong>. A <strong>PC / Mac</strong>: utilitza la icona d'instal·lar a la barra del navegador o al menú del navegador.",
+        badgeHero: "🌍 Plataforma Tecnològica Internacional",
+        heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
+        heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions sobre el servei i amb total transparència.",
+        placeholderCP: "Introdueix el teu codi postal (ex. 46006)",
+        btnBuscarCP: "Veure Disponibilitat",
+        btnNavLogin: "Iniciar Sessió",
+        btnNavClient: "Cercar Servei",
+        btnNavPro: "Sóc Professional",
+        tagClient: "Per a Llars i Empreses",
+        titleClient: "Busques personal de confiança?",
+        descClient: "Troba personal professional de neteja prop de tu. Negocia directament, revisa disponibilitats i sense recàrrecs d'intermediació.",
+        btnActionClient: "Sol·licitar Servei / Alta Clients →",
+        tagPro: "Per a Professionals de Neteja",
+        titlePro: "Ofereixes els teus serveis?",
+        descPro: "Publica el teu perfil a la teua demarcació, fixa els teus preus i rep avisos directes de clients al teu WhatsApp. Primer mes gratis en Pla Bàsic per a les primeres 50 inscripcions.",
+        btnActionPro: "Registrar-me com a Professional →",
+        compTitle: "Per què LIMPIAPP enfront de les alternatives?",
+        compSub: "Compara el nostre model de tracte directe i tarifa 100% lliure enfront de les agències i plataformes tradicionals.",
+        thCaract: "Característiques del Servei",
+        thLimpiapp: "✨ LIMPIAPP",
+        thPlataformas: "Altres Plataformes i Apps Intermediàries",
+        thAgencias: "Agències Tradicionals",
+        priceTitle: "Plans i Tarifes Clars. Sense Lletra Petita.",
+        priceSub: "Model de directori SaaS: tarifes transparents de subscripció i 0% de comissions sobre els serveis acordats.",
+        groupClientTitle: "🏢 Opcions per a Llars i Empreses",
+        groupClientDesc: "Accés directe al directori per contractar personal verificat a la teua zona.",
+        groupClientBadge: "Accés per a Clients",
+        planClientBasicoName: "Pla Bàsic Client",
+        planClientBasicoDesc: "Per a necessitats puntuals o periòdiques estàndard a la llar o l'oficina.",
+        spanMes1: "/ mes",
+        featC1: "Contacte limitat a 3 professionals de la seua zona per mes",
+        featC2: "Perfils de professionals <strong>100% verificats</strong>",
+        featC3: "Cerca per país, ciutat i codi postal",
+        featC4: "Tracte directe per WhatsApp o trucada telefònica",
+        featC5: "Sense comissions sobre el preu de l'hora pactada",
+        btnClientBasico: "Triar Pla Bàsic",
+        planClientPremName: "Pla Premium Client ★",
+        planClientPremDesc: "Per a famílies i empreses que requereixen màxima agilitat i prioritat en les reserves.",
+        spanMes2: "/ mes",
+        featCP1: "Contacte amb un nombre il·limitat de professionals cada mes",
+        featCP2: "Perfils destacats i <strong>100% verificats</strong>",
+        featCP3: "Alertes immediates de disponibilitat al teu codi postal",
+        featCP4: "Suport prioritari de gestió de plataforma",
+        btnClientPrem: "Triar Pla Premium",
+        groupProTitle: "✨ Opcions per a Professionals de Neteja",
+        groupProDesc: "Promociona els teus serveis de neteja a la teua demarcació i rep avisos directes de clients al teu WhatsApp.",
+        groupProBadge: "Accés per a Professionals",
+        planProBasicoName: "Pla Bàsic",
+        planProBasicoDesc: "Per publicar el teu perfil verificat i començar a rebre sol·licituds sense costos fixos.",
+        spanSiempre: "/ mes",
+        badgePrimerMesGratis: "🎉 Primer mes GRATIS per a les primeres 50 inscripcions",
+        featP1: "Perfil actiu a la teua ciutat i codi postal",
+        featP2: "Contactes de clients <strong>100% verificats</strong>",
+        featP3: "<strong>Accés limitat a 2 contactes de clients/mes</strong>",
+        featP4: "Tarifa horària fixada lliurement pel professional",
+        featP5: "0% comissions (cobres el 100% del teu servei)",
+        btnProBasico: "Alta Gratuïta",
+        badgeProPromo: "🔥 PRIMERES 20 INSCRIPCIONS A PREU REDUÏT DE 7,99 EUROS/MES",
+        planProDestName: "Pla Premium Professionals",
+        planProDestDesc: "Màxima visibilitat en cerques, alertes instantànies i agenda completa.",
+        spanMes3: "/ mes",
+        badgeDiasGratis: "🌟 7,99 euros/mes durant els primers 2 mesos per a les primeres 20 inscripcions",
+        featPP1: "<strong>Contactes il·limitats</strong> amb famílies i empreses",
+        featPP2: "<strong>Insígnia oficial de Perfil 100% Verificat</strong>",
+        featPP3: "<strong>Alertes immediates de WhatsApp</strong> amb noves sol·licituds",
+        featPP4: "Posicionament preferent al teu codi postal",
+        btnProDest: "Activar amb Promoció →",
+        appConnectTitle: "Connecta't des de qualsevol lloc amb l'app de LIMPIAPP",
+        appleKicker: "Aconsegueix-lo a l'",
+        appleName: "App Store",
+        googleKicker: "DISPONIBLE A",
+        googleName: "Google Play",
+        phoneAndTitle: "Neteja a la teua zona",
+        phoneIosTitle: "Neteja a la teua zona",
+        feat1Title: "0% Comissions per Servei",
+        feat1Desc: "L'import acordat és íntegre per al professional. La plataforma funciona mitjançant model SaaS publicitari sense minvar els ingressos del servei.",
+        feat2Title: "Contacte Immediat i Directe",
+        feat2Desc: "Conversa fluida per telèfon o WhatsApp per coordinar horaris, claus o detalls de neteja sense intermediaris.",
+        feat3Title: "Hiperlocalitat per Codi Postal",
+        feat3Desc: "Optimització per radis de cobertura geogràfica perquè el personal professional treballe prop del seu domicili i reduïsca temps de desplaçament.",
+        faqTitle: "Preguntes freqüents",
+        faqSub: "Respostes ràpides sobre com funciona LIMPIAPP per a llars, empreses i professionals de neteja.",
+        footAviso: "Avís Legal",
+        footTerminos: "Termes i Condicions",
+        footPrivacidad: "Política de Privacitat",
+        footCookies: "Política de Galetes",
+        footConfigCookies: "Configurar Galetes",
+        cookieBannerTitle: "🍪 Ús de Galetes a LIMPIAPP",
+        btnCookieReject: "Rebutjar no essencials",
+        btnCookieConfig: "Configurar",
+        btnCookieAccept: "Acceptar totes"
+      },
+      gl: {
+        mobileStripTitle: "📱 LIMPIAPP no teu móbil",
+        mobileStripSub: "Continúa na app co teu idioma",
+        btnMobileStripApp: "Abrir App",
+        mobileCardTitle: "Prefires usar a App?",
+        mobileCardSub: "Pasa á aplicación mantendo o teu idioma e código postal.",
+        btnMobileCardApp: "Ir á App →",
+        pwaInstallTitle: "📲 Instala LIMPIAPP na túa pantalla de inicio",
+        pwaInstallSub: "Acceso directo rápido e sen navegador, sincronizado coa túa conta.",
+        btnPwaInstall: "Instalar acceso rápido",
+        pwaIosHint: "En <strong>iPhone / iPad (Safari)</strong>: toca <strong>Compartir</strong> e selecciona <strong>«Engadir á pantalla de inicio»</strong>. En <strong>PC / Mac</strong>: usa a icona de instalar na barra do navegador ou no menú do navegador.",
+        btnNavLogin: "Iniciar Sesión",
+        btnNavClient: "Buscar Servizo",
+        btnNavPro: "Son Profesional",
+        btnBuscarCP: "Ver Dispoñibilidade",
+        btnClientBasico: "Elixir Plan Básico",
+        btnClientPrem: "Elixir Plan Premium",
+        btnProBasico: "Alta Gratuíta",
+        btnProDest: "Activar con Promoción →"
+      },
+      eu: {
+        mobileStripTitle: "📱 LIMPIAPP zure mugikorrean",
+        mobileStripSub: "Jarraitu appean zure hizkuntzarekin",
+        btnMobileStripApp: "Ireki Appa",
+        mobileCardTitle: "Appa erabili nahiago duzu?",
+        mobileCardSub: "Joan aplikaziora hizkuntza eta posta kodea mantenduz.",
+        btnMobileCardApp: "Jo Appara →",
+        pwaInstallTitle: "📲 Instalatu LIMPIAPP hasierako pantailan",
+        pwaInstallSub: "Sarbide azkarra eta nabigatzailerik gabe, zure kontuarekin sinkronizatuta.",
+        btnPwaInstall: "Instalatu sarbide azkarra",
+        pwaIosHint: "<strong>iPhone / iPad (Safari)</strong> gailuetan: sakatu <strong>Partekatu</strong> eta aukeratu <strong>«Gehitu hasierako pantailara»</strong>. <strong>PC / Mac</strong> gailuetan: erabili nabigatzaileko instalazio-ikonoa edo menua.",
+        btnNavLogin: "Hasi Saioa",
+        btnNavClient: "Bilatu Zerbitzua",
+        btnNavPro: "Profesionala Naiz",
+        btnBuscarCP: "Ikusi Eskuragarritasuna",
+        btnClientBasico: "Aukeratu Oinarrizko Plana",
+        btnClientPrem: "Aukeratu Premium Plana",
+        btnProBasico: "Doako Alta",
+        btnProDest: "Aktibatu Promozioarekin →"
+      },
+      en: {
+        mobileStripTitle: "📱 LIMPIAPP on your phone",
+        mobileStripSub: "Continue in the app with your language",
+        btnMobileStripApp: "Open App",
+        mobileCardTitle: "Prefer using the App?",
+        mobileCardSub: "Switch to the app keeping your language and postal code.",
+        btnMobileCardApp: "Go to App →",
+        pwaInstallTitle: "📲 Install LIMPIAPP on your home screen",
+        pwaInstallSub: "Fast browser-free shortcut synced with your account.",
+        btnPwaInstall: "Install quick shortcut",
+        pwaIosHint: "On <strong>iPhone / iPad (Safari)</strong>: tap <strong>Share</strong> and select <strong>\"Add to Home Screen\"</strong>. On <strong>PC / Mac</strong>: use the install icon in the address bar or the browser menu.",
+        badgeHero: "🌍 International Technology Platform",
+        heroTitle: "Verified cleaning professionals <span>in your postal code</span>",
+        heroSub: "Connecting independent cleaners with homes and businesses in any city. Direct contact, zero service commissions, and full transparency.",
+        placeholderCP: "Enter your postal code (e.g. 46006)",
+        btnBuscarCP: "Check Availability",
+        btnNavLogin: "Log In",
+        btnNavClient: "Find Service",
+        btnNavPro: "I'm a Professional",
+        tagClient: "For Homes & Businesses",
+        titleClient: "Looking for trusted cleaning staff?",
+        descClient: "Find professional cleaning staff near you. Negotiate directly, check availability, and pay no middleman surcharges.",
+        btnActionClient: "Request Service / Client Sign-up →",
+        tagPro: "For Cleaning Professionals",
+        titlePro: "Do you offer cleaning services?",
+        descPro: "Publish your profile in your area, set your own rates, and get direct client alerts on WhatsApp. First month free on Basic Plan for the first 50 sign-ups.",
+        btnActionPro: "Sign Up as a Professional →",
+        compTitle: "Why LIMPIAPP compared to alternatives?",
+        compSub: "Compare our direct-contact and 0%-commission model against traditional agencies and intermediary apps.",
+        priceTitle: "Clear Plans & Pricing. No Fine Print.",
+        priceSub: "SaaS directory model: transparent subscription pricing and 0% commission on agreed services.",
+        btnClientBasico: "Choose Basic Plan",
+        btnClientPrem: "Choose Premium Plan",
+        btnProBasico: "Free Sign-up",
+        btnProDest: "Activate Promo →",
+        appConnectTitle: "Connect from anywhere with the LIMPIAPP app",
+        appleKicker: "Download on the",
+        appleName: "App Store",
+        googleKicker: "GET IT ON",
+        googleName: "Google Play",
+        faqTitle: "Frequently asked questions",
+        faqSub: "Quick answers on how LIMPIAPP works for homes, businesses, and cleaning professionals.",
+        footAviso: "Legal Notice",
+        footTerminos: "Terms & Conditions",
+        footPrivacidad: "Privacy Policy",
+        footCookies: "Cookie Policy",
+        footConfigCookies: "Cookie Settings",
+        cookieBannerTitle: "🍪 Cookies on LIMPIAPP",
+        btnCookieReject: "Reject non-essential",
+        btnCookieConfig: "Settings",
+        btnCookieAccept: "Accept all"
+      },
+      fr: {
+        mobileStripTitle: "📱 LIMPIAPP sur votre mobile",
+        mobileStripSub: "Poursuivez dans l'app avec votre langue",
+        btnMobileStripApp: "Ouvrir l'App",
+        mobileCardTitle: "Vous préférez utiliser l'App ?",
+        mobileCardSub: "Passez à l'application en gardant votre langue et votre code postal.",
+        btnMobileCardApp: "Aller à l'App →",
+        pwaInstallTitle: "📲 Installez LIMPIAPP sur votre écran d'accueil",
+        pwaInstallSub: "Raccourci rapide sans navigateur, synchronisé avec votre compte.",
+        btnPwaInstall: "Installer le raccourci",
+        pwaIosHint: "Sur <strong>iPhone / iPad (Safari)</strong> : appuyez sur <strong>Partager</strong> puis sur <strong>« Sur l'écran d'accueil »</strong>. Sur <strong>PC / Mac</strong> : utilisez l'icône d'installation dans la barre d'adresse ou le menu du navigateur.",
+        badgeHero: "🌍 Plateforme Technologique Internationale",
+        heroTitle: "Professionnels du nettoyage vérifiés <span>dans votre code postal</span>",
+        heroSub: "Nous mettons en relation les professionnels indépendants avec les foyers et entreprises. Contact direct, 0 % de commission sur le service.",
+        placeholderCP: "Saisissez votre code postal (ex. 46006)",
+        btnBuscarCP: "Voir la Disponibilité",
+        btnNavLogin: "Connexion",
+        btnNavClient: "Trouver un Service",
+        btnNavPro: "Je suis Professionnel",
+        btnClientBasico: "Choisir l'Offre Basique",
+        btnClientPrem: "Choisir l'Offre Premium",
+        btnProBasico: "Inscription Gratuite",
+        btnProDest: "Activer la Promo →",
+        appConnectTitle: "Connectez-vous où que vous soyez avec l'app LIMPIAPP",
+        appleKicker: "Télécharger dans l'",
+        appleName: "App Store",
+        googleKicker: "DISPONIBLE SUR",
+        googleName: "Google Play",
+        faqTitle: "Questions fréquentes",
+        footAviso: "Mentions Légales",
+        footTerminos: "Conditions Générales",
+        footPrivacidad: "Politique de Confidentialité",
+        footCookies: "Politique de Cookies",
+        footConfigCookies: "Configurer les Cookies",
+        cookieBannerTitle: "🍪 Cookies sur LIMPIAPP",
+        btnCookieReject: "Refuser les non essentiels",
+        btnCookieConfig: "Paramétrer",
+        btnCookieAccept: "Tout accepter"
+      },
+      de: {
+        mobileStripTitle: "📱 LIMPIAPP auf Ihrem Smartphone",
+        mobileStripSub: "In der App mit Ihrer Sprache fortfahren",
+        btnMobileStripApp: "App öffnen",
+        mobileCardTitle: "Lieber die App nutzen?",
+        mobileCardSub: "Wechseln Sie in die App mit Sprache und Postleitzahl.",
+        btnMobileCardApp: "Zur App →",
+        pwaInstallTitle: "📲 LIMPIAPP auf dem Startbildschirm installieren",
+        pwaInstallSub: "Schneller Direktzugriff ohne Browser, synchronisiert mit Ihrem Konto.",
+        btnPwaInstall: "Direktzugriff installieren",
+        pwaIosHint: "Auf <strong>iPhone / iPad (Safari)</strong>: auf <strong>Teilen</strong> tippen und <strong>„Zum Home-Bildschirm“</strong> wählen. Auf <strong>PC / Mac</strong>: das Installieren-Symbol in der Adressleiste oder im Browsermenü verwenden.",
+        badgeHero: "🌍 Internationale Technologieplattform",
+        heroTitle: "Geprüfte Reinigungsprofis <span>in Ihrer Postleitzahl</span>",
+        heroSub: "Wir verbinden unabhängige Fachkräfte mit Haushalten und Unternehmen. Direkter Kontakt, 0 % Serviceprovision und volle Transparenz.",
+        placeholderCP: "Postleitzahl eingeben (z. B. 46006)",
+        btnBuscarCP: "Verfügbarkeit prüfen",
+        btnNavLogin: "Anmelden",
+        btnNavClient: "Service finden",
+        btnNavPro: "Ich bin Profi",
+        btnClientBasico: "Basisplan wählen",
+        btnClientPrem: "Premiumplan wählen",
+        btnProBasico: "Kostenlos anmelden",
+        btnProDest: "Aktion aktivieren →",
+        appConnectTitle: "Von überall verbinden mit der LIMPIAPP-App",
+        appleKicker: "Laden im",
+        appleName: "App Store",
+        googleKicker: "JETZT BEI",
+        googleName: "Google Play",
+        faqTitle: "Häufig gestellte Fragen",
+        footAviso: "Impressum",
+        footTerminos: "AGB",
+        footPrivacidad: "Datenschutz",
+        footCookies: "Cookie-Richtlinie",
+        footConfigCookies: "Cookies verwalten",
+        cookieBannerTitle: "🍪 Cookies auf LIMPIAPP",
+        btnCookieReject: "Nicht notwendige ablehnen",
+        btnCookieConfig: "Einstellungen",
+        btnCookieAccept: "Alle akzeptieren"
+      },
+      it: {
+        mobileStripTitle: "📱 LIMPIAPP sul tuo telefono",
+        mobileStripSub: "Continua nell'app con la tua lingua",
+        btnMobileStripApp: "Apri App",
+        mobileCardTitle: "Preferisci usare l'App?",
+        mobileCardSub: "Passa all'applicazione mantenendo lingua e CAP.",
+        btnMobileCardApp: "Vai all'App →",
+        pwaInstallTitle: "📲 Installa LIMPIAPP sulla schermata Home",
+        pwaInstallSub: "Accesso rapido senza browser, sincronizzato con il tuo account.",
+        btnPwaInstall: "Installa accesso rapido",
+        pwaIosHint: "Su <strong>iPhone / iPad (Safari)</strong>: tocca <strong>Condividi</strong> e seleziona <strong>«Aggiungi alla schermata Home»</strong>. Su <strong>PC / Mac</strong>: usa l'icona di installazione nella barra del browser o nel menu del browser.",
+        badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
+        heroTitle: "Professionisti delle pulizie verificati <span>nel tuo CAP</span>",
+        heroSub: "Mettiamo in contatto professionisti indipendenti con case e aziende. Contatto diretto, 0 % di commissioni sul servizio.",
+        placeholderCP: "Inserisci il tuo CAP (es. 46006)",
+        btnBuscarCP: "Vedi Disponibilità",
+        btnNavLogin: "Accedi",
+        btnNavClient: "Cerca Servizio",
+        btnNavPro: "Sono Professionista",
+        btnClientBasico: "Scegli Piano Base",
+        btnClientPrem: "Scegli Piano Premium",
+        btnProBasico: "Registrazione Gratuita",
+        btnProDest: "Attiva Promo →",
+        appConnectTitle: "Connettiti ovunque con l'app di LIMPIAPP",
+        appleKicker: "Scarica su",
+        appleName: "App Store",
+        googleKicker: "DISPONIBILE SU",
+        googleName: "Google Play",
+        faqTitle: "Domande frequenti",
+        footAviso: "Note Legali",
+        footTerminos: "Termini e Condizioni",
+        footPrivacidad: "Privacy",
+        footCookies: "Cookie Policy",
+        footConfigCookies: "Configura Cookie",
+        cookieBannerTitle: "🍪 Uso dei Cookie su LIMPIAPP",
+        btnCookieReject: "Rifiuta non essenziali",
+        btnCookieConfig: "Configura",
+        btnCookieAccept: "Accetta tutti"
+      },
+      pt: {
+        mobileStripTitle: "📱 LIMPIAPP no seu telemóvel",
+        mobileStripSub: "Continue na app com o seu idioma",
+        btnMobileStripApp: "Abrir App",
+        mobileCardTitle: "Prefere usar a App?",
+        mobileCardSub: "Mude para a aplicação mantendo idioma e código postal.",
+        btnMobileCardApp: "Ir para a App →",
+        pwaInstallTitle: "📲 Instale a LIMPIAPP no ecrã inicial",
+        pwaInstallSub: "Atalho rápido sem navegador, sincronizado com a sua conta.",
+        btnPwaInstall: "Instalar atalho rápido",
+        pwaIosHint: "No <strong>iPhone / iPad (Safari)</strong>: toque em <strong>Partilhar</strong> e selecione <strong>«Adicionar ao Ecrã Principal»</strong>. No <strong>PC / Mac</strong>: utilize o ícone de instalar na barra do navegador ou no menu do navegador.",
+        badgeHero: "🌍 Plataforma Tecnológica Internacional",
+        heroTitle: "Profissionais de limpeza verificados <span>no seu código postal</span>",
+        heroSub: "Ligamos profissionais independentes a casas e empresas. Contacto direto, 0 % de comissão sobre o serviço e total transparência.",
+        placeholderCP: "Introduza o código postal (ex. 46006)",
+        btnBuscarCP: "Ver Disponibilidade",
+        btnNavLogin: "Iniciar Sessão",
+        btnNavClient: "Procurar Serviço",
+        btnNavPro: "Sou Profissional",
+        btnClientBasico: "Escolher Plano Básico",
+        btnClientPrem: "Escolher Plano Premium",
+        btnProBasico: "Registo Gratuito",
+        btnProDest: "Ativar Promoção →",
+        appConnectTitle: "Ligue-se em qualquer lugar com a app da LIMPIAPP",
+        appleKicker: "Descarregar na",
+        appleName: "App Store",
+        googleKicker: "DISPONÍVEL NO",
+        googleName: "Google Play",
+        faqTitle: "Perguntas frequentes",
+        footAviso: "Aviso Legal",
+        footTerminos: "Termos e Condições",
+        footPrivacidad: "Política de Privacidade",
+        footCookies: "Política de Cookies",
+        footConfigCookies: "Configurar Cookies",
+        cookieBannerTitle: "🍪 Utilização de Cookies na LIMPIAPP",
+        btnCookieReject: "Rejeitar não essenciais",
+        btnCookieConfig: "Configurar",
+        btnCookieAccept: "Aceitar todos"
       }
     };
 
     ['ca', 'gl', 'eu', 'en', 'de', 'fr', 'it', 'pt'].forEach(function(code) {
       if (!dicc[code]) {
         dicc[code] = Object.assign({}, dicc.es);
+      } else {
+        dicc[code] = Object.assign({}, dicc.es, dicc[code]);
       }
     });
 
@@ -2019,7 +2499,7 @@
       }
 
       var t = dicc[lang] || dicc['es'];
-      var htmlKeys = ['heroTitle', 'cookieBannerDesc', 'phoneAndVerify', 'phoneIosVerify', 'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8', 'faqA1', 'faqA2', 'faqA3', 'faqA4', 'faqA5', 'faqA6', 'faqA7', 'faqA8'];
+      var htmlKeys = ['heroTitle', 'pwaIosHint', 'cookieBannerDesc', 'phoneAndVerify', 'phoneIosVerify', 'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8', 'faqA1', 'faqA2', 'faqA3', 'faqA4', 'faqA5', 'faqA6', 'faqA7', 'faqA8'];
 
       for (var id in t) {
         var el = document.getElementById(id);
@@ -2039,6 +2519,17 @@
 
       actualizarEnlacesApp(lang);
     }
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPwaPrompt = e;
+      actualizarVisibilidadBotonPwa();
+    });
+
+    window.addEventListener('appinstalled', function() {
+      deferredPwaPrompt = null;
+      actualizarVisibilidadBotonPwa();
+    });
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
@@ -2070,6 +2561,7 @@
         ocultarBannerCookies();
       }
 
+      actualizarVisibilidadBotonPwa();
       sincronizarEstadoCompartidoLimpiapp();
     });
   </script>
