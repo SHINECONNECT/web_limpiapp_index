@@ -1725,9 +1725,11 @@
         } catch (_e) {}
       }
 
-      var cpInput = document.getElementById('inputCP');
-      var cpActual = (cpInput && cpInput.value.trim()) || '';
-      window.location.href = construirUrlMigracionApp(cpActual ? { cp: cpActual } : {});
+      var subEl = document.getElementById('pwaInstallSub');
+      var t = dicc[obtenerIdiomaActual()] || dicc.es;
+      if (subEl && t.pwaManualFallback) {
+        subEl.textContent = t.pwaManualFallback;
+      }
     }
 
     function puedeIniciarAltaPlan(planKey) {
@@ -1789,6 +1791,7 @@
         pwaInstallTitle: "📲 Instala LIMPIAPP en tu pantalla de inicio",
         pwaInstallSub: "Acceso directo rápido y sin navegador, sincronizado con tu cuenta.",
         btnPwaInstall: "Instalar acceso rápido",
+        pwaManualFallback: "Abre el menú del navegador y elige Instalar / Añadir a pantalla de inicio.",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
         heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
@@ -1954,6 +1957,7 @@
         pwaInstallTitle: "📲 Instal·la LIMPIAPP a la pantalla d'inici",
         pwaInstallSub: "Accés directe ràpid i sense navegador, sincronitzat amb el teu compte.",
         btnPwaInstall: "Instal·lar accés ràpid",
+        pwaManualFallback: "Obri el menú del navegador i tria Instal·lar / Afegir a la pantalla d'inici.",
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
         heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
         heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions sobre el servei i amb total transparència.",
@@ -2056,6 +2060,7 @@
         pwaInstallTitle: "📲 Instala LIMPIAPP na túa pantalla de inicio",
         pwaInstallSub: "Acceso directo rápido e sen navegador, sincronizado coa túa conta.",
         btnPwaInstall: "Instalar acceso rápido",
+        pwaManualFallback: "Abre o menú do navegador e elixe Instalar / Engadir á pantalla de inicio.",
         btnNavLogin: "Iniciar Sesión",
         btnNavClient: "Buscar Servizo",
         btnNavPro: "Son Profesional",
@@ -2075,6 +2080,7 @@
         pwaInstallTitle: "📲 Instalatu LIMPIAPP hasierako pantailan",
         pwaInstallSub: "Sarbide azkarra eta nabigatzailerik gabe, zure kontuarekin sinkronizatuta.",
         btnPwaInstall: "Instalatu sarbide azkarra",
+        pwaManualFallback: "Ireki nabigatzaileko menua eta aukeratu Instalatu / Gehitu hasierako pantailara.",
         btnNavLogin: "Hasi Saioa",
         btnNavClient: "Bilatu Zerbitzua",
         btnNavPro: "Profesionala Naiz",
@@ -2094,6 +2100,7 @@
         pwaInstallTitle: "📲 Install LIMPIAPP on your home screen",
         pwaInstallSub: "Fast browser-free shortcut synced with your account.",
         btnPwaInstall: "Install quick shortcut",
+        pwaManualFallback: "Open the browser menu and select Install / Add to Home Screen.",
         badgeHero: "🌍 International Technology Platform",
         heroTitle: "Verified cleaning professionals <span>in your postal code</span>",
         heroSub: "Connecting independent cleaners with homes and businesses in any city. Direct contact, zero service commissions, and full transparency.",
@@ -2145,6 +2152,7 @@
         pwaInstallTitle: "📲 Installez LIMPIAPP sur votre écran d'accueil",
         pwaInstallSub: "Raccourci rapide sans navigateur, synchronisé avec votre compte.",
         btnPwaInstall: "Installer le raccourci",
+        pwaManualFallback: "Ouvrez le menu du navigateur et choisissez Installer / Ajouter à l'écran d'accueil.",
         badgeHero: "🌍 Plateforme Technologique Internationale",
         heroTitle: "Professionnels du nettoyage vérifiés <span>dans votre code postal</span>",
         heroSub: "Nous mettons en relation les professionnels indépendants avec les foyers et entreprises. Contact direct, 0 % de commission sur le service.",
@@ -2183,6 +2191,7 @@
         pwaInstallTitle: "📲 LIMPIAPP auf dem Startbildschirm installieren",
         pwaInstallSub: "Schneller Direktzugriff ohne Browser, synchronisiert mit Ihrem Konto.",
         btnPwaInstall: "Direktzugriff installieren",
+        pwaManualFallback: "Öffnen Sie das Browsermenü und wählen Sie Installieren / Zum Startbildschirm.",
         badgeHero: "🌍 Internationale Technologieplattform",
         heroTitle: "Geprüfte Reinigungsprofis <span>in Ihrer Postleitzahl</span>",
         heroSub: "Wir verbinden unabhängige Fachkräfte mit Haushalten und Unternehmen. Direkter Kontakt, 0 % Serviceprovision und volle Transparenz.",
@@ -2221,6 +2230,7 @@
         pwaInstallTitle: "📲 Installa LIMPIAPP sulla schermata Home",
         pwaInstallSub: "Accesso rapido senza browser, sincronizzato con il tuo account.",
         btnPwaInstall: "Installa accesso rapido",
+        pwaManualFallback: "Apri il menu del browser e scegli Installa / Aggiungi a schermata Home.",
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Professionisti delle pulizie verificati <span>nel tuo CAP</span>",
         heroSub: "Mettiamo in contatto professionisti indipendenti con case e aziende. Contatto diretto, 0 % di commissioni sul servizio.",
@@ -2259,6 +2269,7 @@
         pwaInstallTitle: "📲 Instale a LIMPIAPP no ecrã inicial",
         pwaInstallSub: "Atalho rápido sem navegador, sincronizado com a sua conta.",
         btnPwaInstall: "Instalar atalho rápido",
+        pwaManualFallback: "Abra o menu do navegador e escolha Instalar / Adicionar ao ecrã inicial.",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Profissionais de limpeza verificados <span>no seu código postal</span>",
         heroSub: "Ligamos profissionais independentes a casas e empresas. Contacto direto, 0 % de comissão sobre o serviço e total transparência.",
