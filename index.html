@@ -458,6 +458,9 @@
     .app-connect-inner {
       max-width: 960px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .app-connect-title {
       font-size: 2.05rem;
@@ -465,6 +468,7 @@
       color: var(--color-slate-dark);
       margin-bottom: 24px;
       letter-spacing: -0.02em;
+      max-width: 780px;
     }
     .store-badges-row {
       display: flex;
@@ -522,12 +526,10 @@
 
     .phones-showcase {
       position: relative;
-      max-width: 660px;
-      height: 410px;
+      width: 480px;
+      max-width: 100%;
+      height: 400px;
       margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
     }
     .phone-frame {
       background: #1c2024;
@@ -539,12 +541,13 @@
       text-align: left;
     }
     .phone-android {
-      position: relative;
-      width: 268px;
+      position: absolute;
+      right: 12px;
+      bottom: 0;
+      width: 256px;
       height: 392px;
       border-radius: 26px 26px 0 0;
       border-bottom: none;
-      margin-left: 118px;
       z-index: 1;
     }
     .phone-android-notch {
@@ -554,14 +557,16 @@
       background: #0f1215;
       margin: 8px auto 6px;
       border: 1px solid #475259;
+      flex-shrink: 0;
     }
     .phone-iphone {
-      position: relative;
-      width: 264px;
+      position: absolute;
+      left: 12px;
+      bottom: 0;
+      width: 256px;
       height: 368px;
       border-radius: 34px 34px 0 0;
       border-bottom: none;
-      margin-left: -386px;
       z-index: 2;
       background: #14171a;
       border-color: #4f585d;
@@ -576,6 +581,7 @@
       align-items: center;
       justify-content: flex-end;
       padding-right: 6px;
+      flex-shrink: 0;
     }
     .phone-iphone-island::after {
       content: "";
@@ -653,29 +659,24 @@
       gap: 8px;
       min-width: 0;
     }
-    .pro-avatar-badge {
-      width: 34px;
-      height: 34px;
+    .pro-photo-wrap {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: #ffffff;
       flex-shrink: 0;
       position: relative;
+      border: 1.5px solid var(--color-logo-blue-soft);
+      background: var(--color-logo-blue-light);
     }
-    .pro-avatar-badge.av-blue {
-      background: linear-gradient(135deg, var(--color-logo-blue-dark), var(--color-logo-charcoal));
+    .pro-photo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
-    .pro-avatar-badge.av-charcoal {
-      background: linear-gradient(135deg, var(--color-logo-charcoal), #24292d);
-    }
-    .pro-avatar-badge.av-teal {
-      background: linear-gradient(135deg, #4b83a6, var(--color-logo-blue));
-    }
-    .pro-avatar-badge::after {
+    .pro-photo-wrap::after {
       content: "✓";
       position: absolute;
       bottom: -2px;
@@ -1076,11 +1077,11 @@
 
       .app-connect-section { padding: 44px 16px 24px; }
       .app-connect-title { font-size: 1.5rem; }
-      .phones-showcase { height: 345px; max-width: 360px; }
-      .phone-android { width: 196px; height: 325px; margin-left: 84px; }
-      .phone-iphone { width: 194px; height: 306px; margin-left: -272px; }
+      .phones-showcase { width: 348px; height: 342px; }
+      .phone-android { width: 184px; height: 322px; right: 6px; }
+      .phone-iphone { width: 184px; height: 304px; left: 6px; }
       .phone-screen { padding: 8px; gap: 6px; }
-      .pro-avatar-badge { width: 28px; height: 28px; font-size: 0.65rem; }
+      .pro-photo-wrap { width: 30px; height: 30px; }
     }
   </style>
 </head>
@@ -1404,7 +1405,9 @@
               </div>
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
-                  <div class="pro-avatar-badge av-blue">CM</div>
+                  <div class="pro-photo-wrap">
+                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80" alt="Carmen M. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80';">
+                  </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Carmen M.</div>
                     <div class="pro-mini-role" id="proRole1">Hogar y oficinas · 0,6 km</div>
@@ -1419,7 +1422,9 @@
               </div>
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
-                  <div class="pro-avatar-badge av-charcoal">LR</div>
+                  <div class="pro-photo-wrap">
+                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80" alt="Lucía R. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80';">
+                  </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Lucía R.</div>
                     <div class="pro-mini-role" id="proRole2">Limpieza a fondo · 1,1 km</div>
@@ -1434,7 +1439,9 @@
               </div>
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
-                  <div class="pro-avatar-badge av-teal">DP</div>
+                  <div class="pro-photo-wrap">
+                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Diego P. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80';">
+                  </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Diego P.</div>
                     <div class="pro-mini-role" id="proRole3">Fin de obra y locales</div>
@@ -1468,7 +1475,9 @@
               </div>
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
-                  <div class="pro-avatar-badge av-charcoal">SG</div>
+                  <div class="pro-photo-wrap">
+                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="Sofía G. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80';">
+                  </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Sofía G.</div>
                     <div class="pro-mini-role" id="proIosRole1">Mantenimiento hogar · 0,4 km</div>
@@ -1483,7 +1492,9 @@
               </div>
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
-                  <div class="pro-avatar-badge av-blue">MV</div>
+                  <div class="pro-photo-wrap">
+                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Marta V. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80';">
+                  </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Marta V.</div>
                     <div class="pro-mini-role" id="proIosRole2">Vivienda y oficinas · 0,9 km</div>
