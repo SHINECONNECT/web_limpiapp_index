@@ -274,6 +274,55 @@
       background: var(--color-logo-charcoal-dark);
     }
 
+    /* MODAL DE INSTALACIÓN PWA CUANDO EL NAVEGADOR NO DISPARA EL PROMPT AUTOMÁTICO */
+    #pwaInstallModalBackdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 41, 45, 0.55);
+      z-index: 99999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .pwa-modal {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 24px 50px rgba(36, 41, 45, 0.25);
+      border: 1px solid var(--color-slate-border);
+      text-align: left;
+    }
+    .pwa-modal h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 10px;
+    }
+    .pwa-modal p {
+      font-size: 0.9rem;
+      color: var(--color-slate-medium);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .pwa-modal-steps {
+      background: var(--color-bg-page);
+      border: 1px solid var(--color-slate-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      color: var(--color-slate-dark);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .pwa-modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
     .dual-cta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1514,6 +1563,21 @@
     </div>
   </footer>
 
+  <!-- MODAL DE INSTALACIÓN PWA CUANDO EL NAVEGADOR NO DISPARA EL AVISO AUTOMÁTICO -->
+  <div id="pwaInstallModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="pwaModalTitle">
+    <div class="pwa-modal">
+      <h3 id="pwaModalTitle">Instalar LIMPIAPP</h3>
+      <p id="pwaModalDesc">Añade LIMPIAPP a tu dispositivo para abrirla como aplicación independiente sin barra de navegador.</p>
+      <div class="pwa-modal-steps" id="pwaModalSteps">
+        <strong>Móvil / Tablet:</strong> abre el menú del navegador (⋮ o Compartir) y selecciona <strong>Añadir a pantalla de inicio</strong> o <strong>Instalar aplicación</strong>.<br>
+        <strong>PC / Mac:</strong> haz clic en el icono de instalar en la barra de direcciones o abre el menú del navegador y elige <strong>Instalar LIMPIAPP</strong>.
+      </div>
+      <div class="pwa-modal-footer">
+        <button type="button" class="btn-cookie-accept" id="btnPwaModalClose" onclick="cerrarModalPwa()">Entendido</button>
+      </div>
+    </div>
+  </div>
+
   <div id="cookieBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
     <div class="cookie-banner-inner">
       <div class="cookie-banner-text">
@@ -1707,6 +1771,16 @@
       box.classList.add('visible');
     }
 
+    function abrirModalPwa() {
+      var backdrop = document.getElementById('pwaInstallModalBackdrop');
+      if (backdrop) backdrop.style.display = 'flex';
+    }
+
+    function cerrarModalPwa() {
+      var backdrop = document.getElementById('pwaInstallModalBackdrop');
+      if (backdrop) backdrop.style.display = 'none';
+    }
+
     async function instalarPwaLimpiapp() {
       if (APP_CONFIG.serxusAppUrl) {
         window.location.href = construirUrlMigracionApp();
@@ -1714,22 +1788,18 @@
       }
 
       if (deferredPwaPrompt) {
-        deferredPwaPrompt.prompt();
         try {
+          deferredPwaPrompt.prompt();
           var choice = await deferredPwaPrompt.userChoice;
           if (choice && choice.outcome === 'accepted') {
             deferredPwaPrompt = null;
             actualizarVisibilidadBotonPwa();
+            return;
           }
         } catch (_e) {}
-        return;
       }
 
-      var subEl = document.getElementById('pwaInstallSub');
-      var t = dicc[obtenerIdiomaActual()] || dicc.es;
-      if (subEl && t.pwaManualFallback) {
-        subEl.textContent = t.pwaManualFallback;
-      }
+      abrirModalPwa();
     }
 
     function puedeIniciarAltaPlan(planKey) {
@@ -1791,7 +1861,10 @@
         pwaInstallTitle: "📲 Instala LIMPIAPP en tu pantalla de inicio",
         pwaInstallSub: "Acceso directo rápido y sin navegador, sincronizado con tu cuenta.",
         btnPwaInstall: "Instalar acceso rápido",
-        pwaManualFallback: "Abre el menú del navegador y elige Instalar / Añadir a pantalla de inicio.",
+        pwaModalTitle: "Instalar LIMPIAPP",
+        pwaModalDesc: "Añade LIMPIAPP a tu dispositivo para abrirla como aplicación independiente sin barra de navegador.",
+        pwaModalSteps: "<strong>Móvil / Tablet:</strong> abre el menú del navegador (⋮ o Compartir) y selecciona <strong>Añadir a pantalla de inicio</strong> o <strong>Instalar aplicación</strong>.<br><strong>PC / Mac:</strong> haz clic en el icono de instalar en la barra de direcciones o abre el menú del navegador y elige <strong>Instalar LIMPIAPP</strong>.",
+        btnPwaModalClose: "Entendido",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Servicios de limpieza profesional verificados <span>en tu código postal</span>",
         heroSub: "Conectamos la oferta independiente con hogares y empresas en cualquier ciudad. Trato directo, sin comisiones sobre el servicio y con total transparencia.",
@@ -1957,7 +2030,10 @@
         pwaInstallTitle: "📲 Instal·la LIMPIAPP a la pantalla d'inici",
         pwaInstallSub: "Accés directe ràpid i sense navegador, sincronitzat amb el teu compte.",
         btnPwaInstall: "Instal·lar accés ràpid",
-        pwaManualFallback: "Obri el menú del navegador i tria Instal·lar / Afegir a la pantalla d'inici.",
+        pwaModalTitle: "Instal·lar LIMPIAPP",
+        pwaModalDesc: "Afig LIMPIAPP al dispositiu per obrir-la com a aplicació independent sense barra de navegador.",
+        pwaModalSteps: "<strong>Mòbil / Tauleta:</strong> obri el menú del navegador (⋮ o Compartir) i tria <strong>Afegir a la pantalla d'inici</strong> o <strong>Instal·lar aplicació</strong>.<br><strong>PC / Mac:</strong> fes clic a la icona d'instal·lar a la barra d'adreces o obri el menú del navegador i tria <strong>Instal·lar LIMPIAPP</strong>.",
+        btnPwaModalClose: "Entesos",
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
         heroTitle: "Serveis de neteja professional verificats <span>al teu codi postal</span>",
         heroSub: "Connectem l'oferta independent amb llars i empreses a qualsevol ciutat. Tracte directe, sense comissions sobre el servei i amb total transparència.",
@@ -2060,7 +2136,10 @@
         pwaInstallTitle: "📲 Instala LIMPIAPP na túa pantalla de inicio",
         pwaInstallSub: "Acceso directo rápido e sen navegador, sincronizado coa túa conta.",
         btnPwaInstall: "Instalar acceso rápido",
-        pwaManualFallback: "Abre o menú do navegador e elixe Instalar / Engadir á pantalla de inicio.",
+        pwaModalTitle: "Instalar LIMPIAPP",
+        pwaModalDesc: "Engade LIMPIAPP ao teu dispositivo para abrila como aplicación independente sen barra de navegador.",
+        pwaModalSteps: "<strong>Móbil / Tableta:</strong> abre o menú do navegador (⋮ ou Compartir) e selecciona <strong>Engadir á pantalla de inicio</strong> ou <strong>Instalar aplicación</strong>.<br><strong>PC / Mac:</strong> fai clic na icona de instalar na barra de enderezos ou abre o menú do navegador e elixe <strong>Instalar LIMPIAPP</strong>.",
+        btnPwaModalClose: "Entendido",
         btnNavLogin: "Iniciar Sesión",
         btnNavClient: "Buscar Servizo",
         btnNavPro: "Son Profesional",
@@ -2080,7 +2159,10 @@
         pwaInstallTitle: "📲 Instalatu LIMPIAPP hasierako pantailan",
         pwaInstallSub: "Sarbide azkarra eta nabigatzailerik gabe, zure kontuarekin sinkronizatuta.",
         btnPwaInstall: "Instalatu sarbide azkarra",
-        pwaManualFallback: "Ireki nabigatzaileko menua eta aukeratu Instalatu / Gehitu hasierako pantailara.",
+        pwaModalTitle: "Instalatu LIMPIAPP",
+        pwaModalDesc: "Gehitu LIMPIAPP zure gailuan nabigatzaile-barrarik gabeko aplikazio gisa irekitzeko.",
+        pwaModalSteps: "<strong>Mugikorra / Tableta:</strong> ireki nabigatzaileko menua (⋮ edo Partekatu) eta aukeratu <strong>Gehitu hasierako pantailara</strong> edo <strong>Instalatu aplikazioa</strong>.<br><strong>PC / Mac:</strong> egin klik helbide-barrako instalazio-ikonoan edo ireki nabigatzaileko menua eta hautatu <strong>Instalatu LIMPIAPP</strong>.",
+        btnPwaModalClose: "Ulertuta",
         btnNavLogin: "Hasi Saioa",
         btnNavClient: "Bilatu Zerbitzua",
         btnNavPro: "Profesionala Naiz",
@@ -2100,7 +2182,10 @@
         pwaInstallTitle: "📲 Install LIMPIAPP on your home screen",
         pwaInstallSub: "Fast browser-free shortcut synced with your account.",
         btnPwaInstall: "Install quick shortcut",
-        pwaManualFallback: "Open the browser menu and select Install / Add to Home Screen.",
+        pwaModalTitle: "Install LIMPIAPP",
+        pwaModalDesc: "Add LIMPIAPP to your device to open it as a standalone app without a browser bar.",
+        pwaModalSteps: "<strong>Mobile / Tablet:</strong> open the browser menu (⋮ or Share) and select <strong>Add to Home Screen</strong> or <strong>Install app</strong>.<br><strong>PC / Mac:</strong> click the install icon in the address bar or open the browser menu and select <strong>Install LIMPIAPP</strong>.",
+        btnPwaModalClose: "Got it",
         badgeHero: "🌍 International Technology Platform",
         heroTitle: "Verified cleaning professionals <span>in your postal code</span>",
         heroSub: "Connecting independent cleaners with homes and businesses in any city. Direct contact, zero service commissions, and full transparency.",
@@ -2152,7 +2237,10 @@
         pwaInstallTitle: "📲 Installez LIMPIAPP sur votre écran d'accueil",
         pwaInstallSub: "Raccourci rapide sans navigateur, synchronisé avec votre compte.",
         btnPwaInstall: "Installer le raccourci",
-        pwaManualFallback: "Ouvrez le menu du navigateur et choisissez Installer / Ajouter à l'écran d'accueil.",
+        pwaModalTitle: "Installer LIMPIAPP",
+        pwaModalDesc: "Ajoutez LIMPIAPP à votre appareil pour l'ouvrir comme une application indépendante sans barre de navigateur.",
+        pwaModalSteps: "<strong>Mobile / Tablette :</strong> ouvrez le menu du navigateur (⋮ ou Partager) et sélectionnez <strong>Ajouter à l'écran d'accueil</strong> ou <strong>Installer l'application</strong>.<br><strong>PC / Mac :</strong> cliquez sur l'icône d'installation dans la barre d'adresse ou ouvrez le menu du navigateur et choisissez <strong>Installer LIMPIAPP</strong>.",
+        btnPwaModalClose: "Compris",
         badgeHero: "🌍 Plateforme Technologique Internationale",
         heroTitle: "Professionnels du nettoyage vérifiés <span>dans votre code postal</span>",
         heroSub: "Nous mettons en relation les professionnels indépendants avec les foyers et entreprises. Contact direct, 0 % de commission sur le service.",
@@ -2191,7 +2279,10 @@
         pwaInstallTitle: "📲 LIMPIAPP auf dem Startbildschirm installieren",
         pwaInstallSub: "Schneller Direktzugriff ohne Browser, synchronisiert mit Ihrem Konto.",
         btnPwaInstall: "Direktzugriff installieren",
-        pwaManualFallback: "Öffnen Sie das Browsermenü und wählen Sie Installieren / Zum Startbildschirm.",
+        pwaModalTitle: "LIMPIAPP installieren",
+        pwaModalDesc: "Fügen Sie LIMPIAPP Ihrem Gerät hinzu, um sie als eigenständige App ohne Browserleiste zu öffnen.",
+        pwaModalSteps: "<strong>Smartphone / Tablet:</strong> öffnen Sie das Browsermenü (⋮ oder Teilen) und wählen Sie <strong>Zum Startbildschirm hinzufügen</strong> oder <strong>App installieren</strong>.<br><strong>PC / Mac:</strong> klicken Sie auf das Installieren-Symbol in der Adressleiste oder öffnen Sie das Browsermenü und wählen Sie <strong>LIMPIAPP installieren</strong>.",
+        btnPwaModalClose: "Verstanden",
         badgeHero: "🌍 Internationale Technologieplattform",
         heroTitle: "Geprüfte Reinigungsprofis <span>in Ihrer Postleitzahl</span>",
         heroSub: "Wir verbinden unabhängige Fachkräfte mit Haushalten und Unternehmen. Direkter Kontakt, 0 % Serviceprovision und volle Transparenz.",
@@ -2230,7 +2321,10 @@
         pwaInstallTitle: "📲 Installa LIMPIAPP sulla schermata Home",
         pwaInstallSub: "Accesso rapido senza browser, sincronizzato con il tuo account.",
         btnPwaInstall: "Installa accesso rapido",
-        pwaManualFallback: "Apri il menu del browser e scegli Installa / Aggiungi a schermata Home.",
+        pwaModalTitle: "Installa LIMPIAPP",
+        pwaModalDesc: "Aggiungi LIMPIAPP al dispositivo per aprirla come app indipendente senza barra del browser.",
+        pwaModalSteps: "<strong>Telefono / Tablet:</strong> apri il menu del browser (⋮ o Condividi) e seleziona <strong>Aggiungi a schermata Home</strong> o <strong>Installa app</strong>.<br><strong>PC / Mac:</strong> fai clic sull'icona di installazione nella barra degli indirizzi oppure apri il menu del browser e seleziona <strong>Installa LIMPIAPP</strong>.",
+        btnPwaModalClose: "Ho capito",
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
         heroTitle: "Professionisti delle pulizie verificati <span>nel tuo CAP</span>",
         heroSub: "Mettiamo in contatto professionisti indipendenti con case e aziende. Contatto diretto, 0 % di commissioni sul servizio.",
@@ -2269,7 +2363,10 @@
         pwaInstallTitle: "📲 Instale a LIMPIAPP no ecrã inicial",
         pwaInstallSub: "Atalho rápido sem navegador, sincronizado com a sua conta.",
         btnPwaInstall: "Instalar atalho rápido",
-        pwaManualFallback: "Abra o menu do navegador e escolha Instalar / Adicionar ao ecrã inicial.",
+        pwaModalTitle: "Instalar LIMPIAPP",
+        pwaModalDesc: "Adicione a LIMPIAPP ao seu dispositivo para a abrir como aplicação independente sem barra de navegador.",
+        pwaModalSteps: "<strong>Telemóvel / Tablet:</strong> abra o menu do navegador (⋮ ou Partilhar) e selecione <strong>Adicionar ao Ecrã Principal</strong> ou <strong>Instalar aplicação</strong>.<br><strong>PC / Mac:</strong> clique no ícone de instalar na barra de endereços ou abra o menu do navegador e escolha <strong>Instalar LIMPIAPP</strong>.",
+        btnPwaModalClose: "Entendido",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
         heroTitle: "Profissionais de limpeza verificados <span>no seu código postal</span>",
         heroSub: "Ligamos profissionais independentes a casas e empresas. Contacto direto, 0 % de comissão sobre o serviço e total transparência.",
@@ -2459,7 +2556,7 @@
       }
 
       var t = dicc[lang] || dicc['es'];
-      var htmlKeys = ['heroTitle', 'cookieBannerDesc', 'phoneAndVerify', 'phoneIosVerify', 'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8', 'faqA1', 'faqA2', 'faqA3', 'faqA4', 'faqA5', 'faqA6', 'faqA7', 'faqA8'];
+      var htmlKeys = ['heroTitle', 'pwaModalSteps', 'cookieBannerDesc', 'phoneAndVerify', 'phoneIosVerify', 'faqQ1', 'faqQ2', 'faqQ3', 'faqQ4', 'faqQ5', 'faqQ6', 'faqQ7', 'faqQ8', 'faqA1', 'faqA2', 'faqA3', 'faqA4', 'faqA5', 'faqA6', 'faqA7', 'faqA8'];
 
       for (var id in t) {
         var el = document.getElementById(id);
