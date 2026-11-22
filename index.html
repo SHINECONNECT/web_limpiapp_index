@@ -756,6 +756,80 @@
     .feature-item h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--color-slate-dark); font-weight: 700; }
     .feature-item p { font-size: 0.9rem; color: var(--color-slate-muted); line-height: 1.5; }
 
+    /* PANEL DESPLEGABLE DE PREGUNTAS FRECUENTES (ESTILO ACORDEÓN ROVER) */
+    .faq-section {
+      background-color: var(--color-bg-page);
+      padding: 64px 20px;
+      width: 100%;
+    }
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-slate-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-card);
+    }
+    .faq-header {
+      margin-bottom: 20px;
+    }
+    .faq-header h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--color-slate-dark);
+      margin-bottom: 6px;
+    }
+    .faq-header p {
+      font-size: 0.96rem;
+      color: var(--color-slate-muted);
+    }
+    .faq-list {
+      border-top: 1px solid var(--color-slate-border);
+    }
+    details.faq-item {
+      border-bottom: 1px solid var(--color-slate-border);
+      padding: 18px 4px;
+    }
+    details.faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-slate-dark);
+      user-select: none;
+    }
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    details.faq-item summary:hover {
+      color: var(--color-logo-blue-dark);
+    }
+    .faq-chevron {
+      font-size: 1.15rem;
+      color: var(--color-logo-charcoal);
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    details.faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--color-logo-blue-dark);
+    }
+    .faq-answer {
+      margin-top: 12px;
+      padding-right: 24px;
+      font-size: 0.94rem;
+      color: var(--color-slate-medium);
+      line-height: 1.6;
+    }
+    .faq-answer p + p {
+      margin-top: 10px;
+    }
+
     footer {
       background-color: var(--color-slate-dark);
       color: #94a3b8;
@@ -1082,6 +1156,11 @@
       .phone-iphone { width: 184px; height: 304px; left: 6px; }
       .phone-screen { padding: 8px; gap: 6px; }
       .pro-photo-wrap { width: 30px; height: 30px; }
+
+      .faq-section { padding: 44px 14px; }
+      .faq-container { padding: 24px 18px; }
+      .faq-header h2 { font-size: 1.45rem; }
+      details.faq-item summary { font-size: 0.96rem; }
     }
   </style>
 </head>
@@ -1533,6 +1612,77 @@
         </div>
       </div>
     </section>
+
+    <!-- PANEL DESPLEGABLE DE PREGUNTAS FRECUENTES (ESTILO ROVER) -->
+    <section class="faq-section" id="faqSection">
+      <div class="faq-container">
+        <div class="faq-header">
+          <h2 id="faqTitle">Preguntas frecuentes</h2>
+          <p id="faqSub">Respuestas rápidas sobre cómo funciona LIMPIAPP para hogares, empresas y profesionales de limpieza.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary id="faqQ1"><span>¿Qué es LIMPIAPP?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA1">
+              <p>LIMPIAPP es una plataforma tecnológica operada por Shineconnect S.L. donde puedes encontrar profesionales independientes de limpieza en tu zona y contactar directamente con ellos. Solicita servicios para tu hogar, oficina o vivienda vacacional cuando y donde lo necesites.</p>
+              <p>Con LIMPIAPP puedes localizar profesionales cerca de tu código postal para limpieza periódica, limpieza a fondo, fin de obra o mudanzas y locales comerciales, con trato directo y sin recargos sobre la hora pactada.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ2"><span>¿Cómo funciona LIMPIAPP?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA2">
+              <p>Introduce tu código postal para consultar disponibilidad en tu demarcación, elige el tipo de limpieza que necesitas y contacta directamente con el profesional para acordar horarios, tarifa y detalles del servicio.</p>
+              <p>Los profesionales independientes crean su perfil en su zona, fijan libremente su tarifa por hora y reciben avisos directos de solicitudes.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ3"><span>¿Cómo se verifica la identidad y la seguridad en LIMPIAPP?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA3">
+              <p>En LIMPIAPP aplicamos procesos de verificación de identidad y validación de perfiles para aportar mayor seguridad y confianza a clientes y profesionales de la comunidad.</p>
+              <p>Aun así, recomendamos acordar siempre con claridad los detalles de acceso al inmueble, horarios y alcance del servicio antes de comenzar.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ4"><span>¿Cómo puedo encontrar un profesional de limpieza cerca de mí?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA4">
+              <p>Usa el buscador de código postal en la parte superior o entra en la sección de clientes para indicar tu ciudad, código postal y tipo de limpieza deseado.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ5"><span>¿Cuánto cuesta usar LIMPIAPP y hay comisiones por servicio?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA5">
+              <p>LIMPIAPP funciona con un modelo de suscripción transparente sin comisiones sobre el precio de la hora acordada entre cliente y profesional: el profesional cobra el 100 % de su tarifa pactada.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ6"><span>¿Qué tipos de limpieza se pueden solicitar o anunciar?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA6">
+              <p>Puedes encontrar o anunciar servicios de mantenimiento periódico regular, limpieza a fondo puntual, limpieza de fin de obra o mudanza, apartamentos turísticos y limpieza de oficinas o locales comerciales.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ7"><span>¿Puedo encontrar profesionales disponibles con poca antelación?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA7">
+              <p>Sí, la disponibilidad depende de la agenda de cada profesional en tu código postal. Al contactar directamente por teléfono o WhatsApp puedes consultar huecos próximos o coordinar una fecha concreta.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary id="faqQ8"><span>¿Cómo sé si un profesional es fiable?</span><span class="faq-chevron" aria-hidden="true">⌄</span></summary>
+            <div class="faq-answer" id="faqA8">
+              <p>Puedes revisar su perfil verificado, su experiencia declarada, su radio de cobertura por código postal y el trato directo previo para confirmar que encaja con lo que necesitas.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -1658,6 +1808,10 @@
       if (cp) {
         window.location.href = construirUrlApp(APP_CONFIG.routes.clientSearch, { cp: cp });
       }
+    }
+
+    function renderFaqQuestion(questionText) {
+      return '<span>' + questionText + '</span><span class="faq-chevron" aria-hidden="true">⌄</span>';
     }
 
     var dicc = {
@@ -1795,6 +1949,24 @@
         feat2Desc: "Conversación fluida por teléfono o WhatsApp para coordinar horarios, llaves o detalles de limpieza sin intermediarios.",
         feat3Title: "Hiperlocalidad por Código Postal",
         feat3Desc: "Optimización por radios de cobertura geográfica para que el personal profesional trabaje cerca de su domicilio y reduzca tiempos de traslado.",
+        faqTitle: "Preguntas frecuentes",
+        faqSub: "Respuestas rápidas sobre cómo funciona LIMPIAPP para hogares, empresas y profesionales de limpieza.",
+        faqQ1: renderFaqQuestion("¿Qué es LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP es una plataforma tecnológica operada por Shineconnect S.L. donde puedes encontrar profesionales independientes de limpieza en tu zona y contactar directamente con ellos. Solicita servicios para tu hogar, oficina o vivienda vacacional cuando y donde lo necesites.</p><p>Con LIMPIAPP puedes localizar profesionales cerca de tu código postal para limpieza periódica, limpieza a fondo, fin de obra o mudanzas y locales comerciales, con trato directo y sin recargos sobre la hora pactada.</p>",
+        faqQ2: renderFaqQuestion("¿Cómo funciona LIMPIAPP?"),
+        faqA2: "<p>Introduce tu código postal para consultar disponibilidad en tu demarcación, elige el tipo de limpieza que necesitas y contacta directamente con el profesional para acordar horarios, tarifa y detalles del servicio.</p><p>Los profesionales independientes crean su perfil en su zona, fijan libremente su tarifa por hora y reciben avisos directos de solicitudes.</p>",
+        faqQ3: renderFaqQuestion("¿Cómo se verifica la identidad y la seguridad en LIMPIAPP?"),
+        faqA3: "<p>En LIMPIAPP aplicamos procesos de verificación de identidad y validación de perfiles para aportar mayor seguridad y confianza a clientes y profesionales de la comunidad.</p><p>Aun así, recomendamos acordar siempre con claridad los detalles de acceso al inmueble, horarios y alcance del servicio antes de comenzar.</p>",
+        faqQ4: renderFaqQuestion("¿Cómo puedo encontrar un profesional de limpieza cerca de mí?"),
+        faqA4: "<p>Usa el buscador de código postal en la parte superior o entra en la sección de clientes para indicar tu ciudad, código postal y tipo de limpieza deseado.</p>",
+        faqQ5: renderFaqQuestion("¿Cuánto cuesta usar LIMPIAPP y hay comisiones por servicio?"),
+        faqA5: "<p>LIMPIAPP funciona con un modelo de suscripción transparente sin comisiones sobre el precio de la hora acordada entre cliente y profesional: el profesional cobra el 100 % de su tarifa pactada.</p>",
+        faqQ6: renderFaqQuestion("¿Qué tipos de limpieza se pueden solicitar o anunciar?"),
+        faqA6: "<p>Puedes encontrar o anunciar servicios de mantenimiento periódico regular, limpieza a fondo puntual, limpieza de fin de obra o mudanza, apartamentos turísticos y limpieza de oficinas o locales comerciales.</p>",
+        faqQ7: renderFaqQuestion("¿Puedo encontrar profesionales disponibles con poca antelación?"),
+        faqA7: "<p>Sí, la disponibilidad depende de la agenda de cada profesional en tu código postal. Al contactar directamente por teléfono o WhatsApp puedes consultar huecos próximos o coordinar una fecha concreta.</p>",
+        faqQ8: renderFaqQuestion("¿Cómo sé si un profesional es fiable?"),
+        faqA8: "<p>Puedes revisar su perfil verificado, su experiencia declarada, su radio de cobertura por código postal y el trato directo previo para confirmar que encaja con lo que necesitas.</p>",
         footAviso: "Aviso Legal",
         footTerminos: "Términos y Condiciones",
         footPrivacidad: "Política de Privacidad",
@@ -1940,6 +2112,24 @@
         feat2Desc: "Conversa fluida per telèfon o WhatsApp per coordinar horaris, claus o detalls de neteja sense intermediaris.",
         feat3Title: "Hiperlocalitat per Codi Postal",
         feat3Desc: "Optimització per radis de cobertura geogràfica perquè el personal professional treballe prop del seu domicili i reduïsca temps de desplaçament.",
+        faqTitle: "Preguntes freqüents",
+        faqSub: "Respostes ràpides sobre com funciona LIMPIAPP per a llars, empreses i professionals de neteja.",
+        faqQ1: renderFaqQuestion("Què és LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP és una plataforma tecnològica operada per Shineconnect S.L. on pots trobar professionals independents de neteja a la teva zona i contactar directament amb ells. Sol·licita serveis per a la teva llar, oficina o habitatge turístic quan i on ho necessitis.</p>",
+        faqQ2: renderFaqQuestion("Com funciona LIMPIAPP?"),
+        faqA2: "<p>Introdueix el teu codi postal per consultar disponibilitat a la teva demarcació, tria el tipus de neteja que necessites i contacta directament amb el professional per acordar horaris, tarifa i detalls.</p>",
+        faqQ3: renderFaqQuestion("Com es verifica la identitat i la seguretat a LIMPIAPP?"),
+        faqA3: "<p>A LIMPIAPP apliquem processos de verificació d'identitat i validació de perfils per aportar més seguretat i confiança a clients i professionals.</p>",
+        faqQ4: renderFaqQuestion("Com puc trobar un professional de neteja prop meu?"),
+        faqA4: "<p>Utilitza el cercador de codi postal o entra a la secció de clients per indicar la teva ciutat, codi postal i tipus de neteja desitjat.</p>",
+        faqQ5: renderFaqQuestion("Quant costa utilitzar LIMPIAPP i hi ha comissions per servei?"),
+        faqA5: "<p>LIMPIAPP funciona amb un model de subscripció transparent sense comissions sobre el preu de l'hora acordada entre client i professional.</p>",
+        faqQ6: renderFaqQuestion("Quins tipus de neteja es poden sol·licitar o anunciar?"),
+        faqA6: "<p>Pots trobar o anunciar serveis de manteniment periòdic, neteja a fons, fi d'obra o mudança, apartaments turístics i oficines o locals comercials.</p>",
+        faqQ7: renderFaqQuestion("Puc trobar professionals disponibles amb poca antelació?"),
+        faqA7: "<p>Sí, la disponibilitat depèn de l'agenda de cada professional al teu codi postal i del contacte directe per telèfon o WhatsApp.</p>",
+        faqQ8: renderFaqQuestion("Com sé si un professional és fiable?"),
+        faqA8: "<p>Pots revisar el seu perfil verificat, experiència, radi de cobertura i el contacte directe previ per confirmar que s'adapta a les teves necessitats.</p>",
         footAviso: "Avís Legal",
         footTerminos: "Termes i Condicions",
         footPrivacidad: "Política de Privacitat",
@@ -2014,7 +2204,7 @@
         spanMes1: "/ mes",
         featC1: "Contacto limitado a 3 profesionais da súa zona por mes",
         featC2: "Perfís de profesionais <strong>100% verificados</strong>",
-        featC3: "Busca por país, ciutat e código postal",
+        featC3: "Busca por país, cidade e código postal",
         featC4: "Trato directo vía WhatsApp ou chamada telefónica",
         featC5: "Sen comisións sobre o prezo da hora pactada",
         btnClientBasico: "Elixir Plan Básico",
@@ -2085,6 +2275,24 @@
         feat2Desc: "Conversa fluída por teléfono ou WhatsApp para coordinar horarios, chaves ou detalles de limpeza sen intermediarios.",
         feat3Title: "Hiperlocalidade por Código Postal",
         feat3Desc: "Optimización por radios de cobertura xeográfica para que o persoal profesional traballe preto do seu domicilio e reduza tempos de desprazamento.",
+        faqTitle: "Preguntas frecuentes",
+        faqSub: "Respostas rápidas sobre como funciona LIMPIAPP para fogares, empresas e profesionais de limpeza.",
+        faqQ1: renderFaqQuestion("Que é LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP é unha plataforma tecnolóxica operada por Shineconnect S.L. onde podes atopar profesionais independentes de limpeza na túa zona e contactar directamente con eles.</p>",
+        faqQ2: renderFaqQuestion("Como funciona LIMPIAPP?"),
+        faqA2: "<p>Introduce o teu código postal, elixe o servizo que precisas e contacta directamente co profesional para acordar horarios, tarifa e detalles.</p>",
+        faqQ3: renderFaqQuestion("Como se verifica a identidade e a seguridade en LIMPIAPP?"),
+        faqA3: "<p>Aplicamos procesos de verificación de identidade e validación de perfís para aportar maior confianza a clientes e profesionais.</p>",
+        faqQ4: renderFaqQuestion("Como podo atopar un profesional de limpeza preto de min?"),
+        faqA4: "<p>Emprega o buscador de código postal ou accede á sección de clientes para indicar a túa cidade, código postal e servizo.</p>",
+        faqQ5: renderFaqQuestion("Canto custa usar LIMPIAPP e hai comisións por servizo?"),
+        faqA5: "<p>LIMPIAPP funciona cun modelo de subscrición transparente sen comisións sobre a hora acordada entre cliente e profesional.</p>",
+        faqQ6: renderFaqQuestion("Que tipos de limpeza se poden solicitar ou anunciar?"),
+        faqA6: "<p>Mantemento periódico, limpeza a fondo, fin de obra ou mudanza, apartamentos turísticos e oficinas ou locais comerciais.</p>",
+        faqQ7: renderFaqQuestion("Podo atopar profesionais dispoñibles con pouca antelación?"),
+        faqA7: "<p>Si, dependendo da dispoñibilidade de cada profesional no teu código postal e do contacto directo por teléfono ou WhatsApp.</p>",
+        faqQ8: renderFaqQuestion("Como sei se un profesional é fiable?"),
+        faqA8: "<p>Revisa o seu perfil verificado, experiencia, zona de cobertura e o trato directo previo.</p>",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condicións",
         footPrivacidad: "Política de Privacidade",
@@ -2230,6 +2438,24 @@
         feat2Desc: "Elkarrizketa arina telefonoz edo WhatsAppez ordutegiak, giltzak edo garbiketa-xehetasunak bitartekaririk gabe koordinatzeko.",
         feat3Title: "Hiperlokalitatea Posta-Kodearen Bidez",
         feat3Desc: "Estaldura geografikoaren erradioen optimizazioa profesionalak etxetik gertu lan egin dezan eta joan-etorri denborak murriztu ditzan.",
+        faqTitle: "Ohiko galderak",
+        faqSub: "LIMPIAPP nola dabilen etxe, enpresa eta garbiketa profesionalentzat.",
+        faqQ1: renderFaqQuestion("Zer da LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP Shineconnect S.L.-k kudeatutako plataforma teknologikoa da, zure inguruko garbiketa profesional independenteekin zuzenean harremanetan jartzeko.</p>",
+        faqQ2: renderFaqQuestion("Nola dabil LIMPIAPP?"),
+        faqA2: "<p>Sartu posta-kodea, aukeratu zerbitzua eta hitzartu zuzenean ordutegia eta tarifa profesionalarekin.</p>",
+        faqQ3: renderFaqQuestion("Nola egiaztatzen dira identitatea eta segurtasuna LIMPIAPPen?"),
+        faqA3: "<p>Identitatea egiaztatzeko eta profilak balioztatzeko prozesuak aplikatzen ditugu komunitatearen konfiantzarako.</p>",
+        faqQ4: renderFaqQuestion("Nola aurki dezaket garbiketa profesional bat nire inguruan?"),
+        faqA4: "<p>Erabili posta-kodearen bilatzailea edo bezeroen atala zure hiria eta beharra adierazteko.</p>",
+        faqQ5: renderFaqQuestion("Zenbat balio du LIMPIAPPek eta ba al dago komisiorik?"),
+        faqA5: "<p>Harpidetza-eredu gardena du, %0 komisioarekin bezero eta profesionalaren artean adostutako orduaren prezioan.</p>",
+        faqQ6: renderFaqQuestion("Zer garbiketa mota eska edo iragar daitezke?"),
+        faqA6: "<p>Aldizkako mantentzea, sakoneko garbiketa, obra amaiera edo lekualdatzea, apartamentu turistikoak eta bulegoak.</p>",
+        faqQ7: renderFaqQuestion("Aurki ditzaket profesionalak abisu gutxirekin?"),
+        faqA7: "<p>Bai, profesional bakoitzaren ordutegiaren eta zuzeneko harremanaren arabera.</p>",
+        faqQ8: renderFaqQuestion("Nola jakin dezaket profesional bat fidagarria den?"),
+        faqA8: "<p>Begiratu bere profil egiaztatua, esperientzia, eremua eta aldez aurreko tratua.</p>",
         footAviso: "Lege Oharra",
         footTerminos: "Baldintza Orokorrak",
         footPrivacidad: "Pribatasun Politika",
@@ -2375,6 +2601,24 @@
         feat2Desc: "Direct chat via WhatsApp or phone to manage schedules, keys or cleaning details with zero friction.",
         feat3Title: "Postal Code Matching",
         feat3Desc: "Hyperlocal radius optimization to allow cleaners to work close to home and minimize travel time.",
+        faqTitle: "Frequently asked questions",
+        faqSub: "Quick answers on how LIMPIAPP works for homes, businesses, and cleaning professionals.",
+        faqQ1: renderFaqQuestion("What is LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP is a technology platform operated by Shineconnect S.L. where you can find independent cleaning professionals in your area and contact them directly for homes, offices, or vacation rentals.</p>",
+        faqQ2: renderFaqQuestion("How does LIMPIAPP work?"),
+        faqA2: "<p>Enter your postal code to check local availability, choose the cleaning service you need, and coordinate schedule, rate, and details directly.</p>",
+        faqQ3: renderFaqQuestion("How are identity and safety verified on LIMPIAPP?"),
+        faqA3: "<p>We apply identity verification and profile validation checks to support trust and safety across the community.</p>",
+        faqQ4: renderFaqQuestion("How can I find a cleaner near me?"),
+        faqA4: "<p>Use the postal code search box above or visit the client page with your city, postal code, and preferred cleaning type.</p>",
+        faqQ5: renderFaqQuestion("How much does LIMPIAPP cost and are there service fees?"),
+        faqA5: "<p>LIMPIAPP uses a transparent subscription model with 0% commission on the agreed hourly rate between client and professional.</p>",
+        faqQ6: renderFaqQuestion("What types of cleaning services can be requested or listed?"),
+        faqA6: "<p>Regular maintenance, deep cleaning, move-in/move-out cleaning, vacation apartments, and offices or commercial spaces.</p>",
+        faqQ7: renderFaqQuestion("Can I find cleaners available on short notice?"),
+        faqA7: "<p>Yes, depending on each cleaner's schedule in your postal code and direct availability via phone or WhatsApp.</p>",
+        faqQ8: renderFaqQuestion("How do I know if a cleaner is reliable?"),
+        faqA8: "<p>Check their verified profile, stated experience, local radius, and direct communication before booking.</p>",
         footAviso: "Legal Notice",
         footTerminos: "Terms & Conditions",
         footPrivacidad: "Privacy Policy",
@@ -2520,6 +2764,24 @@
         feat2Desc: "Flüssige Kommunikation per Telefon oder WhatsApp zur Abstimmung von Zeiten, Schlüsseln oder Details ohne Zwischenhändler.",
         feat3Title: "Postleitzahlen-Matching",
         feat3Desc: "Hyperlokale Radiusoptimierung, damit Reinigungskräfte in Wohnortnähe arbeiten und Fahrzeiten reduzieren.",
+        faqTitle: "Häufig gestellte Fragen",
+        faqSub: "Schnelle Antworten rund um LIMPIAPP für Haushalte, Firmen und Reinigungskräfte.",
+        faqQ1: renderFaqQuestion("Was ist LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP ist eine Plattform von Shineconnect S.L., über die Sie unabhängige Reinigungskräfte in Ihrer Nähe finden und direkt kontaktieren können.</p>",
+        faqQ2: renderFaqQuestion("Wie funktioniert LIMPIAPP?"),
+        faqA2: "<p>Postleitzahl eingeben, Reinigungsart wählen und Zeiten, Preis sowie Details direkt abstimmen.</p>",
+        faqQ3: renderFaqQuestion("Wie werden Identität und Sicherheit geprüft?"),
+        faqA3: "<p>Wir nutzen Identitäts- und Profilprüfungen für mehr Vertrauen auf der Plattform.</p>",
+        faqQ4: renderFaqQuestion("Wie finde ich eine Reinigungskraft in meiner Nähe?"),
+        faqA4: "<p>Nutzen Sie die Postleitzahlensuche oder den Kundenbereich mit Stadt, PLZ und gewünschtem Service.</p>",
+        faqQ5: renderFaqQuestion("Was kostet LIMPIAPP und gibt es Provisionen?"),
+        faqA5: "<p>Transparente Tarife mit 0 % Provision auf den vereinbarten Stundenlohn.</p>",
+        faqQ6: renderFaqQuestion("Welche Reinigungsleistungen gibt es?"),
+        faqA6: "<p>Regelmäßige Reinigung, Grundreinigung, Umzugs-/Endreinigung, Ferienwohnungen sowie Büros und Gewerbe.</p>",
+        faqQ7: renderFaqQuestion("Kann ich kurzfristige Hilfe finden?"),
+        faqA7: "<p>Ja, je nach Verfügbarkeit in Ihrer Postleitzahl und direkter Absprache.</p>",
+        faqQ8: renderFaqQuestion("Woran erkenne ich eine zuverlässige Fachkraft?"),
+        faqA8: "<p>An geprüftem Profil, Erfahrung, Umkreis und direktem Kontakt vorab.</p>",
         footAviso: "Impressum",
         footTerminos: "AGB",
         footPrivacidad: "Datenschutzerklärung",
@@ -2665,6 +2927,24 @@
         feat2Desc: "Échange fluide par téléphone ou WhatsApp pour coordonner horaires, clés ou détails de nettoyage sans intermédiaires.",
         feat3Title: "Couverture Hyperlocale par Code Postal",
         feat3Desc: "Optimisation géographique pour permettre aux professionnels de travailler près de chez eux et réduire leurs trajets.",
+        faqTitle: "Questions fréquentes",
+        faqSub: "Réponses rapides sur LIMPIAPP pour particuliers, entreprises et professionnels.",
+        faqQ1: renderFaqQuestion("Qu'est-ce que LIMPIAPP ?"),
+        faqA1: "<p>LIMPIAPP est une plateforme opérée par Shineconnect S.L. permettant de trouver des professionnels indépendants du nettoyage près de chez vous et de les contacter directement.</p>",
+        faqQ2: renderFaqQuestion("Comment fonctionne LIMPIAPP ?"),
+        faqA2: "<p>Saisissez votre code postal, choisissez le service et convenez directement des horaires, tarifs et détails.</p>",
+        faqQ3: renderFaqQuestion("Comment l'identité et la sécurité sont-elles vérifiées ?"),
+        faqA3: "<p>Nous appliquons des contrôles d'identité et de profil pour renforcer la confiance de la communauté.</p>",
+        faqQ4: renderFaqQuestion("Comment trouver un professionnel près de chez moi ?"),
+        faqA4: "<p>Utilisez la recherche par code postal ou l'espace client avec votre ville et le type de nettoyage.</p>",
+        faqQ5: renderFaqQuestion("Quel est le coût et y a-t-il des commissions ?"),
+        faqA5: "<p>Formules d'abonnement transparentes avec 0 % de commission sur le tarif horaire convenu.</p>",
+        faqQ6: renderFaqQuestion("Quels types de nettoyage sont proposés ?"),
+        faqA6: "<p>Entretien régulier, grand nettoyage, fin de chantier ou déménagement, locations touristiques et bureaux.</p>",
+        faqQ7: renderFaqQuestion("Puis-je trouver une disponibilité rapide ?"),
+        faqA7: "<p>Oui, selon les disponibilités locales dans votre code postal et l'échange direct.</p>",
+        faqQ8: renderFaqQuestion("Comment vérifier la fiabilité d'un professionnel ?"),
+        faqA8: "<p>Consultez son profil vérifié, son expérience, sa zone et échangez directement avant de confirmer.</p>",
         footAviso: "Mentions Légales",
         footTerminos: "Conditions Générales",
         footPrivacidad: "Politique de Confidentialité",
@@ -2810,6 +3090,24 @@
         feat2Desc: "Conversazione fluida per telefono o WhatsApp per coordinare orari, chiavi o dettagli di pulizia senza intermediari.",
         feat3Title: "Iperlocalità per CAP",
         feat3Desc: "Ottimizzazione tramite raggi di copertura geografica affinché il professionista lavori vicino a casa e riduca i tempi di spostamento.",
+        faqTitle: "Domande frequenti",
+        faqSub: "Risposte rapide su LIMPIAPP per case, aziende e professionisti delle pulizie.",
+        faqQ1: renderFaqQuestion("Che cos'è LIMPIAPP?"),
+        faqA1: "<p>LIMPIAPP è una piattaforma gestita da Shineconnect S.L. per trovare professionisti indipendenti delle pulizie nella tua zona e contattarli direttamente.</p>",
+        faqQ2: renderFaqQuestion("Come funziona LIMPIAPP?"),
+        faqA2: "<p>Inserisci il CAP, scegli il servizio e concorda direttamente orari, tariffa e dettagli.</p>",
+        faqQ3: renderFaqQuestion("Come vengono verificate identità e sicurezza?"),
+        faqA3: "<p>Applichiamo verifiche di identità e profili per aumentare affidabilità e sicurezza.</p>",
+        faqQ4: renderFaqQuestion("Come trovo un professionista vicino a me?"),
+        faqA4: "<p>Usa la ricerca per CAP o la sezione clienti con città e tipo di pulizia.</p>",
+        faqQ5: renderFaqQuestion("Quanto costa e ci sono commissioni sul servizio?"),
+        faqA5: "<p>Piani in abbonamento trasparenti con 0 % di commissione sulla tariffa oraria concordata.</p>",
+        faqQ6: renderFaqQuestion("Quali tipi di pulizia si possono richiedere?"),
+        faqA6: "<p>Manutenzione periodica, pulizia a fondo, fine cantiere o trasloco, appartamenti turistici e uffici.</p>",
+        faqQ7: renderFaqQuestion("Posso trovare disponibilità con poco preavviso?"),
+        faqA7: "<p>Sì, in base alla disponibilità locale nel tuo CAP e al contatto diretto.</p>",
+        faqQ8: renderFaqQuestion("Come capisco se un professionista è affidabile?"),
+        faqA8: "<p>Controlla profilo verificato, esperienza, zona e confronto diretto prima di confermare.</p>",
         footAviso: "Note Legali",
         footTerminos: "Termini e Condizioni",
         footPrivacidad: "Informativa sulla Privacy",
@@ -2955,6 +3253,24 @@
         feat2Desc: "Conversa fluida por telefone ou WhatsApp para coordenar horários, chaves ou detalhes de limpeza sem intermediários.",
         feat3Title: "Hiperlocalidade por Código Postal",
         feat3Desc: "Otimização por raios de cobertura geográfica para que o profissional trabalhe perto de casa e reduza tempos de deslocação.",
+        faqTitle: "Perguntas frequentes",
+        faqSub: "Respostas rápidas sobre como funciona a LIMPIAPP para lares, empresas e profissionais.",
+        faqQ1: renderFaqQuestion("O que é a LIMPIAPP?"),
+        faqA1: "<p>A LIMPIAPP é uma plataforma operada pela Shineconnect S.L. para encontrar profissionais independentes de limpeza na sua zona e falar diretamente com eles.</p>",
+        faqQ2: renderFaqQuestion("Como funciona a LIMPIAPP?"),
+        faqA2: "<p>Introduza o código postal, escolha o serviço e combine diretamente horários, preço e detalhes.</p>",
+        faqQ3: renderFaqQuestion("Como são verificadas a identidade e a segurança?"),
+        faqA3: "<p>Aplicamos verificações de identidade e validação de perfis para maior confiança.</p>",
+        faqQ4: renderFaqQuestion("Como posso encontrar um profissional perto de mim?"),
+        faqA4: "<p>Utilize a pesquisa por código postal ou a área de clientes com cidade e tipo de serviço.</p>",
+        faqQ5: renderFaqQuestion("Quanto custa e existem comissões por serviço?"),
+        faqA5: "<p>Modelos de subscrição transparentes com 0 % de comissão sobre a tarifa horária acordada.</p>",
+        faqQ6: renderFaqQuestion("Que tipos de limpeza podem ser pedidos?"),
+        faqA6: "<p>Manutenção regular, limpeza profunda, pós-obra ou mudança, alojamento local e escritórios.</p>",
+        faqQ7: renderFaqQuestion("Posso encontrar profissionais com pouca antecedência?"),
+        faqA7: "<p>Sim, conforme a disponibilidade na sua zona e o contacto direto.</p>",
+        faqQ8: renderFaqQuestion("Como sei se um profissional é de confiança?"),
+        faqA8: "<p>Verifique o perfil verificado, experiência, área de atuação e contacto prévio.</p>",
         footAviso: "Aviso Legal",
         footTerminos: "Termos e Condições",
         footPrivacidad: "Política de Privacidade",
@@ -3120,7 +3436,7 @@
       for (var id in t) {
         var el = document.getElementById(id);
         if (el) {
-          if (id === 'heroTitle' || id === 'cookieBannerDesc' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge') || id.startsWith('phoneAndVerify') || id.startsWith('phoneIosVerify')) {
+          if (id === 'heroTitle' || id === 'cookieBannerDesc' || id.startsWith('tdFila') || id.startsWith('feat') || id.startsWith('badge') || id.startsWith('phoneAndVerify') || id.startsWith('phoneIosVerify') || id.startsWith('faqQ') || id.startsWith('faqA')) {
             el.innerHTML = t[id];
           } else {
             el.innerText = t[id];
