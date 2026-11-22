@@ -1,8 +1,9 @@
 {
+  "id": "/?source=pwa",
   "name": "LIMPIAPP — Servicios de limpieza",
   "short_name": "LIMPIAPP",
   "description": "Plataforma tecnológica de intermediación de servicios de limpieza por código postal operada por Shineconnect S.L. en limpiapp.app.",
-  "start_url": "/index.html?source=pwa",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
