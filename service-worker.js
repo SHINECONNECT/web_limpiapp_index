@@ -1,4 +1,4 @@
-const CACHE_NAME = 'limpiapp-web-index-v2';
+const CACHE_NAME = 'limpiapp-web-index-v3';
 
 const PRECACHE_URLS = [
   '/',
@@ -44,7 +44,6 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Solo GET del mismo origen; nunca interceptar APIs, redirecciones a app, sesiones, auth ni pagos
   if (
     request.method !== 'GET' ||
     url.origin !== self.location.origin ||
@@ -64,7 +63,6 @@ self.addEventListener('fetch', (event) => {
     url.pathname.endsWith('.html') ||
     url.pathname.endsWith('.js');
 
-  // Network-first para HTML y JS para reflejar cambios de planes, textos o conexión con la app
   if (isHtmlOrJs) {
     event.respondWith(
       fetch(request)
@@ -82,7 +80,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Cache-first para manifiesto e imágenes del repositorio
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
