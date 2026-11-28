@@ -5,7 +5,6 @@
    - activar los botones de la app cuando esté publicada
    ============================================================ */
 window.LIMPIAPP_CONFIG = {
-
   /* ---------- 1. LISTA DE ESPERA ----------
      'apps-script' → hoja de cálculo de Google (funciona hoy).
      'firestore'   → base de datos Firebase (cuando Serxus confirme que
@@ -13,7 +12,7 @@ window.LIMPIAPP_CONFIG = {
   waitlistProvider: 'apps-script',
 
   // URL de la aplicación web de Google Apps Script (ver apps-script/Code.gs)
-  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec',
+  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxFL9Ggmj67…/exec',
 
   // Solo si waitlistProvider === 'firestore'
   firestore: {
