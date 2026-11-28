@@ -1,0 +1,52 @@
+// LIMPIAPP · Reglas de Firestore SOLO para la lista de espera de la web.
+//
+// ⚠ NO sustituyas las reglas existentes del proyecto Firebase (las de la app de Serxus):
+//   COPIA estos dos bloques "match" DENTRO de las reglas que ya tenga el proyecto,
+//   o pide a Serxus que los añada. Y recuerda: cualquier colección sin regla queda cerrada.
+//
+// Qué permiten: que la web (sin cuenta) CREE una solicitud con los campos esperados.
+// Qué prohíben: leer, modificar o borrar nada desde el navegador. Los datos solo se ven
+//               desde la consola de Firebase o con el SDK de administración (servidor).
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function textoOk(v, max) { return v is string && v.size() <= max; }
+
+    function comunesOk(d) {
+      return textoOk(d.nombre, 120) && d.nombre.size() >= 2
+          && textoOk(d.telefono, 20)
+          && textoOk(d.email, 254) && d.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}$')
+          && textoOk(d.cp, 10)
+          && textoOk(d.idioma, 8)
+          && d.consent_privacidad == true
+          && textoOk(d.consent_version, 12)
+          && textoOk(d.consent_fecha, 30);
+    }
+
+    match /waitlist_profesionales/{id} {
+      allow create: if request.resource.data.keys().hasOnly([
+            'tipo_formulario','perfil_usuario','nombre','telefono','email','pais','ciudad','cp',
+            'plan_codigo','idioma','source_channel','pagina','consent_privacidad','consent_version',
+            'consent_fecha','tarifa','experiencia','plan','alertas'])
+        && request.resource.data.keys().hasAll(['nombre','telefono','email','cp','consent_privacidad'])
+        && request.resource.data.tipo_formulario == 'waitlist_profesional'
+        && comunesOk(request.resource.data)
+        && (request.resource.data.tarifa is number || request.resource.data.tarifa is int);
+      allow read, update, delete: if false;
+    }
+
+    match /waitlist_clientes/{id} {
+      allow create: if request.resource.data.keys().hasOnly([
+            'tipo_formulario','perfil_usuario','nombre','telefono','email','pais','ciudad','cp',
+            'plan_codigo','idioma','source_channel','pagina','consent_privacidad','consent_version',
+            'consent_fecha','servicio','formula','detalles'])
+        && request.resource.data.keys().hasAll(['nombre','telefono','email','cp','consent_privacidad'])
+        && request.resource.data.tipo_formulario == 'waitlist_cliente'
+        && comunesOk(request.resource.data)
+        && (!('detalles' in request.resource.data) || textoOk(request.resource.data.detalles, 1000));
+      allow read, update, delete: if false;
+    }
+  }
+}

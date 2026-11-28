@@ -5,24 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIMPIAPP | Conectamos Servicios de Limpieza por Código Postal</title>
   
-  <meta name="apple-itunes-app" content="app-id=limpiapp">
-  <link rel="alternate" href="limpiapp://home">
+  <meta name="description" content="LIMPIAPP conecta hogares y empresas con profesionales de limpieza por código postal. Sin comisiones por servicio. Únete a la lista de espera.">
+  <link rel="canonical" href="https://limpiapp.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LIMPIAPP">
+  <meta property="og:title" content="LIMPIAPP | Servicios de limpieza por código postal">
+  <meta property="og:description" content="Encuentra profesionales de limpieza cerca de ti o únete como profesional. Sin comisiones por servicio.">
+  <meta property="og:url" content="https://limpiapp.app/">
+  <meta property="og:image" content="https://limpiapp.app/icons/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LIMPIAPP","legalName":"Shineconnect S.L.","url":"https://limpiapp.app/","logo":"https://limpiapp.app/logo.png","email":"gerencia@limpiapp.app","address":{"@type":"PostalAddress","streetAddress":"c/Mayor, 5","addressLocality":"Fortaleny","addressCountry":"ES"}}</script>
   <meta name="theme-color" content="#4f585d">
   <link rel="manifest" href="/manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="LIMPIAPP">
-  <link rel="apple-touch-icon" href="/logo.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
   
   <style>
     :root {
       --color-logo-blue: #7faecb;
-      --color-logo-blue-dark: #6294b4;
+      --color-logo-blue-dark: #4a7a99;
       --color-logo-blue-light: #eef5f9;
       --color-logo-blue-soft: #d2e4f0;
       
@@ -61,6 +70,10 @@
       justify-content: space-between;
     }
 
+    [hidden] { display: none !important; }
+    .pro-photo-initial { width: 100%; height: 100%; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--color-logo-blue-soft); color: var(--color-logo-charcoal-dark); font-weight: 800; font-size: 0.85rem; }
+    .sample-label { background: #fff7e0; color: #7a5b00; border: 1px dashed #e0b84a; border-radius: 6px; font-size: 0.62rem; font-weight: 700; text-align: center; padding: 3px 6px; margin: 0 0 6px; line-height: 1.3; }
+    .soon-pill { display: inline-block; background: var(--color-logo-blue-light); color: var(--color-logo-charcoal-dark); border: 1px solid var(--color-logo-blue-soft); border-radius: 999px; padding: 3px 12px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; }
     .mobile-app-strip { display: none; }
     .mobile-app-card { display: none; }
 
@@ -975,7 +988,7 @@
 </head>
 <body>
 
-  <div class="mobile-app-strip" id="mobileAppStrip">
+  <div class="mobile-app-strip" id="mobileAppStrip" hidden>
     <div class="mobile-app-strip-info">
       <strong id="mobileStripTitle">📱 LIMPIAPP en tu móvil</strong>
       <span id="mobileStripSub">Continúa en la app con tu idioma</span>
@@ -988,7 +1001,7 @@
 
   <div class="top-bar">
     <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" onchange="cambiarIdioma(this.value)">
+    <select class="lang-select" id="langSelectTop" aria-label="Idioma / Language" onchange="cambiarIdioma(this.value)">
       <optgroup label="Lenguas de España">
         <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
@@ -1009,7 +1022,7 @@
     <div class="header-inner">
       <div class="logo-container">
         <a href="index.html">
-          <img src="logo.png.png" onerror="if(!this.t1){this.t1=1;this.src='logo.png';}else if(!this.t2){this.t2=1;this.src='logo.jpg';}" alt="LIMPIAPP by Shineconnect">
+          <img src="/logo.png" width="1200" height="353" alt="LIMPIAPP by Shineconnect">
         </a>
       </div>
       <div class="nav-actions">
@@ -1029,15 +1042,15 @@
       </p>
 
       <form class="search-box-cp" onsubmit="buscarCP(event)">
-        <input type="text" id="inputCP" placeholder="Introduce tu código postal (ej. 46006)" required>
+        <input type="text" id="inputCP" aria-label="Código postal" autocomplete="postal-code" inputmode="text" placeholder="Introduce tu código postal (ej. 46006)" required>
         <button type="submit" id="btnBuscarCP">Ver Disponibilidad</button>
       </form>
 
-      <div class="pwa-install-box visible" id="pwaInstallBox">
+      <div class="pwa-install-box" id="pwaInstallBox">
         <div class="pwa-install-row">
           <div class="pwa-install-copy">
             <strong id="pwaInstallTitle">📲 Instala LIMPIAPP en tu pantalla de inicio</strong>
-            <span id="pwaInstallSub">Acceso directo rápido y sin navegador, sincronizado con tu cuenta.</span>
+            <span id="pwaInstallSub">Acceso directo rápido, sin abrir el navegador.</span>
           </div>
           <button type="button" class="btn-pwa-install" id="btnPwaInstall" onclick="instalarPwaLimpiapp()">
             Instalar acceso rápido
@@ -1045,7 +1058,7 @@
         </div>
       </div>
 
-      <div class="mobile-app-card" id="mobileAppCard">
+      <div class="mobile-app-card" id="mobileAppCard" hidden>
         <div class="mobile-app-card-text">
           <strong id="mobileCardTitle">¿Prefieres usar la App?</strong>
           <span id="mobileCardSub">Pasa a la aplicación manteniendo tu idioma y código postal.</span>
@@ -1245,9 +1258,10 @@
 
     <section class="app-connect-section" id="appConnectSection">
       <div class="app-connect-inner">
+        <span class="soon-pill" id="appSoon">Próximamente</span>
         <h2 class="app-connect-title" id="appConnectTitle">Conéctate desde cualquier lugar con la app de LIMPIAPP</h2>
 
-        <div class="store-badges-row">
+        <div class="store-badges-row" id="storeBadgesRow" hidden>
           <a href="clientes.html" class="store-badge-btn" id="btnStoreApple" aria-label="Consíguelo en el App Store">
             <span class="store-badge-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -1285,6 +1299,7 @@
                 <span>LIMPIAPP</span>
                 <span>5G</span>
               </div>
+              <div class="sample-label" id="sampleLabel1">Ejemplo ilustrativo · perfiles ficticios</div>
               <div class="phone-app-header">
                 <span class="phone-app-title" id="phoneAndTitle">Limpieza en tu zona</span>
                 <span class="phone-cp-pill" id="phoneAndCp">CP 46006</span>
@@ -1295,7 +1310,7 @@
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
                   <div class="pro-photo-wrap">
-                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80" alt="Carmen M. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80';">
+                    <span class="pro-photo-initial" aria-hidden="true">C</span>
                   </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Carmen M.</div>
@@ -1312,7 +1327,7 @@
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
                   <div class="pro-photo-wrap">
-                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80" alt="Lucía R. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80';">
+                    <span class="pro-photo-initial" aria-hidden="true">L</span>
                   </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Lucía R.</div>
@@ -1329,7 +1344,7 @@
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
                   <div class="pro-photo-wrap">
-                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80" alt="Diego P. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80';">
+                    <span class="pro-photo-initial" aria-hidden="true">D</span>
                   </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Diego P.</div>
@@ -1354,6 +1369,7 @@
                 <span>LIMPIAPP</span>
                 <span>●●●</span>
               </div>
+              <div class="sample-label" id="sampleLabel2">Ejemplo ilustrativo · perfiles ficticios</div>
               <div class="phone-app-header">
                 <span class="phone-app-title" id="phoneIosTitle">Limpieza en tu zona</span>
                 <span class="phone-cp-pill" id="phoneIosCp">CP 46006</span>
@@ -1364,7 +1380,7 @@
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
                   <div class="pro-photo-wrap">
-                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=160&q=80" alt="Sofía G. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=160&q=80';">
+                    <span class="pro-photo-initial" aria-hidden="true">S</span>
                   </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Sofía G.</div>
@@ -1381,7 +1397,7 @@
               <div class="pro-mini-card">
                 <div class="pro-mini-left">
                   <div class="pro-photo-wrap">
-                    <img class="pro-photo-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=160&q=80" alt="Marta V. sonriendo" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80';">
+                    <span class="pro-photo-initial" aria-hidden="true">M</span>
                   </div>
                   <div class="pro-mini-info">
                     <div class="pro-mini-name">Marta V.</div>
@@ -1569,11 +1585,12 @@
     </div>
   </div>
 
+<script src="waitlist-config.js"></script>
 <script>
     var APP_CONFIG = {
       appBaseUrl: 'https://limpiapp.app',
-      serxusAppUrl: null,
-      syncStateEndpoint: '/api/account/sync-state',
+      serxusAppUrl: (window.LIMPIAPP_CONFIG && window.LIMPIAPP_CONFIG.app && window.LIMPIAPP_CONFIG.app.openUrl) || null,
+      syncStateEndpoint: null, // se activará cuando existan cuentas (app de Serxus)
       routes: {
         mobileApp: '/clientes.html',
         login: '/login.html',
@@ -1699,7 +1716,8 @@
       var box = document.getElementById('pwaInstallBox');
       if (!box) return;
 
-      if (esModoStandalonePwa() || APP_CONFIG.serxusAppUrl) {
+      // Solo se ofrece instalar cuando el navegador lo permite y la app no está ya instalada
+      if (esModoStandalonePwa() || APP_CONFIG.serxusAppUrl || !deferredPwaPrompt) {
         box.classList.remove('visible');
         return;
       }
@@ -1788,8 +1806,11 @@
         mobileCardTitle: "¿Prefieres usar la App?",
         mobileCardSub: "Pasa a la aplicación manteniendo tu idioma y código postal.",
         btnMobileCardApp: "Ir a la App →",
+        sampleLabel1: "Ejemplo ilustrativo · perfiles ficticios",
+        sampleLabel2: "Ejemplo ilustrativo · perfiles ficticios",
+        appSoon: "Próximamente",
         pwaInstallTitle: "📲 Instala LIMPIAPP en tu pantalla de inicio",
-        pwaInstallSub: "Acceso directo rápido y sin navegador, sincronizado con tu cuenta.",
+        pwaInstallSub: "Acceso directo rápido, sin abrir el navegador.",
         btnPwaInstall: "Instalar acceso rápido",
         pwaManualFallback: "Abre el menú del navegador y elige Instalar / Añadir a pantalla de inicio.",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -1954,8 +1975,11 @@
         mobileCardTitle: "Prefereixes utilitzar l'App?",
         mobileCardSub: "Passa a l'aplicació mantenint l'idioma i el codi postal.",
         btnMobileCardApp: "Anar a l'App →",
+        sampleLabel1: "Exemple il·lustratiu · perfils fictícis",
+        sampleLabel2: "Exemple il·lustratiu · perfils fictícis",
+        appSoon: "Properament",
         pwaInstallTitle: "📲 Instal·la LIMPIAPP a la pantalla d'inici",
-        pwaInstallSub: "Accés directe ràpid i sense navegador, sincronitzat amb el teu compte.",
+        pwaInstallSub: "Accés directe ràpid, sense obrir el navegador.",
         btnPwaInstall: "Instal·lar accés ràpid",
         pwaManualFallback: "Obri el menú del navegador i tria Instal·lar / Afegir a la pantalla d'inici.",
         badgeHero: "🌍 Plataforma Tecnològica Internacional",
@@ -2120,8 +2144,11 @@
         mobileCardTitle: "Prefires usar a App?",
         mobileCardSub: "Pasa á aplicación mantendo o teu idioma e código postal.",
         btnMobileCardApp: "Ir á App →",
+        sampleLabel1: "Exemplo ilustrativo · perfís ficticios",
+        sampleLabel2: "Exemplo ilustrativo · perfís ficticios",
+        appSoon: "Proximamente",
         pwaInstallTitle: "📲 Instala LIMPIAPP na túa pantalla de inicio",
-        pwaInstallSub: "Acceso directo rápido e sen navegador, sincronizado coa túa conta.",
+        pwaInstallSub: "Acceso directo rápido, sen abrir o navegador.",
         btnPwaInstall: "Instalar acceso rápido",
         pwaManualFallback: "Abre o menú do navegador e elixe Instalar / Engadir á pantalla de inicio.",
         badgeHero: "🌍 Plataforma Tecnolóxica Internacional",
@@ -2263,8 +2290,11 @@
         mobileCardTitle: "Appa erabili nahiago duzu?",
         mobileCardSub: "Joan aplikaziora hizkuntza eta posta kodea mantenduz.",
         btnMobileCardApp: "Jo Appara →",
+        sampleLabel1: "Adibide ilustratiboa · profil asmatuak",
+        sampleLabel2: "Adibide ilustratiboa · profil asmatuak",
+        appSoon: "Laster",
         pwaInstallTitle: "📲 Instalatu LIMPIAPP hasierako pantailan",
-        pwaInstallSub: "Sarbide azkarra eta nabigatzailerik gabe, zure kontuarekin sinkronizatuta.",
+        pwaInstallSub: "Sarbide azkarra, nabigatzailea ireki gabe.",
         btnPwaInstall: "Instalatu sarbide azkarra",
         pwaManualFallback: "Ireki nabigatzaileko menua eta aukeratu Instalatu / Gehitu hasierako pantailara.",
         badgeHero: "🌍 Nazioarteko Teknologia Plataforma",
@@ -2406,8 +2436,11 @@
         mobileCardTitle: "Prefer using the App?",
         mobileCardSub: "Switch to the app keeping your language and postal code.",
         btnMobileCardApp: "Go to App →",
+        sampleLabel1: "Illustrative example · fictitious profiles",
+        sampleLabel2: "Illustrative example · fictitious profiles",
+        appSoon: "Coming soon",
         pwaInstallTitle: "📲 Install LIMPIAPP on your home screen",
-        pwaInstallSub: "Fast browser-free shortcut synced with your account.",
+        pwaInstallSub: "Quick shortcut, no need to open the browser.",
         btnPwaInstall: "Install quick shortcut",
         pwaManualFallback: "Open the browser menu and select Install / Add to Home Screen.",
         badgeHero: "🌍 International Technology Platform",
@@ -2572,8 +2605,11 @@
         mobileCardTitle: "Vous préférez utiliser l'App ?",
         mobileCardSub: "Passez à l'application en gardant votre langue et votre code postal.",
         btnMobileCardApp: "Aller à l'App →",
+        sampleLabel1: "Exemple illustratif · profils fictifs",
+        sampleLabel2: "Exemple illustratif · profils fictifs",
+        appSoon: "Bientôt",
         pwaInstallTitle: "📲 Installez LIMPIAPP sur votre écran d'accueil",
-        pwaInstallSub: "Raccourci rapide sans navigateur, synchronisé avec votre compte.",
+        pwaInstallSub: "Raccourci rapide, sans ouvrir le navigateur.",
         btnPwaInstall: "Installer le raccourci",
         pwaManualFallback: "Ouvrez le menu du navigateur et choisissez Installer / Ajouter à l'écran d'accueil.",
         badgeHero: "🌍 Plateforme Technologique Internationale",
@@ -2715,8 +2751,11 @@
         mobileCardTitle: "Lieber die App nutzen?",
         mobileCardSub: "Wechseln Sie in die App mit Sprache und Postleitzahl.",
         btnMobileCardApp: "Zur App →",
+        sampleLabel1: "Illustratives Beispiel · fiktive Profile",
+        sampleLabel2: "Illustratives Beispiel · fiktive Profile",
+        appSoon: "Demnächst",
         pwaInstallTitle: "📲 LIMPIAPP auf dem Startbildschirm installieren",
-        pwaInstallSub: "Schneller Direktzugriff ohne Browser, synchronisiert mit Ihrem Konto.",
+        pwaInstallSub: "Schneller Direktzugriff, ohne den Browser zu öffnen.",
         btnPwaInstall: "Direktzugriff installieren",
         pwaManualFallback: "Öffnen Sie das Browsermenü und wählen Sie Installieren / Zum Startbildschirm.",
         badgeHero: "🌍 Internationale Technologieplattform",
@@ -2858,8 +2897,11 @@
         mobileCardTitle: "Preferisci usare l'App?",
         mobileCardSub: "Passa all'applicazione mantenendo lingua e CAP.",
         btnMobileCardApp: "Vai all'App →",
+        sampleLabel1: "Esempio illustrativo · profili fittizi",
+        sampleLabel2: "Esempio illustrativo · profili fittizi",
+        appSoon: "Prossimamente",
         pwaInstallTitle: "📲 Installa LIMPIAPP sulla schermata Home",
-        pwaInstallSub: "Accesso rapido senza browser, sincronizzato con il tuo account.",
+        pwaInstallSub: "Accesso rapido, senza aprire il browser.",
         btnPwaInstall: "Installa accesso rapido",
         pwaManualFallback: "Apri il menu del browser e scegli Installa / Aggiungi a schermata Home.",
         badgeHero: "🌍 Piattaforma Tecnologica Internazionale",
@@ -3001,8 +3043,11 @@
         mobileCardTitle: "Prefere usar a App?",
         mobileCardSub: "Mude para a aplicação mantendo idioma e código postal.",
         btnMobileCardApp: "Ir para a App →",
+        sampleLabel1: "Exemplo ilustrativo · perfis fictícios",
+        sampleLabel2: "Exemplo ilustrativo · perfis fictícios",
+        appSoon: "Em breve",
         pwaInstallTitle: "📲 Instale a LIMPIAPP no ecrã inicial",
-        pwaInstallSub: "Atalho rápido sem navegador, sincronizado com a sua conta.",
+        pwaInstallSub: "Atalho rápido, sem abrir o navegador.",
         btnPwaInstall: "Instalar atalho rápido",
         pwaManualFallback: "Abra o menu do navegador e escolha Instalar / Adicionar ao ecrã inicial.",
         badgeHero: "🌍 Plataforma Tecnológica Internacional",
@@ -3318,6 +3363,20 @@
 
       actualizarEnlacesApp(lang);
     }
+
+    // Las tiendas, la franja y la tarjeta "Abrir App" solo aparecen cuando la app existe (waitlist-config.js → app.*)
+    (function () {
+      var app = (window.LIMPIAPP_CONFIG && window.LIMPIAPP_CONFIG.app) || {};
+      var show = function (id, on) { var el = document.getElementById(id); if (el) el.hidden = !on; };
+      show('mobileAppStrip', !!app.openUrl);
+      show('mobileAppCard', !!app.openUrl);
+      show('storeBadgesRow', !!(app.iosUrl || app.androidUrl));
+      show('btnStoreApple', !!app.iosUrl);
+      show('btnStoreGoogle', !!app.androidUrl);
+      var a = document.getElementById('btnStoreApple'); if (a && app.iosUrl) a.href = app.iosUrl;
+      var g = document.getElementById('btnStoreGoogle'); if (g && app.androidUrl) g.href = app.androidUrl;
+      var soon = document.getElementById('appSoon'); if (soon && (app.openUrl || app.iosUrl || app.androidUrl)) soon.hidden = true;
+    })();
 
     window.addEventListener('beforeinstallprompt', function(e) {
       e.preventDefault();

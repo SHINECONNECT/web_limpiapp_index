@@ -1,5 +1,27 @@
 (function() {
-  const STORAGE_KEY = 'limpiapp_cookie_consent_v1';
+  // Mismo esquema que index.html: { necessary, preferences, analytics, updatedAt }
+  const STORAGE_KEY = 'limpiapp_cookie_consent_v2';
+  const LEGACY_KEY = 'limpiapp_cookie_consent_v1';
+  const COOKIE_NAME = 'limpiapp_cookies_v2';
+
+  function readConsent() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+      // Migración de la versión anterior (tecnicas/analiticas/marketing)
+      const old = localStorage.getItem(LEGACY_KEY);
+      if (old) {
+        const o = JSON.parse(old);
+        const migrated = { necessary: true, preferences: !!o.marketing, analytics: !!o.analiticas, updatedAt: o.timestamp || new Date().toISOString() };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+        localStorage.removeItem(LEGACY_KEY);
+        return migrated;
+      }
+    } catch (e) {}
+    const m = document.cookie.match(/(?:^|;\s*)limpiapp_cookies_v2=([^;]*)/);
+    if (m && m[1]) { try { return JSON.parse(decodeURIComponent(m[1])); } catch (e) {} }
+    return null;
+  }
 
   const textos = {
     es: {
@@ -368,17 +390,27 @@
 
   function saveConsent(prefs) {
     const record = {
-      tecnicas: true,
-      analiticas: !!prefs.analiticas,
-      marketing: !!prefs.marketing,
-      timestamp: new Date().toISOString()
+      necessary: true,
+      preferences: !!prefs.marketing,
+      analytics: !!prefs.analiticas,
+      updatedAt: new Date().toISOString()
     };
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+      if (record.preferences) {
+        const l = getLang();
+        localStorage.setItem('limpiapp_lang', l);
+        localStorage.setItem('lang', l);
+      }
     } catch (e) {}
+    try {
+      const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = COOKIE_NAME + '=' + encodeURIComponent(JSON.stringify(record)) + '; expires=' + expires + '; path=/; SameSite=Lax';
+    } catch (e) {}
+    window.limpiappCookieConsent = record;
 
-    // Si el usuario rechaza analíticas/marketing, limpiar posibles cookies no técnicas
-    if (!record.analiticas || !record.marketing) {
+    // Si el usuario rechaza analíticas, limpiar posibles cookies de medición
+    if (!record.analytics) {
       const cookiesToClear = ['_ga', '_gid', '_gat', '_fbp'];
       const host = window.location.hostname;
       cookiesToClear.forEach(name => {
@@ -485,11 +517,12 @@
     modal.id = 'lmp-cookie-modal';
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'lmpModalTitleText');
     modal.innerHTML = `
       <div class="lmp-modal-card">
         <div class="lmp-modal-header">
           <h3>🍪 <span id="lmpModalTitleText">${t.modalTitulo}</span></h3>
-          <button type="button" class="lmp-modal-close" id="lmpModalClose" aria-label="Cerrar">&times;</button>
+          <button type="button" class="lmp-modal-close" id="lmpModalClose" aria-label="×">&times;</button>
         </div>
         <div class="lmp-modal-body">
           <div class="lmp-cat-item">
@@ -528,13 +561,23 @@
     // Eventos
     document.getElementById('lmpBtnRejectAll').onclick = () => saveConsent({ analiticas: false, marketing: false });
     document.getElementById('lmpBtnAcceptAll').onclick = () => saveConsent({ analiticas: true, marketing: true });
-    document.getElementById('lmpBtnOpenConfig').onclick = () => {
+    let lastFocus = null;
+    const openModal = () => {
+      lastFocus = document.activeElement;
       modal.style.display = 'flex';
+      const first = document.getElementById('lmpModalClose');
+      if (first) first.focus();
     };
-
-    document.getElementById('lmpModalClose').onclick = () => {
+    const closeModal = () => {
       modal.style.display = 'none';
+      if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
     };
+    window.__lmpOpenModal = openModal;
+    document.getElementById('lmpBtnOpenConfig').onclick = openModal;
+    document.getElementById('lmpModalClose').onclick = closeModal;
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && modal.style.display === 'flex') closeModal();
+    });
     document.getElementById('lmpModalReject').onclick = () => saveConsent({ analiticas: false, marketing: false });
     document.getElementById('lmpModalAccept').onclick = () => saveConsent({ analiticas: true, marketing: true });
     document.getElementById('lmpModalSave').onclick = () => {
@@ -546,12 +589,11 @@
 
     // Comprobar si ya existe decisión previa
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+      const parsed = readConsent();
+      if (parsed) {
         banner.style.display = 'none';
-        const parsed = JSON.parse(saved);
-        document.getElementById('lmpChkAna').checked = !!parsed.analiticas;
-        document.getElementById('lmpChkMkt').checked = !!parsed.marketing;
+        document.getElementById('lmpChkAna').checked = !!parsed.analytics;
+        document.getElementById('lmpChkMkt').checked = !!parsed.preferences;
       }
     } catch (e) {}
   }
@@ -563,10 +605,7 @@
   // Función global para reabrir el panel desde el pie de página (Revocación RGPD)
   window.abrirConfiguracionCookies = function() {
     applyCookieTexts();
-    const modal = document.getElementById('lmp-cookie-modal');
-    if (modal) {
-      modal.style.display = 'flex';
-    }
+    if (window.__lmpOpenModal) window.__lmpOpenModal();
   };
 
   if (document.readyState === 'loading') {

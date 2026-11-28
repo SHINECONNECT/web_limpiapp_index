@@ -3,382 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acceso y Registro de Cuenta | LIMPIAPP</title>
-  
-  <meta name="apple-itunes-app" content="app-id=limpiapp">
-  <link rel="alternate" href="limpiapp://auth">
+  <title>Acceso | LIMPIAPP</title>
+  <meta name="description" content="Las cuentas de LIMPIAPP abrirán con la app. Mientras tanto, deja tu solicitud como cliente o profesional de limpieza.">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#4f585d">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/inter.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --color-logo-blue: #7faecb;
-      --color-logo-blue-dark: #6294b4;
-      --color-logo-blue-light: #eef5f9;
-      --color-logo-blue-soft: #d2e4f0;
-      
+      --color-logo-blue-dark: #4a7a99;
       --color-logo-charcoal: #4f585d;
       --color-logo-charcoal-dark: #373e42;
-      
       --color-slate-dark: #24292d;
       --color-slate-medium: #475259;
-      --color-slate-muted: #6a767e;
+      --color-slate-muted: #5d6970;
       --color-slate-border: #d4dfe6;
-      
       --color-bg-page: #f8fafc;
       --color-bg-card: #ffffff;
-      
       --radius-sm: 8px;
-      --radius-md: 12px;
       --radius-lg: 16px;
       --shadow-card: 0 10px 25px -5px rgba(36, 41, 45, 0.08);
     }
+    [hidden] { display: none !important; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+    body { background: var(--color-bg-page); color: var(--color-slate-dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    
-    body {
-      background-color: var(--color-bg-page);
-      color: var(--color-slate-dark);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .top-bar { background: var(--color-bg-card); border-bottom: 1px solid var(--color-slate-border); padding: 8px 24px; width: 100%; display: flex; justify-content: flex-end; align-items: center; gap: 12px; font-size: 0.85rem; }
+    .top-bar label { color: var(--color-slate-muted); font-weight: 600; }
+    .lang-select { padding: 5px 12px; border-radius: var(--radius-sm); border: 1px solid var(--color-slate-border); font-size: 0.85rem; background: var(--color-bg-page); color: var(--color-slate-dark); font-weight: 600; cursor: pointer; }
 
-    .top-bar {
-      background-color: var(--color-bg-card);
-      border-bottom: 1px solid var(--color-slate-border);
-      padding: 8px 24px;
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.85rem;
-    }
-    .lang-select {
-      padding: 5px 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--color-slate-border);
-      font-size: 0.82rem;
-      background: var(--color-bg-page);
-      color: var(--color-slate-medium);
-      font-weight: 600;
-      cursor: pointer;
-    }
+    .main-wrapper { width: 100%; display: flex; justify-content: center; padding: 30px 16px 50px; }
+    .container { max-width: 520px; width: 100%; background: var(--color-bg-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); border: 1.5px solid var(--color-slate-border); overflow: hidden; }
+    .card-header { padding: 24px 20px 16px; text-align: center; border-bottom: 1px solid var(--color-slate-border); }
+    .card-header img { max-width: 260px; width: 80%; height: auto; display: block; margin: 0 auto; mix-blend-mode: multiply; }
+    .content-area { padding: 28px 24px 32px; }
 
-    .main-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      padding: 30px 16px 50px;
-    }
-
-    .container {
-      max-width: 520px;
-      width: 100%;
-      background: var(--color-bg-card);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      border: 1.5px solid var(--color-slate-border);
-      overflow: hidden;
-    }
-
-    .card-header {
-      background-color: #ffffff;
-      padding: 24px 20px 16px;
-      text-align: center;
-      border-bottom: 1px solid var(--color-slate-border);
-    }
-    .card-header img {
-      max-width: 260px;
-      width: 80%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      mix-blend-mode: multiply;
-    }
-
-    .auth-mode-tabs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: #f1f5f9;
-      border-bottom: 1.5px solid var(--color-slate-border);
-    }
-    .auth-tab-btn {
-      padding: 14px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--color-slate-muted);
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      transition: all 0.2s;
-    }
-    .auth-tab-btn.active {
-      background: #ffffff;
-      color: var(--color-slate-dark);
-      border-bottom: 3px solid var(--color-logo-charcoal);
-    }
-
-    .content-area { padding: 28px 24px; }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--color-logo-blue-dark);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.88rem;
-      margin-bottom: 16px;
-    }
+    .back-link { display: inline-block; color: var(--color-logo-blue-dark); text-decoration: none; font-weight: 700; font-size: 0.9rem; margin-bottom: 18px; }
     .back-link:hover { text-decoration: underline; }
+    h1 { font-size: 1.5rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    p { color: var(--color-slate-medium); font-size: 0.95rem; margin-bottom: 12px; }
 
-    .role-toggle {
-      display: flex;
-      background: #f1f5f9;
-      border-radius: var(--radius-sm);
-      padding: 4px;
-      margin-bottom: 22px;
-      border: 1px solid var(--color-slate-border);
-    }
-    .role-btn {
-      flex: 1;
-      text-align: center;
-      padding: 9px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: var(--color-slate-muted);
-      transition: all 0.2s;
-    }
-    .role-btn.active {
-      background: #ffffff;
-      color: var(--color-slate-dark);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-    .role-btn.active.pro {
-      color: var(--color-logo-charcoal);
-      border-bottom: 2px solid var(--color-logo-charcoal);
-    }
-    .role-btn.active.client {
-      color: var(--color-logo-blue-dark);
-      border-bottom: 2px solid var(--color-logo-blue-dark);
-    }
+    .actions { display: grid; gap: 12px; margin-top: 22px; }
+    .btn { display: block; text-align: center; text-decoration: none; padding: 13px 16px; border-radius: var(--radius-sm); font-weight: 700; font-size: 1rem; border: 2px solid var(--color-logo-charcoal); transition: background .2s; }
+    .btn-primary { background: var(--color-logo-charcoal); color: #fff; }
+    .btn-primary:hover { background: var(--color-logo-charcoal-dark); }
+    .btn-secondary { background: #fff; color: var(--color-logo-charcoal); }
+    .btn-secondary:hover { background: #eef5f9; }
+    .btn:focus-visible, .lang-select:focus-visible, a:focus-visible { outline: 3px solid var(--color-logo-blue); outline-offset: 2px; }
 
-    h1 {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: var(--color-slate-dark);
-      margin-bottom: 6px;
-      line-height: 1.3;
-    }
-    .subtitle {
-      color: var(--color-slate-muted);
-      font-size: 0.88rem;
-      margin-bottom: 22px;
-    }
+    footer { background: var(--color-slate-dark); color: #b4bfca; padding: 36px 20px 28px; font-size: 0.9rem; text-align: center; width: 100%; }
+    .footer-links { display: flex; justify-content: center; gap: 8px 18px; flex-wrap: wrap; margin: 12px 0 16px; }
+    .footer-links a, .footer-links button { color: #e2e8f0; text-decoration: none; font-size: 0.85rem; background: none; border: 0; cursor: pointer; font-family: inherit; padding: 0; }
+    .footer-links a:hover, .footer-links button:hover { color: #fff; text-decoration: underline; }
+    .footer-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.5; }
 
-    .form-group { margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
-    label { font-weight: 700; font-size: 0.88rem; color: var(--color-slate-dark); }
-    
-    input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
-      width: 100%;
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--color-slate-border);
-      font-size: 0.95rem;
-      font-family: inherit;
-      background-color: #ffffff;
-      color: var(--color-slate-dark);
-    }
-    input:focus {
-      outline: none;
-      border-color: var(--color-logo-charcoal);
-      box-shadow: 0 0 0 3px rgba(79, 88, 93, 0.2);
-    }
-
-    .password-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-    .password-wrapper input {
-      padding-right: 44px;
-    }
-    .toggle-password-btn {
-      position: absolute;
-      right: 10px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-slate-muted);
-      user-select: none;
-    }
-    .toggle-password-btn:hover {
-      color: var(--color-slate-dark);
-    }
-    .toggle-password-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .pw-hint {
-      font-size: 0.76rem;
-      color: var(--color-slate-muted);
-      margin-top: 4px;
-    }
-
-    .legal-box {
-      background: #f1f6f9;
-      padding: 12px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      color: #475569;
-      margin: 18px 0;
-      border: 1px solid var(--color-slate-border);
-    }
-    .checkbox-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.82rem;
-      color: #475569;
-      cursor: pointer;
-    }
-    .checkbox-label input {
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      margin-top: 2px;
-      accent-color: var(--color-logo-charcoal);
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--color-logo-charcoal);
-      color: #ffffff;
-      padding: 13px;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-submit:hover { background: var(--color-logo-charcoal-dark); }
-
-    .alt-action {
-      text-align: center;
-      margin-top: 18px;
-      font-size: 0.88rem;
-      color: var(--color-slate-muted);
-    }
-    .alt-action a {
-      color: var(--color-logo-blue-dark);
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .alt-action a:hover { text-decoration: underline; }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(36, 41, 45, 0.6);
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 20px;
-    }
-    .modal-box {
-      background: #ffffff;
-      padding: 32px 28px;
-      border-radius: var(--radius-md);
-      max-width: 440px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2);
-    }
-
-    footer {
-      background-color: var(--color-slate-dark);
-      color: #94a3b8;
-      padding: 40px 20px 30px;
-      font-size: 0.9rem;
-      text-align: center;
-      width: 100%;
-    }
-    .footer-container { max-width: 850px; margin: 0 auto; }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin: 14px 0 18px;
-    }
-    .footer-links a { color: #cbd5e1; text-decoration: none; font-size: 0.85rem; }
-    .footer-links a:hover { color: #ffffff; }
-
-    /* RESPONSIVE MÓVIL (ANDROID E IPHONE) */
     @media (max-width: 600px) {
-      .top-bar {
-        justify-content: center;
-        padding: 8px 14px;
-        gap: 8px;
-        font-size: 0.8rem;
-      }
-      .lang-select {
-        font-size: 16px; /* Evita zoom automático en iPhone */
-        max-width: 175px;
-        padding: 4px 8px;
-      }
-      .main-wrapper {
-        padding: 18px 12px 36px;
-      }
-      .card-header {
-        padding: 20px 16px 14px;
-      }
-      .card-header img {
-        max-width: 240px;
-      }
-      .content-area {
-        padding: 22px 18px;
-      }
-      .role-btn {
-        font-size: 0.82rem;
-        padding: 8px 6px;
-      }
-      input[type="text"],
-      input[type="email"],
-      input[type="password"],
-      input[type="tel"] {
-        font-size: 16px !important; /* Evita zoom automático en iPhone Safari */
-      }
+      .top-bar { justify-content: center; padding: 8px 14px; }
+      .lang-select { font-size: 16px; max-width: 175px; }
+      .main-wrapper { padding: 18px 12px 36px; }
+      .content-area { padding: 22px 18px 26px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Selector Multilingüe Universal -->
   <div class="top-bar">
-    <span style="color: var(--color-slate-muted); font-weight: 600;">🌐 Idioma / Language:</span>
-    <select class="lang-select" id="langSelectAuth">
+    <label for="langSelect">🌐 Idioma / Language:</label>
+    <select class="lang-select" id="langSelect">
       <optgroup label="Lenguas de España">
         <option value="es" selected>Español</option>
         <option value="ca">Valencià / Català</option>
@@ -396,864 +93,130 @@
   </div>
 
   <div class="main-wrapper">
-    <div class="container">
-      
+    <main class="container">
       <div class="card-header">
-        <a href="index.html" id="logoLink">
-          <img src="logo.png.png" onerror="if(!this.t1){this.t1=1;this.src='logo.png';}else if(!this.t2){this.t2=1;this.src='logo.jpg';}" alt="LIMPIAPP by Shineconnect">
+        <a href="index.html" id="logoLink" aria-label="LIMPIAPP">
+          <img src="/logo.png" width="1200" height="353" alt="LIMPIAPP by Shineconnect">
         </a>
-      </div>
-
-      <!-- Pestañas de Selección: Iniciar Sesión vs Crear Cuenta -->
-      <div class="auth-mode-tabs">
-        <button type="button" class="auth-tab-btn active" id="tabLogin">
-          Iniciar Sesión
-        </button>
-        <button type="button" class="auth-tab-btn" id="tabRegister">
-          Crear Cuenta
-        </button>
       </div>
 
       <div class="content-area">
         <a href="index.html" class="back-link" id="backLink">← Volver al inicio</a>
-        
-        <!-- Toggle de Tipo de Perfil -->
-        <div class="role-toggle">
-          <button type="button" class="role-btn active client" id="btnRoleClient">
-            Hogar / Empresa
-          </button>
-          <button type="button" class="role-btn pro" id="btnRolePro">
-            Profesional de Limpieza
-          </button>
-        </div>
+        <h1 id="loginTitle">Acceso a tu cuenta: próximamente</h1>
+        <p id="loginP1"></p>
+        <p id="loginP2"></p>
 
-        <div>
-          <h1 id="authTitle">Accede a tu cuenta</h1>
-          <p class="subtitle" id="authSub">
-            Introduce tus credenciales para gestionar tus servicios o tu perfil en LIMPIAPP.
-          </p>
-        </div>
-
-        <form id="authForm" action="https://script.google.com/macros/s/AKfycbxW3XJcoXiJARbpFIOZOI8ng0x8LO0qiAhUErDcNiSP7N_dh_qwyqCIr9gADQ_Lct3bYQ/exec" method="POST">
-          <input type="hidden" name="tipo_formulario" id="hiddenFormType" value="login">
-          <input type="hidden" name="perfil_usuario" id="hiddenRole" value="cliente">
-          <input type="hidden" name="idioma" id="hiddenLang" value="es">
-
-          <!-- Campos visibles únicamente al CREAR CUENTA -->
-          <div id="registerFields" style="display: none;">
-            <div class="form-group">
-              <label id="lblNombre">Nombre y Apellidos *</label>
-              <input type="text" name="nombre" id="inputNombre" placeholder="Tu nombre completo">
-            </div>
-
-            <div class="form-group">
-              <label id="lblTel">Teléfono / WhatsApp *</label>
-              <input type="tel" name="telefono" id="inputTel" placeholder="+34 600 000 000">
-            </div>
-
-            <div class="form-group">
-              <label id="lblCP">Código Postal *</label>
-              <input type="text" name="cp" id="inputCP" placeholder="Ej. 46006">
-            </div>
-          </div>
-
-          <!-- Campos Comunes: Email y Contraseña -->
-          <div class="form-group">
-            <label id="lblEmail">Correo Electrónico *</label>
-            <input type="email" name="email" id="inputEmail" required placeholder="tu@email.com">
-          </div>
-
-          <div class="form-group">
-            <label id="lblPassword">Contraseña *</label>
-            <div class="password-wrapper">
-              <input type="password" name="password" id="inputPassword" required minlength="8" placeholder="••••••••">
-              <button type="button" class="toggle-password-btn" id="btnTogglePassword" title="Mostrar/ocultar contraseña" aria-label="Mostrar contraseña">
-                <svg id="eyeIconPw" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-              </button>
-            </div>
-            <span class="pw-hint" id="pwHint">Mínimo 8 caracteres (se recomienda combinar letras y números).</span>
-          </div>
-
-          <!-- Confirmar contraseña solo al CREAR CUENTA -->
-          <div class="form-group" id="groupConfirmPw" style="display: none;">
-            <label id="lblConfirmPw">Confirmar Contraseña *</label>
-            <div class="password-wrapper">
-              <input type="password" id="inputConfirmPassword" minlength="8" placeholder="••••••••">
-              <button type="button" class="toggle-password-btn" id="btnToggleConfirmPassword" title="Mostrar/ocultar confirmación" aria-label="Mostrar confirmación">
-                <svg id="eyeIconConfirm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- Checkbox legal solo al CREAR CUENTA -->
-          <div class="legal-box" id="legalBoxRegister" style="display: none;">
-            <label class="checkbox-label">
-              <input type="checkbox" name="rgpd" id="checkRgpd">
-              <span id="txtRgpd">He leído y acepto los <a href="terminos.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.</span>
-            </label>
-          </div>
-
-          <button type="submit" id="btnSubmitAuth" class="btn-submit">
-            Entrar a LIMPIAPP
-          </button>
-        </form>
-
-        <div class="alt-action">
-          <span id="txtAltPrompt">¿No tienes cuenta todavía? </span>
-          <a href="javascript:void(0)" id="linkToggleMode">Crea tu cuenta aquí</a>
+        <div class="actions">
+          <a href="clientes.html" class="btn btn-primary" id="ctaClient"></a>
+          <a href="registro.html" class="btn btn-secondary" id="ctaPro"></a>
+          <a href="#" class="btn btn-primary" id="ctaOpenApp" hidden></a>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div id="modalAuth" class="modal-overlay">
-    <div class="modal-box">
-      <div style="font-size: 3rem; color: #16a34a; margin-bottom: 12px;" id="modalIcon">✓</div>
-      <h3 style="color: var(--color-slate-dark); font-size: 1.35rem; margin-bottom: 10px;" id="modalTitle">¡Cuenta Preparada!</h3>
-      <p style="color: var(--color-slate-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 22px;" id="modalDesc">
-        Tus credenciales y perfil han quedado registrados en LIMPIAPP. Podrás iniciar sesión directamente en la nueva App móvil con este mismo correo y contraseña.
-      </p>
-      <button type="button" id="modalBtn" style="background: var(--color-logo-charcoal); color: #ffffff; border: none; padding: 12px 24px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer;">
-        Volver a la Portada
-      </button>
-    </div>
+    </main>
   </div>
 
   <footer>
     <div class="footer-container">
-      <p style="color: #cbd5e1; font-weight: 500; margin-bottom: 10px;" id="footCopy">
-        &copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.
-      </p>
-      <div class="footer-links">
+      <p id="footCopy" style="color:#e2e8f0;font-weight:500;">&copy; 2026 SHINECONNECT S.L. — LIMPIAPP. Todos los derechos reservados.</p>
+      <nav class="footer-links" aria-label="Legal">
         <a href="aviso-legal.html" id="footAviso">Aviso Legal</a>
-        <span style="color: #475569;">|</span>
         <a href="terminos.html" id="footTerminos">Términos y Condiciones</a>
-        <span style="color: #475569;">|</span>
         <a href="privacidad.html" id="footPrivacidad">Política de Privacidad</a>
-        <span style="color: #475569;">|</span>
-        <a href="cookies.html" id="footCookies">Política de Cookies</a><span style="color: #475569;">|</span>
-        <a href="javascript:void(0)" id="footConfigCookies" onclick="abrirConfiguracionCookies()">Configurar Cookies</a>
-      </div>
-      <p style="font-size: 0.8rem; color: #64748b; line-height: 1.5;" id="footDesc">
-        Plataforma tecnológica de intermediación de servicios de limpieza. Operada a nivel internacional por Shineconnect S.L. (B26917807). Contacto: gerencia@limpiapp.app
-      </p>
+        <a href="cookies.html" id="footCookies">Política de Cookies</a>
+        <button type="button" id="footConfigCookies" onclick="abrirConfiguracionCookies()">Configurar Cookies</button>
+      </nav>
+      <p class="footer-desc">Shineconnect S.L. (B26917807) · c/Mayor, 5, Fortaleny, España · gerencia@limpiapp.app</p>
     </div>
   </footer>
 
+  <script src="waitlist-config.js"></script>
+  <script src="waitlist-i18n.js"></script>
   <script>
-    var dicc = {
-      es: {
-        tabLogin: "Iniciar Sesión",
-        tabRegister: "Crear Cuenta",
-        backLink: "← Volver al inicio",
-        roleClient: "Hogar / Empresa",
-        rolePro: "Profesional de Limpieza",
-        titleLog: "Accede a tu cuenta",
-        subLog: "Introduce tus credenciales para gestionar tus servicios o tu perfil en LIMPIAPP.",
-        btnSubmitLog: "Entrar a LIMPIAPP",
-        promptNoAccount: "¿No tienes cuenta todavía? ",
-        linkGoRegister: "Crea tu cuenta aquí",
-        titleReg: "Crea tu cuenta personal",
-        subReg: "Regístrate con tu contraseña para acceder a la plataforma web y conectar con la App móvil.",
-        btnSubmitReg: "Crear mi Cuenta",
-        promptHasAccount: "¿Ya tienes cuenta registrada? ",
-        linkGoLogin: "Inicia sesión aquí",
-        lblNombre: "Nombre y Apellidos *",
-        placeholderNombre: "Tu nombre completo",
-        lblTel: "Teléfono / WhatsApp *",
-        placeholderTel: "+34 600 000 000",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ej. 46006",
-        lblEmail: "Correo Electrónico *",
-        placeholderEmail: "tu@email.com",
-        lblPassword: "Contraseña *",
-        lblConfirmPw: "Confirmar Contraseña *",
-        pwHint: "Mínimo 8 caracteres (se recomienda combinar letras y números).",
-        txtRgpd: 'He leído y acepto los <a href="terminos.html?lang=es" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Términos y Condiciones</a> y la <a href="privacidad.html?lang=es" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidad</a> de Shineconnect S.L.',
-        modalTitleLog: "¡Sesión Verificada!",
-        modalDescLog: "Tus credenciales se han validado correctamente. Tu cuenta está lista para la sincronización con la App.",
-        modalTitleReg: "¡Cuenta Creada con Éxito!",
-        modalDescReg: "Tus datos y contraseña se han registrado en Cuentas. Podrás iniciar sesión en la web y en la App móvil.",
-        modalBtn: "Volver a la Portada",
-        footAviso: "Aviso Legal",
-        footTerminos: "Términos y Condiciones",
-        footPrivacidad: "Política de Privacidad",
-        footCookies: "Política de Cookies",
-        footConfigCookies: "Configurar Cookies"
-      },
-      ca: {
-        tabLogin: "Iniciar Sessió",
-        tabRegister: "Crear Compte",
-        backLink: "← Tornar a l'inici",
-        roleClient: "Llar / Empresa",
-        rolePro: "Professional de Neteja",
-        titleLog: "Accedeix al teu compte",
-        subLog: "Introdueix les teves credencials per gestionar serveis o el teu perfil a LIMPIAPP.",
-        btnSubmitLog: "Entrar a LIMPIAPP",
-        promptNoAccount: "No tens compte encara? ",
-        linkGoRegister: "Crea el teu compte aquí",
-        titleReg: "Crea el teu compte personal",
-        subReg: "Registra't amb contrasenya per accedir al web i connectar amb l'App mòbil.",
-        btnSubmitReg: "Crear el meu Compte",
-        promptHasAccount: "Ja tens compte registrat? ",
-        linkGoLogin: "Inicia sessió aquí",
-        lblNombre: "Nom i Cognoms *",
-        placeholderNombre: "El teu nom complet",
-        lblTel: "Telèfon / WhatsApp *",
-        placeholderTel: "+34 600 000 000",
-        lblCP: "Codi Postal *",
-        placeholderCP: "Ex. 46006",
-        lblEmail: "Correu Electrònic *",
-        placeholderEmail: "el-teu@email.com",
-        lblPassword: "Contrasenya *",
-        lblConfirmPw: "Confirmar Contrasenya *",
-        pwHint: "Mínim 8 caràcters (es recomana combinar lletres i números).",
-        txtRgpd: 'He llegit i accepto els <a href="terminos.html?lang=ca" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termes i Condicions</a> i la <a href="privacidad.html?lang=ca" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacitat</a> de Shineconnect S.L.',
-        modalTitleLog: "Sessió Verificada!",
-        modalDescLog: "Les teves credencials s'han validat correctament. El teu compte està a punt per a l'App.",
-        modalTitleReg: "Compte Creat amb Èxit!",
-        modalDescReg: "Les teves dades i contrasenya s'han registrat. Podràs iniciar sessió a la web i a l'App.",
-        modalBtn: "Tornar a la Portada",
-        footAviso: "Avís Legal",
-        footTerminos: "Termes i Condicions",
-        footPrivacidad: "Política de Privacitat",
-        footCookies: "Política de Galetes",
-        footConfigCookies: "Configurar Galetes"
-      },
-      en: {
-        tabLogin: "Sign In",
-        tabRegister: "Create Account",
-        backLink: "← Back to home",
-        roleClient: "Home / Business",
-        rolePro: "Cleaning Professional",
-        titleLog: "Access your account",
-        subLog: "Enter your credentials to manage your bookings or profile on LIMPIAPP.",
-        btnSubmitLog: "Sign In to LIMPIAPP",
-        promptNoAccount: "Don't have an account yet? ",
-        linkGoRegister: "Create your account here",
-        titleReg: "Create your personal account",
-        subReg: "Register with a password to access the web platform and connect to the mobile App.",
-        btnSubmitReg: "Create Account",
-        promptHasAccount: "Already registered? ",
-        linkGoLogin: "Sign in here",
-        lblNombre: "Full Name *",
-        placeholderNombre: "Your full name",
-        lblTel: "Phone / WhatsApp *",
-        placeholderTel: "+34 600 000 000",
-        lblCP: "Postal Code *",
-        placeholderCP: "e.g. 46006",
-        lblEmail: "Email Address *",
-        placeholderEmail: "your@email.com",
-        lblPassword: "Password *",
-        lblConfirmPw: "Confirm Password *",
-        pwHint: "Minimum 8 characters (letters and numbers recommended).",
-        txtRgpd: 'I have read and agree to Shineconnect S.L.\'s <a href="terminos.html?lang=en" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Terms & Conditions</a> and <a href="privacidad.html?lang=en" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Privacy Policy</a>.',
-        modalTitleLog: "Session Verified!",
-        modalDescLog: "Your credentials have been validated. Your account is ready for synchronization with the mobile App.",
-        modalTitleReg: "Account Created Successfully!",
-        modalDescReg: "Your details and password have been stored. You can sign in on the web platform and the mobile App.",
-        modalBtn: "Back to Home",
-        footAviso: "Legal Notice",
-        footTerminos: "Terms & Conditions",
-        footPrivacidad: "Privacy Policy",
-        footCookies: "Cookie Policy",
-        footConfigCookies: "Cookie Settings"
-      },
-      fr: {
-        tabLogin: "Se connecter",
-        tabRegister: "Créer un compte",
-        backLink: "← Retour à l'accueil",
-        roleClient: "Foyer / Entreprise",
-        rolePro: "Professionnel du Nettoyage",
-        titleLog: "Accédez à votre compte",
-        subLog: "Entrez vos identifiants pour gérer vos prestations sur LIMPIAPP.",
-        btnSubmitLog: "Connexion à LIMPIAPP",
-        promptNoAccount: "Pas encore de compte ? ",
-        linkGoRegister: "Créez votre compte ici",
-        titleReg: "Créez votre compte personnel",
-        subReg: "Inscrivez-vous avec un mot de passe pour accéder au web et à l'App mobile.",
-        btnSubmitReg: "Créer mon Compte",
-        promptHasAccount: "Déjà un compte ? ",
-        linkGoLogin: "Connectez-vous ici",
-        lblNombre: "Nom et Prénom *",
-        placeholderNombre: "Votre nom complet",
-        lblTel: "Téléphone / WhatsApp *",
-        placeholderTel: "+33 600 000 000",
-        lblCP: "Code Postal *",
-        placeholderCP: "ex. 75001",
-        lblEmail: "Adresse Courriel *",
-        placeholderEmail: "votre@email.com",
-        lblPassword: "Mot de passe *",
-        lblConfirmPw: "Confirmer le mot de passe *",
-        pwHint: "8 caractères minimum (chiffres et lettres recommandés).",
-        txtRgpd: 'J\'ai lu et j\'accepte les <a href="terminos.html?lang=fr" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Conditions Générales</a> et la <a href="privacidad.html?lang=fr" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Politique de Confidentialité</a> de Shineconnect S.L.',
-        modalTitleLog: "Session Vérifiée !",
-        modalDescLog: "Vos identifiants ont été validés. Votre compte est prêt pour l'App mobile.",
-        modalTitleReg: "Compte Créé avec Succès !",
-        modalDescReg: "Votre mot de passe et vos données sont enregistrés pour le web et l'App mobile.",
-        modalBtn: "Retour à l'accueil",
-        footAviso: "Mentions Légales",
-        footTerminos: "Conditions Générales",
-        footPrivacidad: "Politique de Confidentialité",
-        footCookies: "Gestion des Cookies",
-        footConfigCookies: "Configurer les Cookies"
-      },
-      de: {
-        tabLogin: "Anmelden",
-        tabRegister: "Konto erstellen",
-        backLink: "← Zurück zur Startseite",
-        roleClient: "Haushalt / Firma",
-        rolePro: "Reinigungskraft",
-        titleLog: "In Ihr Konto einloggen",
-        subLog: "Geben Sie Ihre Zugangsdaten ein, um Ihr Profil auf LIMPIAPP zu verwalten.",
-        btnSubmitLog: "Bei LIMPIAPP anmelden",
-        promptNoAccount: "Noch kein Konto? ",
-        linkGoRegister: "Hier registrieren",
-        titleReg: "Persönliches Konto erstellen",
-        subReg: "Registrieren Sie sich mit Passwort für den Zugriff auf Web und mobile App.",
-        btnSubmitReg: "Konto erstellen",
-        promptHasAccount: "Bereits registriert? ",
-        linkGoLogin: "Hier anmelden",
-        lblNombre: "Vor- und Nachname *",
-        placeholderNombre: "Ihr vollständiger Name",
-        lblTel: "Telefon / WhatsApp *",
-        placeholderTel: "+49 170 0000000",
-        lblCP: "Postleitzahl *",
-        placeholderCP: "z.B. 10115",
-        lblEmail: "E-Mail-Adresse *",
-        placeholderEmail: "ihre@email.de",
-        lblPassword: "Passwort *",
-        lblConfirmPw: "Passwort bestätigen *",
-        pwHint: "Mindestens 8 Zeichen (Buchstaben und Zahlen empfohlen).",
-        txtRgpd: 'Ich habe die <a href="terminos.html?lang=de" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">AGB</a> und die <a href="privacidad.html?lang=de" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Datenschutzerklärung</a> von Shineconnect S.L. gelesen und stimme zu.',
-        modalTitleLog: "Sitzung Bestätigt!",
-        modalDescLog: "Ihre Anmeldedaten wurden geprüft. Ihr Konto ist für die App-Synchronisierung bereit.",
-        modalTitleReg: "Konto Erfolgreich Erstellt!",
-        modalDescReg: "Ihre Zugangsdaten sind für Web und App aktiviert.",
-        modalBtn: "Zurück zur Startseite",
-        footAviso: "Impressum",
-        footTerminos: "Allgemeine Geschäftsbedingungen",
-        footPrivacidad: "Datenschutzerklärung",
-        footCookies: "Cookie-Richtlinie",
-        footConfigCookies: "Cookies konfigurieren"
-      },
-      it: {
-        tabLogin: "Accedi",
-        tabRegister: "Crea Account",
-        backLink: "← Torna alla home",
-        roleClient: "Casa / Impresa",
-        rolePro: "Professionista Pulizie",
-        titleLog: "Accedi al tuo account",
-        subLog: "Inserisci le tue credenziali per gestire i servizi o il tuo profilo su LIMPIAPP.",
-        btnSubmitLog: "Entra in LIMPIAPP",
-        promptNoAccount: "Non hai ancora un account? ",
-        linkGoRegister: "Crea il tuo account qui",
-        titleReg: "Crea il tuo account personale",
-        subReg: "Registrati con password per accedere alla piattaforma web e all'App mobile.",
-        btnSubmitReg: "Crea Account",
-        promptHasAccount: "Hai già un account? ",
-        linkGoLogin: "Accedi qui",
-        lblNombre: "Nome e Cognome *",
-        placeholderNombre: "Il tuo nome completo",
-        lblTel: "Telefono / WhatsApp *",
-        placeholderTel: "+39 340 0000000",
-        lblCP: "CAP *",
-        placeholderCP: "Es. 00185",
-        lblEmail: "Indirizzo Email *",
-        placeholderEmail: "tua@email.it",
-        lblPassword: "Password *",
-        lblConfirmPw: "Conferma Password *",
-        pwHint: "Minimo 8 caratteri (consigliate lettere e numeri).",
-        txtRgpd: 'Ho letto e accetto i <a href="terminos.html?lang=it" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termini e Condizioni</a> e l\'<a href="privacidad.html?lang=it" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Informativa sulla Privacy</a> di Shineconnect S.L.',
-        modalTitleLog: "Accesso Confermato!",
-        modalDescLog: "Le tue credenziali sono state convalidate. Il tuo account è pronto per l'App.",
-        modalTitleReg: "Account Creato con Successo!",
-        modalDescReg: "Dati e password memorizzati per il web e l'App mobile.",
-        modalBtn: "Torna alla Home",
-        footAviso: "Note Legali",
-        footTerminos: "Termini e Condizioni",
-        footPrivacidad: "Informativa sulla Privacy",
-        footCookies: "Cookie Policy",
-        footConfigCookies: "Configura Cookie"
-      },
-      pt: {
-        tabLogin: "Iniciar Sessão",
-        tabRegister: "Criar Conta",
-        backLink: "← Voltar ao início",
-        roleClient: "Lar / Empresa",
-        rolePro: "Profissional de Limpeza",
-        titleLog: "Aceda à sua conta",
-        subLog: "Introduza as suas credenciais para gerir os seus serviços na LIMPIAPP.",
-        btnSubmitLog: "Entrar na LIMPIAPP",
-        promptNoAccount: "Ainda não tem conta? ",
-        linkGoRegister: "Crie a sua conta aqui",
-        titleReg: "Crie a sua conta pessoal",
-        subReg: "Registe-se com palavra-passe para aceder ao portal e à App móvel.",
-        btnSubmitReg: "Criar Conta",
-        promptHasAccount: "Já tem conta? ",
-        linkGoLogin: "Inicie sessão aqui",
-        lblNombre: "Nome e Apelidos *",
-        placeholderNombre: "O seu nome completo",
-        lblTel: "Telefone / WhatsApp *",
-        placeholderTel: "+351 912 000 000",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ex. 1000-001",
-        lblEmail: "Correio Eletrónico *",
-        placeholderEmail: "o-seu@email.pt",
-        lblPassword: "Palavra-passe *",
-        lblConfirmPw: "Confirmar Palavra-passe *",
-        pwHint: "Mínimo 8 caracteres (recomendado letras e números).",
-        txtRgpd: 'Li e aceito os <a href="terminos.html?lang=pt" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condições</a> e a <a href="privacidad.html?lang=pt" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> da Shineconnect S.L.',
-        modalTitleLog: "Sessão Verificada!",
-        modalDescLog: "As suas credenciais foram validadas. A conta está pronta para a App.",
-        modalTitleReg: "Conta Criada com Sucesso!",
-        modalDescReg: "Palavra-passe e perfil ativos para o portal e para a App móvel.",
-        modalBtn: "Voltar à Página Inicial",
-        footAviso: "Aviso Legal",
-        footTerminos: "Termos e Condições",
-        footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies",
-        footConfigCookies: "Configurar Cookies"
-      },
-      gl: {
-        tabLogin: "Iniciar Sesión",
-        tabRegister: "Crear Conta",
-        backLink: "← Volver ao inicio",
-        roleClient: "Fogar / Empresa",
-        rolePro: "Profesional de Limpeza",
-        titleLog: "Accede á túa conta",
-        subLog: "Introduce as túas credenciais para xestionar servizos en LIMPIAPP.",
-        btnSubmitLog: "Entrar en LIMPIAPP",
-        promptNoAccount: "Non tes conta aínda? ",
-        linkGoRegister: "Crea a túa conta aquí",
-        titleReg: "Crea a túa conta persoal",
-        subReg: "Rexístrate con contrasinal para acceder á web e á App móbil.",
-        btnSubmitReg: "Crear a miña Conta",
-        promptHasAccount: "Xa tes conta? ",
-        linkGoLogin: "Inicia sesión aquí",
-        lblNombre: "Nome e Apelidos *",
-        placeholderNombre: "O teu nome completo",
-        lblTel: "Teléfono / WhatsApp *",
-        placeholderTel: "+34 600 000 000",
-        lblCP: "Código Postal *",
-        placeholderCP: "Ex. 46006",
-        lblEmail: "Correo Electrónico *",
-        placeholderEmail: "oteu@email.com",
-        lblPassword: "Contrasinal *",
-        lblConfirmPw: "Confirmar Contrasinal *",
-        pwHint: "Mínimo 8 caracteres (letras e números).",
-        txtRgpd: 'Lin e acepto os <a href="terminos.html?lang=gl" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Termos e Condicións</a> e a <a href="privacidad.html?lang=gl" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Política de Privacidade</a> de Shineconnect S.L.',
-        modalTitleLog: "Sesión Verificada!",
-        modalDescLog: "As túas credenciais foron validadas. Conta lista para a App.",
-        modalTitleReg: "Conta Creada con Éxito!",
-        modalDescReg: "O teu contrasinal e perfil foron rexistrados para a web e a App.",
-        modalBtn: "Volver á Portada",
-        footAviso: "Aviso Legal",
-        footTerminos: "Termos e Condicións",
-        footPrivacidad: "Política de Privacidade",
-        footCookies: "Política de Cookies",
-        footConfigCookies: "Configurar Cookies"
-      },
-      eu: {
-        tabLogin: "Hasi Saioa",
-        tabRegister: "Sortu Kontua",
-        backLink: "← Hasierara itzuli",
-        roleClient: "Etxea / Enpresa",
-        rolePro: "Garbiketa Profesionala",
-        titleLog: "Sartu zure kontuan",
-        subLog: "Sartu zure kredentzialak LIMPIAPPen zerbitzuak kudeatzeko.",
-        btnSubmitLog: "LIMPIAPPera Sartu",
-        promptNoAccount: "Ez al duzu konturik oraindik? ",
-        linkGoRegister: "Sortu zure kontua hemen",
-        titleReg: "Sortu zure kontu pertsonala",
-        subReg: "Erregistratu pasahitzarekin webgunera eta mugikorreko App-era sartzeko.",
-        btnSubmitReg: "Sortu nire Kontua",
-        promptHasAccount: "Baduzu kontua? ",
-        linkGoLogin: "Hasi saioa hemen",
-        lblNombre: "Izen-abizenak *",
-        placeholderNombre: "Zure izen osoa",
-        lblTel: "Telefonoa / WhatsApp *",
-        placeholderTel: "+34 600 000 000",
-        lblCP: "Posta-kodea *",
-        placeholderCP: "Adib. 46006",
-        lblEmail: "Posta Elektronikoa *",
-        placeholderEmail: "zure@email.eus",
-        lblPassword: "Pasahitza *",
-        lblConfirmPw: "Berretsi Pasahitza *",
-        pwHint: "Gutxienez 8 karaktere (letrak eta zenbakiak).",
-        txtRgpd: 'Irakurri eta onartzen ditut Shineconnect S.L.-ren <a href="terminos.html?lang=eu" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Baldintzak eta Xedapenak</a> eta <a href="privacidad.html?lang=eu" target="_blank" style="color: var(--color-logo-blue-dark); font-weight: 700;">Pribatutasun Politika</a>.',
-        modalTitleLog: "Saioa Egiaztatuta!",
-        modalDescLog: "Kredentzialak ondo balioztatu dira. Zure kontua prest dago App-erako.",
-        modalTitleReg: "Kontua Ondo Sortu Da!",
-        modalDescReg: "Zure pasahitza eta datuak erregistratuta geratu dira weberako eta App-erako.",
-        modalBtn: "Hasierara Itzuli",
-        footAviso: "Legezko Oharra",
-        footTerminos: "Baldintzak eta Xedapenak",
-        footPrivacidad: "Pribatutasun Politika",
-        footCookies: "Cookie Politika",
-        footConfigCookies: "Cookieak Konfiguratu"
-      }
-    };
-
-    var currentMode = 'login';
-    var currentRole = 'cliente';
-
-    function setAuthMode(mode) {
-      currentMode = mode;
-      var hiddenType = document.getElementById('hiddenFormType');
-      if (hiddenType) hiddenType.value = mode;
-
-      var tabLog = document.getElementById('tabLogin');
-      var tabReg = document.getElementById('tabRegister');
-      var regFields = document.getElementById('registerFields');
-      var groupConfirm = document.getElementById('groupConfirmPw');
-      var legalBox = document.getElementById('legalBoxRegister');
-      var checkRgpd = document.getElementById('checkRgpd');
-      var inputNombre = document.getElementById('inputNombre');
-      var inputTel = document.getElementById('inputTel');
-      var inputCP = document.getElementById('inputCP');
-      var inputConfirm = document.getElementById('inputConfirmPassword');
-
-      var lang = localStorage.getItem('limpiapp_lang') || 'es';
-      var t = dicc[lang] || dicc['es'];
-
-      if (mode === 'register') {
-        if (tabLog) tabLog.classList.remove('active');
-        if (tabReg) tabReg.classList.add('active');
-        if (regFields) regFields.style.display = 'block';
-        if (groupConfirm) groupConfirm.style.display = 'flex';
-        if (legalBox) legalBox.style.display = 'block';
-
-        if (inputNombre) inputNombre.required = true;
-        if (inputTel) inputTel.required = true;
-        if (inputCP) inputCP.required = true;
-        if (inputConfirm) inputConfirm.required = true;
-        if (checkRgpd) checkRgpd.required = true;
-
-        var aTitle = document.getElementById('authTitle');
-        if (aTitle) aTitle.innerText = t.titleReg;
-        var aSub = document.getElementById('authSub');
-        if (aSub) aSub.innerText = t.subReg;
-        var btnSub = document.getElementById('btnSubmitAuth');
-        if (btnSub) btnSub.innerText = t.btnSubmitReg;
-        var altPrompt = document.getElementById('txtAltPrompt');
-        if (altPrompt) altPrompt.innerText = t.promptHasAccount;
-        var linkToggle = document.getElementById('linkToggleMode');
-        if (linkToggle) linkToggle.innerText = t.linkGoLogin;
-      } else {
-        if (tabReg) tabReg.classList.remove('active');
-        if (tabLog) tabLog.classList.add('active');
-        if (regFields) regFields.style.display = 'none';
-        if (groupConfirm) groupConfirm.style.display = 'none';
-        if (legalBox) legalBox.style.display = 'none';
-
-        if (inputNombre) inputNombre.required = false;
-        if (inputTel) inputTel.required = false;
-        if (inputCP) inputCP.required = false;
-        if (inputConfirm) inputConfirm.required = false;
-        if (checkRgpd) checkRgpd.required = false;
-
-        var aTitle = document.getElementById('authTitle');
-        if (aTitle) aTitle.innerText = t.titleLog;
-        var aSub = document.getElementById('authSub');
-        if (aSub) aSub.innerText = t.subLog;
-        var btnSub = document.getElementById('btnSubmitAuth');
-        if (btnSub) btnSub.innerText = t.btnSubmitLog;
-        var altPrompt = document.getElementById('txtAltPrompt');
-        if (altPrompt) altPrompt.innerText = t.promptNoAccount;
-        var linkToggle = document.getElementById('linkToggleMode');
-        if (linkToggle) linkToggle.innerText = t.linkGoRegister;
-      }
-    }
-
-    function setRole(role) {
-      currentRole = role;
-      var hiddenRole = document.getElementById('hiddenRole');
-      if (hiddenRole) hiddenRole.value = role;
-
-      var btnC = document.getElementById('btnRoleClient');
-      var btnP = document.getElementById('btnRolePro');
-
-      if (role === 'profesional') {
-        if (btnC) btnC.classList.remove('active');
-        if (btnP) btnP.classList.add('active');
-      } else {
-        if (btnP) btnP.classList.remove('active');
-        if (btnC) btnC.classList.add('active');
-      }
-    }
-
-    function setupPasswordToggle(buttonId, inputId) {
-      var btn = document.getElementById(buttonId);
-      var input = document.getElementById(inputId);
-      if (!btn || !input) return;
-
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        var isPassword = input.type === 'password';
-        input.type = isPassword ? 'text' : 'password';
-
-        if (isPassword) {
-          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
-        } else {
-          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
-        }
-      });
-    }
-
-    function cambiarIdioma(lang) {
-      if (!lang || !dicc[lang]) lang = 'es';
-      localStorage.setItem('limpiapp_lang', lang);
-      localStorage.setItem('lang', lang);
-      document.documentElement.lang = lang;
-
-      // Sincronizar cookie googtrans para los documentos legales vinculados
-      var host = window.location.hostname;
-      var domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
-      var cookieVal = (lang === 'es') ? '' : '/es/' + lang;
-      
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      if (domain) document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
-      
-      if (cookieVal) {
-        document.cookie = "googtrans=" + cookieVal + "; path=/;";
-        if (domain) document.cookie = "googtrans=" + cookieVal + "; path=/; domain=" + domain + ";";
-      }
-
-      var hiddenLang = document.getElementById('hiddenLang');
-      if (hiddenLang) hiddenLang.value = lang;
-
-      var selectLang = document.getElementById('langSelectAuth');
-      if (selectLang && selectLang.value !== lang) selectLang.value = lang;
-
-      var t = dicc[lang] || dicc['es'];
-
-      var textMapping = {
-        'tabLogin': t.tabLogin,
-        'tabRegister': t.tabRegister,
-        'backLink': t.backLink,
-        'btnRoleClient': t.roleClient,
-        'btnRolePro': t.rolePro,
-        'lblNombre': t.lblNombre,
-        'lblTel': t.lblTel,
-        'lblCP': t.lblCP,
-        'lblEmail': t.lblEmail,
-        'lblPassword': t.lblPassword,
-        'lblConfirmPw': t.lblConfirmPw,
-        'pwHint': t.pwHint,
-        'modalBtn': t.modalBtn,
-        'footAviso': t.footAviso,
-        'footTerminos': t.footTerminos,
-        'footPrivacidad': t.footPrivacidad,
-        'footCookies': t.footCookies,
-        'footConfigCookies': t.footConfigCookies
+    (function () {
+      var SUPPORTED = ['es', 'ca', 'gl', 'eu', 'en', 'fr', 'de', 'it', 'pt'];
+      var FOOT = {
+        es: { footAviso: 'Aviso Legal', footTerminos: 'Términos y Condiciones', footPrivacidad: 'Política de Privacidad', footCookies: 'Política de Cookies', footConfigCookies: 'Configurar Cookies' },
+        ca: { footAviso: 'Avís Legal', footTerminos: 'Termes i Condicions', footPrivacidad: 'Política de Privacitat', footCookies: 'Política de Galetes', footConfigCookies: 'Configurar Galetes' },
+        gl: { footAviso: 'Aviso Legal', footTerminos: 'Termos e Condicións', footPrivacidad: 'Política de Privacidade', footCookies: 'Política de Cookies', footConfigCookies: 'Configurar Cookies' },
+        eu: { footAviso: 'Legezko Oharra', footTerminos: 'Baldintzak eta Xedapenak', footPrivacidad: 'Pribatutasun Politika', footCookies: 'Cookie Politika', footConfigCookies: 'Cookieak Konfiguratu' },
+        en: { footAviso: 'Legal Notice', footTerminos: 'Terms & Conditions', footPrivacidad: 'Privacy Policy', footCookies: 'Cookie Policy', footConfigCookies: 'Cookie Settings' },
+        fr: { footAviso: 'Mentions Légales', footTerminos: 'Conditions Générales', footPrivacidad: 'Politique de Confidentialité', footCookies: 'Gestion des Cookies', footConfigCookies: 'Configurer les Cookies' },
+        de: { footAviso: 'Impressum', footTerminos: 'Allgemeine Geschäftsbedingungen', footPrivacidad: 'Datenschutzerklärung', footCookies: 'Cookie-Richtlinie', footConfigCookies: 'Cookies konfigurieren' },
+        it: { footAviso: 'Note Legali', footTerminos: 'Termini e Condizioni', footPrivacidad: 'Informativa sulla Privacy', footCookies: 'Cookie Policy', footConfigCookies: 'Configura Cookie' },
+        pt: { footAviso: 'Aviso Legal', footTerminos: 'Termos e Condições', footPrivacidad: 'Política de Privacidade', footCookies: 'Política de Cookies', footConfigCookies: 'Configurar Cookies' }
       };
 
-      for (var id in textMapping) {
-        var el = document.getElementById(id);
-        if (el && textMapping[id]) el.innerText = textMapping[id];
+      var params = new URLSearchParams(window.location.search);
+      var app = (window.LIMPIAPP_CONFIG && window.LIMPIAPP_CONFIG.app) || {};
+
+      function getLang() {
+        var l = params.get('lang');
+        if (!l) { try { l = localStorage.getItem('limpiapp_lang') || localStorage.getItem('lang'); } catch (e) {} }
+        return SUPPORTED.indexOf(l) >= 0 ? l : 'es';
       }
 
-      var inputNombre = document.getElementById('inputNombre');
-      if (inputNombre && t.placeholderNombre) inputNombre.placeholder = t.placeholderNombre;
-      var inputTel = document.getElementById('inputTel');
-      if (inputTel && t.placeholderTel) inputTel.placeholder = t.placeholderTel;
-      var inputCP = document.getElementById('inputCP');
-      if (inputCP && t.placeholderCP) inputCP.placeholder = t.placeholderCP;
-      var inputEmail = document.getElementById('inputEmail');
-      if (inputEmail && t.placeholderEmail) inputEmail.placeholder = t.placeholderEmail;
-
-      var rgpdSpan = document.getElementById('txtRgpd');
-      if (rgpdSpan && t.txtRgpd) rgpdSpan.innerHTML = t.txtRgpd;
-
-      // Propagar idioma a enlaces de navegación y legales del pie
-      var navLinks = [
-        { id: 'logoLink', base: 'index.html' },
-        { id: 'backLink', base: 'index.html' },
-        { id: 'footAviso', base: 'aviso-legal.html' },
-        { id: 'footTerminos', base: 'terminos.html' },
-        { id: 'footPrivacidad', base: 'privacidad.html' },
-        { id: 'footCookies', base: 'cookies.html' }
-      ];
-      navLinks.forEach(function(item) {
-        var linkEl = document.getElementById(item.id);
-        if (linkEl) linkEl.setAttribute('href', item.base + '?lang=' + encodeURIComponent(lang));
-      });
-
-      try {
-        var currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', currentUrl.toString());
-      } catch (err) {}
-
-      setAuthMode(currentMode);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      setupPasswordToggle('btnTogglePassword', 'inputPassword');
-      setupPasswordToggle('btnToggleConfirmPassword', 'inputConfirmPassword');
-
-      var tabLog = document.getElementById('tabLogin');
-      if (tabLog) {
-        tabLog.addEventListener('click', function() { setAuthMode('login'); });
+      // Cookie que usan las páginas legales para traducirse con Google Translate (acción elegida por la persona)
+      function syncTranslateCookie(lang) {
+        var host = location.hostname;
+        var domain = (host.indexOf('.') !== -1 && !/^[0-9.]+$/.test(host)) ? '.' + host.replace(/^www\./, '') : '';
+        var expire = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = expire;
+        if (domain) document.cookie = expire + ' domain=' + domain + ';';
+        if (lang !== 'es') {
+          document.cookie = 'googtrans=/es/' + lang + '; path=/;';
+          if (domain) document.cookie = 'googtrans=/es/' + lang + '; path=/; domain=' + domain + ';';
+        }
       }
 
-      var tabReg = document.getElementById('tabRegister');
-      if (tabReg) {
-        tabReg.addEventListener('click', function() { setAuthMode('register'); });
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function apply(lang) {
+        var t = function (k) { return window.limpiappWlText(lang, k); };
+        try { localStorage.setItem('limpiapp_lang', lang); localStorage.setItem('lang', lang); } catch (e) {}
+        syncTranslateCookie(lang);
+        document.documentElement.lang = lang;
+        document.title = t('login_page_title');
+        document.getElementById('langSelect').value = lang;
+
+        setText('loginTitle', t('login_title'));
+        setText('loginP1', t('login_p1'));
+        setText('loginP2', t('login_p2'));
+        setText('ctaClient', t('login_cta_client'));
+        setText('ctaPro', t('login_cta_pro'));
+        setText('ctaOpenApp', t('login_open_app'));
+        setText('backLink', t('login_back'));
+
+        var f = FOOT[lang];
+        Object.keys(f).forEach(function (id) { setText(id, f[id]); });
+
+        var q = '?lang=' + encodeURIComponent(lang);
+        [['logoLink', 'index.html'], ['backLink', 'index.html'], ['ctaClient', 'clientes.html'], ['ctaPro', 'registro.html'],
+         ['footAviso', 'aviso-legal.html'], ['footTerminos', 'terminos.html'], ['footPrivacidad', 'privacidad.html'], ['footCookies', 'cookies.html']
+        ].forEach(function (pair) { var el = document.getElementById(pair[0]); if (el) el.setAttribute('href', pair[1] + q); });
+
+        try {
+          var u = new URL(location.href); u.searchParams.set('lang', lang);
+          history.replaceState({}, '', u.toString());
+        } catch (e) {}
       }
 
-      var linkToggle = document.getElementById('linkToggleMode');
-      if (linkToggle) {
-        linkToggle.addEventListener('click', function() {
-          setAuthMode(currentMode === 'login' ? 'register' : 'login');
-        });
+      // Enlaces antiguos tipo login.html?mode=register&role=profesional → directos a su formulario
+      var role = params.get('role');
+      if (params.get('mode') === 'register') {
+        location.replace((role === 'profesional' ? 'registro.html' : 'clientes.html') + '?lang=' + encodeURIComponent(getLang()));
+        return;
       }
 
-      var btnC = document.getElementById('btnRoleClient');
-      if (btnC) {
-        btnC.addEventListener('click', function() { setRole('cliente'); });
+      // Cuando la app esté publicada (waitlist-config.js → app.openUrl) aparece el botón
+      if (app.openUrl) {
+        var open = document.getElementById('ctaOpenApp');
+        open.href = app.openUrl;
+        open.hidden = false;
       }
 
-      var btnP = document.getElementById('btnRolePro');
-      if (btnP) {
-        btnP.addEventListener('click', function() { setRole('profesional'); });
-      }
-
-      var modalBtn = document.getElementById('modalBtn');
-      if (modalBtn) {
-        modalBtn.addEventListener('click', function() {
-          var modal = document.getElementById('modalAuth');
-          if (modal) modal.style.display = 'none';
-          var activeLang = localStorage.getItem('limpiapp_lang') || 'es';
-          window.location.href = 'index.html?lang=' + encodeURIComponent(activeLang);
-        });
-      }
-
-      var selectLang = document.getElementById('langSelectAuth');
-      if (selectLang) {
-        selectLang.addEventListener('change', function() {
-          cambiarIdioma(this.value);
-        });
-      }
-
-      var urlParams = new URLSearchParams(window.location.search);
-      var modeParam = urlParams.get('mode');
-      var roleParam = urlParams.get('role');
-      var langParam = urlParams.get('lang');
-
-      var finalLang = langParam || localStorage.getItem('limpiapp_lang') || 'es';
-      if (!dicc[finalLang]) finalLang = 'es';
-      if (selectLang) selectLang.value = finalLang;
-      cambiarIdioma(finalLang);
-
-      if (roleParam === 'profesional') {
-        setRole('profesional');
-      } else {
-        setRole('cliente');
-      }
-
-      if (modeParam === 'register') {
-        setAuthMode('register');
-      } else {
-        setAuthMode('login');
-      }
-
-      var form = document.getElementById('authForm');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-          }
-
-          if (currentMode === 'register') {
-            var nombreVal = document.getElementById('inputNombre').value.trim();
-            var telVal = document.getElementById('inputTel').value.trim();
-            var cpVal = document.getElementById('inputCP').value.trim();
-            var emailVal = document.getElementById('inputEmail').value.trim();
-            var checkVal = document.getElementById('checkRgpd').checked;
-            var pw = document.getElementById('inputPassword').value;
-            var confirmPw = document.getElementById('inputConfirmPassword').value;
-
-            if (!nombreVal || !telVal || !cpVal || !emailVal) {
-              alert('Por favor, completa todos los campos obligatorios (*).');
-              return;
-            }
-
-            if (!checkVal) {
-              alert('Debes aceptar los Términos y Condiciones y la Política de Privacidad.');
-              return;
-            }
-
-            if (pw.length < 8) {
-              alert('La contraseña debe tener un mínimo de 8 caracteres.');
-              return;
-            }
-
-            if (pw !== confirmPw) {
-              alert('Las contraseñas no coinciden. Por favor, revísalas.');
-              return;
-            }
-          }
-
-          var btn = document.getElementById('btnSubmitAuth');
-          var originalText = btn ? btn.innerText : '...';
-          if (btn) {
-            btn.disabled = true;
-            btn.innerText = 'Guardando cuenta...';
-          }
-
-          var formData = new FormData(form);
-          var params = new URLSearchParams(formData);
-
-          fetch(form.action, {
-            method: 'POST',
-            body: params,
-            mode: 'no-cors'
-          })
-          .then(function() {
-            var lang = localStorage.getItem('limpiapp_lang') || 'es';
-            var t = dicc[lang] || dicc['es'];
-
-            var modal = document.getElementById('modalAuth');
-            var modalTitle = document.getElementById('modalTitle');
-            var modalDesc = document.getElementById('modalDesc');
-
-            if (modalTitle && modalDesc) {
-              if (currentMode === 'login') {
-                modalTitle.innerText = t.modalTitleLog;
-                modalDesc.innerText = t.modalDescLog;
-              } else {
-                modalTitle.innerText = t.modalTitleReg;
-                modalDesc.innerText = t.modalDescReg;
-              }
-            }
-
-            if (modal) modal.style.display = 'flex';
-            form.reset();
-            setAuthMode(currentMode);
-          })
-          .catch(function() {
-            alert('Error de conexión. Inténtalo de nuevo.');
-          })
-          .finally(function() {
-            if (btn) {
-              btn.disabled = false;
-              btn.innerText = originalText;
-            }
-          });
-        });
-      }
-    });
+      document.getElementById('langSelect').addEventListener('change', function () { apply(this.value); });
+      apply(getLang());
+    })();
   </script>
   <script src="cookies-consent.js"></script>
 </body>

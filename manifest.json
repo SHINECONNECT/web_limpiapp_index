@@ -1,5 +1,5 @@
 {
-  "id": "/?source=pwa",
+  "id": "/",
   "name": "LIMPIAPP — Servicios de limpieza",
   "short_name": "LIMPIAPP",
   "description": "Plataforma tecnológica de intermediación de servicios de limpieza por código postal operada por Shineconnect S.L. en limpiapp.app.",
@@ -11,11 +11,12 @@
   "theme_color": "#4f585d",
   "lang": "es-ES",
   "icons": [
-    {
-      "src": "/logo.png",
-      "sizes": "any",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Busco un servicio", "short_name": "Clientes", "url": "/clientes.html?source=shortcut", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Soy profesional", "short_name": "Profesionales", "url": "/registro.html?source=shortcut", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }
